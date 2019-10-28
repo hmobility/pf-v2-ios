@@ -1,0 +1,11 @@
+framework module CloudCCTVSDK {
+  umbrella header "CloudCCTVSDK.h"
+
+  export *
+  module * { export * }
+}
+
+module CloudCCTVSDK.Swift {
+    header "CloudCCTVSDK-Swift.h"
+    requires objc
+}

@@ -1,0 +1,12 @@
+[TI2RPlayer.201811280] 
+ 1) Release RTSP Video Player First. 
+ 
+[TI2RPlayer.201812170]
+ 1) iOS 2.1에서 특정 단말 playback 오류 해결
+ 2) Add setDebugOn API
+ 3) 403/407 Error 발생 추가
+ 
+[TI2RPlayer.201905140]
+ 1) iOS 동시 멀티 재생 오류 수정(마지막 화면만 재생)
+ 
+ 

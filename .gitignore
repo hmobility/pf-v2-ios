@@ -1,10 +1,10 @@
 # Add any directories, files, or patterns you don't want to be tracked by version control
 
-ParkingFriends/Pods/
-ParkingFriends/build/
-ParkingFriends/Podfile.lock
-ParkingFriends/ParkingFriends.xcodeproj/xcuserdata/
-ParkingFriends/ParkingFriends.xcworkspace/xcuserdata/
-ParkingFriends/Pods/Pods.xcodeproj/xcuserdata/
-ParkingFriends/ParkingFriends.xcworkspace/xcuserdata/*.xcuserdatad
-*/Pods/Pods.xcodeproj/xcuserdata/*.xcuserdatad
+Pods/
+build/
+Podfile.lock
+ParkingFriends.xcodeproj/xcuserdata/
+ParkingFriends.xcworkspace/xcuserdata/
+ParkingFriends.xcworkspace/xcuserdata/*.xcuserdatad
+Pods/Pods.xcodeproj/xcuserdata/
+Pods/Pods.xcodeproj/xcuserdata/*.xcuserdatad

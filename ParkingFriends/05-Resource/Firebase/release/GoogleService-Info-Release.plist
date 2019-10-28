@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>299398094641-1savcv5a5doba37u5o4a0ksmvasbiujr.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.299398094641-1savcv5a5doba37u5o4a0ksmvasbiujr</string>
+	<key>API_KEY</key>
+	<string>AIzaSyB6JUbbR8GTXu0LSYfo23OdVpbNfEZn_aw</string>
+	<key>GCM_SENDER_ID</key>
+	<string>299398094641</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.hancom.mobility.ParkingFriends</string>
+	<key>PROJECT_ID</key>
+	<string>dev-client-b9c6a</string>
+	<key>STORAGE_BUCKET</key>
+	<string>dev-client-b9c6a.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:299398094641:ios:82fd40b581827684ce5a10</string>
+	<key>DATABASE_URL</key>
+	<string>https://dev-client-b9c6a.firebaseio.com</string>
+</dict>
+</plist>
