@@ -10,6 +10,7 @@ import UIKit
 import Alamofire
 
 class ServiceKeyAdapter: RequestAdapter {
+    
     private let serviceKey: String
 
     init(serviceKey: String) {

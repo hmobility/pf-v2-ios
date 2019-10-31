@@ -8,7 +8,6 @@ target 'ParkingFriends' do
   # Pods for Example
   pod 'RxSwift', '~> 5'
   pod 'RxCocoa', '~> 5'
-  
   pod 'RxLocalizer'
   pod 'RxOptional'
   pod 'RxViewController'
@@ -23,6 +22,8 @@ target 'ParkingFriends' do
   pod 'SwiftyJSON', '~> 5.0.0'
   
   pod 'NMapsMap'
+  
+  pod 'SwiftMessages'             # Message View
   
 end
 
