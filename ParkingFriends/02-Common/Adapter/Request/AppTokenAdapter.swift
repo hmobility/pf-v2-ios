@@ -10,6 +10,7 @@ import UIKit
 import Alamofire
 
 class AppTokenAdapter: RequestAdapter {
+
     private let osType: String
     private let device: String
     private let appVersion: String

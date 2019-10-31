@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Z1M-y0-keX">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="pdY-xc-dr9">
+            <objects>
+                <navigationController storyboardIdentifier="TutorialNavigationController" navigationBarHidden="YES" id="Z1M-y0-keX" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cZ0-u8-IFi">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="LSN-et-Jsm" kind="relationship" relationship="rootViewController" id="uzS-qH-js2"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wji-Gd-haW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1270" y="-173"/>
+        </scene>
+        <!--Guide Finished View Controller-->
+        <scene sceneID="CBK-6k-2Gm">
+            <objects>
+                <viewController id="mos-a0-eey" customClass="GuideFinishedViewController" customModule="ParkingFriends" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="k05-yV-6B3">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LsN-0l-xRk" userLabel="View - Bottom Area">
+                                <rect key="frame" x="0.0" y="800" width="414" height="54"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lee-og-cnp" userLabel="View - Separator ">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="0.5"/>
+                                        <color key="backgroundColor" red="0.84705882352941175" green="0.84705882352941175" blue="0.84705882352941175" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="0.5" id="EFr-xa-rli"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UQQ-pS-6rB">
+                                        <rect key="frame" x="20" y="10" width="374" height="34"/>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="18"/>
+                                        <state key="normal" title="시작하기">
+                                            <color key="titleColor" red="0.10196078431372549" green="0.10196078431372549" blue="0.10588235294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="beginButton:" destination="mos-a0-eey" eventType="touchUpInside" id="2r8-Gz-IaK"/>
+                                            <action selector="beginButtonAction:" destination="mos-a0-eey" eventType="touchUpInside" id="wtl-0R-4fN"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="54" id="1lv-dZ-Y5s"/>
+                                    <constraint firstItem="Lee-og-cnp" firstAttribute="leading" secondItem="LsN-0l-xRk" secondAttribute="leading" id="H0b-Dz-a6G"/>
+                                    <constraint firstItem="UQQ-pS-6rB" firstAttribute="centerX" secondItem="LsN-0l-xRk" secondAttribute="centerX" id="Xu5-SV-voq"/>
+                                    <constraint firstItem="UQQ-pS-6rB" firstAttribute="centerY" secondItem="LsN-0l-xRk" secondAttribute="centerY" id="jll-oK-tfL"/>
+                                    <constraint firstAttribute="trailing" secondItem="Lee-og-cnp" secondAttribute="trailing" id="kH6-AE-f8v"/>
+                                    <constraint firstItem="Lee-og-cnp" firstAttribute="top" secondItem="LsN-0l-xRk" secondAttribute="top" id="tR2-Kf-IKW"/>
+                                    <constraint firstItem="UQQ-pS-6rB" firstAttribute="leading" secondItem="LsN-0l-xRk" secondAttribute="leading" constant="20" id="zZ2-hi-mH3"/>
+                                </constraints>
+                            </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imgGuide1" translatesAutoresizingMaskIntoConstraints="NO" id="s9r-OD-Lch" userLabel="ImageView - Guide Image">
+                                <rect key="frame" x="82" y="310" width="250" height="250"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="가장 싼 주차장, 모두 모였다!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xhv-wg-QDP" userLabel="Label - Title">
+                                <rect key="frame" x="10" y="120" width="394" height="24"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="다른 앱들과 비교할 필요 없어요. 이제 파킹프렌즈에서 가장 저렴하게 주차하세요." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="96l-A5-8jH" userLabel="Label - Subtitle">
+                                <rect key="frame" x="10" y="150" width="394" height="36"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="15"/>
+                                <color key="textColor" red="0.44705882349999998" green="0.50196078430000002" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="5" currentPage="4" translatesAutoresizingMaskIntoConstraints="NO" id="Gp8-l6-3fJ">
+                                <rect key="frame" x="171.5" y="206" width="71" height="37"/>
+                                <color key="pageIndicatorTintColor" red="0.85490196080000003" green="0.85490196080000003" blue="0.85490196080000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="currentPageIndicatorTintColor" red="0.1450980392" green="0.83921568629999999" blue="0.38823529410000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </pageControl>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="gg0-nx-sDB" firstAttribute="bottom" secondItem="LsN-0l-xRk" secondAttribute="bottom" constant="8" id="0aO-bP-x71"/>
+                            <constraint firstItem="Xhv-wg-QDP" firstAttribute="leading" secondItem="gg0-nx-sDB" secondAttribute="leading" constant="10" id="5qy-bU-fHO"/>
+                            <constraint firstItem="96l-A5-8jH" firstAttribute="top" secondItem="Xhv-wg-QDP" secondAttribute="bottom" constant="6" id="9Ug-Wh-3wR"/>
+                            <constraint firstItem="Gp8-l6-3fJ" firstAttribute="top" secondItem="96l-A5-8jH" secondAttribute="bottom" constant="20" id="9wX-Ri-HGV"/>
+                            <constraint firstItem="LsN-0l-xRk" firstAttribute="leading" secondItem="gg0-nx-sDB" secondAttribute="leading" id="OlM-1R-yW7"/>
+                            <constraint firstItem="s9r-OD-Lch" firstAttribute="centerX" secondItem="k05-yV-6B3" secondAttribute="centerX" id="RlX-Vn-7uZ"/>
+                            <constraint firstItem="Xhv-wg-QDP" firstAttribute="top" secondItem="gg0-nx-sDB" secondAttribute="top" constant="76" id="StF-QQ-cJU"/>
+                            <constraint firstItem="LsN-0l-xRk" firstAttribute="trailing" secondItem="gg0-nx-sDB" secondAttribute="trailing" id="UJy-AR-xlR"/>
+                            <constraint firstItem="gg0-nx-sDB" firstAttribute="trailing" secondItem="Xhv-wg-QDP" secondAttribute="trailing" constant="10" id="ZnK-ck-g0W"/>
+                            <constraint firstItem="Gp8-l6-3fJ" firstAttribute="centerX" secondItem="k05-yV-6B3" secondAttribute="centerX" id="tTy-1Z-w4f"/>
+                            <constraint firstItem="gg0-nx-sDB" firstAttribute="trailing" secondItem="96l-A5-8jH" secondAttribute="trailing" constant="10" id="uSt-vt-wgc"/>
+                            <constraint firstItem="96l-A5-8jH" firstAttribute="leading" secondItem="gg0-nx-sDB" secondAttribute="leading" constant="10" id="udu-2H-18T"/>
+                            <constraint firstItem="s9r-OD-Lch" firstAttribute="top" secondItem="Gp8-l6-3fJ" secondAttribute="bottom" constant="67" id="xFx-t2-Ae6"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="gg0-nx-sDB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="BBf-jN-dwa"/>
+                    <connections>
+                        <outlet property="beginButton" destination="UQQ-pS-6rB" id="8C4-SI-KZe"/>
+                        <outlet property="subtitleLabel" destination="96l-A5-8jH" id="ej4-Xu-k6N"/>
+                        <outlet property="titleLabel" destination="Xhv-wg-QDP" id="io0-3O-ZnG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RDw-oi-NQ9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2239" y="-153"/>
+        </scene>
+        <!--Guide View Controller-->
+        <scene sceneID="OiE-24-B44">
+            <objects>
+                <viewController storyboardIdentifier="GuideViewController" id="LSN-et-Jsm" customClass="GuideViewController" customModule="ParkingFriends" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xpk-dS-Xmr">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="euc-yx-vXx" userLabel="View - Bottom Area">
+                                <rect key="frame" x="0.0" y="808" width="414" height="54"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="60K-HF-cfd" userLabel="View - Separator ">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="0.5"/>
+                                        <color key="backgroundColor" red="0.84705882349999995" green="0.84705882349999995" blue="0.84705882349999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="0.5" id="ffY-89-8Pi"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GRz-iv-IFb" userLabel="Button - Skip">
+                                        <rect key="frame" x="20" y="10" width="63" height="34"/>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="18"/>
+                                        <state key="normal" title="건너뛰기">
+                                            <color key="titleColor" red="0.1019607843" green="0.1019607843" blue="0.1058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ewj-qf-OIZ" userLabel="Button - Next">
+                                        <rect key="frame" x="327" y="10" width="79" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="34" id="wwH-x1-mpQ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="18"/>
+                                        <state key="normal" title="다음으로" image="icNextGrey">
+                                            <color key="titleColor" red="0.1019607843" green="0.1019607843" blue="0.1058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="ewj-qf-OIZ" secondAttribute="trailing" constant="8" id="0eA-Zf-Czm"/>
+                                    <constraint firstItem="60K-HF-cfd" firstAttribute="top" secondItem="euc-yx-vXx" secondAttribute="top" id="EnJ-ee-EYH"/>
+                                    <constraint firstItem="GRz-iv-IFb" firstAttribute="centerY" secondItem="euc-yx-vXx" secondAttribute="centerY" id="LaA-Bb-t7T"/>
+                                    <constraint firstItem="GRz-iv-IFb" firstAttribute="leading" secondItem="euc-yx-vXx" secondAttribute="leading" constant="20" id="R3K-XV-9kN"/>
+                                    <constraint firstItem="60K-HF-cfd" firstAttribute="leading" secondItem="euc-yx-vXx" secondAttribute="leading" id="T5C-rR-05i"/>
+                                    <constraint firstItem="ewj-qf-OIZ" firstAttribute="centerY" secondItem="euc-yx-vXx" secondAttribute="centerY" id="Zms-1g-U56"/>
+                                    <constraint firstAttribute="height" constant="54" id="x8g-3s-OPz"/>
+                                    <constraint firstAttribute="trailing" secondItem="60K-HF-cfd" secondAttribute="trailing" id="xpd-iM-pcu"/>
+                                </constraints>
+                            </view>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WU9-dj-m2n">
+                                <rect key="frame" x="0.0" y="44" width="414" height="764"/>
+                                <connections>
+                                    <segue destination="jP1-Kt-2LB" kind="embed" identifier="GuideContent" id="6Cj-Nu-Ci5"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="WU9-dj-m2n" firstAttribute="leading" secondItem="of2-PJ-BOs" secondAttribute="leading" id="3PF-th-bWj"/>
+                            <constraint firstItem="of2-PJ-BOs" firstAttribute="bottom" secondItem="euc-yx-vXx" secondAttribute="bottom" id="C63-JN-LXp"/>
+                            <constraint firstItem="WU9-dj-m2n" firstAttribute="top" secondItem="of2-PJ-BOs" secondAttribute="top" id="Jgy-96-0Na"/>
+                            <constraint firstItem="WU9-dj-m2n" firstAttribute="trailing" secondItem="of2-PJ-BOs" secondAttribute="trailing" id="YID-eQ-jQI"/>
+                            <constraint firstItem="euc-yx-vXx" firstAttribute="top" secondItem="WU9-dj-m2n" secondAttribute="bottom" id="fda-F5-OvD"/>
+                            <constraint firstItem="euc-yx-vXx" firstAttribute="leading" secondItem="of2-PJ-BOs" secondAttribute="leading" id="gqn-I4-PgX"/>
+                            <constraint firstItem="of2-PJ-BOs" firstAttribute="bottom" secondItem="euc-yx-vXx" secondAttribute="bottom" id="p9j-sb-1Pd"/>
+                            <constraint firstItem="euc-yx-vXx" firstAttribute="bottom" secondItem="of2-PJ-BOs" secondAttribute="bottom" id="pJV-oB-Kwg"/>
+                            <constraint firstItem="euc-yx-vXx" firstAttribute="trailing" secondItem="of2-PJ-BOs" secondAttribute="trailing" id="rco-bn-PbY"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="of2-PJ-BOs"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="aXj-Qg-fVU"/>
+                    <connections>
+                        <outlet property="containerView" destination="WU9-dj-m2n" id="aAG-E9-CuM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ebT-18-VaI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-396" y="-173"/>
+        </scene>
+        <!--Guide Content View Controller-->
+        <scene sceneID="XqU-3S-wfL">
+            <objects>
+                <viewController storyboardIdentifier="GuideContentViewController" id="mha-vP-bfB" customClass="GuideContentViewController" customModule="ParkingFriends" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="d3M-WW-za2">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="764"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imgGuide1" translatesAutoresizingMaskIntoConstraints="NO" id="Wtz-nA-FvQ" userLabel="ImageView - Guide Image">
+                                <rect key="frame" x="82" y="310" width="250" height="250"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="다른 앱들과 비교할 필요 없어요. 이제 파킹프렌즈에서 가장 저렴하게 주차하세요." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yhu-wf-4tV" userLabel="Label - Subtitle">
+                                <rect key="frame" x="10" y="150" width="394" height="36"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="15"/>
+                                <color key="textColor" red="0.44705882352941173" green="0.50196078431372548" blue="0.55686274509803924" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="5" translatesAutoresizingMaskIntoConstraints="NO" id="Mbg-Qq-RJ2">
+                                <rect key="frame" x="171.5" y="206" width="71" height="37"/>
+                                <color key="pageIndicatorTintColor" red="0.85490196078431369" green="0.85490196078431369" blue="0.85490196078431369" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="currentPageIndicatorTintColor" red="0.14509803921568626" green="0.83921568627450982" blue="0.38823529411764707" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </pageControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="가장 싼 주차장, 모두 모였다!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ztR-dA-SN5" userLabel="Label - Title">
+                                <rect key="frame" x="10" y="120" width="394" height="24"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Wtz-nA-FvQ" firstAttribute="top" secondItem="Mbg-Qq-RJ2" secondAttribute="bottom" constant="67" id="7MQ-dL-tzs"/>
+                            <constraint firstItem="Mbg-Qq-RJ2" firstAttribute="top" secondItem="Yhu-wf-4tV" secondAttribute="bottom" constant="20" id="Bs1-Li-gIS"/>
+                            <constraint firstItem="Yhu-wf-4tV" firstAttribute="top" secondItem="ztR-dA-SN5" secondAttribute="bottom" constant="6" id="Ido-Pb-Oeb"/>
+                            <constraint firstItem="ztR-dA-SN5" firstAttribute="leading" secondItem="d3M-WW-za2" secondAttribute="leading" constant="10" id="JSv-km-HZn"/>
+                            <constraint firstAttribute="trailing" secondItem="Yhu-wf-4tV" secondAttribute="trailing" constant="10" id="NbM-N5-vQ0"/>
+                            <constraint firstItem="Mbg-Qq-RJ2" firstAttribute="centerX" secondItem="d3M-WW-za2" secondAttribute="centerX" id="RS9-NH-r1B"/>
+                            <constraint firstItem="Wtz-nA-FvQ" firstAttribute="centerX" secondItem="d3M-WW-za2" secondAttribute="centerX" id="a0J-UG-zL7"/>
+                            <constraint firstItem="ztR-dA-SN5" firstAttribute="centerX" secondItem="d3M-WW-za2" secondAttribute="centerX" id="dXu-Xt-wqt"/>
+                            <constraint firstAttribute="trailing" secondItem="ztR-dA-SN5" secondAttribute="trailing" constant="10" id="fMa-Pa-NjI"/>
+                            <constraint firstItem="ztR-dA-SN5" firstAttribute="top" secondItem="d3M-WW-za2" secondAttribute="topMargin" constant="76" id="k1f-uV-3As"/>
+                            <constraint firstItem="Yhu-wf-4tV" firstAttribute="leading" secondItem="d3M-WW-za2" secondAttribute="leading" constant="10" id="mEp-GA-Ke1"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Q0j-Lc-RTR"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="SZ1-DE-e7V"/>
+                    <connections>
+                        <outlet property="guideImageView" destination="Wtz-nA-FvQ" id="wgm-5P-zwW"/>
+                        <outlet property="pageControl" destination="Mbg-Qq-RJ2" id="WO6-a2-In5"/>
+                        <outlet property="subtitleLabel" destination="Yhu-wf-4tV" id="ih5-Xm-BPo"/>
+                        <outlet property="titleLabel" destination="ztR-dA-SN5" id="bxT-U5-nd6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hbu-3R-0zN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1423" y="-173"/>
+        </scene>
+        <!--Page View Controller-->
+        <scene sceneID="BTz-x9-dMd">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="jP1-Kt-2LB" sceneMemberID="viewController">
+                    <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <segue destination="mha-vP-bfB" kind="show" id="y7B-vM-VS0"/>
+                    </connections>
+                </pageViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LZk-1N-KGB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="536" y="-173"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="icNextGrey" width="16" height="16"/>
+        <image name="imgGuide1" width="250" height="250"/>
+    </resources>
+</document>

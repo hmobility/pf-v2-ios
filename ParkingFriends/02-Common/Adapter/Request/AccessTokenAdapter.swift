@@ -10,6 +10,7 @@ import Foundation
 import Alamofire
 
 class AccessTokenAdapter: RequestAdapter {
+    
     private let accessToken: String
 
     init(accessToken: String) {

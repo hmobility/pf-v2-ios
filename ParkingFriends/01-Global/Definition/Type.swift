@@ -8,6 +8,11 @@
 
 import Foundation
 
+enum Language:String {
+    case korean = "ko"
+    case english = "en"
+}
+
 enum HttpMethod:String {
     case get = "GET"
     case head = "HEAD"

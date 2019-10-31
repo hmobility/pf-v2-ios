@@ -1,0 +1,22 @@
+// App
+"APP_NAME" = "Your app";
+
+// entry
+"login" = "로그인";
+"signup" = "회원가입";
+"signup_comment" = "파킹프렌즈가 처음이세요?";
+
+// tutorial
+"guide_skip" = "건너뛰기";
+"guide_next" = "다음으로";
+"guide_finished" = "시작하기";
+"guide_title_1" = "가장싼주차장,모두모였다!";
+"guide_subtitle_1" = "다른 앱들과 비교할 필요 없어요.\n이제 파킹프렌즈에서 가장 저렴하게 주차하세요.";
+"guide_title_2" = "빈 자리 찾아 헤매지 말자!";
+"guide_subtitle_2" = "파킹프렌즈 제휴 주차장의 스마트 센서가\n빈 자리를 실시간으로 알려드려요.";
+"guide_title_3" = "내 차 상태, 실시간으로 확인";
+"guide_subtitle_3" = "실시간 CCTV 화면으로\n내 차가 안전하게 주차되어 있는지 확인하세요.";
+"guide_title_4" = "음성 인식으로 검색, 예약, 결제까지";
+"guide_subtitle_4" = "말랑아~ 하고 불러보세요.\n목소리만으로 주차장 검색과 예약이 가능해요.";
+"guide_title_5" = "소중한 당신에게, 더 큰 혜택";
+"guide_subtitle_5" = "이용 실적에 따른 차별화된 혜택으로/n\n한 단계 업그레이드 된 주차 생활을 즐기세요!";
