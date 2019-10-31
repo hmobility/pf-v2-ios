@@ -12,7 +12,7 @@ import RxCocoa
 import Alamofire
 
 extension SplashViewController : AnalyticsType {
-    var screenName: String {
+    class var screenName: String {
         return "Splash Screen"
     }
 }

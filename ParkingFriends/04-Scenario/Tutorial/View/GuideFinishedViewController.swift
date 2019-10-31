@@ -1,5 +1,5 @@
 //
-//  GuideContentViewController.swift
+//  GuideFinishedViewController.swift
 //  ParkingFriends
 //
 //  Created by PlankFish on 2019/10/29.
@@ -11,35 +11,50 @@ import RxCocoa
 import RxSwift
 import RxViewController
 
-extension GuideContentViewController : AnalyticsType {
+extension GuideFinishedViewController : AnalyticsType {
     var screenName: String {
-        return "Guide Content Screen"
+        return "Guide Finished Screen"
     }
 }
 
-class GuideContentViewController: UIViewController {
+class GuideFinishedViewController: UIViewController {
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var subtitleLabel: UILabel!
+    @IBOutlet weak var pageControl: UIPageControl!
+    @IBOutlet weak var guideImageView: UIImageView!
+    @IBOutlet weak var beginButton: UIButton!
     
-    @IBOutlet var titleLabel: UILabel!
-    @IBOutlet var subtitleLabel: UILabel!
-    @IBOutlet var pageControl: UIPageControl!
-    @IBOutlet var guideImageView: UIImageView!
+    private let disposeBag = DisposeBag()
     
-    var disposeBag = DisposeBag()
-    var viewModel: GuideContentViewModelType
+    private var viewModel: GuideFinishedViewModelType
     
-    subscript(index: Int) -> GuideContentViewController {
+    // MARK: - Button Action
+
+    @IBAction func beginButtonAction(_ sender: Any) {
+        print("start app")
+    }
+    
+    // MARK: - subscript
+    
+    subscript(index: Int) -> GuideFinishedViewController {
         get {
             let pageIndex = index % 5
-            self.viewModel = GuideContentViewModel(pageIndex)
+            self.viewModel = GuideFinishedViewModel(pageIndex)
             return self
         }
         
         set(newValue) {
             let pageIndex = index % 5
-            self.viewModel = GuideContentViewModel(pageIndex)
+            self.viewModel = GuideFinishedViewModel(pageIndex)
         }
     }
- 
+    
+    // MARK: - Initialize
+    
+    private func initialize() {
+         setupBindings()
+     }
+    
     // MARK: - Binding
 
     private func setupBindings() {
@@ -58,30 +73,35 @@ class GuideContentViewController: UIViewController {
         viewModel.guideImage
             .bind(to: guideImageView.rx.image)
             .disposed(by: disposeBag)
+        
+        viewModel.beginText
+            .bind(to: beginButton.rx.title(for: .normal))
+            .disposed(by: disposeBag)
     }
     
     // MARK: - Life Cycle
     
     init(index:Int) {
-        self.viewModel = GuideContentViewModel(index)
+        self.viewModel = GuideFinishedViewModel()
         super.init(nibName: nil, bundle: nil)
     }
 
     required init?(coder aDecoder: NSCoder) {
-        viewModel = GuideContentViewModel()
+        viewModel = GuideFinishedViewModel()
         super.init(coder: aDecoder)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupBindings()
+        initialize()
+        // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(_ animated: Bool) {
          super.viewDidAppear(animated)
          trackScreen()
      }
-
+     
     /*
     // MARK: - Navigation
 
