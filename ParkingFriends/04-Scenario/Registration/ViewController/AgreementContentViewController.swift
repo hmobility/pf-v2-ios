@@ -1,49 +1,49 @@
 //
-//  SplashViewController.swift
+//  AgreementContentViewController.swift
 //  ParkingFriends
 //
-//  Created by PlankFish on 2019/10/29.
+//  Created by PlankFish on 2019/11/05.
 //  Copyright © 2019 Hancom Mobility. All rights reserved.
 //
 
 import UIKit
 import RxSwift
 import RxCocoa
-import Alamofire
 
-extension SplashViewController : AnalyticsType {
+extension AgreementContentViewController : AnalyticsType {
     var screenName: String {
-        return "Splash Screen"
+        return "Registering Car Screen"
     }
 }
 
-class SplashViewController: UIViewController {
+class AgreementContentViewController: UIViewController {
+    private var viewModel: RegiCarViewModelType
+    private let disposeBag = DisposeBag()
+    
+    // MARK: - Initialize
+    
+    init(viewModel: RegiCarViewModelType = RegiCarViewModel()) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        viewModel = RegiCarViewModel()
+        super.init(coder: aDecoder)
+    }
     
     // MARK: - Life Cycle
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         // Do any additional setup after loading the view.
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        trackScreen()
-        navigateEntry()
     }
     
     // MARK: - Navigation
     
-    private func navigateEntry() {
-        let entry = Storyboard.entry.instantiateInitialViewController() as! UINavigationController
-        self.modal(entry, animated: false)
-    }
-
     /*
+
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.

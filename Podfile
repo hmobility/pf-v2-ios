@@ -17,6 +17,9 @@ target 'ParkingFriends' do
   pod 'AlamofireObjectMapper', '~> 5.2.1'
   pod 'ObjectMapper', '~> 3.4'
   
+  # pods for Firebase
+  pod 'Fabric', '~> 1.10.2'
+  pod 'Crashlytics', '~> 3.14.0'
   pod 'Firebase/Analytics'
   
   pod 'SwiftyJSON', '~> 5.0.0'
@@ -24,6 +27,7 @@ target 'ParkingFriends' do
   pod 'NMapsMap'
   
   pod 'SwiftMessages'             # Message View
+  pod 'ActiveLabel'               # Underlined Tappable Label
   
 end
 

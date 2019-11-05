@@ -1,22 +1,44 @@
-// App
-"APP_NAME" = "Your app";
 
-// entry
+// Entry
+"change_phone_number" = "번호가 바뀌셨나요?";
+"find_password" = "비밀번호 찾기";
+
+// Registration
 "login" = "로그인";
 "signup" = "회원가입";
-"signup_comment" = "파킹프렌즈가 처음이세요?";
+"signup_guide" = "파킹프렌즈가 처음이세요?";
+"basic_info_title" = "기본정보 입력";
+"phone_number_input" = "휴대폰번호";
+"phone_number_input_placeholder" = "01012341234";
+"email_input" = "이메일주소";
+"email_input_placeholder" = "메일 주소 입력";
+"password_input " = "비밀번호";
+"password_input_placeholder" = "영문·숫자 포함, 최소 8자";
+"nickname_input" = "닉네임";
+"nickname_input_placeholder" = "한글·영문만 사용, 최대 8자";
+"agreement_title" = "약관동의";
+"agreement_subtitle" = "파킹프렌즈 서비스 이용을 위해서\n\n아래 약관에 동의해주세요.";
+"usage_title" = "이용약관";
+"personal_info_title" = "개인정보 취급방침";
+"location_service_title" = "위치기반서비스 이용약관";
+"third_party_info_title" = "제 3자 정보 제공";
+"marketing_info_title" = "개인정보 마케팅 활용";
+"agreement_end_sentence" = "에 동의합니다.";
+"agreement_option" = "(선택)";
+"agree_all" = "모두 동의합니다.";
 
-// tutorial
+// Tutorial
 "guide_skip" = "건너뛰기";
+"signup_comment" = "파킹프렌즈가 처음이세요?";
 "guide_next" = "다음으로";
 "guide_finished" = "시작하기";
 "guide_title_1" = "가장싼주차장,모두모였다!";
-"guide_subtitle_1" = "다른 앱들과 비교할 필요 없어요.\n이제 파킹프렌즈에서 가장 저렴하게 주차하세요.";
+"guide_subtitle_1" = "다른 앱들과 비교할 필요 없어요./n\n이제 파킹프렌즈에서 가장 저렴하게 주차하세요.";
 "guide_title_2" = "빈 자리 찾아 헤매지 말자!";
-"guide_subtitle_2" = "파킹프렌즈 제휴 주차장의 스마트 센서가\n빈 자리를 실시간으로 알려드려요.";
+"guide_subtitle_2" = "파킹프렌즈 제휴 주차장의 스마트 센서가/n\n빈 자리를 실시간으로 알려드려요.";
 "guide_title_3" = "내 차 상태, 실시간으로 확인";
-"guide_subtitle_3" = "실시간 CCTV 화면으로\n내 차가 안전하게 주차되어 있는지 확인하세요.";
+"guide_subtitle_3" = "실시간 CCTV 화면으로/n\n내 차가 안전하게 주차되어 있는지 확인하세요.";
 "guide_title_4" = "음성 인식으로 검색, 예약, 결제까지";
-"guide_subtitle_4" = "말랑아~ 하고 불러보세요.\n목소리만으로 주차장 검색과 예약이 가능해요.";
+"guide_subtitle_4" = "말랑아~ 하고 불러보세요./n\n목소리만으로 주차장 검색과 예약이 가능해요.";
 "guide_title_5" = "소중한 당신에게, 더 큰 혜택";
 "guide_subtitle_5" = "이용 실적에 따른 차별화된 혜택으로/n\n한 단계 업그레이드 된 주차 생활을 즐기세요!";

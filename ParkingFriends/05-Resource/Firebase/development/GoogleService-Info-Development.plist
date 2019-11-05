@@ -18,16 +18,18 @@
 	<string>dev-client-b9c6a</string>
 	<key>STORAGE_BUCKET</key>
 	<string>dev-client-b9c6a.appspot.com</string>
+	<key>firebase_crashlytics_collection_enabled</key>
+	<true/>
 	<key>IS_ADS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<false></false>
+	<true/>
 	<key>IS_APPINVITE_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_GCM_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>GOOGLE_APP_ID</key>
 	<string>1:299398094641:ios:82fd40b581827684ce5a10</string>
 	<key>DATABASE_URL</key>

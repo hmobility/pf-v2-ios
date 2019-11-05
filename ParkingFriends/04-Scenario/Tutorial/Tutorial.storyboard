@@ -12,6 +12,7 @@
         <scene sceneID="pdY-xc-dr9">
             <objects>
                 <navigationController storyboardIdentifier="TutorialNavigationController" navigationBarHidden="YES" id="Z1M-y0-keX" sceneMemberID="viewController">
+                    <nil key="simulatedTopBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cZ0-u8-IFi">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -190,7 +191,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="of2-PJ-BOs"/>
                     </view>
-                    <navigationItem key="navigationItem" id="aXj-Qg-fVU"/>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="aXj-Qg-fVU"/>
                     <connections>
                         <outlet property="containerView" destination="WU9-dj-m2n" id="aAG-E9-CuM"/>
                         <outlet property="nextButton" destination="ewj-qf-OIZ" id="jWB-FO-1qU"/>

@@ -11,13 +11,17 @@ import Firebase
 import RxSwift
 import RxCocoa
 import RxLocalizer
+import Fabric
+import Crashlytics
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure(options: GoogleServiceFileOptions!)
-        Localizer.shared.changeLanguage.accept("ko")
+        Fabric.with([Crashlytics.self])
+        
+        UserData.shared.initiated()
         
         return true
     }

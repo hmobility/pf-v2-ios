@@ -14,6 +14,10 @@ extension UIViewController {
         present(viewControllerToPresent, animated: flag, completion: completion)
     }
     
+    public func push(_ viewController: UIViewController) {
+        navigationController?.show(viewController, sender: self)
+    }
+    
     public func backToPrevious(animated: Bool = true) {
         if let presentingViewController = presentingViewController {
             presentingViewController.dismiss(animated: animated, completion: nil)

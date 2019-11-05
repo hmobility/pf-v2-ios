@@ -22,8 +22,34 @@
 		622BC1BD236A5D6200A43F02 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 622BC1BC236A5D6200A43F02 /* LaunchScreen.storyboard */; };
 		622BC1BF236A664500A43F02 /* GuideViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622BC1BE236A664500A43F02 /* GuideViewModel.swift */; };
 		622BC1C1236A714300A43F02 /* GuideFinishedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622BC1C0236A714300A43F02 /* GuideFinishedViewModel.swift */; };
+		622BC1CE236A9BC400A43F02 /* Registration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 622BC1CD236A9BC400A43F02 /* Registration.storyboard */; };
+		622BC1D0236A9DC500A43F02 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622BC1CF236A9DC500A43F02 /* UIButton+Extension.swift */; };
+		622BC1D2236AA3C300A43F02 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622BC1D1236AA3C300A43F02 /* UIView+Extension.swift */; };
+		6253924023716D870041EBF1 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6253923F23716D870041EBF1 /* UITextField+Extension.swift */; };
 		625468072367BCE300198833 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625468062367BCE300198833 /* SplashViewController.swift */; };
 		6254680C2367C07E00198833 /* Tutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6254680B2367C07E00198833 /* Tutorial.storyboard */; };
+		629C285B236BED9900E0E5E1 /* Entry.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 629C285A236BED9900E0E5E1 /* Entry.storyboard */; };
+		629C285F236BF25F00E0E5E1 /* EntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629C285E236BF25F00E0E5E1 /* EntryViewController.swift */; };
+		629C2861236BF2A300E0E5E1 /* EntryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629C2860236BF2A300E0E5E1 /* EntryViewModel.swift */; };
+		629C2863236BF54C00E0E5E1 /* PhoneInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629C2862236BF54C00E0E5E1 /* PhoneInputViewController.swift */; };
+		629C2865236BF6B600E0E5E1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629C2864236BF6B600E0E5E1 /* LoginViewController.swift */; };
+		629C2867236BF6F000E0E5E1 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629C2866236BF6F000E0E5E1 /* LoginViewModel.swift */; };
+		629C2869236E8D9F00E0E5E1 /* CodeVerifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629C2868236E8D9F00E0E5E1 /* CodeVerifyViewController.swift */; };
+		629C286B236E957400E0E5E1 /* BasicInfoInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629C286A236E957400E0E5E1 /* BasicInfoInputViewController.swift */; };
+		629C2870236E9A1B00E0E5E1 /* CustomInputSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629C286F236E9A1B00E0E5E1 /* CustomInputSection.swift */; };
+		629C2872236FADE000E0E5E1 /* BasicInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629C2871236FADE000E0E5E1 /* BasicInfoViewModel.swift */; };
+		629C287423700FF500E0E5E1 /* AgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629C287323700FF500E0E5E1 /* AgreementViewController.swift */; };
+		629C28762370103C00E0E5E1 /* AgreementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629C28752370103C00E0E5E1 /* AgreementViewModel.swift */; };
+		629C28782370F45500E0E5E1 /* AgreementContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629C28772370F45500E0E5E1 /* AgreementContentViewController.swift */; };
+		629C287A2370FCA500E0E5E1 /* UINavigation+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629C28792370FCA500E0E5E1 /* UINavigation+Extension.swift */; };
+		629C287C2371093700E0E5E1 /* RegiCarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629C287B2371093700E0E5E1 /* RegiCarViewController.swift */; };
+		629C287E237109B500E0E5E1 /* RegiCreditCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629C287D237109B500E0E5E1 /* RegiCreditCardViewController.swift */; };
+		629C288023710B4B00E0E5E1 /* RegiCreditCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629C287F23710B4B00E0E5E1 /* RegiCreditCardViewModel.swift */; };
+		629C288223710B8E00E0E5E1 /* RegiCarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629C288123710B8E00E0E5E1 /* RegiCarViewModel.swift */; };
+		629C288423710CB500E0E5E1 /* AgreementContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629C288323710CB500E0E5E1 /* AgreementContentViewModel.swift */; };
+		629C2886237137C400E0E5E1 /* CarBrandViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629C2885237137C400E0E5E1 /* CarBrandViewController.swift */; };
+		629C2888237149D200E0E5E1 /* FindAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629C2887237149D200E0E5E1 /* FindAccountViewController.swift */; };
+		629C288A237149FA00E0E5E1 /* FindPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629C2889237149FA00E0E5E1 /* FindPasswordViewController.swift */; };
 		62C26BD92360195000695B6F /* MembersAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C26BD82360195000695B6F /* MembersAPI.swift */; };
 		62C26BDC23612B5500695B6F /* ExternalAccessory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62C26BDB23612B5500695B6F /* ExternalAccessory.framework */; };
 		62C26BDE23612B6C00695B6F /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62C26BDD23612B6C00695B6F /* NetworkExtension.framework */; };
@@ -126,8 +152,34 @@
 		622BC1BC236A5D6200A43F02 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		622BC1BE236A664500A43F02 /* GuideViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideViewModel.swift; sourceTree = "<group>"; };
 		622BC1C0236A714300A43F02 /* GuideFinishedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideFinishedViewModel.swift; sourceTree = "<group>"; };
+		622BC1CD236A9BC400A43F02 /* Registration.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Registration.storyboard; sourceTree = "<group>"; };
+		622BC1CF236A9DC500A43F02 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		622BC1D1236AA3C300A43F02 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		6253923F23716D870041EBF1 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		625468062367BCE300198833 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		6254680B2367C07E00198833 /* Tutorial.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Tutorial.storyboard; sourceTree = "<group>"; };
+		629C285A236BED9900E0E5E1 /* Entry.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Entry.storyboard; sourceTree = "<group>"; };
+		629C285E236BF25F00E0E5E1 /* EntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewController.swift; sourceTree = "<group>"; };
+		629C2860236BF2A300E0E5E1 /* EntryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewModel.swift; sourceTree = "<group>"; };
+		629C2862236BF54C00E0E5E1 /* PhoneInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneInputViewController.swift; sourceTree = "<group>"; };
+		629C2864236BF6B600E0E5E1 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		629C2866236BF6F000E0E5E1 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		629C2868236E8D9F00E0E5E1 /* CodeVerifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeVerifyViewController.swift; sourceTree = "<group>"; };
+		629C286A236E957400E0E5E1 /* BasicInfoInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoInputViewController.swift; sourceTree = "<group>"; };
+		629C286F236E9A1B00E0E5E1 /* CustomInputSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInputSection.swift; sourceTree = "<group>"; };
+		629C2871236FADE000E0E5E1 /* BasicInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoViewModel.swift; sourceTree = "<group>"; };
+		629C287323700FF500E0E5E1 /* AgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementViewController.swift; sourceTree = "<group>"; };
+		629C28752370103C00E0E5E1 /* AgreementViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementViewModel.swift; sourceTree = "<group>"; };
+		629C28772370F45500E0E5E1 /* AgreementContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementContentViewController.swift; sourceTree = "<group>"; };
+		629C28792370FCA500E0E5E1 /* UINavigation+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigation+Extension.swift"; sourceTree = "<group>"; };
+		629C287B2371093700E0E5E1 /* RegiCarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegiCarViewController.swift; sourceTree = "<group>"; };
+		629C287D237109B500E0E5E1 /* RegiCreditCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegiCreditCardViewController.swift; sourceTree = "<group>"; };
+		629C287F23710B4B00E0E5E1 /* RegiCreditCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegiCreditCardViewModel.swift; sourceTree = "<group>"; };
+		629C288123710B8E00E0E5E1 /* RegiCarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegiCarViewModel.swift; sourceTree = "<group>"; };
+		629C288323710CB500E0E5E1 /* AgreementContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementContentViewModel.swift; sourceTree = "<group>"; };
+		629C2885237137C400E0E5E1 /* CarBrandViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarBrandViewController.swift; sourceTree = "<group>"; };
+		629C2887237149D200E0E5E1 /* FindAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindAccountViewController.swift; sourceTree = "<group>"; };
+		629C2889237149FA00E0E5E1 /* FindPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPasswordViewController.swift; sourceTree = "<group>"; };
 		62C26BD82360195000695B6F /* MembersAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembersAPI.swift; sourceTree = "<group>"; };
 		62C26BDB23612B5500695B6F /* ExternalAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExternalAccessory.framework; path = System/Library/Frameworks/ExternalAccessory.framework; sourceTree = SDKROOT; };
 		62C26BDD23612B6C00695B6F /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
@@ -254,14 +306,14 @@
 			path = Localization;
 			sourceTree = "<group>";
 		};
-		622BC0FF23697A8700A43F02 /* View */ = {
+		622BC0FF23697A8700A43F02 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
 				622BC0DF2368011F00A43F02 /* GuideViewController.swift */,
 				622BC0E12368012A00A43F02 /* GuideContentViewController.swift */,
 				622BC0E32368131400A43F02 /* GuideFinishedViewController.swift */,
 			);
-			path = View;
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		622BC1B3236A5C5B00A43F02 /* Launch */ = {
@@ -270,6 +322,44 @@
 				622BC1BC236A5D6200A43F02 /* LaunchScreen.storyboard */,
 			);
 			path = Launch;
+			sourceTree = "<group>";
+		};
+		622BC1C8236A9AFB00A43F02 /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				622BC1CD236A9BC400A43F02 /* Registration.storyboard */,
+				629C286C236E99C200E0E5E1 /* CustomField */,
+				622BC1CB236A9B7F00A43F02 /* ViewModel */,
+				622BC1CC236A9B8500A43F02 /* ViewController */,
+			);
+			path = Registration;
+			sourceTree = "<group>";
+		};
+		622BC1CB236A9B7F00A43F02 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				629C2871236FADE000E0E5E1 /* BasicInfoViewModel.swift */,
+				629C28752370103C00E0E5E1 /* AgreementViewModel.swift */,
+				629C287F23710B4B00E0E5E1 /* RegiCreditCardViewModel.swift */,
+				629C288123710B8E00E0E5E1 /* RegiCarViewModel.swift */,
+				629C288323710CB500E0E5E1 /* AgreementContentViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		622BC1CC236A9B8500A43F02 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				629C2862236BF54C00E0E5E1 /* PhoneInputViewController.swift */,
+				629C2868236E8D9F00E0E5E1 /* CodeVerifyViewController.swift */,
+				629C286A236E957400E0E5E1 /* BasicInfoInputViewController.swift */,
+				629C287323700FF500E0E5E1 /* AgreementViewController.swift */,
+				629C28772370F45500E0E5E1 /* AgreementContentViewController.swift */,
+				629C2885237137C400E0E5E1 /* CarBrandViewController.swift */,
+				629C287B2371093700E0E5E1 /* RegiCarViewController.swift */,
+				629C287D237109B500E0E5E1 /* RegiCreditCardViewController.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		625468032367BCBC00198833 /* Splash */ = {
@@ -286,9 +376,47 @@
 			children = (
 				6254680B2367C07E00198833 /* Tutorial.storyboard */,
 				622BC0EF23691DF700A43F02 /* ViewModel */,
-				622BC0FF23697A8700A43F02 /* View */,
+				622BC0FF23697A8700A43F02 /* ViewController */,
 			);
 			path = Tutorial;
+			sourceTree = "<group>";
+		};
+		629C2859236BED8400E0E5E1 /* Entry */ = {
+			isa = PBXGroup;
+			children = (
+				629C285A236BED9900E0E5E1 /* Entry.storyboard */,
+				629C285C236BEDED00E0E5E1 /* ViewModel */,
+				629C285D236BEDF800E0E5E1 /* ViewController */,
+			);
+			path = Entry;
+			sourceTree = "<group>";
+		};
+		629C285C236BEDED00E0E5E1 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				629C2860236BF2A300E0E5E1 /* EntryViewModel.swift */,
+				629C2866236BF6F000E0E5E1 /* LoginViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		629C285D236BEDF800E0E5E1 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				629C285E236BF25F00E0E5E1 /* EntryViewController.swift */,
+				629C2864236BF6B600E0E5E1 /* LoginViewController.swift */,
+				629C2887237149D200E0E5E1 /* FindAccountViewController.swift */,
+				629C2889237149FA00E0E5E1 /* FindPasswordViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		629C286C236E99C200E0E5E1 /* CustomField */ = {
+			isa = PBXGroup;
+			children = (
+				629C286F236E9A1B00E0E5E1 /* CustomInputSection.swift */,
+			);
+			path = CustomField;
 			sourceTree = "<group>";
 		};
 		62C26BD7235FE9EA00695B6F /* Wrapper */ = {
@@ -468,6 +596,8 @@
 			isa = PBXGroup;
 			children = (
 				625468032367BCBC00198833 /* Splash */,
+				629C2859236BED8400E0E5E1 /* Entry */,
+				622BC1C8236A9AFB00A43F02 /* Registration */,
 				6254680A2367C06900198833 /* Tutorial */,
 			);
 			path = "04-Scenario";
@@ -561,6 +691,10 @@
 			children = (
 				622BC0E523681FE300A43F02 /* UIStoryboard+Extension.swift */,
 				622BC0E9236835B800A43F02 /* UIViewController+Extension.swift */,
+				622BC1CF236A9DC500A43F02 /* UIButton+Extension.swift */,
+				622BC1D1236AA3C300A43F02 /* UIView+Extension.swift */,
+				629C28792370FCA500E0E5E1 /* UINavigation+Extension.swift */,
+				6253923F23716D870041EBF1 /* UITextField+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -758,7 +892,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				629C285B236BED9900E0E5E1 /* Entry.storyboard in Resources */,
 				6254680C2367C07E00198833 /* Tutorial.storyboard in Resources */,
+				622BC1CE236A9BC400A43F02 /* Registration.storyboard in Resources */,
 				62C26C15236688F800695B6F /* GoogleService-Info-Release.plist in Resources */,
 				622BC1BD236A5D6200A43F02 /* LaunchScreen.storyboard in Resources */,
 				622BC1AD23698C6E00A43F02 /* Main.storyboard in Resources */,
@@ -854,16 +990,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				629C287423700FF500E0E5E1 /* AgreementViewController.swift in Sources */,
+				629C2861236BF2A300E0E5E1 /* EntryViewModel.swift in Sources */,
 				622BC0E22368012A00A43F02 /* GuideContentViewController.swift in Sources */,
 				62C26C052362B43C00695B6F /* Payments.swift in Sources */,
 				62C26BFF2362B0B300695B6F /* PaymentAPI.swift in Sources */,
 				A4225E6C2355BA00004F48C4 /* AnalyticsType.swift in Sources */,
 				62C26BF82362970700695B6F /* Notices.swift in Sources */,
+				629C2886237137C400E0E5E1 /* CarBrandViewController.swift in Sources */,
+				629C285F236BF25F00E0E5E1 /* EntryViewController.swift in Sources */,
 				A4225E712357F7F9004F48C4 /* HttpSession.swift in Sources */,
 				622BC0E42368131400A43F02 /* GuideFinishedViewController.swift in Sources */,
 				A40ACD3523543F8D000E4967 /* ViewController.swift in Sources */,
+				629C286B236E957400E0E5E1 /* BasicInfoInputViewController.swift in Sources */,
+				629C2870236E9A1B00E0E5E1 /* CustomInputSection.swift in Sources */,
+				629C287A2370FCA500E0E5E1 /* UINavigation+Extension.swift in Sources */,
 				62C26BE92361921700695B6F /* Otp.swift in Sources */,
 				A4225E84235D44DA004F48C4 /* Host.swift in Sources */,
+				6253924023716D870041EBF1 /* UITextField+Extension.swift in Sources */,
 				A4225E7523584AE9004F48C4 /* BaseModel.swift in Sources */,
 				622BC1C1236A714300A43F02 /* GuideFinishedViewModel.swift in Sources */,
 				62C26BF62362961100695B6F /* Reviews.swift in Sources */,
@@ -872,12 +1016,17 @@
 				62C26C012362B1D300695B6F /* OrderPreview.swift in Sources */,
 				A4225E7323584A16004F48C4 /* ServerError.swift in Sources */,
 				622BC0E82368262000A43F02 /* Storyboard.swift in Sources */,
+				629C28782370F45500E0E5E1 /* AgreementContentViewController.swift in Sources */,
+				629C2867236BF6F000E0E5E1 /* LoginViewModel.swift in Sources */,
 				62C26C1923668C0900695B6F /* Analytics.swift in Sources */,
 				A4BA4BDB235EFC7600D30DFE /* AppTokenAdapter.swift in Sources */,
 				62C26C0D2362F29100695B6F /* Coupons.swift in Sources */,
 				A4225EDA235D8938004F48C4 /* SceneDelegate.swift in Sources */,
+				629C287E237109B500E0E5E1 /* RegiCreditCardViewController.swift in Sources */,
 				62C26BF32362834800695B6F /* Contents.swift in Sources */,
+				629C288423710CB500E0E5E1 /* AgreementContentViewModel.swift in Sources */,
 				A4225E6423559DEC004F48C4 /* AuthAPIs.swift in Sources */,
+				622BC1D2236AA3C300A43F02 /* UIView+Extension.swift in Sources */,
 				A4225E82235D30FB004F48C4 /* AppInfo.swift in Sources */,
 				62C26C0B2362F0F300695B6F /* Cards.swift in Sources */,
 				62C26BEF2361944C00695B6F /* CommonAPI.swift in Sources */,
@@ -887,22 +1036,33 @@
 				622BC0EE23691DC900A43F02 /* GuideContentViewModel.swift in Sources */,
 				A4BA4BD8235EFAFE00D30DFE /* AccessTokenAdapter.swift in Sources */,
 				622BC0EA236835B800A43F02 /* UIViewController+Extension.swift in Sources */,
+				622BC1D0236A9DC500A43F02 /* UIButton+Extension.swift in Sources */,
 				A4225E5B235559C4004F48C4 /* AlertAction.swift in Sources */,
+				629C2863236BF54C00E0E5E1 /* PhoneInputViewController.swift in Sources */,
+				629C288023710B4B00E0E5E1 /* RegiCreditCardViewModel.swift in Sources */,
 				62C26C032362B23B00695B6F /* Orders.swift in Sources */,
 				62C26BFC2362AE1A00695B6F /* FAQs.swift in Sources */,
 				62C26C072362EF6100695B6F /* Members.swift in Sources */,
+				629C288A237149FA00E0E5E1 /* FindPasswordViewController.swift in Sources */,
+				629C2872236FADE000E0E5E1 /* BasicInfoViewModel.swift in Sources */,
 				A4225E682355B352004F48C4 /* BoolTransform.swift in Sources */,
+				629C2865236BF6B600E0E5E1 /* LoginViewController.swift in Sources */,
+				629C2888237149D200E0E5E1 /* FindAccountViewController.swift in Sources */,
 				622BC0E623681FE300A43F02 /* UIStoryboard+Extension.swift in Sources */,
+				629C287C2371093700E0E5E1 /* RegiCarViewController.swift in Sources */,
 				A4225E9A235D7463004F48C4 /* UserData.swift in Sources */,
 				622BC0E02368011F00A43F02 /* GuideViewController.swift in Sources */,
 				62C26BFA2362ACA300695B6F /* Events.swift in Sources */,
+				629C288223710B8E00E0E5E1 /* RegiCarViewModel.swift in Sources */,
 				622BC1BF236A664500A43F02 /* GuideViewModel.swift in Sources */,
 				A4225E7D23597CA3004F48C4 /* Login.swift in Sources */,
 				62C26C092362F0BE00695B6F /* Point.swift in Sources */,
+				629C2869236E8D9F00E0E5E1 /* CodeVerifyViewController.swift in Sources */,
 				62C26BEB2361932500695B6F /* OldMember.swift in Sources */,
 				A4225E6223559DB2004F48C4 /* BaseAPI.swift in Sources */,
 				A4BA4BD1235EC91A00D30DFE /* Auth.swift in Sources */,
 				625468072367BCE300198833 /* SplashViewController.swift in Sources */,
+				629C28762370103C00E0E5E1 /* AgreementViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
