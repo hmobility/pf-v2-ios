@@ -7,20 +7,12 @@
 //
 
 import UIKit
-import Firebase
-import RxSwift
-import RxCocoa
-import RxLocalizer
-import Fabric
-import Crashlytics
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        FirebaseApp.configure(options: GoogleServiceFileOptions!)
-        Fabric.with([Crashlytics.self])
-        
+        AppConfig.shared.apply()
         UserData.shared.initiated()
         
         return true

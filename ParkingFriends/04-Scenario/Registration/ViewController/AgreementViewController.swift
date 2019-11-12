@@ -7,8 +7,7 @@
 //
 
 import UIKit
-import RxSwift
-import RxCocoa
+import ActiveLabel
 
 extension AgreementViewController : AnalyticsType {
     var screenName: String {
@@ -19,16 +18,22 @@ extension AgreementViewController : AnalyticsType {
 class AgreementViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
+    
+    @IBOutlet weak var usageButton: UIButton!
     @IBOutlet weak var usageLabel: UILabel!
+    @IBOutlet weak var personalInfoButton: UIButton!
     @IBOutlet weak var personalInfoLabel: UILabel!
+    @IBOutlet weak var locationServiceButton: UIButton!
     @IBOutlet weak var locationServiceLabel: UILabel!
+    @IBOutlet weak var thirdPartyInfoButton: UIButton!
     @IBOutlet weak var thirdPartyInfoLabel: UILabel!
+    @IBOutlet weak var marketingInfoButton: UIButton!
     @IBOutlet weak var marketingInfoLabel: UILabel!
     @IBOutlet weak var agreeAllLabel: UILabel!
     @IBOutlet weak var optionLabel: UILabel!
     
-    @IBOutlet var mandatoryButtonList: [UIButton]!
-    @IBOutlet weak var optionButton: UIButton!
+    @IBOutlet var checkButtonList: [UIButton]!
+    @IBOutlet weak var selectAllButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
     
     @IBOutlet weak var backButton: UIBarButtonItem!
@@ -42,9 +47,73 @@ class AgreementViewController: UIViewController {
         self.backToPrevious()
     }
      
-     @IBAction func nextButtonAction(_ sender: Any) {
+    @IBAction func nextButtonAction(_ sender: Any) {
         navigateToRegiCar()
-     }
+    }
+    
+    @IBAction func showAgreementAction(_ sender: Any) {
+        let type = TermsType(rawValue: (sender as AnyObject).tag)!
+        navigateToTerms(type)
+    }
+    
+    @IBAction func checkButtontAction(_ sender: Any) {
+        let index = checkButtonList.firstIndex(of: sender as! UIButton) as! Int
+      //  let index = (sender as AnyObject).tag as Int
+        let result = !checkButtonList[index].isSelected
+        checkButtonList[index].isSelected = result
+        
+        if result == false {
+            selectAllButton.isSelected = false
+        }
+    }
+    
+    @IBAction func selectAllButtontAction(_ sender: Any) {
+        let checkButton = sender as! UIButton
+        let result:Bool  = !checkButton.isSelected
+        checkButton.isSelected = result
+        
+        checkButtonList.forEach { button in
+            button.isSelected = result
+        }
+    }
+    
+    // MARK: - Binding
+    
+    private func setupBindings() {
+        // Usage
+        
+        viewModel.usageText
+            .bind(to: usageButton.rx.attributedTitle())
+            .disposed(by: disposeBag)
+        
+        viewModel.personalInfoText
+            .bind(to: personalInfoButton.rx.attributedTitle())
+            .disposed(by: disposeBag)
+        
+        viewModel.locationServiceText
+            .bind(to: locationServiceButton.rx.attributedTitle())
+            .disposed(by: disposeBag)
+        
+        viewModel.thirdPartyText
+            .bind(to: thirdPartyInfoButton.rx.attributedTitle())
+            .disposed(by: disposeBag)
+        
+        viewModel.marketingInfoText
+            .bind(to: marketingInfoButton.rx.attributedTitle())
+            .disposed(by: disposeBag)
+        
+        viewModel.sentenceText ~> [usageLabel, personalInfoLabel, locationServiceLabel, thirdPartyInfoLabel, marketingInfoLabel]
+            .map { $0.rx.text }
+            ~ disposeBag
+        
+        viewModel.agreeAllText
+            .bind(to: agreeAllLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        viewModel.agreementOptionText
+            .bind(to : optionLabel.rx.text)
+            .disposed(by: disposeBag)
+    }
     
     // MARK: - Initialize
     
@@ -62,7 +131,7 @@ class AgreementViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        setupBindings()
     }
     
     // MARK: - Navigation
@@ -70,6 +139,12 @@ class AgreementViewController: UIViewController {
     private func navigateToRegiCar() {
         let target = Storyboard.registration.instantiateViewController(withIdentifier: "RegiCarViewController") as! RegiCarViewController
         self.push(target)
+    }
+    
+    private func navigateToTerms(_ type:TermsType) {
+        let target = Storyboard.terms.instantiateViewController(withIdentifier: "TermsViewController") as! TermsViewController
+        target.setTermsType(type)
+        self.modal(target)
     }
 
     /*

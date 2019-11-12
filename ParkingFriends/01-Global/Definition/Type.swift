@@ -29,4 +29,9 @@ enum ContentType:String {
     case product_type = "PRODUCT_TYPE"
 }
 
+enum TermsType: Int {
+    case usage, personal_info, location_service, third_party_info, marketing_info
+    case none
+}
+
 typealias Params = [String : Any]

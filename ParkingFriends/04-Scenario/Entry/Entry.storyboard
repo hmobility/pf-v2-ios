@@ -152,87 +152,10 @@
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imgSymbolPf" translatesAutoresizingMaskIntoConstraints="NO" id="Sw2-4G-hrC" userLabel="ImageView - Symbol">
                                 <rect key="frame" x="89" y="217" width="236" height="71"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="71" id="bIc-NO-Dub"/>
+                                </constraints>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="ID(휴대폰번호)를 입력하세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UzL-LK-xHV" userLabel="TextField - Id">
-                                <rect key="frame" x="16" y="594" width="382" height="48"/>
-                                <color key="backgroundColor" red="0.93725490199999995" green="0.94901960780000005" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="tintColor" red="0.10196078431372549" green="0.10196078431372549" blue="0.10588235294117647" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="48" id="fOX-wl-u6d"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="16"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="24"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" red="0.93725490199999995" green="0.94901960780000005" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="paddingLeftCustom">
-                                        <real key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="paddingRightCustom">
-                                        <real key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="paddingLeft">
-                                        <real key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="paddingRight">
-                                        <real key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tZY-pY-tGd" userLabel="Button - Login">
-                                <rect key="frame" x="16" y="706" width="382" height="56"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="56" id="RoZ-T4-Q0P"/>
-                                </constraints>
-                                <state key="normal" title="Login">
-                                    <color key="titleColor" red="0.0" green="0.81176470590000005" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="28"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" red="0.0" green="0.81568627449999997" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="ID(휴대폰번호)를 입력하세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="snl-dH-KZa" userLabel="TextField - Password">
-                                <rect key="frame" x="16" y="650" width="382" height="48"/>
-                                <color key="backgroundColor" red="0.93725490199999995" green="0.94901960780000005" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="tintColor" red="0.10196078431372549" green="0.10196078431372549" blue="0.10588235294117647" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="48" id="WL0-vJ-y0k"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="16"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="24"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" red="0.93725490199999995" green="0.94901960780000005" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="paddingLeft">
-                                        <real key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="paddingRight">
-                                        <real key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MAE-sv-Ug0" userLabel="View - Vertical Separator">
                                 <rect key="frame" x="206.5" y="814" width="1" height="12"/>
                                 <color key="backgroundColor" red="0.80784313730000001" green="0.81960784310000001" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -247,7 +170,7 @@
                                     <attributedString key="attributedTitle">
                                         <fragment content="번호가 바뀌셨나요?">
                                             <attributes>
-                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="NSColor" red="0.3411764705882353" green="0.38823529411764707" blue="0.43529411764705883" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <font key="NSFont" size="15" name="AppleSDGothicNeo-Regular"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                 <integer key="NSUnderline" value="1"/>
@@ -256,11 +179,11 @@
                                     </attributedString>
                                 </state>
                                 <connections>
-                                    <action selector="changeCellNumberButtonAction:" destination="AAa-Xc-9TY" eventType="touchUpInside" id="A25-se-ODs"/>
+                                    <action selector="changeNumberButtonAction:" destination="AAa-Xc-9TY" eventType="touchUpInside" id="ptL-1C-rFj"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VSi-bk-JXj" userLabel="Button - Find Password">
-                                <rect key="frame" x="219.5" y="806" width="178.5" height="30"/>
+                                <rect key="frame" x="219.5" y="805" width="178.5" height="30"/>
                                 <state key="normal">
                                     <attributedString key="attributedTitle">
                                         <fragment content="비밀번호 찾기">
@@ -276,45 +199,129 @@
                                     <action selector="findPasswordButtonAction:" destination="AAa-Xc-9TY" eventType="touchUpInside" id="ID5-ox-17d"/>
                                 </connections>
                             </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="0Aw-Ld-yfF" userLabel="Stack View - Input Area">
+                                <rect key="frame" x="16" y="615" width="382" height="168"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="ID(휴대폰번호)를 입력하세요" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="UzL-LK-xHV" userLabel="TextField - Id">
+                                        <rect key="frame" x="0.0" y="0.0" width="382" height="48"/>
+                                        <color key="backgroundColor" red="0.93725490199999995" green="0.94901960780000005" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" red="0.10196078431372549" green="0.10196078431372549" blue="0.10588235294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="fOX-wl-u6d"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="ASCIICapableNumberPad" textContentType="tel"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="24"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" red="0.93725490199999995" green="0.94901960780000005" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="paddingLeft">
+                                                <real key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="paddingRight">
+                                                <real key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="cursorColor">
+                                                <color key="value" red="0.1450980392" green="0.83921568629999999" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="ID(휴대폰번호)를 입력하세요" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="snl-dH-KZa" userLabel="TextField - Password">
+                                        <rect key="frame" x="0.0" y="56" width="382" height="48"/>
+                                        <color key="backgroundColor" red="0.93725490199999995" green="0.94901960780000005" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" red="0.10196078431372549" green="0.10196078431372549" blue="0.10588235294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="WL0-vJ-y0k"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" textContentType="password"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="24"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" red="0.93725490199999995" green="0.94901960780000005" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="paddingLeft">
+                                                <real key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="paddingRight">
+                                                <real key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="cursorColor">
+                                                <color key="value" red="0.1450980392" green="0.83921568629999999" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tZY-pY-tGd" userLabel="Button - Login">
+                                        <rect key="frame" x="0.0" y="112" width="382" height="56"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="56" id="RoZ-T4-Q0P"/>
+                                        </constraints>
+                                        <state key="normal" title="Login">
+                                            <color key="titleColor" red="0.0" green="0.81176470590000005" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="28"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" red="0.0" green="0.81568627449999997" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="snl-dH-KZa" firstAttribute="top" secondItem="UzL-LK-xHV" secondAttribute="bottom" constant="8" id="1yp-Ko-Bwy"/>
-                            <constraint firstItem="tZY-pY-tGd" firstAttribute="leading" secondItem="adD-Md-tDo" secondAttribute="leading" constant="16" id="8hC-5L-MFi"/>
-                            <constraint firstItem="snl-dH-KZa" firstAttribute="leading" secondItem="adD-Md-tDo" secondAttribute="leading" constant="16" id="D7d-1X-I35"/>
-                            <constraint firstItem="MAE-sv-Ug0" firstAttribute="top" secondItem="tZY-pY-tGd" secondAttribute="bottom" constant="52" id="L4L-0e-S1r"/>
+                            <constraint firstItem="MAE-sv-Ug0" firstAttribute="centerY" secondItem="KLX-LK-tOQ" secondAttribute="centerY" id="0QR-Nq-Rkx"/>
                             <constraint firstItem="MAE-sv-Ug0" firstAttribute="leading" secondItem="KLX-LK-tOQ" secondAttribute="trailing" constant="12" id="L7K-VL-qqB"/>
                             <constraint firstItem="KLX-LK-tOQ" firstAttribute="leading" secondItem="adD-Md-tDo" secondAttribute="leading" constant="16" id="NA3-qN-yxi"/>
                             <constraint firstItem="MAE-sv-Ug0" firstAttribute="centerX" secondItem="3Xh-bA-yfX" secondAttribute="centerX" id="Ne0-BF-mhw"/>
+                            <constraint firstItem="adD-Md-tDo" firstAttribute="trailing" secondItem="0Aw-Ld-yfF" secondAttribute="trailing" constant="16" id="Nqy-tQ-vqa"/>
                             <constraint firstItem="adD-Md-tDo" firstAttribute="trailing" secondItem="kTh-l0-l8x" secondAttribute="trailing" constant="21" id="PS7-5m-z9O"/>
-                            <constraint firstItem="tZY-pY-tGd" firstAttribute="top" secondItem="snl-dH-KZa" secondAttribute="bottom" constant="8" id="QSz-rH-zD8"/>
-                            <constraint firstItem="VSi-bk-JXj" firstAttribute="firstBaseline" secondItem="tZY-pY-tGd" secondAttribute="firstBaseline" constant="86" id="QpI-uN-Rb8"/>
-                            <constraint firstItem="UzL-LK-xHV" firstAttribute="leading" secondItem="adD-Md-tDo" secondAttribute="leading" constant="16" id="Uv7-6g-uEN"/>
                             <constraint firstItem="adD-Md-tDo" firstAttribute="bottom" secondItem="MAE-sv-Ug0" secondAttribute="bottom" constant="36" id="Waq-YC-1R6"/>
-                            <constraint firstItem="adD-Md-tDo" firstAttribute="trailing" secondItem="tZY-pY-tGd" secondAttribute="trailing" constant="16" id="ZRR-sb-oLo"/>
-                            <constraint firstItem="KLX-LK-tOQ" firstAttribute="centerY" secondItem="tZY-pY-tGd" secondAttribute="centerY" constant="86" id="cXJ-qT-k7Y"/>
                             <constraint firstItem="VSi-bk-JXj" firstAttribute="leading" secondItem="MAE-sv-Ug0" secondAttribute="trailing" constant="12" id="dlm-zq-TbR"/>
+                            <constraint firstItem="adD-Md-tDo" firstAttribute="bottom" secondItem="0Aw-Ld-yfF" secondAttribute="bottom" constant="79" id="dtr-a9-m36"/>
                             <constraint firstItem="Sw2-4G-hrC" firstAttribute="centerX" secondItem="3Xh-bA-yfX" secondAttribute="centerX" id="eYn-bu-aoR"/>
+                            <constraint firstItem="0Aw-Ld-yfF" firstAttribute="leading" secondItem="adD-Md-tDo" secondAttribute="leading" constant="16" id="fne-ZK-48f"/>
                             <constraint firstItem="kTh-l0-l8x" firstAttribute="top" secondItem="adD-Md-tDo" secondAttribute="top" constant="23" id="kcS-Ya-2Q7"/>
-                            <constraint firstItem="adD-Md-tDo" firstAttribute="trailing" secondItem="UzL-LK-xHV" secondAttribute="trailing" constant="16" id="kpw-QW-zDY"/>
-                            <constraint firstItem="Sw2-4G-hrC" firstAttribute="top" secondItem="adD-Md-tDo" secondAttribute="top" constant="173" id="nWz-QU-Ha4"/>
+                            <constraint firstItem="MAE-sv-Ug0" firstAttribute="centerY" secondItem="VSi-bk-JXj" secondAttribute="centerY" id="lQy-ne-pd8"/>
+                            <constraint firstItem="Sw2-4G-hrC" firstAttribute="top" secondItem="adD-Md-tDo" secondAttribute="top" priority="999" constant="173" id="nWz-QU-Ha4"/>
                             <constraint firstItem="adD-Md-tDo" firstAttribute="trailing" secondItem="VSi-bk-JXj" secondAttribute="trailing" constant="16" id="sMn-bA-b8R"/>
-                            <constraint firstItem="adD-Md-tDo" firstAttribute="trailing" secondItem="snl-dH-KZa" secondAttribute="trailing" constant="16" id="upk-Rq-k1z"/>
+                            <constraint firstItem="0Aw-Ld-yfF" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Sw2-4G-hrC" secondAttribute="bottom" constant="60" id="wnF-0Y-pMy"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="adD-Md-tDo"/>
                     </view>
                     <connections>
                         <outlet property="accountTextField" destination="UzL-LK-xHV" id="eFh-ki-SIP"/>
-                        <outlet property="changeCellNumberButton" destination="KLX-LK-tOQ" id="xSG-mc-7fH"/>
+                        <outlet property="changePhoneNumberButton" destination="KLX-LK-tOQ" id="IgC-AZ-4K5"/>
                         <outlet property="closeButton" destination="kTh-l0-l8x" id="cXU-ia-G3M"/>
                         <outlet property="findPasswordButton" destination="VSi-bk-JXj" id="cOb-2Y-VWX"/>
+                        <outlet property="inputAreaBottomConstraint" destination="dtr-a9-m36" id="zvP-U4-muf"/>
+                        <outlet property="inputAreaView" destination="0Aw-Ld-yfF" id="ctQ-4r-nud"/>
                         <outlet property="loginButton" destination="tZY-pY-tGd" id="slL-8M-OMj"/>
                         <outlet property="passwordTextField" destination="snl-dH-KZa" id="fxK-n5-tU0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0H3-v3-K3x" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1707" y="76"/>
+            <point key="canvasLocation" x="1705.7971014492755" y="75.669642857142847"/>
         </scene>
         <!--Find Password View Controller-->
         <scene sceneID="ftO-CQ-KIq">

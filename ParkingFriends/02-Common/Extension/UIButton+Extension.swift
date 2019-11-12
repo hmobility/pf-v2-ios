@@ -11,6 +11,20 @@ import UIKit
 
 @IBDesignable
 extension UIButton {
+    /*
+    @IBInspectable var isChecked: Bool = false {
+        didSet {
+            self.setSt
+        }
+    }
+    
+    func buttonClicked(sender: UIButton) {
+        if sender == self {
+            isChecked = !isChecked
+        }
+    }
+ */
+    /*
     func underline() {
         if let textString = self.titleLabel?.text {
             
@@ -20,7 +34,7 @@ extension UIButton {
                                           range: NSRange(location: 0, length: textString.count))
             self.setAttributedTitle(attributedString, for: .normal)
         }
-        
     }
+ */
 }
 

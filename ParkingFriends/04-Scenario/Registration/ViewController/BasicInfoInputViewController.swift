@@ -92,10 +92,10 @@ class BasicInfoInputViewController: UIViewController {
     private func initialize() {
         setupBindings()
         
-        phoneNumberField.binding()
-        emailField.binding()
-        passwordField.binding()
-        nicknameField.binding()
+        //phoneNumberField.binding()
+        //emailField.binding()
+        //passwordField.binding()
+        //nicknameField.binding()
     }
     
     // MARK: - Initialize

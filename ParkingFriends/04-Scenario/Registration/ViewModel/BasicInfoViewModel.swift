@@ -59,4 +59,3 @@ class BasicInfoViewModel: BasicInfoViewModelType {
         textField.placeholder = localizer.localized(placeholder)
     }
 }
-

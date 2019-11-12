@@ -19,7 +19,7 @@ extension UIViewController {
     }
     
     public func backToPrevious(animated: Bool = true) {
-        if let presentingViewController = presentingViewController {
+        if let presentingViewController = presentedViewController {
             presentingViewController.dismiss(animated: animated, completion: nil)
         } else {
             _ = navigationController?.popViewController(animated: animated)
@@ -27,11 +27,23 @@ extension UIViewController {
     }
     
     public func backToRoot(animated: Bool = true) {
-        if let presentingViewController = presentingViewController {
+        if let presentingViewController = presentedViewController {
             presentingViewController.dismiss(animated: animated, completion: nil)
         } else {
             _ = navigationController?.popToRootViewController(animated: animated)
         }
+    }
+    
+    public func close(completion: (() -> Void)? = nil) {
+        presentingViewController?.dismiss(animated: true, completion: completion)
+    }
+    
+    public func dismissToTop(animated: Bool = true, completion: (() -> Void)? = nil) {
+        var presentedViewController = self
+        while let presentingViewController = presentedViewController.presentingViewController {
+            presentedViewController = presentingViewController
+        }
+        presentedViewController.dismiss(animated: animated, completion: completion)
     }
     
 }

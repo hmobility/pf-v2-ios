@@ -22,7 +22,7 @@ class CarBrandViewController: UIViewController {
     
     @IBOutlet weak var backButton: UIBarButtonItem!
             
-    private var viewModel: AgreementViewModelType
+    private var viewModel: CarBrandViewModelType
     private let disposeBag = DisposeBag()
     
     // MARK: - Button Action
@@ -37,13 +37,13 @@ class CarBrandViewController: UIViewController {
     
     // MARK: - Initialize
     
-    init(viewModel: AgreementViewModelType = AgreementViewModel()) {
+    init(viewModel: CarBrandViewModelType = CarBrandViewModel()) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
-        viewModel = AgreementViewModel()
+        viewModel = CarBrandViewModel()
         super.init(coder: aDecoder)
     }
     

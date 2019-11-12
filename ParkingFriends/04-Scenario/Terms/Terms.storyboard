@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Terms View Controller-->
+        <scene sceneID="Oi5-8y-Gk1">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zjI-dM-zc0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="TermsViewController" id="2Bu-Rt-NM5" customClass="TermsViewController" customModule="ParkingFriends" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="y3s-SW-deE">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xns-ju-Jm6">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="19"/>
+                                    <color key="textColor" red="0.1019607843" green="0.1019607843" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="약관" id="0gK-ag-ISM" userLabel="Navigation Title">
+                                        <barButtonItem key="rightBarButtonItem" image="icCloseBlack" id="hk2-zj-FfK" userLabel="Bar Button Item - Close">
+                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <connections>
+                                                <action selector="backButtonAction:" destination="2Bu-Rt-NM5" id="Bbk-d8-ODM"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Xns-ju-Jm6" firstAttribute="top" secondItem="axt-ib-Ast" secondAttribute="top" id="DBB-H2-D9Q"/>
+                            <constraint firstItem="Xns-ju-Jm6" firstAttribute="leading" secondItem="axt-ib-Ast" secondAttribute="leading" id="HyV-GV-CMg"/>
+                            <constraint firstItem="Xns-ju-Jm6" firstAttribute="trailing" secondItem="axt-ib-Ast" secondAttribute="trailing" id="wLe-Yz-Thz"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="axt-ib-Ast"/>
+                    </view>
+                    <connections>
+                        <outlet property="navigationBar" destination="hk2-zj-FfK" id="qK0-aT-SPv"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="4493" y="-644"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="icCloseBlack" width="24" height="25"/>
+    </resources>
+</document>

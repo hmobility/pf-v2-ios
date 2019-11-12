@@ -17,7 +17,6 @@ extension EntryViewController : AnalyticsType {
 }
 
 class EntryViewController: UIViewController {
-
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signupButton: UIButton!
     @IBOutlet weak var signupGuideLabel: UILabel!
@@ -84,6 +83,7 @@ class EntryViewController: UIViewController {
         let target = Storyboard.registration.instantiateInitialViewController() as! UINavigationController
         self.modal(target)
     }
+    
     /*
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

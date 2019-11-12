@@ -12,6 +12,10 @@ target 'ParkingFriends' do
   pod 'RxOptional'
   pod 'RxViewController'
   pod 'RxExtension'
+  pod 'RxBinding'
+  pod 'RxKeyboard'
+  
+  pod 'SnapKit', '~> 5.0.0'
   
   pod 'Alamofire', '~> 4.7'
   pod 'AlamofireObjectMapper', '~> 5.2.1'
@@ -24,7 +28,7 @@ target 'ParkingFriends' do
   
   pod 'SwiftyJSON', '~> 5.0.0'
   
-  pod 'NMapsMap'
+  pod 'NMapsMap'                  # Naver Map
   
   pod 'SwiftMessages'             # Message View
   pod 'ActiveLabel'               # Underlined Tappable Label

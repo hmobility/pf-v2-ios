@@ -168,6 +168,22 @@
             </objects>
             <point key="canvasLocation" x="2877" y="68"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="b6V-qB-D6Q">
+            <objects>
+                <navigationController id="XY8-zD-8xw" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ciu-Ei-nHS">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="hIh-zb-Bsd" kind="relationship" relationship="rootViewController" id="vjP-Qz-Qsv"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R1T-mt-FVk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3603" y="-656"/>
+        </scene>
         <!--Agreement Content View Controller-->
         <scene sceneID="u6v-I9-5Lt">
             <objects>
@@ -181,6 +197,9 @@
                     <navigationItem key="navigationItem" id="7dG-Pd-Inu">
                         <barButtonItem key="rightBarButtonItem" image="icCloseBlack" style="plain" id="7tk-8o-r6H" userLabel="Item - Close">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="backButtonAction:" destination="hIh-zb-Bsd" id="AUh-OA-2xt"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
@@ -398,19 +417,46 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="GXr-PO-1Co">
                                                 <rect key="frame" x="24" y="158" width="366" height="200"/>
                                                 <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="MC6-No-iFu" userLabel="Stack View - Usage">
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="MC6-No-iFu" userLabel="Stack View - Usage">
                                                         <rect key="frame" x="0.0" y="0.0" width="366" height="40"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이용약관에 동의 합니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x5v-Or-BOr" userLabel="Label - Usage">
-                                                                <rect key="frame" x="0.0" y="9.5" width="161" height="20.5"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Psd-Jj-OZR" userLabel="Button - Check">
+                                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hq9-lF-qgW">
+                                                                <rect key="frame" x="0.0" y="5" width="141.5" height="30"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="beg-DQ-nQI" userLabel="Button - Usage">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="52" height="30"/>
+                                                                        <state key="normal">
+                                                                            <attributedString key="attributedTitle">
+                                                                                <fragment content="이용약관">
+                                                                                    <attributes>
+                                                                                        <color key="NSColor" red="0.10196078431372549" green="0.10196078431372549" blue="0.10588235294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                                                                        <font key="NSFont" size="15" name="AppleSDGothicNeo-Regular"/>
+                                                                                        <font key="NSOriginalFont" size="15" name="AppleSDGothicNeo-Regular"/>
+                                                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                                        <integer key="NSUnderline" value="1"/>
+                                                                                    </attributes>
+                                                                                </fragment>
+                                                                            </attributedString>
+                                                                        </state>
+                                                                        <connections>
+                                                                            <action selector="showAgreementAction:" destination="opy-pG-Ab4" eventType="touchUpInside" id="z8V-Ug-xaH"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="에 동의 합니다." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x5v-Or-BOr" userLabel="Label - Usage">
+                                                                        <rect key="frame" x="52" y="0.0" width="89.5" height="30"/>
+                                                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="15"/>
+                                                                        <color key="textColor" red="0.10196078431372549" green="0.10196078431372549" blue="0.10588235294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                            </stackView>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Psd-Jj-OZR" userLabel="Button - Check">
                                                                 <rect key="frame" x="336" y="5" width="30" height="30"/>
                                                                 <state key="normal" image="icCheckOff"/>
                                                                 <state key="selected" image="icCheckOn"/>
+                                                                <connections>
+                                                                    <action selector="checkButtontAction:" destination="opy-pG-Ab4" eventType="touchUpInside" id="OpF-2c-kgG"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <constraints>
@@ -420,16 +466,42 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="wqp-Cy-MJf" userLabel="Stack View - Personal Info">
                                                         <rect key="frame" x="0.0" y="40" width="366" height="40"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="개인정보취급방침에 동의합니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sMP-4Z-32h" userLabel="Label - Personal Info">
-                                                                <rect key="frame" x="0.0" y="9.5" width="215" height="20.5"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wxJ-IJ-2Qi" userLabel="Button - Check">
+                                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZBV-mx-12G">
+                                                                <rect key="frame" x="0.0" y="5" width="193.5" height="30"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jiB-Kb-dPg" userLabel="Button - Personal Info">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="104" height="30"/>
+                                                                        <state key="normal">
+                                                                            <attributedString key="attributedTitle">
+                                                                                <fragment content="개인정보취급방침">
+                                                                                    <attributes>
+                                                                                        <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                                        <font key="NSFont" size="15" name="AppleSDGothicNeo-Regular"/>
+                                                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                                        <integer key="NSUnderline" value="1"/>
+                                                                                    </attributes>
+                                                                                </fragment>
+                                                                            </attributedString>
+                                                                        </state>
+                                                                        <connections>
+                                                                            <action selector="showAgreementAction:" destination="opy-pG-Ab4" eventType="touchUpInside" id="cSD-Kd-mH7"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="에 동의 합니다." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bxu-Ml-5pE" userLabel="Label - Personal Info">
+                                                                        <rect key="frame" x="104" y="0.0" width="89.5" height="30"/>
+                                                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="15"/>
+                                                                        <color key="textColor" red="0.1019607843" green="0.1019607843" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                            </stackView>
+                                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wxJ-IJ-2Qi" userLabel="Button - Check">
                                                                 <rect key="frame" x="336" y="5" width="30" height="30"/>
                                                                 <state key="normal" image="icCheckOff"/>
                                                                 <state key="selected" image="icCheckOn"/>
+                                                                <connections>
+                                                                    <action selector="checkButtontAction:" destination="opy-pG-Ab4" eventType="touchUpInside" id="PiC-2c-N0G"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <constraints>
@@ -439,16 +511,42 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="SXJ-br-XKg" userLabel="Stack View - Location">
                                                         <rect key="frame" x="0.0" y="80" width="366" height="40"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="위치기반서비스 이용약관에 동의 합니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dZ2-dF-Nel" userLabel="Label - Usage">
-                                                                <rect key="frame" x="0.0" y="9.5" width="268" height="20.5"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CNy-f1-U19" userLabel="Button - Check">
+                                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rCC-tL-Dxe">
+                                                                <rect key="frame" x="0.0" y="5" width="236.5" height="30"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mHU-le-TYW" userLabel="Button - Location">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="147" height="30"/>
+                                                                        <state key="normal">
+                                                                            <attributedString key="attributedTitle">
+                                                                                <fragment content="위치기반서비스 이용약관">
+                                                                                    <attributes>
+                                                                                        <color key="NSColor" red="0.10196078431372549" green="0.10196078431372549" blue="0.10588235294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                                                                        <font key="NSFont" size="15" name="AppleSDGothicNeo-Regular"/>
+                                                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                                        <integer key="NSUnderline" value="1"/>
+                                                                                    </attributes>
+                                                                                </fragment>
+                                                                            </attributedString>
+                                                                        </state>
+                                                                        <connections>
+                                                                            <action selector="showAgreementAction:" destination="opy-pG-Ab4" eventType="touchUpInside" id="LI9-8e-ONc"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="에 동의 합니다." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vdx-Jj-Pnh" userLabel="Label - Location">
+                                                                        <rect key="frame" x="147" y="0.0" width="89.5" height="30"/>
+                                                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="15"/>
+                                                                        <color key="textColor" red="0.1019607843" green="0.1019607843" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                            </stackView>
+                                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CNy-f1-U19" userLabel="Button - Check">
                                                                 <rect key="frame" x="336" y="5" width="30" height="30"/>
                                                                 <state key="normal" image="icCheckOff"/>
                                                                 <state key="selected" image="icCheckOn"/>
+                                                                <connections>
+                                                                    <action selector="checkButtontAction:" destination="opy-pG-Ab4" eventType="touchUpInside" id="c85-6H-6eK"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <constraints>
@@ -458,16 +556,42 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Gdl-lJ-KQV" userLabel="Stack View - 3rd Party">
                                                         <rect key="frame" x="0.0" y="120" width="366" height="40"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="제 3자 정보 제공에 동의합니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6IU-H2-EUh" userLabel="Label - Usage">
-                                                                <rect key="frame" x="0.0" y="9.5" width="209.5" height="20.5"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hpf-h3-mqk" userLabel="Button - Check">
+                                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7vb-Ge-LsC">
+                                                                <rect key="frame" x="0.0" y="5" width="187.5" height="30"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jgc-E9-xNc" userLabel="Button - 3rd Party">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="98" height="30"/>
+                                                                        <state key="normal">
+                                                                            <attributedString key="attributedTitle">
+                                                                                <fragment content="제 3자 정보 제공">
+                                                                                    <attributes>
+                                                                                        <color key="NSColor" red="0.10196078431372549" green="0.10196078431372549" blue="0.10588235294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                                                                        <font key="NSFont" size="15" name="AppleSDGothicNeo-Regular"/>
+                                                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                                        <integer key="NSUnderline" value="1"/>
+                                                                                    </attributes>
+                                                                                </fragment>
+                                                                            </attributedString>
+                                                                        </state>
+                                                                        <connections>
+                                                                            <action selector="showAgreementAction:" destination="opy-pG-Ab4" eventType="touchUpInside" id="QbG-Ci-SaJ"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="에 동의 합니다." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L6a-oq-Zhh" userLabel="Label -3rd Party">
+                                                                        <rect key="frame" x="98" y="0.0" width="89.5" height="30"/>
+                                                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="15"/>
+                                                                        <color key="textColor" red="0.1019607843" green="0.1019607843" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                            </stackView>
+                                                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hpf-h3-mqk" userLabel="Button - Check">
                                                                 <rect key="frame" x="336" y="5" width="30" height="30"/>
                                                                 <state key="normal" image="icCheckOff"/>
                                                                 <state key="selected" image="icCheckOn"/>
+                                                                <connections>
+                                                                    <action selector="checkButtontAction:" destination="opy-pG-Ab4" eventType="touchUpInside" id="T2V-1x-9wt"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <constraints>
@@ -477,27 +601,52 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="htt-Sb-z9L" userLabel="Stack View - Marketing">
                                                         <rect key="frame" x="0.0" y="160" width="366" height="40"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="개인정보 마케팅 활용에 동의합니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a7Z-CR-092" userLabel="Label - Usage">
-                                                                <rect key="frame" x="0.0" y="9.5" width="238.5" height="20.5"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(선택)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DS0-Yx-RdD">
-                                                                <rect key="frame" x="238.5" y="11.5" width="33.5" height="17"/>
-                                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="14"/>
-                                                                <color key="textColor" red="0.69411764705882351" green="0.70980392156862748" blue="0.72156862745098038" alpha="1" colorSpace="calibratedRGB"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qme-xD-LKe" userLabel="Button - Check">
-                                                                <rect key="frame" x="272" y="5" width="94" height="30"/>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8yj-nY-Ih1">
+                                                                <rect key="frame" x="0.0" y="5" width="248" height="30"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f3n-IW-cE4" userLabel="Button - Marketing">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="125" height="30"/>
+                                                                        <state key="normal">
+                                                                            <attributedString key="attributedTitle">
+                                                                                <fragment content="개인정보 마케팅 활용">
+                                                                                    <attributes>
+                                                                                        <color key="NSColor" red="0.10196078431372549" green="0.10196078431372549" blue="0.10588235294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                                                                        <font key="NSFont" size="15" name="AppleSDGothicNeo-Regular"/>
+                                                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                                        <integer key="NSUnderline" value="1"/>
+                                                                                    </attributes>
+                                                                                </fragment>
+                                                                            </attributedString>
+                                                                        </state>
+                                                                        <connections>
+                                                                            <action selector="showAgreementAction:" destination="opy-pG-Ab4" eventType="touchUpInside" id="kLy-Ml-aPJ"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="에 동의 합니다." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z5h-aq-Vda" userLabel="Label - Marketing">
+                                                                        <rect key="frame" x="125" y="0.0" width="89.5" height="30"/>
+                                                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="15"/>
+                                                                        <color key="textColor" red="0.1019607843" green="0.1019607843" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(선택)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DS0-Yx-RdD">
+                                                                        <rect key="frame" x="214.5" y="0.0" width="33.5" height="30"/>
+                                                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="14"/>
+                                                                        <color key="textColor" red="0.69411764705882351" green="0.70980392156862748" blue="0.72156862745098038" alpha="1" colorSpace="calibratedRGB"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                            </stackView>
+                                                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qme-xD-LKe" userLabel="Button - Check">
+                                                                <rect key="frame" x="336" y="5" width="30" height="30"/>
                                                                 <state key="normal" image="icCheckOff"/>
                                                                 <state key="selected" image="icCheckOn"/>
+                                                                <connections>
+                                                                    <action selector="checkButtontAction:" destination="opy-pG-Ab4" eventType="touchUpInside" id="ATN-Pd-XLh"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <constraints>
                                                             <constraint firstAttribute="trailing" secondItem="qme-xD-LKe" secondAttribute="trailing" id="8vt-Kk-b7e"/>
-                                                            <constraint firstItem="DS0-Yx-RdD" firstAttribute="leading" secondItem="a7Z-CR-092" secondAttribute="trailing" id="faT-G3-ZRC"/>
                                                             <constraint firstAttribute="height" constant="40" id="t0a-2P-ENz"/>
                                                         </constraints>
                                                     </stackView>
@@ -516,6 +665,9 @@
                                                         <rect key="frame" x="336" y="9" width="30" height="30"/>
                                                         <state key="normal" image="icCheckOff"/>
                                                         <state key="selected" image="icCheckOn"/>
+                                                        <connections>
+                                                            <action selector="selectAllButtontAction:" destination="opy-pG-Ab4" eventType="touchUpInside" id="2CE-eA-YBF"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -598,21 +750,26 @@
                     <connections>
                         <outlet property="agreeAllLabel" destination="wVp-e2-Wti" id="CVa-Eq-fC2"/>
                         <outlet property="backButton" destination="eJn-54-4Km" id="cQ7-ky-2WR"/>
-                        <outlet property="locationServiceLabel" destination="dZ2-dF-Nel" id="kcj-qV-Ciw"/>
-                        <outlet property="marketingInfoLabel" destination="a7Z-CR-092" id="hYt-uS-Qnv"/>
+                        <outlet property="locationServiceButton" destination="mHU-le-TYW" id="Owl-YI-yQH"/>
+                        <outlet property="locationServiceLabel" destination="Vdx-Jj-Pnh" id="wVz-71-xY2"/>
+                        <outlet property="marketingInfoButton" destination="f3n-IW-cE4" id="KQr-10-exu"/>
+                        <outlet property="marketingInfoLabel" destination="Z5h-aq-Vda" id="Jsz-MK-tYc"/>
                         <outlet property="nextButton" destination="pdt-L0-4lJ" id="FFZ-QF-GPo"/>
-                        <outlet property="optionButton" destination="Dse-Wx-5Zs" id="Hb1-m6-RHo"/>
                         <outlet property="optionLabel" destination="DS0-Yx-RdD" id="hE8-x5-Uqy"/>
-                        <outlet property="personalInfoLabel" destination="sMP-4Z-32h" id="et2-Ba-jS7"/>
+                        <outlet property="personalInfoButton" destination="jiB-Kb-dPg" id="6Ir-JC-o3y"/>
+                        <outlet property="personalInfoLabel" destination="Bxu-Ml-5pE" id="5wX-24-SqV"/>
+                        <outlet property="selectAllButton" destination="Dse-Wx-5Zs" id="U8h-qC-YKE"/>
                         <outlet property="subtitleLabel" destination="Ygn-iz-7ih" id="vDb-rB-Z4n"/>
-                        <outlet property="thirdPartyInfoLabel" destination="6IU-H2-EUh" id="iGB-l3-vr7"/>
+                        <outlet property="thirdPartyInfoButton" destination="jgc-E9-xNc" id="cXS-0g-QQE"/>
+                        <outlet property="thirdPartyInfoLabel" destination="L6a-oq-Zhh" id="xLC-oE-AiA"/>
                         <outlet property="titleLabel" destination="p8j-pH-7Nc" id="4wW-fy-amZ"/>
-                        <outlet property="usageLabel" destination="x5v-Or-BOr" id="UCj-Qk-C0f"/>
-                        <outletCollection property="mandatoryButtonList" destination="qme-xD-LKe" collectionClass="NSMutableArray" id="FTD-TU-aWU"/>
-                        <outletCollection property="mandatoryButtonList" destination="hpf-h3-mqk" collectionClass="NSMutableArray" id="G0n-oo-7UY"/>
-                        <outletCollection property="mandatoryButtonList" destination="wxJ-IJ-2Qi" collectionClass="NSMutableArray" id="W01-uF-ThU"/>
-                        <outletCollection property="mandatoryButtonList" destination="CNy-f1-U19" collectionClass="NSMutableArray" id="kHb-8m-bjY"/>
-                        <outletCollection property="mandatoryButtonList" destination="Psd-Jj-OZR" collectionClass="NSMutableArray" id="ftY-2l-G24"/>
+                        <outlet property="usageButton" destination="beg-DQ-nQI" id="xwP-jL-9kd"/>
+                        <outlet property="usageLabel" destination="x5v-Or-BOr" id="00n-nS-Rfd"/>
+                        <outletCollection property="checkButtonList" destination="qme-xD-LKe" collectionClass="NSMutableArray" id="FTD-TU-aWU"/>
+                        <outletCollection property="checkButtonList" destination="hpf-h3-mqk" collectionClass="NSMutableArray" id="G0n-oo-7UY"/>
+                        <outletCollection property="checkButtonList" destination="wxJ-IJ-2Qi" collectionClass="NSMutableArray" id="W01-uF-ThU"/>
+                        <outletCollection property="checkButtonList" destination="CNy-f1-U19" collectionClass="NSMutableArray" id="kHb-8m-bjY"/>
+                        <outletCollection property="checkButtonList" destination="Psd-Jj-OZR" collectionClass="NSMutableArray" id="ftY-2l-G24"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mjC-si-yEl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

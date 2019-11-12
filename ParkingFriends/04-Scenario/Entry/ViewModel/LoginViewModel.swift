@@ -8,31 +8,39 @@
 
 import Foundation
 import UIKit
-import RxCocoa
-import RxLocalizer
-import RxSwift
-import RxViewController
 
 protocol LoginViewModelType {
-    var accountInputText: Observable<String> { get }
-    /*
-    var passwordInputText: Observable<String> { get }
+    var accountPlaceholder: Observable<String> { get }
+    var passwordPlaceholder: Observable<String> { get }
     var loginText: Observable<String> { get }
-    var changeCellNumberText: Observable<String> { get }
-    var findPaswordText: Observable<String> { get }
- */
+    var changePhoneNumberText: Observable<String> { get }
+    var findPasswordText: Observable<String> { get }
+    
+    var phoneNumberModel:PhoneNumberModel { get }
+    var passwordModel:PasswordModel { get }
+    
+    func validateCredentials() -> Bool
 }
 
 class LoginViewModel: LoginViewModelType {
-    var accountInputText: Observable<String>
-    /*
-    var passwordInputText: Observable<String>
+    var accountPlaceholder: Observable<String>
+    var passwordPlaceholder: Observable<String>
     var loginText: Observable<String>
-    var changeCellNumberText: Observable<String>
-    var findPaswordText: Observable<String>
-    */
+    var changePhoneNumberText: Observable<String>
+    var findPasswordText: Observable<String>
+    
+    var phoneNumberModel = PhoneNumberModel()
+    var passwordModel = PasswordModel()
+    
     init(localizer: LocalizerType = Localizer.shared) {
-        accountInputText = Observable.just(localizer.localized("login"))
-
+        accountPlaceholder = Observable.just(localizer.localized("account_input_placeholder"))
+        passwordPlaceholder = Observable.just(localizer.localized("password_input_placeholder"))
+        loginText = Observable.just(localizer.localized("login"))
+        changePhoneNumberText = Observable.just(localizer.localized("change_phone_number"))
+        findPasswordText = Observable.just(localizer.localized("find_password"))
+    }
+    
+    func validateCredentials() -> Bool {
+        return true// phoneNumberModel.validateCredentials() && passwordModel.validateCredentials()
     }
 }

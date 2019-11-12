@@ -1,4 +1,3 @@
-
 // Common
 "close" = "닫기";
 "login" = "로그인";
@@ -12,13 +11,14 @@
 "signup_guide" = "파킹프렌즈가 처음이세요?";
 
 // Registration
-"phone_number_input" = "휴대폰번호";
+"basic_info_title" = "기본정보 입력";
+"phone_number_input_title" = "휴대폰번호";
 "phone_number_input_placeholder" = "-를 제외하고 입력";
-"email_input" = "이메일주소";
+"email_input_title" = "이메일주소";
 "email_input_placeholder" = "메일 주소 입력";
-"password_input " = "비밀번호";
+"password_input_title" = "비밀번호";
 "password_input_placeholder" = "영문·숫자 포함, 최소 8자";
-"nickname_input" = "닉네임";
+"nickname_input_title" = "닉네임";
 "nickname_input_placeholder" = "한글·영문만 사용, 최대 8자";
 "agreement_title" = "약관동의";
 "agreement_subtitle" = "파킹프렌즈 서비스 이용을 위해서\n\n아래 약관에 동의해주세요.";
@@ -27,7 +27,7 @@
 "location_service_title" = "위치기반서비스 이용약관";
 "third_party_info_title" = "제 3자 정보 제공";
 "marketing_info_title" = "개인정보 마케팅 활용";
-"agreement_end_sentence" = "에 동의합니다.";
+"agreement_sentence" = "에 동의합니다.";
 "agreement_option" = "(선택)";
 "agree_all" = "모두 동의합니다.";
 
