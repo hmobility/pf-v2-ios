@@ -41,33 +41,49 @@ extension UITextField {
         }
     }
     
-    @IBInspectable var doneAccessory: Bool {
-        get {
-            return self.doneAccessory
-        }
-        set (hasDone) {
-            if hasDone{
-                addDoneButtonOnKeyboard()
+    // TextField Delegate
+    
+    func setCursorLocation(_ location: Int) {
+        if let cursorLocation = position(from: beginningOfDocument, offset: location) {
+            DispatchQueue.main.async { [weak self] in
+                guard let strongSelf = self else { return }
+                strongSelf.selectedTextRange = strongSelf.textRange(from: cursorLocation, to: cursorLocation)
             }
         }
     }
-    
-    func addDoneButtonOnKeyboard(localizer: LocalizerType = Localizer.shared) {
-        let doneString:String = localizer.localized("close")
-        let doneToolbar: UIToolbar = UIToolbar(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
-        doneToolbar.barStyle = .default
-        
-        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let done: UIBarButtonItem = UIBarButtonItem(title: doneString, style: .done, target: self, action: #selector(self.doneButtonAction))
-        
-        let items = [flexSpace, done]
-        doneToolbar.items = items
-        doneToolbar.sizeToFit()
-        
-        self.inputAccessoryView = doneToolbar
-    }
-    
-    @objc func doneButtonAction() {
-        self.resignFirstResponder()
-    }
+}
+
+// MARK: - TextField Accessory - Done
+
+@IBDesignable
+extension UITextField {
+      @IBInspectable var doneAccessory: Bool {
+          get {
+              return self.doneAccessory
+          }
+          set (hasDone) {
+              if hasDone{
+                  addDoneButtonOnKeyboard()
+              }
+          }
+      }
+      
+      func addDoneButtonOnKeyboard(title: String = Localizer.shared.localized("btn_close"), textColor: UIColor = UIColor.black) {
+          let doneToolbar: UIToolbar = UIToolbar(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
+          doneToolbar.barStyle = .default
+          
+          let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+          let done: UIBarButtonItem = UIBarButtonItem(title: title, style: .done, target: self, action: #selector(self.doneButtonAction))
+          done.tintColor = textColor
+          
+          let items = [flexSpace, done]
+          doneToolbar.items = items
+          doneToolbar.sizeToFit()
+          
+          self.inputAccessoryView = doneToolbar
+      }
+      
+      @objc func doneButtonAction() {
+          self.resignFirstResponder()
+      }
 }

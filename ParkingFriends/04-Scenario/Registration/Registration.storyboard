@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BPS-mp-0r8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BPS-mp-0r8">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -127,9 +128,11 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="titleShadowColor" red="0.93725490199999995" green="0.94901960780000005" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
-                                <connections>
-                                    <action selector="nextButtonAction:" destination="GML-kq-379" eventType="touchUpInside" id="Ucz-tQ-Ne1"/>
-                                </connections>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="disabledColor">
+                                        <color key="value" name="LightSeafoam"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -157,9 +160,12 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="backButton" destination="KWe-9f-tsa" id="UPY-q6-jsW"/>
+                        <outlet property="durationLabel" destination="eP7-aM-ieu" id="QdW-py-DJY"/>
                         <outlet property="fieldTitleLabel" destination="2e8-ZV-osy" id="1Am-UN-faX"/>
                         <outlet property="inputTextField" destination="05b-8K-gPq" id="uZo-9I-O2W"/>
                         <outlet property="nextButton" destination="Jod-1N-h1h" id="MKH-Qf-7RI"/>
+                        <outlet property="nextButtonBottomConstraint" destination="CID-Pp-879" id="RMU-hU-qEW"/>
+                        <outlet property="resendButton" destination="XRi-FM-g1t" id="HoZ-Wp-Obp"/>
                         <outlet property="subtitleLabel" destination="g2z-tW-D4n" id="nPA-Tr-0y1"/>
                         <outlet property="titleLabel" destination="IeL-Vg-CUW" id="spb-FK-yWp"/>
                     </connections>
@@ -381,6 +387,21 @@
             </objects>
             <point key="canvasLocation" x="5386" y="-644"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="2TM-Ah-vAq">
+            <objects>
+                <viewController id="4r0-Ld-kfB" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Et1-7N-z2t">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="aTj-YH-Rlg"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wfk-wW-m9A" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6336" y="-644"/>
+        </scene>
         <!--Agreement View Controller-->
         <scene sceneID="D5g-MG-sCG">
             <objects>
@@ -451,7 +472,7 @@
                                                                 </subviews>
                                                             </stackView>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Psd-Jj-OZR" userLabel="Button - Check">
-                                                                <rect key="frame" x="336" y="5" width="30" height="30"/>
+                                                                <rect key="frame" x="306" y="0.0" width="60" height="40"/>
                                                                 <state key="normal" image="icCheckOff"/>
                                                                 <state key="selected" image="icCheckOn"/>
                                                                 <connections>
@@ -496,7 +517,7 @@
                                                                 </subviews>
                                                             </stackView>
                                                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wxJ-IJ-2Qi" userLabel="Button - Check">
-                                                                <rect key="frame" x="336" y="5" width="30" height="30"/>
+                                                                <rect key="frame" x="306" y="0.0" width="60" height="40"/>
                                                                 <state key="normal" image="icCheckOff"/>
                                                                 <state key="selected" image="icCheckOn"/>
                                                                 <connections>
@@ -541,7 +562,7 @@
                                                                 </subviews>
                                                             </stackView>
                                                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CNy-f1-U19" userLabel="Button - Check">
-                                                                <rect key="frame" x="336" y="5" width="30" height="30"/>
+                                                                <rect key="frame" x="306" y="0.0" width="60" height="40"/>
                                                                 <state key="normal" image="icCheckOff"/>
                                                                 <state key="selected" image="icCheckOn"/>
                                                                 <connections>
@@ -586,7 +607,7 @@
                                                                 </subviews>
                                                             </stackView>
                                                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hpf-h3-mqk" userLabel="Button - Check">
-                                                                <rect key="frame" x="336" y="5" width="30" height="30"/>
+                                                                <rect key="frame" x="306" y="0.0" width="60" height="40"/>
                                                                 <state key="normal" image="icCheckOff"/>
                                                                 <state key="selected" image="icCheckOn"/>
                                                                 <connections>
@@ -637,7 +658,7 @@
                                                                 </subviews>
                                                             </stackView>
                                                             <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qme-xD-LKe" userLabel="Button - Check">
-                                                                <rect key="frame" x="336" y="5" width="30" height="30"/>
+                                                                <rect key="frame" x="306" y="0.0" width="60" height="40"/>
                                                                 <state key="normal" image="icCheckOff"/>
                                                                 <state key="selected" image="icCheckOn"/>
                                                                 <connections>
@@ -662,7 +683,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dse-Wx-5Zs" userLabel="Button - Check">
-                                                        <rect key="frame" x="336" y="9" width="30" height="30"/>
+                                                        <rect key="frame" x="306" y="0.0" width="60" height="48"/>
                                                         <state key="normal" image="icCheckOff"/>
                                                         <state key="selected" image="icCheckOn"/>
                                                         <connections>
@@ -721,6 +742,11 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="titleShadowColor" red="0.93725490199999995" green="0.94901960780000005" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="disabledColor">
+                                        <color key="value" name="LightSeafoam"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="nextButtonAction:" destination="opy-pG-Ab4" eventType="touchUpInside" id="yfo-lJ-gOR"/>
                                 </connections>
@@ -1087,6 +1113,11 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="titleShadowColor" red="0.93725490199999995" green="0.94901960780000005" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="disabledColor">
+                                        <color key="value" name="LightSeafoam"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="nextButtonAction:" destination="DHa-mz-rYo" eventType="touchUpInside" id="kRS-Ct-u8p"/>
                                 </connections>
@@ -1141,6 +1172,11 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="titleShadowColor" red="0.93725490199999995" green="0.94901960780000005" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="disabledColor">
+                                        <color key="value" name="LightSeafoam"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="nextButtonAction:" destination="jq5-Zh-gXO" eventType="touchUpInside" id="KVJ-uw-V3U"/>
                                 </connections>
@@ -1506,10 +1542,10 @@
             </objects>
             <point key="canvasLocation" x="6312" y="68"/>
         </scene>
-        <!--Phone Input View Controller-->
+        <!--Phone Number Input View Controller-->
         <scene sceneID="X7w-Y3-DvA">
             <objects>
-                <viewController id="g0p-0i-we9" customClass="PhoneInputViewController" customModule="ParkingFriends" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PhoneNumberInputViewController" id="g0p-0i-we9" customClass="PhoneNumberInputViewController" customModule="ParkingFriends" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0x7-nn-3Si">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1545,14 +1581,14 @@
                                         <color key="textColor" red="0.1019607843" green="0.1019607843" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="-를 제외하고 입력" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hMk-YJ-kjt" userLabel="TextField - Verification">
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="-를 제외하고 입력" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="hMk-YJ-kjt" userLabel="TextField - Verification">
                                         <rect key="frame" x="16" y="49" width="342" height="20"/>
                                         <color key="tintColor" red="0.14509803921568626" green="0.83921568627450982" blue="0.38823529411764707" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="tKn-ej-sEj"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="20"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="ASCIICapableNumberPad" textContentType="tel"/>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1588,9 +1624,11 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="titleShadowColor" red="0.93725490199999995" green="0.94901960780000005" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
-                                <connections>
-                                    <action selector="sendCodeButtonAction:" destination="g0p-0i-we9" eventType="touchUpInside" id="2Nn-67-Z90"/>
-                                </connections>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="disabledColor">
+                                        <color key="value" name="LightSeafoam"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -1620,6 +1658,8 @@
                         <outlet property="backButton" destination="TuU-1q-udv" id="B7h-q5-dAM"/>
                         <outlet property="fieldTitleLabel" destination="LWj-I0-O6Z" id="VxK-Bk-7Tr"/>
                         <outlet property="inputTextField" destination="hMk-YJ-kjt" id="9mh-2c-Xiq"/>
+                        <outlet property="sendButton" destination="3EU-68-hgZ" id="37S-RG-gns"/>
+                        <outlet property="sendButtonBottomConstraint" destination="pZW-hu-fCA" id="voE-HK-0Py"/>
                         <outlet property="subtitleLabel" destination="xMf-jY-MHn" id="E7l-2X-2cI"/>
                         <outlet property="titleLabel" destination="0am-zS-PTf" id="P0k-L1-hCp"/>
                     </connections>
@@ -2026,5 +2066,8 @@
         <image name="icCheckOn" width="30" height="30"/>
         <image name="icCloseBlack" width="24" height="25"/>
         <image name="imgPixel" width="1" height="1"/>
+        <namedColor name="LightSeafoam">
+            <color red="0.6589999794960022" green="0.93699997663497925" blue="0.75700002908706665" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 import ObjectMapper
 
-class Notices: BaseModel {
+class Notices: BaseModelType {
     var totalCount:Int = 0
     var elements:[NoticesElement] = [NoticesElement]()
 
@@ -24,7 +24,7 @@ class Notices: BaseModel {
     }
 }
 
-class NoticesElement: BaseModel {
+class NoticesElement: BaseModelType {
     var id:Int = 0
     var title:String = ""
     var dateCreated:String = ""
@@ -40,7 +40,7 @@ class NoticesElement: BaseModel {
     }
 }
 
-class NoticeContent: BaseModel {
+class NoticeContent: BaseModelType {
     var id:Int = 0
     var title:String = ""
     var content:String = ""

@@ -65,11 +65,11 @@ class GuideViewController: UIViewController {
 
     private func setupBindings() {
         viewModel.skipText
-            .bind(to: skipButton.rx.title(for: .normal))
+            .drive(skipButton.rx.title(for: .normal))
             .disposed(by: disposeBag)
         
         viewModel.nextText
-            .bind(to: nextButton.rx.title(for: .normal))
+            .drive(nextButton.rx.title(for: .normal))
             .disposed(by: disposeBag)
     }
     

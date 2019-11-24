@@ -10,14 +10,16 @@ import Foundation
 import Alamofire
 import ObjectMapper
 
-class Otp: BaseModel {
+public class Otp: BaseModelType {
     var otpId:String = ""
+    var memberExist:Bool = false
     
     required init?(map: Map) {
         super.init(map: map)
     }
     
-    override func mapping(map: Map) {
+    override public func mapping(map: Map) {
         otpId <- map["otpId"]
+        memberExist <- (map["memberExist"], BoolTransform())
     }
 }

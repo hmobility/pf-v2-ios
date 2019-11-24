@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 import ObjectMapper
 
-class Reviews: BaseModel {
+class Reviews: BaseModelType {
     var totalCount:Int = 0
     var meanRating:Double = 0
     var elements:[ReviewsElement] = [ReviewsElement]()
@@ -26,7 +26,7 @@ class Reviews: BaseModel {
     }
 }
 
-class ReviewsElement: BaseModel {
+class ReviewsElement: BaseModelType {
     var id:Int = 0
     var rating:Int = 0
     var review:String = ""

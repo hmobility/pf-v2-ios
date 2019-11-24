@@ -28,8 +28,10 @@ import RxCocoa
 import UIKit
 
 struct alert_button_color {
-    static let cancel = #colorLiteral(red: 0.1960784346, green: 0.3411764801, blue: 0.1019607857, alpha: 1)
-    static let normal = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+    static let cancel = #colorLiteral(red: 0.8078431373, green: 0.8196078431, blue: 0.831372549, alpha: 1)
+    static let normal = #colorLiteral(red: 0.2078431373, green: 0.2352941176, blue: 0.2666666667, alpha: 1)
+    static let title = #colorLiteral(red: 0.2078431373, green: 0.2352941176, blue: 0.2666666667, alpha: 1)
+    static let message = #colorLiteral(red: 0.2078431373, green: 0.2352941176, blue: 0.2666666667, alpha: 1)
 }
 
 // MARK: - UIAlertController
@@ -68,11 +70,11 @@ extension UIViewController {
         let alertContentView = firstSubView?.subviews.first
         
         if let title = actionSheet.title {
-            actionSheet.setValue(NSAttributedString(string: title, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16), NSAttributedString.Key.foregroundColor : #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)]), forKey: "attributedTitle")
+            actionSheet.setValue(NSAttributedString(string: title, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16), NSAttributedString.Key.foregroundColor : alert_button_color.title]), forKey: "attributedTitle")
         }
             
         if let message = actionSheet.message {
-            actionSheet.setValue(NSAttributedString(string: message, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 15), NSAttributedString.Key.foregroundColor : #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)]), forKey: "attributedMessage")
+            actionSheet.setValue(NSAttributedString(string: message, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 15), NSAttributedString.Key.foregroundColor : alert_button_color.message]), forKey: "attributedMessage")
         }
         
         for subview in (alertContentView?.subviews)! {

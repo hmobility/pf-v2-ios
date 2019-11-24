@@ -18,7 +18,7 @@ extension LoginViewController : AnalyticsType {
 class LoginViewController: UIViewController {
     
     @IBOutlet weak var inputAreaView: UIView!
-    @IBOutlet weak var accountTextField: UITextField!
+    @IBOutlet weak var phoneNumberTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var changePhoneNumberButton: UIButton!
     @IBOutlet weak var findPasswordButton: UIButton!
@@ -35,36 +35,38 @@ class LoginViewController: UIViewController {
     // MARK: - Button Action
 
     @IBAction func changeNumberButtonAction(_ sender: Any) {
+        navigateToChangePhoneNumber()
     }
     
     @IBAction func findPasswordButtonAction(_ sender: Any) {
+        navigateToFindPassword()
     }
     
     @IBAction func closeButtonAction(_ sender: Any) {
-        self.close()
+        self.backToPrevious()
     }
     
     // MARK: - Binding
     
     private func setupBindings() {
-        viewModel.accountPlaceholder
-            .bind(to: accountTextField.rx.placeholder)
+        viewModel.phoneNumberPlaceholder
+            .drive(phoneNumberTextField.rx.placeholder)
             .disposed(by: disposeBag)
         
         viewModel.passwordPlaceholder
-            .bind(to: passwordTextField.rx.placeholder)
+            .drive(passwordTextField.rx.placeholder)
             .disposed(by: disposeBag)
         
         viewModel.loginText
-            .bind(to: loginButton.rx.title())
+            .drive(loginButton.rx.title())
             .disposed(by: disposeBag)
         
         viewModel.changePhoneNumberText
-            .bind(to: changePhoneNumberButton.rx.title())
+            .drive(changePhoneNumberButton.rx.title())
             .disposed(by: disposeBag)
         
         viewModel.findPasswordText
-            .bind(to: findPasswordButton.rx.title())
+            .drive(findPasswordButton.rx.title())
             .disposed(by: disposeBag)
     }
     
@@ -84,34 +86,48 @@ class LoginViewController: UIViewController {
                 }
             }).disposed(by: disposeBag)
         
-        accountTextField.addDoneButtonOnKeyboard()
+        phoneNumberTextField.addDoneButtonOnKeyboard()
         passwordTextField.addDoneButtonOnKeyboard()
     }
     
     private func setupInputBinding() {
-        accountTextField.rx.text.orEmpty
-            .bind(to: viewModel.phoneNumberModel.data)
-            .disposed(by: disposeBag)
+        phoneNumberTextField.delegate = viewModel.phoneNumberModel
         
+        phoneNumberTextField.rx.text.orEmpty
+                   .bind(to: viewModel.phoneNumberModel.data)
+                   .disposed(by: disposeBag)
+        
+        passwordTextField.delegate = viewModel.passwordModel
+
         passwordTextField.rx.text.orEmpty
             .bind(to: viewModel.passwordModel.data)
             .disposed(by: disposeBag)
-        
+    }
+    
+    private func setupLoginBinding() {
         loginButton.rx.tap.do(onNext: { [unowned self] in
-            self.accountTextField.resignFirstResponder()
+            self.phoneNumberTextField.resignFirstResponder()
             self.passwordTextField.resignFirstResponder()
         }).subscribe(onNext: { [unowned self] in
-            if self.viewModel.validateCredentials() {
-                MessageDialog.show("SHOW @@@@")
-              //  self.navigateToMain()
+            self.viewModel.validateCredentials()
+        }).disposed(by: disposeBag)
+        
+        viewModel.loginStatus.asDriver().asDriver(onErrorJustReturn: .none).drive(onNext: { [unowned self] status in
+            switch status {
+            case .none:
+                break
+            case .error(_):
+                self.showWarning("TTT")
+            case .verified:
+                self.navigateToMain()
             }
         }).disposed(by: disposeBag)
     }
     
     // MARK: - Warnings
     
-    private func show() {
-
+    private func showWarning(_ text:String) {
+        MessageDialog.show(text)
     }
     
     // MARK: - Initialize
@@ -134,6 +150,7 @@ class LoginViewController: UIViewController {
         setupBindings()
         setupKeyboard()
         setupInputBinding()
+        setupLoginBinding()
     }
     
     // MARK: - Life Cycle
@@ -152,6 +169,16 @@ class LoginViewController: UIViewController {
     
     private func navigateToMain() {
         let target = Storyboard.main.instantiateInitialViewController() as! UINavigationController
+        self.modal(target, animated: true)
+    }
+    
+    private func navigateToChangePhoneNumber() {
+        let target = Storyboard.entry.instantiateViewController(withIdentifier: "ChangePhoneNumberNavigationController") as! UINavigationController
+        self.modal(target, animated: true)
+    }
+    
+    private func navigateToFindPassword() {
+        let target = Storyboard.entry.instantiateViewController(withIdentifier: "FindPasswordNavigationController") as! UINavigationController
         self.modal(target, animated: true)
     }
     

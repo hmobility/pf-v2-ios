@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 import ObjectMapper
 
-class OrderPreview: BaseModel {
+class OrderPreview: BaseModelType {
     var amount:Int = 0
 
     required init?(map: Map) {

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Iob-JL-90o">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Iob-JL-90o">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -35,7 +36,7 @@
                                 <rect key="frame" x="89" y="237" width="236" height="71"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wV1-1b-9hJ" userLabel="Button - Signup">
-                                <rect key="frame" x="16" y="782" width="382" height="56"/>
+                                <rect key="frame" x="16" y="713" width="382" height="56"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="V7U-bf-nZ6"/>
                                 </constraints>
@@ -58,28 +59,28 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TKI-bE-lY9" userLabel="View - Left Separator ">
-                                <rect key="frame" x="16" y="757.5" width="112.5" height="1"/>
+                                <rect key="frame" x="16" y="688.5" width="112.5" height="1"/>
                                 <color key="backgroundColor" red="0.84705882349999995" green="0.84705882349999995" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="ehb-2j-6MX"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gib-gA-Ifj" userLabel="View - Right Separator">
-                                <rect key="frame" x="285.5" y="757.5" width="112.5" height="1"/>
+                                <rect key="frame" x="285.5" y="688.5" width="112.5" height="1"/>
                                 <color key="backgroundColor" red="0.84705882349999995" green="0.84705882349999995" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="jgU-Vy-Ifo"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="파킹프렌즈가 처음이세요?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I3j-xE-Ny5" userLabel="Label - Sign Guide">
-                                <rect key="frame" x="140.5" y="750" width="133" height="16"/>
+                                <rect key="frame" x="140.5" y="681" width="133" height="16"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="13"/>
                                 <color key="textColor" red="0.44705882349999998" green="0.50196078430000002" blue="0.5568627451" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HWh-Eg-MGD" userLabel="Button - Login">
-                                <rect key="frame" x="16" y="678" width="382" height="56"/>
+                                <rect key="frame" x="16" y="609" width="382" height="56"/>
                                 <color key="backgroundColor" red="0.1450980392" green="0.83921568629999999" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="Rag-Xw-a2Q"/>
@@ -102,12 +103,62 @@
                                     <action selector="loginButtonAction:" destination="B9h-aE-fkf" eventType="touchUpInside" id="h4j-Wv-GXF"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yc0-yC-bVd" userLabel="Button - Migration">
+                                <rect key="frame" x="158" y="797" width="98" height="29"/>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="기존">
+                                            <attributes>
+                                                <color key="NSColor" red="0.4823529411764706" green="0.52156862745098043" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <font key="NSFont" size="13" name="AppleSDGothicNeo-Regular"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                                <integer key="NSUnderline" value="1"/>
+                                            </attributes>
+                                        </fragment>
+                                        <fragment content=" ">
+                                            <attributes>
+                                                <color key="NSColor" red="0.4823529411764706" green="0.52156862745098043" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <font key="NSFont" size="13" name="HelveticaNeue"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                                <integer key="NSUnderline" value="1"/>
+                                            </attributes>
+                                        </fragment>
+                                        <fragment content="정보">
+                                            <attributes>
+                                                <color key="NSColor" red="0.4823529411764706" green="0.52156862745098043" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <font key="NSFont" size="13" name="AppleSDGothicNeo-Regular"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                                <integer key="NSUnderline" value="1"/>
+                                            </attributes>
+                                        </fragment>
+                                        <fragment content=" ">
+                                            <attributes>
+                                                <color key="NSColor" red="0.4823529411764706" green="0.52156862745098043" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <font key="NSFont" size="13" name="HelveticaNeue"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                                <integer key="NSUnderline" value="1"/>
+                                            </attributes>
+                                        </fragment>
+                                        <fragment content="이관하기">
+                                            <attributes>
+                                                <color key="NSColor" red="0.4823529411764706" green="0.52156862745098043" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <font key="NSFont" size="13" name="AppleSDGothicNeo-Regular"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                                <integer key="NSUnderline" value="1"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                                <connections>
+                                    <action selector="migrationButtonAction:" destination="B9h-aE-fkf" eventType="touchUpInside" id="R0z-ry-xWc"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="HWh-Eg-MGD" firstAttribute="leading" secondItem="ejd-9y-Vyd" secondAttribute="leading" constant="16" id="3Oi-D9-5g3"/>
                             <constraint firstItem="I3j-xE-Ny5" firstAttribute="centerX" secondItem="jJP-4W-smg" secondAttribute="centerX" id="3bl-0T-8tu"/>
-                            <constraint firstItem="ejd-9y-Vyd" firstAttribute="bottom" secondItem="wV1-1b-9hJ" secondAttribute="bottom" constant="24" id="7lr-vJ-UO3"/>
+                            <constraint firstItem="yc0-yC-bVd" firstAttribute="centerX" secondItem="jJP-4W-smg" secondAttribute="centerX" id="D9a-N0-r2U"/>
                             <constraint firstItem="95c-KX-3OA" firstAttribute="centerX" secondItem="jJP-4W-smg" secondAttribute="centerX" id="Di6-GH-9hy"/>
                             <constraint firstItem="ejd-9y-Vyd" firstAttribute="trailing" secondItem="Gib-gA-Ifj" secondAttribute="trailing" constant="16" id="Dka-Hi-uay"/>
                             <constraint firstItem="95c-KX-3OA" firstAttribute="top" secondItem="ejd-9y-Vyd" secondAttribute="top" constant="193" id="Eme-P9-Wr3"/>
@@ -118,6 +169,8 @@
                             <constraint firstItem="ejd-9y-Vyd" firstAttribute="trailing" secondItem="HWh-Eg-MGD" secondAttribute="trailing" constant="16" id="dJs-21-Dtp"/>
                             <constraint firstItem="Gib-gA-Ifj" firstAttribute="leading" secondItem="I3j-xE-Ny5" secondAttribute="trailing" constant="12" id="f7r-11-6a7"/>
                             <constraint firstItem="Gib-gA-Ifj" firstAttribute="centerY" secondItem="I3j-xE-Ny5" secondAttribute="centerY" id="fkQ-V0-DdA"/>
+                            <constraint firstItem="ejd-9y-Vyd" firstAttribute="bottom" secondItem="yc0-yC-bVd" secondAttribute="bottom" constant="36" id="hMJ-xO-pe0"/>
+                            <constraint firstItem="yc0-yC-bVd" firstAttribute="top" secondItem="wV1-1b-9hJ" secondAttribute="bottom" constant="28" id="htT-6w-5j1"/>
                             <constraint firstItem="wV1-1b-9hJ" firstAttribute="leading" secondItem="ejd-9y-Vyd" secondAttribute="leading" constant="16" id="os7-aU-z8a"/>
                             <constraint firstItem="I3j-xE-Ny5" firstAttribute="leading" secondItem="TKI-bE-lY9" secondAttribute="trailing" constant="12" id="pWX-Ay-5Er"/>
                             <constraint firstItem="TKI-bE-lY9" firstAttribute="centerY" secondItem="I3j-xE-Ny5" secondAttribute="centerY" id="qSV-uE-Dk0"/>
@@ -127,6 +180,7 @@
                     <navigationItem key="navigationItem" id="kJI-tm-Jrf"/>
                     <connections>
                         <outlet property="loginButton" destination="HWh-Eg-MGD" id="2CF-Zt-v9Y"/>
+                        <outlet property="migrationButton" destination="yc0-yC-bVd" id="GNh-IB-BsL"/>
                         <outlet property="signupButton" destination="wV1-1b-9hJ" id="Y77-tF-jMv"/>
                         <outlet property="signupGuideLabel" destination="I3j-xE-Ny5" id="GMP-iI-bwt"/>
                     </connections>
@@ -232,7 +286,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="ID(휴대폰번호)를 입력하세요" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="snl-dH-KZa" userLabel="TextField - Password">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="비밀번호를 입력하세요" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="snl-dH-KZa" userLabel="TextField - Password">
                                         <rect key="frame" x="0.0" y="56" width="382" height="48"/>
                                         <color key="backgroundColor" red="0.93725490199999995" green="0.94901960780000005" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="tintColor" red="0.10196078431372549" green="0.10196078431372549" blue="0.10588235294117647" alpha="1" colorSpace="calibratedRGB"/>
@@ -240,7 +294,11 @@
                                             <constraint firstAttribute="height" constant="48" id="WL0-vJ-y0k"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="16"/>
-                                        <textInputTraits key="textInputTraits" textContentType="password"/>
+                                        <textInputTraits key="textInputTraits" keyboardAppearance="light" secureTextEntry="YES" textContentType="new-password">
+                                            <passwordRules key="passwordRules">
+                                                <string key="passwordRulesDescriptor">required: upper; required: lower; required: digit; required: [oqtu-#&amp;'()+,./;?@]; max-consecutive: 2; minlength: 8; maxlength: 16;</string>
+                                            </passwordRules>
+                                        </textInputTraits>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                 <real key="value" value="24"/>
@@ -309,7 +367,6 @@
                         <viewLayoutGuide key="safeArea" id="adD-Md-tDo"/>
                     </view>
                     <connections>
-                        <outlet property="accountTextField" destination="UzL-LK-xHV" id="eFh-ki-SIP"/>
                         <outlet property="changePhoneNumberButton" destination="KLX-LK-tOQ" id="IgC-AZ-4K5"/>
                         <outlet property="closeButton" destination="kTh-l0-l8x" id="cXU-ia-G3M"/>
                         <outlet property="findPasswordButton" destination="VSi-bk-JXj" id="cOb-2Y-VWX"/>
@@ -317,16 +374,34 @@
                         <outlet property="inputAreaView" destination="0Aw-Ld-yfF" id="ctQ-4r-nud"/>
                         <outlet property="loginButton" destination="tZY-pY-tGd" id="slL-8M-OMj"/>
                         <outlet property="passwordTextField" destination="snl-dH-KZa" id="fxK-n5-tU0"/>
+                        <outlet property="phoneNumberTextField" destination="UzL-LK-xHV" id="eFh-ki-SIP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0H3-v3-K3x" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1705.7971014492755" y="75.669642857142847"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="BCL-wN-UR0">
+            <objects>
+                <navigationController storyboardIdentifier="FindPasswordNavigationController" id="Tuu-2N-xna" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" shadowImage="imgPixel" id="Jr3-sE-zMg">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="cWz-I2-n1d" kind="relationship" relationship="rootViewController" id="BdQ-NS-ipS"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9NX-N5-Som" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2664" y="510"/>
+        </scene>
         <!--Find Password View Controller-->
         <scene sceneID="ftO-CQ-KIq">
             <objects>
-                <viewController storyboardIdentifier="CodeVerifyViewController" id="cWz-I2-n1d" customClass="FindPasswordViewController" customModule="ParkingFriends" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FindPasswordViewController" id="cWz-I2-n1d" customClass="FindPasswordViewController" customModule="ParkingFriends" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="b5i-ff-bqx">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -365,13 +440,18 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="x0t-Kp-dgd">
                                         <rect key="frame" x="16" y="49" width="342" height="20"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="이메일주소입력" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S0m-Dv-5jF" userLabel="TextField - Verification">
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="이메일주소입력" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="S0m-Dv-5jF" userLabel="TextField - Verification">
                                                 <rect key="frame" x="0.0" y="0.0" width="342" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="ZMg-fs-k8k"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="20"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" textContentType="email"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="cursorColor">
+                                                        <color key="value" name="MalangGreen"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </textField>
                                         </subviews>
                                         <constraints>
@@ -412,9 +492,11 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="titleShadowColor" red="0.93725490199999995" green="0.94901960780000005" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
-                                <connections>
-                                    <action selector="nextButtonAction:" destination="cWz-I2-n1d" eventType="touchUpInside" id="ngK-9Y-X1N"/>
-                                </connections>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="disabledColor">
+                                        <color key="value" name="LightSeafoam"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -435,28 +517,46 @@
                         <barButtonItem key="leftBarButtonItem" image="icBackBlack" style="plain" id="GIG-h3-EgX" userLabel="Item - Back">
                             <color key="tintColor" red="0.1019607843" green="0.1019607843" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <action selector="backButtonAction:" destination="cWz-I2-n1d" id="YBs-Mz-clC"/>
+                                <action selector="backButtonAction:" destination="cWz-I2-n1d" id="hxq-1R-uYH"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
-                        <outlet property="backButton" destination="GIG-h3-EgX" id="eIM-Fk-LPf"/>
-                        <outlet property="fieldTitleLabel" destination="4MA-st-cCV" id="RcS-ce-EHD"/>
-                        <outlet property="inputTextField" destination="S0m-Dv-5jF" id="EPI-e5-SiN"/>
-                        <outlet property="nextButton" destination="8zj-a7-XYe" id="M7y-hK-kAN"/>
-                        <outlet property="subtitleLabel" destination="T4P-Hs-igP" id="FHu-lt-i4x"/>
-                        <outlet property="titleLabel" destination="IPk-xN-Ucv" id="RtA-W9-Bku"/>
+                        <outlet property="backButton" destination="GIG-h3-EgX" id="txu-Sh-sdY"/>
+                        <outlet property="confirmButton" destination="8zj-a7-XYe" id="xZE-K2-pSS"/>
+                        <outlet property="confirmButtonBottomConstraint" destination="b3B-m8-0q3" id="O7g-Ii-gbb"/>
+                        <outlet property="fieldTitleLabel" destination="4MA-st-cCV" id="wi3-uA-WQn"/>
+                        <outlet property="inputTextField" destination="S0m-Dv-5jF" id="0W5-33-vEF"/>
+                        <outlet property="subtitleLabel" destination="T4P-Hs-igP" id="7ZO-eH-5ov"/>
+                        <outlet property="titleLabel" destination="IPk-xN-Ucv" id="aNn-rx-OHL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7tr-rL-j4e" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2913" y="524"/>
+            <point key="canvasLocation" x="3578" y="510"/>
         </scene>
-        <!--Find Account View Controller-->
+        <!--Navigation Controller-->
+        <scene sceneID="YHZ-d1-VLi">
+            <objects>
+                <navigationController storyboardIdentifier="ChangePhoneNumberNavigationController" id="QPX-YM-Uzh" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" shadowImage="imgPixel" id="lvP-Mb-vXV">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="jt3-nE-iKv" kind="relationship" relationship="rootViewController" id="N62-Ha-fLn"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aTc-Zf-Cnn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2665" y="-275"/>
+        </scene>
+        <!--Change Phone Number View Controller-->
         <scene sceneID="bRl-tT-zwH">
             <objects>
-                <viewController id="jt3-nE-iKv" customClass="FindAccountViewController" customModule="ParkingFriends" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChangePhoneNumberViewController" id="jt3-nE-iKv" customClass="ChangePhoneNumberViewController" customModule="ParkingFriends" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xwp-aF-Drf">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -492,14 +592,19 @@
                                         <color key="textColor" red="0.1019607843" green="0.1019607843" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="이메일주소입력" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hiR-kJ-mkH" userLabel="TextField - Verification">
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="이메일주소입력" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="hiR-kJ-mkH" userLabel="TextField - Verification">
                                         <rect key="frame" x="16" y="49" width="342" height="20"/>
                                         <color key="tintColor" red="0.1450980392" green="0.83921568629999999" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="nhF-cc-IeU"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="20"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" textContentType="email"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="cursorColor">
+                                                <color key="value" name="MalangGreen"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -535,9 +640,11 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="titleShadowColor" red="0.93725490199999995" green="0.94901960780000005" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
-                                <connections>
-                                    <action selector="sendCodeButtonAction:" destination="jt3-nE-iKv" eventType="touchUpInside" id="ziG-Z1-Mgh"/>
-                                </connections>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="disabledColor">
+                                        <color key="value" name="LightSeafoam"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -558,27 +665,36 @@
                         <barButtonItem key="leftBarButtonItem" image="icBackBlack" style="plain" id="95g-WU-wMM" userLabel="Item - Back">
                             <color key="tintColor" red="0.1019607843" green="0.1019607843" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <action selector="backButtonAction:" destination="jt3-nE-iKv" id="eQA-lG-b6Q"/>
+                                <action selector="backButtonAction:" destination="jt3-nE-iKv" id="kq2-Ra-FT6"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
-                        <outlet property="backButton" destination="95g-WU-wMM" id="BNx-Nn-9VP"/>
-                        <outlet property="fieldTitleLabel" destination="52G-8c-asQ" id="abZ-up-CsW"/>
-                        <outlet property="inputTextField" destination="hiR-kJ-mkH" id="4Va-3U-koX"/>
-                        <outlet property="subtitleLabel" destination="3BV-7U-stc" id="FS1-kU-Qhl"/>
-                        <outlet property="titleLabel" destination="cqF-pI-eTG" id="MlA-wR-kgm"/>
+                        <outlet property="backButton" destination="95g-WU-wMM" id="SpP-fy-PPm"/>
+                        <outlet property="confirmButton" destination="z0l-FL-ghM" id="XDP-z0-0V7"/>
+                        <outlet property="confirmButtonBottomConstraint" destination="q8T-kF-AMU" id="rR2-0k-MxB"/>
+                        <outlet property="fieldTitleLabel" destination="52G-8c-asQ" id="BdU-7G-bEm"/>
+                        <outlet property="inputTextField" destination="hiR-kJ-mkH" id="VQA-R0-Eqs"/>
+                        <outlet property="subtitleLabel" destination="3BV-7U-stc" id="zSq-Nk-YEo"/>
+                        <outlet property="titleLabel" destination="cqF-pI-eTG" id="oRI-Vd-GXd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pmc-CU-Lqe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2912" y="-271"/>
+            <point key="canvasLocation" x="3578" y="-274"/>
         </scene>
     </scenes>
     <resources>
         <image name="icBackBlack" width="24" height="24"/>
         <image name="icCloseBlack" width="24" height="25"/>
+        <image name="imgPixel" width="1" height="1"/>
         <image name="imgSymbolPf" width="236" height="71"/>
+        <namedColor name="LightSeafoam">
+            <color red="0.6589999794960022" green="0.93699997663497925" blue="0.75700002908706665" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="MalangGreen">
+            <color red="0.14499999582767487" green="0.83899998664855957" blue="0.3880000114440918" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

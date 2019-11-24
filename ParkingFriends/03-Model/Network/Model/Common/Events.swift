@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 import ObjectMapper
 
-class Events: BaseModel {
+class Events: BaseModelType {
     var totalCount:Int = 0
     var elements:[NoticesElement] = [NoticesElement]()
 
@@ -24,7 +24,7 @@ class Events: BaseModel {
     }
 }
 
-class EventsElement: BaseModel {
+class EventsElement: BaseModelType {
     var id:Int = 0
     var title:String = ""
     var dateCreated:String = ""
@@ -46,7 +46,7 @@ class EventsElement: BaseModel {
     }
 }
 
-class EventsContent: BaseModel {
+class EventsContent: BaseModelType {
     var id:Int = 0
     var title:String = ""
     var content:String = ""

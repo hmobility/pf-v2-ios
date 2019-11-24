@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 import ObjectMapper
 
-class Order: BaseModel {
+class Order: BaseModelType {
     var orderId:Int = 0
 
     required init?(map: Map) {

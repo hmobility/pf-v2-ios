@@ -10,19 +10,20 @@ import Foundation
 import UIKit
 
 protocol EntryViewModelType {
-    var loginText: Observable<String> { get }
-    var signupGuideText: Observable<String> { get }
-    var signupText: Observable<String> { get }
+    var loginText: Driver<String> { get }
+    var signupGuideText: Driver<String> { get }
+    var signupText: Driver<String> { get }
 }
 
 class EntryViewModel: EntryViewModelType {
-    var loginText: Observable<String>
-    var signupGuideText: Observable<String>
-    var signupText: Observable<String>
+    var loginText: Driver<String>
+    var signupGuideText: Driver<String>
+    var signupText: Driver<String>
     
     init(localizer: LocalizerType = Localizer.shared) {
-        loginText = Observable.just(localizer.localized("login"))
-        signupGuideText = Observable.just(localizer.localized("signup_guide"))
-        signupText = Observable.just(localizer.localized("signup"))
+        loginText = localizer.localized("btn_login")
+        //signupGuideText = localizer.localized("signup_guide")
+        signupGuideText = localizer.localized("txt_account_migration_guide")
+        signupText = localizer.localized("btn_signup")
     }
 }

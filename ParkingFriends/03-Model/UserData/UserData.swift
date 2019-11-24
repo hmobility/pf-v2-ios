@@ -8,8 +8,6 @@
 
 import Foundation
 import ObjectMapper
-import RxSwift
-import RxLocalizer
 
 class UserData: NSObject, NSCoding {
     var login: Login?

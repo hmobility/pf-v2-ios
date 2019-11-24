@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 import ObjectMapper
 
-class OldMember: BaseModel {
+public class OldMember: BaseModelType {
     var id:String = ""
     var checkResult:Bool = false
         
@@ -18,7 +18,7 @@ class OldMember: BaseModel {
         super.init(map: map)
     }
     
-    override func mapping(map: Map) {
+    override public func mapping(map: Map) {
         id <- map["id"]
         checkResult <- (map["checkResult"], BoolTransform())
     }

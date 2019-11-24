@@ -38,11 +38,6 @@ class CustomInputSection: UIStackView {
         // configure()
     }
     
-    override func prepareForInterfaceBuilder() {
-        super.prepareForInterfaceBuilder()
-        binding()
-    }
-    
     public func binding() {
         inputTextField.rx.controlEvent([.editingDidBegin, .editingChanged, .editingDidEnd])
             .asObservable()

@@ -20,6 +20,7 @@ class EntryViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signupButton: UIButton!
     @IBOutlet weak var signupGuideLabel: UILabel!
+    @IBOutlet weak var migrationButton: UIButton!
     
     private var viewModel: EntryViewModelType
     private let disposeBag = DisposeBag()
@@ -28,11 +29,26 @@ class EntryViewController: UIViewController {
     
     @IBAction func loginButtonAction(_ sender: Any) {
         navigateToLogin()
+       
+       // navigateToMain()
+        
+        self.trackLog()
+        self.track("gender", forName:"female")
+        self.track("location", forName:"parking")
+        self.track("parking", forName:"unknown")
+        self.track("male", forName:"gender")
+        self.track("gender=male", forName:"gender")
+        self.track("dev", ["p1": "open"])
     }
     
     @IBAction func signupButtonAction(_ sender: Any) {
         navigateToSignup()
     }
+    
+    @IBAction func migrationButtonAction(_ sender: Any) {
+
+    }
+    
     // MARK: - Initialize
 
     private func initialize() {
@@ -43,15 +59,15 @@ class EntryViewController: UIViewController {
 
     private func setupBindings() {
         viewModel.loginText
-            .bind(to: loginButton.rx.title(for: .normal))
+            .drive(loginButton.rx.title(for: .normal))
             .disposed(by: disposeBag)
         
         viewModel.signupText
-            .bind(to: signupButton.rx.title(for: .normal))
+            .drive(signupButton.rx.title(for: .normal))
             .disposed(by: disposeBag)
         
         viewModel.signupGuideText
-            .bind(to: signupGuideLabel.rx.text)
+            .drive(signupGuideLabel.rx.text)
             .disposed(by: disposeBag)
     }
     
@@ -82,6 +98,11 @@ class EntryViewController: UIViewController {
     private func navigateToSignup() {
         let target = Storyboard.registration.instantiateInitialViewController() as! UINavigationController
         self.modal(target)
+    }
+    
+    private func navigateToMain() {
+        let target = Storyboard.main.instantiateInitialViewController() as! UINavigationController
+        self.modal(target, animated: true)
     }
     
     /*

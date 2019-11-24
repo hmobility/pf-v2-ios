@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 import ObjectMapper
 
-class Cards: BaseModel {
+class Cards: BaseModelType {
     var totalCount:Int = 0
     var elements:[Card] = [Card]()
     
@@ -24,7 +24,7 @@ class Cards: BaseModel {
     }
 }
 
-class Card: BaseModel {
+class Card: BaseModelType {
     var id:Int = 0
     var name:String = ""
     var defaultFlag:Bool = false

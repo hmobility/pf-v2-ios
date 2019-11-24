@@ -34,4 +34,10 @@ enum TermsType: Int {
     case none
 }
 
+enum ResponseCodeType: String {
+    case success = "0000"
+    case not_found = "1404"
+    case unknown = ""
+}
+
 typealias Params = [String : Any]

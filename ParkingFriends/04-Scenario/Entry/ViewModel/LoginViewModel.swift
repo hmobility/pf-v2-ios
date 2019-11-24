@@ -8,39 +8,94 @@
 
 import Foundation
 import UIKit
+import CryptoSwift
+
+
+public enum VerificationError: Error {
+    case phoneNumber
+    case password
+    case badCredentials
+}
+
+// 로그인 시 폰/이메일 인증 할 때 사용
+public enum VerificationStatus {
+    case none
+    case error(VerificationError)
+    case verified
+}
 
 protocol LoginViewModelType {
-    var accountPlaceholder: Observable<String> { get }
-    var passwordPlaceholder: Observable<String> { get }
-    var loginText: Observable<String> { get }
-    var changePhoneNumberText: Observable<String> { get }
-    var findPasswordText: Observable<String> { get }
+    var phoneNumberPlaceholder: Driver<String> { get }
+    var passwordPlaceholder: Driver<String> { get }
+    
+    var loginText: Driver<String> { get }
+    var changePhoneNumberText: Driver<String> { get }
+    var findPasswordText: Driver<String> { get }
     
     var phoneNumberModel:PhoneNumberModel { get }
     var passwordModel:PasswordModel { get }
     
-    func validateCredentials() -> Bool
+    var loginStatus:BehaviorRelay<VerificationStatus> { get set }
+    
+    func validateCredentials()
 }
 
 class LoginViewModel: LoginViewModelType {
-    var accountPlaceholder: Observable<String>
-    var passwordPlaceholder: Observable<String>
-    var loginText: Observable<String>
-    var changePhoneNumberText: Observable<String>
-    var findPasswordText: Observable<String>
+    var phoneNumberPlaceholder: Driver<String>
+    var passwordPlaceholder: Driver<String>
     
-    var phoneNumberModel = PhoneNumberModel()
-    var passwordModel = PasswordModel()
+    var loginText: Driver<String>
+    var changePhoneNumberText: Driver<String>
+    var findPasswordText: Driver<String>
+    
+    let phoneNumberModel = PhoneNumberModel()
+    let passwordModel = PasswordModel()
+    
+    var loginStatus:BehaviorRelay<VerificationStatus> = BehaviorRelay(value:.none)
+    
+    private let disposeBag = DisposeBag()
     
     init(localizer: LocalizerType = Localizer.shared) {
-        accountPlaceholder = Observable.just(localizer.localized("account_input_placeholder"))
-        passwordPlaceholder = Observable.just(localizer.localized("password_input_placeholder"))
-        loginText = Observable.just(localizer.localized("login"))
-        changePhoneNumberText = Observable.just(localizer.localized("change_phone_number"))
-        findPasswordText = Observable.just(localizer.localized("find_password"))
+        phoneNumberPlaceholder = localizer.localized("ph_input_phone_number")
+        passwordPlaceholder = localizer.localized("ph_input_password")
+        loginText = localizer.localized("btn_login")
+        changePhoneNumberText = localizer.localized("btn_phone_number_change")
+        findPasswordText = localizer.localized("btn_password_find")
     }
     
-    func validateCredentials() -> Bool {
-        return true// phoneNumberModel.validateCredentials() && passwordModel.validateCredentials()
+    // MARK: - Local Methods
+    
+    private func updateStatus(_ status:VerificationStatus) {
+        self.loginStatus.accept(status)
+    }
+    
+    // MARK: - Public Methods
+    
+    func validateCredentials() {
+        if phoneNumberModel.validatePattern() == false {
+            updateStatus(.error(.phoneNumber))
+            return
+        }
+            
+        if passwordModel.validateCredentials() == false {
+            updateStatus(.error(.password))
+            return
+        }
+        
+        if let number = phoneNumberModel.phoneNumber {
+            checkCredentials(username: number, password: passwordModel.data.value)
+        }
+    }
+    
+    func checkCredentials(username:String, password:String) {
+        print("[USERNAME] ", username, " , [PASSWORD] ", password)
+        Auth.login(username: username, password: password) { [weak self] (login, message) in
+            print("[R]", login.debugDescription)
+            if let _ = message {
+                self!.updateStatus(.error(.badCredentials))
+            } else {
+                self!.updateStatus(.verified)
+            }
+        }
     }
 }

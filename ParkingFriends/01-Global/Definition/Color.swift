@@ -11,7 +11,11 @@ import UIKit
 
 struct Color {
     static let charcoalGrey = UIColor(named: "CharcoalGrey")!
+    static let charcoalGrey2 = UIColor(named: "CharcoalGrey2")!
     static let darkGrey = UIColor(named: "DarkGrey")!
     static let malangBlue = UIColor(named: "MalangBlue")!
     static let malangGreen = UIColor(named: "MalangGreen")!
+    static let lightBlueGrey = UIColor(named: "LightBlueGrey")!
+    static let lightSeafoam = UIColor(named: "LightSeafoam")!
+    static let veryLightPink = UIColor(named: "VeryLightPink")!
 }

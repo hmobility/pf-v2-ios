@@ -57,7 +57,7 @@ class AgreementViewController: UIViewController {
     }
     
     @IBAction func checkButtontAction(_ sender: Any) {
-        let index = checkButtonList.firstIndex(of: sender as! UIButton) as! Int
+        let index = checkButtonList.firstIndex(of: sender as! UIButton)!
       //  let index = (sender as AnyObject).tag as Int
         let result = !checkButtonList[index].isSelected
         checkButtonList[index].isSelected = result

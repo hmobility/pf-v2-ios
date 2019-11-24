@@ -11,8 +11,9 @@ target 'ParkingFriends' do
   pod 'RxLocalizer'
   pod 'RxOptional'
   pod 'RxViewController'
-  pod 'RxExtension'
+  pod 'RxSwiftExt', '~> 5'
   pod 'RxBinding'
+  pod 'RxBiBinding'
   pod 'RxKeyboard'
   
   pod 'SnapKit', '~> 5.0.0'
@@ -32,6 +33,11 @@ target 'ParkingFriends' do
   
   pod 'SwiftMessages'             # Message View
   pod 'ActiveLabel'               # Underlined Tappable Label
+  
+  pod 'AnyFormatKit'              # String Formatter
+  pod 'CryptoSwift'               # SHA256 password to string
+  
+  pod 'PullUpController'
   
 end
 

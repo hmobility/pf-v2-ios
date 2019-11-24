@@ -8,10 +8,6 @@
 
 import Foundation
 import UIKit
-import RxCocoa
-import RxLocalizer
-import RxSwift
-import RxViewController
 
 protocol RegiCreditCardViewModelType {
 }

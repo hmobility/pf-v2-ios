@@ -8,10 +8,6 @@
 
 import Foundation
 import UIKit
-import RxCocoa
-import RxLocalizer
-import RxSwift
-import RxViewController
 
 protocol BasicInfoViewModelType {
     var phoneNumberInputTitle: Observable<String> { get }
@@ -49,10 +45,10 @@ class BasicInfoViewModel: BasicInfoViewModelType {
     init(localizer: LocalizerType = Localizer.shared) {
         self.localizer = localizer
         
-        phoneNumberInputTitle = Observable.just(localizer.localized("phone_number_input_title"))
-        emailInputTitle = Observable.just(localizer.localized("email_input_title"))
-        passwordInputTitle = Observable.just(localizer.localized("password_input_title"))
-        nicknameInputTitle = Observable.just(localizer.localized("nickname_input_title"))
+        phoneNumberInputTitle = Observable.just(localizer.localized("ttl_phone_number_input"))
+        emailInputTitle = Observable.just(localizer.localized("ttl_email_input"))
+        passwordInputTitle = Observable.just(localizer.localized("ttl_password_input"))
+        nicknameInputTitle = Observable.just(localizer.localized("ttl_nickname_input"))
     }
     
     public func placeholder(textField:UITextField, _ placeholder:String) {

@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 import ObjectMapper
 
-class Login: BaseModel, NSCoding {
+public class Login: BaseModelType, NSCoding {
     var tokenType:String = ""
     var accessToken:String = ""
     var refreshToken:String = ""
@@ -19,13 +19,13 @@ class Login: BaseModel, NSCoding {
         super.init(map: map)
     }
     
-    override func mapping(map: Map) {
+    override public func mapping(map: Map) {
         tokenType <- map["tokenType"]
         accessToken <- map["accessToken"]
         refreshToken <- map["refreshToken"]
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required public init(coder aDecoder: NSCoder) {
         super.init()
         
         tokenType = (aDecoder.decodeObject(forKey: "tokenType") as? String)!
@@ -33,7 +33,7 @@ class Login: BaseModel, NSCoding {
         refreshToken = (aDecoder.decodeObject(forKey: "refreshToken") as? String)!
     }
     
-    func encode(with aCoder: NSCoder) {
+    public func encode(with aCoder: NSCoder) {
         aCoder.encode(tokenType, forKey: "tokenType")
         aCoder.encode(accessToken, forKey: "accessToken")
         aCoder.encode(refreshToken, forKey: "refreshToken")

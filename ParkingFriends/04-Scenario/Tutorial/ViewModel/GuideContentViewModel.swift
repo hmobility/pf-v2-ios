@@ -8,29 +8,25 @@
 
 import Foundation
 import UIKit
-import RxCocoa
-import RxLocalizer
-import RxSwift
-import RxViewController
 
 protocol GuideContentViewModelType {
-    var titleText: Observable<String> { get }
-    var subtitleText: Observable<String> { get }
-    var pageNumber: Observable<Int> { get }
-    var guideImage: Observable<UIImage> { get }
+    var titleText: Driver<String> { get }
+    var subtitleText: Driver<String> { get }
+    var pageNumber: BehaviorRelay<Int> { get }
+    var guideImage: BehaviorRelay<UIImage> { get }
 }
 
 class GuideContentViewModel: GuideContentViewModelType {
-    let titleText: Observable<String>
-    let subtitleText: Observable<String>
-    let pageNumber: Observable<Int>
-    let guideImage: Observable<UIImage>
+    let titleText: Driver<String>
+    let subtitleText: Driver<String>
+    let pageNumber: BehaviorRelay<Int>
+    let guideImage: BehaviorRelay<UIImage>
     
     init(_ index: Int = 0, localizer: LocalizerType = Localizer.shared) {
         let number = index + 1
-        pageNumber = Observable.just(index)
-        guideImage = Observable.just(UIImage(named: "imgGuide\(number)")!)
-        titleText = Observable.just(localizer.localized("guide_title_\(number)"))
-        subtitleText = Observable.just(localizer.localized("guide_subtitle_\(number)"))
+        pageNumber = BehaviorRelay(value: index)
+        guideImage = BehaviorRelay(value: UIImage(named: "imgGuide\(number)")!)
+        titleText = localizer.localized("ttl_guide_\(number)")
+        subtitleText = localizer.localized("dsc_guide_\(number)")
     }
 }

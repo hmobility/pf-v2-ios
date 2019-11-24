@@ -20,7 +20,7 @@ enum IconType: String {
 
 public struct MessageDialog {
     static func show(_ text:String, duration:TimeInterval = 3, icon:IconType = .warning) {
-        let view:CustomDialogView = try! SwiftMessages.viewFromNib()
+        let view:MessageDialogView = try! SwiftMessages.viewFromNib()
         view.backgroundView.backgroundColor = Color.charcoalGrey
         view.backgroundColor = Color.charcoalGrey
         view.configureContent(title: nil, body: text, iconImage: icon.image, iconText: nil, buttonImage: nil, buttonTitle: nil) { _ in

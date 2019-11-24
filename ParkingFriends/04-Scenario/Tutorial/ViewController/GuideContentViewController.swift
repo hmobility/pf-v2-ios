@@ -44,11 +44,11 @@ class GuideContentViewController: UIViewController {
 
     private func setupBindings() {
         viewModel.titleText
-            .bind(to: titleLabel.rx.text)
+            .drive(titleLabel.rx.text)
             .disposed(by: disposeBag)
         
         viewModel.subtitleText
-            .bind(to: subtitleLabel.rx.text)
+            .drive(subtitleLabel.rx.text)
             .disposed(by: disposeBag)
         
         viewModel.pageNumber

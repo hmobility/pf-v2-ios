@@ -44,17 +44,17 @@ class AgreementViewModel: AgreementViewModelType {
     init(localizer: LocalizerType = Localizer.shared) {
         self.localizer = localizer
         
-        agreementTitle = Observable.just(localizer.localized("phone_number_input_title"))
-        agreementSubTitle = Observable.just(localizer.localized("email_input_title"))
+        agreementTitle = Observable.just(localizer.localized("ttl_agreement"))
+        agreementSubTitle = Observable.just(localizer.localized("dsc_agreement"))
         
-        usageText = Observable.just(NSMutableAttributedString(string:localizer.localized("usage_title")))
-        personalInfoText = Observable.just(NSMutableAttributedString(string:localizer.localized("personal_info_title")))
-        locationServiceText = Observable.just(NSMutableAttributedString(string:localizer.localized("location_service_title")))
-        thirdPartyText = Observable.just(NSMutableAttributedString(string:localizer.localized("third_party_info_title")))
-        marketingInfoText = Observable.just(NSMutableAttributedString(string:localizer.localized("marketing_info_title")))
+        usageText = Observable.just(NSMutableAttributedString(string:localizer.localized("ttl_usage")))
+        personalInfoText = Observable.just(NSMutableAttributedString(string:localizer.localized("ttl_personal_info")))
+        locationServiceText = Observable.just(NSMutableAttributedString(string:localizer.localized("ttl_location_service")))
+        thirdPartyText = Observable.just(NSMutableAttributedString(string:localizer.localized("ttl_third_party_info")))
+        marketingInfoText = Observable.just(NSMutableAttributedString(string:localizer.localized("ttl_marketing_info")))
         
-        sentenceText = Observable.just(localizer.localized("agreement_sentence"))
-        agreeAllText = Observable.just(localizer.localized("agree_all"))
-        agreementOptionText = Observable.just(localizer.localized("agreement_option"))
+        sentenceText = Observable.just(localizer.localized("txt_agreement_sentence_end"))
+        agreeAllText = Observable.just(localizer.localized("txt_agree_all"))
+        agreementOptionText = Observable.just(localizer.localized("txt_agreement_option"))
     }
 }

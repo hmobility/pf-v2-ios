@@ -59,11 +59,11 @@ class GuideFinishedViewController: UIViewController {
 
     private func setupBindings() {
         viewModel.titleText
-            .bind(to: titleLabel.rx.text)
+            .drive(titleLabel.rx.text)
             .disposed(by: disposeBag)
         
         viewModel.subtitleText
-            .bind(to: subtitleLabel.rx.text)
+            .drive(subtitleLabel.rx.text)
             .disposed(by: disposeBag)
         
         viewModel.pageNumber
@@ -75,7 +75,7 @@ class GuideFinishedViewController: UIViewController {
             .disposed(by: disposeBag)
         
         viewModel.beginText
-            .bind(to: beginButton.rx.title(for: .normal))
+            .drive(beginButton.rx.title(for: .normal))
             .disposed(by: disposeBag)
     }
     

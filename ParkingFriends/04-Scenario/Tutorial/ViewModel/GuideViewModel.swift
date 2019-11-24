@@ -8,22 +8,18 @@
 
 import Foundation
 import UIKit
-import RxCocoa
-import RxLocalizer
-import RxSwift
-import RxViewController
 
 protocol GuideViewModelType {
-    var skipText: Observable<String> { get }
-    var nextText: Observable<String> { get }
+    var skipText: Driver<String> { get }
+    var nextText: Driver<String> { get }
 }
 
 class GuideViewModel: GuideViewModelType {
-    var skipText: Observable<String>
-    var nextText: Observable<String>
+    var skipText: Driver<String>
+    var nextText: Driver<String>
     
     init(localizer: LocalizerType = Localizer.shared) {
-        skipText = Observable.just(localizer.localized("guide_skip"))
-        nextText = Observable.just(localizer.localized("guide_next"))
+        skipText = localizer.localized("btn_skip")
+        nextText = localizer.localized("btn_to_next")
     }
 }
