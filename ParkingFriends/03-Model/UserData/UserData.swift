@@ -42,8 +42,15 @@ class UserData: NSObject, NSCoding {
         UserDefaults.standard.set(data, forKey: "User")
         UserDefaults.standard.synchronize()
     }
+    
+    public func language(_ language:Language) {
+        let code = language.rawValue
+        Localizer.shared.changeLanguage.accept(code)
+    }
       
-    public func load() -> UserData? {
+    public func load(_ lang:Language = .korean) -> UserData? {
+        self.language(lang)
+            
         if let data = UserDefaults.standard.object(forKey: "User") {
             let archive = NSKeyedUnarchiver.unarchiveObject(with: data as! Data) as! UserData
             
@@ -51,6 +58,13 @@ class UserData: NSObject, NSCoding {
         }
 
         return nil
+    }
+    
+    // Usually call this method in AppDelegate
+    
+    public func initiated() {
+        if let _ = self.load() {
+        }
     }
     
     // MARK: - Initialize

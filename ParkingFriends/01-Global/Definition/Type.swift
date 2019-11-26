@@ -29,4 +29,15 @@ enum ContentType:String {
     case product_type = "PRODUCT_TYPE"
 }
 
+enum TermsType: Int {
+    case usage, personal_info, location_service, third_party_info, marketing_info
+    case none
+}
+
+enum ResponseCodeType: String {
+    case success = "0000"
+    case not_found = "1404"
+    case unknown = ""
+}
+
 typealias Params = [String : Any]

@@ -11,19 +11,33 @@ target 'ParkingFriends' do
   pod 'RxLocalizer'
   pod 'RxOptional'
   pod 'RxViewController'
-  pod 'RxExtension'
+  pod 'RxSwiftExt', '~> 5'
+  pod 'RxBinding'
+  pod 'RxBiBinding'
+  pod 'RxKeyboard'
+  
+  pod 'SnapKit', '~> 5.0.0'
   
   pod 'Alamofire', '~> 4.7'
   pod 'AlamofireObjectMapper', '~> 5.2.1'
   pod 'ObjectMapper', '~> 3.4'
   
+  # pods for Firebase
+  pod 'Fabric', '~> 1.10.2'
+  pod 'Crashlytics', '~> 3.14.0'
   pod 'Firebase/Analytics'
   
   pod 'SwiftyJSON', '~> 5.0.0'
   
-  pod 'NMapsMap'
+  pod 'NMapsMap'                  # Naver Map
   
   pod 'SwiftMessages'             # Message View
+  pod 'ActiveLabel'               # Underlined Tappable Label
+  
+  pod 'AnyFormatKit'              # String Formatter
+  pod 'CryptoSwift'               # SHA256 password to string
+  
+  pod 'PullUpController'
   
 end
 

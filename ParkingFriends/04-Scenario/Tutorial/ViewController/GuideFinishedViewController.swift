@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
+import RxViewController
 
 extension GuideFinishedViewController : AnalyticsType {
     var screenName: String {
@@ -17,14 +20,80 @@ extension GuideFinishedViewController : AnalyticsType {
 class GuideFinishedViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
+    @IBOutlet weak var pageControl: UIPageControl!
+    @IBOutlet weak var guideImageView: UIImageView!
     @IBOutlet weak var beginButton: UIButton!
+    
+    private let disposeBag = DisposeBag()
+    
+    private var viewModel: GuideFinishedViewModelType
+    
+    // MARK: - Button Action
 
     @IBAction func beginButtonAction(_ sender: Any) {
+        print("start app")
+    }
+    
+    // MARK: - subscript
+    
+    subscript(index: Int) -> GuideFinishedViewController {
+        get {
+            let pageIndex = index % 5
+            self.viewModel = GuideFinishedViewModel(pageIndex)
+            return self
+        }
+        
+        set(newValue) {
+            let pageIndex = index % 5
+            self.viewModel = GuideFinishedViewModel(pageIndex)
+        }
+    }
+    
+    // MARK: - Initialize
+    
+    private func initialize() {
+         setupBindings()
+     }
+    
+    // MARK: - Binding
+
+    private func setupBindings() {
+        viewModel.titleText
+            .drive(titleLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        viewModel.subtitleText
+            .drive(subtitleLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        viewModel.pageNumber
+            .bind(to: pageControl.rx.currentPage)
+            .disposed(by: disposeBag)
+        
+        viewModel.guideImage
+            .bind(to: guideImageView.rx.image)
+            .disposed(by: disposeBag)
+        
+        viewModel.beginText
+            .drive(beginButton.rx.title(for: .normal))
+            .disposed(by: disposeBag)
+    }
+    
+    // MARK: - Life Cycle
+    
+    init(index:Int) {
+        self.viewModel = GuideFinishedViewModel()
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        viewModel = GuideFinishedViewModel()
+        super.init(coder: aDecoder)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        initialize()
         // Do any additional setup after loading the view.
     }
     
@@ -33,7 +102,6 @@ class GuideFinishedViewController: UIViewController {
          trackScreen()
      }
      
-
     /*
     // MARK: - Navigation
 

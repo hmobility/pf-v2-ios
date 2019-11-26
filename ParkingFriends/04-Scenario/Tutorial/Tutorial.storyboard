@@ -12,6 +12,7 @@
         <scene sceneID="pdY-xc-dr9">
             <objects>
                 <navigationController storyboardIdentifier="TutorialNavigationController" navigationBarHidden="YES" id="Z1M-y0-keX" sceneMemberID="viewController">
+                    <nil key="simulatedTopBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cZ0-u8-IFi">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -26,7 +27,7 @@
         <!--Guide Finished View Controller-->
         <scene sceneID="CBK-6k-2Gm">
             <objects>
-                <viewController id="mos-a0-eey" customClass="GuideFinishedViewController" customModule="ParkingFriends" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GuideFinishedViewController" id="mos-a0-eey" customClass="GuideFinishedViewController" customModule="ParkingFriends" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="k05-yV-6B3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -34,7 +35,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LsN-0l-xRk" userLabel="View - Bottom Area">
                                 <rect key="frame" x="0.0" y="800" width="414" height="54"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lee-og-cnp" userLabel="View - Separator ">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lee-og-cnp" userLabel="View - Top Separator">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="0.5"/>
                                         <color key="backgroundColor" red="0.84705882352941175" green="0.84705882352941175" blue="0.84705882352941175" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -48,7 +49,6 @@
                                             <color key="titleColor" red="0.10196078431372549" green="0.10196078431372549" blue="0.10588235294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="beginButton:" destination="mos-a0-eey" eventType="touchUpInside" id="2r8-Gz-IaK"/>
                                             <action selector="beginButtonAction:" destination="mos-a0-eey" eventType="touchUpInside" id="wtl-0R-4fN"/>
                                         </connections>
                                     </button>
@@ -106,6 +106,8 @@
                     <navigationItem key="navigationItem" id="BBf-jN-dwa"/>
                     <connections>
                         <outlet property="beginButton" destination="UQQ-pS-6rB" id="8C4-SI-KZe"/>
+                        <outlet property="guideImageView" destination="s9r-OD-Lch" id="a7y-Xg-pAf"/>
+                        <outlet property="pageControl" destination="Gp8-l6-3fJ" id="SwI-VT-NHd"/>
                         <outlet property="subtitleLabel" destination="96l-A5-8jH" id="ej4-Xu-k6N"/>
                         <outlet property="titleLabel" destination="Xhv-wg-QDP" id="io0-3O-ZnG"/>
                     </connections>
@@ -125,7 +127,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="euc-yx-vXx" userLabel="View - Bottom Area">
                                 <rect key="frame" x="0.0" y="808" width="414" height="54"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="60K-HF-cfd" userLabel="View - Separator ">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="60K-HF-cfd" userLabel="View - Top Separator">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="0.5"/>
                                         <color key="backgroundColor" red="0.84705882349999995" green="0.84705882349999995" blue="0.84705882349999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -138,6 +140,9 @@
                                         <state key="normal" title="건너뛰기">
                                             <color key="titleColor" red="0.1019607843" green="0.1019607843" blue="0.1058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="skipButtonAction:" destination="LSN-et-Jsm" eventType="touchUpInside" id="yqK-Hc-RPr"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ewj-qf-OIZ" userLabel="Button - Next">
                                         <rect key="frame" x="327" y="10" width="79" height="34"/>
@@ -148,6 +153,9 @@
                                         <state key="normal" title="다음으로" image="icNextGrey">
                                             <color key="titleColor" red="0.1019607843" green="0.1019607843" blue="0.1058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="nextButtonAction:" destination="LSN-et-Jsm" eventType="touchUpInside" id="59x-E1-cFg"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -162,7 +170,7 @@
                                     <constraint firstAttribute="trailing" secondItem="60K-HF-cfd" secondAttribute="trailing" id="xpd-iM-pcu"/>
                                 </constraints>
                             </view>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WU9-dj-m2n">
+                            <containerView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WU9-dj-m2n">
                                 <rect key="frame" x="0.0" y="44" width="414" height="764"/>
                                 <connections>
                                     <segue destination="jP1-Kt-2LB" kind="embed" identifier="GuideContent" id="6Cj-Nu-Ci5"/>
@@ -183,9 +191,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="of2-PJ-BOs"/>
                     </view>
-                    <navigationItem key="navigationItem" id="aXj-Qg-fVU"/>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="aXj-Qg-fVU"/>
                     <connections>
                         <outlet property="containerView" destination="WU9-dj-m2n" id="aAG-E9-CuM"/>
+                        <outlet property="nextButton" destination="ewj-qf-OIZ" id="jWB-FO-1qU"/>
+                        <outlet property="skipButton" destination="GRz-iv-IFb" id="SQh-gH-QJf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ebT-18-VaI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

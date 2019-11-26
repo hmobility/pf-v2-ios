@@ -59,7 +59,6 @@ class ViewController: UIViewController {
     public func callTest() {
         let headers: HTTPHeaders = ["appVersion": "1.0.0", "device": "iPhone", "osType": "iOS"]
         
-        
         Alamofire.request("http://52.231.157.88:4010/v2/auth/login", method: .post, parameters: ["username": "String", "password": "String"], encoding: JSONEncoding.default, headers: headers).validate(contentType: ["application/json"]).responseJSON { response in
             print("[DEBUG]", response.error.debugDescription)
             print("[RT]", response.result)

@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 import ObjectMapper
 
-class Coupons: BaseModel {
+class Coupons: BaseModelType {
     var totalCount:Int = 0
     var elements:[Coupon] = [Coupon]()
     
@@ -24,7 +24,7 @@ class Coupons: BaseModel {
     }
 }
 
-class Coupon: BaseModel {
+class Coupon: BaseModelType {
     var id:Int = 0
     var name:String = ""
     var descript:String = ""

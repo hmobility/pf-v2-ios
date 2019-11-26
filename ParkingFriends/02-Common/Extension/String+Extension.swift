@@ -1,0 +1,32 @@
+//
+//  String+Extension.swift
+//  ParkingFriends
+//
+//  Created by PlankFish on 2019/11/19.
+//  Copyright © 2019 Hancom Mobility. All rights reserved.
+//
+
+import Foundation
+
+public enum patternType {
+    case phone_number
+    case email
+}
+
+extension String {
+    func validatePattern(type: patternType) -> Bool {
+        var regEx:String
+        
+        switch type {
+        case .phone_number:
+           // regEx = "^\\d{3}-\\d{4}-\\d{4}$"
+             regEx = "^\\d{3}-\\d{4}-\\d{4}$"
+        case .email:
+            regEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        }
+ 
+        let stringTest = NSPredicate(format: "SELF MATCHES %@", regEx)
+        
+        return stringTest.evaluate(with: self)
+    }
+}

@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 import ObjectMapper
 
-class Point: BaseModel {
+class Point: BaseModelType {
     var point:Int = 0
 
     required init?(map: Map) {

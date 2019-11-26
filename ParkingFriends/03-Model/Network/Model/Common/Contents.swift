@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 import ObjectMapper
 
-class Contents: BaseModel {
+class Contents: BaseModelType {
     var totalCount:Int = 0
     var elements:[ContentsElement] = [ContentsElement]()
 
@@ -24,7 +24,7 @@ class Contents: BaseModel {
     }
 }
 
-class ContentsElement: BaseModel {
+class ContentsElement: BaseModelType {
     var id:Int = 0
     var name:String = ""
     var code:String = ""

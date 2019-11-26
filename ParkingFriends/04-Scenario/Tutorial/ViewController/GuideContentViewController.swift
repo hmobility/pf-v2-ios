@@ -19,23 +19,23 @@ extension GuideContentViewController : AnalyticsType {
 
 class GuideContentViewController: UIViewController {
     
-    @IBOutlet var titleLabel: UILabel!
-    @IBOutlet var subtitleLabel: UILabel!
-    @IBOutlet var pageControl: UIPageControl!
-    @IBOutlet var guideImageView: UIImageView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var subtitleLabel: UILabel!
+    @IBOutlet weak var pageControl: UIPageControl!
+    @IBOutlet weak var guideImageView: UIImageView!
     
     var disposeBag = DisposeBag()
     var viewModel: GuideContentViewModelType
     
     subscript(index: Int) -> GuideContentViewController {
         get {
-            let pageIndex = index % 5
+            let pageIndex = index % 4
             self.viewModel = GuideContentViewModel(pageIndex)
             return self
         }
         
         set(newValue) {
-            let pageIndex = index % 5
+            let pageIndex = index % 4
             self.viewModel = GuideContentViewModel(pageIndex)
         }
     }
@@ -44,11 +44,11 @@ class GuideContentViewController: UIViewController {
 
     private func setupBindings() {
         viewModel.titleText
-            .bind(to: titleLabel.rx.text)
+            .drive(titleLabel.rx.text)
             .disposed(by: disposeBag)
         
         viewModel.subtitleText
-            .bind(to: subtitleLabel.rx.text)
+            .drive(subtitleLabel.rx.text)
             .disposed(by: disposeBag)
         
         viewModel.pageNumber

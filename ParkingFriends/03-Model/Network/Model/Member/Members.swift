@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 import ObjectMapper
 
-class Members: BaseModel {
+class Members: BaseModelType {
     var id:Int = 0
     var username:String = ""
     var email:String = ""
@@ -32,7 +32,7 @@ class Members: BaseModel {
     }
 }
 
-class Car: BaseModel {
+class Car: BaseModelType {
     var trimId:Int = 0
     var colorId:Int = 0
     var number:Int = 0

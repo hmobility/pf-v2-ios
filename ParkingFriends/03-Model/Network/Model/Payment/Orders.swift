@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 import ObjectMapper
 
-class Transaction: BaseModel {
+class Transaction: BaseModelType {
     var transactionId:String = ""
 
     required init?(map: Map) {
@@ -22,7 +22,7 @@ class Transaction: BaseModel {
     }
 }
 
-class Orders: BaseModel {
+class Orders: BaseModelType {
     var totalCount:Int = 0
     var elements:[OrdersElement] = [OrdersElement]()
 
@@ -36,7 +36,7 @@ class Orders: BaseModel {
     }
 }
 
-class OrdersElement: BaseModel {
+class OrdersElement: BaseModelType {
     var id:Int = 0
     var status:String = ""
     var product:[Product] = [Product]()
@@ -66,7 +66,7 @@ class OrdersElement: BaseModel {
     }
 }
 
-class Product: BaseModel {
+class Product: BaseModelType {
     var id:Int = 0
     var status:String = ""
     
@@ -80,7 +80,7 @@ class Product: BaseModel {
     }
 }
 
-class ParkingLot: BaseModel {
+class ParkingLot: BaseModelType {
     var id:Int = 0
     var name:String = ""
     

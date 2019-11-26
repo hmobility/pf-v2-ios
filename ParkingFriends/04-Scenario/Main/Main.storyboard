@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vO0-wJ-fcp">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Main Navigation Controller-->
+        <scene sceneID="dCl-Lo-zwN">
+            <objects>
+                <navigationController navigationBarHidden="YES" id="vO0-wJ-fcp" customClass="MainNavigationController" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cg4-hG-SiS">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="0Pz-gY-zQE" kind="relationship" relationship="rootViewController" id="xyA-eo-Kp7"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zpn-VO-P69" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-491" y="-218"/>
+        </scene>
+        <!--Main View Controller-->
+        <scene sceneID="k2P-Ib-5e3">
+            <objects>
+                <viewController storyboardIdentifier="MainViewController" id="0Pz-gY-zQE" customClass="MainViewController" customModule="ParkingFriends" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kfy-hY-tBW">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pXR-5r-ca4" customClass="NMFMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                                <subviews>
+                                    <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1nR-Nk-QLc" userLabel="View - Zoom Action">
+                                        <rect key="frame" x="366" y="248.5" width="40" height="81"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="81F-bb-XKo">
+                                                <rect key="frame" x="0.0" y="0.0" width="40" height="81"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uab-O4-z2c" userLabel="Button - Zoom In">
+                                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="40" id="SnI-aY-J9x"/>
+                                                            <constraint firstAttribute="width" constant="40" id="iih-7d-zGk"/>
+                                                        </constraints>
+                                                        <color key="tintColor" name="DarkGrey"/>
+                                                        <state key="normal" image="icZoominBlack">
+                                                            <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="selectedColor">
+                                                                <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </button>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C37-lm-ACV" userLabel="View - Middle Line">
+                                                        <rect key="frame" x="0.0" y="40" width="40" height="1"/>
+                                                        <color key="backgroundColor" name="VeryLightPink"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="1" id="nRd-mq-ky1"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="31d-yP-fnt" userLabel="Button - Zoom Out">
+                                                        <rect key="frame" x="0.0" y="41" width="40" height="40"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="40" id="Dvu-BE-mIf"/>
+                                                            <constraint firstAttribute="width" constant="40" id="xjh-YP-rzH"/>
+                                                        </constraints>
+                                                        <state key="normal" image="icZoomoutBlack"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="selectedColor">
+                                                                <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="C37-lm-ACV" secondAttribute="trailing" id="9S0-qX-Yib"/>
+                                                    <constraint firstItem="C37-lm-ACV" firstAttribute="leading" secondItem="81F-bb-XKo" secondAttribute="leading" id="QTG-wG-O5g"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="7"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="0.5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" name="VeryLightPink"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                                        <size key="value" width="0.0" height="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                        <color key="value" name="Black16"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstItem="81F-bb-XKo" firstAttribute="leading" secondItem="1nR-Nk-QLc" secondAttribute="leading" id="5eK-dT-e7u"/>
+                                            <constraint firstItem="81F-bb-XKo" firstAttribute="top" secondItem="1nR-Nk-QLc" secondAttribute="top" id="BVP-PK-Xk4"/>
+                                            <constraint firstAttribute="bottom" secondItem="81F-bb-XKo" secondAttribute="bottom" id="heY-QM-1XS"/>
+                                            <constraint firstAttribute="trailing" secondItem="81F-bb-XKo" secondAttribute="trailing" id="x2z-M2-yrl"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="7"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" name="VeryLightPink"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                                <size key="value" width="0.0" height="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                <color key="value" name="Black16"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="0.5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Njj-dP-feQ" userLabel="Button - Center">
+                                        <rect key="frame" x="362" y="439.5" width="44" height="44"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="LxC-Ga-4WV"/>
+                                            <constraint firstAttribute="width" constant="44" id="s8P-9e-7oY"/>
+                                        </constraints>
+                                        <state key="normal" image="icMylocation"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="0.5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                <color key="value" name="Black16"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" name="VeryLightPink"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="22"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                                <size key="value" width="0.0" height="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="1nR-Nk-QLc" secondAttribute="trailing" constant="8" id="1hP-2J-9kT"/>
+                                    <constraint firstItem="1nR-Nk-QLc" firstAttribute="centerY" secondItem="pXR-5r-ca4" secondAttribute="centerY" multiplier="0.67" id="6Zf-Ul-XT8"/>
+                                    <constraint firstItem="Njj-dP-feQ" firstAttribute="top" secondItem="1nR-Nk-QLc" secondAttribute="bottom" constant="110" id="gXz-d5-pLu"/>
+                                    <constraint firstAttribute="trailing" secondItem="Njj-dP-feQ" secondAttribute="trailing" constant="8" id="s8S-2t-TMC"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="cKK-EK-fIQ" firstAttribute="trailing" secondItem="pXR-5r-ca4" secondAttribute="trailing" id="1vC-gM-5wa"/>
+                            <constraint firstItem="pXR-5r-ca4" firstAttribute="leading" secondItem="cKK-EK-fIQ" secondAttribute="leading" id="8w9-sY-i2v"/>
+                            <constraint firstItem="pXR-5r-ca4" firstAttribute="top" secondItem="kfy-hY-tBW" secondAttribute="top" id="Aou-u7-tHO"/>
+                            <constraint firstItem="cKK-EK-fIQ" firstAttribute="bottom" secondItem="pXR-5r-ca4" secondAttribute="bottom" id="rp0-ky-gtX"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="cKK-EK-fIQ"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="dHd-Xq-pj5"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="centerLocationButton" destination="Njj-dP-feQ" id="E7e-sE-41c"/>
+                        <outlet property="mapView" destination="pXR-5r-ca4" id="yrv-H9-h3p"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kRJ-JW-iWo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="411.59420289855075" y="-218.30357142857142"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="icMylocation" width="20" height="20"/>
+        <image name="icZoominBlack" width="20" height="20"/>
+        <image name="icZoomoutBlack" width="20" height="20"/>
+        <namedColor name="Black16">
+            <color red="0.0" green="0.0" blue="0.0" alpha="0.15999999642372131" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="DarkGrey">
+            <color red="0.10199999809265137" green="0.10199999809265137" blue="0.10599999874830246" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="VeryLightPink">
+            <color red="0.84700000286102295" green="0.84700000286102295" blue="0.84700000286102295" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

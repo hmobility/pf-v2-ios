@@ -1,0 +1,123 @@
+// Common
+"btn_close" = "닫기";
+"btn_login" = "로그인";
+"btn_signup" = "회원가입";
+"btn_modify" = "수정";
+"btn_select" = "선택";
+"btn_skip" = "건너뛰기";
+"btn_save" = "저장";
+"btn_to_save" = "저장하기";
+"btn_resend" = "재전송";
+"btn_to_next" = "다음으로";
+"btn_email_send" = "이메일 전송";
+"btn_to_start" = "시작하기";
+
+// Entry
+"txt_signup_guide" = "파킹프렌즈가 처음이세요?";
+"btn_phone_number_change" = "번호가 바뀌셨나요?";
+"btn_password_find" = "비밀번호 찾기";
+"ph_input_account" = "ID(휴대폰번호)를 입력하세요";
+"ph_input_password" = "비밀번호를 입력하세요";
+"txt_account_migration_guide" = "기존 회원이신 경우 정보이관 버튼을 눌러주세요";
+"btn_account_migration" = "기존 정보 이관하기";
+
+// Find
+"ttl_change_phone_number" = "휴대폰번호 변경";
+"dsc_hange_phone_number" = "가입시 입력한 이메일 주소를 입력하세요.\n휴대폰번호 변경 메일을 발송해드립니다.";
+"ttl_input_email_find" = "이메일주소 입력";
+"ph_input_email_find" = "이메일주소 입력";
+"btn_new_number_login" = "변경된 번호로 로그인하기";
+"ttl_password_find" = "비밀번호 찾기";
+"dsc_password_find" = "가입 시 입력하신 이메일 주소를 입력하세요.\n임시 비밀번호를 이메일로 보내드립니다.";
+
+// Car Info
+"ttl_input_car_info" = "차량정보 등록";
+"ttl_input_car_info" = "브랜드 및 모델명 선택";
+"ttl_car_type" = "차량종류";
+"ph_car_type" = "기아 올 뉴 모닝";
+"ttl_car_number" = "차량번호";
+"ph_car_number" = "서울10가1234";
+"ttl_car_color" = "차량색상";
+"ph_car_color" = "흰색";
+"ttl_color_picker" = " 차량색상 선택";
+
+// Color Index
+"itm_white" = "흰색";
+"itm_black" = "검은색";
+"itm_dark_gray" = "쥐색";
+"itm_silver" = "은색";
+"itm_blue" = "파랑색";
+"itm_red" = "빨강색";
+"itm_gold" = "금색";
+"itm_blue_green" = "청녹색";
+"itm_dark_green" = "녹색";
+"itm_brown" = "갈색";
+"itm_sky_blue" = "하늘색";
+
+// Payment
+"ttl_card_info" = "결제 정보 입력";
+"ttl_card_number" = "카드번호";
+"ph_card_number" = "0000 0000 0000 0000";
+"ttl_card_expiration_date" = "유효기간";
+"ph_card_expiration_date" = "MM/YY";
+"ttl_card_password" = "비밀번호 앞 두자리";
+"ph_card_password" = "●●";
+"ttl_social_number" = "주민등록번호 앞자리";
+"ph_social_number" = "900130";
+
+// Registration
+"ttl_basic_info" = "기본정보 입력";
+"ttl_input_phone_number" = "휴대폰번호";
+"ph_input_phone_number" = "01012341234";
+"ttl_email_input" = "이메일주소";
+"ph_email_input" = "메일 주소 입력";
+"ttl_password_input" = "비밀번호";
+"ph_password_input" = "영문·숫자 포함, 최소 8자";
+"ttl_nickname_input" = "닉네임";
+"ph_nickname_input" = "한글·영문만 사용, 최대 8자";
+"ttl_phone_number_verify" = "휴대폰 인증";
+"dsc_pnone_number_verify" = "로그인을 위해 휴대폰 인증이 필요합니다.\n본인 명의의 휴대폰 정보를 입력해주세요.";
+"ttl_input_phone_number" = "휴대폰번호";
+"ph_input_phone_number" = "-를 제외하고 입력";
+"btn_code_send" = "인증번호 전송";
+"ttl_code_verify" = "인증번호 입력";
+"dsc_code_verify" = "%@로 인증번호를 전송했습니다.\n인증번호를 입력해주세요.";
+"ttl_code_verify_input" = "인증번호";
+"ph_code_verify_input" = "숫자 4자리";
+"ttl_agreement" = "약관동의";
+"dsc_agreement" = "파킹프렌즈 서비스 이용을 위해서\n아래 약관에 동의해주세요.";
+"ttl_usage" = "이용약관";
+"ttl_personal_info" = "개인정보 취급방침";
+"ttl_location_service" = "위치기반서비스 이용약관";
+"ttl_third_party_info" = "제 3자 정보 제공";
+"ttl_marketing_info" = "개인정보 마케팅 활용";
+"txt_agreement_sentence_end" = "에 동의합니다.";
+"txt_aggree_all" = "모두 동의합니다.";
+"txt_agreement_option" = "(선택)";
+
+// Tutorial
+"ttl_guide_1" = "가장싼주차장,모두모였다!";
+"dsc_guide_1" = "다른 앱들과 비교할 필요 없어요.\n이제 파킹프렌즈에서 가장 저렴하게 주차하세요.";
+"ttl_guide_2" = "빈 자리 찾아 헤매지 말자!";
+"dsc_guide_2" = "파킹프렌즈 제휴 주차장의 스마트 센서가\n빈 자리를 실시간으로 알려드려요.";
+"ttl_guide_3" = "내 차 상태, 실시간으로 확인";
+"dsc_guide_3" = "실시간 CCTV 화면으로\n내 차가 안전하게 주차되어 있는지 확인하세요.";
+"ttl_guide_4" = "음성 인식으로 검색, 예약, 결제까지";
+"dsc_guide_4" = "말랑아~ 하고 불러보세요.\n목소리만으로 주차장 검색과 예약이 가능해요.";
+"ttl_guide_5" = "소중한 당신에게, 더 큰 혜택";
+"dsc_guide_5" = "이용 실적에 따른 차별화된 혜택으로\n한 단계 업그레이드 된 주차 생활을 즐기세요!";
+
+// Message
+"msg_phone_number_email_sent" = "입력하신 메일로 확인 메일을 발송했습니다.\n메일을 확인해 변경을 완료해주세요.";
+"msg_pw_email_sent" = "입력하신 메일 주소로\n임시 비밀번호를 전송했습니다.";
+"msg_invalid_email" = "올바르지 않은 메일 주소입니다.\n확인 후 다시 입력해주세요.";
+"msg_invalid_phone_number" = "올바르지 않은 휴대폰 번호입니다.\n확인 후 다시 입력해주세요.";
+"msg_invalid_verify_code" = "인증번호가 일치하지 않습니다.\n확인 후 다시 입력해주세요.";
+"msg_nickname_changed" = "닉네임이 성공적으로 저장되었습니다.";
+"msg_payment_registered" = "새 결제 수단이 정상적으로 등록되었습니다.";
+"msg_point_charged" = "포인트가 정상적으로 충전되었습니다.\n현재 보유 포인트는 %@ P 입니다.";
+"msg_cannot_use_lot" = "예약하신 주차장을 이용할 수 없습니다.";
+"msg_reserved_time_approaching" = "예약한 주차 시간이 거의 다 됐어요!";
+"msg_parked_time_remaining" = "주차 시간이 %@ 시간 %@ 분 남았습니다.";
+"msg_reserved_time_exceeded" = "예약 시간을 %@ 분 초과했습니다.";
+"msg_invalid_reserving_time" = "선택하신 시간엔 다른 차량이 주차를 준비하고 있어요.\n예약 시간을 변경해 주세요.";

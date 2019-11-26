@@ -19,10 +19,7 @@ extension SplashViewController : AnalyticsType {
 
 class SplashViewController: UIViewController {
     
-    private func moveTutorial() {
-        let tutorial = Storyboard.tutorial.instantiateInitialViewController() as! UINavigationController
-        self.modal(tutorial, animated: false)
-    }
+    // MARK: - Life Cycle
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -36,12 +33,17 @@ class SplashViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         trackScreen()
-        moveTutorial()
+        navigateEntry()
+    }
+    
+    // MARK: - Navigation
+    
+    private func navigateEntry() {
+        let entry = Storyboard.entry.instantiateInitialViewController() as! UINavigationController
+        self.modal(entry, animated: false)
     }
 
     /*
-    // MARK: - Navigation
-
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
