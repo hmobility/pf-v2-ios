@@ -17,7 +17,6 @@
 		6210BAC8237931DA001C6065 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6210BAC7237931DA001C6065 /* AppConfig.swift */; };
 		62254E8B238B992500AF82B9 /* Parkinglots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62254E8A238B992500AF82B9 /* Parkinglots.swift */; };
 		62254E8D238B995A00AF82B9 /* ParkingLotAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62254E8C238B995A00AF82B9 /* ParkingLotAPI.swift */; };
-		62254E8F238BA22F00AF82B9 /* ParkingLot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62254E8E238BA22F00AF82B9 /* ParkingLot.swift */; };
 		622BC0E02368011F00A43F02 /* GuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622BC0DF2368011F00A43F02 /* GuideViewController.swift */; };
 		622BC0E22368012A00A43F02 /* GuideContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622BC0E12368012A00A43F02 /* GuideContentViewController.swift */; };
 		622BC0E42368131400A43F02 /* GuideFinishedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622BC0E32368131400A43F02 /* GuideFinishedViewController.swift */; };
@@ -49,6 +48,7 @@
 		62601D6A238FA54B00B78033 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62601D69238FA54B00B78033 /* CoreLocation.framework */; };
 		62601D702390A59200B78033 /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62601D6F2390A59200B78033 /* Member.swift */; };
 		62601D742390FE5300B78033 /* CustomTimeSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62601D732390FE5300B78033 /* CustomTimeSelectionView.swift */; };
+		62601D762391173900B78033 /* ParkingLot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62601D752391173900B78033 /* ParkingLot.swift */; };
 		62630B422383E4BD0029724B /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62630B412383E4BD0029724B /* String+Extension.swift */; };
 		62630B45238506490029724B /* PhoneNumberViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62630B44238506490029724B /* PhoneNumberViewModel.swift */; };
 		62630B47238534FB0029724B /* CodeVerifyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62630B46238534FB0029724B /* CodeVerifyViewModel.swift */; };
@@ -184,7 +184,6 @@
 		6210BAC7237931DA001C6065 /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
 		62254E8A238B992500AF82B9 /* Parkinglots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parkinglots.swift; sourceTree = "<group>"; };
 		62254E8C238B995A00AF82B9 /* ParkingLotAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingLotAPI.swift; sourceTree = "<group>"; };
-		62254E8E238BA22F00AF82B9 /* ParkingLot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingLot.swift; sourceTree = "<group>"; };
 		622BC0DF2368011F00A43F02 /* GuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideViewController.swift; sourceTree = "<group>"; };
 		622BC0E12368012A00A43F02 /* GuideContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideContentViewController.swift; sourceTree = "<group>"; };
 		622BC0E32368131400A43F02 /* GuideFinishedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideFinishedViewController.swift; sourceTree = "<group>"; };
@@ -217,6 +216,7 @@
 		62601D69238FA54B00B78033 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		62601D6F2390A59200B78033 /* Member.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Member.swift; sourceTree = "<group>"; };
 		62601D732390FE5300B78033 /* CustomTimeSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTimeSelectionView.swift; sourceTree = "<group>"; };
+		62601D752391173900B78033 /* ParkingLot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingLot.swift; sourceTree = "<group>"; };
 		62630B412383E4BD0029724B /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		62630B44238506490029724B /* PhoneNumberViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberViewModel.swift; sourceTree = "<group>"; };
 		62630B46238534FB0029724B /* CodeVerifyViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodeVerifyViewModel.swift; sourceTree = "<group>"; };
@@ -1051,7 +1051,7 @@
 			children = (
 				A4BA4BD0235EC91A00D30DFE /* Auth.swift */,
 				62601D6F2390A59200B78033 /* Member.swift */,
-				62254E8E238BA22F00AF82B9 /* ParkingLot.swift */,
+				62601D752391173900B78033 /* ParkingLot.swift */,
 			);
 			path = Session;
 			sourceTree = "<group>";
@@ -1290,11 +1290,11 @@
 				629C2886237137C400E0E5E1 /* CarBrandViewController.swift in Sources */,
 				629C285F236BF25F00E0E5E1 /* EntryViewController.swift in Sources */,
 				A4225E712357F7F9004F48C4 /* HttpSession.swift in Sources */,
+				62601D762391173900B78033 /* ParkingLot.swift in Sources */,
 				622BC0E42368131400A43F02 /* GuideFinishedViewController.swift in Sources */,
 				62630B422383E4BD0029724B /* String+Extension.swift in Sources */,
 				623E122B23820EA700498C87 /* PhoneNumberModel.swift in Sources */,
 				62AE723E23795AC000BE6FA3 /* MessageDialogView.swift in Sources */,
-				62254E8F238BA22F00AF82B9 /* ParkingLot.swift in Sources */,
 				A40ACD3523543F8D000E4967 /* ViewController.swift in Sources */,
 				6210BABB237901BF001C6065 /* PasswordModel.swift in Sources */,
 				629C286B236E957400E0E5E1 /* BasicInfoInputViewController.swift in Sources */,
