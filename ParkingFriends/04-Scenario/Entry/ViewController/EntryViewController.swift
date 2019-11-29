@@ -28,9 +28,9 @@ class EntryViewController: UIViewController {
     // MARK: - Button Action
     
     @IBAction func loginButtonAction(_ sender: Any) {
-        navigateToLogin()
+       // navigateToLogin()
        
-       // navigateToMain()
+        navigateToMain()
         
         self.trackLog()
         self.track("gender", forName:"female")
