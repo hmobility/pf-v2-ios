@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Alamofire
 import ObjectMapper
 
 class Transaction: BaseModelType {
@@ -40,7 +39,7 @@ class OrdersElement: BaseModelType {
     var id:Int = 0
     var status:String = ""
     var product:[Product] = [Product]()
-    var parkinglot:[ParkingLot] = [ParkingLot]()
+    var parkinglot:[Parkinglot] = [Parkinglot]()
     var from:String = ""
     var to:String = ""
     var dateCreated:String = ""
@@ -80,7 +79,7 @@ class Product: BaseModelType {
     }
 }
 
-class ParkingLot: BaseModelType {
+class Parkinglot: BaseModelType {
     var id:Int = 0
     var name:String = ""
     

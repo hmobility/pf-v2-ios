@@ -13,7 +13,7 @@ import RxViewController
 
 extension GuideContentViewController : AnalyticsType {
     var screenName: String {
-        return "Guide Content Screen"
+        return "[SCREEN] Guide Content"
     }
 }
 

@@ -29,4 +29,9 @@ extension String {
         
         return stringTest.evaluate(with: self)
     }
+    
+    func stringFromSecondsInterval(seconds: Int) -> String {
+      return String(format: "%0.2d:%0.2d",
+        arguments: [(seconds % 3600) / 60, (seconds % 3600) % 60])
+    }
 }

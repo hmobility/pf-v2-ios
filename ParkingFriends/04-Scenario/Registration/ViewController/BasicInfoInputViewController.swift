@@ -7,8 +7,13 @@
 //
 
 import UIKit
-import RxSwift
-import RxCocoa
+
+
+extension BasicInfoInputViewController : AnalyticsType {
+    var screenName: String {
+        return "[SCREEN] Basic Info"
+    }
+}
 
 class BasicInfoInputViewController: UIViewController {
 
@@ -20,7 +25,11 @@ class BasicInfoInputViewController: UIViewController {
     @IBOutlet weak var backButton: UIBarButtonItem!
     @IBOutlet weak var nextButton: UIButton!
     
-    private var viewModel: BasicInfoViewModelType
+    @IBOutlet weak var nextButtonBottomConstraint: NSLayoutConstraint!
+    
+    private var registrationModel: RegistrationModel = RegistrationModel.shared
+    
+    private lazy var viewModel: BasicInfoViewModelType = BasicInfoViewModel(phoneNumber: registrationModel.phoneNumber!)
     private let disposeBag = DisposeBag()
     
     // MARK: - Button Action
@@ -32,17 +41,39 @@ class BasicInfoInputViewController: UIViewController {
     @IBAction func nextButtonAction(_ sender: Any) {
         navigateToAgreement()
     }
+        
+    
+    // MARK: - Initialize
+    
+    init() {
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    private func initialize() {
+        setupBindings()
+        setupKeyboard()
+    }
     
     // MARK: - Binding
     
     private func setupBindings() {
         
-        // Phone Number
-        viewModel.placeholder(textField: phoneNumberField.inputTextField, "phone_number_input_placeholder")
+        // Navigation Title
         
+        viewModel.viewTitle
+                .drive(self.navigationItem.rx.title)
+                .disposed(by: disposeBag)
+
+        // Phone Number
         viewModel.phoneNumberInputTitle
-            .bind(to: phoneNumberField.fieldTitleLabel.rx.text)
-            .disposed(by: disposeBag)
+                .drive(phoneNumberField.fieldTitleLabel.rx.text)
+                .disposed(by: disposeBag)
+        
+      //  phoneNumberField.displayTextLabel.
         
         viewModel.phoneNumberMessageText
             .bind(to: phoneNumberField.messageLabel.rx.text)
@@ -50,11 +81,13 @@ class BasicInfoInputViewController: UIViewController {
         
         // e-mail
         
-        viewModel.placeholder(textField: emailField.inputTextField, "email_input_placeholder")
-        
         viewModel.emailInputTitle
-            .bind(to: emailField.fieldTitleLabel.rx.text)
-            .disposed(by: disposeBag)
+                .drive(emailField.fieldTitleLabel.rx.text)
+                .disposed(by: disposeBag)
+        
+        viewModel.emailInputPlaceholder
+                .drive(emailField.inputTextField.rx.placeholder)
+                .disposed(by: disposeBag)
         
         viewModel.emailMessageText
             .bind(to: emailField.messageLabel.rx.text)
@@ -62,53 +95,88 @@ class BasicInfoInputViewController: UIViewController {
         
         // Password
         
-        viewModel.placeholder(textField: passwordField.inputTextField, "password_input_placeholder")
-        
         viewModel.passwordInputTitle
-            .bind(to: passwordField.fieldTitleLabel.rx.text)
-            .disposed(by: disposeBag)
+                .drive(passwordField.fieldTitleLabel.rx.text)
+                .disposed(by: disposeBag)
+        
+        viewModel.passwordInputPlaceholder
+                .drive(passwordField.inputTextField.rx.placeholder)
+                .disposed(by: disposeBag)
         
         viewModel.passwordMessageText
-            .bind(to: passwordField.messageLabel.rx.text)
-            .disposed(by: disposeBag)
+                .bind(to: passwordField.messageLabel.rx.text)
+                .disposed(by: disposeBag)
         
         // Nickname
         
-        viewModel.placeholder(textField: nicknameField.inputTextField, "nickname_input_placeholder")
-        
         viewModel.nicknameInputTitle
-                   .bind(to: nicknameField.fieldTitleLabel.rx.text)
-                   .disposed(by: disposeBag)
+                .drive(nicknameField.fieldTitleLabel.rx.text)
+                .disposed(by: disposeBag)
+        
+        viewModel.nicknameInputPlaceholder
+                .drive(nicknameField.inputTextField.rx.placeholder)
+                .disposed(by: disposeBag)
         
         viewModel.nicknameMessageText
                  .bind(to: nicknameField.messageLabel.rx.text)
                  .disposed(by: disposeBag)
+    }
+    
+    private func setupKeyboard() {
+        RxKeyboard.instance.willShowVisibleHeight
+            .drive(onNext: { height in
+                self.nextButtonBottomConstraint.constant = height - self.view.safeAreaInsets.bottom
+                self.view.layoutIfNeeded()
+            })
+            .disposed(by: disposeBag)
         
-        viewModel.nicknameInputTitle
-            .bind(to: nicknameField.fieldTitleLabel.rx.text)
+        RxKeyboard.instance.isHidden
+            .distinctUntilChanged()
+            .drive(onNext: { hidden in
+                if hidden {
+                    self.nextButtonBottomConstraint.constant = 0
+                    self.view.layoutIfNeeded()
+                }
+            })
+            .disposed(by: disposeBag)
+        
+        phoneNumberField.inputTextField.addDoneButtonOnKeyboard()
+        emailField.inputTextField.addDoneButtonOnKeyboard()
+        nicknameField.inputTextField.addDoneButtonOnKeyboard()
+        passwordField.inputTextField.addDoneButtonOnKeyboard()
+    }
+    
+    private func setupButtonBinding() {
+        viewModel.proceed.asDriver()
+            .drive(onNext: { [unowned self] (status, message) in
+                self.nextButton.isEnabled = status == .valid ? true : false
+                /*
+                switch status {
+                case .valid:
+                    break
+                case .sent:
+                    MessageDialog.show(message!, icon:.success)
+                case .invalid:
+                    MessageDialog.show(message!)
+                case .verified:
+                    print("[CODE] to the next")
+                    self.navigateToBasicInfoInput()
+                default:
+                    break
+                }
+ */
+            })
+            .disposed(by: disposeBag)
+
+        
+        nextButton.rx.tap
+            .subscribe(onNext: { _ in
+
+            })
             .disposed(by: disposeBag)
     }
     
-    private func initialize() {
-        setupBindings()
-        
-        //phoneNumberField.binding()
-        //emailField.binding()
-        //passwordField.binding()
-        //nicknameField.binding()
-    }
     
-    // MARK: - Initialize
-    
-    init(viewModel: BasicInfoViewModelType = BasicInfoViewModel()) {
-        self.viewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        viewModel = BasicInfoViewModel()
-        super.init(coder: aDecoder)
-    }
     
     // MARK: - Life Cycle
     

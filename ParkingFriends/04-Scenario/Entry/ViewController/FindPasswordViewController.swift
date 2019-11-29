@@ -10,7 +10,7 @@ import UIKit
 
 extension FindPasswordViewController : AnalyticsType {
     var screenName: String {
-        return "Find Password Screen"
+        return "[SCREEN] Find Password"
     }
 }
 
@@ -92,7 +92,7 @@ class FindPasswordViewController: UIViewController {
                 } 
             }).disposed(by: disposeBag)
         
-        
+        /*
         viewModel.credential.asDriver().asDriver(onErrorJustReturn: .none)
             .drive(onNext: { [unowned self] status in
                 switch status {
@@ -111,6 +111,7 @@ class FindPasswordViewController: UIViewController {
                 }
             })
             .disposed(by: disposeBag)
+ */
     }
        
     

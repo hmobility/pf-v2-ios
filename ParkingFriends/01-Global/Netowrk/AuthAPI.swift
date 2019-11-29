@@ -42,7 +42,7 @@ struct AuthAPI:BaseAPI {
     }
     
     // 휴대폰 OTP 확인
-    static func otp_check(phoneNumber:String, otp:String, otpId:String, httpMethod:HttpMethod = .post, auth:APIAuthType = .serviceKey) -> RestURL  {
+    static func otp_check(phoneNumber:String, otp:String, otpId:Int, httpMethod:HttpMethod = .post, auth:APIAuthType = .serviceKey) -> RestURL  {
         let params:Params = ["phoneNumber": phoneNumber, "otp": otp, "otpId": otpId]
         let url = build(host:host, endpoint:"/auth/otp/check", params: nil)
         return (httpMethod, url, auth, params)

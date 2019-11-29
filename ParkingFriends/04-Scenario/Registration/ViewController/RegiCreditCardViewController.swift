@@ -12,7 +12,7 @@ import RxCocoa
 
 extension RegiCreditCardViewController : AnalyticsType {
     var screenName: String {
-        return "Registering Credit Card Screen"
+        return "[SCREEN] Registering Credit Card"
     }
 }
 

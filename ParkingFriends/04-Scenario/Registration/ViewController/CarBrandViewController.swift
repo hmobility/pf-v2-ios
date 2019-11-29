@@ -12,7 +12,7 @@ import RxCocoa
 
 extension CarBrandViewController : AnalyticsType {
     var screenName: String {
-        return "Car Brand Screen"
+        return "[SCREEN] Car Brand Selection"
     }
 }
 

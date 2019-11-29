@@ -9,6 +9,18 @@
 import UIKit
 
 class Auth : HttpSession {
+    
+    // 로그인 : /v1/auth/login
+    static public func login(username:String, password:String) -> Observable<(Login?, ResponseCodeType)> {
+        let data = AuthAPI.login(username: username, password: password)
+
+        return self.shared.dataTask(httpMethod: data.method, auth: data.auth, path: data.url, parameters: data.params!)
+            .map ({  result in
+                return (Login(JSON: result.data!), result.codeType)
+            })
+    }
+    
+    // 로그인
     static public func login(username:String, password:String, completion:@escaping(_ data:Login?, _ message:String?) -> Void) {
         let data = AuthAPI.login(username: username, password: password)
 
@@ -22,6 +34,16 @@ class Auth : HttpSession {
         }, failure: { message in
             
         })
+    }
+    
+    // 로그아웃 : /v1/auth/logout
+    static public func logout() -> Observable<(ResponseCodeType)> {
+        let data = AuthAPI.logout()
+
+        return self.shared.dataTask(httpMethod: data.method, auth: data.auth, path: data.url, parameters: data.params!)
+            .map ({  result in
+                return result.codeType
+            })
     }
     
     static public func logout(username:String, password:String, completion:@escaping(_ completed:Bool, _ message:String?) -> Void) {
@@ -52,7 +74,7 @@ class Auth : HttpSession {
              
          })
      }
-    
+ /*
      // 휴대폰 OTP 전송 : /v1/auth/otp
     static public func otp(phoneNumber:String, completion:@escaping(_ completed:Otp?, _ message:String?) -> Void) {
         let data = AuthAPI.otp(phoneNumber: phoneNumber)
@@ -68,32 +90,17 @@ class Auth : HttpSession {
             
         })
     }
-    
+*/
     // 휴대폰 OTP 전송 : /v1/auth/otp
     static public func otp(phoneNumber:String) -> Observable<(Otp?, ResponseCodeType)> {
         let data = AuthAPI.otp(phoneNumber: phoneNumber)
-    
+        
         return self.shared.dataTask(httpMethod: data.method, auth: data.auth, path: data.url, parameters: data.params!)
             .map ({  result in
                 return (Otp(JSON: result.data!), result.codeType)
             })
-        
-        
-        /*
-        return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params!) {( result in
-                
-                if let result = response {
-                    let object = Otp(JSON: result)
-                    completion(object, message)
-                } else {
-                    completion(nil, message)
-                }
-        }, failure: { message in
-            
-        })
- */
     }
-    
+/*
     // 휴대폰 OTP 확인 : /v1/auth/otp/check
     static public func otp_check(phoneNumber:String, otp:String, otpId:String, completion:@escaping(_ completed:Bool, _ message:String?) -> Void) {
         let data = AuthAPI.otp_check(phoneNumber: phoneNumber, otp: otp, otpId: otpId)
@@ -107,5 +114,15 @@ class Auth : HttpSession {
         }, failure: { message in
             
         })
+    }
+*/
+    // 휴대폰 OTP 확인 : /v1/auth/otp/check
+    static public func otp_check(phoneNumber:String, otp:String, otpId:Int) -> Observable<ResponseCodeType>  {
+        let data = AuthAPI.otp_check(phoneNumber: phoneNumber, otp: otp, otpId: otpId)
+        
+        return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params!)
+            .map ({  result in
+                return result.codeType
+            })
     }
 }

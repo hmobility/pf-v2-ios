@@ -9,13 +9,6 @@
 import Foundation
 import UIKit
 
-// 이메일, OPT 발송 상태 체크 용 타입
-public enum SentStatus {
-    case none
-    case valid          // 입력 형식 체크
-    case sent           // 발신 완료
-    case invalid        // 발신 결과 인증 안됨
-}
 
 public protocol ChangePhoneNumberViewModelType {
     var titleText: Driver<String> { get }
@@ -28,11 +21,11 @@ public protocol ChangePhoneNumberViewModelType {
     
     var confirmText: BehaviorRelay<String> { get set}
     
-    var credential: BehaviorRelay<SentStatus> { get }
+    var credential: BehaviorRelay<CheckType> { get }
     
-    func message(_ status:SentStatus) -> String
-    func switchButton(_ status:SentStatus)
-    func updateStatus(_ status:SentStatus)
+    func message(_ status:CheckType) -> String
+    func switchButton(_ status:CheckType)
+    func updateStatus(_ status:CheckType)
     func sendVerification(email:String, type:AuthEmailType)
 }
 
@@ -47,7 +40,7 @@ class ChangePhoneNumberViewModel: ChangePhoneNumberViewModelType {
     
     var confirmText: BehaviorRelay<String>
     
-    let credential: BehaviorRelay<SentStatus> = BehaviorRelay(value: .none)
+    let credential: BehaviorRelay<CheckType> = BehaviorRelay(value: .none)
     
     private let disposeBag = DisposeBag()
     private var localizer:LocalizerType
@@ -68,11 +61,11 @@ class ChangePhoneNumberViewModel: ChangePhoneNumberViewModelType {
     
     // MARK: - Public Methods
     
-    func updateStatus(_ status:SentStatus) {
+    func updateStatus(_ status:CheckType) {
         credential.accept(status)
     }
     
-    func message(_ status:SentStatus) -> String {
+    func message(_ status:CheckType) -> String {
         switch status {
         case .sent:
             return localizer.localized("msg_email_sent")
@@ -83,7 +76,7 @@ class ChangePhoneNumberViewModel: ChangePhoneNumberViewModelType {
         }
     }
     
-    func switchButton(_ status:SentStatus) {
+    func switchButton(_ status:CheckType) {
         switch status {
         case .sent:
             confirmText.accept(localizer.localized("new_number_login"))

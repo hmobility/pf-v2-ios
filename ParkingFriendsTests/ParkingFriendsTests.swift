@@ -35,13 +35,15 @@ class ParkingFriendsTests: XCTestCase {
 extension ParkingFriendsTests {
     func testAuth() {
    //     let result = expectation(description: "Login Request")
-        Login.login(username: "Test_User", password: "Password1234") { (login, message) in
-            print(login)
-            if login == nil {
-         //       result.fulfill()
-            } else {
-                XCTFail()
-            }
-        }
+        
+        Auth.login(username: "01012341234", password: "passw0rd") { [weak self] (login, message) in
+                   print("[R]", login.debugDescription)
+                   if let _ = message {
+                    //   result.fulfill()
+                   } else {
+                    //   self!.updateStatus(.verified)
+                   }
+               }
+        
     }
 }

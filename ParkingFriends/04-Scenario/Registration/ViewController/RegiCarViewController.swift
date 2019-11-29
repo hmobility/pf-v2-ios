@@ -12,7 +12,7 @@ import RxCocoa
 
 extension RegiCarViewController : AnalyticsType {
     var screenName: String {
-        return "Registering Car Screen"
+        return "[SCREEN] Registering Car Info"
     }
 }
 

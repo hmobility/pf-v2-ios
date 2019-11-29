@@ -11,8 +11,8 @@ import Alamofire
 
 struct MembersAPI:BaseAPI {
     // 회원 가입
-    static func enroll(username:String, password:String, email:String, nickname:String, oldMemberId:Int, httpMethod:HttpMethod = .post, auth:APIAuthType = .serviceKey) -> RestURL  {
-        let params:Params = ["username": username, "password": password, "email":email, "nickname":nickname, "oldMemberId":oldMemberId]
+    static func members(username:String, password:String, email:String, nickname:String, oldMemberId:Int, agreeMarketing:Bool, httpMethod:HttpMethod = .post, auth:APIAuthType = .serviceKey) -> RestURL  {
+        let params:Params = ["username": username, "password": password, "email":email, "nickname":nickname, "oldMemberId":oldMemberId, "agreeMarketing":agreeMarketing]
         let url = build(host:host, endpoint:"/members", params: nil)
         return (httpMethod, url, auth, params)
     }

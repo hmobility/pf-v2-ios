@@ -19,13 +19,14 @@ protocol PhoneNumberViewModelType {
     
     var phoneNumberModel:PhoneNumberModel { get }
     var status:BehaviorRelay<VerificationStatus> { get set }
-    var credential: BehaviorRelay<(SentStatus, String?)> { get }
+    var credential: BehaviorRelay<(CheckType, String?)> { get }
     
     var proceed: BehaviorRelay<Bool> { get }
+    var registrationMdoel : RegistrationModel { get }
     
     func validateCredentials()
-    func updateStatus(_ status:SentStatus)
-    func message(_ status:SentStatus) -> String
+    func updateStatus(_ status:CheckType)
+    func message(_ status:CheckType) -> String
 }
 
 class PhoneNumberViewModel: PhoneNumberViewModelType {
@@ -41,8 +42,10 @@ class PhoneNumberViewModel: PhoneNumberViewModelType {
     
     var status:BehaviorRelay<VerificationStatus> = BehaviorRelay(value:.none)
     
-    let credential: BehaviorRelay<(SentStatus, String?)> = BehaviorRelay(value: (.none, nil))
+    let credential: BehaviorRelay<(CheckType, String?)> = BehaviorRelay(value: (.none, nil))
     var proceed: BehaviorRelay<Bool> = BehaviorRelay(value: false)
+    
+    var registrationMdoel: RegistrationModel = RegistrationModel.shared
      
     private let disposeBag = DisposeBag()
     private var localizer:LocalizerType
@@ -55,8 +58,8 @@ class PhoneNumberViewModel: PhoneNumberViewModelType {
         titleText = localizer.localized("ttl_phone_number_verify")
         subtitleText = localizer.localized("dsc_pnone_number_verify")
             
-        inputTitle = localizer.localized("ttl_phone_number_input")
-        inputPlaceholder = localizer.localized("ph_phone_number_input")
+        inputTitle = localizer.localized("ttl_input_phone_number")
+        inputPlaceholder = localizer.localized("ph_input_phone_number")
         
         sendText = localizer.localized("btn_code_send")
         
@@ -70,51 +73,27 @@ class PhoneNumberViewModel: PhoneNumberViewModelType {
     }
     
     private func setupBidning() {
-        
         phoneNumberModel.valid
             .asDriver()
             .drive(onNext: { valid in
                 self.updateStatus(valid ? .valid : .none )
             })
             .disposed(by: disposeBag)
-        /*
-        phoneNumberModel.data
-            .asDriver()
-            .asObservable()
-            .scan("") { (previous, new) -> String in
-                if new.count > 11 {
-                    return previous
-                } else {
-                    return new
-                }
-            }
-            .subscribe(onNext: { text in
-                
-                let result = text.validatePattern(type: .phone_number)
-                
-                print("[R]", result)
-               // self.phoneNumberModel.data.accept(text)
-                self.updateStatus(result ? .valid : .none)
-               // debugPrint("[MATCHING]", result)
-               // print("[UPDATED] ", self.credential.value)
-            })
-            .disposed(by: disposeBag)
-  */
     }
     
     // MARK: - Public Methods
     
-    func updateStatus(_ status:SentStatus) {
+    func updateStatus(_ status:CheckType) {
         switch status {
         case .valid:
             proceed.accept(true)
             credential.accept((status, nil))
         case .sent:
             proceed.accept(true)
-            credential.accept((status, localizer.localized("msg_email_sent")))
+            credential.accept((status, localizer.localized("msg_code_verify_sent")))
         case .invalid:
             proceed.accept(false)
-            credential.accept((status, localizer.localized("msg_invalid_email")))
+            credential.accept((status, localizer.localized("msg_email_invalid")))
         default:
             proceed.accept(false)
             credential.accept((status, nil))
@@ -130,16 +109,16 @@ class PhoneNumberViewModel: PhoneNumberViewModelType {
         }
         
         if let number = phoneNumberModel.phoneNumber {
-            checkCredentials(phoneNumber: number)
+            rquestOtp(phoneNumber: number)
         }
     }
     
-    func message(_ status:SentStatus) -> String {
+    func message(_ status:CheckType) -> String {
         switch status {
         case .sent:
-            return localizer.localized("msg_email_sent")
+            return localizer.localized("msg_code_verify_sent")
         case .invalid:
-            return localizer.localized("msg_invalid_email")
+            return localizer.localized("msg_phone_number_invalid")
         default :
             return ""
         }
@@ -147,40 +126,18 @@ class PhoneNumberViewModel: PhoneNumberViewModelType {
     
     // MARK : Local Methods
     
-    func checkCredentials(phoneNumber:String) {
+    func rquestOtp(phoneNumber:String) {
         Auth.otp(phoneNumber: phoneNumber).asObservable().subscribe(onNext: {(otp, code) in
             if code == .success {
-                RegistrationModel.shared.otp = otp
+                self.registrationMdoel.otp(otp!, phoneNumber: phoneNumber)
                 self.updateStatus(.sent)
             } else {
-                RegistrationModel.shared.otp = nil
+                self.registrationMdoel.resetOtp()
                 self.updateStatus(.invalid)
             }
-            /*
-            if let result = otp {
-                RegistrationModel.shared.otp = result
-                self.updateStatus(.sent)
-            } else {
-                RegistrationModel.shared.otp = nil
-                self.updateStatus(.invalid)
-            }
-             */
         }, onError: { error in
-            RegistrationModel.shared.otp = nil
+            self.registrationMdoel.resetOtp()
             self.updateStatus(.invalid)
         }).disposed(by: disposeBag)
-        
-        return
-            /*
-        Auth.otp(phoneNumber: phoneNumber) { [weak self] (otp, message)  in
-            if let result = otp {
-                RegistrationModel.shared.otp = result
-                self!.updateStatus(.sent)
-            } else {
-                RegistrationModel.shared.otp = nil
-                self!.updateStatus(.invalid)
-            }
-        }
- */
     }
 }

@@ -68,13 +68,21 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="fX9-hk-odv">
                                         <rect key="frame" x="16" y="49" width="342" height="20"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="숫자 4자리" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="05b-8K-gPq" userLabel="TextField - Verification">
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="숫자 4자리" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="05b-8K-gPq" userLabel="TextField - Verification">
                                                 <rect key="frame" x="0.0" y="0.0" width="249.5" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="oet-vl-7pV"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="20"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="ASCIICapableNumberPad" textContentType="tel"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxLength">
+                                                        <integer key="value" value="4"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="cursorColor">
+                                                        <color key="value" name="LightSeafoam"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eP7-aM-ieu" userLabel="Label - Duration">
                                                 <rect key="frame" x="259.5" y="0.0" width="35.5" height="20"/>
@@ -82,11 +90,18 @@
                                                 <color key="textColor" red="0.44705882352941173" green="0.50196078431372548" blue="0.55686274509803924" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XRi-FM-g1t" userLabel="Button - Resend">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XRi-FM-g1t" userLabel="Button - Resend">
                                                 <rect key="frame" x="305" y="0.0" width="37" height="20"/>
-                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="14"/>
-                                                <state key="normal" title="재전송">
-                                                    <color key="titleColor" red="0.44705882352941173" green="0.50196078431372548" blue="0.55686274509803924" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal">
+                                                    <attributedString key="attributedTitle">
+                                                        <fragment content="재전송">
+                                                            <attributes>
+                                                                <color key="NSColor" red="0.44705882352941173" green="0.50196078431372548" blue="0.55686274509803924" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <font key="NSFont" size="14" name="AppleSDGothicNeo-Medium"/>
+                                                                <integer key="NSUnderline" value="1"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
                                                 </state>
                                             </button>
                                         </subviews>
@@ -1683,10 +1698,10 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="718"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="wNN-Oi-d5k" userLabel="Stack View - Phone Number" customClass="CustomInputSection" customModule="ParkingFriends" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="24" width="374" height="101"/>
+                                                <rect key="frame" x="20" y="24" width="374" height="104"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xNa-4P-JLh" userLabel="View - Input Area">
-                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="85"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="88"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="휴대폰번호" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAR-7h-Quh" userLabel="Label - Field Title">
                                                                 <rect key="frame" x="14" y="0.0" width="346" height="32"/>
@@ -1697,24 +1712,22 @@
                                                                 <color key="textColor" red="0.1019607843" green="0.1019607843" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="-를 제외하고 입력" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bXb-na-541" userLabel="TextField - Verification">
-                                                                <rect key="frame" x="16" y="49" width="342" height="20"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="20" id="mu1-6G-ufq"/>
-                                                                </constraints>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="010-1234-1234" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oRB-bt-wQj" userLabel="Label - Phone Number">
+                                                                <rect key="frame" x="16" y="49" width="342" height="24"/>
                                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="20"/>
-                                                                <textInputTraits key="textInputTraits"/>
-                                                            </textField>
+                                                                <color key="textColor" name="LightBlueGrey"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
-                                                            <constraint firstItem="bXb-na-541" firstAttribute="leading" secondItem="xNa-4P-JLh" secondAttribute="leading" constant="16" id="4qp-XL-pSA"/>
-                                                            <constraint firstAttribute="bottom" secondItem="bXb-na-541" secondAttribute="bottom" constant="16" id="595-I4-z8t"/>
-                                                            <constraint firstItem="bXb-na-541" firstAttribute="top" secondItem="dAR-7h-Quh" secondAttribute="bottom" constant="17" id="7C1-gU-jWh"/>
                                                             <constraint firstItem="dAR-7h-Quh" firstAttribute="leading" secondItem="xNa-4P-JLh" secondAttribute="leading" constant="14" id="CzQ-AA-9Pz"/>
                                                             <constraint firstItem="dAR-7h-Quh" firstAttribute="top" secondItem="xNa-4P-JLh" secondAttribute="top" id="M9b-ch-TuS"/>
-                                                            <constraint firstAttribute="trailing" secondItem="bXb-na-541" secondAttribute="trailing" constant="16" id="ask-fs-Cjk"/>
+                                                            <constraint firstAttribute="bottom" secondItem="oRB-bt-wQj" secondAttribute="bottom" constant="15" id="aFJ-Kv-URg"/>
+                                                            <constraint firstAttribute="trailing" secondItem="oRB-bt-wQj" secondAttribute="trailing" constant="16" id="hlq-Lc-3Kt"/>
                                                             <constraint firstAttribute="trailing" secondItem="dAR-7h-Quh" secondAttribute="trailing" constant="14" id="i5e-NR-e80"/>
+                                                            <constraint firstItem="oRB-bt-wQj" firstAttribute="leading" secondItem="xNa-4P-JLh" secondAttribute="leading" constant="16" id="jYd-dJ-LoM"/>
+                                                            <constraint firstItem="oRB-bt-wQj" firstAttribute="top" secondItem="dAR-7h-Quh" secondAttribute="bottom" constant="17" id="tkp-rx-pDU"/>
                                                         </constraints>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
@@ -1729,7 +1742,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이미 사용중인 닉네임입니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d9v-oS-AeZ" userLabel="Label - Message">
-                                                        <rect key="frame" x="0.0" y="85" width="374" height="16"/>
+                                                        <rect key="frame" x="0.0" y="88" width="374" height="16"/>
                                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="13"/>
                                                         <color key="textColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -1752,12 +1765,11 @@
                                                 <connections>
                                                     <outlet property="backgroundView" destination="xNa-4P-JLh" id="2KT-b1-3PM"/>
                                                     <outlet property="fieldTitleLabel" destination="dAR-7h-Quh" id="IKR-rQ-ekK"/>
-                                                    <outlet property="inputTextField" destination="bXb-na-541" id="gm0-r7-SH4"/>
                                                     <outlet property="messageLabel" destination="d9v-oS-AeZ" id="GEh-30-JJR"/>
                                                 </connections>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="erk-CB-zYT" userLabel="Stack View - email" customClass="CustomInputSection" customModule="ParkingFriends" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="133" width="374" height="101"/>
+                                                <rect key="frame" x="20" y="136" width="374" height="101"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zj2-Iw-C8L" userLabel="View - Input Area">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="85"/>
@@ -1777,7 +1789,7 @@
                                                                     <constraint firstAttribute="height" constant="20" id="aKu-Ad-1s4"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="20"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" textContentType="email"/>
                                                             </textField>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1831,7 +1843,7 @@
                                                 </connections>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="O4Y-iS-Zwm" userLabel="Stack View - Password" customClass="CustomInputSection" customModule="ParkingFriends" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="242" width="374" height="101"/>
+                                                <rect key="frame" x="20" y="245" width="374" height="101"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uk4-ox-hGj" userLabel="View - Input Area">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="85"/>
@@ -1851,7 +1863,7 @@
                                                                     <constraint firstAttribute="height" constant="20" id="7E9-iB-Fh7"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="20"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                                             </textField>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1905,7 +1917,7 @@
                                                 </connections>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="avZ-QZ-3im" userLabel="Stack View - Nickname" customClass="CustomInputSection" customModule="ParkingFriends" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="351" width="374" height="101"/>
+                                                <rect key="frame" x="20" y="354" width="374" height="101"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4r8-Ne-7x7" userLabel="View - Input Area">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="85"/>
@@ -1925,7 +1937,7 @@
                                                                     <constraint firstAttribute="height" constant="20" id="6DF-9H-Qv5"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="20"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" textContentType="name"/>
                                                             </textField>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2050,6 +2062,7 @@
                         <outlet property="backButton" destination="B4K-jT-eio" id="rpw-6S-KfT"/>
                         <outlet property="emailField" destination="erk-CB-zYT" id="XNV-kj-eJq"/>
                         <outlet property="nextButton" destination="3px-dv-HKk" id="wPn-JI-gIr"/>
+                        <outlet property="nextButtonBottomConstraint" destination="k1r-zP-YUr" id="7wx-jt-jq2"/>
                         <outlet property="nicknameField" destination="avZ-QZ-3im" id="Xud-IY-f1P"/>
                         <outlet property="passwordField" destination="O4Y-iS-Zwm" id="7W0-Qv-7SK"/>
                         <outlet property="phoneNumberField" destination="wNN-Oi-d5k" id="3Rs-kh-WWX"/>
@@ -2066,6 +2079,9 @@
         <image name="icCheckOn" width="30" height="30"/>
         <image name="icCloseBlack" width="24" height="25"/>
         <image name="imgPixel" width="1" height="1"/>
+        <namedColor name="LightBlueGrey">
+            <color red="0.80800002813339233" green="0.81999999284744263" blue="0.83099997043609619" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="LightSeafoam">
             <color red="0.6589999794960022" green="0.93699997663497925" blue="0.75700002908706665" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
