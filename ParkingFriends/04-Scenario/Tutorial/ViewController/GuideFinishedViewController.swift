@@ -13,7 +13,7 @@ import RxViewController
 
 extension GuideFinishedViewController : AnalyticsType {
     var screenName: String {
-        return "Guide Finished Screen"
+        return "[SCREEN] Guide Finished"
     }
 }
 

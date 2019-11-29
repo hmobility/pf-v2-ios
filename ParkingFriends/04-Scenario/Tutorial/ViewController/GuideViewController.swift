@@ -12,7 +12,7 @@ import RxCocoa
 
 extension GuideViewController : AnalyticsType {
     var screenName: String {
-        return "Guide Screen"
+        return "[SCREEN] Guide"
     }
 }
 

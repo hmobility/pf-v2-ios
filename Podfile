@@ -15,6 +15,8 @@ target 'ParkingFriends' do
   pod 'RxBinding'
   pod 'RxBiBinding'
   pod 'RxKeyboard'
+  pod 'RxCoreLocation', '~> 1.4'
+  pod "RxGesture"
   
   pod 'SnapKit', '~> 5.0.0'
   

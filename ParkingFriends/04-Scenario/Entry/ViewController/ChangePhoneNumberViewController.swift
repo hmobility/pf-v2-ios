@@ -10,7 +10,7 @@ import UIKit
 
 extension ChangePhoneNumberViewController : AnalyticsType {
     var screenName: String {
-        return "Find Account Screen"
+        return "[SCREEN] Change Phone Number"
     }
 }
 
@@ -107,9 +107,11 @@ class ChangePhoneNumberViewController: UIViewController {
                     self.confirmButton.isEnabled = true
                     MessageDialog.show(self.viewModel.message(.sent), icon:.success)
                     self.viewModel.switchButton(status)
-                case .invalid:
+                case .invalid, .disproved:
                     self.confirmButton.isEnabled = true
                     MessageDialog.show(self.viewModel.message(.invalid))
+                case .verified:
+                    self.confirmButton.isEnabled = true
                 }
             })
             .disposed(by: disposeBag)

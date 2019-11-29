@@ -13,7 +13,11 @@
 @_exported import RxKeyboard
 @_exported import RxBinding
 @_exported import RxBiBinding
+@_exported import RxCoreLocation
+@_exported import RxGesture
 
 @_exported import SwiftMessages
 
 @_exported import Crashlytics
+
+@_exported import CoreLocation

@@ -12,7 +12,7 @@ import RxCocoa
 
 extension EntryViewController : AnalyticsType {
     var screenName: String {
-        return "Entry Screen"
+        return "[SCREEN] Entry"
     }
 }
 

@@ -11,7 +11,7 @@ import Alamofire
 import ObjectMapper
 
 public class Otp: BaseModelType {
-    var otpId:String = ""
+    var otpId:Int = 0
     var memberExist:Bool = false
     
     required init?(map: Map) {

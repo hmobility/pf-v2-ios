@@ -11,7 +11,7 @@ import ActiveLabel
 
 extension AgreementViewController : AnalyticsType {
     var screenName: String {
-        return "Agreement Screen"
+        return "[SCREEN] Agreement"
     }
 }
 

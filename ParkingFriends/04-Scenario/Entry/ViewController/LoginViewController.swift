@@ -11,7 +11,7 @@ import ActiveLabel
 
 extension LoginViewController : AnalyticsType {
     var screenName: String {
-        return "Login Screen"
+        return "[SCREEN] Login"
     }
 }
 

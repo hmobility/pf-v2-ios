@@ -19,10 +19,10 @@ public protocol FindPasswordViewModelType {
     
     var confirmText: BehaviorRelay<String> { get }
     
-    var credential: BehaviorRelay<SentStatus> { get }
+    var credential: BehaviorRelay<CheckType> { get }
     
-    func message(_ status:SentStatus) -> String
-    func updateStatus(_ status:SentStatus)
+    func message(_ status:CheckType) -> String
+    func updateStatus(_ status:CheckType)
     func sendVerification(email:String, type:AuthEmailType)
 }
 
@@ -37,7 +37,7 @@ class FindPasswordViewModel: FindPasswordViewModelType {
     
     var confirmText: BehaviorRelay<String>
     
-    let credential: BehaviorRelay<SentStatus> = BehaviorRelay(value: .none)
+    let credential: BehaviorRelay<CheckType> = BehaviorRelay(value: .none)
     
     private let disposeBag = DisposeBag()
     private var localizer:LocalizerType
@@ -54,11 +54,11 @@ class FindPasswordViewModel: FindPasswordViewModelType {
         confirmText = BehaviorRelay(value:localizer.localized("send_email"))
     }
     
-    func updateStatus(_ status:SentStatus) {
+    func updateStatus(_ status:CheckType) {
         credential.accept(status)
     }
     
-    func message(_ status:SentStatus) -> String {
+    func message(_ status:CheckType) -> String {
         switch status {
         case .sent:
             return localizer.localized("msg_pw_email_sent")

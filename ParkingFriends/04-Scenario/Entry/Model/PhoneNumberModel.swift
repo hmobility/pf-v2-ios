@@ -18,24 +18,21 @@ public protocol PhoneNumberModelType {
     var valid:BehaviorRelay<Bool> { get }
     
     func validatePattern() -> Bool
-   // func replaceFormat(_ textField: UITextField,  shouldChangeCharactersIn range:NSRange, replacementString string:String) -> Bool
     
     static func formatted(_ number:String) -> String?
 }
 
-fileprivate let phoneNumberFormat = "###-####-####"
+public let phoneFormatter = DefaultTextInputFormatter(textPattern:  "###-####-####")
 
 class PhoneNumberModel: NSObject, PhoneNumberModelType {
     
     var data: BehaviorRelay<String> = BehaviorRelay(value: "")
     var phoneNumber: String? {
         get {
-            self.phoneFormatter.unformat(data.value)
+            phoneFormatter.unformat(data.value)
         }
     }
     var valid: BehaviorRelay<Bool> = BehaviorRelay(value: false)
-    
-    let phoneFormatter = DefaultTextInputFormatter(textPattern: phoneNumberFormat)
     
     private let disposeBag = DisposeBag()
     
@@ -59,7 +56,7 @@ class PhoneNumberModel: NSObject, PhoneNumberModelType {
     // MARK: - Public Methods
     
     static func formatted(_ number:String) -> String? {
-        return DefaultTextFormatter.init(textPattern: phoneNumberFormat).format(number)
+        return phoneFormatter.format(number)
     }
     
     // Check Syntax
@@ -67,23 +64,7 @@ class PhoneNumberModel: NSObject, PhoneNumberModelType {
         print("[VALIDATE] ", data.value)
         return data.value.validatePattern(type: .phone_number)
     }
- /*
-    // Phone Number Cursor
-    // TextField Delegate  textField(_:shouldChangeCharactersIn:replacementString:)
-    func replaceFormat(_ textField: UITextField,  shouldChangeCharactersIn range:NSRange, replacementString string:String) -> Bool {
-        if let text = textField.text  {
-            let result = self.phoneFormatter.formatInput(currentText: text, range: range, replacementString: string)
-           // textField
-            textField.text = result.formattedText
-            textField.setCursorLocation(result.caretBeginOffset)
-            print("[replaceFormaat]", (phone_number_digits == result.caretBeginOffset))
-            updateStatus(result.formattedText)
-            return false
-        }
-        
-        return true
-    }
-   */
+    
     // MARK: - Local Methods
 }
 
@@ -97,7 +78,7 @@ extension PhoneNumberModel:UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if let text = textField.text {
-            let result = self.phoneFormatter.formatInput(currentText: text, range: range, replacementString: string)
+            let result = phoneFormatter.formatInput(currentText: text, range: range, replacementString: string)
             print("(INPUT)", result)
             textField.text = result.formattedText
             textField.setCursorLocation(result.caretBeginOffset)

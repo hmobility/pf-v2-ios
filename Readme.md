@@ -1,3 +1,25 @@
+#  Build
+
+1.  Naver Map Framework 설치 방법 
+
+    - git-lfs를 설치하지 않으면 바이너리대신 설정파일만 받아오게 되어 컴파일시 오류 발생
+    - 정상적으로 다운받은 프레임워크의 용량(190 MB) 확인 필요 
+    - 기존 Cocoapod 의 소스 설치된 경우 설치 안되는 경우 있음 
+    
+```
+    sudo gem install cocoapods // cocoapods 설치  
+    brew install git-lfs       // homebrew 사용시 git-lfs 설치
+    git-lfs install            // git-lfs 이니셜라이즈
+    pod install --repo-update
+```
+
+2.  git-lfs Clean 방법
+```
+    pod cache clean NMapsMap pod 캐시 삭제
+    pod install
+    클린 (cmd+shift+option+k) 후 재빌드 
+```
+
 # Localization
 
 

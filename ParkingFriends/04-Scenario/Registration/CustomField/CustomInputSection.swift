@@ -15,6 +15,7 @@ class CustomInputSection: UIStackView {
     @IBOutlet var backgroundView: UIView!
     @IBOutlet var fieldTitleLabel: UILabel!
     @IBOutlet var inputTextField: UITextField!
+    @IBOutlet var displayTextLabel: UILabel!            // Fixed Text instead of inputTextField
     @IBOutlet var messageLabel: UILabel!
 
     @IBInspectable var normalColor: UIColor?
@@ -77,9 +78,4 @@ class CustomInputSection: UIStackView {
             }
         }
     }
-}
-
-
-extension Reactive where Base: CustomInputSection {
-    
 }

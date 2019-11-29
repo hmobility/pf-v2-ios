@@ -10,7 +10,7 @@ import UIKit
 
 extension PhoneNumberInputViewController : AnalyticsType {
     var screenName: String {
-        return "Phone Input Screen"
+        return "[SCREEN] Input Phone Number"
     }
 }
 
@@ -39,6 +39,16 @@ class PhoneNumberInputViewController: UIViewController {
     }
     
     // MARK: - Initialize
+
+    init() {
+        self.viewModel = PhoneNumberViewModel()
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        viewModel = PhoneNumberViewModel()
+        super.init(coder: aDecoder)
+    }
     
     private func initialize() {
         setupBindings()
@@ -70,15 +80,7 @@ class PhoneNumberInputViewController: UIViewController {
             .drive(sendButton.rx.title())
             .disposed(by: disposeBag)
     }
-    /*
-    private func setupInputBinding() {
-        inputTextField.delegate = viewModel.phoneNumberModel
-        
-        inputTextField.rx.text.orEmpty
-            .bind(to: viewModel.phoneNumberModel.data)
-            .disposed(by: disposeBag)
-    }
-    */
+
     private func setupKeyboard() {
         RxKeyboard.instance.willShowVisibleHeight
             .drive(onNext: { height in
@@ -118,8 +120,8 @@ class PhoneNumberInputViewController: UIViewController {
         
         viewModel.proceed.asDriver()
             .drive(onNext: { [unowned self] enabled in
-                    self.sendButton.isEnabled = enabled
-                })
+                self.sendButton.isEnabled = enabled
+            })
             .disposed(by: disposeBag)
         
         viewModel.credential.asDriver().asDriver(onErrorJustReturn: (.none, nil))
@@ -139,18 +141,7 @@ class PhoneNumberInputViewController: UIViewController {
             .disposed(by: disposeBag)
     }
     
-    
     // MARK: - Life Cycle
-    
-    init() {
-        self.viewModel = PhoneNumberViewModel()
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        viewModel = PhoneNumberViewModel()
-        super.init(coder: aDecoder)
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -161,7 +152,6 @@ class PhoneNumberInputViewController: UIViewController {
     // MARK: - Navigation
     
     private func navigateToCodeVerify(phoneNumber:String) {
-        RegistrationModel.shared.phoneNumber = phoneNumber
         let target = Storyboard.registration.instantiateViewController(withIdentifier: "CodeVerifyViewController") as! CodeVerifyViewController
         self.push(target)
     }

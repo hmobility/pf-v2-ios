@@ -11,13 +11,13 @@ import Alamofire
 import ObjectMapper
 
 class OrderPreview: BaseModelType {
-    var amount:Int = 0
+    var totalAmount:Int = 0
 
     required init?(map: Map) {
         super.init(map: map)
     }
      
     override func mapping(map: Map) {
-        amount <- map["amount"]
+        totalAmount <- map["totalAmount"]
     }
 }
