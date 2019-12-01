@@ -10,6 +10,10 @@ import Foundation
 
 typealias Params = [String : Any]
 
+typealias CoordType = (latitude:CGFloat, longitude:CGFloat)
+
+typealias FilterType = (fee:(from:Int, to:Int), lotType:String, option:(cctv:Bool, iotSensor:Bool, mechanical:Bool, allDayOperation:Bool))
+
 enum Language:String {
     case korean = "ko"
     case english = "en"
@@ -55,6 +59,12 @@ enum ParkingLotType:String {
 enum SortType:String {
     case distance = "DISTANCE"
     case price = "PRICE"
+}
+
+// 회원 주소 등록
+enum AddressType:String {
+    case home = "HOME"
+    case company = "COMPANY"
 }
 
 enum ResponseCodeType: String {

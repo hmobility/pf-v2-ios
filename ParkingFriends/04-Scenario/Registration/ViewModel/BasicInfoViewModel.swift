@@ -9,6 +9,14 @@
 import Foundation
 import UIKit
 
+public enum BasicInfoSectionType {
+    case none
+    case phone_number
+    case email
+    case password
+    case nickname
+}
+
 protocol BasicInfoViewModelType {
     var viewTitle: Driver<String> { get }
     
@@ -30,7 +38,12 @@ protocol BasicInfoViewModelType {
     
     var nextText: Driver<String> { get }
     
-    var proceed: BehaviorRelay<(CheckType, String?)> { get }
+    //var proceed: BehaviorRelay<(BasicInfoSectionType, CheckType, String?)> { get }
+    var proceed: BehaviorRelay<Bool> { get }
+    
+    var passwordModel:PasswordModel { get }
+    
+    func validate(section:BasicInfoSectionType) -> Bool 
 }
 
 class BasicInfoViewModel: BasicInfoViewModelType {
@@ -54,8 +67,14 @@ class BasicInfoViewModel: BasicInfoViewModelType {
     
     var nextText: Driver<String>
     
-    var proceed: BehaviorRelay<(CheckType, String?)> = BehaviorRelay(value: (.none, nil))
+  //  var proceed: BehaviorRelay<(BasicInfoSectionType, CheckType, String?)> = BehaviorRelay(value: (.none, .none, nil))
+    var proceed: BehaviorRelay<Bool> = BehaviorRelay(value: false)
     
+    let emailModel = EmailModel()
+    let nicknameModel = NicknameModel()
+    let passwordModel = PasswordModel()
+    
+    private let disposeBag = DisposeBag()
     private var localizer:LocalizerType
     
     init(localizer: LocalizerType = Localizer.shared, phoneNumber:String) {
@@ -80,7 +99,45 @@ class BasicInfoViewModel: BasicInfoViewModelType {
     
     // MARK: - Local Methods
     
+    func updateStatus(_ status:CheckType, section:BasicInfoSectionType, message:String) {
+        proceed.accept(validateCredentials())
+    }
     
-    func updateStatus() {
+    // MARK: - Public Methods
+    
+    func validate(section:BasicInfoSectionType) -> Bool {
+        switch section {
+        case .email:
+            let result = emailModel.validateCredentials()
+            let status:CheckType = result ? .valid : .invalid
+            updateStatus(status, section: .email, message: emailModel.message(status))
+            return result
+        case .password:
+            let result =  passwordModel.validateCredentials()
+            let status:CheckType = result ? .valid : .invalid
+            updateStatus(status, section: .password, message: passwordModel.message(status))
+            return result
+        case .nickname:
+            let result = nicknameModel.validateCredentials()
+            let status:CheckType = result ? .valid : .invalid
+            updateStatus(status, section: .nickname, message: passwordModel.message(status))
+            return result
+        default:
+            break
+        }
+        
+        return false
+    }
+    
+    func validateCredentials() -> Bool {
+        return validate(section: .email) && validate(section: .password) && validate(section: .nickname)
+    }
+    
+    func checkCredential(_ type:AuthAccountType, value:String) {
+        Auth.exist(type: type, value: value)
+            .subscribe(onNext: { (existed:Bool, code) in
+                print()
+            })
+            .disposed(by: disposeBag)
     }
 }

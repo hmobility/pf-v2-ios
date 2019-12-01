@@ -13,20 +13,25 @@ import AnyFormatKit
 fileprivate let size = (minimum:6, maximum:15)
 
 public protocol PasswordModelType {
- //   var errorMessage: String { get }
     var data: BehaviorRelay<String> { get set }
-  //  var errorValue: BehaviorRelay<String?> { get}
 
     func validateCredentials() -> Bool
+    func message(_ type:CheckType) -> String
 }
 
 class PasswordModel: NSObject, PasswordModelType {
-   // var errorMessage: String = "Please enter a valid Passowrd"
+   
     var data: BehaviorRelay<String> = BehaviorRelay(value: "")
-    //var errorValue: BehaviorRelay<String?> = BehaviorRelay(value: "")
+    
+    private var localizer:LocalizerType
+    
+    // MARK: - Localize
     
     init(localizer: LocalizerType = Localizer.shared) {
+        self.localizer = localizer
     }
+    
+    // MARK: - Public Methods
 
     func validateCredentials() -> Bool {
         guard validateLength(text: data.value, size: (size.minimum, size.maximum)) else {
@@ -37,6 +42,17 @@ class PasswordModel: NSObject, PasswordModelType {
        // errorValue.accept("")
         return true
     }
+    
+    func message(_ type:CheckType) -> String {
+        switch type {
+        case .invalid:
+            return self.localizer.localized("msg_pw_format_invalid")
+        default:
+            return ""
+        }
+    }
+    
+    // MARK: - Local Methods
     
     func validateLength(text: String, size: (min: Int, max:Int)) -> Bool {
         return (size.min...size.max).contains(text.count)

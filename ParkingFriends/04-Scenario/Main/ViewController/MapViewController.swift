@@ -29,6 +29,8 @@ class MapViewController: UIViewController {
     var disposeBag = DisposeBag()
     private lazy var viewModel: MapViewModelType = MapViewModel(view: mapView)
     
+    private lazy var titleView = NavigationTitleView()
+    
     // MARK: - Initialize
      
     init() {
@@ -43,11 +45,21 @@ class MapViewController: UIViewController {
     
     private func initialize() {
         // setupMapBindings()
+        setupNavigation()
         buttonBindings()
         timeSelAreaBinding()
     }
     
     // MARK: - Bindings
+    
+    private func setupNavigation() {
+        navigationItem.titleView = titleView
+        
+        titleView.titleColor = Color.darkGrey
+        titleView.titleFont = Font.gothicNeoMedium26
+        titleView.subTitleColor = Color.darkGrey
+        titleView.subTitleFont = Font.helvetica12
+    }
     
     
     private func setupMapBinding() {
@@ -93,6 +105,8 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initialize()
+        
+        titleView.set(title: "TTT", subTitle: "SSSs")
         
         location.requestWhenInUseAuthorization()
 

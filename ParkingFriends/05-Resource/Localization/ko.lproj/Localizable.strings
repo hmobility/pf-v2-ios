@@ -11,6 +11,28 @@
 "btn_to_next" = "다음으로";
 "btn_email_send" = "이메일 전송";
 "btn_to_start" = "시작하기";
+"txt_today" = "오늘";
+"txt_tomorrow" = "내일";
+"txt_am" = "오전";
+"txt_pm" = "오후";
+"txt_minutes" = "분";
+"txt_from" = "부터";
+"txt_won" = "원";
+"txt_hours" = "시간";
+"txt_months" = "개월";
+"txt_month_period" = "개월간";
+"itm_outdoor" = "실외";
+"itm_private" = "민간";
+"itm_cctv" = "CCTV";
+"itm_iot" = "IoT센서";
+"itm_evc" = "전기차충전";
+"itm_mon" = "월";
+"itm_tue" = "화";
+"itm_wed" = "수";
+"itm_thu" = "목";
+"itm_fri" = "금";
+"itm_sat" = "토";
+"itm_sun" = "일";
 
 // Entry
 "txt_signup_guide" = "파킹프렌즈가 처음이세요?";
@@ -31,8 +53,9 @@
 "dsc_password_find" = "가입 시 입력하신 이메일 주소를 입력하세요.\n임시 비밀번호를 이메일로 보내드립니다.";
 
 // Car Info
-"ttl_input_car_info" = "차량정보 등록";
-"ttl_input_car_info" = "브랜드 및 모델명 선택";
+"ttl_car_info_registration" = "차량정보 등록";
+"ttl_car_info_brand" = "브랜드 및 모델명 선택";
+"ttl_car_info_color" = "차량번호 및 색상 입력";
 "ttl_car_type" = "차량종류";
 "ph_car_type" = "기아 올 뉴 모닝";
 "ttl_car_number" = "차량번호";
@@ -82,8 +105,8 @@
 "btn_code_send" = "인증번호 전송";
 "ttl_code_verify" = "인증번호 입력";
 "dsc_code_verify" = "%@로 인증번호를 전송했습니다.\n인증번호를 입력해주세요.";
-"ttl_input_code_verify" = "인증번호";
-"ph_input_code_verify" = "숫자 4자리";
+"ttl_code_verify_input" = "인증번호";
+"ph_code_verify_input" = "숫자 4자리";
 "ttl_agreement" = "약관동의";
 "dsc_agreement" = "파킹프렌즈 서비스 이용을 위해서\n아래 약관에 동의해주세요.";
 "ttl_usage" = "이용약관";
@@ -107,6 +130,18 @@
 "ttl_guide_5" = "소중한 당신에게, 더 큰 혜택";
 "dsc_guide_5" = "이용 실적에 따른 차별화된 혜택으로\n한 단계 업그레이드 된 주차 생활을 즐기세요!";
 
+// Ticket
+"ttl_ticket_time" = "예약권";
+"ttl_ticket_fixed" = "정액권";
+"ttl_ticket_monthly" = "정기권";
+"ttl_no_ticket_time" = "예약 가능한 주차장이 없습니다.";
+"txt_no_ticket_time" = "지도 안에 주차장이 있을 때, 이곳에 목록으로 표시됩니다.\n대상 지역이나 지도 범위를 변경해보세요.";
+"itm_price_low" = "낮은가격순";
+"ttl_order_parking_lot" = "주차장 정렬 기준을 선택하세요.";
+"itm_distance_closed" = "가까운순";
+"ttl_period_of_use" = "이용기간";
+"ttl_period_of_start" = "이용 시작일";
+
 // Message
 "msg_login_mismatch" = "비밀번호가 일치하지 않습니다.";
 "msg_phone_number_mismatch" = "등록되지 않은 휴대폰 번호입니다.";
@@ -115,10 +150,13 @@
 "msg_pw_email_sent" = "입력하신 메일 주소로\n임시 비밀번호를 전송했습니다.";
 "msg_email_invalid" = "올바르지 않은 메일 주소입니다.\n확인 후 다시 입력해주세요.";
 "msg_phone_number_invalid" = "올바르지 않은 휴대폰 번호입니다.\n확인 후 다시 입력해주세요.";
+"msg_pw_format_invalid" = "영문·숫자 포함, 최소 8자 이상의 문자를 입력해주세요.";
 "msg_code_verify_sent" = "인증번호를 휴대폰 번호로 발송 하였습니다.\n확인 후 입력 해주세요.";
 "msg_code_verify_invalid" = "인증번호가 일치하지 않습니다.\n확인 후 다시 입력해주세요.";
 "msg_nickname_changed" = "닉네임이 성공적으로 저장되었습니다.";
 "msg_payment_registered" = "새 결제 수단이 정상적으로 등록되었습니다.";
+"msg_nickname_invalid" = "사용할수 없는 문자가 들어가있습니다.";
+"msg_nickname_disaprove" = "이미 사용중인 닉네임입니다.";
 "msg_point_charged" = "포인트가 정상적으로 충전되었습니다.\n현재 보유 포인트는 %@ P 입니다.";
 "msg_reserved_lot_cannot_use" = "예약하신 주차장을 이용할 수 없습니다.";
 "msg_reserved_time_approaching" = "예약한 주차 시간이 거의 다 됐어요!";

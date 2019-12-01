@@ -8,10 +8,9 @@
 
 import UIKit
 
-
 extension BasicInfoInputViewController : AnalyticsType {
     var screenName: String {
-        return "[SCREEN] Basic Info"
+        return "[SCREEN][REG] BasicInfo"
     }
 }
 
@@ -41,7 +40,6 @@ class BasicInfoInputViewController: UIViewController {
     @IBAction func nextButtonAction(_ sender: Any) {
         navigateToAgreement()
     }
-        
     
     // MARK: - Initialize
     
@@ -54,72 +52,88 @@ class BasicInfoInputViewController: UIViewController {
     }
     
     private func initialize() {
-        setupBindings()
+        setupNavigationBinding()
+        setupPhoneNumberBinding()
+        setupEmailBinding()
+        setupPasswordBinding()
+        setupNicknameBinding()
         setupKeyboard()
+        setupButtonBinding()
+       // setupInputBinding()
     }
     
     // MARK: - Binding
     
-    private func setupBindings() {
-        
-        // Navigation Title
-        
+    private func setupNavigationBinding() {
         viewModel.viewTitle
-                .drive(self.navigationItem.rx.title)
-                .disposed(by: disposeBag)
-
-        // Phone Number
+            .drive(self.navigationItem.rx.title)
+            .disposed(by: disposeBag)
+    }
+    
+    private func setupPhoneNumberBinding() {
         viewModel.phoneNumberInputTitle
-                .drive(phoneNumberField.fieldTitleLabel.rx.text)
-                .disposed(by: disposeBag)
-        
-      //  phoneNumberField.displayTextLabel.
+            .drive(phoneNumberField.fieldTitleLabel.rx.text)
+            .disposed(by: disposeBag)
         
         viewModel.phoneNumberMessageText
             .bind(to: phoneNumberField.messageLabel.rx.text)
             .disposed(by: disposeBag)
-        
-        // e-mail
-        
+    }
+    
+    private func setupEmailBinding() {
         viewModel.emailInputTitle
-                .drive(emailField.fieldTitleLabel.rx.text)
-                .disposed(by: disposeBag)
-        
+            .drive(emailField.fieldTitleLabel.rx.text)
+            .disposed(by: disposeBag)
+               
         viewModel.emailInputPlaceholder
-                .drive(emailField.inputTextField.rx.placeholder)
-                .disposed(by: disposeBag)
+            .drive(emailField.inputTextField.rx.placeholder)
+            .disposed(by: disposeBag)
         
         viewModel.emailMessageText
             .bind(to: emailField.messageLabel.rx.text)
             .disposed(by: disposeBag)
         
-        // Password
-        
+        emailField.inputTextField.rx
+            .controlEvent([.editingDidEnd])
+            .asObservable()
+            .subscribe(onNext:{ _ in
+                _ = self.viewModel.validate(section: .email)
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func setupPasswordBinding() {
         viewModel.passwordInputTitle
-                .drive(passwordField.fieldTitleLabel.rx.text)
-                .disposed(by: disposeBag)
+            .drive(passwordField.fieldTitleLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        passwordField.inputTextField.delegate = viewModel.passwordModel
+
+        passwordField.inputTextField.rx.text.orEmpty
+            .bind(to: viewModel.passwordModel.data)
+            .disposed(by: disposeBag)
         
         viewModel.passwordInputPlaceholder
-                .drive(passwordField.inputTextField.rx.placeholder)
-                .disposed(by: disposeBag)
+            .drive(passwordField.inputTextField.rx.placeholder)
+            .disposed(by: disposeBag)
         
         viewModel.passwordMessageText
-                .bind(to: passwordField.messageLabel.rx.text)
-                .disposed(by: disposeBag)
-        
-        // Nickname
-        
+            .bind(to: passwordField.messageLabel.rx.text)
+            .disposed(by: disposeBag)
+    }
+    
+    private func setupNicknameBinding() {
         viewModel.nicknameInputTitle
-                .drive(nicknameField.fieldTitleLabel.rx.text)
-                .disposed(by: disposeBag)
+            .drive(nicknameField.fieldTitleLabel.rx.text)
+            .disposed(by: disposeBag)
         
         viewModel.nicknameInputPlaceholder
-                .drive(nicknameField.inputTextField.rx.placeholder)
-                .disposed(by: disposeBag)
+            .drive(nicknameField.inputTextField.rx.placeholder)
+            .disposed(by: disposeBag)
         
         viewModel.nicknameMessageText
-                 .bind(to: nicknameField.messageLabel.rx.text)
-                 .disposed(by: disposeBag)
+            .bind(to: nicknameField.messageLabel.rx.text)
+            .disposed(by: disposeBag)
     }
     
     private func setupKeyboard() {
@@ -140,7 +154,7 @@ class BasicInfoInputViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        phoneNumberField.inputTextField.addDoneButtonOnKeyboard()
+      //  phoneNumberField.inputTextField.addDoneButtonOnKeyboard()
         emailField.inputTextField.addDoneButtonOnKeyboard()
         nicknameField.inputTextField.addDoneButtonOnKeyboard()
         passwordField.inputTextField.addDoneButtonOnKeyboard()
@@ -148,35 +162,11 @@ class BasicInfoInputViewController: UIViewController {
     
     private func setupButtonBinding() {
         viewModel.proceed.asDriver()
-            .drive(onNext: { [unowned self] (status, message) in
-                self.nextButton.isEnabled = status == .valid ? true : false
-                /*
-                switch status {
-                case .valid:
-                    break
-                case .sent:
-                    MessageDialog.show(message!, icon:.success)
-                case .invalid:
-                    MessageDialog.show(message!)
-                case .verified:
-                    print("[CODE] to the next")
-                    self.navigateToBasicInfoInput()
-                default:
-                    break
-                }
- */
-            })
-            .disposed(by: disposeBag)
-
-        
-        nextButton.rx.tap
-            .subscribe(onNext: { _ in
-
+            .drive(onNext: { [unowned self] (completed) in
+                self.nextButton.isEnabled = completed ? true : false
             })
             .disposed(by: disposeBag)
     }
-    
-    
     
     // MARK: - Life Cycle
     

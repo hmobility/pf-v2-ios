@@ -49,6 +49,16 @@
 		62601D702390A59200B78033 /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62601D6F2390A59200B78033 /* Member.swift */; };
 		62601D742390FE5300B78033 /* CustomTimeSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62601D732390FE5300B78033 /* CustomTimeSelectionView.swift */; };
 		62601D762391173900B78033 /* ParkingLot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62601D752391173900B78033 /* ParkingLot.swift */; };
+		62601D7823921C6000B78033 /* EmailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62601D7723921C6000B78033 /* EmailModel.swift */; };
+		62601D7A23921C8C00B78033 /* NicknameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62601D7923921C8C00B78033 /* NicknameModel.swift */; };
+		62601D7C23922D4000B78033 /* CardPaymentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62601D7B23922D4000B78033 /* CardPaymentModel.swift */; };
+		62601D7F239232D000B78033 /* Bool+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62601D7E239232D000B78033 /* Bool+Extension.swift */; };
+		62601D812392387500B78033 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62601D802392387500B78033 /* Common.swift */; };
+		62601D8323923CEF00B78033 /* CarBrands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62601D8223923CEF00B78033 /* CarBrands.swift */; };
+		62601D8523923D8500B78033 /* CarModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62601D8423923D8500B78033 /* CarModels.swift */; };
+		62601D8A2393783A00B78033 /* CarBrandTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62601D892393783A00B78033 /* CarBrandTableViewCell.swift */; };
+		62601D8C2393784700B78033 /* CarModelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62601D8B2393784700B78033 /* CarModelTableViewCell.swift */; };
+		62601D8F23938A2700B78033 /* NavigationTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62601D8E23938A2700B78033 /* NavigationTitleView.swift */; };
 		62630B422383E4BD0029724B /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62630B412383E4BD0029724B /* String+Extension.swift */; };
 		62630B45238506490029724B /* PhoneNumberViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62630B44238506490029724B /* PhoneNumberViewModel.swift */; };
 		62630B47238534FB0029724B /* CodeVerifyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62630B46238534FB0029724B /* CodeVerifyViewModel.swift */; };
@@ -217,6 +227,16 @@
 		62601D6F2390A59200B78033 /* Member.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Member.swift; sourceTree = "<group>"; };
 		62601D732390FE5300B78033 /* CustomTimeSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTimeSelectionView.swift; sourceTree = "<group>"; };
 		62601D752391173900B78033 /* ParkingLot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingLot.swift; sourceTree = "<group>"; };
+		62601D7723921C6000B78033 /* EmailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailModel.swift; sourceTree = "<group>"; };
+		62601D7923921C8C00B78033 /* NicknameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameModel.swift; sourceTree = "<group>"; };
+		62601D7B23922D4000B78033 /* CardPaymentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPaymentModel.swift; sourceTree = "<group>"; };
+		62601D7E239232D000B78033 /* Bool+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bool+Extension.swift"; sourceTree = "<group>"; };
+		62601D802392387500B78033 /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
+		62601D8223923CEF00B78033 /* CarBrands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarBrands.swift; sourceTree = "<group>"; };
+		62601D8423923D8500B78033 /* CarModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarModels.swift; sourceTree = "<group>"; };
+		62601D892393783A00B78033 /* CarBrandTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarBrandTableViewCell.swift; sourceTree = "<group>"; };
+		62601D8B2393784700B78033 /* CarModelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarModelTableViewCell.swift; sourceTree = "<group>"; };
+		62601D8E23938A2700B78033 /* NavigationTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTitleView.swift; sourceTree = "<group>"; };
 		62630B412383E4BD0029724B /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		62630B44238506490029724B /* PhoneNumberViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberViewModel.swift; sourceTree = "<group>"; };
 		62630B46238534FB0029724B /* CodeVerifyViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodeVerifyViewModel.swift; sourceTree = "<group>"; };
@@ -467,11 +487,11 @@
 		622BC1CC236A9B8500A43F02 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				62601D88239377E800B78033 /* CarBrand */,
 				629C2862236BF54C00E0E5E1 /* PhoneNumberInputViewController.swift */,
 				629C2868236E8D9F00E0E5E1 /* CodeVerifyViewController.swift */,
 				629C286A236E957400E0E5E1 /* BasicInfoInputViewController.swift */,
 				629C287323700FF500E0E5E1 /* AgreementViewController.swift */,
-				629C2885237137C400E0E5E1 /* CarBrandViewController.swift */,
 				629C287B2371093700E0E5E1 /* RegiCarViewController.swift */,
 				629C287D237109B500E0E5E1 /* RegiCreditCardViewController.swift */,
 			);
@@ -539,20 +559,41 @@
 			path = CustomView;
 			sourceTree = "<group>";
 		};
+		62601D7D23922F1700B78033 /* BasicInfo */ = {
+			isa = PBXGroup;
+			children = (
+				6210BABA237901BF001C6065 /* PasswordModel.swift */,
+				623E122A23820EA700498C87 /* PhoneNumberModel.swift */,
+				62601D7723921C6000B78033 /* EmailModel.swift */,
+				62601D7923921C8C00B78033 /* NicknameModel.swift */,
+				62601D7B23922D4000B78033 /* CardPaymentModel.swift */,
+			);
+			path = BasicInfo;
+			sourceTree = "<group>";
+		};
+		62601D88239377E800B78033 /* CarBrand */ = {
+			isa = PBXGroup;
+			children = (
+				629C2885237137C400E0E5E1 /* CarBrandViewController.swift */,
+				62601D892393783A00B78033 /* CarBrandTableViewCell.swift */,
+				62601D8B2393784700B78033 /* CarModelTableViewCell.swift */,
+			);
+			path = CarBrand;
+			sourceTree = "<group>";
+		};
+		62601D8D23938A0500B78033 /* NavigationTitleView */ = {
+			isa = PBXGroup;
+			children = (
+				62601D8E23938A2700B78033 /* NavigationTitleView.swift */,
+			);
+			path = NavigationTitleView;
+			sourceTree = "<group>";
+		};
 		62630B4A23862F160029724B /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				62630B4C23862F3A0029724B /* RegistrationModel.swift */,
 				624CE050238CBB1F0068F4F9 /* CodeVerifyModel.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		62630B4B23862F250029724B /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				6210BABA237901BF001C6065 /* PasswordModel.swift */,
-				623E122A23820EA700498C87 /* PhoneNumberModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -571,7 +612,6 @@
 			isa = PBXGroup;
 			children = (
 				629C285A236BED9900E0E5E1 /* Entry.storyboard */,
-				62630B4B23862F250029724B /* Model */,
 				629C285C236BEDED00E0E5E1 /* ViewModel */,
 				629C285D236BEDF800E0E5E1 /* ViewController */,
 			);
@@ -704,6 +744,8 @@
 				62C26BF72362970700695B6F /* Notices.swift */,
 				62C26BF92362ACA300695B6F /* Events.swift */,
 				62C26BFB2362AE1A00695B6F /* FAQs.swift */,
+				62601D8223923CEF00B78033 /* CarBrands.swift */,
+				62601D8423923D8500B78033 /* CarModels.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -856,6 +898,7 @@
 		A4225E532355484C004F48C4 /* 03-Model */ = {
 			isa = PBXGroup;
 			children = (
+				62601D7D23922F1700B78033 /* BasicInfo */,
 				A4225E6D2356F843004F48C4 /* Network */,
 				A4225E6E2356F84F004F48C4 /* AppData */,
 			);
@@ -930,6 +973,7 @@
 		A4225E652355B32F004F48C4 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				62601D8D23938A0500B78033 /* NavigationTitleView */,
 				A4225E662355B337004F48C4 /* ObjectMapper */,
 			);
 			path = Library;
@@ -972,6 +1016,7 @@
 				622BC1D1236AA3C300A43F02 /* UIView+Extension.swift */,
 				629C28792370FCA500E0E5E1 /* UINavigation+Extension.swift */,
 				6253923F23716D870041EBF1 /* UITextField+Extension.swift */,
+				62601D7E239232D000B78033 /* Bool+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1052,6 +1097,7 @@
 				A4BA4BD0235EC91A00D30DFE /* Auth.swift */,
 				62601D6F2390A59200B78033 /* Member.swift */,
 				62601D752391173900B78033 /* ParkingLot.swift */,
+				62601D802392387500B78033 /* Common.swift */,
 			);
 			path = Session;
 			sourceTree = "<group>";
@@ -1289,7 +1335,9 @@
 				62C26BF82362970700695B6F /* Notices.swift in Sources */,
 				629C2886237137C400E0E5E1 /* CarBrandViewController.swift in Sources */,
 				629C285F236BF25F00E0E5E1 /* EntryViewController.swift in Sources */,
+				62601D7F239232D000B78033 /* Bool+Extension.swift in Sources */,
 				A4225E712357F7F9004F48C4 /* HttpSession.swift in Sources */,
+				62601D8F23938A2700B78033 /* NavigationTitleView.swift in Sources */,
 				62601D762391173900B78033 /* ParkingLot.swift in Sources */,
 				622BC0E42368131400A43F02 /* GuideFinishedViewController.swift in Sources */,
 				62630B422383E4BD0029724B /* String+Extension.swift in Sources */,
@@ -1300,6 +1348,7 @@
 				629C286B236E957400E0E5E1 /* BasicInfoInputViewController.swift in Sources */,
 				62630B47238534FB0029724B /* CodeVerifyViewModel.swift in Sources */,
 				62254E8B238B992500AF82B9 /* Parkinglots.swift in Sources */,
+				62601D8A2393783A00B78033 /* CarBrandTableViewCell.swift in Sources */,
 				629C2870236E9A1B00E0E5E1 /* CustomInputSection.swift in Sources */,
 				629C287A2370FCA500E0E5E1 /* UINavigation+Extension.swift in Sources */,
 				62C26BE92361921700695B6F /* Otp.swift in Sources */,
@@ -1325,13 +1374,16 @@
 				62C26C1923668C0900695B6F /* Analytics.swift in Sources */,
 				A4BA4BDB235EFC7600D30DFE /* AppTokenAdapter.swift in Sources */,
 				624CE057238E57620068F4F9 /* MapView+Rx.swift in Sources */,
+				62601D812392387500B78033 /* Common.swift in Sources */,
 				62630B5323865EBD0029724B /* RxTextFieldDelegateProxy.swift in Sources */,
 				62630B45238506490029724B /* PhoneNumberViewModel.swift in Sources */,
 				62C26C0D2362F29100695B6F /* Coupons.swift in Sources */,
+				62601D8523923D8500B78033 /* CarModels.swift in Sources */,
 				624CE055238E4E990068F4F9 /* MapModel.swift in Sources */,
 				A4225EDA235D8938004F48C4 /* SceneDelegate.swift in Sources */,
 				629C287E237109B500E0E5E1 /* RegiCreditCardViewController.swift in Sources */,
 				62C26BF32362834800695B6F /* Contents.swift in Sources */,
+				62601D7C23922D4000B78033 /* CardPaymentModel.swift in Sources */,
 				629C288423710CB500E0E5E1 /* TermsViewModel.swift in Sources */,
 				A4225E6423559DEC004F48C4 /* AuthAPI.swift in Sources */,
 				622BC1D2236AA3C300A43F02 /* UIView+Extension.swift in Sources */,
@@ -1349,6 +1401,7 @@
 				625ED5B5238298A50088860C /* FindPasswordViewModel.swift in Sources */,
 				622BC0EA236835B800A43F02 /* UIViewController+Extension.swift in Sources */,
 				624CE051238CBB1F0068F4F9 /* CodeVerifyModel.swift in Sources */,
+				62601D8C2393784700B78033 /* CarModelTableViewCell.swift in Sources */,
 				622BC1D0236A9DC500A43F02 /* UIButton+Extension.swift in Sources */,
 				A4225E5B235559C4004F48C4 /* AlertAction.swift in Sources */,
 				6210BAB82377CFD0001C6065 /* UITextField+Rx.swift in Sources */,
@@ -1358,6 +1411,7 @@
 				62C26BFC2362AE1A00695B6F /* FAQs.swift in Sources */,
 				62C26C072362EF6100695B6F /* Members.swift in Sources */,
 				629C288A237149FA00E0E5E1 /* FindPasswordViewController.swift in Sources */,
+				62601D8323923CEF00B78033 /* CarBrands.swift in Sources */,
 				62AE7254237B940500BE6FA3 /* ColorDialogView.swift in Sources */,
 				629C2872236FADE000E0E5E1 /* BasicInfoViewModel.swift in Sources */,
 				A4225E682355B352004F48C4 /* BoolTransform.swift in Sources */,
@@ -1365,6 +1419,7 @@
 				62AE724C237B8F6700BE6FA3 /* EventViewController.swift in Sources */,
 				629C2865236BF6B600E0E5E1 /* LoginViewController.swift in Sources */,
 				629C2888237149D200E0E5E1 /* ChangePhoneNumberViewController.swift in Sources */,
+				62601D7A23921C8C00B78033 /* NicknameModel.swift in Sources */,
 				622BC0E623681FE300A43F02 /* UIStoryboard+Extension.swift in Sources */,
 				629C287C2371093700E0E5E1 /* RegiCarViewController.swift in Sources */,
 				A4225E9A235D7463004F48C4 /* UserData.swift in Sources */,
@@ -1374,6 +1429,7 @@
 				629C288223710B8E00E0E5E1 /* RegiCarViewModel.swift in Sources */,
 				62254E8D238B995A00AF82B9 /* ParkingLotAPI.swift in Sources */,
 				622BC1BF236A664500A43F02 /* GuideViewModel.swift in Sources */,
+				62601D7823921C6000B78033 /* EmailModel.swift in Sources */,
 				A4225E7D23597CA3004F48C4 /* Login.swift in Sources */,
 				62C26C092362F0BE00695B6F /* Point.swift in Sources */,
 				629C2869236E8D9F00E0E5E1 /* CodeVerifyViewController.swift in Sources */,

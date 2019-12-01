@@ -74,23 +74,7 @@ class Auth : HttpSession {
              
          })
      }
- /*
-     // 휴대폰 OTP 전송 : /v1/auth/otp
-    static public func otp(phoneNumber:String, completion:@escaping(_ completed:Otp?, _ message:String?) -> Void) {
-        let data = AuthAPI.otp(phoneNumber: phoneNumber)
-        
-        _ = self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params!, completion: {(response, message, code) in
-            if let result = response {
-                let object = Otp(JSON: result)
-                completion(object, message)
-            } else {
-                completion(nil, message)
-            }
-        }, failure: { message in
-            
-        })
-    }
-*/
+
     // 휴대폰 OTP 전송 : /v1/auth/otp
     static public func otp(phoneNumber:String) -> Observable<(Otp?, ResponseCodeType)> {
         let data = AuthAPI.otp(phoneNumber: phoneNumber)
@@ -100,22 +84,7 @@ class Auth : HttpSession {
                 return (Otp(JSON: result.data!), result.codeType)
             })
     }
-/*
-    // 휴대폰 OTP 확인 : /v1/auth/otp/check
-    static public func otp_check(phoneNumber:String, otp:String, otpId:String, completion:@escaping(_ completed:Bool, _ message:String?) -> Void) {
-        let data = AuthAPI.otp_check(phoneNumber: phoneNumber, otp: otp, otpId: otpId)
-        
-        _ = self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params!, completion: {(response, message, code) in
-            if response != nil {
-                completion(true, message)
-            } else {
-                completion(false, message)
-            }
-        }, failure: { message in
-            
-        })
-    }
-*/
+
     // 휴대폰 OTP 확인 : /v1/auth/otp/check
     static public func otp_check(phoneNumber:String, otp:String, otpId:Int) -> Observable<ResponseCodeType>  {
         let data = AuthAPI.otp_check(phoneNumber: phoneNumber, otp: otp, otpId: otpId)
@@ -123,6 +92,16 @@ class Auth : HttpSession {
         return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params!)
             .map ({  result in
                 return result.codeType
+            })
+    }
+    
+    // 중복확인(아이디, 이메일, 닉네임) : /v1/auth/exist
+    static public func exist(type:AuthAccountType, value:String) -> Observable<(exist:Bool, ResponseCodeType)>  {
+        let data = AuthAPI.exist(type:type, value:value)
+        
+        return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params!)
+            .map ({  result in
+                return (exist: Bool((result.data!["data"] as! String)), result.codeType)
             })
     }
 }
