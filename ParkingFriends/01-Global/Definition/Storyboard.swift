@@ -16,4 +16,5 @@ struct Storyboard {
     static let registration = UIStoryboard(name: "Registration", bundle: nil)
     static let main = UIStoryboard(name: "Main", bundle: nil)
     static let event = UIStoryboard(name: "Event", bundle: nil)
+    static let payment = UIStoryboard(name: "Payment", bundle: nil)
 }

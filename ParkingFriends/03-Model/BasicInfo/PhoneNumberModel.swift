@@ -36,13 +36,12 @@ class PhoneNumberModel: NSObject, PhoneNumberModelType {
     
     private let disposeBag = DisposeBag()
     
+    private var localizer:LocalizerType
+    
     // MARK: - Initialize
     
-    override init() {
-        super.init()
-    }
-    
     init(localizer: LocalizerType = Localizer.shared) {
+        self.localizer = localizer
     }
     
     // MARK: - Local Methods

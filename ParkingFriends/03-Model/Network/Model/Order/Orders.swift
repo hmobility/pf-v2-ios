@@ -9,18 +9,6 @@
 import Foundation
 import ObjectMapper
 
-class Transaction: BaseModelType {
-    var transactionId:String = ""
-
-    required init?(map: Map) {
-        super.init(map: map)
-    }
-     
-    override func mapping(map: Map) {
-        transactionId <- map["transactionId"]
-    }
-}
-
 class Orders: BaseModelType {
     var totalCount:Int = 0
     var elements:[OrdersElement] = [OrdersElement]()
@@ -37,9 +25,9 @@ class Orders: BaseModelType {
 
 class OrdersElement: BaseModelType {
     var id:Int = 0
-    var status:String = ""
-    var product:[Product] = [Product]()
-    var parkinglot:[Parkinglot] = [Parkinglot]()
+    var status:OrderStatusType?
+    var product:[OrderProduct] = [OrderProduct]()
+    var parkinglot:[OrderParkinglot] = [OrderParkinglot]()
     var from:String = ""
     var to:String = ""
     var dateCreated:String = ""
@@ -53,7 +41,7 @@ class OrdersElement: BaseModelType {
       
     override func mapping(map: Map) {
         id <- map["id"]
-        status <- map["status"]
+        status <- (map["status"], EnumTransform<OrderStatusType>())
         product <- map["product"]
         parkinglot <- map["parkinglot"]
         from <- map["from"]
@@ -64,32 +52,3 @@ class OrdersElement: BaseModelType {
         totalAmount <- map["totalAmount"]
     }
 }
-
-class Product: BaseModelType {
-    var id:Int = 0
-    var status:String = ""
-    
-    required init?(map: Map) {
-        super.init(map: map)
-     }
-       
-    override func mapping(map: Map) {
-        id <- map["id"]
-        status <- map["status"]
-    }
-}
-
-class Parkinglot: BaseModelType {
-    var id:Int = 0
-    var name:String = ""
-    
-    required init?(map: Map) {
-        super.init(map: map)
-     }
-       
-    override func mapping(map: Map) {
-        id <- map["id"]
-        name <- map["name"]
-    }
-}
-

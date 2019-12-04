@@ -10,6 +10,8 @@ import Foundation
 import Alamofire
 import ObjectMapper
 
+    // 회원 신용카드 목록 조회 : /v1/memberscards
+
 class Cards: BaseModelType {
     var totalCount:Int = 0
     var elements:[Card] = [Card]()

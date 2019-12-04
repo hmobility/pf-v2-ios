@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Payment Guide View Controller-->
+        <scene sceneID="WK6-xk-n4k">
+            <objects>
+                <viewController storyboardIdentifier="PaymentGuideViewController" id="tXC-2U-DiN" customClass="PaymentGuideViewController" customModule="ParkingFriends" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GLv-u5-Db3">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dCn-Mp-jvN">
+                                <rect key="frame" x="28" y="98" width="358" height="684"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="cJA-GH-Omd">
+                                        <rect key="frame" x="87" y="40" width="184" height="94"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icWarningFillTriBlack" translatesAutoresizingMaskIntoConstraints="NO" id="rix-VU-kbm" userLabel="Image View - Icon">
+                                                <rect key="frame" x="0.0" y="0.0" width="184" height="56"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="유의사항을 확인하세요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EYz-Qe-VXW" userLabel="Label - Title ">
+                                                <rect key="frame" x="0.0" y="70" width="184" height="24"/>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="T7D-Cq-uJn">
+                                        <rect key="frame" x="0.0" y="629" width="358" height="55"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fSL-xm-b3I" userLabel="Button - Close">
+                                                <rect key="frame" x="0.0" y="0.0" width="179" height="55"/>
+                                                <color key="backgroundColor" name="CharcoalGrey"/>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="18"/>
+                                                <state key="normal" title="닫기">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="closeButtonAction:" destination="tXC-2U-DiN" eventType="touchUpInside" id="8VO-N0-mJ4"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H5k-5U-v4j" userLabel="Button - Agreement">
+                                                <rect key="frame" x="179" y="0.0" width="179" height="55"/>
+                                                <color key="backgroundColor" name="AlgaeGreen"/>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="18"/>
+                                                <state key="normal" title="동의합니다">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="55" id="h6u-bT-pTb"/>
+                                        </constraints>
+                                    </stackView>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LY0-L7-4je" userLabel="Text View - Contents">
+                                        <rect key="frame" x="28" y="158" width="302" height="423"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <attributedString key="attributedText">
+                                            <fragment>
+                                                <string key="content">• 허가된 주차면에 한해 파킹프렌즈에 등록된 차량만 사용한다.
+• 주차 중, 차내 귀중품 도난에 대해 본인이 책임진다.
+• 주차장 내에 인화물, 위험물의 진입이나 흡연 및 화기의 취급을 금한다.
+</string>
+                                                <attributes>
+                                                    <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                    <font key="NSFont" size="15" name="AppleSDGothicNeo-Regular"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="8" headIndent="10" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content="• 주차면 이용 중 발생한 자기 차량 및 주차면 시설물 파손 등 모든 사고(3자에 의한 모든 사고 포함)에 대해 본인이 책임을 지며, 주차면 제공자 또는 파킹프렌즈에 대해 어떠한 민·형사상의 책임과 손해 배상을 제기하지 않는다.">
+                                                <attributes>
+                                                    <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                    <font key="NSFont" size="15" name="AppleSDGothicNeo-Regular"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="7" headIndent="10" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="LY0-L7-4je" secondAttribute="trailing" constant="28" id="E6o-h3-3fg"/>
+                                    <constraint firstItem="cJA-GH-Omd" firstAttribute="centerX" secondItem="dCn-Mp-jvN" secondAttribute="centerX" id="Rpr-5J-AN5"/>
+                                    <constraint firstItem="LY0-L7-4je" firstAttribute="top" secondItem="cJA-GH-Omd" secondAttribute="bottom" constant="24" id="eZS-Ez-Fzi"/>
+                                    <constraint firstItem="LY0-L7-4je" firstAttribute="leading" secondItem="dCn-Mp-jvN" secondAttribute="leading" constant="28" id="fjz-bm-YAm"/>
+                                    <constraint firstItem="T7D-Cq-uJn" firstAttribute="leading" secondItem="dCn-Mp-jvN" secondAttribute="leading" id="fvT-BJ-h7O"/>
+                                    <constraint firstItem="T7D-Cq-uJn" firstAttribute="top" secondItem="LY0-L7-4je" secondAttribute="bottom" constant="48" id="iW4-a1-942"/>
+                                    <constraint firstItem="cJA-GH-Omd" firstAttribute="top" secondItem="dCn-Mp-jvN" secondAttribute="top" constant="40" id="oZL-dw-aub"/>
+                                    <constraint firstAttribute="bottom" secondItem="T7D-Cq-uJn" secondAttribute="bottom" id="qkn-NF-FLp"/>
+                                    <constraint firstAttribute="trailing" secondItem="T7D-Cq-uJn" secondAttribute="trailing" id="yrS-hg-YB9"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                        <color key="value" name="Black36"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Ley-D5-WDb">
+                                <rect key="frame" x="127" y="802" width="160" height="40"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FiU-Ll-eCx" userLabel="Button - Check Box">
+                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                        <state key="normal" image="icCheckOffSmall"/>
+                                        <state key="selected" image="icCheckOnSmall"/>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="다음부터 보지 않기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oAv-Da-pLK" userLabel="Label - Guide Message">
+                                        <rect key="frame" x="48" y="0.0" width="112" height="40"/>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="15"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="dCn-Mp-jvN" firstAttribute="top" secondItem="9qa-zD-cHf" secondAttribute="top" constant="54" id="3ry-Mj-BiP"/>
+                            <constraint firstItem="9qa-zD-cHf" firstAttribute="trailing" secondItem="dCn-Mp-jvN" secondAttribute="trailing" constant="28" id="7Iw-tl-LNX"/>
+                            <constraint firstItem="9qa-zD-cHf" firstAttribute="bottom" secondItem="Ley-D5-WDb" secondAttribute="bottom" constant="20" id="GSQ-rx-dBa"/>
+                            <constraint firstItem="Ley-D5-WDb" firstAttribute="centerX" secondItem="GLv-u5-Db3" secondAttribute="centerX" id="KTQ-vh-09o"/>
+                            <constraint firstItem="dCn-Mp-jvN" firstAttribute="leading" secondItem="9qa-zD-cHf" secondAttribute="leading" constant="28" id="may-jP-PYI"/>
+                            <constraint firstItem="9qa-zD-cHf" firstAttribute="bottom" secondItem="dCn-Mp-jvN" secondAttribute="bottom" constant="80" id="pa5-SO-2Wq"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="9qa-zD-cHf"/>
+                    </view>
+                    <connections>
+                        <outlet property="agreementButton" destination="H5k-5U-v4j" id="83z-as-L5h"/>
+                        <outlet property="closeButton" destination="fSL-xm-b3I" id="33i-uK-olq"/>
+                        <outlet property="guideTextView" destination="LY0-L7-4je" id="5HX-eX-qwh"/>
+                        <outlet property="noDisplayButton" destination="FiU-Ll-eCx" id="HJI-hC-vtx"/>
+                        <outlet property="noDisplayLabel" destination="oAv-Da-pLK" id="1z8-aL-csG"/>
+                        <outlet property="titleLabel" destination="EYz-Qe-VXW" id="lVU-W9-G3v"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RxY-pB-ayU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1026.0869565217392" y="-589.28571428571422"/>
+        </scene>
+        <!--Payment Navigation Controller-->
+        <scene sceneID="Zkl-V0-ljD">
+            <objects>
+                <navigationController id="8Zs-6G-vSb" customClass="PaymentNavigationController" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="oGN-9R-Ue8">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="i9N-ol-zzN" kind="relationship" relationship="rootViewController" id="BLI-nw-dWa"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0HZ-RC-ZCy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1009" y="123"/>
+        </scene>
+        <!--Payment View Controller-->
+        <scene sceneID="xFO-zL-gpH">
+            <objects>
+                <viewController id="i9N-ol-zzN" customClass="PaymentViewController" customModule="ParkingFriends" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="c4w-04-whi">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PxX-at-bQI">
+                                <rect key="frame" x="0.0" y="47" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="32g-6b-ZCT"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Hy9-Ug-yZ1"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Q9x-3S-YPd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-28" y="123"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="icCheckOffSmall" width="20" height="20"/>
+        <image name="icCheckOnSmall" width="20" height="20"/>
+        <image name="icWarningFillTriBlack" width="28" height="28"/>
+        <namedColor name="AlgaeGreen">
+            <color red="0.14499999582767487" green="0.83899998664855957" blue="0.3880000114440918" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Black36">
+            <color red="0.0" green="0.0" blue="0.0" alpha="0.36000001430511475" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="CharcoalGrey">
+            <color red="0.20800000429153442" green="0.23499999940395355" blue="0.2669999897480011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

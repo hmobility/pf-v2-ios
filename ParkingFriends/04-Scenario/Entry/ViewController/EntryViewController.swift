@@ -31,7 +31,7 @@ class EntryViewController: UIViewController {
        // navigateToLogin()
        
         navigateToMain()
-        
+       // navigateToPayment()
         self.trackLog()
         self.track("gender", forName:"female")
         self.track("location", forName:"parking")
@@ -102,6 +102,14 @@ class EntryViewController: UIViewController {
     
     private func navigateToMain() {
         let target = Storyboard.main.instantiateInitialViewController() as! UINavigationController
+        self.modal(target, animated: true)
+    }
+    
+    private func navigateToPayment() {
+        let target = Storyboard.payment.instantiateViewController(withIdentifier: "PaymentGuideViewController")
+        target.view.backgroundColor = UIColor.clear
+        target.modalPresentationStyle = .overCurrentContext
+        target.modalTransitionStyle = .crossDissolve
         self.modal(target, animated: true)
     }
     

@@ -10,6 +10,11 @@ import Foundation
 
 typealias Params = [String : Any]
 
+typealias CoordType = (latitude:CGFloat, longitude:CGFloat)
+
+typealias FilterType = (fee:(from:Int, to:Int), lotType:String, option:(cctv:Bool, iotSensor:Bool, mechanical:Bool, allDayOperation:Bool))
+typealias CardInfoType = (cardNo:String, yearExpired:String, monthExpired:String, password:String, birthDate:String)
+
 enum Language:String {
     case korean = "ko"
     case english = "en"
@@ -57,12 +62,53 @@ enum SortType:String {
     case price = "PRICE"
 }
 
+// 회원 주소 등록
+enum AddressType:String {
+    case home = "HOME"
+    case company = "COMPANY"
+}
+
+// 주차장 상세 조회
+enum OperationTimeType:String {
+    case base = "BASE"
+    case holiday = "HOLIDAY"
+    case saturday = "SATURDAY"
+    case sunday = "SUNDAY"
+}
+
+// 영수증 공유
+enum ReceiptSendType:String {
+    case sms = "SMS"
+    case kakao = "KAKAO"
+    case email = "EMAIL"
+}
+
+// 포인트 충전
+enum PaymentType: String {
+    case card = "CARD"
+    case mobile = "MOBILE"
+}
+
+// API 응답 코드
 enum ResponseCodeType: String {
     case success = "0000"
     case not_found = "1404"
     case bad_request = "1400"
     case error_message = "1500"
     case unknown = ""
+}
+
+// 주문 상태 (주문 단일 조회)
+enum OrderStatusType: String {
+    case paid = "PAID"
+    case canceled = "CANCELED"
+    case used = "USED"
+}
+
+// 대체 주차장 조회
+enum PartnerType: String {
+    case partner = "PARTNER"
+    case pub = "PUBLIC"
 }
 
 // 이메일, OTP 발송 상태, 입력 형식 체크 용 공통 타입

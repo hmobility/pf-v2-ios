@@ -31,6 +31,10 @@ open class RxMapViewDelegateProxy: DelegateProxy<NMFMapView, NMFMapViewDelegate>
     public static func registerKnownImplementations() {
         register { RxMapViewDelegateProxy(mapView: $0)}
     }
+    
+    @objc(mapView:didTapSymbol:) open func mapView(_ mapView: NMFMapView, didTap symbol:NMFSymbol) -> Bool {
+        return forwardToDelegate()?.mapView?(mapView, didTap: symbol) ?? true
+      }
     /*
     // MARK: delegate methods
     /// For more information take a look at `DelegateProxyType`.
