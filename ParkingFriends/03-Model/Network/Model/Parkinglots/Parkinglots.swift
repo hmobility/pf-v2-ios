@@ -10,9 +10,11 @@ import UIKit
 import Alamofire
 import ObjectMapper
 
+// 주차장 목록 조회 : /v1/parkinglots
+
 class Parkinglots: BaseModelType {
     var totalCount:Int = 0
-    var elements:[ParkingLotElement] = [ParkingLotElement]()
+    var elements:[ParkinglotElement] = [ParkinglotElement]()
     
     required init?(map: Map) {
         super.init(map: map)
@@ -24,7 +26,7 @@ class Parkinglots: BaseModelType {
     }
 }
 
-class ParkingLotElement: BaseModelType {
+class ParkinglotElement: BaseModelType {
     var id:Int = 0
     var name:String = ""
     var distance:Int = 0
@@ -111,50 +113,3 @@ class ParkingLotElement: BaseModelType {
         holidayFee <- map["holidayFee"]
     }
 }
-
-class Image: BaseModelType {
-    var url:String = ""
-    var name:String = ""
-    
-    required init?(map: Map) {
-        super.init(map: map)
-    }
-    
-    override func mapping(map: Map) {
-        url <- map["url"]
-        name <- map["name"]
-    }
-}
-
-class OperationTime: BaseModelType {
-    var from:String = ""
-    var to:String = ""
-    
-    required init?(map: Map) {
-        super.init(map: map)
-    }
-    
-    override func mapping(map: Map) {
-        from <- map["from"]
-        to <- map["to"]
-    }
-}
-
-class Fee: BaseModelType {
-    var minute:Int = 0
-    var fee:Int = 0
-    var addMinute:Int = 0
-    var addFee:Int = 0
-    
-    required init?(map: Map) {
-        super.init(map: map)
-    }
-    
-    override func mapping(map: Map) {
-        minute <- map["minute"]
-        fee <- map["fee"]
-        addMinute <- map["addMinute"]
-        addFee <- map["addFee"]
-    }
-}
-

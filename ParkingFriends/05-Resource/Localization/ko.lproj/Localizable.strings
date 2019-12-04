@@ -11,6 +11,9 @@
 "btn_to_next" = "다음으로";
 "btn_email_send" = "이메일 전송";
 "btn_to_start" = "시작하기";
+"btn_to_agree" = "동의합니다";
+"btn_road_guide" = "길안내 받기";
+"btn_reservation_extend" = "예약 연장";
 "txt_today" = "오늘";
 "txt_tomorrow" = "내일";
 "txt_am" = "오전";
@@ -21,6 +24,10 @@
 "txt_hours" = "시간";
 "txt_months" = "개월";
 "txt_month_period" = "개월간";
+"ttl_name" = "이름";
+"ttl_type" = "유형";
+"ttl_date" = "날짜";
+"ttl_car" = "차량";
 "itm_outdoor" = "실외";
 "itm_private" = "민간";
 "itm_cctv" = "CCTV";
@@ -92,12 +99,12 @@
 "ttl_basic_info" = "기본정보 입력";
 "ttl_input_phone_number" = "휴대폰번호";
 "ph_input_phone_number" = "01012341234";
-"ttl_email_input" = "이메일주소";
-"ph_email_input" = "메일 주소 입력";
-"ttl_password_input" = "비밀번호";
-"ph_password_input" = "영문·숫자 포함, 최소 8자";
-"ttl_nickname_input" = "닉네임";
-"ph_nickname_input" = "한글·영문만 사용, 최대 8자";
+"ttl_input_email" = "이메일주소";
+"ph_input_email" = "메일 주소 입력";
+"ttl_input_password" = "비밀번호";
+"ph_input_password" = "영문·숫자 포함, 최소 8자";
+"ttl_input_nickname" = "닉네임";
+"ph_input_nickname" = "한글·영문만 사용, 최대 8자";
 "ttl_phone_number_verify" = "휴대폰 인증";
 "dsc_pnone_number_verify" = "로그인을 위해 휴대폰 인증이 필요합니다.\n본인 명의의 휴대폰 정보를 입력해주세요.";
 "ttl_input_phone_number" = "휴대폰번호";
@@ -105,8 +112,8 @@
 "btn_code_send" = "인증번호 전송";
 "ttl_code_verify" = "인증번호 입력";
 "dsc_code_verify" = "%@로 인증번호를 전송했습니다.\n인증번호를 입력해주세요.";
-"ttl_code_verify_input" = "인증번호";
-"ph_code_verify_input" = "숫자 4자리";
+"ttl_input_code_verify" = "인증번호";
+"ph_input_code_verify" = "숫자 4자리";
 "ttl_agreement" = "약관동의";
 "dsc_agreement" = "파킹프렌즈 서비스 이용을 위해서\n아래 약관에 동의해주세요.";
 "ttl_usage" = "이용약관";
@@ -141,6 +148,29 @@
 "itm_distance_closed" = "가까운순";
 "ttl_period_of_use" = "이용기간";
 "ttl_period_of_start" = "이용 시작일";
+
+// Payment
+"ttl_payment_guide" = "유의사항을 확인하세요!";
+"txt_payment_contents" = "• 허가된 주차면에 한해 파킹프렌즈에 등록된 차량만 사용한다.\n• 주차 중, 차내 귀중품 도난에 대해 본인이 책임진다.\n• 주차장 내에 인화물, 위험물의 진입이나 흡연 및 화기의 취급을 금한다.\n• 주차면 이용 중 발생한 자기 차량 및 주차면 시설물 파손 등 모든 사고(3자에 의한 모든 사고 포함)에 대해 본인이 책임을 지며, 주차면 제공자 또는 파킹프렌즈에 대해 어떠한 민·형사상의 책임과 손해 배상을 제기하지 않는다.";
+"txt_payment_guide_no_display" = "다음부터 보지 않기";
+
+//  BLE
+"ttl_ble_parking_guide" = "%@부터 입차 가능합니다";
+"dsc_ble_parking_guide" = "예약시간에 맞춰 블루투스 기능을 켜고\n주차장 입구에서 파프앱키로 차단기를 열어주세요.";
+"ttl_ble_turn_on" = "블루투스 기능을 켜주세요";
+"dsc_ble_turn_on" = "입차 확인을 위해 블루투스 기능을 켜주세요.";
+"ttl_ble_time_notice" = "예약한 주차시간이 거의 다 됐어요!";
+"dsc_ble_time_notice" = "현재 입차 가능한 시간입니다.\n주차장 입구에서 파프앱키로 차단기를 열어주세요.";
+"ttl_ble_time_remain" = "주차 시간이 %@ 남았어요!";
+"dsc_ble_time_remain" = "현재 입차 가능한 시간입니다.\n주차장 입구에서 파프앱키로 차단기를 열어주세요.";
+"ttl_ble_time_exceed" = "예약 시간을 %@ 초과했어요!";
+"dsc_ble_time_exceed" = "초과 이용한 시간만큼 추가 금액 결제가 필요해요.";
+"btn_ble_open" = "차단기 열기";
+"btn_ble_turn_on" = "블루투스 켜기";
+"ttl_ble_open" = "주차장 차단기 열기";
+"txt_ble_open" = "주차장 접근이 감지되었습니다.\n파프앱키로 차단기를 여시겠어요?";
+"txt_ble_payment_execeed" = "파프앱키로 차단기를 여시겠어요?\n초과 금액 결제가 필요합니다.";
+"txt_ble_usage_guide" = "반드시 차단기 바로 앞에서 누르세요!";
 
 // Message
 "msg_login_mismatch" = "비밀번호가 일치하지 않습니다.";

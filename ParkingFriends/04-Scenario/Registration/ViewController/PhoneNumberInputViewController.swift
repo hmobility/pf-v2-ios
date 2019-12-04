@@ -60,11 +60,11 @@ class PhoneNumberInputViewController: UIViewController {
     // MARK: - Binding
     
     private func setupBindings() {
-         viewModel.titleText
+        viewModel.titleText
             .drive(titleLabel.rx.text)
             .disposed(by: disposeBag)
-         
-         viewModel.subtitleText
+        
+        viewModel.subtitleText
             .drive(subtitleLabel.rx.text)
             .disposed(by: disposeBag)
         

@@ -10,6 +10,8 @@ import Foundation
 import Alamofire
 import ObjectMapper
 
+ // 회원 포인트 조회 : /v1/members/point
+
 class Point: BaseModelType {
     var point:Int = 0
 

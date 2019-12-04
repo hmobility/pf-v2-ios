@@ -26,5 +26,25 @@ class CarBrandViewModel: CarBrandViewModelType {
         viewTitleText = localizer.localized("ttl_car_info_registration")
         
     }
+    
+    func loadBrand() {
+        Common.cars_brands()
+            .asObservable()
+            .subscribe(onNext: { (data, respnose) in
+                   print("[Brand]", data)
+            }, onError: { error in
+            
+            })
+    }
+    
+    func loadModels(brandId:String) {
+        Common.cars_brands_models(brandId: brandId)
+            .asObservable()
+            .subscribe(onNext: { (data, respnose) in
+                print("[Model]", data)
+            }, onError: { error in
+            
+            })
+    }
 }
 

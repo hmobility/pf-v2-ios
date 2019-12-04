@@ -22,27 +22,29 @@ protocol BasicInfoViewModelType {
     
     var phoneNumberInputTitle: Driver<String> { get }
     var phoneNumberDisplayText: BehaviorSubject<String> { get }
-    var phoneNumberMessageText: BehaviorSubject<String> { get }
+    var phoneNumberMessageText: BehaviorRelay<String> { get }
     
     var emailInputTitle: Driver<String> { get }
     var emailInputPlaceholder: Driver<String> { get }
-    var emailMessageText: BehaviorSubject<String> { get }
+    var emailMessageText: BehaviorRelay<String> { get }
     
     var passwordInputTitle: Driver<String> { get }
     var passwordInputPlaceholder: Driver<String> { get }
-    var passwordMessageText: BehaviorSubject<String> { get }
+    var passwordMessageText: BehaviorRelay<String> { get }
     
     var nicknameInputTitle: Driver<String> { get }
     var nicknameInputPlaceholder: Driver<String> { get }
-    var nicknameMessageText: BehaviorSubject<String> { get }
+    var nicknameMessageText: BehaviorRelay<String> { get }
     
     var nextText: Driver<String> { get }
     
     //var proceed: BehaviorRelay<(BasicInfoSectionType, CheckType, String?)> { get }
     var proceed: BehaviorRelay<Bool> { get }
     
+    var emailModel:EmailModel { get }
+    var nicknameModel:NicknameModel { get }
     var passwordModel:PasswordModel { get }
-    
+
     func validate(section:BasicInfoSectionType) -> Bool 
 }
 
@@ -51,19 +53,19 @@ class BasicInfoViewModel: BasicInfoViewModelType {
     
     var phoneNumberInputTitle: Driver<String>
     var phoneNumberDisplayText: BehaviorSubject<String>
-    var phoneNumberMessageText: BehaviorSubject<String> = BehaviorSubject(value: "")
+    var phoneNumberMessageText: BehaviorRelay<String> = BehaviorRelay(value: "")
     
     var emailInputTitle: Driver<String>
     var emailInputPlaceholder: Driver<String>
-    var emailMessageText: BehaviorSubject<String> = BehaviorSubject(value: "")
+    var emailMessageText: BehaviorRelay<String> = BehaviorRelay(value: "")
     
     var passwordInputTitle: Driver<String>
     var passwordInputPlaceholder: Driver<String>
-    var passwordMessageText: BehaviorSubject<String> = BehaviorSubject(value: "")
+    var passwordMessageText: BehaviorRelay<String> = BehaviorRelay(value: "")
     
     var nicknameInputTitle: Driver<String>
     var nicknameInputPlaceholder: Driver<String>
-    var nicknameMessageText: BehaviorSubject<String> = BehaviorSubject(value: "")
+    var nicknameMessageText: BehaviorRelay<String> = BehaviorRelay(value: "")
     
     var nextText: Driver<String>
     
@@ -92,7 +94,7 @@ class BasicInfoViewModel: BasicInfoViewModelType {
         passwordInputPlaceholder = localizer.localized("ph_input_password")
         
         nicknameInputTitle = localizer.localized("ttl_input_nickname")
-        nicknameInputPlaceholder = localizer.localized("phe_input_nickname")
+        nicknameInputPlaceholder = localizer.localized("ph_input_nickname")
         
         nextText = localizer.localized("btn_to_next")
     }
@@ -100,7 +102,18 @@ class BasicInfoViewModel: BasicInfoViewModelType {
     // MARK: - Local Methods
     
     func updateStatus(_ status:CheckType, section:BasicInfoSectionType, message:String) {
-        proceed.accept(validateCredentials())
+        switch section {
+        case .email:
+            emailMessageText.accept(message)
+        case .password:
+            passwordMessageText.accept(message)
+        case .nickname:
+            nicknameMessageText.accept(message)
+        default:
+            break
+        }
+        
+     //   proceed.accept(<#T##event: Bool##Bool#>)
     }
     
     // MARK: - Public Methods
@@ -130,7 +143,10 @@ class BasicInfoViewModel: BasicInfoViewModelType {
     }
     
     func validateCredentials() -> Bool {
-        return validate(section: .email) && validate(section: .password) && validate(section: .nickname)
+        let result = validate(section: .email) && validate(section: .password) && validate(section: .nickname)
+        proceed.accept(result)
+        
+        return result
     }
     
     func checkCredential(_ type:AuthAccountType, value:String) {

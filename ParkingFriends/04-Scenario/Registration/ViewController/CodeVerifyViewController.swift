@@ -94,7 +94,8 @@ class CodeVerifyViewController: UIViewController {
     private func setupInputBinding() {
         inputTextField.rx.text
             .orEmpty
-            .bind(to: viewModel.codeText)
+            .asDriver()
+            .drive(viewModel.codeText)
             .disposed(by: disposeBag)
         
         viewModel.codeText
@@ -164,9 +165,10 @@ class CodeVerifyViewController: UIViewController {
         nextButton.rx.tap
             .subscribe(onNext: { _ in
                 let phoneNumber = self.registrationModel.phoneNumber!
-                let otpId = self.registrationModel.otp?.otpId
-                let otp = self.inputTextField.text
-                self.viewModel.checkOtp(phoneNumber: phoneNumber, otp: otp!, otpId: otpId!)
+                if let otp = self.registrationModel.otp {
+                    let code = self.inputTextField.text
+                    self.viewModel.checkOtp(phoneNumber: phoneNumber, otp: code!, otpId: otp.otpId)
+                }
             })
             .disposed(by: disposeBag)
     }
@@ -196,7 +198,9 @@ class CodeVerifyViewController: UIViewController {
             return
         }
         
-        navigationController.popViewController(animated: false)
+   //     navigationController.viewControllers.removeLast()
+        
+  //      navigationController.popViewController(animated: false)
         
         let basicInfoInput = Storyboard.registration.instantiateViewController(withIdentifier: "BasicInfoInputViewController") as! BasicInfoInputViewController
             

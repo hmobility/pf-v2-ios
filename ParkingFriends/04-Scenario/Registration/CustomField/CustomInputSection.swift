@@ -39,8 +39,14 @@ class CustomInputSection: UIStackView {
         // configure()
     }
     
-    public func binding() {
-        inputTextField.rx.controlEvent([.editingDidBegin, .editingChanged, .editingDidEnd])
+    // MARK: - Private Methdos
+    
+    private func inputFieldBinding() {
+        guard let inputField = self.inputTextField else {
+            return
+        }
+        
+        inputField.rx.controlEvent([.editingDidBegin, .editingChanged, .editingDidEnd])
             .asObservable()
             .subscribe(onNext: { [unowned self] result in
                 self.setNeedsDisplay()
@@ -55,7 +61,7 @@ class CustomInputSection: UIStackView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        binding()
+        inputFieldBinding()
     }
 
     // Only override draw() if you perform custom drawing.
@@ -65,13 +71,17 @@ class CustomInputSection: UIStackView {
     }
     
     private func customDraw() {
-        if inputTextField.isEditing || inputTextField.isFocused {
+        guard let inputField = self.inputTextField else {
+            return
+        }
+        
+        if inputField.isEditing || inputField.isFocused {
             backgroundView.borderColor = focusedColor
             fieldTitleLabel.textColor = focusedColor
         } else {
             backgroundView.borderColor = normalColor
             
-            if inputTextField.text!.isEmpty {
+            if inputField.text!.isEmpty {
                 fieldTitleLabel.textColor = normalColor
             } else {
                 fieldTitleLabel.textColor = focusedColor

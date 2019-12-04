@@ -100,6 +100,12 @@ class BasicInfoInputViewController: UIViewController {
                 _ = self.viewModel.validate(section: .email)
             })
             .disposed(by: disposeBag)
+        
+        emailField.inputTextField.rx.text
+            .orEmpty
+            .asDriver()
+            .drive(viewModel.emailModel.data)
+            .disposed(by: disposeBag)
     }
     
     private func setupPasswordBinding() {
@@ -109,8 +115,10 @@ class BasicInfoInputViewController: UIViewController {
         
         passwordField.inputTextField.delegate = viewModel.passwordModel
 
-        passwordField.inputTextField.rx.text.orEmpty
-            .bind(to: viewModel.passwordModel.data)
+        passwordField.inputTextField.rx.text
+            .orEmpty
+            .asDriver()
+            .drive(viewModel.passwordModel.data)
             .disposed(by: disposeBag)
         
         viewModel.passwordInputPlaceholder
@@ -119,6 +127,20 @@ class BasicInfoInputViewController: UIViewController {
         
         viewModel.passwordMessageText
             .bind(to: passwordField.messageLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        passwordField.inputTextField.rx
+             .controlEvent([.editingDidEnd])
+             .asObservable()
+             .subscribe(onNext:{ _ in
+                 _ = self.viewModel.validate(section: .password)
+             })
+             .disposed(by: disposeBag)
+        
+        passwordField.inputTextField.rx.text
+            .orEmpty
+            .asDriver()
+            .drive(viewModel.passwordModel.data)
             .disposed(by: disposeBag)
     }
     
@@ -134,6 +156,20 @@ class BasicInfoInputViewController: UIViewController {
         viewModel.nicknameMessageText
             .bind(to: nicknameField.messageLabel.rx.text)
             .disposed(by: disposeBag)
+        
+        nicknameField.inputTextField.rx.text
+            .orEmpty
+            .asDriver()
+            .drive(viewModel.nicknameModel.data)
+            .disposed(by: disposeBag)
+        
+        nicknameField.inputTextField.rx
+              .controlEvent([.editingDidEnd])
+              .asObservable()
+              .subscribe(onNext:{ _ in
+                  _ = self.viewModel.validate(section: .nickname)
+              })
+              .disposed(by: disposeBag)
     }
     
     private func setupKeyboard() {
@@ -155,14 +191,16 @@ class BasicInfoInputViewController: UIViewController {
             .disposed(by: disposeBag)
         
       //  phoneNumberField.inputTextField.addDoneButtonOnKeyboard()
-        emailField.inputTextField.addDoneButtonOnKeyboard()
-        nicknameField.inputTextField.addDoneButtonOnKeyboard()
-        passwordField.inputTextField.addDoneButtonOnKeyboard()
+      //  emailField.inputTextField.addDoneButtonOnKeyboard()
+      //  nicknameField.inputTextField.addDoneButtonOnKeyboard()
+      //  passwordField.inputTextField.addDoneButtonOnKeyboard()
     }
     
     private func setupButtonBinding() {
         viewModel.proceed.asDriver()
             .drive(onNext: { [unowned self] (completed) in
+                debugPrint("[PROCEED] check all : ", completed)
+                
                 self.nextButton.isEnabled = completed ? true : false
             })
             .disposed(by: disposeBag)

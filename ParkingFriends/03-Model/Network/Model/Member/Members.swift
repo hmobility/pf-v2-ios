@@ -10,13 +10,15 @@ import Foundation
 import Alamofire
 import ObjectMapper
 
+// 회원 상세 조회 : /v1/members
+
 class Members: BaseModelType {
     var id:Int = 0
     var username:String = ""
     var email:String = ""
     var nickname:String = ""
     var point:Int = 0
-    var car:[Car] = [Car]()
+    var car:[MemberCar] = [MemberCar]()
 
     required init?(map: Map) {
         super.init(map: map)
@@ -32,9 +34,22 @@ class Members: BaseModelType {
     }
 }
 
-class Car: BaseModelType {
-    var trimId:Int = 0
-    var colorId:Int = 0
+class MemberCar: BaseModelType {
+    var totalCount:Int = 0
+    var elements:[MemberCarElement] = [MemberCarElement]()
+    
+    required init?(map: Map) {
+        super.init(map: map)
+    }
+      
+    override func mapping(map: Map) {
+        totalCount <- map["totalCount"]
+        elements <- map["elements"]
+    }
+}
+
+class MemberCarElement: BaseModelType {
+    var modelId:Int = 0
     var number:Int = 0
     
     required init?(map: Map) {
@@ -42,8 +57,7 @@ class Car: BaseModelType {
     }
       
     override func mapping(map: Map) {
-        trimId <- map["trimId"]
-        colorId <- map["colorId"]
+        modelId <- map["modelId"]
         number <- map["number"]
     }
 }

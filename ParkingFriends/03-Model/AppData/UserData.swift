@@ -11,6 +11,7 @@ import ObjectMapper
 
 class UserData: NSObject, NSCoding {
     var login: Login?
+    var noDiplayPaymentGuide:Bool = false
     
     override init() {
        super.init()
@@ -18,13 +19,12 @@ class UserData: NSObject, NSCoding {
     
     required init?(coder aDecoder: NSCoder) {
         self.login = aDecoder.decodeObject(forKey: "login") as? Login
-     //  self.userName = aDecoder.decodeObject(forKey: "userName") as? String
+        self.noDiplayPaymentGuide = aDecoder.decodeObject(forKey: "noDiplayPaymentGuide") as! Bool
     }
 
     func encode(with aCoder: NSCoder) {
         aCoder.encode(login, forKey:"login")
-     //   aCoder.encode(userName, forKey: "userName")
-
+        aCoder.encode(noDiplayPaymentGuide, forKey: "noDiplayPaymentGuide")
     }
     
     public func setAuth(_ data:Login?) -> UserData {

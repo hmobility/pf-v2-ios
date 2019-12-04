@@ -40,6 +40,7 @@ target 'ParkingFriends' do
   pod 'CryptoSwift'               # SHA256 password to string
   
   pod 'PullUpController'
+  pod 'TagListView', '~> 1.3.2'
   
 end
 

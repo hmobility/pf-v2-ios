@@ -10,6 +10,8 @@ import Foundation
 import Alamofire
 import ObjectMapper
 
+// 회원 쿠폰 목록 조회 : /v1/members/coupons
+
 class Coupons: BaseModelType {
     var totalCount:Int = 0
     var elements:[Coupon] = [Coupon]()

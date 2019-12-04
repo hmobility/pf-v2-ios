@@ -1,24 +1,22 @@
 //
-//  OrderPreview.swift
+//  Transaction.swift
 //  ParkingFriends
 //
-//  Created by PlankFish on 2019/10/25.
+//  Created by PlankFish on 2019/12/04.
 //  Copyright © 2019 Hancom Mobility. All rights reserved.
 //
 
 import Foundation
-import Alamofire
 import ObjectMapper
 
-class Order: BaseModelType {
-    var orderId:Int = 0
+class Transaction: BaseModelType {
+    var transactionId:String = ""
 
     required init?(map: Map) {
         super.init(map: map)
     }
      
     override func mapping(map: Map) {
-        orderId <- map["orderId"]
+        transactionId <- map["transactionId"]
     }
 }
-
