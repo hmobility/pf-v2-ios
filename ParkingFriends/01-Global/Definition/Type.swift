@@ -12,7 +12,7 @@ typealias Params = [String : Any]
 
 typealias CoordType = (latitude:CGFloat, longitude:CGFloat)
 
-typealias FilterType = (fee:(from:Int, to:Int), lotType:String, option:(cctv:Bool, iotSensor:Bool, mechanical:Bool, allDayOperation:Bool))
+typealias FilterType = (fee:(from:Int, to:Int), lotType:ProductType, option:(cctv:Bool, iotSensor:Bool, mechanical:Bool, allDayOperation:Bool))
 typealias CardInfoType = (cardNo:String, yearExpired:String, monthExpired:String, password:String, birthDate:String)
 
 enum Language:String {
@@ -107,8 +107,8 @@ enum OrderStatusType: String {
 
 // 대체 주차장 조회
 enum PartnerType: String {
-    case partner = "PARTNER"
-    case pub = "PUBLIC"
+    case partner_lot = "PARTNER"
+    case public_lot = "PUBLIC"
 }
 
 // 이메일, OTP 발송 상태, 입력 형식 체크 용 공통 타입
