@@ -105,6 +105,15 @@ class MapViewModel: NSObject, MapViewModelType {
             })
             .disposed(by: disposeBag)
     }
+    
+    func within(coordinate:CoordType) {
+        ParkingLot.within(lat: coordinate.latitude.toString, lon: coordinate.longitude.toString, radius: "1", sort: .distance, start: "", end: "", productType:.public_lot, monthlyFrom: "", monthlyCount: 1, filter: FilterType(fee:(from:500, to:1000), lotType:.public_lot, option:(cctv:false, iotSensor:false, mechanical:false, allDayOperation:false))).asObservable()
+            .subscribe(onNext: {(within, responseType) in
+            }, onError: { error in
+                        
+            })
+            .disposed(by: disposeBag)
+    }
 }
 
 // MARK:- MapView Delegate
