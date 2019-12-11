@@ -65,14 +65,14 @@ class UserData: NSObject, NSCoding {
     
     required init?(coder aDecoder: NSCoder) {
         self.login = aDecoder.decodeObject(forKey: "login") as? Login
-        self.filter = aDecoder.decodeObject(forKey: "filter") as! FilterOption
-        self.noDiplayPaymentGuide = aDecoder.decodeObject(forKey: "noDiplayPaymentGuide") as! Bool
+     //   self.filter = aDecoder.decodeObject(forKey: "filter") as! FilterOption
+     //   self.noDiplayPaymentGuide = aDecoder.decodeObject(forKey: "noDiplayPaymentGuide") as! Bool
     }
     
     func encode(with aCoder: NSCoder) {
         aCoder.encode(login, forKey:"login")
-        aCoder.encode(filter, forKey: "filter")
-        aCoder.encode(noDiplayPaymentGuide, forKey: "noDiplayPaymentGuide")
+   //     aCoder.encode(filter, forKey: "filter")
+    //    aCoder.encode(noDiplayPaymentGuide, forKey: "noDiplayPaymentGuide")
     }
     
     static var shared:UserData {
