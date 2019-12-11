@@ -14,7 +14,7 @@ class Order : HttpSession {
  
         return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params!)
             .map ({  result in
-                return (OrderPreview(JSON: result.data!), result.codeType)
+                return (OrderPreview(JSON: result.data), result.codeType)
             })
     }
 
@@ -23,7 +23,7 @@ class Order : HttpSession {
         
         return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params!)
             .map ({  result in
-                return (Transaction(JSON: result.data!), result.codeType)
+                return (Transaction(JSON: result.data), result.codeType)
             })
     }
     
@@ -32,7 +32,7 @@ class Order : HttpSession {
         
         return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params!)
             .map ({  result in
-                return (Orders(JSON: result.data!), result.codeType)
+                return (Orders(JSON: result.data), result.codeType)
             })
     }
     
@@ -41,7 +41,7 @@ class Order : HttpSession {
         
         return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params!)
             .map ({  result in
-                return (Orders(JSON: result.data!), result.codeType)
+                return (Orders(JSON: result.data), result.codeType)
             })
     }
     
@@ -50,7 +50,7 @@ class Order : HttpSession {
         
         return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path:data.url, parameters: data.params!)
             .map ({  result in
-                return (CancelFee(JSON: result.data!), result.codeType)
+                return (CancelFee(JSON: result.data), result.codeType)
             })
     }
     
@@ -59,7 +59,7 @@ class Order : HttpSession {
         
         return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params!)
             .map ({  result in
-                return (CancelFee(JSON: result.data!), result.codeType)
+                return (CancelFee(JSON: result.data), result.codeType)
             })
     }
     
@@ -86,7 +86,7 @@ class Order : HttpSession {
         
         return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params!)
             .map ({  result in
-                return (OverFee(JSON: result.data!), result.codeType)
+                return (OverFee(JSON: result.data), result.codeType)
             })
     }
     
@@ -104,7 +104,7 @@ class Order : HttpSession {
         
         return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params!)
             .map ({  result in
-                return (Recommend(JSON: result.data!),result.codeType)
+                return (Recommend(JSON: result.data),result.codeType)
             })
     }
     
@@ -122,7 +122,7 @@ class Order : HttpSession {
         
         return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params!)
             .map ({  result in
-                return (Receipt(JSON: result.data!), result.codeType)
+                return (Receipt(JSON: result.data), result.codeType)
             })
     }
     

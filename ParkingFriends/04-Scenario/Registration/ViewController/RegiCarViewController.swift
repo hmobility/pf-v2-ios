@@ -17,7 +17,9 @@ extension RegiCarViewController : AnalyticsType {
 }
 
 class RegiCarViewController: UIViewController {
-    
+    @IBOutlet weak var skipButton: UIBarButtonItem!
+    @IBOutlet weak var selectCarButton: UIButton!
+    @IBOutlet weak var selectColorButton: UIButton!
     private var viewModel: RegiCarViewModelType
     private let disposeBag = DisposeBag()
     
@@ -28,7 +30,7 @@ class RegiCarViewController: UIViewController {
     }
     
     @IBAction func nextButtonAction(_ sender: Any) {
-        navigateToRegiCreditCard()
+        navigateToRegiCar()
     }
         
     // MARK: - Initialize
@@ -43,19 +45,46 @@ class RegiCarViewController: UIViewController {
         super.init(coder: aDecoder)
     }
     
+    private func initialize() {
+        setupButtonBinding()
+    }
+    
+    // MARK: - Binding
+    
+    private func setupButtonBinding() {
+        selectCarButton.rx.tap
+            .subscribe(onNext: { _ in
+                self.navigateToRegiCar()
+            })
+            .disposed(by: disposeBag)
+        
+        selectColorButton.rx.tap
+            .subscribe(onNext: { _ in
+                self.showColorDiaglog()
+            })
+            .disposed(by: disposeBag)
+    }
+    
     // MARK: - Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        initialize()
     }
     
     // MARK: - Navigation
     
-    private func navigateToRegiCreditCard() {
-        let target = Storyboard.registration.instantiateViewController(withIdentifier: "RegiCreditCardViewController") as! RegiCreditCardViewController
-        self.push(target)
+    private func navigateToRegiCar() {
+        let target = Storyboard.registration.instantiateViewController(withIdentifier: "CarInfoSearchNavigationController") as! UINavigationController
+        self.modal(target)
+    }
+    
+    private func showColorDiaglog() {
+        ColorDialog.show { (finished, color) in
+            if finished {
+                print("[SEL COLOR] ", color)
+            }
+        }
     }
 
     /*

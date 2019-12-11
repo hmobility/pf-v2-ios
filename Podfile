@@ -42,10 +42,20 @@ target 'ParkingFriends' do
   pod 'PullUpController'
   pod 'TagListView', '~> 1.3.2'
   
+  pod 'RangeSeekSlider'
+  
 end
 
 target 'ParkingFriendsTests' do
   inherit! :search_paths
   
   pod 'Firebase/Analytics'
+      
+end
+
+target 'ParkingFriendsUITests' do
+  inherit! :search_paths
+  
+  pod 'Firebase/Analytics'
+      
 end

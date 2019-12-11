@@ -26,9 +26,10 @@ final class RegistrationModel {
     var email:String?
     var nickname:String?
     var password:String?
-    var isThirdPartyAgrrement:Bool = false
+    var isThirdPartyAgreement:Bool = false
     
     var otp:Otp?
+    var checkOldMember:OldMember?
     
     static let shared: RegistrationModel = {
         let instance = RegistrationModel()
@@ -36,6 +37,18 @@ final class RegistrationModel {
     }()
     
     private init() {
+    }
+    
+    func basicInfo(email:String, password:String, nickname:String) {
+        self.email = email
+        self.password = password
+        self.nickname = nickname
+    }
+    
+    func resetBasicInfo() {
+        self.email = nil
+        self.password = nil
+        self.nickname = nil
     }
     
     func otp(_ otp:Otp, phoneNumber:String) {

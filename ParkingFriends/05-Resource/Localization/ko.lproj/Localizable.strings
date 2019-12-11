@@ -14,6 +14,7 @@
 "btn_to_agree" = "동의합니다";
 "btn_road_guide" = "길안내 받기";
 "btn_reservation_extend" = "예약 연장";
+"btn_to_reset" = "설정 초기화";
 "txt_today" = "오늘";
 "txt_tomorrow" = "내일";
 "txt_am" = "오전";
@@ -70,6 +71,7 @@
 "ttl_car_color" = "차량색상";
 "ph_car_color" = "흰색";
 "ttl_color_picker" = " 차량색상 선택";
+"ttl_selected_car" = "선택한 차량";
 
 // Color Index
 "itm_white" = "흰색";
@@ -122,7 +124,7 @@
 "ttl_third_party_info" = "제 3자 정보 제공";
 "ttl_marketing_info" = "개인정보 마케팅 활용";
 "txt_agreement_sentence_end" = "에 동의합니다.";
-"txt_aggree_all" = "모두 동의합니다.";
+"txt_agree_all" = "모두 동의합니다.";
 "txt_agreement_option" = "(선택)";
 
 // Tutorial
@@ -148,6 +150,30 @@
 "itm_distance_closed" = "가까운순";
 "ttl_period_of_use" = "이용기간";
 "ttl_period_of_start" = "이용 시작일";
+
+// Search Option
+"ttl_search_option" = "검색옵션";
+"ttl_price_per_unit" = "시간당 주차 요금";
+"txt_price_range" = "무료 ~ 10,000원";
+"txt_price_max" = "1만원";
+"txt_price_min" = "무료";
+"txt_price_guide" = "요금 옵션은 예약권 상품에만 적용됩니다.";
+"ttl_order_sorting" = "정렬 순서";
+"itm_low_price" = "낮은가격순";
+"itm_nearby" = "가까운순";
+"ttl_parkinglot_type" = "민·공영 구분";
+"itm_parkinglot_none" = "무관";
+"itm_parkinglot_public" = "공영";
+"itm_parkinglot_private" = "민영";
+"ttl_area_type" = "실내·외 구분";
+"itm_area_none" = "무관";
+"itm_area_outdoor" = "실외";
+"itm_area_indoor" = "실내";
+"ttl_extra_option" = "그 외 옵션";
+"itm_option_cctv" = "CCTV 설치";
+"itm_option_iot_sensor" = "IoT센서 설치";
+"itm_option_mechanical" = "기계식주차 제외";
+"itm_option_full_time" = "24시간 운영";
 
 // Payment
 "ttl_payment_guide" = "유의사항을 확인하세요!";

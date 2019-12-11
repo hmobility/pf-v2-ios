@@ -12,6 +12,7 @@ import ObjectMapper
 
 public class Otp: BaseModelType {
     var otpId:Int = 0
+
     var memberExist:Bool = false
     
     required init?(map: Map) {

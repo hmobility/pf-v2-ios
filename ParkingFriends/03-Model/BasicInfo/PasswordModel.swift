@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import AnyFormatKit
 
-fileprivate let size = (minimum:6, maximum:15)
+fileprivate let size = (minimum:8, maximum:15)
 
 public protocol PasswordModelType {
     var data: BehaviorRelay<String> { get set }
@@ -34,12 +34,10 @@ class PasswordModel: NSObject, PasswordModelType {
     // MARK: - Public Methods
 
     func validateCredentials() -> Bool {
-        guard validateLength(text: data.value, size: (size.minimum, size.maximum)) else {
-       //     errorValue.accept(errorMessage)
+        guard validateLength(text: data.value, size: (size.minimum, size.maximum)) && data.value.count > 0  else {
             return false
         }
                 
-       // errorValue.accept("")
         return true
     }
     

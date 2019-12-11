@@ -107,7 +107,10 @@ class MapViewModel: NSObject, MapViewModelType {
     }
     
     func within(coordinate:CoordType) {
-        ParkingLot.within(lat: coordinate.latitude.toString, lon: coordinate.longitude.toString, radius: "1", sort: .distance, start: "", end: "", productType:.public_lot, monthlyFrom: "", monthlyCount: 1, filter: FilterType(fee:(from:500, to:1000), lotType:.public_lot, option:(cctv:false, iotSensor:false, mechanical:false, allDayOperation:false))).asObservable()
+        
+        typealias FilterType = (fee:(from:Int, to:Int), sortType:FilterSortType, operationType:FilterOperationType, areaType:FilterAreaType ,option:(cctv:Bool, iotSensor:Bool, mechanical:Bool, allDay:Bool))
+        
+        ParkingLot.within(lat: coordinate.latitude.toString, lon: coordinate.longitude.toString, radius: "1", sort: .distance, start: "", end: "", productType:.public_lot, monthlyFrom: "", monthlyCount: 1, filter: FilterType(fee:(from:500, to:1000), sortType:.low_price, operationType:.public_area, areaType:.outdoor, option:(cctv:false, iotSensor:false, mechanical:false, allDay:false))).asObservable()
             .subscribe(onNext: {(within, responseType) in
             }, onError: { error in
                         

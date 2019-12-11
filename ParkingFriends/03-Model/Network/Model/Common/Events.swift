@@ -20,7 +20,7 @@ class Events: BaseModelType {
     
     override func mapping(map: Map) {
         totalCount <- map["totalCount"]
-        elements <- map["NoticesElement"]
+        elements <- map["elements"]
     }
 }
 
@@ -31,6 +31,9 @@ class EventsElement: BaseModelType {
     var from:String = ""
     var to:String = ""
     var imageUrl:String = ""
+    var thumbNailImageUrl:String = ""
+    var expired:Bool = false
+    
     
     required init?(map: Map) {
         super.init(map: map)
@@ -43,29 +46,7 @@ class EventsElement: BaseModelType {
         from <- map["from"]
         to <- map["to"]
         imageUrl <- map["imageUrl"]
-    }
-}
-
-class EventsContent: BaseModelType {
-    var id:Int = 0
-    var title:String = ""
-    var content:String = ""
-    var dateCreated:String = ""
-    var from:String = ""
-    var to:String = ""
-    var imageUrl:String = ""
-    
-    required init?(map: Map) {
-        super.init(map: map)
-    }
-      
-    override func mapping(map: Map) {
-        id <- map["id"]
-        title <- map["title"]
-        content <- map["content"]
-        dateCreated <- map["dateCreated"]
-        from <- map["from"]
-        to <- map["to"]
-        imageUrl <- map["imageUrl"]
+        thumbNailImageUrl <- map["thumbNailImageUrl"]
+        expired <- (map["expired"], BoolTransform())
     }
 }

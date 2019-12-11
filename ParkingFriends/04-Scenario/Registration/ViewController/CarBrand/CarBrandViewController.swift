@@ -19,9 +19,11 @@ extension CarBrandViewController : AnalyticsType {
 class CarBrandViewController: UIViewController {
     
     @IBOutlet weak var nextButton: UIButton!
-    
-    @IBOutlet weak var backButton: UIBarButtonItem!
+    @IBOutlet weak var backButton: UIButton!
             
+    @IBOutlet weak var selectedCarFieldLabel: UILabel!
+    @IBOutlet weak var selectedCarLabel: UILabel!
+    
     private var viewModel: CarBrandViewModelType
     private let disposeBag = DisposeBag()
     
@@ -47,11 +49,46 @@ class CarBrandViewController: UIViewController {
         super.init(coder: aDecoder)
     }
     
+    private func initialize() {
+        setupNavigationBinding()
+        setupBinding()
+        setupInputBinding()
+    }
+    
+    // MARK: - Binding
+    
+    private func setupNavigationBinding() {
+        viewModel.viewTitleText
+            .drive(self.navigationItem.rx.title)
+            .disposed(by: disposeBag)
+        
+        viewModel.closeText
+            .drive(self.backButton.rx.title())
+            .disposed(by: disposeBag)
+    }
+    
+    private func setupBinding() {
+        viewModel.nextText
+            .drive(self.nextButton.rx.title())
+            .disposed(by: disposeBag)
+        
+        viewModel.selectedCarFieldText
+            .drive(self.selectedCarFieldLabel.rx.text)
+            .disposed(by: disposeBag)
+    }
+    
+    private func setupInputBinding() {
+         viewModel.selectedCarText
+            .asDriver()
+            .drive(self.selectedCarLabel.rx.text)
+            .disposed(by: disposeBag)
+     }
+    
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        initialize()
         // Do any additional setup after loading the view.
     }
     

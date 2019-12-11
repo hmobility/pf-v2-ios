@@ -28,10 +28,16 @@ class EntryViewController: UIViewController {
     // MARK: - Button Action
     
     @IBAction func loginButtonAction(_ sender: Any) {
-       // navigateToLogin()
+      //  navigateToLogin()
        
         navigateToMain()
        // navigateToPayment()
+        
+      //  navigateToBasicInfoInput()
+       // navigateToAgreement()
+        
+      //  navigateToCar()
+        
         self.trackLog()
         self.track("gender", forName:"female")
         self.track("location", forName:"parking")
@@ -111,6 +117,21 @@ class EntryViewController: UIViewController {
         target.modalPresentationStyle = .overCurrentContext
         target.modalTransitionStyle = .crossDissolve
         self.modal(target, animated: true)
+    }
+    
+    private func navigateToBasicInfoInput() {
+        let target = Storyboard.registration.instantiateViewController(withIdentifier: "BasicInfoInputViewController") as! BasicInfoInputViewController
+        self.push(target)
+    }
+    
+    private func navigateToAgreement() {
+        let target = Storyboard.registration.instantiateViewController(withIdentifier: "AgreementViewController") as! AgreementViewController
+        self.push(target)
+    }
+    
+    private func navigateToCar() {
+        let target = Storyboard.registration.instantiateViewController(withIdentifier: "RegiCarViewController") as! RegiCarViewController
+        self.push(target)
     }
     
     /*
