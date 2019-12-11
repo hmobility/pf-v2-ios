@@ -94,11 +94,11 @@ class LoginViewController: UIViewController {
         phoneNumberTextField.delegate = viewModel.phoneNumberModel
         
         phoneNumberTextField.rx.text.orEmpty
-                   .bind(to: viewModel.phoneNumberModel.data)
-                   .disposed(by: disposeBag)
+            .bind(to: viewModel.phoneNumberModel.data)
+            .disposed(by: disposeBag)
         
         passwordTextField.delegate = viewModel.passwordModel
-
+        
         passwordTextField.rx.text.orEmpty
             .bind(to: viewModel.passwordModel.data)
             .disposed(by: disposeBag)

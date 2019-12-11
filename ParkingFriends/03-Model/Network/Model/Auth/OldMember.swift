@@ -11,7 +11,7 @@ import Alamofire
 import ObjectMapper
 
 public class OldMember: BaseModelType {
-    var id:String = ""
+    var id:Int = 0
     var checkResult:Bool = false
         
     required init?(map: Map) {

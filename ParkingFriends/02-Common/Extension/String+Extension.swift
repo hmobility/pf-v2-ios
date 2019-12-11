@@ -20,6 +20,10 @@ extension String {
     
     // MARK: - Pattern Matching
     
+    func matches(_ regex: String) -> Bool {
+        return self.range(of: regex, options: .regularExpression, range: nil, locale: nil) != nil
+    }
+    
     func validatePattern(type: patternType) -> Bool {
         var regEx:String
         

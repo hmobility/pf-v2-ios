@@ -32,7 +32,7 @@ final class NicknameModel: NicknameModelType {
     // MARK: - Public Methods
     
     func validateCredentials() -> Bool {
-        guard validateLength(text: data.value, size: (size.minimum, size.maximum)) else {
+        guard validateLength(text: data.value, size: (size.minimum, size.maximum)) && data.value.count > 0  else {
              return false
          }
                  

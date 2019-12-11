@@ -20,7 +20,7 @@ class FAQs: BaseModelType {
     
     override func mapping(map: Map) {
         totalCount <- map["totalCount"]
-        elements <- map["FAQsElement"]
+        elements <- map["elements"]
     }
 }
 
@@ -37,21 +37,5 @@ class FAQsElement: BaseModelType {
         id <- map["id"]
         title <- map["title"]
         dateCreated <- map["dateCreated"]
-    }
-}
-
-class FAQsContent: BaseModelType {
-    var id:Int = 0
-    var title:String = ""
-    var content:String = ""
-    
-    required init?(map: Map) {
-        super.init(map: map)
-    }
-      
-    override func mapping(map: Map) {
-        id <- map["id"]
-        title <- map["title"]
-        content <- map["content"]
     }
 }

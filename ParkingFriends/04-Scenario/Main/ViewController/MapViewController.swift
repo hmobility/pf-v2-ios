@@ -8,6 +8,7 @@
 
 import UIKit
 import NMapsMap
+import PullUpController
 
 extension MapViewController : AnalyticsType {
     var screenName: String {
@@ -16,11 +17,13 @@ extension MapViewController : AnalyticsType {
 }
 
 class MapViewController: UIViewController {
-    @IBOutlet var zoomInButton: UIButton!
-    @IBOutlet var zoomOutButton: UIButton!
-    @IBOutlet var placeCenterButton: UIButton!
+    @IBOutlet weak var menuButton: UIButton!
+    @IBOutlet weak var searchOptionButton: UIButton!
+    @IBOutlet weak var zoomInButton: UIButton!
+    @IBOutlet weak var zoomOutButton: UIButton!
+    @IBOutlet weak var placeCenterButton: UIButton!
     
-    @IBOutlet var timeSelView: CustomTimeSelectionView!
+    @IBOutlet weak var timeSelView: CustomTimeSelectionView!
     
     @IBOutlet weak var mapView:NMFMapView!
     
@@ -46,6 +49,7 @@ class MapViewController: UIViewController {
     private func initialize() {
         // setupMapBindings()
         setupNavigation()
+        setupNavigationBinding()
         buttonBindings()
         timeSelAreaBinding()
     }
@@ -61,9 +65,12 @@ class MapViewController: UIViewController {
         titleView.subTitleFont = Font.helvetica12
     }
     
-    
-    private func setupMapBinding() {
- 
+    private func setupNavigationBinding() {
+        searchOptionButton.rx.tap
+            .subscribe(onNext: { _ in
+                self.navigateToSearchOption()
+            })
+            .disposed(by: disposeBag)
     }
     
     private func buttonBindings() {
@@ -113,9 +120,18 @@ class MapViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
-    /*
     // MARK: - Navigation
+    
+    func navigateToSearchOption() {
+        let target = Storyboard.main.instantiateViewController(withIdentifier: "SearchOptionViewController") as! SearchOptionViewController
+        self.modal(target, transparent: true)
+    }
+    
+    func navigateToEvents() {
+        let target = Storyboard.main.instantiateViewController(withIdentifier: "EventViewController") as! SearchOptionViewController
+        self.modal(target, transparent: true)
+    }
+    /*
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

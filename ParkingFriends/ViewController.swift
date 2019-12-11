@@ -40,7 +40,7 @@ class ViewController: UIViewController {
                 //self.callTest()
                 
                 print("[LOGIN] ", UserData.shared.load()?.login?.accessToken)
-
+/*
                 Auth.login(username: "String", password: "String") { (login, message) in
                            print(login)
                            if login != nil {
@@ -51,7 +51,7 @@ class ViewController: UIViewController {
                               
                            }
                        }
- 
+ */
                
             }).disposed(by: disposeBag)
     }

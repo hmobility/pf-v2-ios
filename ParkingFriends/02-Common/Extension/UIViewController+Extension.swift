@@ -9,10 +9,24 @@
 import UIKit
 
 extension UIViewController {
-    public func modal(_ viewControllerToPresent: UIViewController, animated flag:Bool = true, completion: (() -> Void)? = nil) {
-        viewControllerToPresent.modalPresentationStyle = .fullScreen
-        present(viewControllerToPresent, animated: flag, completion: completion)
+    public func modal(_ viewControllerToPresent: UIViewController, transparent:Bool = false, dimColor:UIColor = #colorLiteral(red: 0.1137254902, green: 0.1176470588, blue: 0.1254901961, alpha: 0.6), animated flag:Bool = true, completion: (() -> Void)? = nil) {
+        viewControllerToPresent.modalPresentationStyle = transparent ? .overCurrentContext : .fullScreen
+    
+        present(viewControllerToPresent, animated: flag,
+                completion: !transparent ? completion : ({
+                    if flag {
+                       UIView.animate(withDuration: 0.1) {
+                            viewControllerToPresent.view.backgroundColor = dimColor
+                        }
+                    }
+                })
+        )
     }
+    
+    public func modal(_ viewControllerToPresent: UIViewController, animated flag:Bool = true, completion: (() -> Void)? = nil) {
+           viewControllerToPresent.modalPresentationStyle = .fullScreen
+           present(viewControllerToPresent, animated: flag, completion: completion)
+       }
     
     public func modalTranslucent(_ viewController: UIViewController, modalTransitionStyle: UIModalTransitionStyle = .coverVertical, animated flag: Bool = true, completion: (() -> ())? = nil) {
         viewController.modalPresentationStyle = .custom
@@ -27,6 +41,7 @@ extension UIViewController {
     
     public func backToPrevious(animated: Bool = true) {
         if let presentingViewController = presentedViewController {
+            presentingViewController.view.endEditing(true)
             presentingViewController.dismiss(animated: animated, completion: nil)
         } else {
             _ = navigationController?.popViewController(animated: animated)

@@ -13,7 +13,7 @@ import ObjectMapper
 class ServerResult: BaseModelType {
     var code: String = ""
     var message:String = ""
-    var data:[String:Any]?
+    var data:[String:Any] = [:]
     
     var codeType: ResponseCodeType {
         get {

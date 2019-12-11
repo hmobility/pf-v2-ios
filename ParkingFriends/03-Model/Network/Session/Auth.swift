@@ -16,10 +16,10 @@ class Auth : HttpSession {
 
         return self.shared.dataTask(httpMethod: data.method, auth: data.auth, path: data.url, parameters: data.params!)
             .map ({  result in
-                return (Login(JSON: result.data!), result.codeType)
+                return (Login(JSON: result.data), result.codeType)
             })
     }
-    
+    /*
     // 로그인
     static public func login(username:String, password:String, completion:@escaping(_ data:Login?, _ message:String?) -> Void) {
         let data = AuthAPI.login(username: username, password: password)
@@ -35,7 +35,7 @@ class Auth : HttpSession {
             
         })
     }
-    
+    */
     // 로그아웃 : /v1/auth/logout
     static public func logout() -> Observable<(ResponseCodeType)> {
         let data = AuthAPI.logout()
@@ -81,7 +81,7 @@ class Auth : HttpSession {
         
         return self.shared.dataTask(httpMethod: data.method, auth: data.auth, path: data.url, parameters: data.params!)
             .map ({  result in
-                return (Otp(JSON: result.data!), result.codeType)
+                return (Otp(JSON: result.data), result.codeType)
             })
     }
 
@@ -101,7 +101,7 @@ class Auth : HttpSession {
         
         return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params!)
             .map ({  result in
-                return (exist: Bool((result.data!["data"] as! String)), result.codeType)
+                return (exist: Bool((result.data["data"] as! String)), result.codeType)
             })
     }
 }

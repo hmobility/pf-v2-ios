@@ -8,6 +8,13 @@
 
 import UIKit
 
+extension ParkinglotCardViewController : AnalyticsType {
+    var screenName: String {
+        return "[SCREEN] Parkinglot Card"
+    }
+}
+
+
 class ParkinglotCardViewController: UIViewController {
 
     override func viewDidLoad() {

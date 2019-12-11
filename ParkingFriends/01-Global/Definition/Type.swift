@@ -12,7 +12,6 @@ typealias Params = [String : Any]
 
 typealias CoordType = (latitude:CGFloat, longitude:CGFloat)
 
-typealias FilterType = (fee:(from:Int, to:Int), lotType:ProductType, option:(cctv:Bool, iotSensor:Bool, mechanical:Bool, allDayOperation:Bool))
 typealias CardInfoType = (cardNo:String, yearExpired:String, monthExpired:String, password:String, birthDate:String)
 
 enum Language:String {
@@ -60,6 +59,15 @@ enum ParkingLotType:String {
 enum SortType:String {
     case distance = "DISTANCE"
     case price = "PRICE"
+    
+    var index: Int {
+        switch self {
+        case .price:
+            return 0
+        case .distance:
+            return 1
+        }
+    }
 }
 
 // 회원 주소 등록
@@ -94,6 +102,7 @@ enum ResponseCodeType: String {
     case success = "0000"
     case not_found = "1404"
     case bad_request = "1400"
+    case already_exist = "1403"
     case error_message = "1500"
     case unknown = ""
 }
@@ -109,6 +118,15 @@ enum OrderStatusType: String {
 enum PartnerType: String {
     case partner_lot = "PARTNER"
     case public_lot = "PUBLIC"
+}
+
+// 약관 목록 조회 /v1/agreements
+enum AgreementType: String {
+    case location = "LOCATION"
+    case access = "ACCESS"
+    case privacy = "PRIVACY"
+    case third = "THIRD"
+    case marketing = "MARKETING"
 }
 
 // 이메일, OTP 발송 상태, 입력 형식 체크 용 공통 타입

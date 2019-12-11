@@ -14,7 +14,7 @@ class ParkingLot : HttpSession {
         
         return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params!)
             .map ({  result in
-                return (Parkinglots(JSON: result.data!), result.codeType)
+                return (Parkinglots(JSON: result.data), result.codeType)
             })
     }
     
@@ -23,7 +23,7 @@ class ParkingLot : HttpSession {
         
         return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params!)
             .map ({  result in
-                return (Parkinglot(JSON: result.data!), result.codeType)
+                return (Parkinglot(JSON: result.data), result.codeType)
             })
     }
     
@@ -63,7 +63,6 @@ class ParkingLot : HttpSession {
             })
     }
     
-    
     // 주차장 반경 목록 조회  /v1/parkinglots/within
     // radius - 반경(KM 단위) 기본 0.3
     static public func within(lat:String, lon:String, radius:String, sort:SortType, start:String, end:String, productType:ProductType, monthlyFrom:String, monthlyCount:Int, filter:FilterType) -> Observable<(Within?, ResponseCodeType)>  {
@@ -71,7 +70,7 @@ class ParkingLot : HttpSession {
         
         return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params!)
             .map ({  result in
-                return (Within(JSON: result.data!), result.codeType)
+                return (Within(JSON: result.data), result.codeType)
             })
     }
     

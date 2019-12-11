@@ -26,7 +26,7 @@ final class EmailModel {
     }
     
     func validateCredentials() -> Bool {
-        guard data.value.validatePattern(type: .email) else  {
+        guard data.value.validatePattern(type: .email) && data.value.count > 0 else  {
             return false
         }
         

@@ -15,7 +15,7 @@ class Member : HttpSession {
      
         return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params!)
             .map ({  result in
-                return (Login(JSON: result.data!), result.codeType)
+                return (Login(JSON: result.data), result.codeType)
             })
     }
     
@@ -25,7 +25,7 @@ class Member : HttpSession {
       
         return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params!)
             .map ({  result in
-                return (Members(JSON: result.data!), result.codeType)
+                return (Members(JSON: result.data), result.codeType)
             })
     }
     
@@ -75,7 +75,7 @@ class Member : HttpSession {
         
         return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params!)
             .map ({  result in
-                return (Point(JSON: result.data!), result.codeType)
+                return (Point(JSON: result.data), result.codeType)
             })
     }
     
@@ -105,7 +105,7 @@ class Member : HttpSession {
         
         return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params!)
             .map ({  result in
-                return (Cards(JSON: result.data!), result.codeType)
+                return (Cards(JSON: result.data), result.codeType)
             })
     }
     
@@ -135,7 +135,7 @@ class Member : HttpSession {
         
         return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params!)
             .map ({  result in
-                return (Coupons(JSON: result.data!), result.codeType)
+                return (Coupons(JSON: result.data), result.codeType)
             })
     }
     
@@ -155,7 +155,7 @@ class Member : HttpSession {
         
         return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params!)
             .map ({  result in
-                return (Cars(JSON: result.data!), result.codeType)
+                return (Cars(JSON: result.data), result.codeType)
             })
     }
     
@@ -195,7 +195,7 @@ class Member : HttpSession {
         
         return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params!)
             .map ({  result in
-                return (Address(JSON: result.data!), result.codeType)
+                return (Address(JSON: result.data), result.codeType)
             })
     }
     

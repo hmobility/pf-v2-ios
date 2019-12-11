@@ -11,26 +11,16 @@ import ObjectMapper
 
 class UserData: NSObject, NSCoding {
     var login: Login?
+    var filter:FilterOption = FilterOption()
     var noDiplayPaymentGuide:Bool = false
     
-    override init() {
-       super.init()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        self.login = aDecoder.decodeObject(forKey: "login") as? Login
-        self.noDiplayPaymentGuide = aDecoder.decodeObject(forKey: "noDiplayPaymentGuide") as! Bool
-    }
-
-    func encode(with aCoder: NSCoder) {
-        aCoder.encode(login, forKey:"login")
-        aCoder.encode(noDiplayPaymentGuide, forKey: "noDiplayPaymentGuide")
-    }
+    // MARK: - Public Methods
     
     public func setAuth(_ data:Login?) -> UserData {
         guard data != nil else {
             print("[User Data] Login Data is null" )
-            return self        }
+            return self
+        }
         
         self.login = data
         
@@ -68,6 +58,22 @@ class UserData: NSObject, NSCoding {
     }
     
     // MARK: - Initialize
+
+    override init() {
+        super.init()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        self.login = aDecoder.decodeObject(forKey: "login") as? Login
+        self.filter = aDecoder.decodeObject(forKey: "filter") as! FilterOption
+        self.noDiplayPaymentGuide = aDecoder.decodeObject(forKey: "noDiplayPaymentGuide") as! Bool
+    }
+    
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(login, forKey:"login")
+        aCoder.encode(filter, forKey: "filter")
+        aCoder.encode(noDiplayPaymentGuide, forKey: "noDiplayPaymentGuide")
+    }
     
     static var shared:UserData {
         if UserData.sharedManager == nil {

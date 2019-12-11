@@ -38,14 +38,15 @@ protocol BasicInfoViewModelType {
     
     var nextText: Driver<String> { get }
     
-    //var proceed: BehaviorRelay<(BasicInfoSectionType, CheckType, String?)> { get }
     var proceed: BehaviorRelay<Bool> { get }
     
     var emailModel:EmailModel { get }
     var nicknameModel:NicknameModel { get }
     var passwordModel:PasswordModel { get }
 
-    func validate(section:BasicInfoSectionType) -> Bool 
+   // func validate(section:BasicInfoSectionType) -> Bool
+    func validateCredentials() -> Bool
+    func saveBasicInfo()
 }
 
 class BasicInfoViewModel: BasicInfoViewModelType {
@@ -76,11 +77,14 @@ class BasicInfoViewModel: BasicInfoViewModelType {
     let nicknameModel = NicknameModel()
     let passwordModel = PasswordModel()
     
+    var registrationMdoel: RegistrationModel
+    
     private let disposeBag = DisposeBag()
     private var localizer:LocalizerType
     
-    init(localizer: LocalizerType = Localizer.shared, phoneNumber:String) {
+    init(localizer: LocalizerType = Localizer.shared, phoneNumber:String, registration:RegistrationModel) {
         self.localizer = localizer
+        self.registrationMdoel = registration
         
         viewTitle = localizer.localized("ttl_basic_info")
         
@@ -112,11 +116,7 @@ class BasicInfoViewModel: BasicInfoViewModelType {
         default:
             break
         }
-        
-     //   proceed.accept(<#T##event: Bool##Bool#>)
     }
-    
-    // MARK: - Public Methods
     
     func validate(section:BasicInfoSectionType) -> Bool {
         switch section {
@@ -142,11 +142,21 @@ class BasicInfoViewModel: BasicInfoViewModelType {
         return false
     }
     
+    // MARK: - Public Methods
+    
     func validateCredentials() -> Bool {
         let result = validate(section: .email) && validate(section: .password) && validate(section: .nickname)
         proceed.accept(result)
         
         return result
+    }
+    
+    func saveBasicInfo() {
+        let email = emailModel.data.value
+        let password = passwordModel.data.value
+        let nickname = nicknameModel.data.value
+        
+        self.registrationMdoel.basicInfo(email: email, password: password, nickname: nickname)
     }
     
     func checkCredential(_ type:AuthAccountType, value:String) {

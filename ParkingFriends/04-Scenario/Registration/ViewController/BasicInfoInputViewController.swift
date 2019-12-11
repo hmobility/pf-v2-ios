@@ -21,6 +21,9 @@ class BasicInfoInputViewController: UIViewController {
     @IBOutlet weak var passwordField: CustomInputSection!
     @IBOutlet weak var nicknameField: CustomInputSection!
     
+    @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var scrollView: UIScrollView!
+    
     @IBOutlet weak var backButton: UIBarButtonItem!
     @IBOutlet weak var nextButton: UIButton!
     
@@ -28,7 +31,7 @@ class BasicInfoInputViewController: UIViewController {
     
     private var registrationModel: RegistrationModel = RegistrationModel.shared
     
-    private lazy var viewModel: BasicInfoViewModelType = BasicInfoViewModel(phoneNumber: registrationModel.phoneNumber!)
+    private lazy var viewModel: BasicInfoViewModelType = BasicInfoViewModel(phoneNumber: registrationModel.phoneNumber ?? "01043525929", registration:registrationModel)
     private let disposeBag = DisposeBag()
     
     // MARK: - Button Action
@@ -38,7 +41,7 @@ class BasicInfoInputViewController: UIViewController {
     }
     
     @IBAction func nextButtonAction(_ sender: Any) {
-        navigateToAgreement()
+    //    navigateToAgreement()
     }
     
     // MARK: - Initialize
@@ -59,7 +62,6 @@ class BasicInfoInputViewController: UIViewController {
         setupNicknameBinding()
         setupKeyboard()
         setupButtonBinding()
-       // setupInputBinding()
     }
     
     // MARK: - Binding
@@ -97,7 +99,7 @@ class BasicInfoInputViewController: UIViewController {
             .controlEvent([.editingDidEnd])
             .asObservable()
             .subscribe(onNext:{ _ in
-                _ = self.viewModel.validate(section: .email)
+                _ = self.viewModel.validateCredentials()
             })
             .disposed(by: disposeBag)
         
@@ -133,7 +135,7 @@ class BasicInfoInputViewController: UIViewController {
              .controlEvent([.editingDidEnd])
              .asObservable()
              .subscribe(onNext:{ _ in
-                 _ = self.viewModel.validate(section: .password)
+                _ = self.viewModel.validateCredentials()
              })
              .disposed(by: disposeBag)
         
@@ -164,43 +166,37 @@ class BasicInfoInputViewController: UIViewController {
             .disposed(by: disposeBag)
         
         nicknameField.inputTextField.rx
-              .controlEvent([.editingDidEnd])
-              .asObservable()
-              .subscribe(onNext:{ _ in
-                  _ = self.viewModel.validate(section: .nickname)
-              })
-              .disposed(by: disposeBag)
+            .controlEvent([.editingChanged, .editingDidEnd])
+            .asObservable()
+            .subscribe(onNext:{ _ in
+                _ = self.viewModel.validateCredentials()
+            })
+            .disposed(by: disposeBag)
     }
     
     private func setupKeyboard() {
-        RxKeyboard.instance.willShowVisibleHeight
+        RxKeyboard.instance.visibleHeight
             .drive(onNext: { height in
+                debugPrint("[SCROLVIEW] ", self.scrollView.frame.size.height)
+                debugPrint("[VIEW] ", self.contentView.frame.size.height)
                 self.nextButtonBottomConstraint.constant = height - self.view.safeAreaInsets.bottom
                 self.view.layoutIfNeeded()
+                self.scrollView.layoutIfNeeded()
             })
             .disposed(by: disposeBag)
-        
-        RxKeyboard.instance.isHidden
-            .distinctUntilChanged()
-            .drive(onNext: { hidden in
-                if hidden {
-                    self.nextButtonBottomConstraint.constant = 0
-                    self.view.layoutIfNeeded()
-                }
-            })
-            .disposed(by: disposeBag)
-        
-      //  phoneNumberField.inputTextField.addDoneButtonOnKeyboard()
-      //  emailField.inputTextField.addDoneButtonOnKeyboard()
-      //  nicknameField.inputTextField.addDoneButtonOnKeyboard()
-      //  passwordField.inputTextField.addDoneButtonOnKeyboard()
     }
     
     private func setupButtonBinding() {
+        nextButton.rx.tap
+            .subscribe(onNext: { _ in
+                self.viewModel.saveBasicInfo()
+                self.navigateToAgreement()
+            })
+            .disposed(by: disposeBag)
+        
         viewModel.proceed.asDriver()
             .drive(onNext: { [unowned self] (completed) in
                 debugPrint("[PROCEED] check all : ", completed)
-                
                 self.nextButton.isEnabled = completed ? true : false
             })
             .disposed(by: disposeBag)

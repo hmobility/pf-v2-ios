@@ -7,6 +7,7 @@
 //
 
 import XCTest
+@testable import ParkingFriends
 
 class ParkingFriendsUITests: XCTestCase {
 
@@ -28,6 +29,7 @@ class ParkingFriendsUITests: XCTestCase {
         let app = XCUIApplication()
         app.launch()
 
+        navigateToBasicInfoInput()
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
@@ -39,5 +41,13 @@ class ParkingFriendsUITests: XCTestCase {
                 XCUIApplication().launch()
             }
         }
+    }
+}
+
+extension ParkingFriendsUITests {
+    func navigateToBasicInfoInput() {
+        let target = Storyboard.registration.instantiateViewController(withIdentifier: "BasicInfoInputViewController") as! BasicInfoInputViewController
+        
+        self.push(target)
     }
 }
