@@ -64,8 +64,8 @@ class FilterOption: NSObject, NSCoding {
     }
 
     required init(coder aDecoder: NSCoder) {
-        from = aDecoder.decodeObject(forKey: "from") as! Int
-        to = aDecoder.decodeObject(forKey: "to") as! Int
+       // from = aDecoder.decodeObject(forKey: "from") as! Int
+      //  to = aDecoder.decodeObject(forKey: "to") as! Int
         sortType = FilterSortType(rawValue: aDecoder.decodeObject(forKey: "sortType") as! Int) ?? .low_price // as! FilterSortType
         operationType = aDecoder.decodeObject(forKey: "operationType") as! FilterOperationType
         areaType = aDecoder.decodeObject(forKey: "areaType") as! FilterAreaType
@@ -76,8 +76,8 @@ class FilterOption: NSObject, NSCoding {
     }
 
     func encode(with aCoder: NSCoder) {
-        aCoder.encode(from, forKey: "from")
-        aCoder.encode(to, forKey: "to")
+        //aCoder.encode(from, forKey: "from")
+       // aCoder.encode(to, forKey: "to")
         aCoder.encode(sortType.rawValue, forKey: "sortType")
         aCoder.encode(operationType.rawValue, forKey: "operationType")
         aCoder.encode(areaType.rawValue, forKey: "areaType")
