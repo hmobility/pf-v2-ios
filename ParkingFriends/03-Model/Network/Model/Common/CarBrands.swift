@@ -29,6 +29,12 @@ class CarBrandsElement: BaseModelType {
     var name:String = ""
     var descript: String = ""
     
+    var models: CarModels?          // TableView 용 Mapping 시키지 않음
+    
+    override init() {
+        super.init()
+    }
+    
     required init?(map: Map) {
         super.init(map: map)
     }

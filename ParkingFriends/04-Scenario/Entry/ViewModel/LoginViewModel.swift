@@ -92,7 +92,7 @@ class LoginViewModel: LoginViewModelType {
         Auth.login(username: username, password: password).subscribe(onNext: { (login, code) in
             if code == .success {
                 self.updateStatus(.verified)
-                _ = UserData.shared.setAuth(login)
+                _ = UserData.shared.setAuth(login).save()
             } else {
                 self.updateStatus(.error(.badCredentials))
             }
@@ -100,15 +100,5 @@ class LoginViewModel: LoginViewModelType {
             
             })
             .disposed(by: disposeBag)
-        /*
-        Auth.login(username: username, password: password) { [weak self] (login, message) in
-            print("[R]", login.debugDescription)
-            if let _ = message {
-                self!.updateStatus(.error(.badCredentials))
-            } else {
-                self!.updateStatus(.verified)
-            }
-        }
- */
     }
 }

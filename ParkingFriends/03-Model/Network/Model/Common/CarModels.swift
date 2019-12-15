@@ -30,6 +30,10 @@ class CarModelElement: BaseModelType {
     var descript: String = ""
     var brand:CarBrandsElement?
     
+    override init() {
+        super.init()
+    }
+    
     required init?(map: Map) {
         super.init(map: map)
     }

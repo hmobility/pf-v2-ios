@@ -10,7 +10,7 @@ import Foundation
 
 typealias Params = [String : Any]
 
-typealias CoordType = (latitude:CGFloat, longitude:CGFloat)
+typealias CoordType = (latitude:Double, longitude:Double)
 
 typealias CardInfoType = (cardNo:String, yearExpired:String, monthExpired:String, password:String, birthDate:String)
 
@@ -40,8 +40,8 @@ enum TermsType: Int {
     case none
 }
 
-// 상품 유형 - ParkinglotsAPI
-enum ProductType:String {
+// 추차장 유형 - ParkinglotsAPI
+enum ParkingLotType:String {
     case private_lot = "PRIVATE"
     case public_lot = "PUBLIC"
     case alliance = "ALLIANCE"
@@ -49,8 +49,8 @@ enum ProductType:String {
     case resident = "RESIDENT"
 }
 
-// 추차장 유형 - ParkinglotsAPI
-enum ParkingLotType:String {
+// 상품 유형 - ParkinglotsAPI
+enum ProductType:String {
     case time = "TIME"
     case fixed = "FIXED"
     case monthly = "MONTHLY"
@@ -100,11 +100,24 @@ enum PaymentType: String {
 // API 응답 코드
 enum ResponseCodeType: String {
     case success = "0000"
-    case not_found = "1404"
+    case unauthorized = "1401"
     case bad_request = "1400"
     case already_exist = "1403"
+    case not_found = "1404"
     case error_message = "1500"
     case unknown = ""
+    
+    init(rawValue: String) {
+        switch rawValue {
+        case "0000": self = .success
+        case "1400": self = .bad_request
+        case "1401": self = .unauthorized
+        case "1403": self = .already_exist
+        case "1404": self = .not_found
+        case "1500": self = .error_message
+        default: self = .unknown
+        }
+    }
 }
 
 // 주문 상태 (주문 단일 조회)
@@ -139,3 +152,45 @@ public enum CheckType {
     case disproved      // 발신 결과 인증 안됨
 }
 
+
+// Color Type
+
+enum ColorType {
+    case white, black, dark_gray, silver, blue, red, gold, blue_green, dark_green, brown, sky_blue
+    
+    var rawValue: String {
+        switch self {
+        case .white: return "itm_white"
+        case .black: return "itm_black"
+        case .dark_gray: return "itm_dark_gray"
+        case .silver: return "itm_silver"
+        case .blue: return "itm_blue"
+        case .red: return "itm_red"
+        case .gold: return "itm_gold"
+        case .blue_green: return "itm_blue_green"
+        case .dark_green: return "itm_dark_green"
+        case .brown: return "itm_brown"
+        case .sky_blue: return "itm_sky_blue"
+        }
+    }
+    
+    var imgValue: String {
+        switch self {
+        case .white: return "imgCarcolorPaletteWhite"
+        case .black: return "imgCarcolorPaletteBlack"
+        case .dark_gray: return "imgCarcolorPaletteDarkgray"
+        case .silver: return "imgCarcolorPaletteSilver"
+        case .blue: return "imgCarcolorPaletteBlue"
+        case .red: return "imgCarcolorPaletteRed"
+        case .gold: return "imgCarcolorPaletteGold"
+        case .blue_green: return "imgCarcolorPaletteBluegreen"
+        case .dark_green: return "imgCarcolorPaletteDarkgreen"
+        case .brown: return "imgCarcolorPaletteBrown"
+        case .sky_blue: return "imgCarcolorPaletteSkyblue"
+        }
+    }
+    
+    public var image: UIImage {
+        return UIImage(named: imgValue)!
+    }
+}

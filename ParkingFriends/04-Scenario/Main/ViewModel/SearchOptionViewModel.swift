@@ -24,11 +24,11 @@ protocol SearchOptionViewModelType {
     var sortItemNearby: Driver<String> { get }
     var selectedSortType: BehaviorRelay<FilterSortType> { get }
     
-    var parkingLotTypeText: Driver<String> { get }
-    var parkingLotItemNone: Driver<String> { get }
-    var parkingLotItemPublic: Driver<String> { get }
-    var parkingLotItemPrivate: Driver<String> { get }
-    var selectedParkingLotType: BehaviorRelay<FilterOperationType> { get }
+    var operationTypeText: Driver<String> { get }
+    var operationItemNone: Driver<String> { get }
+    var operationItemPublic: Driver<String> { get }
+    var operationItemPrivate: Driver<String> { get }
+    var selectedOperationType: BehaviorRelay<FilterOperationType> { get }
     
     var areaTypeText: Driver<String> { get }
     var areaItemNone: Driver<String> { get }
@@ -39,7 +39,7 @@ protocol SearchOptionViewModelType {
     var optionTypeText: Driver<String> { get }
     var optionItemCCTV: Driver<String> { get }
     var optionItemIotSensor: Driver<String> { get }
-    var optionItemMechanical: Driver<String> { get }
+    var optionItemNoMechanical: Driver<String> { get }
     var optionItemFullTime: Driver<String> { get }
     
     var isItemCCTV: BehaviorRelay<Bool> { get }
@@ -52,6 +52,8 @@ protocol SearchOptionViewModelType {
     
     func save()
     func reset()
+    
+    func getStoredValue() -> FilterOption?
 }
 
 class SearchOptionViewModel: NSObject, SearchOptionViewModelType {
@@ -70,11 +72,11 @@ class SearchOptionViewModel: NSObject, SearchOptionViewModelType {
     var sortItemNearby: Driver<String>
     var selectedSortType: BehaviorRelay<FilterSortType>
     
-    var parkingLotTypeText: Driver<String>
-    var parkingLotItemNone: Driver<String>
-    var parkingLotItemPublic: Driver<String>
-    var parkingLotItemPrivate: Driver<String>
-    var selectedParkingLotType: BehaviorRelay<FilterOperationType>
+    var operationTypeText: Driver<String>
+    var operationItemNone: Driver<String>
+    var operationItemPublic: Driver<String>
+    var operationItemPrivate: Driver<String>
+    var selectedOperationType: BehaviorRelay<FilterOperationType>
     
     var areaTypeText: Driver<String>
     var areaItemNone: Driver<String>
@@ -85,7 +87,7 @@ class SearchOptionViewModel: NSObject, SearchOptionViewModelType {
     var optionTypeText: Driver<String>
     var optionItemCCTV: Driver<String>
     var optionItemIotSensor: Driver<String>
-    var optionItemMechanical: Driver<String>
+    var optionItemNoMechanical: Driver<String>
     var optionItemFullTime: Driver<String>
     
     var isItemCCTV: BehaviorRelay<Bool>
@@ -98,6 +100,8 @@ class SearchOptionViewModel: NSObject, SearchOptionViewModelType {
     
     private var localizer:LocalizerType
     private var userData:UserData
+    
+    private var defaultFilterOption:FilterOption = FilterOption()
     
     init(localizer: LocalizerType = Localizer.shared, userData: UserData = UserData.shared) {
         self.localizer = localizer
@@ -114,10 +118,10 @@ class SearchOptionViewModel: NSObject, SearchOptionViewModelType {
         sortItemLowPrice = localizer.localized("itm_low_price")
         sortItemNearby = localizer.localized("itm_nearby")
         
-        parkingLotTypeText = localizer.localized("ttl_parkinglot_type")
-        parkingLotItemNone = localizer.localized("itm_parkinglot_none")
-        parkingLotItemPublic = localizer.localized("itm_parkinglot_public")
-        parkingLotItemPrivate = localizer.localized("itm_parkinglot_private")
+        operationTypeText = localizer.localized("ttl_parkinglot_type")
+        operationItemNone = localizer.localized("itm_parkinglot_none")
+        operationItemPublic = localizer.localized("itm_parkinglot_public")
+        operationItemPrivate = localizer.localized("itm_parkinglot_private")
         
         areaTypeText = localizer.localized("ttl_area_type")
         areaItemNone = localizer.localized("itm_area_none")
@@ -127,65 +131,73 @@ class SearchOptionViewModel: NSObject, SearchOptionViewModelType {
         optionTypeText = localizer.localized("ttl_extra_option")
         optionItemCCTV = localizer.localized("itm_option_cctv")
         optionItemIotSensor = localizer.localized("itm_option_iot_sensor")
-        optionItemMechanical = localizer.localized("itm_option_mechanical")
+        optionItemNoMechanical = localizer.localized("itm_option_mechanical")
         optionItemFullTime = localizer.localized("itm_option_full_time")
         
         resetText = localizer.localized("btn_to_reset")
         saveText = localizer.localized("btn_to_save")
         
-        
         selectedMinimumPrice = BehaviorRelay(value:userData.filter.from)
         selectedMaximumPrice = BehaviorRelay(value:userData.filter.to)
         selectedSortType = BehaviorRelay(value:userData.filter.sortType)
-        selectedParkingLotType = BehaviorRelay(value:userData.filter.operationType)
+        selectedOperationType = BehaviorRelay(value:userData.filter.operationType)
         selectedAreaType = BehaviorRelay(value:userData.filter.areaType)
         isItemCCTV = BehaviorRelay(value:userData.filter.isCCTV)
         isItemIotSensor = BehaviorRelay(value:userData.filter.isIotSensor)
         isItemMechanical =  BehaviorRelay(value:userData.filter.isNoMechanical)
         isItemFullTime =  BehaviorRelay(value:userData.filter.isAllDay)
-        
+        /*
         selectedMinimumPrice = BehaviorRelay(value:0)
         selectedMaximumPrice = BehaviorRelay(value:10000)
         selectedSortType = BehaviorRelay(value:.low_price)
-        selectedParkingLotType = BehaviorRelay(value:.none)
+        selectedOperationType = BehaviorRelay(value:.none)
         selectedAreaType = BehaviorRelay(value:.none)
         isItemCCTV = BehaviorRelay(value:false)
         isItemIotSensor = BehaviorRelay(value:false)
         isItemMechanical =  BehaviorRelay(value:false)
         isItemFullTime =  BehaviorRelay(value:false)
-        
+        */
         super.init()
-             
         initialize()
     }
     
-    // MARK: - Local Methods
+    // MARK: - Initialize
     
     private func initialize() {
         //setupBidning()
     }
     
+    // MARK: - Local Methods
+    
+    func updatePriceRange(start:String, end:String) {
+        
+    }
+    
     // MARK: - Public Methods
     
+    func getStoredValue() -> FilterOption? {
+        return userData.filter
+    }
+    
     func reset() {
-        selectedMinimumPrice.accept(0)
-        selectedMaximumPrice.accept(10000)
-        selectedSortType.accept(.low_price)
-        selectedParkingLotType.accept(.none)
-        selectedAreaType.accept(.none)
-        isItemCCTV.accept(false)
-        isItemIotSensor.accept(false)
-        isItemMechanical.accept(false)
-        isItemFullTime.accept(false)
+        selectedMinimumPrice.accept(defaultFilterOption.from)
+        selectedMaximumPrice.accept(defaultFilterOption.to)
+        selectedSortType.accept(defaultFilterOption.sortType)
+        selectedOperationType.accept(defaultFilterOption.operationType)
+        selectedAreaType.accept(defaultFilterOption.areaType)
+        isItemCCTV.accept(defaultFilterOption.isCCTV)
+        isItemIotSensor.accept(defaultFilterOption.isIotSensor)
+        isItemMechanical.accept(defaultFilterOption.isNoMechanical)
+        isItemFullTime.accept(defaultFilterOption.isAllDay)
          
-        self.save()
+       // self.save()
     }
     
     func save() {
         userData.filter.from = selectedMinimumPrice.value
         userData.filter.to = selectedMaximumPrice.value
         userData.filter.sortType = selectedSortType.value
-        userData.filter.operationType = selectedParkingLotType.value
+        userData.filter.operationType = selectedOperationType.value
         userData.filter.areaType = selectedAreaType.value
         userData.filter.isCCTV = isItemCCTV.value
         userData.filter.isIotSensor = isItemIotSensor.value
@@ -196,6 +208,8 @@ class SearchOptionViewModel: NSObject, SearchOptionViewModelType {
     }
 }
 
+// MARK: - RangeSeekSliderDelegate
+
 extension SearchOptionViewModel: RangeSeekSliderDelegate {
     func rangeSeekSlider(_ slider: RangeSeekSlider, didChange minValue: CGFloat, maxValue: CGFloat) {
         if selectedMaximumPrice.value != Int(maxValue) {
@@ -205,5 +219,7 @@ extension SearchOptionViewModel: RangeSeekSliderDelegate {
         if selectedMinimumPrice.value != Int(minValue) {
             selectedMinimumPrice.accept(Int(minValue))
         }
+        
+        
     }
 }

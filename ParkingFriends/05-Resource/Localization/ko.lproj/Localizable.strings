@@ -22,6 +22,7 @@
 "txt_minutes" = "분";
 "txt_from" = "부터";
 "txt_won" = "원";
+"txt_free" = "무료";
 "txt_hours" = "시간";
 "txt_months" = "개월";
 "txt_month_period" = "개월간";
@@ -154,7 +155,7 @@
 // Search Option
 "ttl_search_option" = "검색옵션";
 "ttl_price_per_unit" = "시간당 주차 요금";
-"txt_price_range" = "무료 ~ 10,000원";
+"txt_price_range" = "%@ ~ %@원";
 "txt_price_max" = "1만원";
 "txt_price_min" = "무료";
 "txt_price_guide" = "요금 옵션은 예약권 상품에만 적용됩니다.";
@@ -180,7 +181,7 @@
 "txt_payment_contents" = "• 허가된 주차면에 한해 파킹프렌즈에 등록된 차량만 사용한다.\n• 주차 중, 차내 귀중품 도난에 대해 본인이 책임진다.\n• 주차장 내에 인화물, 위험물의 진입이나 흡연 및 화기의 취급을 금한다.\n• 주차면 이용 중 발생한 자기 차량 및 주차면 시설물 파손 등 모든 사고(3자에 의한 모든 사고 포함)에 대해 본인이 책임을 지며, 주차면 제공자 또는 파킹프렌즈에 대해 어떠한 민·형사상의 책임과 손해 배상을 제기하지 않는다.";
 "txt_payment_guide_no_display" = "다음부터 보지 않기";
 
-//  BLE
+// BLE
 "ttl_ble_parking_guide" = "%@부터 입차 가능합니다";
 "dsc_ble_parking_guide" = "예약시간에 맞춰 블루투스 기능을 켜고\n주차장 입구에서 파프앱키로 차단기를 열어주세요.";
 "ttl_ble_turn_on" = "블루투스 기능을 켜주세요";

@@ -15,13 +15,17 @@ struct Color {
     static let malangGreen = UIColor(named: "MalangGreen")!
     
     static let lightSeafoam = UIColor(named: "LightSeafoam")!
-    static let veryLightPink = UIColor(named: "VeryLightPink")!
-    static let algaeGreen = UIColor(named: "AlgaeGreen")!
     static let slateGrey = UIColor(named: "SlateGrey")!
     static let steel = UIColor(named: "Steel")!
     static let charcoal = UIColor(named: "Charcoal")!
     static let shamrockGreen = UIColor(named: "ShamrockGreen")!
     static let iceBlue = UIColor(named: "IceBlue")!
+    
+    static let algaeGreen = UIColor(named: "AlgaeGreen")!
+    static let algaeGreen2 = UIColor(named: "AlgaeGreen2")!
+    
+    static let veryLightPink = UIColor(named: "VeryLightPink")!
+    static let veryLightPink2 = UIColor(named: "VeryLightPink2")!
     
     static let darkGrey = UIColor(named: "DarkGrey")!
     static let darkGrey2 = UIColor(named: "DarkGrey2")!

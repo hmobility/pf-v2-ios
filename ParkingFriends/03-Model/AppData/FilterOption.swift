@@ -32,9 +32,9 @@ enum FilterOperationType: Int {
         case .none:
             return ""
         case .public_area:
-            return ProductType.public_lot.rawValue
+            return ParkingLotType.public_lot.rawValue
         case .private_area:
-            return ProductType.private_lot.rawValue
+            return ParkingLotType.private_lot.rawValue
         }
     }
 }
@@ -64,20 +64,20 @@ class FilterOption: NSObject, NSCoding {
     }
 
     required init(coder aDecoder: NSCoder) {
-       // from = aDecoder.decodeObject(forKey: "from") as! Int
-      //  to = aDecoder.decodeObject(forKey: "to") as! Int
-        sortType = FilterSortType(rawValue: aDecoder.decodeObject(forKey: "sortType") as! Int) ?? .low_price // as! FilterSortType
-        operationType = aDecoder.decodeObject(forKey: "operationType") as! FilterOperationType
-        areaType = aDecoder.decodeObject(forKey: "areaType") as! FilterAreaType
-        isCCTV = aDecoder.decodeObject(forKey: "isCCTV") as! Bool
-        isIotSensor = aDecoder.decodeObject(forKey: "isIotSensor") as! Bool
-        isNoMechanical = aDecoder.decodeObject(forKey: "isNoMechanical") as! Bool
-        isAllDay = aDecoder.decodeObject(forKey: "isAllDay") as! Bool
+        from = aDecoder.decodeObject(forKey: "from") as? Int ?? 0
+        to = aDecoder.decodeObject(forKey: "to") as? Int ?? 10000
+        sortType = aDecoder.decodeObject(forKey: "sortType") as? FilterSortType ?? .low_price // as! FilterSortType
+        operationType = aDecoder.decodeObject(forKey: "operationType") as? FilterOperationType ?? .none
+        areaType = aDecoder.decodeObject(forKey: "areaType") as? FilterAreaType ?? .none
+        isCCTV = aDecoder.decodeObject(forKey: "isCCTV") as? Bool ?? false
+        isIotSensor = aDecoder.decodeObject(forKey: "isIotSensor") as? Bool ?? false
+        isNoMechanical = aDecoder.decodeObject(forKey: "isNoMechanical") as? Bool ?? false
+        isAllDay = aDecoder.decodeObject(forKey: "isAllDay") as? Bool ?? false
     }
 
     func encode(with aCoder: NSCoder) {
-        //aCoder.encode(from, forKey: "from")
-       // aCoder.encode(to, forKey: "to")
+        aCoder.encode(from, forKey: "from")
+        aCoder.encode(to, forKey: "to")
         aCoder.encode(sortType.rawValue, forKey: "sortType")
         aCoder.encode(operationType.rawValue, forKey: "operationType")
         aCoder.encode(areaType.rawValue, forKey: "areaType")

@@ -19,7 +19,7 @@ extension SearchOptionViewController : AnalyticsType {
 class SearchOptionViewController: PullUpController {
     
     @IBOutlet weak var headearView: UIView!
-    @IBOutlet weak var topRoundedView: UIView!
+    @IBOutlet weak var topRoundedTipView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var pricePerUnitLabel: UILabel!
     @IBOutlet weak var priceRangeLabel: UILabel!
@@ -29,15 +29,16 @@ class SearchOptionViewController: PullUpController {
     @IBOutlet weak var priceMaxLabel: UILabel!
     @IBOutlet weak var sortTypeLabel: UILabel!
     @IBOutlet weak var sortingSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var operationTypeLabel: UILabel!
+    @IBOutlet weak var operationSegmentedControl: UISegmentedControl!
     @IBOutlet weak var parkinglotTypeLabel: UILabel!
-    @IBOutlet weak var parkinglotSegmentedControl: UISegmentedControl!
     @IBOutlet weak var areaTypeLabel: UILabel!
     @IBOutlet weak var areaSegmentedControl: UISegmentedControl!
     @IBOutlet weak var extraOptionLabel: UILabel!
     @IBOutlet weak var cctvButton: UIButton!
     @IBOutlet weak var iotSensorButton: UIButton!
-    @IBOutlet weak var mechanicalButton: UIButton!
-    @IBOutlet weak var fulltimeButton: UIButton!
+    @IBOutlet weak var noMechanicalButton: UIButton!
+    @IBOutlet weak var allDayButton: UIButton!
     
     @IBOutlet weak var resetButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
@@ -61,9 +62,27 @@ class SearchOptionViewController: PullUpController {
         navigationBinding()
         priceSectionBinding()
         sortingSectionBinding()
-        parkinglotTypeSectionBinding()
+        operationTypeSectionBinding()
+        optionTypeBinding()
         buttonBinding()
+        
+        setupInitialValue()
     }
+    
+    private func setupInitialValue() {
+        if let value = viewModel.getStoredValue() {
+            self.priceRangeSeekSlider.selectedMinValue = value.from.toCGFloat
+            self.priceRangeSeekSlider.selectedMaxValue = value.to.toCGFloat
+            self.sortingSegmentedControl.selectedSegmentIndex = value.sortType.rawValue
+            self.operationSegmentedControl.selectedSegmentIndex = value.operationType.rawValue
+            self.areaSegmentedControl.selectedSegmentIndex = value.areaType.rawValue
+            self.cctvButton.isSelected = value.isCCTV
+            self.iotSensorButton.isSelected = value.isIotSensor
+            self.noMechanicalButton.isSelected = value.isNoMechanical
+            self.allDayButton.isSelected = value.isAllDay
+        }
+    }
+    
     
     // MARK: - Binding
     
@@ -72,7 +91,7 @@ class SearchOptionViewController: PullUpController {
                  .drive(titleLabel.rx.text)
                  .disposed(by: disposeBag)
         
-        topRoundedView.rx
+        topRoundedTipView.rx
                 .tapGesture()
                 .subscribe { _ in
                     self.dismissModal()
@@ -109,27 +128,6 @@ class SearchOptionViewController: PullUpController {
                 .disposed(by: disposeBag)
         
         priceRangeSeekSlider.delegate = viewModel as? RangeSeekSliderDelegate
-/*
-        viewModel.selectedMinimumPrice
-                .asDriver()
-                .map({ value in
-                    return CGFloat(value)
-                })
-                .drive(onNext: { value in
-                    self.priceRangeSeekSlider.selectedMinValue = value
-                })
-                .disposed(by: disposeBag)
-        
-        viewModel.selectedMaximumPrice
-                .asDriver()
-                .map({ value in
-                    return CGFloat(value)
-                 })
-                .drive(onNext: { value in
-                    self.priceRangeSeekSlider.selectedMaxValue = value
-                })
-                .disposed(by: disposeBag)
- */
     }
     
     private func sortingSectionBinding() {
@@ -144,73 +142,57 @@ class SearchOptionViewController: PullUpController {
         viewModel.sortItemNearby
                 .drive(sortingSegmentedControl.rx.titleForSegment(at: 1))
                 .disposed(by: disposeBag)
-   /*
-        viewModel.selectedSortType
-                .asDriver()
-                .map({ type in
-                    return type.rawValue
-                })
-                .drive(sortingSegmentedControl.rx.selectedSegmentIndex)
-                .disposed(by: disposeBag)
-     */
+ 
         sortingSegmentedControl.rx.selectedSegmentIndex
-                .map { value in
-                    return FilterSortType(rawValue: value)!
-                }
-                .bind(to: self.viewModel.selectedSortType)
-                .disposed(by: disposeBag)
+            .asDriver()
+            .map { value in
+                return FilterSortType(rawValue: value)!
+            }
+            .drive(self.viewModel.selectedSortType)
+            .disposed(by: disposeBag)
     }
     
     
-    private func parkinglotTypeSectionBinding() {
-        viewModel.parkingLotTypeText
+    private func operationTypeSectionBinding() {
+        viewModel.operationTypeText
             .drive(parkinglotTypeLabel.rx.text)
             .disposed(by: disposeBag)
         
-        viewModel.parkingLotItemNone
-            .drive(parkinglotSegmentedControl.rx.titleForSegment(at: 0))
+        viewModel.operationItemNone
+            .drive(operationSegmentedControl.rx.titleForSegment(at: 0))
             .disposed(by: disposeBag)
         
-        viewModel.parkingLotItemPublic
-            .drive(parkinglotSegmentedControl.rx.titleForSegment(at: 1))
+        viewModel.operationItemPublic
+            .drive(operationSegmentedControl.rx.titleForSegment(at: 1))
             .disposed(by: disposeBag)
         
-        viewModel.parkingLotItemPrivate
-            .drive(parkinglotSegmentedControl.rx.titleForSegment(at: 2))
+        viewModel.operationItemPrivate
+            .drive(operationSegmentedControl.rx.titleForSegment(at: 2))
             .disposed(by: disposeBag)
         
-        parkinglotSegmentedControl.rx.selectedSegmentIndex
+        operationSegmentedControl.rx.selectedSegmentIndex
+            .asDriver()
             .map { value in
                 return FilterOperationType(rawValue: value)!
             }
-            .bind(to: self.viewModel.selectedParkingLotType)
+            .drive(self.viewModel.selectedOperationType)
             .disposed(by: disposeBag)
-        
-        /*
-        viewModel.selectedParkingLotType
-            .asDriver()
-            .map({ type in
-                return type.rawValue
-            })
-            .drive(parkinglotSegmentedControl.rx.selectedSegmentIndex)
-            .disposed(by: disposeBag)
-         */
     }
     
     private func areaTypeSectionBinding() {
-        viewModel.parkingLotTypeText
+        viewModel.operationTypeText
             .drive(areaTypeLabel.rx.text)
             .disposed(by: disposeBag)
         
-        viewModel.parkingLotItemNone
+        viewModel.operationItemNone
             .drive(areaSegmentedControl.rx.titleForSegment(at: 0))
             .disposed(by: disposeBag)
         
-        viewModel.parkingLotItemPublic
+        viewModel.operationItemPublic
             .drive(areaSegmentedControl.rx.titleForSegment(at: 1))
             .disposed(by: disposeBag)
         
-        viewModel.parkingLotItemPrivate
+        viewModel.operationItemPrivate
             .drive(areaSegmentedControl.rx.titleForSegment(at: 2))
             .disposed(by: disposeBag)
         
@@ -223,33 +205,29 @@ class SearchOptionViewController: PullUpController {
             .disposed(by: disposeBag)
         
         areaSegmentedControl.rx.selectedSegmentIndex
+            .asDriver()
             .map { value in
                 return FilterAreaType(rawValue: value)!
             }
-            .bind(to: self.viewModel.selectedAreaType)
+            .drive(self.viewModel.selectedAreaType)
             .disposed(by: disposeBag)
     }
     
-    
-    private func buttonBinding() {
-        viewModel.resetText
-            .drive(resetButton.rx.title())
+    private func optionTypeBinding() {
+        viewModel.optionItemCCTV
+            .drive(cctvButton.rx.title())
             .disposed(by: disposeBag)
         
-        viewModel.saveText
-            .drive(saveButton.rx.title())
+        viewModel.optionItemIotSensor
+            .drive(iotSensorButton.rx.title())
             .disposed(by: disposeBag)
         
-        resetButton.rx.tap
-            .subscribe({ _ in
-                self.viewModel.reset()
-            })
+        viewModel.optionItemNoMechanical
+            .drive(noMechanicalButton.rx.title())
             .disposed(by: disposeBag)
-        
-        saveButton.rx.tap
-            .subscribe({ _ in
-                self.viewModel.save()
-            })
+           
+        viewModel.optionItemFullTime
+            .drive(allDayButton.rx.title())
             .disposed(by: disposeBag)
         
         cctvButton.rx.tap
@@ -276,46 +254,58 @@ class SearchOptionViewController: PullUpController {
             .bind(to: viewModel.isItemIotSensor)
             .disposed(by: disposeBag)
         
-        mechanicalButton.rx.tap
+        noMechanicalButton.rx.tap
             .asObservable()
             .map { (_) -> Bool in
-                return !self.mechanicalButton.isSelected
+                return !self.noMechanicalButton.isSelected
             }
             .do(onNext: { (isSelected) in
-                self.mechanicalButton.isSelected = isSelected
+                self.noMechanicalButton.isSelected = isSelected
                 self.viewModel.isItemMechanical.accept(isSelected)
             })
             .bind(to: viewModel.isItemMechanical)
             .disposed(by: disposeBag)
         
-        fulltimeButton.rx.tap
+        allDayButton.rx.tap
             .asObservable()
             .map { (_) -> Bool in
-                return !self.fulltimeButton.isSelected
+                return !self.allDayButton.isSelected
             }
             .do(onNext: { (isSelected) in
-                self.fulltimeButton.isSelected = isSelected
+                self.allDayButton.isSelected = isSelected
                 self.viewModel.isItemFullTime.accept(isSelected)
             })
             .bind(to: viewModel.isItemFullTime)
             .disposed(by: disposeBag)
     }
     
-    // MARK: - Private Methods
     
-    private func resetAll() {
-        priceRangeSeekSlider.selectedMinValue = priceRangeSeekSlider.minValue
-        priceRangeSeekSlider.selectedMaxValue = priceRangeSeekSlider.maxValue
+    private func buttonBinding() {
+        viewModel.resetText
+            .drive(resetButton.rx.title())
+            .disposed(by: disposeBag)
         
-        sortingSegmentedControl.selectedSegmentIndex = 0
-        parkinglotSegmentedControl.selectedSegmentIndex = 0
-        areaSegmentedControl.selectedSegmentIndex = 0
+        viewModel.saveText
+            .drive(saveButton.rx.title())
+            .disposed(by: disposeBag)
         
-        cctvButton.isSelected = false
-        iotSensorButton.isSelected = false
-        mechanicalButton.isSelected = false
-        fulltimeButton.isSelected = false
+        resetButton.rx.tap
+            .subscribe({ _ in
+                self.viewModel.reset()
+            })
+            .disposed(by: disposeBag)
+        
+        saveButton.rx.tap
+            .do {
+                self.viewModel.save()
+            }
+            .subscribe({ _ in
+                self.dismissModal()
+            })
+            .disposed(by: disposeBag)
     }
+    
+    // MARK: - Local Methods
     
     // MARK: - Life Cycle
 

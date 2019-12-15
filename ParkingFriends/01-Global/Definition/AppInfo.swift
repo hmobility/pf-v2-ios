@@ -9,7 +9,6 @@
 import Foundation
 
 struct AppInfo {
-    static let mapKey = "pcrrty836m"
     static let serviceKey = "parking_friends_key_matching_with_server"
     static let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String
     static let osType = "iOS"

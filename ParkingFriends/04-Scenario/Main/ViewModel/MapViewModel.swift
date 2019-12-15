@@ -60,7 +60,7 @@ class MapViewModel: NSObject, MapViewModelType {
             overlay.hidden = false
             overlay.icon = NMFOverlayImage(name: "icCenterOval")
             overlay.subIcon = nil
-            overlay.circleColor = Color.algaeGreen
+            overlay.circleColor = Color.algaeGreen2
         }
     }
     
@@ -81,7 +81,6 @@ class MapViewModel: NSObject, MapViewModelType {
         return locationManager.rx.location.map { location in
             return location!.coordinate
         }
-
     }
 
     // MARK: - Public Methdos
@@ -98,19 +97,22 @@ class MapViewModel: NSObject, MapViewModelType {
         }
     }
     
+    // Move the camera to the current position
     func placeCenter() {
         self.currentLocation()
             .subscribe(onNext: { location in
                 self.placeCenter(location, zoomLevel: self.mapModel.defaultZoomLevel)
-            })
-            .disposed(by: disposeBag)
+                NaverMap.reverse(orders: [.roadaddr], coords:(location.latitude, location.longitude))
+                    .subscribe(onNext: { (reverse:[ReverseGeocode]?, status) in
+                        debugPrint("[ADDR] ", reverse?[0].shortAddress)
+                    }, onError: { error in
+                            
+                    }).disposed(by: self.disposeBag)
+            }).disposed(by: disposeBag)
     }
     
-    func within(coordinate:CoordType) {
-        
-        typealias FilterType = (fee:(from:Int, to:Int), sortType:FilterSortType, operationType:FilterOperationType, areaType:FilterAreaType ,option:(cctv:Bool, iotSensor:Bool, mechanical:Bool, allDay:Bool))
-        
-        ParkingLot.within(lat: coordinate.latitude.toString, lon: coordinate.longitude.toString, radius: "1", sort: .distance, start: "", end: "", productType:.public_lot, monthlyFrom: "", monthlyCount: 1, filter: FilterType(fee:(from:500, to:1000), sortType:.low_price, operationType:.public_area, areaType:.outdoor, option:(cctv:false, iotSensor:false, mechanical:false, allDay:false))).asObservable()
+    func within(coordinate:CoordType, filter:FilterType, time:(start:String, end:String)) {
+        ParkingLot.within(lat: coordinate.latitude.toString, lon: coordinate.longitude.toString, radius:"1", sort:.distance, start:time.start, end:time.end, productType:.fixed, monthlyFrom:"", monthlyCount:1, filter: filter).asObservable()
             .subscribe(onNext: {(within, responseType) in
             }, onError: { error in
                         

@@ -66,7 +66,7 @@ class ParkingLot : HttpSession {
     // 주차장 반경 목록 조회  /v1/parkinglots/within
     // radius - 반경(KM 단위) 기본 0.3
     static public func within(lat:String, lon:String, radius:String, sort:SortType, start:String, end:String, productType:ProductType, monthlyFrom:String, monthlyCount:Int, filter:FilterType) -> Observable<(Within?, ResponseCodeType)>  {
-        let data = ParkinglotAPI.within(lat: lat, lon: lon, radius: radius, sort: sort, start: start, end: end, productType: productType, monthlyFrom: monthlyFrom, monthlyCount: monthlyCount, filter: filter)
+        let data = ParkinglotAPI.within(lat: lat, lon: lon, radius: radius, sort: sort, start: start, end: end, productType:productType, monthlyFrom: monthlyFrom, monthlyCount: monthlyCount, filter: filter)
         
         return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params!)
             .map ({  result in

@@ -8,12 +8,14 @@
 
 import Foundation
 
-public protocol CarInfoModelType {
-    var data: BehaviorRelay<String> { get set }
+public protocol CarNumberModelType {
+    var number: BehaviorRelay<String> { get set }
+    
+    func validate() -> Bool
 }
 
-class CarInfoModel: CarInfoModelType {
-    var data: BehaviorRelay<String> = BehaviorRelay(value: "")
+class CarNumberModel: CarNumberModelType {
+    var number: BehaviorRelay<String> = BehaviorRelay(value: "")
     
     private let disposeBag = DisposeBag()
     private var localizer:LocalizerType
@@ -21,10 +23,10 @@ class CarInfoModel: CarInfoModelType {
     init(localizer: LocalizerType = Localizer.shared) {
         self.localizer = localizer
     }
-     
+    
     func validate() -> Bool {
-        if self.data.value.matches("^\\d{2}\\[가-힣]{1}\\d{4}$") || self.data.value.matches("^[가-힣]{2}\\d{2}\\[가-힣]{1}d{4}$") ||
-            self.data.value.matches("^\\d{3}\\[가-힣]{1}\\d{4}$") {
+        if self.number.value.matches("^\\d{2}[가-힣]{1}\\d{4}$") || self.number.value.matches("^[가-힣]{2}\\d{2}[가-힣]{1}\\d{4}$") ||
+            self.number.value.matches("^\\d{3}[가-힣]{1}\\d{4}$") {
             return true
         }
         

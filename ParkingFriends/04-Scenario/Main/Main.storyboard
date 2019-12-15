@@ -50,6 +50,114 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eaE-XJ-DLD" userLabel="View - Navigation Menu" customClass="NavigationDialogView" customModule="ParkingFriends" customModuleProvider="target">
+                                <rect key="frame" x="12" y="2" width="390" height="59"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ezi-kn-iXM" userLabel="Button - Menu">
+                                        <rect key="frame" x="14" y="9.5" width="40" height="40"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" name="DarkGrey"/>
+                                        <state key="normal" image="icMenu"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                                <size key="value" width="0.0" height="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D95-bY-Efh" userLabel="Button - Search Option">
+                                        <rect key="frame" x="322" y="14.5" width="52" height="30"/>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="15"/>
+                                        <state key="normal" title="검색옵션">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                                <size key="value" width="0.0" height="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                <color key="value" name="Black16"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ftz-xp-L7j" userLabel="View - Vertical Separator">
+                                        <rect key="frame" x="68" y="14" width="1" height="32"/>
+                                        <color key="backgroundColor" name="VeryLightPink2"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="1" id="eif-Mk-K7H"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="대왕판교로634번길" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wvo-PG-QTt" userLabel="Label - Title">
+                                        <rect key="frame" x="81" y="14" width="123.5" height="17"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="17" id="oH9-n9-TRS"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘 11:00 - 14:00 (3시간)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dRf-Mm-6kM" userLabel="Label - Time">
+                                        <rect key="frame" x="83" y="35" width="130" height="14"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="14" id="5aj-iL-Ikd"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="12"/>
+                                        <color key="textColor" name="Steel"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="Wvo-PG-QTt" firstAttribute="top" secondItem="eaE-XJ-DLD" secondAttribute="top" constant="14" id="1lR-HK-jbL"/>
+                                    <constraint firstItem="ezi-kn-iXM" firstAttribute="centerY" secondItem="eaE-XJ-DLD" secondAttribute="centerY" id="6SX-dU-jRz"/>
+                                    <constraint firstItem="D95-bY-Efh" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="dRf-Mm-6kM" secondAttribute="trailing" constant="14" id="B4R-Eu-BTf"/>
+                                    <constraint firstItem="ezi-kn-iXM" firstAttribute="leading" secondItem="eaE-XJ-DLD" secondAttribute="leading" constant="14" id="Gq0-ww-uQv"/>
+                                    <constraint firstItem="D95-bY-Efh" firstAttribute="centerY" secondItem="eaE-XJ-DLD" secondAttribute="centerY" id="RCu-4Q-H8L"/>
+                                    <constraint firstItem="ftz-xp-L7j" firstAttribute="top" secondItem="eaE-XJ-DLD" secondAttribute="top" constant="14" id="VYD-9c-8yf"/>
+                                    <constraint firstItem="Wvo-PG-QTt" firstAttribute="leading" secondItem="ftz-xp-L7j" secondAttribute="trailing" constant="12" id="f1a-st-fpX"/>
+                                    <constraint firstItem="dRf-Mm-6kM" firstAttribute="leading" secondItem="ftz-xp-L7j" secondAttribute="trailing" constant="14" id="nPb-T8-fer"/>
+                                    <constraint firstItem="D95-bY-Efh" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Wvo-PG-QTt" secondAttribute="trailing" constant="12" id="oq5-Np-O6h"/>
+                                    <constraint firstAttribute="height" constant="59" id="qdv-jn-sXW"/>
+                                    <constraint firstItem="dRf-Mm-6kM" firstAttribute="top" secondItem="Wvo-PG-QTt" secondAttribute="bottom" constant="4" id="qzu-9Y-ywt"/>
+                                    <constraint firstAttribute="trailing" secondItem="D95-bY-Efh" secondAttribute="trailing" constant="16" id="x6D-mb-x15"/>
+                                    <constraint firstItem="ftz-xp-L7j" firstAttribute="leading" secondItem="ezi-kn-iXM" secondAttribute="trailing" constant="14" id="xjk-kx-oW4"/>
+                                    <constraint firstAttribute="bottom" secondItem="ftz-xp-L7j" secondAttribute="bottom" constant="13" id="xkB-8o-3I0"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="0.40000000000000002"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" name="Black24"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                        <size key="value" width="0.0" height="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="0.10000000000000001"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="mainTitleLabel" destination="Wvo-PG-QTt" id="9C5-QD-6Hd"/>
+                                    <outlet property="menuButton" destination="ezi-kn-iXM" id="Iy9-5K-sCa"/>
+                                    <outlet property="searchOptionButton" destination="D95-bY-Efh" id="DXG-oC-ird"/>
+                                    <outlet property="subTitleLabel" destination="dRf-Mm-6kM" id="k6u-Ty-cpa"/>
+                                </connections>
+                            </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="OGm-my-WLn">
                                 <rect key="frame" x="0.0" y="435.5" width="414" height="268.5"/>
                                 <subviews>
@@ -314,11 +422,14 @@
                         <constraints>
                             <constraint firstItem="cKK-EK-fIQ" firstAttribute="trailing" secondItem="pXR-5r-ca4" secondAttribute="trailing" id="1vC-gM-5wa"/>
                             <constraint firstItem="cKK-EK-fIQ" firstAttribute="trailing" secondItem="OGm-my-WLn" secondAttribute="trailing" id="7HF-3s-Qae"/>
+                            <constraint firstItem="eaE-XJ-DLD" firstAttribute="top" secondItem="cKK-EK-fIQ" secondAttribute="top" constant="2" id="8rR-27-787"/>
                             <constraint firstItem="pXR-5r-ca4" firstAttribute="leading" secondItem="cKK-EK-fIQ" secondAttribute="leading" id="8w9-sY-i2v"/>
                             <constraint firstItem="pXR-5r-ca4" firstAttribute="top" secondItem="kfy-hY-tBW" secondAttribute="top" id="Aou-u7-tHO"/>
                             <constraint firstItem="cKK-EK-fIQ" firstAttribute="trailing" secondItem="1nR-Nk-QLc" secondAttribute="trailing" constant="8" id="J6n-IF-CbM"/>
                             <constraint firstItem="cKK-EK-fIQ" firstAttribute="bottom" secondItem="OGm-my-WLn" secondAttribute="bottom" constant="70" id="Kdn-W6-VJD"/>
+                            <constraint firstItem="cKK-EK-fIQ" firstAttribute="trailing" secondItem="eaE-XJ-DLD" secondAttribute="trailing" constant="12" id="MDL-ge-so8"/>
                             <constraint firstItem="OGm-my-WLn" firstAttribute="leading" secondItem="cKK-EK-fIQ" secondAttribute="leading" id="RV5-Wz-bP6"/>
+                            <constraint firstItem="eaE-XJ-DLD" firstAttribute="leading" secondItem="cKK-EK-fIQ" secondAttribute="leading" constant="12" id="Twg-mX-fzu"/>
                             <constraint firstItem="Njj-dP-feQ" firstAttribute="top" secondItem="1nR-Nk-QLc" secondAttribute="bottom" constant="120" id="mEU-xd-Dwo"/>
                             <constraint firstItem="cKK-EK-fIQ" firstAttribute="trailing" secondItem="Njj-dP-feQ" secondAttribute="trailing" constant="8" id="pqo-M1-5RF"/>
                             <constraint firstItem="cKK-EK-fIQ" firstAttribute="bottom" secondItem="pXR-5r-ca4" secondAttribute="bottom" id="rp0-ky-gtX"/>
@@ -373,10 +484,10 @@
                             </button>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
                         <outlet property="mapView" destination="pXR-5r-ca4" id="yrv-H9-h3p"/>
                         <outlet property="menuButton" destination="CKz-Kp-wOu" id="FaH-ya-VQZ"/>
+                        <outlet property="navigationMenuView" destination="eaE-XJ-DLD" id="vGb-KG-Xat"/>
                         <outlet property="placeCenterButton" destination="Njj-dP-feQ" id="OPz-uf-q1S"/>
                         <outlet property="searchOptionButton" destination="PQD-Jb-4cy" id="Qmd-ai-FWg"/>
                         <outlet property="timeSelView" destination="qGv-Cp-ys8" id="LUh-sP-q7Y"/>
@@ -821,6 +932,7 @@
                                                             <userDefinedRuntimeAttribute type="number" keyPath="selectedHandleDiameterMultiplier">
                                                                 <real key="value" value="1"/>
                                                             </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="enableStep" value="YES"/>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mO1-9g-Neh" userLabel="View - Range Area">
@@ -932,7 +1044,7 @@
                                                         <color key="textColor" name="DarkGrey"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="UhG-dF-TyJ" userLabel="Segmented Control - Sort">
+                                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="UhG-dF-TyJ" userLabel="Segmented Control - Area">
                                                         <rect key="frame" x="0.0" y="31" width="374" height="45"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="44" id="zbL-SR-eAH"/>
@@ -1020,7 +1132,7 @@
                                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="oWf-dw-JTp" userLabel="Stack View - Mechanical / 24hrs Operationg">
                                                                 <rect key="frame" x="0.0" y="56" width="374" height="44"/>
                                                                 <subviews>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oco-em-bby" userLabel="Button - Mechanical">
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oco-em-bby" userLabel="Button - No Mechanical">
                                                                         <rect key="frame" x="0.0" y="0.0" width="183" height="44"/>
                                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <constraints>
@@ -1153,15 +1265,16 @@
                         <viewLayoutGuide key="safeArea" id="xj5-bp-vux"/>
                     </view>
                     <connections>
-                        <outlet property="areaSegmentedControl" destination="Ach-n5-mRW" id="9jB-cT-yOj"/>
-                        <outlet property="areaTypeLabel" destination="E8p-Vb-j8h" id="SdU-Fy-fZN"/>
+                        <outlet property="allDayButton" destination="Sne-Gw-Dlv" id="gpb-fi-i0j"/>
+                        <outlet property="areaSegmentedControl" destination="UhG-dF-TyJ" id="npg-dT-MT2"/>
+                        <outlet property="areaTypeLabel" destination="oJN-64-yyW" id="Gh0-mU-faf"/>
                         <outlet property="cctvButton" destination="62V-xf-NIp" id="TWH-Uz-nK2"/>
                         <outlet property="extraOptionLabel" destination="ce1-lU-ik0" id="O6j-IW-gaB"/>
-                        <outlet property="fulltimeButton" destination="Sne-Gw-Dlv" id="gpb-fi-i0j"/>
                         <outlet property="headearView" destination="I0n-0C-HFK" id="8iT-8F-cye"/>
                         <outlet property="iotSensorButton" destination="xK8-LF-ljx" id="Zzj-89-ANt"/>
-                        <outlet property="mechanicalButton" destination="oco-em-bby" id="yfm-zn-lNB"/>
-                        <outlet property="parkinglotSegmentedControl" destination="Ach-n5-mRW" id="01E-xa-3CL"/>
+                        <outlet property="noMechanicalButton" destination="oco-em-bby" id="yfm-zn-lNB"/>
+                        <outlet property="operationSegmentedControl" destination="Ach-n5-mRW" id="01E-xa-3CL"/>
+                        <outlet property="operationTypeLabel" destination="E8p-Vb-j8h" id="UTp-JK-ucK"/>
                         <outlet property="parkinglotTypeLabel" destination="E8p-Vb-j8h" id="2Zh-13-Zrd"/>
                         <outlet property="priceGuideLabel" destination="MWu-tE-2q5" id="BZm-Pl-MPc"/>
                         <outlet property="priceLowLabel" destination="kAm-9s-cmG" id="ohP-WB-haN"/>
@@ -1174,7 +1287,7 @@
                         <outlet property="sortTypeLabel" destination="ET0-oa-mar" id="Exl-zf-R0b"/>
                         <outlet property="sortingSegmentedControl" destination="XHX-B5-7Nu" id="5Jo-fh-mo4"/>
                         <outlet property="titleLabel" destination="SjB-YL-6c0" id="XXQ-Am-Ip7"/>
-                        <outlet property="topRoundedView" destination="aZg-gi-ycE" id="vgD-5d-4c1"/>
+                        <outlet property="topRoundedTipView" destination="aZg-gi-ycE" id="vgD-5d-4c1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nuK-YZ-HoG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1377,6 +1490,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="D1U-6e-9R3"/>
                     </view>
+                    <connections>
+                        <outlet property="collectionView" destination="Pne-oF-qgQ" id="pfs-Rm-rKn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UdA-Tr-HGE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -3131,6 +3247,9 @@ kvaS+ZMGkwuTE5MWkxuTIwAAAAAAAAIBAAAAAAAAAGcAAAAAAAAAAAAAAAAAAJMmA
         </namedColor>
         <namedColor name="VeryLightPink">
             <color red="0.84700000286102295" green="0.84700000286102295" blue="0.84700000286102295" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="VeryLightPink2">
+            <color red="0.76078431372549016" green="0.76078431372549016" blue="0.76078431372549016" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

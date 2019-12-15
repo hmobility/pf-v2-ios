@@ -430,7 +430,9 @@
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
-                        <outlet property="backButton" destination="fm8-Vf-Gg0" id="xaT-pE-YCR"/>
+                        <outlet property="carBrandTableView" destination="eIN-aO-krK" id="wN4-oN-KfH"/>
+                        <outlet property="carModelTableView" destination="P7J-9l-BsE" id="LXH-ru-z2o"/>
+                        <outlet property="closeButton" destination="fm8-Vf-Gg0" id="xaT-pE-YCR"/>
                         <outlet property="nextButton" destination="spf-WU-ymd" id="zJ5-cZ-Fbb"/>
                         <outlet property="selectedCarFieldLabel" destination="L6Q-u5-Cgj" id="lgJ-6a-Pcx"/>
                         <outlet property="selectedCarLabel" destination="8g4-Xe-79q" id="HxG-sf-Ktr"/>
@@ -854,8 +856,11 @@
                                                                 <color key="textColor" red="0.1019607843" green="0.1019607843" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="기아 올 뉴 모닝" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gXv-Pu-GJJ" userLabel="TextField - Verification">
+                                                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="기아 올 뉴 모닝" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gXv-Pu-GJJ" userLabel="TextField - Verification">
                                                                 <rect key="frame" x="16" y="49" width="254" height="20"/>
+                                                                <accessibility key="accessibilityConfiguration">
+                                                                    <accessibilityTraits key="traits" notEnabled="YES"/>
+                                                                </accessibility>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="20" id="AbT-kE-Y7x"/>
                                                                 </constraints>
@@ -1021,8 +1026,11 @@
                                                                 <color key="textColor" red="0.1019607843" green="0.1019607843" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="흰색" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gmF-qL-1ab" userLabel="TextField - Verification">
+                                                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="흰색" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gmF-qL-1ab" userLabel="TextField - Verification">
                                                                 <rect key="frame" x="16" y="49" width="254" height="20"/>
+                                                                <accessibility key="accessibilityConfiguration">
+                                                                    <accessibilityTraits key="traits" notEnabled="YES"/>
+                                                                </accessibility>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="20" id="btp-Aa-4B0"/>
                                                                 </constraints>
@@ -1172,6 +1180,10 @@
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="carBrandField" destination="e60-Gk-QbJ" id="qfp-jU-kwG"/>
+                        <outlet property="carColorField" destination="NUo-jN-ztS" id="Rfr-3h-vnr"/>
+                        <outlet property="carNumberField" destination="09f-Ek-jps" id="2bY-ZM-UbH"/>
+                        <outlet property="nextButtonBottomConstraint" destination="KdU-as-iPE" id="2Eq-U1-ehn"/>
                         <outlet property="selectCarButton" destination="Fk2-gX-cQU" id="hUc-NV-mLt"/>
                         <outlet property="selectColorButton" destination="evj-3Q-BMa" id="rdm-Dr-wm0"/>
                         <outlet property="skipButton" destination="akm-QC-FKf" id="82c-jo-1bO"/>

@@ -12,13 +12,12 @@ import ObjectMapper
 class UserData: NSObject, NSCoding {
     var login: Login?
     var filter:FilterOption = FilterOption()
-    var noDiplayPaymentGuide:Bool = false
+    var noDiplayPaymentGuide:Bool?
     
     // MARK: - Public Methods
     
     public func setAuth(_ data:Login?) -> UserData {
         guard data != nil else {
-            print("[User Data] Login Data is null" )
             return self
         }
         
@@ -37,24 +36,24 @@ class UserData: NSObject, NSCoding {
         let code = language.rawValue
         Localizer.shared.changeLanguage.accept(code)
     }
-      
-    public func load(_ lang:Language = .korean) -> UserData? {
+    
+    // Usually call this method in AppDelegate
+    public func initiated(_ lang:Language = .korean) {
+        self.language(lang)
+    }
+    
+    // MARK: - Local Methods
+    
+    private func load(_ lang:Language = .korean) -> UserData? {
         self.language(lang)
             
         if let data = UserDefaults.standard.object(forKey: "User") {
             let archive = NSKeyedUnarchiver.unarchiveObject(with: data as! Data) as! UserData
-            
+           
             return archive
         }
 
         return nil
-    }
-    
-    // Usually call this method in AppDelegate
-    
-    public func initiated() {
-        if let _ = self.load() {
-        }
     }
     
     // MARK: - Initialize
@@ -65,19 +64,19 @@ class UserData: NSObject, NSCoding {
     
     required init?(coder aDecoder: NSCoder) {
         self.login = aDecoder.decodeObject(forKey: "login") as? Login
-     //   self.filter = aDecoder.decodeObject(forKey: "filter") as! FilterOption
-     //   self.noDiplayPaymentGuide = aDecoder.decodeObject(forKey: "noDiplayPaymentGuide") as! Bool
+        self.filter = aDecoder.decodeObject(forKey: "filter") as! FilterOption
+        self.noDiplayPaymentGuide = aDecoder.decodeObject(forKey: "noDiplayPaymentGuide") as? Bool ?? false
     }
     
     func encode(with aCoder: NSCoder) {
         aCoder.encode(login, forKey:"login")
-   //     aCoder.encode(filter, forKey: "filter")
-    //    aCoder.encode(noDiplayPaymentGuide, forKey: "noDiplayPaymentGuide")
+        aCoder.encode(filter, forKey: "filter")
+        aCoder.encode(noDiplayPaymentGuide, forKey: "noDiplayPaymentGuide")
     }
     
     static var shared:UserData {
         if UserData.sharedManager == nil {
-            UserData.sharedManager = UserData()
+            UserData.sharedManager = UserData().load()
         }
         
         return UserData.sharedManager

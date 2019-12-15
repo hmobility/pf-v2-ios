@@ -10,6 +10,16 @@ import UIKit
 
 class CarBrandTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
+    
+    private let disposeBag = DisposeBag()
+    
+    // MARK: - Public Methods
+    
+    public func setBrand(_ brand:String) {
+        titleLabel.text = brand
+    }
+    
+    // MARK: - Life Cycle
 
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -39,7 +39,7 @@ class ViewController: UIViewController {
                 
                 //self.callTest()
                 
-                print("[LOGIN] ", UserData.shared.load()?.login?.accessToken)
+                print("[LOGIN] ", UserData.shared.login?.accessToken)
 /*
                 Auth.login(username: "String", password: "String") { (login, message) in
                            print(login)

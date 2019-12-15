@@ -28,15 +28,15 @@ class EntryViewController: UIViewController {
     // MARK: - Button Action
     
     @IBAction func loginButtonAction(_ sender: Any) {
-      //  navigateToLogin()
+       // navigateToLogin()
        
         navigateToMain()
-       // navigateToPayment()
+      //  navigateToPayment()
         
       //  navigateToBasicInfoInput()
        // navigateToAgreement()
         
-      //  navigateToCar()
+       // navigateToCar()
         
         self.trackLog()
         self.track("gender", forName:"female")
@@ -113,10 +113,7 @@ class EntryViewController: UIViewController {
     
     private func navigateToPayment() {
         let target = Storyboard.payment.instantiateViewController(withIdentifier: "PaymentGuideViewController")
-        target.view.backgroundColor = UIColor.clear
-        target.modalPresentationStyle = .overCurrentContext
-        target.modalTransitionStyle = .crossDissolve
-        self.modal(target, animated: true)
+        self.modal(target, transparent: true)
     }
     
     private func navigateToBasicInfoInput() {

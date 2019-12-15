@@ -18,8 +18,11 @@ extension CarBrandViewController : AnalyticsType {
 
 class CarBrandViewController: UIViewController {
     
+    @IBOutlet weak var carBrandTableView: UITableView!
+    @IBOutlet weak var carModelTableView: UITableView!
+    
     @IBOutlet weak var nextButton: UIButton!
-    @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var closeButton: UIButton!
             
     @IBOutlet weak var selectedCarFieldLabel: UILabel!
     @IBOutlet weak var selectedCarLabel: UILabel!
@@ -30,7 +33,7 @@ class CarBrandViewController: UIViewController {
     // MARK: - Button Action
     
     @IBAction func cancelButtonAction(_ sender: Any) {
-        self.dismiss(animated: true)
+        // self.dismiss(animated: true)
     }
     
     @IBAction func nextButtonAction(_ sender: Any) {
@@ -53,6 +56,9 @@ class CarBrandViewController: UIViewController {
         setupNavigationBinding()
         setupBinding()
         setupInputBinding()
+        setupButtonBinding()
+        
+        handleCarBrandTableView()
     }
     
     // MARK: - Binding
@@ -63,7 +69,7 @@ class CarBrandViewController: UIViewController {
             .disposed(by: disposeBag)
         
         viewModel.closeText
-            .drive(self.backButton.rx.title())
+            .drive(self.closeButton.rx.title())
             .disposed(by: disposeBag)
     }
     
@@ -82,13 +88,48 @@ class CarBrandViewController: UIViewController {
             .asDriver()
             .drive(self.selectedCarLabel.rx.text)
             .disposed(by: disposeBag)
-     }
+    }
+    
+    private func setupButtonBinding() {
+        closeButton.rx.tap
+            .subscribe(onNext: { _ in
+                self.dismissModal()
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.proceed.asDriver()
+            .drive(onNext: { [unowned self] flag in
+                self.nextButton.isEnabled = flag ? true : false
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    // MARK: - Local Methods
+    
+    private func fetchBrandItems() {
+        viewModel.loadMakerList()
+        
+        viewModel.brandItems
+            .bind(to: carBrandTableView.rx.items(cellIdentifier: "CarBrandTableViewCell", cellType: CarBrandTableViewCell.self)) { row , item, cell in
+                cell.setBrand(item.name)
+            }
+            .disposed(by: disposeBag)
+    }
+    
+    private func handleCarBrandTableView() {
+        viewModel.modelItems
+            .bind(to: carModelTableView.rx.items(cellIdentifier: "CarModelTableViewCell", cellType: CarModelTableViewCell.self)) { row , item, cell in
+                
+            }
+            .disposed(by: disposeBag)
+    }
     
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initialize()
+        fetchBrandItems()
         // Do any additional setup after loading the view.
     }
     

@@ -23,6 +23,7 @@ class MapViewController: UIViewController {
     @IBOutlet weak var zoomOutButton: UIButton!
     @IBOutlet weak var placeCenterButton: UIButton!
     
+    @IBOutlet weak var navigationMenuView: NavigationDialogView!
     @IBOutlet weak var timeSelView: CustomTimeSelectionView!
     
     @IBOutlet weak var mapView:NMFMapView!
@@ -63,9 +64,19 @@ class MapViewController: UIViewController {
         titleView.titleFont = Font.gothicNeoMedium26
         titleView.subTitleColor = Color.darkGrey
         titleView.subTitleFont = Font.helvetica12
+        
+        if let navigationBar = self.navigationController?.navigationBar {
+            navigationBar.isHidden = true
+        }
     }
     
     private func setupNavigationBinding() {
+        navigationMenuView.searchOptionButton.rx.tap
+            .subscribe(onNext: { _ in
+                self.navigateToSearchOption()
+            })
+            .disposed(by: disposeBag)
+        
         searchOptionButton.rx.tap
             .subscribe(onNext: { _ in
                 self.navigateToSearchOption()
@@ -114,8 +125,6 @@ class MapViewController: UIViewController {
         initialize()
         
         titleView.set(title: "TTT", subTitle: "SSSs")
-        
-        location.requestWhenInUseAuthorization()
 
         // Do any additional setup after loading the view.
     }

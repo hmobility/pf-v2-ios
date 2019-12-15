@@ -17,7 +17,7 @@ class ServerResult: BaseModelType {
     
     var codeType: ResponseCodeType {
         get {
-            return ResponseCodeType(rawValue: code)!
+            return ResponseCodeType(rawValue: code)
         }
     }
     
