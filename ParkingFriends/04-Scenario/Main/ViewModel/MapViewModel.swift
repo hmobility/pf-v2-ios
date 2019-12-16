@@ -70,7 +70,7 @@ class MapViewModel: NSObject, MapViewModelType {
             overlay.circleColor = Color.algaeGreen2
         }
     }
-    
+
     // MARK: - Local Methods
     
     func placeCenter(_ coordinate:CLLocationCoordinate2D, zoomLevel:Double) {
@@ -93,31 +93,10 @@ class MapViewModel: NSObject, MapViewModelType {
     func updateAddress(_ addr:String) {
         displayAddressText.accept(addr)
     }
-
-    // MARK: - Public Methdos
     
-    func zoomIn() {
-        if let map = self.mapView {
-            map.zoomLevel =  mapModel.zoomIn()
-        }
-    }
+    // MARK: - Local Methods
     
-    func zoomOut() {
-        if let map = self.mapView {
-            map.zoomLevel =  mapModel.zoomOut()
-        }
-    }
-    
-    // Move the camera to the current position
-    func placeCenter() {
-        self.currentLocation()
-            .subscribe(onNext: { location in
-                self.placeCenter(location, zoomLevel: self.mapModel.defaultZoomLevel)
-                self.reverseGeocoding(CoordType(location.latitude, location.longitude))
-            }).disposed(by: disposeBag)
-    }
-    
-    func reverseGeocoding(_ location:CoordType) {
+    func requestReverseGeocoding(_ location:CoordType) {
         NaverMap.reverse(orders: [.roadaddr], coords: location)
             .subscribe(onNext: { (reverse, status) in
                 if let reverseGeocode = reverse, reverseGeocode.count > 0 {
@@ -141,6 +120,30 @@ class MapViewModel: NSObject, MapViewModelType {
             })
             .disposed(by: disposeBag)
     }
+    
+    // MARK: - Public Methdos
+    
+    func zoomIn() {
+        if let map = self.mapView {
+            map.zoomLevel =  mapModel.zoomIn()
+        }
+    }
+    
+    func zoomOut() {
+        if let map = self.mapView {
+            map.zoomLevel =  mapModel.zoomOut()
+        }
+    }
+    
+    // Move the camera to the current position
+    func placeCenter() {
+        self.currentLocation()
+            .subscribe(onNext: { location in
+                self.placeCenter(location, zoomLevel: self.mapModel.defaultZoomLevel)
+                self.requestReverseGeocoding(CoordType(location.latitude, location.longitude))
+            }).disposed(by: disposeBag)
+    }
+    
 }
 
 // MARK:- MapView Delegate

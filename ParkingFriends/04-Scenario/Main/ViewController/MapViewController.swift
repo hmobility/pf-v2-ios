@@ -126,6 +126,8 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initialize()
+        setupParkingLot()
+        viewModel.placeCenter()
         
         titleView.set(title: "TTT", subTitle: "SSSs")
 
@@ -133,6 +135,13 @@ class MapViewController: UIViewController {
     }
     
     // MARK: - Navigation
+    
+    func setupParkingLot() {
+        let target = Storyboard.main.instantiateViewController(withIdentifier: "ParkinglotListViewController") as! ParkinglotTapViewController
+         _ = target.view
+        
+        addPullUpController(target, initialStickyPointOffset: 100, animated: false)
+    }
     
     func navigateToSearchOption() {
         let target = Storyboard.main.instantiateViewController(withIdentifier: "SearchOptionViewController") as! SearchOptionViewController

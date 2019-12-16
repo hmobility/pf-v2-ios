@@ -1,28 +1,21 @@
 //
-//  ParkinglotListViewController.swift
+//  ParkinglotDetailViewController.swift
 //  ParkingFriends
 //
-//  Created by PlankFish on 2019/12/11.
+//  Created by PlankFish on 2019/12/16.
 //  Copyright © 2019 Hancom Mobility. All rights reserved.
 //
 
 import UIKit
 
-extension ParkinglotListViewController : AnalyticsType {
+extension ParkinglotDetailViewController : AnalyticsType {
     var screenName: String {
-        return "[SCREEN] Parkinglot List"
+        return "[SCREEN] Parkinglot Detail"
     }
 }
 
-class ParkinglotListViewController: UIViewController {
-    
-    @IBOutlet weak var timeButton: UIButton!
-    @IBOutlet weak var fixedButton: UIButton!
-    @IBOutlet weak var monthlyButton: UIButton!
-    
-    @IBOutlet weak var sortButton: UIButton!
-    
-    // MARK: - Life Cycle
+
+class ParkinglotDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

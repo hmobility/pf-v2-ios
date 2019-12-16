@@ -34,7 +34,7 @@ protocol CarBrandViewModelType {
     
     func loadMakerList()
     func loadModels(brand element:CarBrandsElement)
-    func loadModels(brandIdx idx:Int)
+    func loadModels(idx:Int)
 }
 
 class CarBrandViewModel: CarBrandViewModelType {
@@ -111,8 +111,9 @@ class CarBrandViewModel: CarBrandViewModelType {
             .disposed(by: disposeBag)
     }
     
-    func loadModels(brandIdx idx:Int) {
-        guard brandItems.value.count < idx else {
+    func loadModels(idx:Int) {
+        print("[COUNT] ", brandItems.value.count)
+        guard brandItems.value.count > idx else {
             return
         }
         
@@ -133,6 +134,7 @@ class CarBrandViewModel: CarBrandViewModelType {
                 })
                 .disposed(by: disposeBag)
         }
+
     }
     
     func loadModels(brand element:CarBrandsElement) {
@@ -147,6 +149,7 @@ class CarBrandViewModel: CarBrandViewModelType {
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { models in
                 element.models = models
+                self.modelItems.accept(models)
             }, onError: { error in
             })
             .disposed(by: disposeBag)

@@ -115,14 +115,12 @@ class CarBrandViewController: UIViewController {
     }
     
     private func fetchCarModels() {
-        /*
-        carBrandTableView.rx.itemSelected
-            .asDriver()
+        carBrandTableView.rx.itemSelected.asDriver()
             .drive(onNext: { indexPath in
                 self.viewModel.loadModels(idx: indexPath.row)
             })
-        .disposed(by: disposeBag)
-        */
+            .disposed(by: disposeBag)
+     
         viewModel.modelItems
             .bind(to: carModelTableView.rx.items(cellIdentifier: "CarModelTableViewCell", cellType: CarModelTableViewCell.self)) { row , item, cell in
                 cell.setModel(item.name)

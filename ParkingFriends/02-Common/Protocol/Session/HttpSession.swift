@@ -91,6 +91,7 @@ class HttpSession: NSObject {
         switch authType {
         case .OAuth2:
             let token = getAccessToken()
+           // self.adapt(OAuth2Handler(clientID: <#T##String#>, baseURLString: <#T##String#>, accessToken: token.access, refreshToken: token.refresh, type: token.type)
             self.adapt(AccessTokenAdapter(type:token.type, accessToken: token.access, refreshToken: token.refresh))
         case .serviceKey:
             self.adapt(ServiceKeyAdapter(serviceKey: AppInfo.serviceKey))
