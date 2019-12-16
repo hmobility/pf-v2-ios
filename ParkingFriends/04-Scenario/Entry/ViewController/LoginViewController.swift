@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import ActiveLabel
 
 extension LoginViewController : AnalyticsType {
     var screenName: String {

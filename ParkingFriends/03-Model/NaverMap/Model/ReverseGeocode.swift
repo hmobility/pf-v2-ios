@@ -17,9 +17,9 @@ class ReverseGeocode: BaseModelType {
     var region:Region?
     var land:Land?
     
-    var shortAddress:String {
+    var shortAddress:String? {
         get {
-            return land?.name ?? ""
+            return land?.name 
         }
     }
 

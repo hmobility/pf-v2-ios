@@ -12,6 +12,9 @@ import NMapsMap
 protocol MapViewModelType {
     var mapView: NMFMapView? { get set }
     
+    var displayAddressText: BehaviorRelay<String> { get }
+    var displayReservedTimeText: BehaviorRelay<String> { get }
+    
     func zoomIn()
     func zoomOut()
     func placeCenter()
@@ -20,6 +23,9 @@ protocol MapViewModelType {
 class MapViewModel: NSObject, MapViewModelType {
     var mapView: NMFMapView?
     var locationOverlay: NMFLocationOverlay?
+    
+    var displayAddressText: BehaviorRelay<String> = BehaviorRelay(value: "")
+    var displayReservedTimeText: BehaviorRelay<String> = BehaviorRelay(value: "")
     
     private let locationManager = CLLocationManager()
     private let mapModel = MapModel()
@@ -38,14 +44,15 @@ class MapViewModel: NSObject, MapViewModelType {
     }
     
     func initialize() {
+        setupNavigationBinding()
         setupLocationBinding()
         setupLocationOverlay()
     }
     
     // MARK: - Binding
     
-    func setupBinding() {
-     
+    func setupNavigationBinding() {
+        
     }
     
     func setupLocationBinding() {
@@ -82,6 +89,10 @@ class MapViewModel: NSObject, MapViewModelType {
             return location!.coordinate
         }
     }
+    
+    func updateAddress(_ addr:String) {
+        displayAddressText.accept(addr)
+    }
 
     // MARK: - Public Methdos
     
@@ -102,13 +113,24 @@ class MapViewModel: NSObject, MapViewModelType {
         self.currentLocation()
             .subscribe(onNext: { location in
                 self.placeCenter(location, zoomLevel: self.mapModel.defaultZoomLevel)
-                NaverMap.reverse(orders: [.roadaddr], coords:(location.latitude, location.longitude))
-                    .subscribe(onNext: { (reverse:[ReverseGeocode]?, status) in
-                        debugPrint("[ADDR] ", reverse?[0].shortAddress)
-                    }, onError: { error in
-                            
-                    }).disposed(by: self.disposeBag)
+                self.reverseGeocoding(CoordType(location.latitude, location.longitude))
             }).disposed(by: disposeBag)
+    }
+    
+    func reverseGeocoding(_ location:CoordType) {
+        NaverMap.reverse(orders: [.roadaddr], coords: location)
+            .subscribe(onNext: { (reverse, status) in
+                if let reverseGeocode = reverse, reverseGeocode.count > 0 {
+                    let item = reverseGeocode[0]
+
+                    if let result = item.shortAddress {
+                        self.updateAddress(result)
+                    }
+                }
+            }, onError: { error in
+                
+            })
+            .disposed(by: disposeBag)
     }
     
     func within(coordinate:CoordType, filter:FilterType, time:(start:String, end:String)) {

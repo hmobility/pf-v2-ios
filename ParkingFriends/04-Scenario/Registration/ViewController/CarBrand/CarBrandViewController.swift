@@ -57,8 +57,6 @@ class CarBrandViewController: UIViewController {
         setupBinding()
         setupInputBinding()
         setupButtonBinding()
-        
-        handleCarBrandTableView()
     }
     
     // MARK: - Binding
@@ -106,20 +104,28 @@ class CarBrandViewController: UIViewController {
     
     // MARK: - Local Methods
     
-    private func fetchBrandItems() {
-        viewModel.loadMakerList()
-        
+    private func fetchBrands() {
         viewModel.brandItems
-            .bind(to: carBrandTableView.rx.items(cellIdentifier: "CarBrandTableViewCell", cellType: CarBrandTableViewCell.self)) { row , item, cell in
+            .bind(to:carBrandTableView.rx.items(cellIdentifier: "CarBrandTableViewCell", cellType: CarBrandTableViewCell.self)) { row , item, cell in
                 cell.setBrand(item.name)
             }
             .disposed(by: disposeBag)
+        
+        viewModel.loadMakerList()
     }
     
-    private func handleCarBrandTableView() {
+    private func fetchCarModels() {
+        /*
+        carBrandTableView.rx.itemSelected
+            .asDriver()
+            .drive(onNext: { indexPath in
+                self.viewModel.loadModels(idx: indexPath.row)
+            })
+        .disposed(by: disposeBag)
+        */
         viewModel.modelItems
             .bind(to: carModelTableView.rx.items(cellIdentifier: "CarModelTableViewCell", cellType: CarModelTableViewCell.self)) { row , item, cell in
-                
+                cell.setModel(item.name)
             }
             .disposed(by: disposeBag)
     }
@@ -129,7 +135,8 @@ class CarBrandViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initialize()
-        fetchBrandItems()
+        fetchBrands()
+        fetchCarModels()
         // Do any additional setup after loading the view.
     }
     

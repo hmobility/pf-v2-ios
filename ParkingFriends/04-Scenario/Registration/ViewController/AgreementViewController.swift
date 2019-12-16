@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import ActiveLabel
 
 extension AgreementViewController : AnalyticsType {
     var screenName: String {

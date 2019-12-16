@@ -10,10 +10,12 @@ import Foundation
 import Alamofire
 
 class AccessTokenAdapter: RequestAdapter {
+    private let tokenType: String
     private let accessToken: String
     private let refreshToken: String
     
-    init(accessToken: String, refreshToken:String) {
+    init(type:String, accessToken: String, refreshToken:String) {
+        self.tokenType = type
         self.accessToken = accessToken
         self.refreshToken = refreshToken
     }
@@ -22,7 +24,7 @@ class AccessTokenAdapter: RequestAdapter {
         var urlRequest = urlRequest
 
         if (urlRequest.url?.absoluteString) != nil {
-            urlRequest.setValue(accessToken, forHTTPHeaderField: "authorization")
+            urlRequest.setValue("\(tokenType) \(accessToken)", forHTTPHeaderField: "authorization")
         }
 
         return urlRequest

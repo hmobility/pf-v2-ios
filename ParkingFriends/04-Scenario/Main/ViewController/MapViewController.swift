@@ -31,6 +31,7 @@ class MapViewController: UIViewController {
     let location = CLLocationManager()
     
     var disposeBag = DisposeBag()
+    
     private lazy var viewModel: MapViewModelType = MapViewModel(view: mapView)
     
     private lazy var titleView = NavigationTitleView()
@@ -38,12 +39,10 @@ class MapViewController: UIViewController {
     // MARK: - Initialize
      
     init() {
-      //  self.viewModel = MapViewModel()
         super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
-       // viewModel = MapViewModel()
         super.init(coder: aDecoder)
     }
     
@@ -51,7 +50,7 @@ class MapViewController: UIViewController {
         // setupMapBindings()
         setupNavigation()
         setupNavigationBinding()
-        buttonBindings()
+        setupButtonBinding()
         timeSelAreaBinding()
     }
     
@@ -82,9 +81,13 @@ class MapViewController: UIViewController {
                 self.navigateToSearchOption()
             })
             .disposed(by: disposeBag)
+        
+        viewModel.displayAddressText.asDriver()
+            .drive(navigationMenuView.mainTitleLabel.rx.text)
+            .disposed(by: disposeBag)
     }
     
-    private func buttonBindings() {
+    private func setupButtonBinding() {
         zoomInButton.rx.tap
             .subscribe(onNext: { _ in
                 self.viewModel.zoomIn()

@@ -263,7 +263,7 @@
                                     <constraint firstAttribute="width" constant="146" id="FcP-Of-hge"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="ynu-5F-d3U" customClass="CarBrandTableViewCell" customModule="ParkingFriends" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CarBrandTableViewCell" id="ynu-5F-d3U" customClass="CarBrandTableViewCell" customModule="ParkingFriends" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="146" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ynu-5F-d3U" id="jsH-dx-BsT">
@@ -293,7 +293,7 @@
                                 <rect key="frame" x="146.5" y="88.5" width="267.5" height="661"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="ABk-n8-3lp" customClass="CarModelTableViewCell" customModule="ParkingFriends" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CarModelTableViewCell" id="ABk-n8-3lp" customClass="CarModelTableViewCell" customModule="ParkingFriends" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="267.5" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ABk-n8-3lp" id="8qF-dM-Y8p">
@@ -2118,10 +2118,10 @@
         <image name="icCloseBlack" width="24" height="25"/>
         <image name="imgPixel" width="1" height="1"/>
         <namedColor name="DarkGrey">
-            <color red="0.10199999809265137" green="0.10199999809265137" blue="0.10599999874830246" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.10199999809265137" green="0.10196078431372549" blue="0.10599999874830246" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="DarkGrey">
-            <color red="0.10199999809265137" green="0.10196078431372549" blue="0.10599999874830246" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.10199999809265137" green="0.10199999809265137" blue="0.10599999874830246" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="LightBlueGrey">
             <color red="0.80800002813339233" green="0.81999999284744263" blue="0.83099997043609619" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

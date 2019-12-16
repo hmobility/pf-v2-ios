@@ -25,15 +25,16 @@ protocol CarBrandViewModelType {
     var selectedCarText: BehaviorRelay<String> { get }
     
     var brandItems: BehaviorRelay<[CarBrandsElement]> { get }
-    var modelItems: BehaviorRelay<[CarModelElement]> { get }
+    var modelItems: BehaviorRelay<[CarModelsElement]> { get }
     
     var selectedBrand: BehaviorRelay<CarBrandsElement> { get }
-    var selectedModel: BehaviorRelay<CarModelElement> { get }
+    var selectedModel: BehaviorRelay<CarModelsElement> { get }
     
     var proceed: BehaviorRelay<Bool> { get }
     
     func loadMakerList()
-    func loadModels(brandId:Int)
+    func loadModels(brand element:CarBrandsElement)
+    func loadModels(brandIdx idx:Int)
 }
 
 class CarBrandViewModel: CarBrandViewModelType {
@@ -57,10 +58,10 @@ class CarBrandViewModel: CarBrandViewModelType {
     var selectedCarText: BehaviorRelay<String> = BehaviorRelay(value:"")
     
     var brandItems: BehaviorRelay<[CarBrandsElement]> = BehaviorRelay(value: [CarBrandsElement]())
-    var modelItems: BehaviorRelay<[CarModelElement]> = BehaviorRelay(value: [CarModelElement]())
+    var modelItems: BehaviorRelay<[CarModelsElement]> = BehaviorRelay(value: [CarModelsElement]())
     
     var selectedBrand: BehaviorRelay<CarBrandsElement> = BehaviorRelay(value:CarBrandsElement())
-     var selectedModel: BehaviorRelay<CarModelElement> = BehaviorRelay(value:CarModelElement())
+    var selectedModel: BehaviorRelay<CarModelsElement> = BehaviorRelay(value:CarModelsElement())
     
     var proceed: BehaviorRelay<Bool> = BehaviorRelay(value:false)
     
@@ -101,8 +102,8 @@ class CarBrandViewModel: CarBrandViewModelType {
             }
             .do(onNext: { results in
                 if results.count > 0 {
-                    let brandId = results[0].id
-                    self.loadModels(brandId: brandId)
+                    let element = results[0]
+                    self.loadModels(brand:element)
                 }
             })
             .observeOn(MainScheduler.instance)
@@ -110,13 +111,44 @@ class CarBrandViewModel: CarBrandViewModelType {
             .disposed(by: disposeBag)
     }
     
-    func loadModels(brandId:Int) {
-        Common.cars_brands_models(brandId: brandId)
+    func loadModels(brandIdx idx:Int) {
+        guard brandItems.value.count < idx else {
+            return
+        }
+        
+        let element = brandItems.value[idx]
+        
+        if let result = element.models {
+            self.modelItems.accept(result)
+        } else {
+            Common.cars_brands_models(brandId: element.id)
+                .map { (results, response)in
+                    return (results?.elements ?? [])
+                }
+                .observeOn(MainScheduler.instance)
+                .subscribe(onNext: { models in
+                    element.models = models
+                    self.modelItems.accept(models)
+                }, onError: { error in
+                })
+                .disposed(by: disposeBag)
+        }
+    }
+    
+    func loadModels(brand element:CarBrandsElement) {
+        guard element.models == nil else {
+            return
+        }
+        
+        Common.cars_brands_models(brandId: element.id)
             .map { (results, response)in
                 return (results?.elements ?? [])
             }
             .observeOn(MainScheduler.instance)
-            .bind(to: modelItems)
+            .subscribe(onNext: { models in
+                element.models = models
+            }, onError: { error in
+            })
             .disposed(by: disposeBag)
     }
 }

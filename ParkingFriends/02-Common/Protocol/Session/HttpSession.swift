@@ -41,12 +41,12 @@ class HttpSession: NSObject {
         self.httpSession.adapter = urlRequest
     }
     
-    private func getAccessToken() -> (access:String, refresh:String) {
+    private func getAccessToken() -> (type:String, access:String, refresh:String) {
         if let result = UserData.shared.login {
-            return (result.accessToken, result.refreshToken)
+            return (result.tokenType, result.accessToken, result.refreshToken)
         }
         
-        return ("no_acceess_token", "no_refresh_token")
+        return ("token_type", "no_acceess_token", "no_refresh_token")
     }
     
     // MARK: - Public Functions
@@ -58,7 +58,7 @@ class HttpSession: NSObject {
         switch authType {
         case .OAuth2:
             let token = getAccessToken()
-            self.adapt(AccessTokenAdapter(accessToken: token.access, refreshToken: token.refresh))
+            self.adapt(AccessTokenAdapter(type:token.type, accessToken: token.access, refreshToken: token.refresh))
         case .serviceKey:
             self.adapt(ServiceKeyAdapter(serviceKey: AppInfo.serviceKey))
         default:
@@ -91,7 +91,7 @@ class HttpSession: NSObject {
         switch authType {
         case .OAuth2:
             let token = getAccessToken()
-            self.adapt(AccessTokenAdapter(accessToken: token.access, refreshToken: token.refresh))
+            self.adapt(AccessTokenAdapter(type:token.type, accessToken: token.access, refreshToken: token.refresh))
         case .serviceKey:
             self.adapt(ServiceKeyAdapter(serviceKey: AppInfo.serviceKey))
         default:

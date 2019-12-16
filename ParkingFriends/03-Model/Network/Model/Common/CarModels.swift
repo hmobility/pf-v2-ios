@@ -12,7 +12,7 @@ import ObjectMapper
 
 class CarModels: BaseModelType {
     var totalCount:Int = 0
-    var elements:[CarModelElement] = [CarModelElement]()
+    var elements:[CarModelsElement] = [CarModelsElement]()
     
     required init?(map: Map) {
         super.init(map: map)
@@ -24,11 +24,11 @@ class CarModels: BaseModelType {
     }
 }
 
-class CarModelElement: BaseModelType {
+public class CarModelsElement: BaseModelType {
     var id:Int = 0
     var name:String = ""
     var descript: String = ""
-    var brand:CarBrandsElement?
+   // var brand:CarBrandsElement?
     
     override init() {
         super.init()
@@ -38,10 +38,10 @@ class CarModelElement: BaseModelType {
         super.init(map: map)
     }
       
-    override func mapping(map: Map) {
+    override public func mapping(map: Map) {
         id <- map["id"]
         name <- map["name"]
         descript <- map["description"]
-        brand <- map["brand"]
+       // brand <- map["brand"]
     }
 }
