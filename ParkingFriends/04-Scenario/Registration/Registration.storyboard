@@ -250,7 +250,6 @@
         <!--Car Brand View Controller-->
         <scene sceneID="gY3-wf-8C3">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="a0B-B0-vps" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="CarBrandViewController" id="v0u-Xr-wyG" userLabel="Car Brand View Controller" customClass="CarBrandViewController" customModule="ParkingFriends" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qIs-16-4IB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -436,6 +435,7 @@
                         <outlet property="selectedCarLabel" destination="8g4-Xe-79q" id="HxG-sf-Ktr"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a0B-B0-vps" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="7278" y="-644"/>
         </scene>
@@ -2109,7 +2109,7 @@
             <color red="0.10199999809265137" green="0.10199999809265137" blue="0.10599999874830246" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="DarkGrey">
-            <color red="0.10199999809265137" green="0.10196078431372549" blue="0.10599999874830246" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.10199999809265137" green="0.10199999809265137" blue="0.10599999874830246" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="LightBlueGrey">
             <color red="0.80800002813339233" green="0.81999999284744263" blue="0.83099997043609619" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
