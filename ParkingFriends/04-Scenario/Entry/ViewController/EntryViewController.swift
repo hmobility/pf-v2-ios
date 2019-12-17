@@ -30,7 +30,7 @@ class EntryViewController: UIViewController {
     @IBAction func loginButtonAction(_ sender: Any) {
         navigateToLogin()
        
-      //  navigateToMain()
+       // navigateToMain()
       //  navigateToPayment()
         
       //  navigateToBasicInfoInput()

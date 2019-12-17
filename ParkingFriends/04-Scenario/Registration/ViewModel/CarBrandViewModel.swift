@@ -32,9 +32,12 @@ protocol CarBrandViewModelType {
     
     var proceed: BehaviorRelay<Bool> { get }
     
+    func selectBrandItem(_ indexPath:IndexPath)
+    func selectModelItem(_ indexPath:IndexPath)
+    
     func loadMakerList()
-    func loadModels(brand element:CarBrandsElement)
-    func loadModels(idx:Int)
+ //   func loadModels(brand element:CarBrandsElement)
+    func loadModels(brandIdx:Int)
 }
 
 class CarBrandViewModel: CarBrandViewModelType {
@@ -68,10 +71,13 @@ class CarBrandViewModel: CarBrandViewModelType {
     private let disposeBag = DisposeBag()
     private var localizer:LocalizerType
     
+    private var registrationMdoel: RegistrationModel
+    
     // MARK: - Initialize
     
-    init(localizer: LocalizerType = Localizer.shared) {
+    init(localizer: LocalizerType = Localizer.shared, registration:RegistrationModel) {
         self.localizer = localizer
+        self.registrationMdoel = registration
         
         viewTitleText = localizer.localized("ttl_car_info_registration")
         closeText = localizer.localized("btn_close")
@@ -83,12 +89,46 @@ class CarBrandViewModel: CarBrandViewModelType {
         carColorInputTitle = localizer.localized("ttl_car_color")
         carColorInputPlaceholder = localizer.localized("ph_car_color")
         selectedCarFieldText = localizer.localized("ttl_selected_car")
+        
+        updateSelectedUserCarInfo()
+    }
+    
+    // MARK: - Local Methods
+    
+    func updateSelectedUserCarInfo() {
+        _ = Observable.zip(selectedBrand, selectedModel) { ($0, $1)}
+            .asObservable()
+            .subscribe(onNext: { (brand, model) in
+                let isEmpty = brand.name.isEmpty && model.name.isEmpty
+                
+                if isEmpty == false {
+                    self.selectedCarText.accept(brand.name + " " + model.name)
+                    self.registrationMdoel.setCarModel(model)
+                }
+            
+                self.proceed.accept(isEmpty ? false : true)
+            })
+            .disposed(by: disposeBag)
     }
     
     // MARK: - Public Methods
     
-    func validate() -> Bool {
-        return false
+    func selectBrandItem(_ indexPath:IndexPath) {
+        guard brandItems.value.count > 0 else {
+            return
+        }
+        
+        let item = brandItems.value[indexPath.row]
+        selectedBrand.accept(item)
+    }
+    
+    func selectModelItem(_ indexPath:IndexPath) {
+        guard brandItems.value.count > indexPath.row else {
+            return
+        }
+              
+        let item = modelItems.value[indexPath.row]
+        selectedModel.accept(item)
     }
             
     func loadMakerList() {
@@ -100,24 +140,23 @@ class CarBrandViewModel: CarBrandViewModelType {
             .map { (results, response)in
                 return (results?.elements ?? [])
             }
-            .do(onNext: { results in
-                if results.count > 0 {
-                    let element = results[0]
-                    self.loadModels(brand:element)
-                }
-            })
             .observeOn(MainScheduler.instance)
-            .bind(to: brandItems)
+            .subscribe(onNext: { elements in
+                self.brandItems.accept(elements)
+            }, onCompleted: {
+                self.loadModels(brandIdx: 0)
+            })
             .disposed(by: disposeBag)
     }
     
-    func loadModels(idx:Int) {
+    func loadModels(brandIdx:Int) {
         print("[COUNT] ", brandItems.value.count)
-        guard brandItems.value.count > idx else {
+        guard brandItems.value.count > brandIdx else {
             return
         }
         
-        let element = brandItems.value[idx]
+        let element = brandItems.value[brandIdx]
+        selectedBrand.accept(element)
         
         if let result = element.models {
             self.modelItems.accept(result)
@@ -136,7 +175,8 @@ class CarBrandViewModel: CarBrandViewModelType {
         }
 
     }
-    
+
+    /*
     func loadModels(brand element:CarBrandsElement) {
         guard element.models == nil else {
             return
@@ -154,5 +194,6 @@ class CarBrandViewModel: CarBrandViewModelType {
             })
             .disposed(by: disposeBag)
     }
+ */
 }
 

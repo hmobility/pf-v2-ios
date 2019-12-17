@@ -77,7 +77,7 @@ class BasicInfoViewModel: BasicInfoViewModelType {
     let nicknameModel = NicknameModel()
     let passwordModel = PasswordModel()
     
-    var registrationMdoel: RegistrationModel
+    private var registrationMdoel: RegistrationModel
     
     private let disposeBag = DisposeBag()
     private var localizer:LocalizerType

@@ -16,6 +16,10 @@ extension CarBrandViewController : AnalyticsType {
     }
 }
 
+protocol CarBrandViewControllerProtocol:class  {
+    func didSelect(brand:CarBrandsElement, model:CarModelsElement)
+}
+
 class CarBrandViewController: UIViewController {
     
     @IBOutlet weak var carBrandTableView: UITableView!
@@ -27,8 +31,13 @@ class CarBrandViewController: UIViewController {
     @IBOutlet weak var selectedCarFieldLabel: UILabel!
     @IBOutlet weak var selectedCarLabel: UILabel!
     
-    private var viewModel: CarBrandViewModelType
+    private var registrationModel: RegistrationModel = RegistrationModel.shared
+
     private let disposeBag = DisposeBag()
+
+    private lazy var viewModel: CarBrandViewModelType = CarBrandViewModel(registration:registrationModel)
+    
+    public var delegate:CarBrandViewControllerProtocol?
     
     // MARK: - Button Action
     
@@ -42,13 +51,11 @@ class CarBrandViewController: UIViewController {
     
     // MARK: - Initialize
     
-    init(viewModel: CarBrandViewModelType = CarBrandViewModel()) {
-        self.viewModel = viewModel
+    init() {
         super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
-        viewModel = CarBrandViewModel()
         super.init(coder: aDecoder)
     }
     
@@ -57,6 +64,7 @@ class CarBrandViewController: UIViewController {
         setupBinding()
         setupInputBinding()
         setupButtonBinding()
+        setupSelectedItemBinding()
     }
     
     // MARK: - Binding
@@ -88,6 +96,22 @@ class CarBrandViewController: UIViewController {
             .disposed(by: disposeBag)
     }
     
+    private func setupSelectedItemBinding() {
+        carBrandTableView.rx.itemSelected
+            .asDriver()
+            .drive(onNext: { (indexPath) in
+                self.viewModel.selectBrandItem(indexPath)
+            })
+            .disposed(by: disposeBag)
+        
+        carModelTableView.rx.itemSelected
+            .asDriver()
+            .drive(onNext: { (indexPath) in
+                self.viewModel.selectModelItem(indexPath)
+            })
+            .disposed(by: disposeBag)
+    }
+    
     private func setupButtonBinding() {
         closeButton.rx.tap
             .subscribe(onNext: { _ in
@@ -98,6 +122,12 @@ class CarBrandViewController: UIViewController {
         viewModel.proceed.asDriver()
             .drive(onNext: { [unowned self] flag in
                 self.nextButton.isEnabled = flag ? true : false
+            })
+            .disposed(by: disposeBag)
+        
+        nextButton.rx.tap
+            .subscribe(onNext: { _ in
+                self.dismissModal()
             })
             .disposed(by: disposeBag)
     }
@@ -117,7 +147,7 @@ class CarBrandViewController: UIViewController {
     private func fetchCarModels() {
         carBrandTableView.rx.itemSelected.asDriver()
             .drive(onNext: { indexPath in
-                self.viewModel.loadModels(idx: indexPath.row)
+                self.viewModel.loadModels(brandIdx: indexPath.row)
             })
             .disposed(by: disposeBag)
      

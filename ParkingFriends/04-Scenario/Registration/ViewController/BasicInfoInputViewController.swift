@@ -194,7 +194,6 @@ class BasicInfoInputViewController: UIViewController {
         
         viewModel.proceed.asDriver()
             .drive(onNext: { [unowned self] (completed) in
-                debugPrint("[PROCEED] check all : ", completed)
                 self.nextButton.isEnabled = completed ? true : false
             })
             .disposed(by: disposeBag)
