@@ -27,6 +27,8 @@ protocol RegiCarViewModelType {
     var carColorText: BehaviorRelay<String> { get }
     var carColorMessageText: BehaviorRelay<String> { get }
     
+    var proceed: BehaviorRelay<Bool> { get }
+    
     var carInfo:CarNumberModelType { get }
     
     func setCarColor(_ color:ColorType)
@@ -50,6 +52,8 @@ class RegiCarViewModel: RegiCarViewModelType {
     var carColorPlaceholder: Driver<String>
     var carColorText: BehaviorRelay<String> = BehaviorRelay(value: "")
     var carColorMessageText: BehaviorRelay<String> = BehaviorRelay(value: "")
+    
+    var proceed: BehaviorRelay<Bool> = BehaviorRelay(value:false)
     
     private let disposeBag = DisposeBag()
     private var localizer:LocalizerType

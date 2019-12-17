@@ -15,7 +15,7 @@ public protocol RegistrationModelType {
     var password:String? { get set }
     var isThirdPartyAgrrement: Bool { get set }
     
-    var carName: String? { get set }
+    var carModel: CarModelsElement? { get set }
     var carNumber: String? { get set }
     var carColor: String? { get set }
     
@@ -35,6 +35,10 @@ final class RegistrationModel {
     var otp:Otp?
     var checkOldMember:OldMember?
     
+    var carModel: CarModelsElement?
+    var carNumber: String?
+    var carColor: String?
+    
     static let shared: RegistrationModel = {
         let instance = RegistrationModel()
         return instance
@@ -43,24 +47,32 @@ final class RegistrationModel {
     private init() {
     }
     
-    func basicInfo(email:String, password:String, nickname:String) {
+    // MARK: - Local Methods
+    
+    // MARK: - Public Methods
+    
+    public func setCarModel(_ element:CarModelsElement) {
+        self.carModel = element
+    }
+    
+    public func basicInfo(email:String, password:String, nickname:String) {
         self.email = email
         self.password = password
         self.nickname = nickname
     }
     
-    func resetBasicInfo() {
+    public func resetBasicInfo() {
         self.email = nil
         self.password = nil
         self.nickname = nil
     }
     
-    func otp(_ otp:Otp, phoneNumber:String) {
+    public func otp(_ otp:Otp, phoneNumber:String) {
         self.otp = otp
         self.phoneNumber = phoneNumber
     }
     
-    func resetOtp(numberReset reset:Bool = false) {
+    public func resetOtp(numberReset reset:Bool = false) {
         self.otp = nil
         
         if reset {

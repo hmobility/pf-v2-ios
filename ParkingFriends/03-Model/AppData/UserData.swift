@@ -76,7 +76,7 @@ class UserData: NSObject, NSCoding {
     
     static var shared:UserData {
         if UserData.sharedManager == nil {
-            UserData.sharedManager = UserData().load()
+            UserData.sharedManager = UserData().load() ?? UserData()
         }
         
         return UserData.sharedManager

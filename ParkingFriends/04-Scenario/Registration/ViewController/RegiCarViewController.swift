@@ -192,6 +192,12 @@ class RegiCarViewController: UIViewController {
     
     private func navigateToRegiCar() {
         let target = Storyboard.registration.instantiateViewController(withIdentifier: "CarInfoSearchNavigationController") as! UINavigationController
+        (target.topViewController as! CarBrandViewController).delegate = self
+        
+        let target2 = target.topViewController as! CarBrandViewController
+        
+       // target2.rx.isDismissing.
+        
         self.modal(target)
     }
     
@@ -213,4 +219,12 @@ class RegiCarViewController: UIViewController {
     }
     */
 
+}
+
+// MARK: - CarBrandViewControllerProtocol
+
+extension RegiCarViewController: CarBrandViewControllerProtocol {
+    func didSelect(brand: CarBrandsElement, model: CarModelsElement) {
+        
+    }
 }
