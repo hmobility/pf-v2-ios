@@ -262,7 +262,7 @@
                                     <constraint firstAttribute="width" constant="146" id="FcP-Of-hge"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="ynu-5F-d3U" customClass="CarBrandTableViewCell" customModule="ParkingFriends" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CarBrandTableViewCell" id="ynu-5F-d3U" customClass="CarBrandTableViewCell" customModule="ParkingFriends" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="146" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ynu-5F-d3U" id="jsH-dx-BsT">
@@ -292,7 +292,7 @@
                                 <rect key="frame" x="146.5" y="88.5" width="267.5" height="661"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="ABk-n8-3lp" customClass="CarModelTableViewCell" customModule="ParkingFriends" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CarModelTableViewCell" id="ABk-n8-3lp" customClass="CarModelTableViewCell" customModule="ParkingFriends" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="267.5" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ABk-n8-3lp" id="8qF-dM-Y8p">
@@ -386,6 +386,14 @@
                                     <constraint firstItem="L6Q-u5-Cgj" firstAttribute="leading" secondItem="YrS-ut-uzL" secondAttribute="leading" constant="12" id="ibR-CO-jlv"/>
                                     <constraint firstAttribute="height" constant="56" id="x9c-x3-pL9"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="0.59999999999999998"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" name="LightBlueGrey"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -429,7 +437,9 @@
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
-                        <outlet property="backButton" destination="fm8-Vf-Gg0" id="xaT-pE-YCR"/>
+                        <outlet property="carBrandTableView" destination="eIN-aO-krK" id="wN4-oN-KfH"/>
+                        <outlet property="carModelTableView" destination="P7J-9l-BsE" id="LXH-ru-z2o"/>
+                        <outlet property="closeButton" destination="fm8-Vf-Gg0" id="xaT-pE-YCR"/>
                         <outlet property="nextButton" destination="spf-WU-ymd" id="zJ5-cZ-Fbb"/>
                         <outlet property="selectedCarFieldLabel" destination="L6Q-u5-Cgj" id="lgJ-6a-Pcx"/>
                         <outlet property="selectedCarLabel" destination="8g4-Xe-79q" id="HxG-sf-Ktr"/>
@@ -854,8 +864,11 @@
                                                                 <color key="textColor" red="0.1019607843" green="0.1019607843" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="기아 올 뉴 모닝" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gXv-Pu-GJJ" userLabel="TextField - Verification">
+                                                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="기아 올 뉴 모닝" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gXv-Pu-GJJ" userLabel="TextField - Verification">
                                                                 <rect key="frame" x="16" y="49" width="254" height="20"/>
+                                                                <accessibility key="accessibilityConfiguration">
+                                                                    <accessibilityTraits key="traits" notEnabled="YES"/>
+                                                                </accessibility>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="20" id="AbT-kE-Y7x"/>
                                                                 </constraints>
@@ -1021,8 +1034,11 @@
                                                                 <color key="textColor" red="0.1019607843" green="0.1019607843" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="흰색" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gmF-qL-1ab" userLabel="TextField - Verification">
+                                                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="흰색" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gmF-qL-1ab" userLabel="TextField - Verification">
                                                                 <rect key="frame" x="16" y="49" width="254" height="20"/>
+                                                                <accessibility key="accessibilityConfiguration">
+                                                                    <accessibilityTraits key="traits" notEnabled="YES"/>
+                                                                </accessibility>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="20" id="btp-Aa-4B0"/>
                                                                 </constraints>
@@ -1172,6 +1188,10 @@
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="carBrandField" destination="e60-Gk-QbJ" id="qfp-jU-kwG"/>
+                        <outlet property="carColorField" destination="NUo-jN-ztS" id="Rfr-3h-vnr"/>
+                        <outlet property="carNumberField" destination="09f-Ek-jps" id="2bY-ZM-UbH"/>
+                        <outlet property="nextButtonBottomConstraint" destination="KdU-as-iPE" id="2Eq-U1-ehn"/>
                         <outlet property="selectCarButton" destination="Fk2-gX-cQU" id="hUc-NV-mLt"/>
                         <outlet property="selectColorButton" destination="evj-3Q-BMa" id="rdm-Dr-wm0"/>
                         <outlet property="skipButton" destination="akm-QC-FKf" id="82c-jo-1bO"/>
@@ -2106,7 +2126,7 @@
         <image name="icCloseBlack" width="24" height="25"/>
         <image name="imgPixel" width="1" height="1"/>
         <namedColor name="DarkGrey">
-            <color red="0.10199999809265137" green="0.10199999809265137" blue="0.10599999874830246" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.10199999809265137" green="0.10196078431372549" blue="0.10599999874830246" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="DarkGrey">
             <color red="0.10199999809265137" green="0.10199999809265137" blue="0.10599999874830246" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

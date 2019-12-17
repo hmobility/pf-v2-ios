@@ -10,6 +10,16 @@ import UIKit
 
 class CarModelTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
+    
+    private let disposeBag = DisposeBag()
+    
+    // MARK: - Public Methods
+    
+    public func setModel(_ model:String) {
+        titleLabel.text = model
+    }
+    
+    // MARK: - Life Cycle
 
     override func awakeFromNib() {
         super.awakeFromNib()

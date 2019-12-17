@@ -12,6 +12,9 @@ import NMapsMap
 protocol MapViewModelType {
     var mapView: NMFMapView? { get set }
     
+    var displayAddressText: BehaviorRelay<String> { get }
+    var displayReservedTimeText: BehaviorRelay<String> { get }
+    
     func zoomIn()
     func zoomOut()
     func placeCenter()
@@ -20,6 +23,9 @@ protocol MapViewModelType {
 class MapViewModel: NSObject, MapViewModelType {
     var mapView: NMFMapView?
     var locationOverlay: NMFLocationOverlay?
+    
+    var displayAddressText: BehaviorRelay<String> = BehaviorRelay(value: "")
+    var displayReservedTimeText: BehaviorRelay<String> = BehaviorRelay(value: "")
     
     private let locationManager = CLLocationManager()
     private let mapModel = MapModel()
@@ -38,14 +44,15 @@ class MapViewModel: NSObject, MapViewModelType {
     }
     
     func initialize() {
+        setupNavigationBinding()
         setupLocationBinding()
         setupLocationOverlay()
     }
     
     // MARK: - Binding
     
-    func setupBinding() {
-     
+    func setupNavigationBinding() {
+        
     }
     
     func setupLocationBinding() {
@@ -60,10 +67,10 @@ class MapViewModel: NSObject, MapViewModelType {
             overlay.hidden = false
             overlay.icon = NMFOverlayImage(name: "icCenterOval")
             overlay.subIcon = nil
-            overlay.circleColor = Color.algaeGreen
+            overlay.circleColor = Color.algaeGreen2
         }
     }
-    
+
     // MARK: - Local Methods
     
     func placeCenter(_ coordinate:CLLocationCoordinate2D, zoomLevel:Double) {
@@ -81,9 +88,39 @@ class MapViewModel: NSObject, MapViewModelType {
         return locationManager.rx.location.map { location in
             return location!.coordinate
         }
-
     }
+    
+    func updateAddress(_ addr:String) {
+        displayAddressText.accept(addr)
+    }
+    
+    // MARK: - Local Methods
+    
+    func requestReverseGeocoding(_ location:CoordType) {
+        NaverMap.reverse(orders: [.roadaddr], coords: location)
+            .subscribe(onNext: { (reverse, status) in
+                if let reverseGeocode = reverse, reverseGeocode.count > 0 {
+                    let item = reverseGeocode[0]
 
+                    if let result = item.shortAddress {
+                        self.updateAddress(result)
+                    }
+                }
+            }, onError: { error in
+                
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    func within(coordinate:CoordType, filter:FilterType, time:(start:String, end:String)) {
+        ParkingLot.within(lat: coordinate.latitude.toString, lon: coordinate.longitude.toString, radius:"1", sort:.distance, start:time.start, end:time.end, productType:.fixed, monthlyFrom:"", monthlyCount:1, filter: filter).asObservable()
+            .subscribe(onNext: {(within, responseType) in
+            }, onError: { error in
+                        
+            })
+            .disposed(by: disposeBag)
+    }
+    
     // MARK: - Public Methdos
     
     func zoomIn() {
@@ -98,25 +135,15 @@ class MapViewModel: NSObject, MapViewModelType {
         }
     }
     
+    // Move the camera to the current position
     func placeCenter() {
         self.currentLocation()
             .subscribe(onNext: { location in
                 self.placeCenter(location, zoomLevel: self.mapModel.defaultZoomLevel)
-            })
-            .disposed(by: disposeBag)
+                self.requestReverseGeocoding(CoordType(location.latitude, location.longitude))
+            }).disposed(by: disposeBag)
     }
     
-    func within(coordinate:CoordType) {
-        
-        typealias FilterType = (fee:(from:Int, to:Int), sortType:FilterSortType, operationType:FilterOperationType, areaType:FilterAreaType ,option:(cctv:Bool, iotSensor:Bool, mechanical:Bool, allDay:Bool))
-        
-        ParkingLot.within(lat: coordinate.latitude.toString, lon: coordinate.longitude.toString, radius: "1", sort: .distance, start: "", end: "", productType:.public_lot, monthlyFrom: "", monthlyCount: 1, filter: FilterType(fee:(from:500, to:1000), sortType:.low_price, operationType:.public_area, areaType:.outdoor, option:(cctv:false, iotSensor:false, mechanical:false, allDay:false))).asObservable()
-            .subscribe(onNext: {(within, responseType) in
-            }, onError: { error in
-                        
-            })
-            .disposed(by: disposeBag)
-    }
 }
 
 // MARK:- MapView Delegate

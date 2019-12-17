@@ -18,7 +18,7 @@ struct CommonAPI:BaseAPI {
     }
     
     // 차량 모델 조회
-    static func cars_brands_models(brandId:String, httpMethod:HttpMethod = .get, auth:APIAuthType = .OAuth2) -> RestURL  {
+    static func cars_brands_models(brandId:Int, httpMethod:HttpMethod = .get, auth:APIAuthType = .OAuth2) -> RestURL  {
         let url = build(host:host, endpoint:"/cars/brands/\(brandId)/models", params: nil)
         return (httpMethod, url, auth, nil)
     }

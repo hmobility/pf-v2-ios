@@ -11,9 +11,9 @@ import Alamofire
 import ObjectMapper
 
 public class Login: BaseModelType, NSCoding {
-    var tokenType:String = ""
-    var accessToken:String = ""
-    var refreshToken:String = ""
+    var tokenType:String = "type"
+    var accessToken:String = "access"
+    var refreshToken:String = "refresh"
     
     required init?(map: Map) {
         super.init(map: map)

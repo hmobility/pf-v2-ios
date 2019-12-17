@@ -20,7 +20,7 @@ class CarBrands: BaseModelType {
     
     override func mapping(map: Map) {
         totalCount <- map["totalCount"]
-        elements <- map["CarBrandsElement"]
+        elements <- map["elements"]
     }
 }
 
@@ -28,6 +28,12 @@ class CarBrandsElement: BaseModelType {
     var id:Int = 0
     var name:String = ""
     var descript: String = ""
+    
+    var models: [CarModelsElement]?       // TableView 용 Mapping 시키지 않음
+    
+    override init() {
+        super.init()
+    }
     
     required init?(map: Map) {
         super.init(map: map)

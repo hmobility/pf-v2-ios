@@ -17,10 +17,19 @@ extension RegiCarViewController : AnalyticsType {
 }
 
 class RegiCarViewController: UIViewController {
+    
+    @IBOutlet weak var carBrandField: CustomInputSection!
+    @IBOutlet weak var carNumberField: CustomInputSection!
+    @IBOutlet weak var carColorField: CustomInputSection!
+    
     @IBOutlet weak var skipButton: UIBarButtonItem!
     @IBOutlet weak var selectCarButton: UIButton!
     @IBOutlet weak var selectColorButton: UIButton!
-    private var viewModel: RegiCarViewModelType
+    
+    @IBOutlet weak var nextButtonBottomConstraint: NSLayoutConstraint!
+    
+    private lazy var viewModel: RegiCarViewModelType = RegiCarViewModel(carInfo: CarNumberModel())
+    
     private let disposeBag = DisposeBag()
     
     // MARK: - Button Action
@@ -35,23 +44,123 @@ class RegiCarViewController: UIViewController {
         
     // MARK: - Initialize
     
-    init(viewModel: RegiCarViewModelType = RegiCarViewModel()) {
-        self.viewModel = viewModel
+    init() {
         super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
-        viewModel = RegiCarViewModel()
         super.init(coder: aDecoder)
     }
     
     private func initialize() {
+        setupNavigationBinding()
+        setupCarBrandBinding()
+        setupCarNumberBinding()
+        setupCarColorBinding()
         setupButtonBinding()
+        setupKeyboard()
     }
     
     // MARK: - Binding
     
+    private func setupNavigationBinding() {
+        viewModel.viewTitle
+            .drive(self.navigationItem.rx.title)
+            .disposed(by: disposeBag)
+    }
+    
+    private func setupCarBrandBinding() {
+        viewModel.carBrandInputTitle
+            .drive(carBrandField.fieldTitleLabel.rx.text)
+            .disposed(by: disposeBag)
+               
+        viewModel.carBrandPlaceholder
+            .drive(carBrandField.inputTextField.rx.placeholder)
+            .disposed(by: disposeBag)
+        
+        viewModel.carBrandText
+            .asDriver()
+            .drive(carBrandField.inputTextField.rx.text)
+            .disposed(by: disposeBag)
+        
+        viewModel.carBrandMessageText
+            .asDriver()
+            .drive(carBrandField.messageLabel.rx.text)
+            .disposed(by: disposeBag)
+    }
+    
+    private func setupCarNumberBinding() {
+        viewModel.carNumberInputTitle
+            .drive(carNumberField.fieldTitleLabel.rx.text)
+            .disposed(by: disposeBag)
+               
+        viewModel.carNumberPlaceholder
+            .drive(carNumberField.inputTextField.rx.placeholder)
+            .disposed(by: disposeBag)
+        
+        viewModel.carNumberMessageText
+            .asDriver()
+            .drive(carNumberField.messageLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        /*
+        carNumberField.inputTextField.rx
+            .controlEvent([.editingChanged, .editingDidEnd])
+            .asObservable()
+            .subscribe(onNext:{ _ in
+                let result = self.viewModel.validateCarNumber()
+                debugPrint("[CHECK] ", self.viewModel.carInfo.number.value, " -> ", result)
+                print(self.carNumberField.inputTextField.text , " , -> ", result)
+                let text = self.carNumberField.inputTextField.text
+                print("[C] -> ", text?.matches("^[가-힣]{2}\\d{2}[가-힣]{1}\\d{4}$") , result)
+            })
+            .disposed(by: disposeBag)
+        */
+        
+        carNumberField.inputTextField.rx.text
+            .orEmpty
+            .subscribe(onNext: { text in
+                self.viewModel.carInfo.number.accept(text)
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func setupCarColorBinding() {
+        viewModel.carColorInputTitle
+            .drive(carColorField.fieldTitleLabel.rx.text)
+            .disposed(by: disposeBag)
+               
+        viewModel.carColorPlaceholder
+            .drive(carColorField.inputTextField.rx.placeholder)
+            .disposed(by: disposeBag)
+
+        viewModel.carColorText
+            .asDriver()
+            .drive(carColorField.inputTextField.rx.text)
+            .disposed(by: disposeBag)
+        
+        viewModel.carColorMessageText
+             .asDriver()
+             .drive(carColorField.messageLabel.rx.text)
+             .disposed(by: disposeBag)
+    }
+    
+    private func setupKeyboard() {
+        RxKeyboard.instance.visibleHeight
+            .drive(onNext: { height in
+                self.nextButtonBottomConstraint.constant = height - self.view.safeAreaInsets.bottom
+                self.view.layoutIfNeeded()
+            })
+            .disposed(by: disposeBag)
+    }
+    
     private func setupButtonBinding() {
+        skipButton.rx.tap
+            .subscribe(onNext: { _ in
+               
+            })
+            .disposed(by: disposeBag)
+        
         selectCarButton.rx.tap
             .subscribe(onNext: { _ in
                 self.navigateToRegiCar()
@@ -63,6 +172,13 @@ class RegiCarViewController: UIViewController {
                 self.showColorDiaglog()
             })
             .disposed(by: disposeBag)
+        
+    }
+    
+    // MARK: - Local Methods
+    
+    private func update() {
+        
     }
     
     // MARK: - Life Cycle
@@ -82,7 +198,7 @@ class RegiCarViewController: UIViewController {
     private func showColorDiaglog() {
         ColorDialog.show { (finished, color) in
             if finished {
-                print("[SEL COLOR] ", color)
+                self.viewModel.setCarColor(color!)
             }
         }
     }

@@ -17,6 +17,8 @@ extension ParkinglotCardViewController : AnalyticsType {
 
 class ParkinglotCardViewController: UIViewController {
 
+    @IBOutlet weak var collectionView: UICollectionView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

@@ -22,7 +22,7 @@ class AppConfig: NSObject {
         FirebaseApp.configure(options: GoogleServiceFileOptions!)
         Fabric.with([Crashlytics.self])
         
-        NMFAuthManager.shared().clientId = AppInfo.mapKey
+        NMFAuthManager.shared().clientId = MapInfo.clientId
     }
 
     // MARK: - Initialize

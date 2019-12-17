@@ -177,8 +177,6 @@ class BasicInfoInputViewController: UIViewController {
     private func setupKeyboard() {
         RxKeyboard.instance.visibleHeight
             .drive(onNext: { height in
-                debugPrint("[SCROLVIEW] ", self.scrollView.frame.size.height)
-                debugPrint("[VIEW] ", self.contentView.frame.size.height)
                 self.nextButtonBottomConstraint.constant = height - self.view.safeAreaInsets.bottom
                 self.view.layoutIfNeeded()
                 self.scrollView.layoutIfNeeded()

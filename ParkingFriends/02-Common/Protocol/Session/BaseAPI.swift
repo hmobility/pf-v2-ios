@@ -10,6 +10,7 @@ import UIKit
 import Foundation
 
 typealias RestURL = (method:HttpMethod, url:URL, auth:APIAuthType, params:Params?)
+typealias RequestURL = (url:URL, params:Params?)
 
 enum APIAuthType {
     case OAuth2, serviceKey, none
@@ -24,8 +25,11 @@ extension BaseAPI {
         var components = URLComponents()
         components.scheme = host.scheme
         components.host = host.domain
-        components.port = host.port
         components.path = host.rootPath + endpoint
+        
+        if host.port > 0 {
+            components.port = host.port
+        }
 
         if let params = params {
             components.queryItems = params.map {

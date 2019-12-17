@@ -21,4 +21,10 @@ extension Int {
             return String(describing: self)
         }
     }
+    
+    var toCGFloat:CGFloat {
+        get {
+            return CGFloat(self)
+        }
+    }
 }

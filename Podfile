@@ -34,7 +34,6 @@ target 'ParkingFriends' do
   pod 'NMapsMap'                  # Naver Map
   
   pod 'SwiftMessages'             # Message View
-  pod 'ActiveLabel'               # Underlined Tappable Label
   
   pod 'AnyFormatKit'              # String Formatter
   pod 'CryptoSwift'               # SHA256 password to string

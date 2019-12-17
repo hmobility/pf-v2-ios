@@ -15,6 +15,10 @@ public protocol RegistrationModelType {
     var password:String? { get set }
     var isThirdPartyAgrrement: Bool { get set }
     
+    var carName: String? { get set }
+    var carNumber: String? { get set }
+    var carColor: String? { get set }
+    
     var otp:Otp? { get set }
     
     func otp(_ otp:Otp, phoneNumber:String)

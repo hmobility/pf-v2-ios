@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import ActiveLabel
 
 extension LoginViewController : AnalyticsType {
     var screenName: String {
@@ -142,7 +141,7 @@ class LoginViewController: UIViewController {
         super.init(coder: aDecoder)
     }
     
-    private func storeProperty() {
+    private func storeLayoutProperty() {
         self.originalInputAreaBottomConstant = self.inputAreaBottomConstraint.constant
     }
     
@@ -157,7 +156,7 @@ class LoginViewController: UIViewController {
 
     override func loadView() {
         super.loadView()
-        storeProperty()
+        storeLayoutProperty()
     }
     
     override func viewDidLoad() {

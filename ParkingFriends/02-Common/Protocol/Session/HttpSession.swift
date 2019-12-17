@@ -36,19 +36,29 @@ class HttpSession: NSObject {
 
     private let acceptableStatusCodes:[Int] = [200, 201, 204, 304, 400, 401, 403, 404, 410, 500, 503]
     private let acceptableContentType:[String] = ["application/json", "text/json", "text/plain", "text/html"]
-
-    // MARK: - Public Functions
     
-    func adapt(_ urlRequest: RequestAdapter) {
+    private func adapt(_ urlRequest: RequestAdapter) {
         self.httpSession.adapter = urlRequest
     }
     
+    private func getAccessToken() -> (type:String, access:String, refresh:String) {
+        if let result = UserData.shared.login {
+            return (result.tokenType, result.accessToken, result.refreshToken)
+        }
+        
+        return ("token_type", "no_acceess_token", "no_refresh_token")
+    }
+    
+    // MARK: - Public Functions
+    
+    // Will be deprecated
     func dataTask(httpMethod:HttpMethod, auth authType:APIAuthType = .none, path:URL, parameters params:Params, completion:@escaping([String:Any]?, String?, ResponseCodeType) -> Void, failure:@escaping(String?) -> Void) -> DataRequest {
         let method = HTTPMethod(rawValue: httpMethod.rawValue)!
         
         switch authType {
         case .OAuth2:
-            self.adapt(AccessTokenAdapter(accessToken: "accessToken"))
+            let token = getAccessToken()
+            self.adapt(AccessTokenAdapter(type:token.type, accessToken: token.access, refreshToken: token.refresh))
         case .serviceKey:
             self.adapt(ServiceKeyAdapter(serviceKey: AppInfo.serviceKey))
         default:
@@ -76,11 +86,13 @@ class HttpSession: NSObject {
         return dataTask
     }
     
-    func dataTask(httpMethod:HttpMethod, auth authType:APIAuthType = .none, path:URL, parameters params:Params) -> Observable<ServerResult> {
+    func dataTask(httpMethod:HttpMethod, auth authType:APIAuthType = .none, path:URL, parameters params:Params?) -> Observable<ServerResult> {
         
         switch authType {
         case .OAuth2:
-            self.adapt(AccessTokenAdapter(accessToken: "accessToken"))
+            let token = getAccessToken()
+           // self.adapt(OAuth2Handler(clientID: <#T##String#>, baseURLString: <#T##String#>, accessToken: token.access, refreshToken: token.refresh, type: token.type)
+            self.adapt(AccessTokenAdapter(type:token.type, accessToken: token.access, refreshToken: token.refresh))
         case .serviceKey:
             self.adapt(ServiceKeyAdapter(serviceKey: AppInfo.serviceKey))
         default:
@@ -104,6 +116,39 @@ class HttpSession: NSObject {
                 
                 response.result.ifFailure ({
                     debugPrint("[Failure]", response.debugDescription)
+                    let statusCode = response.response?.statusCode ?? -1
+                    observer.onError(NSError(domain: "", code: statusCode, userInfo: nil))
+                })
+            })
+            
+            //  return dataTask
+            return Disposables.create()
+            
+        }
+    }
+    
+    // For Requests to Call Naver Map API
+    func dataTask(path:URL, parameters params:Params?) -> Observable<MapResult> {
+
+        self.adapt(NaverMapAdapter(clientId: MapInfo.clientId, clientSecret: MapInfo.clientSecret))
+     
+        let dataTask = self.httpSession.request(path, parameters:params, encoding:JSONEncoding.default)
+           
+        return Observable.create { [unowned self] observer -> Disposable in
+            dataTask.validate(statusCode: self.acceptableStatusCodes).validate(contentType: self.acceptableContentType).responseJSON(completionHandler:{ (response) in
+                response.result.ifSuccess ({
+                    print("[Success]", response.debugDescription)
+                    let object = response.result.value as! [String : Any]
+                    let result = MapResult(JSON: object)!
+                    
+                    observer.onNext(result)
+                    observer.onCompleted()
+                })
+                
+                response.result.ifFailure ({
+                    debugPrint("[Failure]", response.debugDescription)
+                 //   let object = response.result.value as! [String : Any]
+                   // let result = MapResult(JSON: object)!
                     let statusCode = response.response?.statusCode ?? -1
                     observer.onError(NSError(domain: "", code: statusCode, userInfo: nil))
                 })

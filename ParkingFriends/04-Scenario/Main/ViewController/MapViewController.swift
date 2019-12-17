@@ -23,6 +23,7 @@ class MapViewController: UIViewController {
     @IBOutlet weak var zoomOutButton: UIButton!
     @IBOutlet weak var placeCenterButton: UIButton!
     
+    @IBOutlet weak var navigationMenuView: NavigationDialogView!
     @IBOutlet weak var timeSelView: CustomTimeSelectionView!
     
     @IBOutlet weak var mapView:NMFMapView!
@@ -30,6 +31,7 @@ class MapViewController: UIViewController {
     let location = CLLocationManager()
     
     var disposeBag = DisposeBag()
+    
     private lazy var viewModel: MapViewModelType = MapViewModel(view: mapView)
     
     private lazy var titleView = NavigationTitleView()
@@ -37,12 +39,10 @@ class MapViewController: UIViewController {
     // MARK: - Initialize
      
     init() {
-      //  self.viewModel = MapViewModel()
         super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
-       // viewModel = MapViewModel()
         super.init(coder: aDecoder)
     }
     
@@ -50,7 +50,7 @@ class MapViewController: UIViewController {
         // setupMapBindings()
         setupNavigation()
         setupNavigationBinding()
-        buttonBindings()
+        setupButtonBinding()
         timeSelAreaBinding()
     }
     
@@ -63,17 +63,31 @@ class MapViewController: UIViewController {
         titleView.titleFont = Font.gothicNeoMedium26
         titleView.subTitleColor = Color.darkGrey
         titleView.subTitleFont = Font.helvetica12
+        
+        if let navigationBar = self.navigationController?.navigationBar {
+            navigationBar.isHidden = true
+        }
     }
     
     private func setupNavigationBinding() {
+        navigationMenuView.searchOptionButton.rx.tap
+            .subscribe(onNext: { _ in
+                self.navigateToSearchOption()
+            })
+            .disposed(by: disposeBag)
+        
         searchOptionButton.rx.tap
             .subscribe(onNext: { _ in
                 self.navigateToSearchOption()
             })
             .disposed(by: disposeBag)
+        
+        viewModel.displayAddressText.asDriver()
+            .drive(navigationMenuView.mainTitleLabel.rx.text)
+            .disposed(by: disposeBag)
     }
     
-    private func buttonBindings() {
+    private func setupButtonBinding() {
         zoomInButton.rx.tap
             .subscribe(onNext: { _ in
                 self.viewModel.zoomIn()
@@ -112,15 +126,22 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initialize()
+        setupParkingLot()
+        viewModel.placeCenter()
         
         titleView.set(title: "TTT", subTitle: "SSSs")
-        
-        location.requestWhenInUseAuthorization()
 
         // Do any additional setup after loading the view.
     }
     
     // MARK: - Navigation
+    
+    func setupParkingLot() {
+        let target = Storyboard.main.instantiateViewController(withIdentifier: "ParkinglotListViewController") as! ParkinglotTapViewController
+         _ = target.view
+        
+        addPullUpController(target, initialStickyPointOffset: 100, animated: false)
+    }
     
     func navigateToSearchOption() {
         let target = Storyboard.main.instantiateViewController(withIdentifier: "SearchOptionViewController") as! SearchOptionViewController
