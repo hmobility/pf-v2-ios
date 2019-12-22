@@ -24,6 +24,9 @@ target 'ParkingFriends' do
   pod 'AlamofireObjectMapper', '~> 5.2.1'
   pod 'ObjectMapper', '~> 3.4'
   
+#  pod 'SwiftDate', '~> 5.0'
+  pod 'AFDateHelper', '~> 4.3.0'
+  
   # pods for Firebase
   pod 'Fabric', '~> 1.10.2'
   pod 'Crashlytics', '~> 3.14.0'

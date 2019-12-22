@@ -19,7 +19,7 @@ class ReverseGeocode: BaseModelType {
     
     var shortAddress:String? {
         get {
-            return land?.name 
+            return land?.name ?? region?.area3?.name
         }
     }
 
@@ -125,7 +125,7 @@ class Land: BaseModelType {
     var addition2:Addition?
     var addition3:Addition?
     var addition4:Addition?
-    var name:String = ""
+    var name:String?
     var coords:Coords?
 
     required init?(map: Map) {

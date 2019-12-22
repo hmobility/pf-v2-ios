@@ -21,7 +21,7 @@ protocol BaseAPI {
 }
 
 extension BaseAPI {
-    static func build(host:HostType, endpoint:String, params:[String:Any]?) -> URL {
+    static func build(host:HostType, endpoint:String, params:Params?) -> URL {
         var components = URLComponents()
         components.scheme = host.scheme
         components.host = host.domain

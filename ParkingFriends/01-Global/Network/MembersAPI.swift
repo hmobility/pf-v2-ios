@@ -65,8 +65,8 @@ struct MembersAPI:BaseAPI {
     }
     
     // 회원 신용카드 등록
-    static func cards(cardNo:String, yearExpired:String, monthExpired:String, password:String, birthDate:String, name:String, defaultFlag:Bool, httpMethod:HttpMethod = .post, auth:APIAuthType = .OAuth2) -> RestURL  {
-        let params:Params = ["cardNo": cardNo, "yearExpired": yearExpired, "monthExpired":monthExpired,  "password":password, "birthDate":birthDate, "name":name, "defalutFlag":defaultFlag]
+    static func cards(cardNo:String, yearExpired:String, monthExpired:String, password:String, birthDate:String, realName:String, httpMethod:HttpMethod = .post, auth:APIAuthType = .OAuth2) -> RestURL  {
+        let params:Params = ["cardNo": cardNo, "yearExpired": yearExpired, "monthExpired":monthExpired,  "password":password, "birthDate":birthDate, "realName":realName]
         let url = build(host:host, endpoint:"/members/cards", params: nil)
         return (httpMethod, url, auth, params)
     }

@@ -21,8 +21,6 @@ class OAuth2Handler: RequestAdapter, RequestRetrier {
 
     private let lock = NSLock()
 
-    private var clientID: String
-    private var baseURLString: String
     private var accessToken: String
     private var refreshToken: String
     private var tokenType: String
@@ -32,9 +30,7 @@ class OAuth2Handler: RequestAdapter, RequestRetrier {
 
     // MARK: - Initialization
 
-    public init(clientID: String, baseURLString: String, accessToken: String, refreshToken: String, type:String) {
-        self.clientID = clientID
-        self.baseURLString = baseURLString
+    public init(accessToken: String, refreshToken: String, type:String) {
         self.accessToken = accessToken
         self.refreshToken = refreshToken
         self.tokenType = type
@@ -43,14 +39,14 @@ class OAuth2Handler: RequestAdapter, RequestRetrier {
     // MARK: - RequestAdapter
 
     func adapt(_ urlRequest: URLRequest) throws -> URLRequest {
-        if let urlString = urlRequest.url?.absoluteString, urlString.hasPrefix(baseURLString) {
-            var urlRequest = urlRequest
-            urlRequest.setValue("\(self.tokenType) " + accessToken, forHTTPHeaderField: "Authorization")
-            return urlRequest
-        }
+         var urlRequest = urlRequest
 
-        return urlRequest
-    }
+         if (urlRequest.url?.absoluteString) != nil {
+             urlRequest.setValue("\(tokenType) \(accessToken)", forHTTPHeaderField: "Authorization")
+         }
+
+         return urlRequest
+     }
 
     // MARK: - RequestRetrier
 
@@ -69,6 +65,8 @@ class OAuth2Handler: RequestAdapter, RequestRetrier {
                     if let accessToken = accessToken, let refreshToken = refreshToken {
                         strongSelf.accessToken = accessToken
                         strongSelf.refreshToken = refreshToken
+                        self?.restoreToken(accessToken: accessToken, refrehToken: refreshToken)
+                        debugPrint("[TOKEN] Reissued a token - Finished")
                     }
 
                     strongSelf.requestsToRetry.forEach { $0(succeeded, 0.0) }
@@ -81,29 +79,25 @@ class OAuth2Handler: RequestAdapter, RequestRetrier {
     }
 
     // MARK: - Private - Refresh Tokens
+    
+    private func restoreToken(accessToken:String, refrehToken:String) {
+        UserData.shared.setToken(access: accessToken, refresh: refrehToken)
+    }
 
     private func refreshTokens(completion: @escaping RefreshCompletion) {
         guard !isRefreshing else { return }
 
         isRefreshing = true
 
-        let urlString = "\(baseURLString)/oauth2/token"
-
-        let parameters: [String: Any] = [
-            "access_token": accessToken,
-            "refresh_token": refreshToken,
-            "client_id": clientID,
-            "grant_type": "refresh_token"
-        ]
-
-        sessionManager.request(urlString, method: .post, parameters: parameters, encoding: JSONEncoding.default)
-            .responseJSON { [weak self] response in
+        let url = AuthAPI.refresh_token(refreshToken)
+        
+        sessionManager.request(url.url).responseJSON { [weak self] response in
                 guard let strongSelf = self else { return }
 
                 if
                     let json = response.result.value as? [String: Any],
-                    let accessToken = json["access_token"] as? String,
-                    let refreshToken = json["refresh_token"] as? String
+                    let accessToken = json["accessToken"] as? String,
+                    let refreshToken = json["refreshToken"] as? String
                 {
                     completion(true, accessToken, refreshToken)
                 } else {

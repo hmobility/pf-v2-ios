@@ -60,7 +60,6 @@ class PhoneNumberModel: NSObject, PhoneNumberModelType {
     
     // Check Syntax
     func validatePattern() -> Bool {
-        print("[VALIDATE] ", data.value)
         return data.value.validatePattern(type: .phone_number)
     }
     
@@ -78,7 +77,6 @@ extension PhoneNumberModel:UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if let text = textField.text {
             let result = phoneFormatter.formatInput(currentText: text, range: range, replacementString: string)
-            print("(INPUT)", result)
             textField.text = result.formattedText
             textField.setCursorLocation(result.caretBeginOffset)
             updateStatus(result.formattedText)

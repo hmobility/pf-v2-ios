@@ -8,7 +8,7 @@
 
 import Foundation
 
-typealias Params = [String : Any]
+typealias Params = [String : Any?]
 
 typealias CoordType = (latitude:Double, longitude:Double)
 
@@ -59,6 +59,17 @@ enum ProductType:String {
 enum SortType:String {
     case distance = "DISTANCE"
     case price = "PRICE"
+    
+    init(index: Int) {
+        switch index {
+        case 0:
+            self = .price
+        case 1:
+            self = .distance
+        default:
+            self = .price
+        }
+    }
     
     var index: Int {
         switch self {
@@ -142,7 +153,7 @@ enum AgreementType: String {
     case marketing = "MARKETING"
 }
 
-// 이메일, OTP 발송 상태, 입력 형식 체크 용 공통 타입
+// 이메일, OTP 발송 상태, 입력 형식 등 체크 용 공통 타입
 public enum CheckType {
     case none
     case valid          // 입력 형식 체크
@@ -152,6 +163,13 @@ public enum CheckType {
     case disproved      // 발신 결과 인증 안됨
 }
 
+public enum ProceedType {
+    case none           // 초기 상태
+    case disabled       // 버튼 상태 (disabled)
+    case enabled        // 버튼 상태 (enabled)
+    case success        // 네트워크 호출 후 전송 완료
+    case failure        // 네트워크 호출 후 실패
+}
 
 // Color Type
 

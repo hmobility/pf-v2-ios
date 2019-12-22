@@ -16,16 +16,14 @@ extension CarBrandViewController : AnalyticsType {
     }
 }
 
-protocol CarBrandViewControllerProtocol:class  {
-    func didSelect(brand:CarBrandsElement, model:CarModelsElement)
-}
-
 class CarBrandViewController: UIViewController {
+    
+    @IBOutlet weak var navigationBar: UINavigationBar!
     
     @IBOutlet weak var carBrandTableView: UITableView!
     @IBOutlet weak var carModelTableView: UITableView!
     
-    @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var closeButton: UIButton!
             
     @IBOutlet weak var selectedCarFieldLabel: UILabel!
@@ -37,7 +35,7 @@ class CarBrandViewController: UIViewController {
 
     private lazy var viewModel: CarBrandViewModelType = CarBrandViewModel(registration:registrationModel)
     
-    public var delegate:CarBrandViewControllerProtocol?
+    var dismissed: ((_ model:CarModelsElement, _ brand:CarBrandsElement) -> Void)? = nil
     
     // MARK: - Button Action
     
@@ -71,7 +69,7 @@ class CarBrandViewController: UIViewController {
     
     private func setupNavigationBinding() {
         viewModel.viewTitleText
-            .drive(self.navigationItem.rx.title)
+            .drive(self.navigationBar.topItem!.rx.title)
             .disposed(by: disposeBag)
         
         viewModel.closeText
@@ -81,7 +79,7 @@ class CarBrandViewController: UIViewController {
     
     private func setupBinding() {
         viewModel.nextText
-            .drive(self.nextButton.rx.title())
+            .drive(self.saveButton.rx.title())
             .disposed(by: disposeBag)
         
         viewModel.selectedCarFieldText
@@ -121,12 +119,15 @@ class CarBrandViewController: UIViewController {
         
         viewModel.proceed.asDriver()
             .drive(onNext: { [unowned self] flag in
-                self.nextButton.isEnabled = flag ? true : false
+                self.saveButton.isEnabled = flag ? true : false
             })
             .disposed(by: disposeBag)
         
-        nextButton.rx.tap
+        saveButton.rx.tap
             .subscribe(onNext: { _ in
+                if let finished = self.dismissed {
+                    finished(self.viewModel.selectedModel.value, self.viewModel.selectedBrand.value)
+                }
                 self.dismissModal()
             })
             .disposed(by: disposeBag)

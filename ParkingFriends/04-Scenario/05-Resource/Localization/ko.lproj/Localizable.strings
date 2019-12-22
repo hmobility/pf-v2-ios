@@ -87,16 +87,18 @@
 "itm_brown" = "갈색";
 "itm_sky_blue" = "하늘색";
 
-// Payment
+// Credit Card
 "ttl_card_info" = "결제 정보 입력";
-"ttl_card_number" = "카드번호";
-"ph_card_number" = "0000 0000 0000 0000";
-"ttl_card_expiration_date" = "유효기간";
-"ph_card_expiration_date" = "MM/YY";
-"ttl_card_password" = "비밀번호 앞 두자리";
-"ph_card_password" = "●●";
-"ttl_social_number" = "주민등록번호 앞자리";
-"ph_social_number" = "900130";
+"ttl_input_card_number" = "카드번호";
+"ph_input_card_number" = "0000 0000 0000 0000";
+"ttl_input_input_card_expiration_date" = "유효기간";
+"ph_input_card_expiration_date" = "MM/YY";
+"ttl_input_card_password" = "비밀번호 앞 두자리";
+"ph_input_card_password" = "●●";
+"ttl_input_resident_number" = "주민등록번호 앞자리";
+"ph_input_resident_number" = "900130";
+"ttl_input_card_owner_name" = "카드 소유자 이름";
+"ph_input_card_owner_name" = "명의자 실명 입력";
 
 // Registration
 "ttl_basic_info" = "기본정보 입력";
@@ -211,6 +213,11 @@
 "msg_code_verify_sent" = "인증번호를 휴대폰 번호로 발송 하였습니다.\n확인 후 입력 해주세요.";
 "msg_code_verify_invalid" = "인증번호가 일치하지 않습니다.\n확인 후 다시 입력해주세요.";
 "msg_nickname_changed" = "닉네임이 성공적으로 저장되었습니다.";
+"msg_car_model_empty" = "차량 모델을 선택해주세요.";
+"msg_car_color_empty" = "차량 색상을 선택해주세요.";
+"msg_car_number_invalid" = "올바르지 않은 차량 번호 형식입니다.";
+"msg_credit_card_invalid" = "유효하지 않은 카드 정보입니다.\n소지하신 카드 확인 후 다시 입력해주세요.";
+"msg_credit_card_field_invalid" = "올바르지 않은 내용입니다.";
 "msg_payment_registered" = "새 결제 수단이 정상적으로 등록되었습니다.";
 "msg_nickname_invalid" = "사용할수 없는 문자가 들어가있습니다.";
 "msg_nickname_disaprove" = "이미 사용중인 닉네임입니다.";

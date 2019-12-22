@@ -30,13 +30,15 @@ class EntryViewController: UIViewController {
     @IBAction func loginButtonAction(_ sender: Any) {
         navigateToLogin()
        
-       // navigateToMain()
+        //navigateToMain()
       //  navigateToPayment()
         
       //  navigateToBasicInfoInput()
        // navigateToAgreement()
         
-       // navigateToCar()
+        //navigateToCar()
+        
+        //navigateToCreditCard()
         
         self.trackLog()
         self.track("gender", forName:"female")
@@ -65,11 +67,11 @@ class EntryViewController: UIViewController {
 
     private func setupBindings() {
         viewModel.loginText
-            .drive(loginButton.rx.title(for: .normal))
+            .drive(loginButton.rx.title())
             .disposed(by: disposeBag)
         
         viewModel.signupText
-            .drive(signupButton.rx.title(for: .normal))
+            .drive(signupButton.rx.title())
             .disposed(by: disposeBag)
         
         viewModel.signupGuideText
@@ -130,6 +132,12 @@ class EntryViewController: UIViewController {
         let target = Storyboard.registration.instantiateViewController(withIdentifier: "RegiCarViewController") as! RegiCarViewController
         self.push(target)
     }
+    
+    private func navigateToCreditCard() {
+        let target = Storyboard.registration.instantiateViewController(withIdentifier: "RegiCreditCardViewController") as! RegiCreditCardViewController
+        self.push(target)
+    }
+    
     
     /*
 

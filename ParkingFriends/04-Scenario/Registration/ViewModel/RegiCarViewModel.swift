@@ -9,6 +9,11 @@
 import Foundation
 import UIKit
 
+
+enum SectionType {
+    case car_number, car_model, car_color
+}
+
 protocol RegiCarViewModelType {
     var viewTitle: Driver<String> { get }
     
@@ -32,7 +37,10 @@ protocol RegiCarViewModelType {
     var carInfo:CarNumberModelType { get }
     
     func setCarColor(_ color:ColorType)
-    func validateCarNumber() -> Bool
+    func updateCarModel()
+    
+    func validateCredentials() -> Bool
+    func registerCarInfo(finished:@escaping(Bool) -> Void)
 }
 
 class RegiCarViewModel: RegiCarViewModelType {
@@ -60,13 +68,16 @@ class RegiCarViewModel: RegiCarViewModelType {
     
     var carInfo:CarNumberModelType
     
+    private var registrationMdoel: RegistrationModel
+    
     private var selectedColor:ColorType = .white
     
     // MARK: - Initialize
     
-    init(localizer: LocalizerType = Localizer.shared, carInfo:CarNumberModelType) {
+    init(localizer: LocalizerType = Localizer.shared, carInfo:CarNumberModelType, registration:RegistrationModel) {
         self.localizer = localizer
         self.carInfo = carInfo
+        self.registrationMdoel = registration
         
         viewTitle = self.localizer.localized("ttl_car_info_registration")
         carBrandPlaceholder = localizer.localized("ph_car_type")
@@ -75,14 +86,23 @@ class RegiCarViewModel: RegiCarViewModelType {
         carNumberInputTitle = localizer.localized("ttl_car_number")
         carColorPlaceholder = localizer.localized("ph_car_color")
         carColorInputTitle = localizer.localized("ttl_car_color")
-        
-        carInfo.number.asDriver()
-            .drive(onNext: { text in
-                print("[MODEL] ", text , " -> ", self.validateCarNumber())
-            })
-            .disposed(by: disposeBag)
     }
     
+    // MARK: - Local Methods
+    
+    func updateStatus(_ section:SectionType, message:String) {
+        switch section {
+        case .car_number:
+            carNumberMessageText.accept(message)
+        case .car_model:
+            let message = localizer.localized("msg_car_model_empty") as String
+            carBrandMessageText.accept(message)
+        case .car_color:
+            let message = localizer.localized("msg_car_color_empty") as String
+            carColorMessageText.accept(message)
+        }
+    }
+        
     // MARK: - Public Methods
     
     func setCarColor(_ color:ColorType) {
@@ -90,18 +110,49 @@ class RegiCarViewModel: RegiCarViewModelType {
         let key = color.rawValue
         let colorString = localizer.localized(key) as String
         carColorText.accept(colorString)
-    }
-    
-    func validateCarNumber() -> Bool{
-        return carInfo.validate()
-    }
-    
-    func registerCarInfo() {
-        Member.cars(modelId: 0, carNo: "", color: "", defaultFlag: true)
-            .asObservable()
-            .subscribe(onNext: { code in
+        self.registrationMdoel.setCarColor(colorString)
         
-            })
-            .disposed(by: disposeBag)
+        _ = validateCredentials()
+    }
+    
+    func validateCarNumber() -> Bool {
+        let result = carInfo.validate()
+        let message = carInfo.message(result)
+        
+        updateStatus(.car_number, message: message)
+        
+        if result == .valid {
+            registrationMdoel.setCarNumber(carInfo.number.value )
+        }
+        
+        return result == .valid ? true : false
+    }
+    
+    func updateCarModel() {
+        if let model = registrationMdoel.carModel, let brand = registrationMdoel.carBrand {
+            carBrandText.accept(brand.name + " " + model.name)
+        }
+        
+        _ = validateCredentials()
+    }
+    
+    func validateCredentials() -> Bool {
+        let result = validateCarNumber() && !carBrandText.value.isEmpty && !carColorText.value.isEmpty
+        proceed.accept(result)
+        
+        return result
+    }
+    
+    // MARK: - Network
+    
+    func registerCarInfo(finished:@escaping(Bool) -> Void) {
+        if let model = registrationMdoel.carModel, let number = registrationMdoel.carNumber, let color = registrationMdoel.carColor {
+            Member.cars(modelId: model.id, carNo: number, color: color, defaultFlag: true)
+                .asObservable()
+                .subscribe(onNext: { code in
+                    finished(code == .success ? true : false)
+                })
+                .disposed(by: disposeBag)
+        }
     }
 }

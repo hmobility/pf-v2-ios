@@ -24,7 +24,7 @@ class CarBrands: BaseModelType {
     }
 }
 
-class CarBrandsElement: BaseModelType {
+public class CarBrandsElement: BaseModelType {
     var id:Int = 0
     var name:String = ""
     var descript: String = ""
@@ -39,7 +39,7 @@ class CarBrandsElement: BaseModelType {
         super.init(map: map)
     }
       
-    override func mapping(map: Map) {
+    override public func mapping(map: Map) {
         id <- map["id"]
         name <- map["name"]
         descript <- map["description"]

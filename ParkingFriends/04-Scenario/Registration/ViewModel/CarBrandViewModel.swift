@@ -103,7 +103,7 @@ class CarBrandViewModel: CarBrandViewModelType {
                 
                 if isEmpty == false {
                     self.selectedCarText.accept(brand.name + " " + model.name)
-                    self.registrationMdoel.setCarModel(model)
+                    self.registrationMdoel.setCarModel(model, brand:brand)
                 }
             
                 self.proceed.accept(isEmpty ? false : true)
@@ -130,6 +130,8 @@ class CarBrandViewModel: CarBrandViewModelType {
         let item = modelItems.value[indexPath.row]
         selectedModel.accept(item)
     }
+    
+    // MARK:- Network
             
     func loadMakerList() {
         guard brandItems.value.count == 0 else {

@@ -123,8 +123,6 @@ class AgreementViewController: UIViewController {
     }
     
     private func setupBinding() {
-        // Usage
-
         viewModel.usageText
             .map({ [unowned self] text in
                 return self.getAttributedString(text)
@@ -194,8 +192,6 @@ class AgreementViewController: UIViewController {
         
         nextButton.rx.tap
             .subscribe(onNext: { [unowned self] _ in
-                //let selected = self.marketingOptionButton.isSelected
-               // self.viewModel.setAgreeWithThirdParty(check: selected)
                 self.viewModel.requestSignup { success in
                     if success {
                         self.navigateToRegiCar()

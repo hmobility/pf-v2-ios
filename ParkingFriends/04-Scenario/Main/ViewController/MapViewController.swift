@@ -129,6 +129,9 @@ class MapViewController: UIViewController {
         setupParkingLot()
         viewModel.placeCenter()
         
+      //  print("[START]", Date().dateFor(.nearestHour(hour:1)).toString(format: .custom("HHmm")))
+        print("[START 1]", Date().dateFor(.nearestMinute(minute:60)).toString(format: .custom("HHmm")))
+        print("[END]", Date().dateFor(.nearestMinute(minute:60)).adjust(.hour, offset: 2).toString(format: .custom("HHmm")))
         titleView.set(title: "TTT", subTitle: "SSSs")
 
         // Do any additional setup after loading the view.

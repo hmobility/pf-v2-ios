@@ -51,18 +51,22 @@ class ParkinglotAPI: BaseAPI {
     }
     
     // 주차장 반경 목록 조회
-    static func within(lat:String, lon:String, radius:String, sort:SortType, start:String, end:String, productType:ProductType, monthlyFrom:String, monthlyCount:Int, filter:FilterType, httpMethod:HttpMethod = .delete, auth:APIAuthType = .OAuth2) -> RestURL  {
-        let filter:Params = ["fee":["from":filter.fee.from, "to":filter.fee.to], "lotType":filter.operationType.param, "option":["cctv":filter.option.cctv, "iotSensor":filter.option.iotSensor, "mechanical":filter.option.mechanical, "allDayOperation":filter.option.allDay]]
+    static func within(lat:String, lon:String, radius:String, start:String, end:String, productType:ProductType, monthlyFrom:String, monthlyCount:Int, filter:FilterType, httpMethod:HttpMethod = .post, auth:APIAuthType = .OAuth2) -> RestURL  {
+   //    let filter:Params = ["fee":["from":filter.fee.from, "to":filter.fee.to], "lotType":filter.operationType.param, "sort": filter.sortType.rawValue, "option":["cctv":filter.option.cctv, "iotSensor":filter.option.iotSensor, "mechanical":filter.option.mechanical, "allDayOperation":filter.option.allDay, "outsideFlag":filter.option.outside]]
         
-        let params:Params = ["lat": lat, "lon":lon, "radius":radius, "sort":sort.rawValue, "start":start , "end":end, "productType":productType.rawValue, "monthlyFrom":monthlyFrom, "monthlyCount":monthlyCount, "filter":filter]
+        let filterParams:Params = ["fee":["from":filter.fee.from, "to":filter.fee.to], "option":["cctv":filter.option.cctv, "iotSensor":filter.option.iotSensor, "mechanical":filter.option.mechanical, "allDayOperation":filter.option.allDay, "outsideFlag":filter.option.outside]]
+        
+        let params:Params = ["lat": lat, "lon":lon, "radius":radius, "start":start , "end":end, "productType":productType.rawValue, "monthlyFrom":monthlyFrom, "monthlyCount":monthlyCount, "filter":filterParams, "lotType":filter.operationType.param, "sort": filter.sortType.rawValue]
+        
+        debugPrint("[PARAMS] : ", params)
         let url = build(host:host, endpoint:"/parkinglots/within", params: nil)
         return (httpMethod, url, auth, params)
     }
     
     // 주차장 예약 가능 시간 조회
     static func available_times(id:Int, from:String, to:String, type:ProductType, monthlyFrom:String, monthlyCount:Int, httpMethod:HttpMethod = .get, auth:APIAuthType = .OAuth2) -> RestURL  {
-         let query:Params = ["from": from, "to":to, "type":type.rawValue, "monthlyFrom":monthlyFrom, "monthlyCount":monthlyCount]
-         let url = build(host:host, endpoint:"/parkinglots/\(id)/available-times", params: query)
-         return (httpMethod, url, auth, nil)
+        let query:Params = ["from": from, "to":to, "type":type.rawValue, "monthlyFrom":monthlyFrom, "monthlyCount":monthlyCount]
+        let url = build(host:host, endpoint:"/parkinglots/\(id)/available-times", params: query)
+        return (httpMethod, url, auth, nil)
      }
 }
