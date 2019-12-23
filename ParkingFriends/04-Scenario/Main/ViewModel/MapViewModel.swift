@@ -40,6 +40,9 @@ class MapViewModel: NSObject, MapViewModelType {
         
         super.init()
         
+        // Add by Rao
+        self.mapView?.delegate = self
+        
         initialize()
     }
     
@@ -139,8 +142,12 @@ class MapViewModel: NSObject, MapViewModelType {
     func placeCenter() {
         self.currentLocation()
             .subscribe(onNext: { location in
-                self.placeCenter(location, zoomLevel: self.mapModel.defaultZoomLevel)
-                self.requestReverseGeocoding(CoordType(location.latitude, location.longitude))
+                var testLocation = location
+                if Platform.isSimulator {
+                    testLocation = CLLocationCoordinate2D(latitude: 37.399991198158204, longitude: 127.10240788757801)     // Test by Rao
+                }
+                self.placeCenter(testLocation, zoomLevel: self.mapModel.defaultZoomLevel)
+                self.requestReverseGeocoding(CoordType(testLocation.latitude, testLocation.longitude))
             }).disposed(by: disposeBag)
     }
     
@@ -172,4 +179,15 @@ extension MapViewModel: NMFMapViewDelegate {
     func mapView(_ mapView: NMFMapView, didTap symbol: NMFSymbol) -> Bool {
         return false
     }
+}
+
+// Add by Rao
+struct Platform {
+    static let isSimulator: Bool = {
+        var isSim = false
+        #if arch(i386) || arch(x86_64)
+            isSim = true
+        #endif
+        return isSim
+    }()
 }
