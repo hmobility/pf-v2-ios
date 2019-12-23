@@ -9,30 +9,28 @@
 import UIKit
 
 enum MarkerType {
-    case main
-    case disabled
     case normal
+    case disabled
+    case green
+    case partner
 }
 
-protocol PriceMarkerType {
-    func price(_ price:Int, type:MarkerType)
-}
-
-class FixedMarkView: UIView, PriceMarkerType {
-
+class MarkerView: UIView {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var backgroundImageView: UIImageView!
     
-    func price(_ price: Int, type: MarkerType) {
+    public func price(_ price: Int, type: MarkerType) {
         priceLabel.text = price.withComma
         
         switch type {
-        case .main:
-            backgroundImageView.image = UIImage(named:"imgMainMarker")!
-        case .disabled:
-            backgroundImageView.image = UIImage(named:"imgDisabledMarker")!
         case .normal:
-            backgroundImageView.image = UIImage(named:"imgNormalMarker")!
+            backgroundImageView.image = UIImage(named:"imgMarkerNormal")!
+        case .disabled:
+            backgroundImageView.image = UIImage(named:"imgMarkerDisabled")!
+        case .green:
+            backgroundImageView.image = UIImage(named:"imgMarkerGreen")!
+        case .partner:
+            backgroundImageView.image = UIImage(named:"imgMarkerPartner")!
         }
         
     }

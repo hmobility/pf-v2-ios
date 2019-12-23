@@ -13,6 +13,7 @@ class UserData: NSObject, NSCoding {
     var login: Login?
     var filter:FilterOption = FilterOption()
     var noDiplayPaymentGuide:Bool?
+    var productOption:ProductOption?
     
     // MARK: - Public Methods
     
@@ -24,6 +25,14 @@ class UserData: NSObject, NSCoding {
         self.login = data
         
         return self
+    }
+    
+    public func setToken(access:String?, refresh:String?) {
+        if let login = login, let accessToken = access, let refreshToken = refresh {
+            login.accessToken = accessToken
+            login.refreshToken = refreshToken
+            save()
+        }
     }
     
     public func save() {
@@ -66,12 +75,14 @@ class UserData: NSObject, NSCoding {
         self.login = aDecoder.decodeObject(forKey: "login") as? Login
         self.filter = aDecoder.decodeObject(forKey: "filter") as! FilterOption
         self.noDiplayPaymentGuide = aDecoder.decodeObject(forKey: "noDiplayPaymentGuide") as? Bool ?? false
+        self.productOption = aDecoder.decodeObject(forKey: "productOption") as? ProductOption
     }
     
     func encode(with aCoder: NSCoder) {
         aCoder.encode(login, forKey:"login")
         aCoder.encode(filter, forKey: "filter")
         aCoder.encode(noDiplayPaymentGuide, forKey: "noDiplayPaymentGuide")
+        aCoder.encode(productOption, forKey: "noDiplayPaymentGuide")
     }
     
     static var shared:UserData {

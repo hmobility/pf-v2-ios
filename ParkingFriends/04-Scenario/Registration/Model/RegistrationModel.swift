@@ -16,6 +16,7 @@ public protocol RegistrationModelType {
     var isThirdPartyAgrrement: Bool { get set }
     
     var carModel: CarModelsElement? { get set }
+    var carBrand: CarBrandsElement? { get set }
     var carNumber: String? { get set }
     var carColor: String? { get set }
     
@@ -36,6 +37,8 @@ final class RegistrationModel {
     var checkOldMember:OldMember?
     
     var carModel: CarModelsElement?
+    var carBrand: CarBrandsElement?
+    
     var carNumber: String?
     var carColor: String?
     
@@ -51,9 +54,22 @@ final class RegistrationModel {
     
     // MARK: - Public Methods
     
-    public func setCarModel(_ element:CarModelsElement) {
-        self.carModel = element
+    // MARK: - Car Info
+    
+    public func setCarModel(_ model:CarModelsElement, brand:CarBrandsElement) {
+        self.carModel = model
+        self.carBrand = brand
     }
+    
+    public func setCarColor(_ color:String) {
+        self.carColor = color
+    }
+    
+    public func setCarNumber(_ number:String) {
+        self.carNumber = number
+    }
+    
+    // MARK: - Basic Info
     
     public func basicInfo(email:String, password:String, nickname:String) {
         self.email = email
@@ -66,6 +82,8 @@ final class RegistrationModel {
         self.password = nil
         self.nickname = nil
     }
+    
+    // MARK: - OTP
     
     public func otp(_ otp:Otp, phoneNumber:String) {
         self.otp = otp

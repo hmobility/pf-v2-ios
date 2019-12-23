@@ -22,7 +22,7 @@ protocol SearchOptionViewModelType {
     var sortTypeText: Driver<String> { get }
     var sortItemLowPrice: Driver<String> { get }
     var sortItemNearby: Driver<String> { get }
-    var selectedSortType: BehaviorRelay<FilterSortType> { get }
+    var selectedSortType: BehaviorRelay<SortType> { get }
     
     var operationTypeText: Driver<String> { get }
     var operationItemNone: Driver<String> { get }
@@ -70,7 +70,7 @@ class SearchOptionViewModel: NSObject, SearchOptionViewModelType {
     var sortTypeText: Driver<String>
     var sortItemLowPrice: Driver<String>
     var sortItemNearby: Driver<String>
-    var selectedSortType: BehaviorRelay<FilterSortType>
+    var selectedSortType: BehaviorRelay<SortType>
     
     var operationTypeText: Driver<String>
     var operationItemNone: Driver<String>

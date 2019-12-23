@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vO0-wJ-fcp">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vO0-wJ-fcp">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -576,52 +576,73 @@
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JB0-Sc-dQB" userLabel="Button - Time">
                                                         <rect key="frame" x="0.0" y="0.0" width="80" height="32"/>
-                                                        <color key="backgroundColor" name="IceBlue"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="80" id="Nye-Tl-rVg"/>
                                                             <constraint firstAttribute="height" constant="32" id="WdN-SI-Fc0"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="18"/>
+                                                        <color key="tintColor" name="IceBlue"/>
                                                         <state key="normal" title="예약권">
+                                                            <color key="titleColor" name="CoolGrey"/>
+                                                        </state>
+                                                        <state key="selected">
                                                             <color key="titleColor" name="DarkGrey3"/>
                                                         </state>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                                 <real key="value" value="16"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="selectedColor">
+                                                                <color key="value" name="IceBlue"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mtt-kd-qg2" userLabel="Button - Fixed">
                                                         <rect key="frame" x="144" y="0.0" width="80" height="32"/>
-                                                        <color key="backgroundColor" name="IceBlue"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="80" id="YhP-HU-OeV"/>
                                                             <constraint firstAttribute="height" constant="32" id="nYm-qe-GHp"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="18"/>
+                                                        <color key="tintColor" name="IceBlue"/>
                                                         <state key="normal" title="정액권">
+                                                            <color key="titleColor" name="CoolGrey"/>
+                                                        </state>
+                                                        <state key="selected">
                                                             <color key="titleColor" name="DarkGrey3"/>
                                                         </state>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                                 <real key="value" value="16"/>
                                                             </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="selectedColor">
+                                                                <color key="value" name="IceBlue"/>
+                                                            </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pvc-ud-nZB" userLabel="Button - Monthly">
                                                         <rect key="frame" x="288" y="0.0" width="80" height="32"/>
-                                                        <color key="backgroundColor" name="IceBlue"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="32" id="76Z-do-OKR"/>
                                                             <constraint firstAttribute="width" constant="80" id="dvn-7e-ISQ"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="18"/>
+                                                        <color key="tintColor" name="IceBlue"/>
                                                         <state key="normal" title="정기권">
+                                                            <color key="titleColor" name="CoolGrey"/>
+                                                        </state>
+                                                        <state key="selected">
                                                             <color key="titleColor" name="DarkGrey3"/>
                                                         </state>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                                 <real key="value" value="16"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="selectedColor">
+                                                                <color key="value" name="IceBlue"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </button>
@@ -694,6 +715,12 @@
                         <viewLayoutGuide key="safeArea" id="Bwd-px-7wH"/>
                     </view>
                     <navigationItem key="navigationItem" id="VBa-6E-eJu"/>
+                    <connections>
+                        <outlet property="fixedTicketButton" destination="mtt-kd-qg2" id="6mn-tS-7lg"/>
+                        <outlet property="monthlyTicketButton" destination="pvc-ud-nZB" id="R7Q-iW-LzB"/>
+                        <outlet property="sortOrderButton" destination="SxN-Hl-AXI" id="NxU-f7-Nvg"/>
+                        <outlet property="timeTicketButton" destination="JB0-Sc-dQB" id="8kt-SS-K7w"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wiK-9y-my4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1387,7 +1414,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icOnfoot" translatesAutoresizingMaskIntoConstraints="NO" id="sHt-VX-Wp4" userLabel="ImageView - Icon">
-                                                    <rect key="frame" x="323" y="60" width="15" height="15"/>
+                                                    <rect key="frame" x="308" y="52.5" width="30" height="30"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -3203,6 +3230,9 @@ kvaS+ZMGkwuTE5MWkxuTIwAAAAAAAAIBAAAAAAAAAGcAAAAAAAAAAAAAAAAAAJMmA
         </namedColor>
         <namedColor name="CharcoalGrey">
             <color red="0.20800000429153442" green="0.23499999940395355" blue="0.2669999897480011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="CoolGrey">
+            <color red="0.6588235294117647" green="0.67450980392156867" blue="0.68627450980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="DarkGrey">
             <color red="0.10199999809265137" green="0.10199999809265137" blue="0.10599999874830246" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

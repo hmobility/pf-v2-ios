@@ -15,8 +15,8 @@ public enum patternType {
 
 extension String {
     var boolValue: Bool {
-           return (self as NSString).boolValue
-       }
+        return (self as NSString).boolValue
+    }
     
     // MARK: - Pattern Matching
     
@@ -29,8 +29,7 @@ extension String {
         
         switch type {
         case .phone_number:
-           // regEx = "^\\d{3}-\\d{4}-\\d{4}$"
-             regEx = "^\\d{3}-\\d{4}-\\d{4}$"
+            regEx = "^\\d{3}-\\d{4}-\\d{4}$"
         case .email:
             regEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         }
@@ -40,8 +39,11 @@ extension String {
         return stringTest.evaluate(with: self)
     }
     
+    func validateLength(size: (min:Int, max:Int)) -> Bool {
+        return (size.min...size.max).contains(self.count)
+    }
+    
     func stringFromSecondsInterval(seconds: Int) -> String {
-      return String(format: "%0.2d:%0.2d",
-        arguments: [(seconds % 3600) / 60, (seconds % 3600) % 60])
+        return String(format: "%0.2d:%0.2d", arguments: [(seconds % 3600) / 60, (seconds % 3600) % 60])
     }
 }

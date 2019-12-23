@@ -26,9 +26,13 @@ class RegiCarViewController: UIViewController {
     @IBOutlet weak var selectCarButton: UIButton!
     @IBOutlet weak var selectColorButton: UIButton!
     
+    @IBOutlet weak var nextButton: UIButton!
+    
     @IBOutlet weak var nextButtonBottomConstraint: NSLayoutConstraint!
     
-    private lazy var viewModel: RegiCarViewModelType = RegiCarViewModel(carInfo: CarNumberModel())
+    private var registrationModel: RegistrationModel = RegistrationModel.shared
+    
+    private lazy var viewModel: RegiCarViewModelType = RegiCarViewModel(carInfo: CarNumberModel(), registration:registrationModel)
     
     private let disposeBag = DisposeBag()
     
@@ -39,7 +43,7 @@ class RegiCarViewController: UIViewController {
     }
     
     @IBAction func nextButtonAction(_ sender: Any) {
-        navigateToRegiCar()
+       // navigateToRegiCar()
     }
         
     // MARK: - Initialize
@@ -103,19 +107,13 @@ class RegiCarViewController: UIViewController {
             .drive(carNumberField.messageLabel.rx.text)
             .disposed(by: disposeBag)
         
-        /*
         carNumberField.inputTextField.rx
-            .controlEvent([.editingChanged, .editingDidEnd])
+            .controlEvent([.editingDidEnd])
             .asObservable()
             .subscribe(onNext:{ _ in
-                let result = self.viewModel.validateCarNumber()
-                debugPrint("[CHECK] ", self.viewModel.carInfo.number.value, " -> ", result)
-                print(self.carNumberField.inputTextField.text , " , -> ", result)
-                let text = self.carNumberField.inputTextField.text
-                print("[C] -> ", text?.matches("^[가-힣]{2}\\d{2}[가-힣]{1}\\d{4}$") , result)
+                _ = self.viewModel.validateCredentials()
             })
             .disposed(by: disposeBag)
-        */
         
         carNumberField.inputTextField.rx.text
             .orEmpty
@@ -157,7 +155,7 @@ class RegiCarViewController: UIViewController {
     private func setupButtonBinding() {
         skipButton.rx.tap
             .subscribe(onNext: { _ in
-               
+                self.navigateToRegiCreditCard()
             })
             .disposed(by: disposeBag)
         
@@ -173,6 +171,21 @@ class RegiCarViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
+        nextButton.rx.tap
+            .subscribe(onNext: { _ in
+                self.viewModel.registerCarInfo { success in
+                    if success {
+                         self.navigateToRegiCreditCard()
+                    }
+                }
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.proceed.asDriver()
+            .drive(onNext: { [unowned self] flag in
+                self.nextButton.isEnabled = flag ? true : false
+            })
+            .disposed(by: disposeBag)
     }
     
     // MARK: - Local Methods
@@ -191,14 +204,19 @@ class RegiCarViewController: UIViewController {
     // MARK: - Navigation
     
     private func navigateToRegiCar() {
-        let target = Storyboard.registration.instantiateViewController(withIdentifier: "CarInfoSearchNavigationController") as! UINavigationController
-        (target.topViewController as! CarBrandViewController).delegate = self
-        
-        let target2 = target.topViewController as! CarBrandViewController
-        
-       // target2.rx.isDismissing.
-        
+        let target = Storyboard.registration.instantiateViewController(withIdentifier: "CarBrandViewController") as! CarBrandViewController
+  
+        target.dismissed = { (model, brand) in
+            self.registrationModel.setCarModel(model, brand: brand)
+            self.viewModel.updateCarModel()
+        }
+
         self.modal(target)
+    }
+    
+    private func navigateToRegiCreditCard() {
+        let target = Storyboard.registration.instantiateViewController(withIdentifier: "RegiCreditCardViewController") as! RegiCreditCardViewController
+        self.push(target)
     }
     
     private func showColorDiaglog() {
@@ -219,12 +237,4 @@ class RegiCarViewController: UIViewController {
     }
     */
 
-}
-
-// MARK: - CarBrandViewControllerProtocol
-
-extension RegiCarViewController: CarBrandViewControllerProtocol {
-    func didSelect(brand: CarBrandsElement, model: CarModelsElement) {
-        
-    }
 }

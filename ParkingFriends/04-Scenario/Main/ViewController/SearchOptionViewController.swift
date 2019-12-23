@@ -73,7 +73,7 @@ class SearchOptionViewController: PullUpController {
         if let value = viewModel.getStoredValue() {
             self.priceRangeSeekSlider.selectedMinValue = value.from.toCGFloat
             self.priceRangeSeekSlider.selectedMaxValue = value.to.toCGFloat
-            self.sortingSegmentedControl.selectedSegmentIndex = value.sortType.rawValue
+            self.sortingSegmentedControl.selectedSegmentIndex = value.sortType.index
             self.operationSegmentedControl.selectedSegmentIndex = value.operationType.rawValue
             self.areaSegmentedControl.selectedSegmentIndex = value.areaType.rawValue
             self.cctvButton.isSelected = value.isCCTV
@@ -146,7 +146,7 @@ class SearchOptionViewController: PullUpController {
         sortingSegmentedControl.rx.selectedSegmentIndex
             .asDriver()
             .map { value in
-                return FilterSortType(rawValue: value)!
+                return SortType(index: value)
             }
             .drive(self.viewModel.selectedSortType)
             .disposed(by: disposeBag)

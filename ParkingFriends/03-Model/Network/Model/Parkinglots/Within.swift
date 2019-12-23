@@ -14,7 +14,7 @@ import ObjectMapper
 
 class Within: BaseModelType {
     var totalCount:Int = 0
-    var elements:[WithinParkinglotElement] = [WithinParkinglotElement]()
+    var elements:[WithinElement] = [WithinElement]()
 
     required init?(map: Map) {
         super.init(map: map)
@@ -26,7 +26,7 @@ class Within: BaseModelType {
     }
 }
 
-class WithinParkinglotElement: BaseModelType {
+class WithinElement: BaseModelType {
     var id:Int = 0
     var name:String = ""
     var address:String = ""

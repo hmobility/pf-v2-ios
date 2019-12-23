@@ -16,6 +16,7 @@ class NaverMap: HttpSession {
 
         return self.shared.dataTask(path: data.url, parameters: data.params)
             .map ({  result in
+                //debugPrint("[REVERSE] ", result.data)
                 let reverseCode:[ReverseGeocode] = result.data.map { (data) in
                     ReverseGeocode(JSON: data)!
                 }

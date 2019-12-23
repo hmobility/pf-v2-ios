@@ -22,7 +22,8 @@ extension Reactive where Base:NMFMapView {
     }
     
     public var regionWillChange: ControlEvent<(animated: Bool, reason: Int)> {
-        let source = delegate.rx.methodInvoked(#selector(NMFMapViewDelegate.mapView(_:regionWillChangeAnimated:byReason:)))
+        let source = delegate
+            .methodInvoked(#selector(NMFMapViewDelegate.mapView(_:regionWillChangeAnimated:byReason:)))
             .map { obj in
                 return (animated: try castOrThrow(Bool.self, obj[1]),
                         reason: try castOrThrow(Int.self, obj[2]))
@@ -34,7 +35,8 @@ extension Reactive where Base:NMFMapView {
     }
     
     public var regionIsChanging: ControlEvent<(animated: Bool, reason: Int)> {
-        let source = delegate.rx.methodInvoked(#selector(NMFMapViewDelegate.mapView(_:regionDidChangeAnimated:byReason:)))
+        let source = delegate
+            .methodInvoked(#selector(NMFMapViewDelegate.mapView(_:regionDidChangeAnimated:byReason:)))
             .map { obj in
                 return (animated: try castOrThrow(Bool.self, obj[1]),
                         reason: try castOrThrow(Int.self, obj[2]))
@@ -46,58 +48,63 @@ extension Reactive where Base:NMFMapView {
     }
     
     public var regionDidChange: ControlEvent<(animated: Bool, reason: Int)> {
-        let source = delegate.rx.methodInvoked(#selector(NMFMapViewDelegate.mapView(_:regionDidChangeAnimated:byReason:)))
+        let source = delegate
+            .methodInvoked(#selector(NMFMapViewDelegate.mapView(_:regionDidChangeAnimated:byReason:)))
             .map { obj in
                 return (animated: try castOrThrow(Bool.self, obj[1]),
                         reason: try castOrThrow(Int.self, obj[2]))
-        }
-        .map { (animated, reason) in
-            return (animated: animated, reason: reason)
-        }
+            }
+            .map { (animated, reason) in
+                return (animated: animated, reason: reason)
+            }
+        
         return ControlEvent(events: source)
     }
     
     public var cameraUpdateCancel: ControlEvent<Int> {
-        let source = delegate.rx.methodInvoked(#selector(NMFMapViewDelegate.mapViewCameraUpdateCancel(_:byReason:)))
+        let source = delegate
+            .methodInvoked(#selector(NMFMapViewDelegate.mapViewCameraUpdateCancel(_:byReason:)))
             .map { obj in
                 return try castOrThrow(Int.self, obj[1])
-        }
-        .map { reason in
-            return reason
-        }
+            }
+            .map { reason in
+                return reason
+            }
+        
         return ControlEvent(events: source)
     }
     
     public var idle: ControlEvent<Void> {
-        let source =
-            delegate.rx.methodInvoked(#selector(NMFMapViewDelegate.mapViewIdle(_:)))
+        let source = delegate
+            .methodInvoked(#selector(NMFMapViewDelegate.mapViewIdle(_:)))
             .map { _ in }
        
         return ControlEvent(events: source)
     }
     
     public var didTapSymbol: ControlEvent<NMFSymbol> {
-        let source =
-            delegate.rx.methodInvoked(#selector(NMFMapViewDelegate.mapView(_:didTap:)))
+        let source = delegate
+            .methodInvoked(#selector(NMFMapViewDelegate.mapView(_:didTap:)))
             .map { obj in
                 return try castOrThrow(NMFSymbol.self, obj[1])
-        }
-        .map { symbol in
-            return symbol
-        }
+            }
+            .map { symbol in
+                return symbol
+            }
+        
         return ControlEvent(events: source)
     }
     
     public var didTapMapView: ControlEvent<(point:CGPoint, latlng:NMGLatLng)> {
-        let source =
-            delegate.rx.methodInvoked(#selector(NMFMapViewDelegate.didTapMapView(_:latLng:)))
+        let source = delegate
+            .methodInvoked(#selector(NMFMapViewDelegate.didTapMapView(_:latLng:)))
             .map { obj in
                 return (point: try castOrThrow(CGPoint.self, obj[0]),
                 latlng: try castOrThrow(NMGLatLng.self, obj[1]))
-        }
-        .map { (point, latlng) in
-            return (point: point, latlng: latlng)
-        }
+            }
+            .map { (point, latlng) in
+                return (point: point, latlng: latlng)
+            }
         return ControlEvent(events: source)
     }
 }

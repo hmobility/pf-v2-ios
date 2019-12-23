@@ -21,6 +21,11 @@ public enum AuthAccountType:String {
 }
 
 struct AuthAPI:BaseAPI {
+    static func refresh_token(_ refreshToken:String, httpMethod:HttpMethod = .get, security:APIAuthType = .none) -> RestURL {
+        let query:Params = ["refreshToken": refreshToken]
+        let url = build(host:host, endpoint:"/auth/refresh-token", params: query)
+        return (httpMethod, url, security, nil)
+    }
     // 로그인
     static func login(username:String, password:String, httpMethod:HttpMethod = .post, security:APIAuthType = .none) -> RestURL {
         let params:Params = ["username": username, "password": password]

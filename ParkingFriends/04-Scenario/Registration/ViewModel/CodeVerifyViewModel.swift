@@ -32,7 +32,7 @@ protocol CodeVerifyViewModelType {
 
 fileprivate let timer_count = 180 // seconds
 
-public let codeVerifyFormatter = DefaultTextInputFormatter(textPattern:  "####")
+public let codeVerifyFormatter = DefaultTextInputFormatter(textPattern: "####")
 
 class CodeVerifyViewModel: CodeVerifyViewModelType {
     let titleText: Driver<String>
@@ -79,7 +79,6 @@ class CodeVerifyViewModel: CodeVerifyViewModelType {
     
     private func setupBidning() {
         _ = codeText.subscribe(onNext: { text in
-            print("[D]", text)
             let status:CheckType = text.count < 4 ? .none : .valid
             self.updateStatus(status)
         })

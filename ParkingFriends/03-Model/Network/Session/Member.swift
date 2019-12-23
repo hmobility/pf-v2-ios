@@ -90,9 +90,9 @@ class Member : HttpSession {
     }
     
     // 회원 신용카드 등록 : /v1/members/cards
-    static public func cards(cardNo:String, yearExpired:String, monthExpired:String, password:String, birthDate:String, name:String, defaultFlag:Bool) -> Observable<ResponseCodeType>  {
-        let data = MembersAPI.cards(cardNo: cardNo, yearExpired: yearExpired, monthExpired: monthExpired, password: password, birthDate: birthDate, name: name, defaultFlag: defaultFlag)
-        
+    static public func cards(cardNo:String, yearExpired:String, monthExpired:String, password:String, birthDate:String, realName:String) -> Observable<ResponseCodeType>  {
+        let data = MembersAPI.cards(cardNo: cardNo, yearExpired: yearExpired, monthExpired: monthExpired, password: password, birthDate: birthDate, realName: realName)
+    
         return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params!)
             .map ({  result in
                 return result.codeType
