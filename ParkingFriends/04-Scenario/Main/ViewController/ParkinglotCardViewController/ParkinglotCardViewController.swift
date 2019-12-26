@@ -19,10 +19,70 @@ class ParkinglotCardViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     
+    let columnLayout = ColumnFlowLayout(
+           cellsPerRow: 1,
+           minimumInteritemSpacing: 0,
+           minimumLineSpacing: 20,
+           sectionInset: UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+       )
+    
+    var disposeBag = DisposeBag()
+
+    private lazy var viewModel: ParkinglotCardViewModelType = ParkinglotCardViewModel()
+
+    // MARK: - Initialize
+     
+    init() {
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    private func initialize() {
+        setupBinding()
+        fetchWithinElements()
+    }
+    
+    // MARK: - Binding
+    
+    private func setupBinding() {
+        collectionView?.collectionViewLayout = columnLayout
+        collectionView?.contentInsetAdjustmentBehavior = .always
+       // collectionView?.sc
+    }
+    
+    // MARK: - Public Methods
+    
+    public func getCardViewModel() -> ParkinglotCardViewModelType {
+        return self.viewModel
+    }
+    
+    // MARK: - Fetch Collection View
+    
+    private func fetchWithinElements() {
+        collectionView.rx.itemSelected.asDriver()
+            .drive(onNext: { indexPath in
+            //   self.viewModel.loadModels(brandIdx: indexPath.row)
+            })
+            .disposed(by: disposeBag)
+     
+        viewModel.elements
+            .bind(to: collectionView.rx.items(cellIdentifier: "ParkinglotCardCollectionViewCell", cellType: ParkinglotCardCollectionViewCell.self)) { row , item, cell in
+           //     cell.setModel(item.name)
+                let tags = self.viewModel.getTags(item)
+                cell.setTitle(item.name, distance: item.distance)
+                cell.setPrice(item.price)
+            }
+            .disposed(by: disposeBag)
+    }
+    
+    // MARK: - Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        initialize()
     }
     
 

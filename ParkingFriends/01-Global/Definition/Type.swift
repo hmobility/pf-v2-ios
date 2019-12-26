@@ -8,7 +8,7 @@
 
 import Foundation
 
-typealias Params = [String : Any?]
+typealias Params = [String : Any]
 
 typealias CoordType = (latitude:Double, longitude:Double)
 

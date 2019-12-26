@@ -19,6 +19,8 @@ class MarkerView: UIView {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var backgroundImageView: UIImageView!
     
+    // MARK - Public Methods
+    
     public func price(_ price: Int, type: MarkerType) {
         priceLabel.text = price.withComma
         
@@ -32,7 +34,6 @@ class MarkerView: UIView {
         case .partner:
             backgroundImageView.image = UIImage(named:"imgMarkerPartner")!
         }
-        
     }
     
     /*

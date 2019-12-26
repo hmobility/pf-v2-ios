@@ -23,11 +23,11 @@ protocol AgreementViewModelType {
     var agreeAllText: Driver<String> { get }
     var agreementOptionText: Driver<String> { get }
     
-    var proceed: BehaviorRelay<Bool> { get }
-    
-    func updateStatus(checkedAll:Bool)
+    var proceed: BehaviorRelay<(ProceedType, String)> { get }
+
+    func setCheckAllState(_ checkedAll:Bool)
     func setAgreeWithThirdParty(check flag:Bool)
-    func requestSignup(finished:@escaping(Bool) -> Void)
+    func requestSignup()
 }
 
 class AgreementViewModel: AgreementViewModelType {
@@ -45,7 +45,7 @@ class AgreementViewModel: AgreementViewModelType {
     var sentenceText: Driver<String>
     var agreeAllText: Driver<String>
     
-    var proceed: BehaviorRelay<Bool> = BehaviorRelay(value: false)
+    var proceed: BehaviorRelay<(ProceedType, String)> = BehaviorRelay(value:(.none, ""))
     
     private var localizer:LocalizerType
     private var registrationMdoel: RegistrationModel
@@ -72,15 +72,31 @@ class AgreementViewModel: AgreementViewModelType {
     
     // MARK: - Public Methods
     
-    func updateStatus(checkedAll:Bool) {
-        self.proceed.accept(checkedAll)
+    func setCheckAllState(_ checkedAll:Bool) {        
+        updateProcess(checkedAll ? .enabled : .disabled)
+    }
+    
+    func updateProcess(_ type:ProceedType) {
+        switch type {
+        case .none, .disabled:
+            proceed.accept((type, ""))
+        case .enabled:
+            proceed.accept((.enabled, ""))
+        case .success:
+            proceed.accept((.success, ""))
+        case .failure:
+            let message = localizer.localized("msg_network_error") as String
+            proceed.accept((.failure, message))
+        }
     }
     
     func setAgreeWithThirdParty(check flag:Bool) {
         self.registrationMdoel.isThirdPartyAgreement = flag
     }
     
-    func requestSignup(finished:@escaping(Bool) -> Void) {
+    // MARK: - Network
+    
+    func requestSignup() {
         let username = registrationMdoel.phoneNumber!
         let password = registrationMdoel.password!
         let email = registrationMdoel.email!
@@ -92,7 +108,9 @@ class AgreementViewModel: AgreementViewModelType {
             .subscribe(onNext: { (login, code) in
                 if code == .success {
                     _ = UserData.shared.setAuth(login)
-                    finished(true)
+                    self.updateProcess(.success)
+                } else {
+                    self.updateProcess(.failure)
                 }
             }, onError: { error in
             

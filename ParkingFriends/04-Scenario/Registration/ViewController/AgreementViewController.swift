@@ -91,11 +91,10 @@ class AgreementViewController: UIViewController {
         var result:Bool = true
         
         for button in checkButtonList {
-            print("[BUTTON]", button.isSelected)
             result = result && button.isSelected
         }
         
-        viewModel.updateStatus(checkedAll: result)
+        viewModel.setCheckAllState(result)
     }
     
     // MARK: - Initialize
@@ -173,9 +172,18 @@ class AgreementViewController: UIViewController {
   
     private func setupButtonBinding() {
         viewModel.proceed.asDriver()
-            .drive(onNext: { [unowned self] (completed) in
-                debugPrint("[PROCEED] check all : ", completed)
-                self.nextButton.isEnabled = completed ? true : false
+            .drive(onNext: { [unowned self] (type, message) in
+                switch type {
+                case .none, .disabled:
+                    self.nextButton.isEnabled = false
+                case .enabled:
+                    self.nextButton.isEnabled = true
+                case .success:
+                    self.navigateToRegiCar()
+                case .failure:
+                    MessageDialog.show(message)
+                    break
+                }
             })
             .disposed(by: disposeBag)
         
@@ -192,11 +200,7 @@ class AgreementViewController: UIViewController {
         
         nextButton.rx.tap
             .subscribe(onNext: { [unowned self] _ in
-                self.viewModel.requestSignup { success in
-                    if success {
-                        self.navigateToRegiCar()
-                    }
-                }
+                self.viewModel.requestSignup()
             })
             .disposed(by: disposeBag)
     }

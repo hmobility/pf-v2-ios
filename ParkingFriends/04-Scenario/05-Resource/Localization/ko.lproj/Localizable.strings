@@ -21,7 +21,8 @@
 "txt_pm" = "오후";
 "txt_minutes" = "분";
 "txt_from" = "부터";
-"txt_won" = "원";
+"txt_distance_unit" = "m";
+"txt_money_unit" = "원";
 "txt_free" = "무료";
 "txt_hours" = "시간";
 "txt_months" = "개월";
@@ -31,6 +32,7 @@
 "ttl_date" = "날짜";
 "ttl_car" = "차량";
 "itm_outdoor" = "실외";
+"itm_indoor" = "실내";
 "itm_private" = "민간";
 "itm_cctv" = "CCTV";
 "itm_iot" = "IoT센서";
@@ -227,3 +229,4 @@
 "msg_parked_time_remaining" = "주차 시간이 %@ 시간 %@ 분 남았습니다.";
 "msg_reserved_time_exceeded" = "예약 시간을 %@ 분 초과했습니다.";
 "msg_reserving_time_invalid" = "선택하신 시간엔 다른 차량이 주차를 준비하고 있어요.\n예약 시간을 변경해 주세요.";
+"msg_network_error" = "네트워크 연결이 원활하지 않습니다.\n네트워크 상태를 확인해주세요.";

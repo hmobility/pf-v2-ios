@@ -24,7 +24,9 @@ class MapViewController: UIViewController {
     @IBOutlet weak var placeCenterButton: UIButton!
     
     @IBOutlet weak var navigationMenuView: NavigationDialogView!
+    @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var timeSelView: CustomTimeSelectionView!
+    @IBOutlet weak var timeSettingView: UIView!
     
     @IBOutlet weak var mapView:NMFMapView!
     
@@ -33,6 +35,7 @@ class MapViewController: UIViewController {
     var disposeBag = DisposeBag()
     
     private lazy var viewModel: MapViewModelType = MapViewModel(view: mapView)
+    private var cardViewModel:ParkinglotCardViewModelType?
     
     private lazy var titleView = NavigationTitleView()
     
@@ -51,7 +54,7 @@ class MapViewController: UIViewController {
         setupNavigation()
         setupNavigationBinding()
         setupButtonBinding()
-        timeSelAreaBinding()
+        timeSettingAreaBinding()
     }
     
     // MARK: - Bindings
@@ -107,7 +110,14 @@ class MapViewController: UIViewController {
             .disposed(by: disposeBag)
     }
     
-    private func timeSelAreaBinding() {
+    private func timeSettingAreaBinding() {
+        viewModel.displaySettingView.asDriver()
+            .drive(onNext: { (time, card) in
+                self.cardView.isHidden = card ? false : true
+                self.timeSettingView.isHidden = time ? false : true
+            })
+            .disposed(by: disposeBag)
+        
         timeSelView.tapSearchArea()
             .subscribe { _ in
                 
@@ -130,7 +140,7 @@ class MapViewController: UIViewController {
         viewModel.placeCenter()
         
       //  print("[START]", Date().dateFor(.nearestHour(hour:1)).toString(format: .custom("HHmm")))
-        print("[START 1]", Date().dateFor(.nearestMinute(minute:60)).toString(format: .custom("HHmm")))
+        print("[START]", Date().dateFor(.nearestMinute(minute:60)).toString(format: .custom("HHmm")))
         print("[END]", Date().dateFor(.nearestMinute(minute:60)).adjust(.hour, offset: 2).toString(format: .custom("HHmm")))
         titleView.set(title: "TTT", subTitle: "SSSs")
 
@@ -155,13 +165,12 @@ class MapViewController: UIViewController {
         let target = Storyboard.main.instantiateViewController(withIdentifier: "EventViewController") as! SearchOptionViewController
         self.modal(target, transparent: true)
     }
-    /*
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "ParkinglotCardView" {
+            if let destination = segue.destination as? ParkinglotCardViewController {
+                self.viewModel.cardViewModel = destination.getCardViewModel()
+            }
+        }
     }
-    */
-
 }

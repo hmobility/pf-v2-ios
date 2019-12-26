@@ -69,4 +69,12 @@ class ParkinglotAPI: BaseAPI {
         let url = build(host:host, endpoint:"/parkinglots/\(id)/available-times", params: query)
         return (httpMethod, url, auth, nil)
      }
+    
+    // 구별 주차장 건수 조회
+    static func within_district(lat:String, lon:String, radius:String, httpMethod:HttpMethod = .post, auth:APIAuthType = .OAuth2) -> RestURL  {
+        let params:Params = ["lat": lat, "lon":lon, "radius":radius]
+        
+        let url = build(host:host, endpoint:"/parkinglots/within-district", params: nil)
+        return (httpMethod, url, auth, params)
+     }
 }

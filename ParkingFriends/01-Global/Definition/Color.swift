@@ -13,6 +13,7 @@ struct Color {
     static let blueyGrey = UIColor(named: "BlueyGrey")!
     static let malangBlue = UIColor(named: "MalangBlue")!
     static let malangGreen = UIColor(named: "MalangGreen")!
+    static let emeraldGreen = UIColor(named: "EmeraldGreen")!
     
     static let lightSeafoam = UIColor(named: "LightSeafoam")!
     static let slateGrey = UIColor(named: "SlateGrey")!
@@ -40,6 +41,7 @@ struct Color {
     static let lightBlueGrey2 = UIColor(named: "LightBlueGrey2")!
     
     static let black16 = UIColor(named: "Black16")!
+    static let black20 = UIColor(named: "Black20")!
     static let black24 = UIColor(named: "Black24")!
     static let black36 = UIColor(named: "Black36")!
 }

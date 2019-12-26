@@ -201,8 +201,8 @@ class CodeVerifyViewController: UIViewController {
    //     navigationController.viewControllers.removeLast()
         
   //      navigationController.popViewController(animated: false)
-        
-        let basicInfoInput = Storyboard.registration.instantiateViewController(withIdentifier: "BasicInfoInputViewController") as! BasicInfoInputViewController
+
+        let basicInfoInput = Storyboard.registration.instantiateViewController(withIdentifier: "BasicInfoViewController") as! BasicInfoViewController
             
         self.push(basicInfoInput)
     }

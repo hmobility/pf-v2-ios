@@ -28,6 +28,12 @@
 		62269BC723A8B5F400BFACC1 /* ProductOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62269BC623A8B5F400BFACC1 /* ProductOption.swift */; };
 		62269BCB23A9EEB500BFACC1 /* MarkerWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62269BCA23A9EEB500BFACC1 /* MarkerWindow.swift */; };
 		62269BD423AA1D2F00BFACC1 /* ParkinglotTapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62269BD323AA1D2F00BFACC1 /* ParkinglotTapViewModel.swift */; };
+		62269BDE23B085C100BFACC1 /* GroupMarkerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62269BDD23B085C100BFACC1 /* GroupMarkerView.xib */; };
+		62269BE023B085E500BFACC1 /* GroupMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62269BDF23B085E500BFACC1 /* GroupMarkerView.swift */; };
+		62269BE223B085F900BFACC1 /* GroupMarkerWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62269BE123B085F900BFACC1 /* GroupMarkerWindow.swift */; };
+		62269BE423B0A45B00BFACC1 /* WithinDistrict.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62269BE323B0A45A00BFACC1 /* WithinDistrict.swift */; };
+		62269BE623B1904100BFACC1 /* UserInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62269BE523B1904100BFACC1 /* UserInfoModel.swift */; };
+		62269BE823B1A61C00BFACC1 /* ParkinglotCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62269BE723B1A61C00BFACC1 /* ParkinglotCardViewModel.swift */; };
 		622BC0E02368011F00A43F02 /* GuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622BC0DF2368011F00A43F02 /* GuideViewController.swift */; };
 		622BC0E22368012A00A43F02 /* GuideContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622BC0E12368012A00A43F02 /* GuideContentViewController.swift */; };
 		622BC0E42368131400A43F02 /* GuideFinishedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622BC0E32368131400A43F02 /* GuideFinishedViewController.swift */; };
@@ -121,6 +127,7 @@
 		62630B47238534FB0029724B /* CodeVerifyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62630B46238534FB0029724B /* CodeVerifyViewModel.swift */; };
 		62630B4D23862F3A0029724B /* RegistrationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62630B4C23862F3A0029724B /* RegistrationModel.swift */; };
 		62630B5323865EBD0029724B /* RxTextFieldDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62630B5223865EBD0029724B /* RxTextFieldDelegateProxy.swift */; };
+		6294536B23B206470048FEA8 /* ColumnFlowLayoutFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6294536A23B206470048FEA8 /* ColumnFlowLayoutFlowLayout.swift */; };
 		629C285B236BED9900E0E5E1 /* Entry.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 629C285A236BED9900E0E5E1 /* Entry.storyboard */; };
 		629C285F236BF25F00E0E5E1 /* EntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629C285E236BF25F00E0E5E1 /* EntryViewController.swift */; };
 		629C2861236BF2A300E0E5E1 /* EntryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629C2860236BF2A300E0E5E1 /* EntryViewModel.swift */; };
@@ -128,7 +135,7 @@
 		629C2865236BF6B600E0E5E1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629C2864236BF6B600E0E5E1 /* LoginViewController.swift */; };
 		629C2867236BF6F000E0E5E1 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629C2866236BF6F000E0E5E1 /* LoginViewModel.swift */; };
 		629C2869236E8D9F00E0E5E1 /* CodeVerifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629C2868236E8D9F00E0E5E1 /* CodeVerifyViewController.swift */; };
-		629C286B236E957400E0E5E1 /* BasicInfoInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629C286A236E957400E0E5E1 /* BasicInfoInputViewController.swift */; };
+		629C286B236E957400E0E5E1 /* BasicInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629C286A236E957400E0E5E1 /* BasicInfoViewController.swift */; };
 		629C2870236E9A1B00E0E5E1 /* CustomInputSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629C286F236E9A1B00E0E5E1 /* CustomInputSection.swift */; };
 		629C2872236FADE000E0E5E1 /* BasicInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629C2871236FADE000E0E5E1 /* BasicInfoViewModel.swift */; };
 		629C287423700FF500E0E5E1 /* AgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629C287323700FF500E0E5E1 /* AgreementViewController.swift */; };
@@ -262,6 +269,12 @@
 		62269BC623A8B5F400BFACC1 /* ProductOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductOption.swift; sourceTree = "<group>"; };
 		62269BCA23A9EEB500BFACC1 /* MarkerWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkerWindow.swift; sourceTree = "<group>"; };
 		62269BD323AA1D2F00BFACC1 /* ParkinglotTapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkinglotTapViewModel.swift; sourceTree = "<group>"; };
+		62269BDD23B085C100BFACC1 /* GroupMarkerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupMarkerView.xib; sourceTree = "<group>"; };
+		62269BDF23B085E500BFACC1 /* GroupMarkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMarkerView.swift; sourceTree = "<group>"; };
+		62269BE123B085F900BFACC1 /* GroupMarkerWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMarkerWindow.swift; sourceTree = "<group>"; };
+		62269BE323B0A45A00BFACC1 /* WithinDistrict.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithinDistrict.swift; sourceTree = "<group>"; };
+		62269BE523B1904100BFACC1 /* UserInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoModel.swift; sourceTree = "<group>"; };
+		62269BE723B1A61C00BFACC1 /* ParkinglotCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkinglotCardViewModel.swift; sourceTree = "<group>"; };
 		622BC0DF2368011F00A43F02 /* GuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideViewController.swift; sourceTree = "<group>"; };
 		622BC0E12368012A00A43F02 /* GuideContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideContentViewController.swift; sourceTree = "<group>"; };
 		622BC0E32368131400A43F02 /* GuideFinishedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideFinishedViewController.swift; sourceTree = "<group>"; };
@@ -354,6 +367,7 @@
 		62630B46238534FB0029724B /* CodeVerifyViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodeVerifyViewModel.swift; sourceTree = "<group>"; };
 		62630B4C23862F3A0029724B /* RegistrationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationModel.swift; sourceTree = "<group>"; };
 		62630B5223865EBD0029724B /* RxTextFieldDelegateProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxTextFieldDelegateProxy.swift; sourceTree = "<group>"; };
+		6294536A23B206470048FEA8 /* ColumnFlowLayoutFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColumnFlowLayoutFlowLayout.swift; sourceTree = "<group>"; };
 		629C285A236BED9900E0E5E1 /* Entry.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Entry.storyboard; sourceTree = "<group>"; };
 		629C285E236BF25F00E0E5E1 /* EntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewController.swift; sourceTree = "<group>"; };
 		629C2860236BF2A300E0E5E1 /* EntryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewModel.swift; sourceTree = "<group>"; };
@@ -361,7 +375,7 @@
 		629C2864236BF6B600E0E5E1 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		629C2866236BF6F000E0E5E1 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		629C2868236E8D9F00E0E5E1 /* CodeVerifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeVerifyViewController.swift; sourceTree = "<group>"; };
-		629C286A236E957400E0E5E1 /* BasicInfoInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoInputViewController.swift; sourceTree = "<group>"; };
+		629C286A236E957400E0E5E1 /* BasicInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoViewController.swift; sourceTree = "<group>"; };
 		629C286F236E9A1B00E0E5E1 /* CustomInputSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInputSection.swift; sourceTree = "<group>"; };
 		629C2871236FADE000E0E5E1 /* BasicInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoViewModel.swift; sourceTree = "<group>"; };
 		629C287323700FF500E0E5E1 /* AgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementViewController.swift; sourceTree = "<group>"; };
@@ -510,6 +524,7 @@
 			isa = PBXGroup;
 			children = (
 				6210BABF23792D24001C6065 /* Main.storyboard */,
+				62601DC02396544700B78033 /* CustomMarker */,
 				625ACE6B239F6EEB002D0653 /* CustomView */,
 				624CE053238E4E8C0068F4F9 /* Model */,
 				6210BABD23792CE6001C6065 /* ViewModel */,
@@ -524,6 +539,7 @@
 				6210BAC323792D3D001C6065 /* MapViewModel.swift */,
 				620455522397A2A9007ADF88 /* SearchOptionViewModel.swift */,
 				62269BD323AA1D2F00BFACC1 /* ParkinglotTapViewModel.swift */,
+				62269BE723B1A61C00BFACC1 /* ParkinglotCardViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -548,9 +564,30 @@
 				62601DA82395F91B00B78033 /* Parkinglot.swift */,
 				62601DB1239602A400B78033 /* Favorites.swift */,
 				62601DB3239618F200B78033 /* Within.swift */,
+				62269BE323B0A45A00BFACC1 /* WithinDistrict.swift */,
 				62601DB523961AF500B78033 /* AvailableTimes.swift */,
 			);
 			path = Parkinglots;
+			sourceTree = "<group>";
+		};
+		62269BDB23B084F500BFACC1 /* Parkinglot */ = {
+			isa = PBXGroup;
+			children = (
+				62601DC52397367100B78033 /* MarkerView.xib */,
+				62601DC3239659F200B78033 /* MarkerView.swift */,
+				62269BCA23A9EEB500BFACC1 /* MarkerWindow.swift */,
+			);
+			path = Parkinglot;
+			sourceTree = "<group>";
+		};
+		62269BDC23B0850500BFACC1 /* Group */ = {
+			isa = PBXGroup;
+			children = (
+				62269BDD23B085C100BFACC1 /* GroupMarkerView.xib */,
+				62269BDF23B085E500BFACC1 /* GroupMarkerView.swift */,
+				62269BE123B085F900BFACC1 /* GroupMarkerWindow.swift */,
+			);
+			path = Group;
 			sourceTree = "<group>";
 		};
 		622BC0EF23691DF700A43F02 /* ViewModel */ = {
@@ -621,7 +658,7 @@
 				62601D88239377E800B78033 /* CarBrand */,
 				629C2862236BF54C00E0E5E1 /* PhoneNumberInputViewController.swift */,
 				629C2868236E8D9F00E0E5E1 /* CodeVerifyViewController.swift */,
-				629C286A236E957400E0E5E1 /* BasicInfoInputViewController.swift */,
+				629C286A236E957400E0E5E1 /* BasicInfoViewController.swift */,
 				629C287323700FF500E0E5E1 /* AgreementViewController.swift */,
 				629C287B2371093700E0E5E1 /* RegiCarViewController.swift */,
 				629C287D237109B500E0E5E1 /* RegiCreditCardViewController.swift */,
@@ -685,7 +722,6 @@
 		625ACE6B239F6EEB002D0653 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
-				62601DC02396544700B78033 /* Marker */,
 				62601D722390FCF900B78033 /* TimeSelection */,
 				625ACE8223A21112002D0653 /* NavigationDialog */,
 			);
@@ -787,6 +823,7 @@
 				623E122A23820EA700498C87 /* PhoneNumberModel.swift */,
 				62601D7723921C6000B78033 /* EmailModel.swift */,
 				62601D7923921C8C00B78033 /* NicknameModel.swift */,
+				62269BE523B1904100BFACC1 /* UserInfoModel.swift */,
 				62045562239E2641007ADF88 /* CarNumberModel.swift */,
 				62601D7B23922D4000B78033 /* CreditCardModel.swift */,
 			);
@@ -857,14 +894,13 @@
 			path = ParkinglotCardViewController;
 			sourceTree = "<group>";
 		};
-		62601DC02396544700B78033 /* Marker */ = {
+		62601DC02396544700B78033 /* CustomMarker */ = {
 			isa = PBXGroup;
 			children = (
-				62601DC52397367100B78033 /* MarkerView.xib */,
-				62601DC3239659F200B78033 /* MarkerView.swift */,
-				62269BCA23A9EEB500BFACC1 /* MarkerWindow.swift */,
+				62269BDC23B0850500BFACC1 /* Group */,
+				62269BDB23B084F500BFACC1 /* Parkinglot */,
 			);
-			path = Marker;
+			path = CustomMarker;
 			sourceTree = "<group>";
 		};
 		62601DD323974BD600B78033 /* Common */ = {
@@ -893,6 +929,14 @@
 				624CE058238E5A390068F4F9 /* RxMapViewDelegateProxy.swift */,
 			);
 			path = RxSupport;
+			sourceTree = "<group>";
+		};
+		6294536723B1F66B0048FEA8 /* CollectionViewLayout */ = {
+			isa = PBXGroup;
+			children = (
+				6294536A23B206470048FEA8 /* ColumnFlowLayoutFlowLayout.swift */,
+			);
+			path = CollectionViewLayout;
 			sourceTree = "<group>";
 		};
 		629C2859236BED8400E0E5E1 /* Entry */ = {
@@ -1287,6 +1331,7 @@
 		A4225E652355B32F004F48C4 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				6294536723B1F66B0048FEA8 /* CollectionViewLayout */,
 				62601D8D23938A0500B78033 /* NavigationTitleView */,
 				A4225E662355B337004F48C4 /* ObjectMapper */,
 			);
@@ -1559,6 +1604,7 @@
 				625ACE7923A0B791002D0653 /* DurationTimeDialog.xib in Resources */,
 				622BC1BD236A5D6200A43F02 /* LaunchScreen.storyboard in Resources */,
 				622BC10123697B8000A43F02 /* Splash.storyboard in Resources */,
+				62269BDE23B085C100BFACC1 /* GroupMarkerView.xib in Resources */,
 				A40ACD3A23543F8E000E4967 /* Assets.xcassets in Resources */,
 				622BC0F32369514B00A43F02 /* Localizable.strings in Resources */,
 				62601DC62397367100B78033 /* MarkerView.xib in Resources */,
@@ -1705,8 +1751,9 @@
 				623E122B23820EA700498C87 /* PhoneNumberModel.swift in Sources */,
 				62AE723E23795AC000BE6FA3 /* MessageDialogView.swift in Sources */,
 				A40ACD3523543F8D000E4967 /* ViewController.swift in Sources */,
+				62269BE223B085F900BFACC1 /* GroupMarkerWindow.swift in Sources */,
 				6210BABB237901BF001C6065 /* PasswordModel.swift in Sources */,
-				629C286B236E957400E0E5E1 /* BasicInfoInputViewController.swift in Sources */,
+				629C286B236E957400E0E5E1 /* BasicInfoViewController.swift in Sources */,
 				62630B47238534FB0029724B /* CodeVerifyViewModel.swift in Sources */,
 				62254E8B238B992500AF82B9 /* Parkinglots.swift in Sources */,
 				62601D8A2393783A00B78033 /* CarBrandTableViewCell.swift in Sources */,
@@ -1719,6 +1766,7 @@
 				62601DDD2397512000B78033 /* OverFee.swift in Sources */,
 				62601DC4239659F200B78033 /* MarkerView.swift in Sources */,
 				6253924023716D870041EBF1 /* UITextField+Extension.swift in Sources */,
+				62269BE423B0A45B00BFACC1 /* WithinDistrict.swift in Sources */,
 				624CE059238E5A390068F4F9 /* RxMapViewDelegateProxy.swift in Sources */,
 				62AE7250237B93B500BE6FA3 /* ColorDialog.swift in Sources */,
 				A4225E7523584AE9004F48C4 /* BaseModelType.swift in Sources */,
@@ -1743,6 +1791,7 @@
 				629C2867236BF6F000E0E5E1 /* LoginViewModel.swift in Sources */,
 				62C26C1923668C0900695B6F /* Analytics.swift in Sources */,
 				625ACE7E23A0DB18002D0653 /* ParkinglotDistanceTableViewCell.swift in Sources */,
+				62269BE823B1A61C00BFACC1 /* ParkinglotCardViewModel.swift in Sources */,
 				A4BA4BDB235EFC7600D30DFE /* AppTokenAdapter.swift in Sources */,
 				624CE057238E57620068F4F9 /* MapView+Rx.swift in Sources */,
 				625ACE8423A2113F002D0653 /* NavigationDialogView.swift in Sources */,
@@ -1792,6 +1841,7 @@
 				622BC1D0236A9DC500A43F02 /* UIButton+Extension.swift in Sources */,
 				A4225E5B235559C4004F48C4 /* AlertAction.swift in Sources */,
 				6210BAB82377CFD0001C6065 /* UITextField+Rx.swift in Sources */,
+				6294536B23B206470048FEA8 /* ColumnFlowLayoutFlowLayout.swift in Sources */,
 				62C3095F23A75E0600152A5A /* OAuth2Handler.swift in Sources */,
 				62601DB4239618F200B78033 /* Within.swift in Sources */,
 				629C2863236BF54C00E0E5E1 /* PhoneNumberInputViewController.swift in Sources */,
@@ -1814,6 +1864,7 @@
 				629C2865236BF6B600E0E5E1 /* LoginViewController.swift in Sources */,
 				629C2888237149D200E0E5E1 /* ChangePhoneNumberViewController.swift in Sources */,
 				62601D7A23921C8C00B78033 /* NicknameModel.swift in Sources */,
+				62269BE623B1904100BFACC1 /* UserInfoModel.swift in Sources */,
 				622BC0E623681FE300A43F02 /* UIStoryboard+Extension.swift in Sources */,
 				629C287C2371093700E0E5E1 /* RegiCarViewController.swift in Sources */,
 				620455532397A2A9007ADF88 /* SearchOptionViewModel.swift in Sources */,
@@ -1836,6 +1887,7 @@
 				625ED5B3238298330088860C /* ChangePhoneNumberViewModel.swift in Sources */,
 				62601DB623961AF500B78033 /* AvailableTimes.swift in Sources */,
 				625ACE9923A49A29002D0653 /* MapInfo.swift in Sources */,
+				62269BE023B085E500BFACC1 /* GroupMarkerView.swift in Sources */,
 				A4225E6223559DB2004F48C4 /* BaseAPI.swift in Sources */,
 				62C3096123A7768A00152A5A /* ParkingTicketListViewController.swift in Sources */,
 				A4BA4BD1235EC91A00D30DFE /* Auth.swift in Sources */,

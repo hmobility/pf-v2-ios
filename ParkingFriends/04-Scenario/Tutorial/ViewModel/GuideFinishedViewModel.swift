@@ -28,8 +28,8 @@ class GuideFinishedViewModel: GuideFinishedViewModelType {
         let number = index + 1
         pageNumber = BehaviorRelay(value: index)
         guideImage = BehaviorRelay(value: UIImage(named: "imgGuide\(number)")!)
-        titleText = localizer.localized("guide_title_\(number)")
-        subtitleText = localizer.localized("guide_subtitle_\(number)")
-        beginText = localizer.localized("guide_finished")
+        titleText = localizer.localized("ttl_guide_\(number)")
+        subtitleText = localizer.localized("dsc_guide_\(number)")
+        beginText = localizer.localized("btn_to_start")
     }
 }

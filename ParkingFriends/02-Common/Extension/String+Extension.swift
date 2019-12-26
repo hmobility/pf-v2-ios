@@ -13,9 +13,15 @@ public enum patternType {
     case email
 }
 
+typealias validSize = (min:Int, max:Int)
+
 extension String {
     var boolValue: Bool {
         return (self as NSString).boolValue
+    }
+    
+    var doubleValue: Double {
+        return (self as NSString).doubleValue
     }
     
     // MARK: - Pattern Matching
@@ -39,7 +45,7 @@ extension String {
         return stringTest.evaluate(with: self)
     }
     
-    func validateLength(size: (min:Int, max:Int)) -> Bool {
+    func validateLength(size:validSize) -> Bool {
         return (size.min...size.max).contains(self.count)
     }
     

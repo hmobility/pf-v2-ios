@@ -82,4 +82,13 @@ class ParkingLot : HttpSession {
                 return result.codeType
             })
     }
+    
+    static public func within_district(lat:String, lon:String, radius:String) -> Observable<(WithinDistrict?, ResponseCodeType)>  {
+        let data = ParkinglotAPI.within_district(lat:lat, lon:lon, radius:radius)
+        
+        return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params!)
+            .map ({  result in
+                return (WithinDistrict(JSON: result.data), result.codeType)
+            })
+    }
 }

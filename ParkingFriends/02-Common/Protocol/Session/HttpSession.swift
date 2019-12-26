@@ -63,7 +63,7 @@ class HttpSession: NSObject {
         switch authType {
         case .OAuth2:
             let token = getAccessToken()
-            self.adapt(AccessTokenAdapter(type:token.type, accessToken: token.access, refreshToken: token.refresh))
+            self.adapt(AccessTokenAdapter(type:token.type, accessToken: token.access))
         case .serviceKey:
             self.adapt(ServiceKeyAdapter(serviceKey: AppInfo.serviceKey))
         default:
@@ -95,8 +95,8 @@ class HttpSession: NSObject {
         switch authType {
         case .OAuth2:
             let token = getAccessToken()
-            self.adapt(OAuth2Handler(accessToken: token.access, refreshToken: token.refresh, type: token.type), retrier: true)
-           // self.adapt(AccessTokenAdapter(type:token.type, accessToken: token.access, refreshToken: token.refresh))
+            //self.adapt(OAuth2Handler(accessToken: token.access, refreshToken: token.refresh, type: token.type), retrier: true)
+            self.adapt(AccessTokenAdapter(type:token.type, accessToken: token.access))
         case .serviceKey:
             self.adapt(ServiceKeyAdapter(serviceKey: AppInfo.serviceKey))
         default:
