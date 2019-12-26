@@ -45,13 +45,13 @@ class FindPasswordViewModel: FindPasswordViewModelType {
     init(localizer: LocalizerType = Localizer.shared) {
         self.localizer = localizer
         
-        titleText = localizer.localized("find_password_title")
-        subtitleText = localizer.localized("find_password_subtitle")
+        titleText = localizer.localized("ttl_password_find")
+        subtitleText = localizer.localized("dsc_password_find")
         
-        inputTitle = localizer.localized("find_email_input")
-        inputPlaceholder = localizer.localized("find_email_input_placeholder")
+        inputTitle = localizer.localized("ttl_input_email_find")
+        inputPlaceholder = localizer.localized("ph_input_email_find")
         
-        confirmText = BehaviorRelay(value:localizer.localized("send_email"))
+        confirmText = BehaviorRelay(value:localizer.localized("btn_email_send"))
     }
     
     func updateStatus(_ status:CheckType) {
@@ -70,8 +70,14 @@ class FindPasswordViewModel: FindPasswordViewModelType {
     }
     
     func sendVerification(email:String, type:AuthEmailType) {
-        Auth.email(type: type, email: email) { (validated, message) in
-            self.updateStatus(validated ? .sent : .invalid)
-        }
+        Auth.email(type: type, email: email).asObservable().subscribe(onNext: { response in
+                if response == .success {
+                    self.updateStatus(.sent)
+                } else {
+                    self.updateStatus(.invalid)
+                }
+            }, onError: { error in
+            })
+            .disposed(by: disposeBag)
     }
 }

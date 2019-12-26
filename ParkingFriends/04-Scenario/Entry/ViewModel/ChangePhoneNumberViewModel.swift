@@ -50,11 +50,11 @@ class ChangePhoneNumberViewModel: ChangePhoneNumberViewModelType {
     init(localizer: LocalizerType = Localizer.shared) {
         self.localizer = localizer
         
-        titleText = localizer.localized("ttl_phone_number_change")
-        subtitleText = localizer.localized("dsc_phone_number")
+        titleText = localizer.localized("ttl_change_phone_number")
+        subtitleText = localizer.localized("dsc_hange_phone_number")
         
-        inputTitle = localizer.localized("ttl_iunput_email_find")
-        inputPlaceholder = localizer.localized("ph_input_mailr")
+        inputTitle = localizer.localized("ttl_input_email_find")
+        inputPlaceholder = localizer.localized("ph_input_email_find")
         
         confirmText =  BehaviorRelay(value: localizer.localized("btn_email_send"))
     }
@@ -86,8 +86,14 @@ class ChangePhoneNumberViewModel: ChangePhoneNumberViewModelType {
     }
 
     func sendVerification(email:String, type:AuthEmailType) {
-        Auth.email(type: type, email: email) { (validated, message) in
-            self.updateStatus(validated ? .sent : .invalid)
-        }
+        Auth.email(type: type, email: email).asObservable().subscribe(onNext: { response in
+                if response == .success {
+                    self.updateStatus(.sent)
+                } else {
+                    self.updateStatus(.invalid)
+                }
+            }, onError: { error in
+            })
+            .disposed(by: disposeBag)
     }
 }
