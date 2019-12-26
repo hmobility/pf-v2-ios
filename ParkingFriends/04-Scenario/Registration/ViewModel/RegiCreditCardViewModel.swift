@@ -176,9 +176,8 @@ class RegiCreditCardViewModel: RegiCreditCardViewModelType {
     }
     
     func validateCredentials(section:CreditCardSectionType, editing:Bool = false) -> Bool {
-        var result = false
-        
         let sections = CreditCardSectionType.allSections.filter { $0 != section }
+        var result = false
         
         if updateStatus(section: section, editing:editing) == true {
             for sectionType in sections {

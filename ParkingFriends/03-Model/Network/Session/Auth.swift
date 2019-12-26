@@ -19,23 +19,7 @@ class Auth : HttpSession {
                 return (Login(JSON: result.data), result.codeType)
             })
     }
-    /*
-    // 로그인
-    static public func login(username:String, password:String, completion:@escaping(_ data:Login?, _ message:String?) -> Void) {
-        let data = AuthAPI.login(username: username, password: password)
 
-        _ = self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params!, completion:{(response, message, code) in
-            if let result = response {
-                let object = Login(JSON: result)
-                completion(object, message)
-            } else {
-                completion(nil, message)
-            }
-        }, failure: { message in
-            
-        })
-    }
-    */
     // 로그아웃 : /v1/auth/logout
     static public func logout() -> Observable<(ResponseCodeType)> {
         let data = AuthAPI.logout()
@@ -45,36 +29,17 @@ class Auth : HttpSession {
                 return result.codeType
             })
     }
-    
-    static public func logout(username:String, password:String, completion:@escaping(_ completed:Bool, _ message:String?) -> Void) {
-        let data = AuthAPI.login(username: username, password: password)
+
+    // 아이디/비밀번호 찾기 이메일 전송 /v1/auth/email
+    static public func email(type:AuthEmailType, email:String) -> Observable<ResponseCodeType>{
+        let data = AuthAPI.email(type: type, email:email)
         
-        _ = self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params!, completion:{(response, message, code) in
-            if response != nil {
-                completion(true, message)
-            } else {
-                completion(false, message)
-            }
-        }, failure: { message in
-            
-        })
+        return self.shared.dataTask(httpMethod: data.method, auth: data.auth, path: data.url, parameters: data.params!)
+            .map ({  result in
+                return result.codeType
+            })
     }
     
-    // 아이디/비밀번호 찾기 이메일 전송 /v1/auth/email
-    static public func email(type:AuthEmailType, email:String, completion:@escaping(_ completed:Bool, _ message:String?) -> Void) {
-        let data = AuthAPI.email(type: type, email:email)
-         
-        _ = self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params!, completion: {(response, message, code) in
-            if response != nil {
-                completion(true, message)
-            } else {
-                completion(false, message)
-            }
-         }, failure: { message in
-             
-         })
-     }
-
     // 휴대폰 OTP 전송 : /v1/auth/otp
     static public func otp(phoneNumber:String) -> Observable<(Otp?, ResponseCodeType)> {
         let data = AuthAPI.otp(phoneNumber: phoneNumber)

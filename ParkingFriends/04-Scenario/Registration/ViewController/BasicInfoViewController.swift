@@ -8,20 +8,19 @@
 
 import UIKit
 
-extension BasicInfoInputViewController : AnalyticsType {
+extension BasicInfoViewController : AnalyticsType {
     var screenName: String {
         return "[SCREEN][REG] BasicInfo"
     }
 }
 
-class BasicInfoInputViewController: UIViewController {
+class BasicInfoViewController: UIViewController {
 
     @IBOutlet weak var phoneNumberField: CustomInputSection!
     @IBOutlet weak var emailField: CustomInputSection!
     @IBOutlet weak var passwordField: CustomInputSection!
     @IBOutlet weak var nicknameField: CustomInputSection!
     
-    @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     
     @IBOutlet weak var backButton: UIBarButtonItem!
@@ -80,6 +79,10 @@ class BasicInfoInputViewController: UIViewController {
         viewModel.phoneNumberMessageText
             .bind(to: phoneNumberField.messageLabel.rx.text)
             .disposed(by: disposeBag)
+        
+        viewModel.phoneNumberDisplayText.asDriver()
+            .drive(phoneNumberField.displayTextLabel.rx.text)
+            .disposed(by: disposeBag)
     }
     
     private func setupEmailBinding() {
@@ -94,19 +97,24 @@ class BasicInfoInputViewController: UIViewController {
         viewModel.emailMessageText
             .bind(to: emailField.messageLabel.rx.text)
             .disposed(by: disposeBag)
-        
-        emailField.inputTextField.rx
-            .controlEvent([.editingDidEnd])
-            .asObservable()
-            .subscribe(onNext:{ _ in
-                _ = self.viewModel.validateCredentials()
-            })
-            .disposed(by: disposeBag)
-        
+    
         emailField.inputTextField.rx.text
             .orEmpty
             .asDriver()
-            .drive(viewModel.emailModel.data)
+            .drive(onNext: { [unowned self] text in
+                self.viewModel.accept(text, section: .email)
+            })
+            .disposed(by: disposeBag)
+        
+        let inputEvents:Observable<Bool> = Observable.merge([
+            emailField.inputTextField.rx.controlEvent([.editingChanged, .valueChanged]).map { true },
+            emailField.inputTextField.rx.controlEvent([.editingDidEnd]).map { false }
+        ])
+        
+        inputEvents.asObservable()
+            .subscribe(onNext: { editing in
+                _ = self.viewModel.validateCredentials(section:.email, editing:editing)
+            })
             .disposed(by: disposeBag)
     }
     
@@ -115,12 +123,14 @@ class BasicInfoInputViewController: UIViewController {
             .drive(passwordField.fieldTitleLabel.rx.text)
             .disposed(by: disposeBag)
         
-        passwordField.inputTextField.delegate = viewModel.passwordModel
+        //passwordField.inputTextField.delegate = viewModel.passwordModel
 
         passwordField.inputTextField.rx.text
             .orEmpty
             .asDriver()
-            .drive(viewModel.passwordModel.data)
+            .drive(onNext: { [unowned self] text in
+                self.viewModel.accept(text, section: .password)
+            })
             .disposed(by: disposeBag)
         
         viewModel.passwordInputPlaceholder
@@ -131,18 +141,23 @@ class BasicInfoInputViewController: UIViewController {
             .bind(to: passwordField.messageLabel.rx.text)
             .disposed(by: disposeBag)
         
-        passwordField.inputTextField.rx
-             .controlEvent([.editingDidEnd])
-             .asObservable()
-             .subscribe(onNext:{ _ in
-                _ = self.viewModel.validateCredentials()
-             })
-             .disposed(by: disposeBag)
-        
         passwordField.inputTextField.rx.text
             .orEmpty
             .asDriver()
-            .drive(viewModel.passwordModel.data)
+            .drive(onNext: { [unowned self] text in
+                self.viewModel.accept(text, section: .password)
+            })
+            .disposed(by: disposeBag)
+        
+        let inputEvents:Observable<Bool> = Observable.merge([
+            passwordField.inputTextField.rx.controlEvent([.editingChanged, .valueChanged]).map { true },
+            passwordField.inputTextField.rx.controlEvent([.editingDidEnd]).map { false }
+        ])
+        
+        inputEvents.asObservable()
+            .subscribe(onNext: { editing in
+                _ = self.viewModel.validateCredentials(section:.password, editing:editing)
+            })
             .disposed(by: disposeBag)
     }
     
@@ -162,20 +177,26 @@ class BasicInfoInputViewController: UIViewController {
         nicknameField.inputTextField.rx.text
             .orEmpty
             .asDriver()
-            .drive(viewModel.nicknameModel.data)
+            .drive(onNext: { [unowned self] text in
+                self.viewModel.accept(text, section: .nickname)
+            })
             .disposed(by: disposeBag)
         
-        nicknameField.inputTextField.rx
-            .controlEvent([.editingChanged, .editingDidEnd])
-            .asObservable()
-            .subscribe(onNext:{ _ in
-                _ = self.viewModel.validateCredentials()
+        let inputEvents:Observable<Bool> = Observable.merge([
+            nicknameField.inputTextField.rx.controlEvent([.editingChanged, .valueChanged]).map { true },
+            nicknameField.inputTextField.rx.controlEvent([.editingDidEnd]).map { false }
+        ])
+        
+        inputEvents.asObservable()
+            .subscribe(onNext: { editing in
+                _ = self.viewModel.validateCredentials(section:.nickname, editing:editing)
             })
             .disposed(by: disposeBag)
     }
     
     private func setupKeyboard() {
         RxKeyboard.instance.visibleHeight
+            .distinctUntilChanged()
             .drive(onNext: { height in
                 self.nextButtonBottomConstraint.constant = height - self.view.safeAreaInsets.bottom
                 self.view.layoutIfNeeded()
@@ -187,16 +208,33 @@ class BasicInfoInputViewController: UIViewController {
     private func setupButtonBinding() {
         nextButton.rx.tap
             .subscribe(onNext: { _ in
-                self.viewModel.saveBasicInfo()
-                self.navigateToAgreement()
+                self.viewModel.nextProcess()
             })
             .disposed(by: disposeBag)
         
+        
+        viewModel.proceed.asDriver()
+            .drive(onNext: { [unowned self] (type, message) in
+                switch type {
+                case .none, .disabled:
+                    self.nextButton.isEnabled = false
+                case .enabled:
+                    self.nextButton.isEnabled = true
+                case .success:
+                    self.navigateToAgreement()
+                case .failure:
+                    MessageDialog.show(message)
+                    break
+                }
+            })
+            .disposed(by: disposeBag)
+        /*
         viewModel.proceed.asDriver()
             .drive(onNext: { [unowned self] (completed) in
                 self.nextButton.isEnabled = completed ? true : false
             })
             .disposed(by: disposeBag)
+ */
     }
     
     // MARK: - Life Cycle

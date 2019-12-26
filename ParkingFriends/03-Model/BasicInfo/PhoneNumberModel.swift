@@ -22,7 +22,7 @@ public protocol PhoneNumberModelType {
     static func formatted(_ number:String) -> String?
 }
 
-public let phoneFormatter = DefaultTextInputFormatter(textPattern:  "###-####-####")
+//public let phoneFormatter = DefaultTextInputFormatter(textPattern:  "###-####-####")
 
 class PhoneNumberModel: NSObject, PhoneNumberModelType {
     

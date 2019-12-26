@@ -33,8 +33,8 @@ class EntryViewController: UIViewController {
         //navigateToMain()
       //  navigateToPayment()
         
-      //  navigateToBasicInfoInput()
-       // navigateToAgreement()
+        //navigateToBasicInfoInput()
+        //navigateToAgreement()
         
         //navigateToCar()
         
@@ -119,7 +119,7 @@ class EntryViewController: UIViewController {
     }
     
     private func navigateToBasicInfoInput() {
-        let target = Storyboard.registration.instantiateViewController(withIdentifier: "BasicInfoInputViewController") as! BasicInfoInputViewController
+        let target = Storyboard.registration.instantiateViewController(withIdentifier: "BasicInfoViewController") as! BasicInfoViewController
         self.push(target)
     }
     

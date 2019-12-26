@@ -12,12 +12,10 @@ import Alamofire
 class AccessTokenAdapter: RequestAdapter {
     private let tokenType: String
     private let accessToken: String
-    private let refreshToken: String
     
-    init(type:String, accessToken: String, refreshToken:String) {
+    init(type:String, accessToken: String) {
         self.tokenType = type
         self.accessToken = accessToken
-        self.refreshToken = refreshToken
     }
 
     func adapt(_ urlRequest: URLRequest) throws -> URLRequest {

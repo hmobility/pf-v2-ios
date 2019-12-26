@@ -90,28 +90,29 @@ class FindPasswordViewController: UIViewController {
                         self.viewModel.sendVerification(email: text, type: .phone)
                     }
                 } 
-            }).disposed(by: disposeBag)
+            })
+            .disposed(by: disposeBag)
         
-        /*
-        viewModel.credential.asDriver().asDriver(onErrorJustReturn: .none)
+        viewModel.credential.asDriver()
+            .asDriver(onErrorJustReturn: .none)
             .drive(onNext: { [unowned self] status in
                 switch status {
                 case .none:
                     self.confirmButton.isEnabled = false
-                case .valid:
+                case .valid, .verified:
                     self.confirmButton.isEnabled = true
                 case .sent:
                     self.confirmButton.isEnabled = true
                     self.dismissRoot {
                         MessageDialog.show(self.viewModel.message(.sent), icon:.success)
                     }
-                case .invalid:
+                case .invalid, .disproved:
                     self.confirmButton.isEnabled = true
                     MessageDialog.show(self.viewModel.message(.invalid))
+
                 }
             })
             .disposed(by: disposeBag)
- */
     }
        
     

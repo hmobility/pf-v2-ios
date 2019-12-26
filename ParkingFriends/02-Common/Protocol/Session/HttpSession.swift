@@ -55,48 +55,14 @@ class HttpSession: NSObject {
     }
     
     // MARK: - Public Functions
-    
-    // Will be deprecated
-    func dataTask(httpMethod:HttpMethod, auth authType:APIAuthType = .none, path:URL, parameters params:Params, completion:@escaping([String:Any]?, String?, ResponseCodeType) -> Void, failure:@escaping(String?) -> Void) -> DataRequest {
-        let method = HTTPMethod(rawValue: httpMethod.rawValue)!
-        
-        switch authType {
-        case .OAuth2:
-            let token = getAccessToken()
-            self.adapt(AccessTokenAdapter(type:token.type, accessToken: token.access, refreshToken: token.refresh))
-        case .serviceKey:
-            self.adapt(ServiceKeyAdapter(serviceKey: AppInfo.serviceKey))
-        default:
-            self.adapt(AppTokenAdapter(appVersion: AppInfo.appVersion))
-            break
-        }
-
-        let dataTask = self.httpSession.request(path, method: method, parameters:params, encoding:JSONEncoding.default)
-
-        dataTask.validate(statusCode: acceptableStatusCodes).validate(contentType: acceptableContentType).responseJSON(completionHandler:{ (response) in
-            response.result.ifSuccess ({
-                let object = response.result.value as! [String : Any]
-                let result = ServerResult(JSON: object)!
-                
-                completion(result.data , result.message, result.codeType)
-            })
-            
-            response.result.ifFailure ({
-                let message = response.result.error?.localizedDescription
-                failure(message)
-            })
-        })
-
-        return dataTask
-    }
-    
+   
     func dataTask(httpMethod:HttpMethod, auth authType:APIAuthType = .none, path:URL, parameters params:Params?) -> Observable<ServerResult> {
         
         switch authType {
         case .OAuth2:
             let token = getAccessToken()
-            self.adapt(OAuth2Handler(accessToken: token.access, refreshToken: token.refresh, type: token.type), retrier: true)
-           // self.adapt(AccessTokenAdapter(type:token.type, accessToken: token.access, refreshToken: token.refresh))
+            //self.adapt(OAuth2Handler(accessToken: token.access, refreshToken: token.refresh, type: token.type), retrier: true)
+            self.adapt(AccessTokenAdapter(type:token.type, accessToken: token.access))
         case .serviceKey:
             self.adapt(ServiceKeyAdapter(serviceKey: AppInfo.serviceKey))
         default:
@@ -125,9 +91,7 @@ class HttpSession: NSObject {
                 })
             })
             
-            //  return dataTask
             return Disposables.create()
-            
         }
     }
     
@@ -158,7 +122,6 @@ class HttpSession: NSObject {
                 })
             })
             
-            //  return dataTask
             return Disposables.create()
             
         }
