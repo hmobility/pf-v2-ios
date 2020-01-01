@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iN0-l3-epB" customClass="ReserveNoticeView" customModule="ParkingFriends" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="155"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KV5-F3-E13" userLabel="View - Background ">
+                    <rect key="frame" x="6" y="48" width="402" height="105"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ebH-yC-eGl">
+                            <rect key="frame" x="0.0" y="18" width="402" height="87"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PEM-OT-6vd" userLabel="View - Contents">
+                                    <rect key="frame" x="0.0" y="0.0" width="402" height="51"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="명달로주차장" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tlH-yU-Rlp" userLabel="Label - TItle">
+                                            <rect key="frame" x="16" y="0.0" width="340" height="15"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="15" id="JNw-7T-kXa"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="15"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="예약한 주차 시간이 거의 다 됐어요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="06J-JR-fxb" userLabel="Label - Descrition">
+                                            <rect key="frame" x="16" y="19" width="340" height="15"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="15" id="6po-GN-LmQ"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="15"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icWarningFillCircleRed" translatesAutoresizingMaskIntoConstraints="NO" id="jCS-aa-kEk" userLabel="Image View - Icon">
+                                            <rect key="frame" x="366" y="7" width="20" height="20"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="20" id="ePZ-Df-lLs"/>
+                                                <constraint firstAttribute="height" constant="20" id="h4s-7d-Xzf"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="06J-JR-fxb" firstAttribute="top" secondItem="tlH-yU-Rlp" secondAttribute="bottom" constant="4" id="Ehf-30-mPB"/>
+                                        <constraint firstAttribute="bottom" secondItem="jCS-aa-kEk" secondAttribute="bottom" constant="24" id="EwM-31-Pe0"/>
+                                        <constraint firstAttribute="bottom" secondItem="06J-JR-fxb" secondAttribute="bottom" constant="17" id="Iny-9k-1cT"/>
+                                        <constraint firstItem="jCS-aa-kEk" firstAttribute="leading" secondItem="tlH-yU-Rlp" secondAttribute="trailing" constant="10" id="Q47-Wb-sBj"/>
+                                        <constraint firstItem="tlH-yU-Rlp" firstAttribute="leading" secondItem="PEM-OT-6vd" secondAttribute="leading" constant="16" id="QL0-u1-S8d"/>
+                                        <constraint firstItem="06J-JR-fxb" firstAttribute="leading" secondItem="PEM-OT-6vd" secondAttribute="leading" constant="16" id="TcM-g6-a5l"/>
+                                        <constraint firstAttribute="height" constant="51" id="pvd-z8-s9l"/>
+                                        <constraint firstAttribute="trailing" secondItem="jCS-aa-kEk" secondAttribute="trailing" constant="16" id="txu-ol-FGK"/>
+                                        <constraint firstItem="jCS-aa-kEk" firstAttribute="leading" secondItem="06J-JR-fxb" secondAttribute="trailing" constant="10" id="vb6-8o-JEt"/>
+                                    </constraints>
+                                </view>
+                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="LnZ-gu-2OC" userLabel="Stack View - Button Area">
+                                    <rect key="frame" x="0.0" y="51" width="402" height="36"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0qI-hO-69S" userLabel="Button - Close">
+                                            <rect key="frame" x="0.0" y="0.0" width="201" height="36"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="36" id="cN6-hp-DDk"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="14"/>
+                                            <state key="normal" title="닫기">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="cancelAction" destination="iN0-l3-epB" eventType="touchUpInside" id="Zhh-3c-Ee1"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P45-tT-w3L" userLabel="Button - Move">
+                                            <rect key="frame" x="201" y="0.0" width="201" height="36"/>
+                                            <color key="backgroundColor" name="AlgaeGreen"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="36" id="X59-6W-ibT"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="14"/>
+                                            <state key="normal" title="바로가기">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="doneAction" destination="iN0-l3-epB" eventType="touchUpInside" id="0aG-ha-cYD"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </stackView>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" name="CharcoalGrey"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="ebH-yC-eGl" secondAttribute="trailing" id="CGC-4t-Itf"/>
+                        <constraint firstAttribute="height" constant="105" id="Ziq-DR-Cyt"/>
+                        <constraint firstItem="ebH-yC-eGl" firstAttribute="leading" secondItem="KV5-F3-E13" secondAttribute="leading" id="bzs-ba-Bv6"/>
+                        <constraint firstAttribute="bottom" secondItem="ebH-yC-eGl" secondAttribute="bottom" id="fQq-fP-0Fu"/>
+                        <constraint firstItem="ebH-yC-eGl" firstAttribute="top" secondItem="KV5-F3-E13" secondAttribute="top" constant="18" id="oIh-Ce-3Mr"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="4"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                            <color key="value" name="Steel"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                            <real key="value" value="0.16"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                            <size key="value" width="0.0" height="2"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="KV5-F3-E13" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="6" id="5Ua-h6-tm2"/>
+                <constraint firstItem="KV5-F3-E13" firstAttribute="top" secondItem="6K8-SE-2YO" secondAttribute="top" constant="4" id="p7F-de-5yP"/>
+                <constraint firstAttribute="trailing" secondItem="KV5-F3-E13" secondAttribute="trailing" constant="6" id="sW7-Oh-uBe"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="6K8-SE-2YO"/>
+            <connections>
+                <outlet property="backgroundView" destination="KV5-F3-E13" id="Nrk-Fe-m6O"/>
+                <outlet property="bodyLabel" destination="06J-JR-fxb" id="ei4-Tq-bhj"/>
+                <outlet property="closeButton" destination="0qI-hO-69S" id="OTk-bE-0FV"/>
+                <outlet property="doneButton" destination="P45-tT-w3L" id="2zs-qc-UB5"/>
+                <outlet property="iconImageView" destination="jCS-aa-kEk" id="g5W-hw-aRN"/>
+                <outlet property="titleLabel" destination="tlH-yU-Rlp" id="vk5-ky-woX"/>
+            </connections>
+            <point key="canvasLocation" x="63.768115942028992" y="-180.46875"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icWarningFillCircleRed" width="24" height="24"/>
+        <namedColor name="AlgaeGreen">
+            <color red="0.14499999582767487" green="0.83899998664855957" blue="0.3880000114440918" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="CharcoalGrey">
+            <color red="0.20800000429153442" green="0.23499999940395355" blue="0.2669999897480011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Steel">
+            <color red="0.44699999690055847" green="0.50199997425079346" blue="0.55699998140335083" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

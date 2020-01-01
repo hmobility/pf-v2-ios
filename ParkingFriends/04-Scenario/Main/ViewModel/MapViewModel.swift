@@ -15,8 +15,10 @@ protocol MapViewModelType {
     var displayAddressText: BehaviorRelay<String> { get }
     var displayReservedTimeText: BehaviorRelay<String> { get }
     
-    var cardViewModel:ParkinglotCardViewModelType? { get set }
-    var displaySettingView: BehaviorRelay<(time:Bool, card:Bool)> { get set }
+    var cardViewModel:ParkingCardViewModelType? { get set }
+    var parkingTapViewModel:ParkingTapViewModelType? { get set }
+         
+    var displaySettingSection: BehaviorRelay<(list:Bool, search:Bool)> { get set }
     
     func zoomIn()
     func zoomOut()
@@ -33,9 +35,10 @@ class MapViewModel: NSObject, MapViewModelType {
     var displayAddressText: BehaviorRelay<String> = BehaviorRelay(value: "")
     var displayReservedTimeText: BehaviorRelay<String> = BehaviorRelay(value: "")
     
-    var displaySettingView: BehaviorRelay<(time:Bool, card:Bool)> = BehaviorRelay(value:(time:true, card:false))
+    var displaySettingSection: BehaviorRelay<(list:Bool, search:Bool)> = BehaviorRelay(value:(list:false, search:true))
     
-    var cardViewModel:ParkinglotCardViewModelType?
+    var cardViewModel:ParkingCardViewModelType?
+    var parkingTapViewModel:ParkingTapViewModelType?
     
     private var markerList:[MarkerWindow] = []
     private var groupList:[GroupMarkerWindow] = []
@@ -121,6 +124,12 @@ class MapViewModel: NSObject, MapViewModelType {
         }
     }
     
+    func updateTapElements(_ elements:[WithinElement]) {
+        if let viewModel = parkingTapViewModel {
+            viewModel.setWithinElements(elements)
+        }
+    }
+    
     // MARK: - Marker
 
     // 개별 주차면 표시
@@ -173,24 +182,26 @@ class MapViewModel: NSObject, MapViewModelType {
         }
         
         if let elements = lots {
-            displaySettingView.accept((time:false, card:true))
+            displaySettingSection.accept((list:true, search:false))
             updateCardElements(elements)
+            updateTapElements(elements)
             
             for item in elements {
                 debugPrint("[ITEM] ", item.address)
-                if let marker = generateMarker(within:item) {
+                if let marker = generateMarker(within: item) {
                     markerList.append(marker)
                 }
             }
         }
         
         if let elements = districts {
-            displaySettingView.accept((time:true, card:false))
+            displaySettingSection.accept((list:false, search:true))
             updateCardElements([])
+            updateTapElements([])
             
             for item in elements {
                 debugPrint("[ITEM] ", item.name)
-                if let marker = generateGroup(district:item) {
+                if let marker = generateGroup(district: item) {
                     groupList.append(marker)
                 }
             }

@@ -21,16 +21,16 @@ class EntryViewController: UIViewController {
     @IBOutlet weak var signupButton: UIButton!
     @IBOutlet weak var signupGuideLabel: UILabel!
     @IBOutlet weak var migrationButton: UIButton!
-    
+    //
     private var viewModel: EntryViewModelType
     private let disposeBag = DisposeBag()
     
     // MARK: - Button Action
     
     @IBAction func loginButtonAction(_ sender: Any) {
-        navigateToLogin()
+        //navigateToLogin()
        
-        //navigateToMain()
+        navigateToMain()
       //  navigateToPayment()
         
         //navigateToBasicInfoInput()

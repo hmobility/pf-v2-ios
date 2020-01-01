@@ -41,7 +41,9 @@ target 'ParkingFriends' do
   pod 'AnyFormatKit'              # String Formatter
   pod 'CryptoSwift'               # SHA256 password to string
   
-  pod 'PullUpController'
+  pod 'FloatingPanel'
+  pod 'SideMenu', '~> 6.0'
+  
   pod 'TagListView', '~> 1.3.2'
   
   pod 'RangeSeekSlider'
