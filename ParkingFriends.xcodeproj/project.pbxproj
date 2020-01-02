@@ -595,7 +595,7 @@
 				625ACE7A23A0CBAB002D0653 /* ParkinglotList */,
 				62601DBD239647A800B78033 /* ParkinglotCard */,
 				624F53A423BAF554005D7FD8 /* MapView */,
-				6204555023979F5B007ADF88 /* SearchOptionViewController.swift */,
+				62576C4D23BD77D9007BA1F7 /* SearchOption */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -856,6 +856,14 @@
 				62576C4523BC4B43007BA1F7 /* IconType.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		62576C4D23BD77D9007BA1F7 /* SearchOption */ = {
+			isa = PBXGroup;
+			children = (
+				6204555023979F5B007ADF88 /* SearchOptionViewController.swift */,
+			);
+			path = SearchOption;
 			sourceTree = "<group>";
 		};
 		625ACE6B239F6EEB002D0653 /* CustomView */ = {

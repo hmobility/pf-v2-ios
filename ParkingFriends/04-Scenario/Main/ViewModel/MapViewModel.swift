@@ -71,10 +71,12 @@ class MapViewModel: NSObject, MapViewModelType {
     
     // MARK: - Binding
     
-    // NMFMapChangedByControl = -2
-    // NMFMapChangedByGesture = -1
-    // NMFMapChangedByDeveloper = 0
-    
+    /*
+     - reason
+     NMFMapChangedByControl = -2
+     NMFMapChangedByGesture = -1
+     NMFMapChangedByDeveloper = 0
+    */
     func setupMapBinding() {
        // mapView?.delegate = self
 
@@ -97,6 +99,11 @@ class MapViewModel: NSObject, MapViewModelType {
                 print("[IDLE] location completed")
             })
             .disposed(by: disposeBag)
+            
+            map.rx.zoomLevel
+                .asObserver()
+                .onNext(mapModel.zoomLevel)
+                .disposed(by: disposeBag)
         }
     }
     
@@ -259,6 +266,8 @@ class MapViewModel: NSObject, MapViewModelType {
         let end = Date().dateFor(.nearestMinute(minute:60)).adjust(.hour, offset: 2).toString(format: .custom("HHmm"))
         let today = Date().toString(format: .custom("yyyyMMdd"))
         
+    
+        
         self.within(coordinate:coord, filter:option.filter, month:(today, 1), time:(start, end))
               .subscribe(onNext: { elements in
                   self.updateMarker(lots: elements)
@@ -311,13 +320,19 @@ class MapViewModel: NSObject, MapViewModelType {
     
     func zoomIn() {
         if let map = self.mapView {
-            map.zoomLevel =  mapModel.zoomIn()
+            mapModel.zoomIn()
+                .asObservable()
+                .bind(to: map.rx.zoomLevel)
+                .disposed(by: disposeBag)
         }
     }
     
     func zoomOut() {
         if let map = self.mapView {
-            map.zoomLevel =  mapModel.zoomOut()
+            mapModel.zoomIn()
+                .asObservable()
+                .bind(to: map.rx.zoomLevel)
+                .disposed(by: disposeBag)
         }
     }
     

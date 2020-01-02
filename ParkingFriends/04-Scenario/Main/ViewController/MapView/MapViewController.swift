@@ -140,7 +140,6 @@ class MapViewController: UIViewController {
     
     private func initialize() {
         prepareFloatingPanel()
-        // prepareSideMenu()
         
         timeSettingAreaBinding()
         setupNavigation()
@@ -169,15 +168,6 @@ class MapViewController: UIViewController {
         super.viewDidAppear(animated)
         
         floatingPanelController.addPanel(toParent: self, animated: false)
-    }
-    
-    // MARK: - Prepare Side Menu
-    
-    func prepareSideMenu() {
-        SideMenuManager.default.leftMenuNavigationController =  Storyboard.menu.instantiateViewController(withIdentifier: "SideMenuNavigationController") as? SideMenuNavigationController
-
-        SideMenuManager.default.addPanGestureToPresent(toView: navigationController!.navigationBar)
-        SideMenuManager.default.addScreenEdgePanGesturesToPresent(toView: view)
     }
     
     // MARK: - Navigation
