@@ -1,0 +1,274 @@
+// Common
+"btn_close" = "닫기";
+"btn_login" = "로그인";
+"btn_signup" = "회원가입";
+"btn_modify" = "수정";
+"btn_select" = "선택";
+"btn_skip" = "건너뛰기";
+"btn_save" = "저장";
+"btn_to_save" = "저장하기";
+"btn_resend" = "재전송";
+"btn_to_next" = "다음으로";
+"btn_email_send" = "이메일 전송";
+"btn_to_start" = "시작하기";
+"btn_to_move" = "바로가기";
+"btn_to_agree" = "동의합니다";
+"btn_road_guide" = "길안내 받기";
+"btn_reservation_extend" = "예약 연장";
+"btn_to_reset" = "설정 초기화";
+"txt_today" = "오늘";
+"txt_tomorrow" = "내일";
+"txt_am" = "오전";
+"txt_pm" = "오후";
+"txt_minutes" = "분";
+"txt_from" = "부터";
+"txt_distance_unit" = "m";
+"txt_money_unit" = "원";
+"txt_free" = "무료";
+"txt_hours" = "시간";
+"txt_months" = "개월";
+"txt_month_period" = "개월간";
+"ttl_name" = "이름";
+"ttl_type" = "유형";
+"ttl_date" = "날짜";
+"ttl_car" = "차량";
+"itm_outdoor" = "실외";
+"itm_indoor" = "실내";
+"itm_private" = "민간";
+"itm_cctv" = "CCTV";
+"itm_iot" = "IoT센서";
+"itm_evc" = "전기차충전";
+"itm_mon" = "월";
+"itm_tue" = "화";
+"itm_wed" = "수";
+"itm_thu" = "목";
+"itm_fri" = "금";
+"itm_sat" = "토";
+"itm_sun" = "일";
+
+// Entry
+"txt_signup_guide" = "파킹프렌즈가 처음이세요?";
+"btn_phone_number_change" = "번호가 바뀌셨나요?";
+"btn_password_find" = "비밀번호 찾기";
+"ph_input_account" = "ID(휴대폰번호)를 입력하세요";
+"ph_input_password" = "비밀번호를 입력하세요";
+"txt_account_migration_guide" = "기존 회원이신 경우 정보이관 버튼을 눌러주세요";
+"btn_account_migration" = "기존 정보 이관하기";
+
+// Find
+"ttl_change_phone_number" = "휴대폰번호 변경";
+"dsc_hange_phone_number" = "가입시 입력한 이메일 주소를 입력하세요.\n휴대폰번호 변경 메일을 발송해드립니다.";
+"ttl_input_email_find" = "이메일주소 입력";
+"ph_input_email_find" = "이메일주소 입력";
+"btn_new_number_login" = "변경된 번호로 로그인하기";
+"ttl_password_find" = "비밀번호 찾기";
+"dsc_password_find" = "가입 시 입력하신 이메일 주소를 입력하세요.\n임시 비밀번호를 이메일로 보내드립니다.";
+
+// Car Info
+"ttl_car_info_registration" = "차량정보 등록";
+"ttl_car_info_brand" = "브랜드 및 모델명 선택";
+"ttl_car_info_color" = "차량번호 및 색상 입력";
+"ttl_car_type" = "차량종류";
+"ph_car_type" = "기아 올 뉴 모닝";
+"ttl_car_number" = "차량번호";
+"ph_car_number" = "서울10가1234";
+"ttl_car_color" = "차량색상";
+"ph_car_color" = "흰색";
+"ttl_color_picker" = " 차량색상 선택";
+"ttl_selected_car" = "선택한 차량";
+
+// Color Index
+"itm_white" = "흰색";
+"itm_black" = "검은색";
+"itm_dark_gray" = "쥐색";
+"itm_silver" = "은색";
+"itm_blue" = "파랑색";
+"itm_red" = "빨강색";
+"itm_gold" = "금색";
+"itm_blue_green" = "청녹색";
+"itm_dark_green" = "녹색";
+"itm_brown" = "갈색";
+"itm_sky_blue" = "하늘색";
+
+// Credit Card
+"ttl_card_info" = "결제 정보 입력";
+"ttl_input_card_number" = "카드번호";
+"ph_input_card_number" = "0000 0000 0000 0000";
+"ttl_input_input_card_expiration_date" = "유효기간";
+"ph_input_card_expiration_date" = "MM/YY";
+"ttl_input_card_password" = "비밀번호 앞 두자리";
+"ph_input_card_password" = "●●";
+"ttl_input_resident_number" = "주민등록번호 앞자리";
+"ph_input_resident_number" = "900130";
+"ttl_input_card_owner_name" = "카드 소유자 이름";
+"ph_input_card_owner_name" = "명의자 실명 입력";
+
+// Registration
+"ttl_basic_info" = "기본정보 입력";
+"ttl_input_phone_number" = "휴대폰번호";
+"ph_input_phone_number" = "01012341234";
+"ttl_input_email" = "이메일주소";
+"ph_input_email" = "메일 주소 입력";
+"ttl_input_password" = "비밀번호";
+"ph_input_password" = "영문·숫자 포함, 최소 8자";
+"ttl_input_nickname" = "닉네임";
+"ph_input_nickname" = "한글·영문만 사용, 최대 8자";
+"ttl_phone_number_verify" = "휴대폰 인증";
+"dsc_pnone_number_verify" = "로그인을 위해 휴대폰 인증이 필요합니다.\n본인 명의의 휴대폰 정보를 입력해주세요.";
+"ttl_input_phone_number" = "휴대폰번호";
+"ph_input_phone_number" = "-를 제외하고 입력";
+"btn_code_send" = "인증번호 전송";
+"ttl_code_verify" = "인증번호 입력";
+"dsc_code_verify" = "%@로 인증번호를 전송했습니다.\n인증번호를 입력해주세요.";
+"ttl_input_code_verify" = "인증번호";
+"ph_input_code_verify" = "숫자 4자리";
+"ttl_agreement" = "약관동의";
+"dsc_agreement" = "파킹프렌즈 서비스 이용을 위해서\n아래 약관에 동의해주세요.";
+"ttl_usage" = "이용약관";
+"ttl_personal_info" = "개인정보 취급방침";
+"ttl_location_service" = "위치기반서비스 이용약관";
+"ttl_third_party_info" = "제 3자 정보 제공";
+"ttl_marketing_info" = "개인정보 마케팅 활용";
+"txt_agreement_sentence_end" = "에 동의합니다.";
+"txt_agree_all" = "모두 동의합니다.";
+"txt_agreement_option" = "(선택)";
+
+// Tutorial
+"ttl_guide_1" = "가장싼주차장,모두모였다!";
+"dsc_guide_1" = "다른 앱들과 비교할 필요 없어요.\n이제 파킹프렌즈에서 가장 저렴하게 주차하세요.";
+"ttl_guide_2" = "빈 자리 찾아 헤매지 말자!";
+"dsc_guide_2" = "파킹프렌즈 제휴 주차장의 스마트 센서가\n빈 자리를 실시간으로 알려드려요.";
+"ttl_guide_3" = "내 차 상태, 실시간으로 확인";
+"dsc_guide_3" = "실시간 CCTV 화면으로\n내 차가 안전하게 주차되어 있는지 확인하세요.";
+"ttl_guide_4" = "음성 인식으로 검색, 예약, 결제까지";
+"dsc_guide_4" = "말랑아~ 하고 불러보세요.\n목소리만으로 주차장 검색과 예약이 가능해요.";
+"ttl_guide_5" = "소중한 당신에게, 더 큰 혜택";
+"dsc_guide_5" = "이용 실적에 따른 차별화된 혜택으로\n한 단계 업그레이드 된 주차 생활을 즐기세요!";
+
+// Ticket
+"ttl_ticket_time" = "예약권";
+"ttl_ticket_fixed" = "정액권";
+"ttl_ticket_monthly" = "정기권";
+"ttl_no_ticket_time" = "예약 가능한 주차장이 없습니다.";
+"dsc_no_ticket_time" = "지도 안에 주차장이 있을 때, 이곳에 목록으로 표시됩니다.\n대상 지역이나 지도 범위를 변경해보세요.";
+"itm_price_low" = "낮은가격순";
+"ttl_order_parking_lot" = "주차장 정렬 기준을 선택하세요.";
+"itm_distance_closed" = "가까운순";
+"ttl_period_of_use" = "이용기간";
+"ttl_period_of_start" = "이용 시작일";
+
+// Sort Dialog
+"ttl_sort_order" = "주차장 정렬 기준을 선택하세요.";
+"itm_sort_price" = "낮은가격순";
+"itm_sort_distance" = "가까운순";
+
+// Search Option
+"ttl_search_option" = "검색옵션";
+"ttl_price_per_unit" = "시간당 주차 요금";
+"txt_price_range" = "%@ ~ %@원";
+"txt_price_max" = "1만원";
+"txt_price_min" = "무료";
+"txt_price_guide" = "요금 옵션은 예약권 상품에만 적용됩니다.";
+"ttl_order_sorting" = "정렬 순서";
+"itm_order_price" = "낮은가격순";
+"itm_order_distance" = "가까운순";
+"ttl_parkinglot_type" = "민·공영 구분";
+"itm_parkinglot_none" = "무관";
+"itm_parkinglot_public" = "공영";
+"itm_parkinglot_private" = "민영";
+"ttl_area_type" = "실내·외 구분";
+"itm_area_none" = "무관";
+"itm_area_outdoor" = "실외";
+"itm_area_indoor" = "실내";
+"ttl_extra_option" = "그 외 옵션";
+"itm_option_cctv" = "CCTV 설치";
+"itm_option_iot_sensor" = "IoT센서 설치";
+"itm_option_mechanical" = "기계식주차 제외";
+"itm_option_full_time" = "24시간 운영";
+
+// Payment
+"ttl_payment_guide" = "유의사항을 확인하세요!";
+"txt_payment_contents" = "• 허가된 주차면에 한해 파킹프렌즈에 등록된 차량만 사용한다.\n• 주차 중, 차내 귀중품 도난에 대해 본인이 책임진다.\n• 주차장 내에 인화물, 위험물의 진입이나 흡연 및 화기의 취급을 금한다.\n• 주차면 이용 중 발생한 자기 차량 및 주차면 시설물 파손 등 모든 사고(3자에 의한 모든 사고 포함)에 대해 본인이 책임을 지며, 주차면 제공자 또는 파킹프렌즈에 대해 어떠한 민·형사상의 책임과 손해 배상을 제기하지 않는다.";
+"txt_payment_guide_no_display" = "다음부터 보지 않기";
+
+// BLE
+"ttl_ble_parking_guide" = "%@부터 입차 가능합니다";
+"dsc_ble_parking_guide" = "예약시간에 맞춰 블루투스 기능을 켜고\n주차장 입구에서 파프앱키로 차단기를 열어주세요.";
+"ttl_ble_turn_on" = "블루투스 기능을 켜주세요";
+"dsc_ble_turn_on" = "입차 확인을 위해 블루투스 기능을 켜주세요.";
+"ttl_ble_time_notice" = "예약한 주차시간이 거의 다 됐어요!";
+"dsc_ble_time_notice" = "현재 입차 가능한 시간입니다.\n주차장 입구에서 파프앱키로 차단기를 열어주세요.";
+"ttl_ble_time_remain" = "주차 시간이 %@ 남았어요!";
+"dsc_ble_time_remain" = "현재 입차 가능한 시간입니다.\n주차장 입구에서 파프앱키로 차단기를 열어주세요.";
+"ttl_ble_time_exceed" = "예약 시간을 %@ 초과했어요!";
+"dsc_ble_time_exceed" = "초과 이용한 시간만큼 추가 금액 결제가 필요해요.";
+"btn_ble_open" = "차단기 열기";
+"btn_ble_turn_on" = "블루투스 켜기";
+"ttl_ble_open" = "주차장 차단기 열기";
+"txt_ble_open" = "주차장 접근이 감지되었습니다.\n파프앱키로 차단기를 여시겠어요?";
+"txt_ble_payment_execeed" = "파프앱키로 차단기를 여시겠어요?\n초과 금액 결제가 필요합니다.";
+"txt_ble_usage_guide" = "반드시 차단기 바로 앞에서 누르세요!";
+
+// Menu
+"ttl_my_car_add" = "내 차량 등록";
+"ttl_card_management" = "카드관리";
+"ttl_point_charge" = "포인트 충전";
+"ttl_my_coupon" = "내 쿠폰";
+"ttl_menu_payment" = "결제 내역";
+"ttl_menu_my_info" = "내 정보";
+"ttl_menu_event" = "이벤트";
+"ttl_menu_notice" = "공지사항";
+"ttl_menu_faq" = "자주 묻는 사항";
+"ttl_menu_setting" = "설정";
+"btn_parkinglot_report" = "신규 주차장 제보";
+"btn_my_parkinglot_sharing" = "내 주차장 공유";
+
+// Level Guide
+"ttl_level_guide" = "회원 등급 안내";
+"ttl_member_level" = "%@ %@!";
+"dsc_memeber_level" = "회원 등급별 차별화된 혜택으로\n한 단계 업그레이드된 주차 생활을 즐기세요!";
+"dsc_point_gauge" = "%@번 더 주차하면 %@으로 진급!";
+"ttl_level_1" = "이사님";
+"dsc_level_1" = "이용실적 하위 50%";
+"txt_level_1_benefit" = "기본 혜택";
+"ttl_level_2" = "상무님";
+"dsc_level_2" = "이용실적 상위 20-50%";
+"txt_level_2_benefit" = "포인트 1% 추가적립";
+"ttl_level_3" = "전무님";
+"dsc_level_3" = "이용실적 상위 5-20%";
+"txt_level_3_benefit" = "포인트 3% 추가적립";
+"ttl_level_4" = "사장님";
+"dsc_level_4" = "이용실적 상위 5%";
+"txt_level_4_benefit" = "포인트 5% 추가적립";
+"ttl_level_5" = "회장님";
+"dsc_level_5" = "이용실적 상위 1%";
+"txt_level_5_benefit" = "포인트 10% 추가적립";
+
+// Message
+"msg_login_mismatch" = "비밀번호가 일치하지 않습니다.";
+"msg_phone_number_mismatch" = "등록되지 않은 휴대폰 번호입니다.";
+"msg_email_format_invalid" = "올바르지 않은 이메일 형식입니다.";
+"msg_email_verify_sent" = "입력하신 메일로 확인 메일을 발송했습니다.\n메일을 확인해 변경을 완료해주세요.";
+"msg_pw_email_sent" = "입력하신 메일 주소로\n임시 비밀번호를 전송했습니다.";
+"msg_email_invalid" = "올바르지 않은 메일 주소입니다.\n확인 후 다시 입력해주세요.";
+"msg_phone_number_invalid" = "올바르지 않은 휴대폰 번호입니다.\n확인 후 다시 입력해주세요.";
+"msg_pw_format_invalid" = "영문·숫자 포함, 최소 8자 이상의 문자를 입력해주세요.";
+"msg_code_verify_sent" = "인증번호를 휴대폰 번호로 발송 하였습니다.\n확인 후 입력 해주세요.";
+"msg_code_verify_invalid" = "인증번호가 일치하지 않습니다.\n확인 후 다시 입력해주세요.";
+"msg_nickname_changed" = "닉네임이 성공적으로 저장되었습니다.";
+"msg_car_model_empty" = "차량 모델을 선택해주세요.";
+"msg_car_color_empty" = "차량 색상을 선택해주세요.";
+"msg_car_number_invalid" = "올바르지 않은 차량 번호 형식입니다.";
+"msg_credit_card_invalid" = "유효하지 않은 카드 정보입니다.\n소지하신 카드 확인 후 다시 입력해주세요.";
+"msg_credit_card_field_invalid" = "올바르지 않은 내용입니다.";
+"msg_payment_registered" = "새 결제 수단이 정상적으로 등록되었습니다.";
+"msg_nickname_invalid" = "사용할수 없는 문자가 들어가있습니다.";
+"msg_nickname_disaprove" = "이미 사용중인 닉네임입니다.";
+"msg_point_charged" = "포인트가 정상적으로 충전되었습니다.\n현재 보유 포인트는 %@ P 입니다.";
+"msg_reserved_lot_cannot_use" = "예약하신 주차장을 이용할 수 없습니다.";
+"msg_reserved_time_approaching" = "예약한 주차 시간이 거의 다 됐어요!";
+"msg_parking_time_remaining" = "주차 시간이 %@ 시간 %@ 분 남았습니다.";
+"msg_reserved_time_exceeded" = "예약 시간을 %@ 분 초과했습니다.";
+"msg_reserving_time_invalid" = "선택하신 시간엔 다른 차량이 주차를 준비하고 있어요.\n예약 시간을 변경해 주세요.";
+"msg_network_error" = "네트워크 연결이 원활하지 않습니다.\n네트워크 상태를 확인해주세요.";
+"msg_signup_already_exist" = "이미 가입 된 회원 정보입니다.\n로그인 후 사용해주세요.";

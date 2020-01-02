@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import PullUpController
 import RangeSeekSlider
 
 extension SearchOptionViewController : AnalyticsType {
@@ -16,7 +15,7 @@ extension SearchOptionViewController : AnalyticsType {
     }
 }
 
-class SearchOptionViewController: PullUpController {
+class SearchOptionViewController: UIViewController {
     
     @IBOutlet weak var headearView: UIView!
     @IBOutlet weak var topRoundedTipView: UIView!

@@ -76,7 +76,7 @@ class AgreementViewModel: AgreementViewModelType {
         updateProcess(checkedAll ? .enabled : .disabled)
     }
     
-    func updateProcess(_ type:ProceedType) {
+    func updateProcess(_ type:ProceedType, code:ResponseCodeType = .success) {
         switch type {
         case .none, .disabled:
             proceed.accept((type, ""))
@@ -85,7 +85,14 @@ class AgreementViewModel: AgreementViewModelType {
         case .success:
             proceed.accept((.success, ""))
         case .failure:
-            let message = localizer.localized("msg_network_error") as String
+            var message = ""
+            
+            if code == .already_exist {
+                message = localizer.localized("msg_signup_already_exist") as String
+            } else {
+                message = localizer.localized("msg_network_error") as String
+            }
+            
             proceed.accept((.failure, message))
         }
     }
@@ -110,7 +117,7 @@ class AgreementViewModel: AgreementViewModelType {
                     _ = UserData.shared.setAuth(login)
                     self.updateProcess(.success)
                 } else {
-                    self.updateProcess(.failure)
+                    self.updateProcess(.failure, code: code)
                 }
             }, onError: { error in
             

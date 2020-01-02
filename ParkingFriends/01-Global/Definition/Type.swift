@@ -109,7 +109,7 @@ enum PaymentType: String {
 }
 
 // API 응답 코드
-enum ResponseCodeType: String {
+public enum ResponseCodeType: String {
     case success = "0000"
     case unauthorized = "1401"
     case bad_request = "1400"
@@ -118,7 +118,7 @@ enum ResponseCodeType: String {
     case error_message = "1500"
     case unknown = ""
     
-    init(rawValue: String) {
+    public init(rawValue: String) {
         switch rawValue {
         case "0000": self = .success
         case "1400": self = .bad_request
@@ -211,4 +211,10 @@ enum ColorType {
     public var image: UIImage {
         return UIImage(named: imgValue)!
     }
+}
+
+
+// 사용자 레벨 타입
+public enum PointLevelType: Int {
+    case level_1 = 1, level_2, level_3, level_4, level_5
 }
