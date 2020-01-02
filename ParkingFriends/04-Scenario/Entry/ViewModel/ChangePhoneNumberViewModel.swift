@@ -84,16 +84,16 @@ class ChangePhoneNumberViewModel: ChangePhoneNumberViewModelType {
             confirmText.accept(localizer.localized("send_email"))
         }
     }
-/Users/mkjwa/Desktop/Project/Projects/Ver_2.0.0/ParkingFriends/04-Scenario/Entry/ViewModel/FindPasswordViewModel.swift:        Auth.email(type: type, email: email).asObservable().subscribe(onNext: { response in
+    
     func sendVerification(email:String, type:AuthEmailType) {
         Auth.email(type: type, email: email).asObservable().subscribe(onNext: { response in
-                if response == .success {
-                    self.updateStatus(.sent)
-                } else {
-                    self.updateStatus(.invalid)
-                }
-            }, onError: { error in
-            })
+            if response == .success {
+                self.updateStatus(.sent)
+            } else {
+                self.updateStatus(.invalid)
+            }
+        }, onError: { error in
+        })
             .disposed(by: disposeBag)
     }
 }

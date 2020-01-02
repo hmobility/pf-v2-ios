@@ -17,7 +17,7 @@ func castOrThrow<T>(_ resultType: T.Type, _ object: Any) throws -> T {
 }
 
 extension Reactive where Base: NMFMapView {
-    
+    /*
     public var zoomLevel: ControlProperty<Double> {
         return base.rx.controlPropertyWithDefaultEvents(
             getter: { map in
@@ -27,7 +27,7 @@ extension Reactive where Base: NMFMapView {
             }
         )
     }
-        
+        */
     // MRAK: - Delegate
         
     public var delegate: DelegateProxy<NMFMapView, NMFMapViewDelegate> {

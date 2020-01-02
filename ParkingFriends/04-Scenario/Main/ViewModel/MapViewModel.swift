@@ -99,11 +99,12 @@ class MapViewModel: NSObject, MapViewModelType {
                 print("[IDLE] location completed")
             })
             .disposed(by: disposeBag)
-            
+           /*
             map.rx.zoomLevel
                 .asObserver()
                 .onNext(mapModel.zoomLevel)
                 .disposed(by: disposeBag)
+ */
         }
     }
     
@@ -319,21 +320,25 @@ class MapViewModel: NSObject, MapViewModelType {
     // MARK: - Public Methdos
     
     func zoomIn() {
+        /*
         if let map = self.mapView {
             mapModel.zoomIn()
                 .asObservable()
                 .bind(to: map.rx.zoomLevel)
                 .disposed(by: disposeBag)
         }
+ */
     }
     
     func zoomOut() {
+        /*
         if let map = self.mapView {
             mapModel.zoomIn()
                 .asObservable()
                 .bind(to: map.rx.zoomLevel)
                 .disposed(by: disposeBag)
         }
+ */
     }
     
     // Move the camera to the current position
