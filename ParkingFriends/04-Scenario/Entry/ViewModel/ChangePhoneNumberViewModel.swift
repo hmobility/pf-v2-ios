@@ -84,16 +84,16 @@ class ChangePhoneNumberViewModel: ChangePhoneNumberViewModelType {
             confirmText.accept(localizer.localized("send_email"))
         }
     }
-
+    
     func sendVerification(email:String, type:AuthEmailType) {
         Auth.email(type: type, email: email).asObservable().subscribe(onNext: { response in
-                if response == .success {
-                    self.updateStatus(.sent)
-                } else {
-                    self.updateStatus(.invalid)
-                }
-            }, onError: { error in
-            })
+            if response == .success {
+                self.updateStatus(.sent)
+            } else {
+                self.updateStatus(.invalid)
+            }
+        }, onError: { error in
+        })
             .disposed(by: disposeBag)
     }
 }

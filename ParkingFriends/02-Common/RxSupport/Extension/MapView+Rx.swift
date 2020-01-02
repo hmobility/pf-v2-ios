@@ -16,7 +16,20 @@ func castOrThrow<T>(_ resultType: T.Type, _ object: Any) throws -> T {
     return returnValue
 }
 
-extension Reactive where Base:NMFMapView {
+extension Reactive where Base: NMFMapView {
+    /*
+    public var zoomLevel: ControlProperty<Double> {
+        return base.rx.controlPropertyWithDefaultEvents(
+            getter: { map in
+                map.zoomLevel
+            }, setter: { map, value in
+                map.zoomLevel = value
+            }
+        )
+    }
+        */
+    // MRAK: - Delegate
+        
     public var delegate: DelegateProxy<NMFMapView, NMFMapViewDelegate> {
           return RxMapViewDelegateProxy.proxy(for: base)
     }

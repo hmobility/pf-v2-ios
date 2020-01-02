@@ -34,20 +34,5 @@ open class RxMapViewDelegateProxy: DelegateProxy<NMFMapView, NMFMapViewDelegate>
     
     @objc(mapView:didTapSymbol:) open func mapView(_ mapView: NMFMapView, didTap symbol:NMFSymbol) -> Bool {
         return forwardToDelegate()?.mapView?(mapView, didTap: symbol) ?? true
-      }
-    /*
-    // MARK: delegate methods
-    /// For more information take a look at `DelegateProxyType`.
-    @objc open func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        return forwardToDelegate()?.textFieldShouldReturn?(textField) ?? true
     }
-    
-    @objc open func textFieldShouldClear(_ textField: UITextField) -> Bool {
-        return forwardToDelegate()?.textFieldShouldClear?(textField) ?? true
-    }
-    
-    @objc open func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        return forwardToDelegate()?.textField?(textField, shouldChangeCharactersIn: range, replacementString: string) ?? false
-    }
- */
 }

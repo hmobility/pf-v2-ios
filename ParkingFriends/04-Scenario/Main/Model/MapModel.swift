@@ -10,46 +10,54 @@ import Foundation
 import NMapsMap
 
 protocol MapModelType {
-    var zoomLevel:Double { get }
+    var zoomLevel:BehaviorRelay<Double> { get }
     var defaultZoomLevel:Double { get }
     
     func cameraPosition()
     
-    func zoomIn() -> Double
-    func zoomOut() -> Double
+    func zoomIn() -> Observable<Double>
+    func zoomOut() -> Observable<Double>
 }
 
-fileprivate let basicZoomLevel = 14
-fileprivate let minZoomLevel = 10
-fileprivate let maxZoomLevel = 16
+fileprivate let basicZoomLevel = 14.0
+fileprivate let minZoomLevel = 10.0
+fileprivate let maxZoomLevel = 16.0
+
+fileprivate let disctrictZoomLevel = 15
 
 class MapModel: NSObject, MapModelType {
+    var zoomLevel:BehaviorRelay<Double> = BehaviorRelay(value: basicZoomLevel)
     
-    var zoomLevel:Double = Double(basicZoomLevel)
     var defaultZoomLevel:Double {
         get {
             return Double(basicZoomLevel)
         }
     }
     
+    // MARK: - Initialize
+    
     override init() {
         super.init()
     }
     
-    func zoomIn() -> Double {
-        if Int(zoomLevel) < maxZoomLevel {
-            zoomLevel = zoomLevel + 1
+    // MARK: - Public Methods
+    
+    func zoomIn() -> Observable<Double> {
+        if zoomLevel.value < maxZoomLevel {
+            let value = zoomLevel.value
+            zoomLevel.accept(value + 1)
         }
         
-        return Double(zoomLevel)
+        return zoomLevel.map { return $0 }
     }
     
-    func zoomOut() -> Double {
-        if Int(zoomLevel) > minZoomLevel {
-            zoomLevel = zoomLevel - 1
+    func zoomOut() -> Observable<Double> {
+        if zoomLevel.value > minZoomLevel {
+            let value = zoomLevel.value
+            zoomLevel.accept(value - 1)
         }
         
-        return  Double(zoomLevel)
+        return zoomLevel.map { return $0 }
     }
     
     func cameraPosition() {
