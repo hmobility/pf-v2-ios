@@ -25,8 +25,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var alertAction: UIButton!
     
     @IBAction func alertAction(_ sender: Any) {
-        alert(title: "Title", message: "테스트", actions:  [AlertAction(title: "OK", type: 0, style: .default), AlertAction(title: "Cancel", type: 1, style: .cancel)],
-              vc: self).observeOn(MainScheduler.instance)
+        alert(title: "Title", message: "테스트", actions:  [AlertAction(title: "OK", type: 0, style: .default), AlertAction(title: "Cancel", type: 1, style: .cancel)]).observeOn(MainScheduler.instance)
             .subscribe(onNext: { index in
                 print ("popup index: \(index)")
                 self.trackLog()

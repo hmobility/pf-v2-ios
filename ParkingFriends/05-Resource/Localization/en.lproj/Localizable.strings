@@ -2,11 +2,15 @@
 "btn_close" = "닫기";
 "btn_login" = "로그인";
 "btn_signup" = "회원가입";
+"btn_confirm" = "확인";
+"btn_logout" = "로그아웃";
+"btn_cancel" = "취소";
 "btn_modify" = "수정";
 "btn_select" = "선택";
 "btn_skip" = "건너뛰기";
 "btn_save" = "저장";
 "btn_to_save" = "저장하기";
+"btn_remove" = "삭제";
 "btn_resend" = "재전송";
 "btn_to_next" = "다음으로";
 "btn_email_send" = "이메일 전송";
@@ -222,6 +226,35 @@
 "ttl_menu_setting" = "설정";
 "btn_parkinglot_report" = "신규 주차장 제보";
 "btn_my_parkinglot_sharing" = "내 주차장 공유";
+"ttl_my_card" = "내 카드 관리";
+"ttl_my_card_count" = "%@개의 결제 수단";
+"btn_my_card_default" = " 기본카드 설정중";
+"btn_default_card_change" = "기본카드로 변경";
+"ttl_my_info" = "내 정보";
+"btn_save_to_changed" = "변경사항 저장";
+
+// Settings
+"ttl_settings" = "설정";
+"ttl_settings_push" = "알림";
+"ttl_settings_push_argreement" = "알림 수신동의";
+"dsc_settings_push_agreement" = "입출차시간 알림을 설정하시면/n선택 시간에 미리 알림을 받으실 수 있습니다.";
+"ttl_settings_ingoing_push" = "입차시간 알림";
+"ttl_settings_outgoing_push" = "출차시간 알림";
+"txt_minutes_before" = "%@분전";
+"ttl_settings_voice_recognition" = "음성 인식";
+"ttl_settings_voice_command" = "보이스 명령어 사용";
+"dsc_settings_voice_command" = "‘말랑아~’로 음성 명령 화면을 호출합니다.";
+"ttl_settings_terms_and_rules" = "약관 및 방침";
+"ttl_settings_use_terms" = "이용약관";
+"ttl_settings_personal_info_terms" = "개인정보 취급방침";
+"ttl_settings_location_service_terms" = "위치기반 서비스 이용약관";
+"ttl_settings_app_info" = "앱 정보";
+"ttl_settings_app_version" = "앱 버전";
+"txt_settings_app_up_to_date" = "%@(최신버전)";
+"ttl_settings_exit" = "로그아웃 및 탈퇴";
+"ttl_settings_logout" = "로그아웃";
+"ttl_settings_withdraw" = "회원 탈퇴";
+"txt_credit" = "㈜한컴모빌리티/n사업자 등록번호 : 119-86-70032  |  대표자 : 최천우, 현재영/n주소 : 서울특별시 금천구 서부샛길 606, B동 1703-1(가산동, 대성디폴리스)  |  대표전화 : 02-522-6161";
 
 // Level Guide
 "ttl_level_guide" = "회원 등급 안내";
@@ -243,6 +276,10 @@
 "ttl_level_5" = "회장님";
 "dsc_level_5" = "이용실적 상위 1%";
 "txt_level_5_benefit" = "포인트 10% 추가적립";
+
+// Popup
+"ttl_pop_logout" = "로그아웃";
+"dsc_pop_logut" = "로그아웃 하면 시작 페이지로 이동합니다. \n 로그아웃 하시겠습니까?";
 
 // Message
 "msg_login_mismatch" = "비밀번호가 일치하지 않습니다.";

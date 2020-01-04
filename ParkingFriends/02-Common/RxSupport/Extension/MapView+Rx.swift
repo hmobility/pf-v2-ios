@@ -16,18 +16,26 @@ func castOrThrow<T>(_ resultType: T.Type, _ object: Any) throws -> T {
     return returnValue
 }
 
-extension Reactive where Base: NMFMapView {
-    /*
-    public var zoomLevel: ControlProperty<Double> {
-        return base.rx.controlPropertyWithDefaultEvents(
-            getter: { map in
-                map.zoomLevel
-            }, setter: { map, value in
-                map.zoomLevel = value
-            }
-        )
+
+extension Reactive where Base:  NMFMapView {
+    public var zoomLevel: Binder<Double> {
+        return Binder(self.base) { map, zoomLevel in
+            map.zoomLevel = zoomLevel
+        }
     }
-        */
+    
+    public var maxZoomLevel: Binder<Double> {
+           return Binder(self.base) { map, zoomLevel in
+               map.maxZoomLevel = zoomLevel
+           }
+       }
+    
+    public var minZoomLevel: Binder<Double> {
+           return Binder(self.base) { map, zoomLevel in
+               map.minZoomLevel = zoomLevel
+           }
+       }
+      
     // MRAK: - Delegate
         
     public var delegate: DelegateProxy<NMFMapView, NMFMapViewDelegate> {
@@ -47,28 +55,32 @@ extension Reactive where Base: NMFMapView {
         return ControlEvent(events: source)
     }
     
-    public var regionIsChanging: ControlEvent<(animated: Bool, reason: Int)> {
+    public var regionIsChanging: ControlEvent<(zoomLevel:Double, animated: Bool, reason: Int)> {
         let source = delegate
             .methodInvoked(#selector(NMFMapViewDelegate.mapView(_:regionDidChangeAnimated:byReason:)))
             .map { obj in
-                return (animated: try castOrThrow(Bool.self, obj[1]),
-                        reason: try castOrThrow(Int.self, obj[2]))
+                return (zoomLevel: try castOrThrow(Double.self, (obj[0] as! NMFMapView).zoomLevel),
+                    animated: try castOrThrow(Bool.self, obj[1]),
+                    reason: try castOrThrow(Int.self, obj[2]))
             }
-            .map { (animated, reason) in
-                return (animated: animated, reason: reason)
+            .map { (zoomLevel, animated, reason) in
+                return (zoomLevel: zoomLevel, animated: animated, reason: reason)
             }
+        
         return ControlEvent(events: source)
     }
+
     
-    public var regionDidChange: ControlEvent<(animated: Bool, reason: Int)> {
+    public var regionDidChange: ControlEvent<(zoomLevel:Double, animated: Bool, reason: Int)> {
         let source = delegate
             .methodInvoked(#selector(NMFMapViewDelegate.mapView(_:regionDidChangeAnimated:byReason:)))
             .map { obj in
-                return (animated: try castOrThrow(Bool.self, obj[1]),
+                return (zoomLevel: try castOrThrow(Double.self, (obj[0] as! NMFMapView).zoomLevel),
+                        animated: try castOrThrow(Bool.self, obj[1]),
                         reason: try castOrThrow(Int.self, obj[2]))
             }
-            .map { (animated, reason) in
-                return (animated: animated, reason: reason)
+            .map { (zoomLevel, animated, reason) in
+                return (zoomLevel:zoomLevel, animated: animated, reason: reason)
             }
         
         return ControlEvent(events: source)
@@ -87,10 +99,15 @@ extension Reactive where Base: NMFMapView {
         return ControlEvent(events: source)
     }
     
-    public var idle: ControlEvent<Void> {
+    public var idle: ControlEvent<Double> {
         let source = delegate
             .methodInvoked(#selector(NMFMapViewDelegate.mapViewIdle(_:)))
-            .map { _ in }
+            .map { obj in
+                return try castOrThrow(Double.self, (obj[0] as! NMFMapView).zoomLevel)
+            }
+            .map { zoomLevel in
+                return (zoomLevel)
+            }
        
         return ControlEvent(events: source)
     }

@@ -15,7 +15,6 @@ extension PhoneNumberInputViewController : AnalyticsType {
 }
 
 class PhoneNumberInputViewController: UIViewController {
-    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var fieldTitleLabel: UILabel!

@@ -28,13 +28,13 @@ protocol SearchOptionViewModelType {
     var operationItemNone: Driver<String> { get }
     var operationItemPublic: Driver<String> { get }
     var operationItemPrivate: Driver<String> { get }
-    var selectedOperationType: BehaviorRelay<FilterOperationType> { get }
+    var selectedOperationType: BehaviorRelay<ParkingLotType> { get }
     
     var areaTypeText: Driver<String> { get }
     var areaItemNone: Driver<String> { get }
     var areaItemOutdoor: Driver<String> { get }
     var areaItemIndoor: Driver<String> { get }
-    var selectedAreaType: BehaviorRelay<FilterAreaType> { get }
+    var selectedAreaType: BehaviorRelay<InOutDoorType> { get }
     
     var optionTypeText: Driver<String> { get }
     var optionItemCCTV: Driver<String> { get }
@@ -76,13 +76,13 @@ class SearchOptionViewModel: NSObject, SearchOptionViewModelType {
     var operationItemNone: Driver<String>
     var operationItemPublic: Driver<String>
     var operationItemPrivate: Driver<String>
-    var selectedOperationType: BehaviorRelay<FilterOperationType>
+    var selectedOperationType: BehaviorRelay<ParkingLotType>
     
     var areaTypeText: Driver<String>
     var areaItemNone: Driver<String>
     var areaItemOutdoor: Driver<String>
     var areaItemIndoor: Driver<String>
-    var selectedAreaType: BehaviorRelay<FilterAreaType>
+    var selectedAreaType: BehaviorRelay<InOutDoorType>
     
     var optionTypeText: Driver<String>
     var optionItemCCTV: Driver<String>
@@ -146,17 +146,7 @@ class SearchOptionViewModel: NSObject, SearchOptionViewModelType {
         isItemIotSensor = BehaviorRelay(value:userData.filter.isIotSensor)
         isItemMechanical =  BehaviorRelay(value:userData.filter.isNoMechanical)
         isItemFullTime =  BehaviorRelay(value:userData.filter.isAllDay)
-        /*
-        selectedMinimumPrice = BehaviorRelay(value:0)
-        selectedMaximumPrice = BehaviorRelay(value:10000)
-        selectedSortType = BehaviorRelay(value:.low_price)
-        selectedOperationType = BehaviorRelay(value:.none)
-        selectedAreaType = BehaviorRelay(value:.none)
-        isItemCCTV = BehaviorRelay(value:false)
-        isItemIotSensor = BehaviorRelay(value:false)
-        isItemMechanical =  BehaviorRelay(value:false)
-        isItemFullTime =  BehaviorRelay(value:false)
-        */
+
         super.init()
         initialize()
     }

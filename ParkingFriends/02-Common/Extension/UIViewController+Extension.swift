@@ -36,7 +36,11 @@ extension UIViewController {
     }
     
     public func push(_ viewController: UIViewController) {
-        navigationController?.show(viewController, sender: self)
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    public func pop(animated:Bool = true) {
+        self.navigationController?.popViewController(animated: animated)
     }
     
     public func backToPrevious(animated: Bool = true) {

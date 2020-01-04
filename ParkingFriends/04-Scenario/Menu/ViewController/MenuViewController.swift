@@ -15,21 +15,83 @@ extension MenuViewController : AnalyticsType {
 }
 
 class MenuViewController: UIViewController {
-    @IBOutlet weak var levelGuideButton: UIButton!
+    @IBOutlet weak var addMyCarLabel: UILabel!
     
-    private lazy var viewModel: LevelGuideViewModelType = LevelGuideViewModel()
+    @IBOutlet weak var addNewCarButton: UIButton!
+    @IBOutlet weak var addMyCarButton: UIButton!
+    
+    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var userLevelButton: UIButton!
+    
+    @IBOutlet weak var cardManagementLabel: UILabel!
+    @IBOutlet weak var pointChargeLabel: UILabel!
+    @IBOutlet weak var myCouponLabel: UILabel!
+    
+    @IBOutlet weak var paymentHistoryButton: UIButton!
+    @IBOutlet weak var paymentCountButton: UIButton!
+    @IBOutlet weak var myInfoButton: UIButton!
+    @IBOutlet weak var eventButton: UIButton!
+    @IBOutlet weak var noticeButton: UIButton!
+    @IBOutlet weak var faqButton: UIButton!
+    @IBOutlet weak var settingsButton: UIButton!
+    
+    @IBOutlet weak var reportNewParkinglotButton: UIButton!
+    @IBOutlet weak var shareMyParkinglotButton: UIButton!
+    
+    @IBOutlet weak var sideMenuView: UIView!
+    
+    private lazy var viewModel: MenuViewModelType = MenuViewModel()
+    
     private let disposeBag = DisposeBag()
     
     // MARK: - Binding
-    
-    private func setupButtonBinding() {
-        levelGuideButton.rx.tap.asDriver()
-        .drive(onNext: { _ in
-            self.navigateToLevelGuide()
-        })
-        .disposed(by: disposeBag)
+
+    private func setupUserInfoBinding() {
+        userLevelButton.rx.tap.asDriver()
+            .drive(onNext: { _ in
+                self.navigateToLevelGuide()
+            })
+            .disposed(by: disposeBag)
     }
-      
+    
+    private func setupMenuBinding() {
+        viewModel.paymentHistoryText
+            .drive(paymentHistoryButton.rx.title())
+            .disposed(by: disposeBag)
+        
+        viewModel.myInfoText
+            .drive(myInfoButton.rx.title())
+            .disposed(by: disposeBag)
+        
+        viewModel.noticeText
+            .drive(noticeButton.rx.title())
+            .disposed(by: disposeBag)
+        
+        viewModel.faqText
+            .drive(faqButton.rx.title())
+            .disposed(by: disposeBag)
+        
+        viewModel.settingsText
+            .drive(settingsButton.rx.title())
+            .disposed(by: disposeBag)
+
+        settingsButton.rx.tap
+            .asDriver()
+            .drive(onNext: { _ in
+                self.navigateToSettings()
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func setupReportSectionBinding() {
+        viewModel.reportNewParkinglotText
+            .drive(reportNewParkinglotButton.rx.title())
+            .disposed(by: disposeBag)
+        
+        viewModel.shareMyParkinglotText
+            .drive(shareMyParkinglotButton.rx.title())
+            .disposed(by: disposeBag)
+    }
     // MARK: - Initialize
 
     init() {
@@ -41,8 +103,9 @@ class MenuViewController: UIViewController {
     }
     
     private func initialize() {
-        setupButtonBinding()
-        
+        setupUserInfoBinding()
+        setupMenuBinding()
+        setupReportSectionBinding()
     }
     
     // MARK: - Life Cycle
@@ -58,6 +121,12 @@ class MenuViewController: UIViewController {
         let target = Storyboard.menu.instantiateViewController(withIdentifier: "LevelGuideViewController") as! LevelGuideViewController
         
         self.modal(target, animated: true)
+    }
+    
+    func navigateToSettings() {
+        let target = Storyboard.menu.instantiateViewController(withIdentifier: "SettingsViewController") as! SettingsViewController
+        
+        self.push(target)
     }
      
     /*

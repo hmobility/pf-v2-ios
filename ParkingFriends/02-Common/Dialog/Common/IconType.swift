@@ -11,7 +11,7 @@ import UIKit
 public enum IconType: String {
     case warning = "icWarningFillCircleRed"
     case success = "icSuccessGreen"
-    case notice = "icCheckOn"
+    case notice = "icWarningFillCircleGreen"
     
     public var image: UIImage {
         return UIImage(named: rawValue)!

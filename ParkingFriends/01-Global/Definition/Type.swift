@@ -42,11 +42,68 @@ enum TermsType: Int {
 
 // 추차장 유형 - ParkinglotsAPI
 enum ParkingLotType:String {
+    case none = ""
     case private_lot = "PRIVATE"
     case public_lot = "PUBLIC"
     case alliance = "ALLIANCE"
     case green = "GREEN"
     case resident = "RESIDENT"
+    
+    init(index: Int) {
+        switch index {
+        case 0:
+            self = .none
+        case 1:
+            self = .public_lot
+        case 2:
+            self = .private_lot
+        default:
+            self = .none
+        }
+    }
+    
+    var index: Int {
+        switch self {
+        case .none:
+            return 0
+        case .public_lot:
+            return 1
+        case .private_lot:
+            return 2
+        default:
+            return 0
+        }
+    }
+}
+
+enum InOutDoorType:String {
+    case none = ""
+    case outdoor = "true"
+    case indoor = "false"
+    
+    init(index: Int) {
+         switch index {
+         case 0:
+             self = .none
+         case 1:
+             self = .outdoor
+         case 2:
+             self = .indoor
+         default:
+             self = .none
+         }
+     }
+     
+     var index: Int {
+         switch self {
+         case .none:
+             return 0
+         case .outdoor:
+             return 1
+         case .indoor:
+             return 2
+         }
+     }
 }
 
 // 상품 유형 - ParkinglotsAPI

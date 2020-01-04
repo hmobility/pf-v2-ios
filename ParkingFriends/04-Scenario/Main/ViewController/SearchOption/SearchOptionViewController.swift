@@ -73,15 +73,14 @@ class SearchOptionViewController: UIViewController {
             self.priceRangeSeekSlider.selectedMinValue = value.from.toCGFloat
             self.priceRangeSeekSlider.selectedMaxValue = value.to.toCGFloat
             self.sortingSegmentedControl.selectedSegmentIndex = value.sortType.index
-            self.operationSegmentedControl.selectedSegmentIndex = value.operationType.rawValue
-            self.areaSegmentedControl.selectedSegmentIndex = value.areaType.rawValue
+            self.operationSegmentedControl.selectedSegmentIndex = value.operationType.index
+            self.areaSegmentedControl.selectedSegmentIndex = value.areaType.index
             self.cctvButton.isSelected = value.isCCTV
             self.iotSensorButton.isSelected = value.isIotSensor
             self.noMechanicalButton.isSelected = value.isNoMechanical
             self.allDayButton.isSelected = value.isAllDay
         }
     }
-    
     
     // MARK: - Binding
     
@@ -151,7 +150,6 @@ class SearchOptionViewController: UIViewController {
             .disposed(by: disposeBag)
     }
     
-    
     private func operationTypeSectionBinding() {
         viewModel.operationTypeText
             .drive(parkinglotTypeLabel.rx.text)
@@ -172,7 +170,16 @@ class SearchOptionViewController: UIViewController {
         operationSegmentedControl.rx.selectedSegmentIndex
             .asDriver()
             .map { value in
-                return FilterOperationType(rawValue: value)!
+                switch value {
+                case 0:
+                    return ParkingLotType.none
+                case 1:
+                    return ParkingLotType.public_lot
+                case 2:
+                    return ParkingLotType.private_lot
+                default:
+                    return ParkingLotType.none
+                }
             }
             .drive(self.viewModel.selectedOperationType)
             .disposed(by: disposeBag)
@@ -194,19 +201,30 @@ class SearchOptionViewController: UIViewController {
         viewModel.operationItemPrivate
             .drive(areaSegmentedControl.rx.titleForSegment(at: 2))
             .disposed(by: disposeBag)
-        
+        /*
         viewModel.selectedAreaType
             .asDriver()
             .map({ type in
-                return type.rawValue
+                return InOutDoorType(index: type)
+
             })
             .drive(areaSegmentedControl.rx.selectedSegmentIndex)
             .disposed(by: disposeBag)
-        
+        */
         areaSegmentedControl.rx.selectedSegmentIndex
             .asDriver()
             .map { value in
-                return FilterAreaType(rawValue: value)!
+                switch value {
+                case 0:
+                    return InOutDoorType.none
+                case 1:
+                    return InOutDoorType.outdoor
+                case 2:
+                    return InOutDoorType.indoor
+                default:
+                    return InOutDoorType.none
+                }
+
             }
             .drive(self.viewModel.selectedAreaType)
             .disposed(by: disposeBag)

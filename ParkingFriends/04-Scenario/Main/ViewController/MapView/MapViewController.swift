@@ -108,10 +108,11 @@ class MapViewController: UIViewController {
     }
     
     private func timeSettingAreaBinding() {
-        viewModel.displaySettingSection.asDriver()
+        viewModel.displaySettingSection
+            .asDriver()
             .drive(onNext: { (search, list) in
-                self.cardSectionView.isHidden = list ? false : true
-                self.searchSectionView.isHidden =  search ? false : true
+                self.cardSectionView.isHidden = search ? true : false
+                self.searchSectionView.isHidden = search ? false : true
             })
             .disposed(by: disposeBag)
         
@@ -123,7 +124,7 @@ class MapViewController: UIViewController {
             
         timeSettingView.tapSelectTime()
             .subscribe { _ in
-                    
+                self.navigateToTimeDialog()
             }
             .disposed(by: disposeBag)
     }
@@ -146,7 +147,6 @@ class MapViewController: UIViewController {
         setupNavigationBinding()
         setupButtonBinding()
     }
-    
     
     // MARK: - Life Cycle
 
@@ -182,20 +182,32 @@ class MapViewController: UIViewController {
         self.modal(target, transparent: true)
     }
     
+    func navigateToTimeDialog() {
+        TimeTicketDialog.show(source: self)
+    }
+    
     func showSideMenu() {
-        let target = Storyboard.menu.instantiateViewController(withIdentifier: "SideMenuNavigationController") as! SideMenuNavigationController
+        let target = Storyboard.menu.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
+        
+        let menu = SideMenuNavigationController(rootViewController: target)
+        menu.leftSide = true
         
         let presentationStyle:SideMenuPresentationStyle = .menuSlideIn
         presentationStyle.backgroundColor = Color.darkGrey3
         presentationStyle.presentingEndAlpha = 0.6
-        
+       
         var settings = SideMenuSettings()
         settings.presentationStyle = presentationStyle
         settings.statusBarEndAlpha = 0
-        settings.menuWidth = 300
-        target.settings = settings
+        settings.menuWidth = view.frame.width
+        settings.allowPushOfSameClassTwice = false
+        settings.dismissOnPush = false
 
-        present(target, animated: true, completion: nil)
+        menu.settings = settings
+        menu.isNavigationBarHidden = true
+        menu.leftSide = true
+        
+        present(menu, animated: true, completion: nil)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

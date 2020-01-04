@@ -30,8 +30,13 @@ import UIKit
 struct alert_button_color {
     static let cancel = #colorLiteral(red: 0.8078431373, green: 0.8196078431, blue: 0.831372549, alpha: 1)
     static let normal = #colorLiteral(red: 0.2078431373, green: 0.2352941176, blue: 0.2666666667, alpha: 1)
-    static let title = #colorLiteral(red: 0.2078431373, green: 0.2352941176, blue: 0.2666666667, alpha: 1)
-    static let message = #colorLiteral(red: 0.2078431373, green: 0.2352941176, blue: 0.2666666667, alpha: 1)
+    static let title = Color.darkGrey
+    static let message = Color.charcoalGrey
+}
+
+struct alert_font {
+    static let title = Font.gothicNeoMedium15
+    static let message = Font.gothicNeoRegular15
 }
 
 // MARK: - UIAlertController
@@ -61,8 +66,7 @@ extension UIViewController {
     public func alert(title: String?,
                message: String? = nil,
                actions: [AlertAction],
-               preferredStyle:UIAlertController.Style = .alert,
-               vc:UIViewController) -> Observable<Int> {
+               preferredStyle:UIAlertController.Style = .alert) -> Observable<Int> {
         
         let actionSheet = UIAlertController(title: title, message: message, preferredStyle: preferredStyle)
         
@@ -70,11 +74,11 @@ extension UIViewController {
         let alertContentView = firstSubView?.subviews.first
         
         if let title = actionSheet.title {
-            actionSheet.setValue(NSAttributedString(string: title, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16), NSAttributedString.Key.foregroundColor : alert_button_color.title]), forKey: "attributedTitle")
+            actionSheet.setValue(NSAttributedString(string: title, attributes: [NSAttributedString.Key.font : alert_font.title, NSAttributedString.Key.foregroundColor : alert_button_color.title]), forKey: "attributedTitle")
         }
             
         if let message = actionSheet.message {
-            actionSheet.setValue(NSAttributedString(string: message, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 15), NSAttributedString.Key.foregroundColor : alert_button_color.message]), forKey: "attributedMessage")
+            actionSheet.setValue(NSAttributedString(string: message, attributes: [NSAttributedString.Key.font : alert_font.message, NSAttributedString.Key.foregroundColor : alert_button_color.message]), forKey: "attributedMessage")
         }
         
         for subview in (alertContentView?.subviews)! {
@@ -87,7 +91,7 @@ extension UIViewController {
         
         return actionSheet.addAction(actions: actions)
             .do(onSubscribed: {
-                vc.present(actionSheet, animated: true, completion: nil)
-            })
+                self.present(actionSheet, animated: true, completion: nil)
+            }).observeOn(MainScheduler.instance)
     }
 }

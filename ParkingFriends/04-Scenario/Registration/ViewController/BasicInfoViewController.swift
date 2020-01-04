@@ -15,7 +15,6 @@ extension BasicInfoViewController : AnalyticsType {
 }
 
 class BasicInfoViewController: UIViewController {
-
     @IBOutlet weak var phoneNumberField: CustomInputSection!
     @IBOutlet weak var emailField: CustomInputSection!
     @IBOutlet weak var passwordField: CustomInputSection!
