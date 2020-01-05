@@ -11,9 +11,9 @@ import ObjectMapper
 
 class UserData: NSObject, NSCoding {
     var login: Login?
-    var filter:FilterOption = FilterOption()
-    var noDiplayPaymentGuide:Bool?
-    var productOption:ProductOption?
+    var filter: FilterOption = FilterOption()
+    var displayPaymentGuide: Bool?
+    var productOption: ProductOption?
     
     // MARK: - Public Methods
     
@@ -65,7 +65,7 @@ class UserData: NSObject, NSCoding {
     private func reset() {
         self.login = nil
         self.filter = FilterOption()
-        self.noDiplayPaymentGuide = nil
+        self.displayPaymentGuide = nil
         self.productOption = nil
         
         save()
@@ -92,15 +92,15 @@ class UserData: NSObject, NSCoding {
     required init?(coder aDecoder: NSCoder) {
         self.login = aDecoder.decodeObject(forKey: "login") as? Login
         self.filter = aDecoder.decodeObject(forKey: "filter") as! FilterOption
-        self.noDiplayPaymentGuide = aDecoder.decodeObject(forKey: "noDiplayPaymentGuide") as? Bool ?? false
+        self.displayPaymentGuide = aDecoder.decodeObject(forKey: "displayPaymentGuide") as? Bool ?? true
         self.productOption = aDecoder.decodeObject(forKey: "productOption") as? ProductOption
     }
     
     func encode(with aCoder: NSCoder) {
         aCoder.encode(login, forKey:"login")
         aCoder.encode(filter, forKey: "filter")
-        aCoder.encode(noDiplayPaymentGuide, forKey: "noDiplayPaymentGuide")
-        aCoder.encode(productOption, forKey: "noDiplayPaymentGuide")
+        aCoder.encode(displayPaymentGuide, forKey: "displayPaymentGuide")
+        aCoder.encode(productOption, forKey: "displayPaymentGuide")
     }
     
     static var shared:UserData {

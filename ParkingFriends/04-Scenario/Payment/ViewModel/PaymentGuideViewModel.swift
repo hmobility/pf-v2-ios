@@ -15,7 +15,7 @@ protocol PaymentGuideViewModelType {
     var agreementText: Driver<String> { get }
     var noDisplayText: Driver<String> { get }
     
-    var noDisplayState: BehaviorRelay<Bool> { get }
+    var displayState: BehaviorRelay<Bool> { get }
 }
 
 class PaymentGuideViewModel: PaymentGuideViewModelType {
@@ -25,7 +25,7 @@ class PaymentGuideViewModel: PaymentGuideViewModelType {
     var agreementText: Driver<String>
     var noDisplayText: Driver<String>
     
-    var noDisplayState: BehaviorRelay<Bool> = BehaviorRelay(value: false)
+    var displayState: BehaviorRelay<Bool> = BehaviorRelay(value: true)
     
     private let disposeBag = DisposeBag()
     private var localizer:LocalizerType
@@ -34,6 +34,7 @@ class PaymentGuideViewModel: PaymentGuideViewModelType {
     
     init(localizer: LocalizerType = Localizer.shared) {
         self.localizer = localizer
+        
         viewTitleText = localizer.localized("ttl_payment_guide")
         contentsText = localizer.localized("txt_payment_contents")
         closeText = localizer.localized("btn_close")

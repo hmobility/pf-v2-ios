@@ -26,10 +26,27 @@ class MyInfoViewController: UIViewController {
     private lazy var viewModel: MyInfoViewModel = MyInfoViewModel()
     
     private let disposeBag = DisposeBag()
+    
+    
+    // MARK: - Initialize
+     
+     init() {
+         super.init(nibName: nil, bundle: nil)
+     }
+     
+     required init?(coder aDecoder: NSCoder) {
+         super.init(coder: aDecoder)
+     }
+     
+     private func initialize() {
+
+     }
+    
+    // MARK: - Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        initialize()
         // Do any additional setup after loading the view.
     }
     

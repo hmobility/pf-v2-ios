@@ -11,11 +11,15 @@ import Foundation
 protocol MyCardViewModelType {
     var viewTitle: Driver<String> { get }
     var cardCountText: Driver<String> { get }
+    
+    var elements:BehaviorRelay<[CardElement]> { get }
 }
 
 class MyCardViewModel: MyCardViewModelType {
     var viewTitle: Driver<String>
     var cardCountText: Driver<String>
+    
+    var elements:BehaviorRelay<[CardElement]> = BehaviorRelay(value:[])
     
     var localizer:LocalizerType
     

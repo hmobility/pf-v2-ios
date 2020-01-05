@@ -8,13 +8,12 @@
 
 import Foundation
 
-
-protocol ParkingTicketEmptyViewModelType {
+protocol EmptyParkingTicketViewModelType {
     var noDataTitle: Driver<String> { get }
     var noDataDescription: Driver<String> { get }
 }
 
-class ParkingTicketEmptyViewModel: ParkingTicketEmptyViewModelType {
+class EmptyParkingTicketViewModel: EmptyParkingTicketViewModelType {
     var noDataTitle: Driver<String>
     var noDataDescription: Driver<String>
     

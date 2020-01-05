@@ -82,7 +82,8 @@ class MapViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        viewModel.displayAddressText.asDriver()
+        viewModel.displayAddressText
+            .asDriver()
             .drive(navigationMenuView.mainTitleLabel.rx.text)
             .disposed(by: disposeBag)
     }

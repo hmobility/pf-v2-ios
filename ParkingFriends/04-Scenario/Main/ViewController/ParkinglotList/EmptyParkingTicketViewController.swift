@@ -8,13 +8,13 @@
 
 import UIKit
 
-class ParkingTicketEmptyViewController: UIViewController {
+class EmptyParkingTicketViewController: UIViewController {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     private let disposeBag = DisposeBag()
 
-    private lazy var viewModel: ParkingTicketEmptyViewModelType = ParkingTicketEmptyViewModel()
+    private lazy var viewModel: EmptyParkingTicketViewModelType = EmptyParkingTicketViewModel()
     
     
     // MARK: - Binding

@@ -233,6 +233,16 @@
 "ttl_my_info" = "내 정보";
 "btn_save_to_changed" = "변경사항 저장";
 
+// My Card
+"ttl_my_card" = "내 카드 관리";
+"ttl_my_card_count" = "%@개의 결제 수단";
+"btn_my_card_default" = " 기본카드 설정중";
+"btn_default_card_change" = "기본카드로 변경";
+"ttl_my_info" = "내 정보";
+"btn_save_to_changed" = "변경사항 저장";
+"ttl_no_my_card" = "등록된 결제 수단이 없습니다.";
+"dsc_no_my_card" = "아래 버튼을 눌러, 자주 쓰는 카드를 등록해보세요.";
+
 // Settings
 "ttl_settings" = "설정";
 "ttl_settings_push" = "알림";

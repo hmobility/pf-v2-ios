@@ -21,8 +21,11 @@ class MenuViewController: UIViewController {
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var userLevelButton: UIButton!
     
+    @IBOutlet weak var cardManagementView: UIView!
     @IBOutlet weak var cardManagementLabel: UILabel!
+    @IBOutlet weak var pointChargeView: UIView!
     @IBOutlet weak var pointChargeLabel: UILabel!
+    @IBOutlet weak var myCouponView: UIView!
     @IBOutlet weak var myCouponLabel: UILabel!
     
     @IBOutlet weak var paymentHistoryButton: UIButton!
@@ -84,7 +87,41 @@ class MenuViewController: UIViewController {
     }
     
     private func setupMiddleSectionBinding() {
-        cardPa
+        viewModel.cardManagementText
+            .drive(cardManagementLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        viewModel.pointChargeText
+            .drive(pointChargeLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        viewModel.myCouponText
+            .drive(myCouponLabel.rx.text)
+            .disposed(by: disposeBag)
+
+        cardManagementView.rx
+            .tapGesture()
+            .when(.recognized)
+            .subscribe { _ in
+                self.navigateToMyCard()
+            }
+            .disposed(by: disposeBag)
+        
+        pointChargeView.rx
+            .tapGesture()
+            .when(.recognized)
+            .subscribe { _ in
+                
+            }
+            .disposed(by: disposeBag)
+        
+        myCouponView.rx
+            .tapGesture()
+            .when(.recognized)
+            .subscribe { _ in
+                
+            }
+            .disposed(by: disposeBag)
     }
     
     private func setupMenuBinding() {
@@ -138,6 +175,7 @@ class MenuViewController: UIViewController {
     private func initialize() {
         setupCarSectionBinding()
         setupUserInfoBinding()
+        setupMiddleSectionBinding()
         setupMenuBinding()
         setupReportSectionBinding()
     }
@@ -159,6 +197,12 @@ class MenuViewController: UIViewController {
     
     func navigateToSettings() {
         let target = Storyboard.menu.instantiateViewController(withIdentifier: "SettingsViewController") as! SettingsViewController
+        
+        self.modal(target)
+    }
+    
+    func navigateToMyCard() {
+        let target = Storyboard.menu.instantiateViewController(withIdentifier: "MyCardNavigationController") as! UINavigationController
         
         self.modal(target)
     }
