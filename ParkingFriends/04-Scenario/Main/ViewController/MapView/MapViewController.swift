@@ -188,24 +188,22 @@ class MapViewController: UIViewController {
     
     func showSideMenu() {
         let target = Storyboard.menu.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
-        
-        let menu = SideMenuNavigationController(rootViewController: target)
-        menu.leftSide = true
-        
+    
         let presentationStyle:SideMenuPresentationStyle = .menuSlideIn
         presentationStyle.backgroundColor = Color.darkGrey3
         presentationStyle.presentingEndAlpha = 0.6
-       
+    
         var settings = SideMenuSettings()
         settings.presentationStyle = presentationStyle
         settings.statusBarEndAlpha = 0
         settings.menuWidth = view.frame.width
         settings.allowPushOfSameClassTwice = false
-        settings.dismissOnPush = false
-
+        settings.dismissOnPresent = false
+   
+        let menu = SideMenuNavigationController(rootViewController: target)
+        menu.leftSide = true
         menu.settings = settings
         menu.isNavigationBarHidden = true
-        menu.leftSide = true
         
         present(menu, animated: true, completion: nil)
     }

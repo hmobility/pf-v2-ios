@@ -71,7 +71,7 @@ class SettingsViewController: UIViewController {
         backButton.rx.tap
             .asDriver()
             .drive(onNext: { _ in
-                self.pop()
+               // self.pop()
                 self.dismissModal()
             })
             .disposed(by: disposeBag)
@@ -182,7 +182,7 @@ class SettingsViewController: UIViewController {
             .asObservable()
             .subscribe(onNext: { index in
                 if index == 0 {
-                    debugPrint("Exist")
+                    UserData.shared.logout()
                 }
             })
             .disposed(by: disposeBag)

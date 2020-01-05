@@ -14,11 +14,11 @@
             <objects>
                 <viewController storyboardIdentifier="SettingsViewController" id="Tsc-0B-478" customClass="SettingsViewController" customModule="ParkingFriends" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iOR-4b-hMg">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="1446"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="1500"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RLH-Ya-nIc">
-                                <rect key="frame" x="0.0" y="56" width="414" height="1356"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="1378"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="yXF-Wk-aqg">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="937"/>
@@ -554,13 +554,13 @@
                                 <viewLayoutGuide key="frameLayoutGuide" id="Bua-FX-Wvq"/>
                             </scrollView>
                             <navigationBar contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lrn-NB-Nif">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <navigationItem title="Title" id="DQE-qf-5Sg">
                                         <barButtonItem key="leftBarButtonItem" style="plain" id="uoA-NS-6Yg">
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="hrx-gQ-edU" userLabel="Button - Back">
-                                                <rect key="frame" x="20" y="6" width="48" height="44"/>
+                                                <rect key="frame" x="20" y="0.0" width="48" height="44"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="icBackBlack"/>
                                             </button>
@@ -636,28 +636,30 @@
                                     <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1o0-Ni-bSX" userLabel="View - Top Menu">
                                         <rect key="frame" x="0.0" y="44" width="300" height="160"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="4lc-Zk-3gD">
+                                            <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="4lc-Zk-3gD" userLabel="Stack View - Car Section" customClass="MenuCarSectionView" customModule="ParkingFriends" customModuleProvider="target">
                                                 <rect key="frame" x="16" y="8" width="268" height="88"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6LH-Q1-3yQ" userLabel="View - User Car">
+                                                    <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6LH-Q1-3yQ" userLabel="View - Add New Car">
                                                         <rect key="frame" x="0.0" y="0.0" width="268" height="44"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="내 차량 등록" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zgp-IW-tLk" userLabel="Label - Add My Car">
-                                                                <rect key="frame" x="26" y="15" width="133" height="21"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="내 차량 등록" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zgp-IW-tLk" userLabel="Label - Add My Car">
+                                                                <rect key="frame" x="16" y="14" width="73" height="18"/>
                                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="15"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eSm-9j-aDX" userLabel="Button - Add My Car">
-                                                                <rect key="frame" x="195" y="14" width="24" height="22"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eSm-9j-aDX" userLabel="Button - Add My Car">
+                                                                <rect key="frame" x="232" y="11" width="24" height="22"/>
                                                                 <state key="normal" image="icAddCar"/>
                                                             </button>
                                                         </subviews>
                                                         <color key="backgroundColor" name="AlgaeGreen"/>
                                                         <constraints>
+                                                            <constraint firstItem="xZq-aF-nAi" firstAttribute="trailing" secondItem="eSm-9j-aDX" secondAttribute="trailing" constant="12" id="0Ch-HL-vvU"/>
+                                                            <constraint firstItem="eSm-9j-aDX" firstAttribute="centerY" secondItem="6LH-Q1-3yQ" secondAttribute="centerY" id="7xO-oG-9jg"/>
+                                                            <constraint firstItem="Zgp-IW-tLk" firstAttribute="centerY" secondItem="6LH-Q1-3yQ" secondAttribute="centerY" constant="1" id="E4h-9J-JDh"/>
                                                             <constraint firstAttribute="height" constant="44" id="gjO-Oj-Obl"/>
+                                                            <constraint firstItem="Zgp-IW-tLk" firstAttribute="leading" secondItem="xZq-aF-nAi" secondAttribute="leading" constant="16" id="yur-LJ-aPh"/>
                                                         </constraints>
                                                         <viewLayoutGuide key="safeArea" id="xZq-aF-nAi"/>
                                                         <userDefinedRuntimeAttributes>
@@ -672,7 +674,7 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tNO-hU-35W" userLabel="View - Added Car">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tNO-hU-35W" userLabel="View - My Car">
                                                         <rect key="frame" x="0.0" y="44" width="268" height="44"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="소나타 (123나2345)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Obn-eA-1vd" userLabel="Label - Car Number">
@@ -734,6 +736,15 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                 </subviews>
+                                                <connections>
+                                                    <outlet property="addCarButton" destination="ecZ-B5-aQm" id="ZYv-Gm-JlH"/>
+                                                    <outlet property="addNewCarButton" destination="eSm-9j-aDX" id="6y6-fh-HD0"/>
+                                                    <outlet property="addNewCarLabel" destination="Zgp-IW-tLk" id="daJ-l7-xGR"/>
+                                                    <outlet property="addNewCarView" destination="6LH-Q1-3yQ" id="bGC-B0-k2V"/>
+                                                    <outlet property="carListButton" destination="Ywd-KH-msg" id="XnB-fq-nEv"/>
+                                                    <outlet property="changeMyCarView" destination="tNO-hU-35W" id="aG8-o4-OfG"/>
+                                                    <outlet property="myCarLabel" destination="Obn-eA-1vd" id="7Vw-dL-Mm5"/>
+                                                </connections>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="꼬마곰젤리 이사님" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bdy-Zk-8GU" userLabel="Label - User Name">
                                                 <rect key="frame" x="22" y="79" width="115" height="19.5"/>
@@ -833,7 +844,7 @@
                                                                 <rect key="frame" x="25" y="23" width="50" height="50"/>
                                                                 <subviews>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icPointBlack" translatesAutoresizingMaskIntoConstraints="NO" id="KgO-o2-75l" userLabel="Image View - Icon">
-                                                                        <rect key="frame" x="1" y="1" width="48" height="48"/>
+                                                                        <rect key="frame" x="13" y="13" width="24" height="24"/>
                                                                     </imageView>
                                                                 </subviews>
                                                                 <color key="backgroundColor" name="IceBlue"/>
@@ -872,7 +883,7 @@
                                                                 <rect key="frame" x="25" y="23" width="50" height="50"/>
                                                                 <subviews>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icCouponBlack" translatesAutoresizingMaskIntoConstraints="NO" id="oWo-gq-Z61" userLabel="Image View - Icon">
-                                                                        <rect key="frame" x="1" y="1" width="48" height="48"/>
+                                                                        <rect key="frame" x="13" y="13" width="24" height="24"/>
                                                                     </imageView>
                                                                 </subviews>
                                                                 <color key="backgroundColor" name="IceBlue"/>
@@ -1170,9 +1181,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Khw-GY-Key"/>
                     <connections>
-                        <outlet property="addMyCarButton" destination="ecZ-B5-aQm" id="VeF-yL-75G"/>
-                        <outlet property="addMyCarLabel" destination="Zgp-IW-tLk" id="dMx-Ai-b4S"/>
-                        <outlet property="addNewCarButton" destination="eSm-9j-aDX" id="tw8-PG-3m6"/>
+                        <outlet property="carSectionView" destination="4lc-Zk-3gD" id="crH-Mk-pdv"/>
                         <outlet property="cardManagementLabel" destination="r9q-AQ-vdA" id="NFL-x1-n4A"/>
                         <outlet property="eventButton" destination="zzW-ZG-gTW" id="YXS-vf-flW"/>
                         <outlet property="faqButton" destination="D3g-fV-5V7" id="kYK-WV-W9g"/>
@@ -1188,7 +1197,6 @@
                         <outlet property="sideMenuView" destination="suy-nY-Q1C" id="1hG-Qh-8ZY"/>
                         <outlet property="userLevelButton" destination="PDY-Nf-mDp" id="ClC-wN-JaW"/>
                         <outlet property="usernameLabel" destination="bdy-Zk-8GU" id="m6e-iD-ZRb"/>
-                        <segue destination="Tsc-0B-478" kind="show" id="hqD-FE-pst"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sxM-vf-mVl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

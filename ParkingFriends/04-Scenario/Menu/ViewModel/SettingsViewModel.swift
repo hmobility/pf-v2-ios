@@ -108,7 +108,7 @@ class SettingsViewModel: SettingsViewModelType {
         locationServiceFieldText = localizer.localized("ttl_settings_location_service_terms")
         
         appInfoSectionTitle = localizer.localized("ttl_settings_app_info")
-        appVersionFieldText = localizer.localized("ttl_settings_app_version")
+        appVersionFieldText = localizer.localized("ttl_settings_app_version", arguments: AppInfo.appVersion)
         appDisplayVersionText = localizer.localized("txt_settings_app_up_to_date")
         
         exitSectionTitle = localizer.localized("ttl_settings_exit")

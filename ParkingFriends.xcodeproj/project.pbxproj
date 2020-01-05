@@ -185,6 +185,7 @@
 		629C2886237137C400E0E5E1 /* CarBrandViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629C2885237137C400E0E5E1 /* CarBrandViewController.swift */; };
 		629C2888237149D200E0E5E1 /* ChangePhoneNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629C2887237149D200E0E5E1 /* ChangePhoneNumberViewController.swift */; };
 		629C288A237149FA00E0E5E1 /* FindPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629C2889237149FA00E0E5E1 /* FindPasswordViewController.swift */; };
+		629DB19323C1A1A500E68A94 /* MenuCarSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629DB19223C1A1A500E68A94 /* MenuCarSectionView.swift */; };
 		62AE72342379534200BE6FA3 /* Color.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62AE72332379534200BE6FA3 /* Color.xcassets */; };
 		62AE72392379578400BE6FA3 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AE72382379578400BE6FA3 /* Color.swift */; };
 		62AE723E23795AC000BE6FA3 /* MessageDialogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AE723D23795AC000BE6FA3 /* MessageDialogView.swift */; };
@@ -459,6 +460,7 @@
 		629C2885237137C400E0E5E1 /* CarBrandViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarBrandViewController.swift; sourceTree = "<group>"; };
 		629C2887237149D200E0E5E1 /* ChangePhoneNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePhoneNumberViewController.swift; sourceTree = "<group>"; };
 		629C2889237149FA00E0E5E1 /* FindPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPasswordViewController.swift; sourceTree = "<group>"; };
+		629DB19223C1A1A500E68A94 /* MenuCarSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCarSectionView.swift; sourceTree = "<group>"; };
 		62AE72332379534200BE6FA3 /* Color.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Color.xcassets; sourceTree = "<group>"; };
 		62AE72382379578400BE6FA3 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		62AE723A2379594E00BE6FA3 /* MessageDialogView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageDialogView.xib; sourceTree = "<group>"; };
@@ -769,8 +771,8 @@
 		624F539D23B9D2CF005D7FD8 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				629DB19123C1A16B00E68A94 /* Menu */,
 				624F53B123BB2E5A005D7FD8 /* UserLevel */,
-				624F539E23B9F372005D7FD8 /* MenuViewController.swift */,
 				62576C4923BC838D007BA1F7 /* ParkingSearchViewController.swift */,
 				62576C6623BF3EA8007BA1F7 /* MyCardViewController.swift */,
 				62576C6A23BF42BE007BA1F7 /* MyInfoViewController.swift */,
@@ -1196,6 +1198,15 @@
 				629C286F236E9A1B00E0E5E1 /* CustomInputSection.swift */,
 			);
 			path = CustomField;
+			sourceTree = "<group>";
+		};
+		629DB19123C1A16B00E68A94 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				624F539E23B9F372005D7FD8 /* MenuViewController.swift */,
+				629DB19223C1A1A500E68A94 /* MenuCarSectionView.swift */,
+			);
+			path = Menu;
 			sourceTree = "<group>";
 		};
 		62AE72352379540E00BE6FA3 /* MessageDialog */ = {
@@ -2033,6 +2044,7 @@
 				62269BE823B1A61C00BFACC1 /* ParkingCardViewModel.swift in Sources */,
 				A4BA4BDB235EFC7600D30DFE /* AppTokenAdapter.swift in Sources */,
 				624CE057238E57620068F4F9 /* MapView+Rx.swift in Sources */,
+				629DB19323C1A1A500E68A94 /* MenuCarSectionView.swift in Sources */,
 				625ACE8423A2113F002D0653 /* NavigationDialogView.swift in Sources */,
 				624F53B023BB12D3005D7FD8 /* LevelGuideViewController.swift in Sources */,
 				62601D812392387500B78033 /* Common.swift in Sources */,

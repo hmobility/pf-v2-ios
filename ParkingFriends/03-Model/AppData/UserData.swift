@@ -46,12 +46,30 @@ class UserData: NSObject, NSCoding {
         Localizer.shared.changeLanguage.accept(code)
     }
     
+    public func logout() {
+        self.reset()
+        
+        if let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) {
+            let target = Storyboard.splash.instantiateInitialViewController() as! SplashViewController
+            window.rootViewController = target
+        }
+    }
+    
     // Usually call this method in AppDelegate
     public func initiated(_ lang:Language = .korean) {
         self.language(lang)
     }
     
     // MARK: - Local Methods
+    
+    private func reset() {
+        self.login = nil
+        self.filter = FilterOption()
+        self.noDiplayPaymentGuide = nil
+        self.productOption = nil
+        
+        save()
+    }
     
     private func load(_ lang:Language = .korean) -> UserData? {
         self.language(lang)

@@ -10,7 +10,7 @@ import Foundation
 
 protocol MenuViewModelType {
     
-    var addText: Driver<String> { get }
+    var addNewCarText: Driver<String> { get }
     var addCarText: Driver<String> { get }
     var usernameText: BehaviorRelay<String> { get }
     
@@ -30,7 +30,7 @@ protocol MenuViewModelType {
 }
 
 class MenuViewModel: MenuViewModelType {
-    var addText: Driver<String>
+    var addNewCarText: Driver<String>
     var addCarText: Driver<String>
     var usernameText: BehaviorRelay<String> = BehaviorRelay(value:"")
     
@@ -55,8 +55,8 @@ class MenuViewModel: MenuViewModelType {
     init(localizer: LocalizerType = Localizer.shared) {
         self.localizer = localizer
         
-        addText = localizer.localized("btn_add")
-        addCarText = localizer.localized("ttl_my_car_add")
+        addNewCarText = localizer.localized("ttl_my_car_add")
+        addCarText = localizer.localized("btn_add")
         
         cardManagementText = localizer.localized("ttl_card_management")
         pointChargeText = localizer.localized("ttl_point_charge")

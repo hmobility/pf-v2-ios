@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SideMenu
 
 extension MenuViewController : AnalyticsType {
     var screenName: String {
@@ -15,11 +16,8 @@ extension MenuViewController : AnalyticsType {
 }
 
 class MenuViewController: UIViewController {
-    @IBOutlet weak var addMyCarLabel: UILabel!
-    
-    @IBOutlet weak var addNewCarButton: UIButton!
-    @IBOutlet weak var addMyCarButton: UIButton!
-    
+    @IBOutlet weak var carSectionView:MenuCarSectionView!
+
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var userLevelButton: UIButton!
     
@@ -52,6 +50,41 @@ class MenuViewController: UIViewController {
                 self.navigateToLevelGuide()
             })
             .disposed(by: disposeBag)
+    }
+    
+    private func setupCarSectionBinding() {
+        viewModel.addNewCarText
+            .drive(carSectionView.addNewCarLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        viewModel.addCarText
+            .drive(carSectionView.addCarButton.rx.title())
+            .disposed(by: disposeBag)
+        
+        carSectionView.addNewCarButton.rx.tap
+            .asDriver()
+            .drive(onNext: { _ in
+                
+            })
+            .disposed(by: disposeBag)
+        
+        carSectionView.carListButton.rx.tap
+            .asDriver()
+            .drive(onNext: { _ in
+                
+            })
+            .disposed(by: disposeBag)
+        
+        carSectionView.addCarButton.rx.tap
+            .asDriver()
+            .drive(onNext: { _ in
+                
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func setupMiddleSectionBinding() {
+        cardPa
     }
     
     private func setupMenuBinding() {
@@ -103,6 +136,7 @@ class MenuViewController: UIViewController {
     }
     
     private func initialize() {
+        setupCarSectionBinding()
         setupUserInfoBinding()
         setupMenuBinding()
         setupReportSectionBinding()
@@ -126,7 +160,7 @@ class MenuViewController: UIViewController {
     func navigateToSettings() {
         let target = Storyboard.menu.instantiateViewController(withIdentifier: "SettingsViewController") as! SettingsViewController
         
-        self.push(target)
+        self.modal(target)
     }
      
     /*

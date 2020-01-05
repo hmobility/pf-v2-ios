@@ -700,10 +700,10 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icDropdownWhite" translatesAutoresizingMaskIntoConstraints="NO" id="bDn-DB-1Fc" userLabel="ImageView - Arrow">
-                                                        <rect key="frame" x="233" y="12" width="16" height="16"/>
+                                                        <rect key="frame" x="225" y="4" width="32" height="32"/>
                                                     </imageView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SxN-Hl-AXI" userLabel="Button - Sort Type">
-                                                        <rect key="frame" x="166" y="5" width="65" height="30"/>
+                                                        <rect key="frame" x="158" y="5" width="65" height="30"/>
                                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="15"/>
                                                         <state key="normal" title="낮은가격순">
                                                             <color key="titleColor" name="LightBlueGrey"/>
@@ -920,7 +920,7 @@
                                                                     </userDefinedRuntimeAttributes>
                                                                 </view>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icMarkerFitGreen" translatesAutoresizingMaskIntoConstraints="NO" id="iXM-Aw-1hW" userLabel="Image View - Icon">
-                                                                    <rect key="frame" x="344" y="22" width="12" height="12"/>
+                                                                    <rect key="frame" x="332" y="22" width="24" height="24"/>
                                                                 </imageView>
                                                             </subviews>
                                                             <constraints>
@@ -1545,16 +1545,24 @@
                                     <constraint firstAttribute="height" constant="55" id="b6V-af-3Qu"/>
                                 </constraints>
                             </stackView>
+                            <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zMA-le-IgM" userLabel="View - Bottom Safe Area">
+                                <rect key="frame" x="0.0" y="862" width="414" height="34"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="zMA-le-IgM" secondAttribute="bottom" id="0f4-vt-Dj2"/>
                             <constraint firstItem="xj5-bp-vux" firstAttribute="trailing" secondItem="0BX-bd-ys5" secondAttribute="trailing" id="23B-Wx-0jB"/>
                             <constraint firstItem="I0n-0C-HFK" firstAttribute="leading" secondItem="xj5-bp-vux" secondAttribute="leading" id="3bM-vi-Hkj"/>
                             <constraint firstItem="I0n-0C-HFK" firstAttribute="trailing" secondItem="xj5-bp-vux" secondAttribute="trailing" id="5IK-89-6Xz"/>
+                            <constraint firstAttribute="trailing" secondItem="zMA-le-IgM" secondAttribute="trailing" id="C7p-0a-uNb"/>
                             <constraint firstItem="0BX-bd-ys5" firstAttribute="leading" secondItem="xj5-bp-vux" secondAttribute="leading" id="Kd9-At-ZBr"/>
                             <constraint firstItem="O2m-XD-Z0g" firstAttribute="width" secondItem="eTK-lL-hRw" secondAttribute="width" id="QEv-Rc-OVY"/>
                             <constraint firstItem="I0n-0C-HFK" firstAttribute="top" secondItem="xj5-bp-vux" secondAttribute="top" id="Qlw-Aa-Tsb"/>
+                            <constraint firstItem="zMA-le-IgM" firstAttribute="top" secondItem="0BX-bd-ys5" secondAttribute="bottom" id="VOs-cx-EXt"/>
                             <constraint firstItem="O2m-XD-Z0g" firstAttribute="leading" secondItem="xj5-bp-vux" secondAttribute="leading" id="Wff-Tp-6U4"/>
+                            <constraint firstItem="zMA-le-IgM" firstAttribute="leading" secondItem="eTK-lL-hRw" secondAttribute="leading" id="kiS-iQ-z3B"/>
                             <constraint firstItem="xj5-bp-vux" firstAttribute="bottom" secondItem="0BX-bd-ys5" secondAttribute="bottom" id="l0z-Ya-NkK"/>
                             <constraint firstItem="O2m-XD-Z0g" firstAttribute="trailing" secondItem="xj5-bp-vux" secondAttribute="trailing" id="mv8-1J-Krj"/>
                             <constraint firstItem="xg6-wX-LUk" firstAttribute="leading" secondItem="xj5-bp-vux" secondAttribute="leading" id="nWm-ue-Msm"/>
@@ -1718,7 +1726,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icOnfoot" translatesAutoresizingMaskIntoConstraints="NO" id="sHt-VX-Wp4" userLabel="ImageView - Icon">
-                                                    <rect key="frame" x="345" y="60" width="15" height="15"/>
+                                                    <rect key="frame" x="330" y="52.5" width="30" height="30"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
