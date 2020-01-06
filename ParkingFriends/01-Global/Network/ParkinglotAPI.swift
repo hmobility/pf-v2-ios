@@ -54,9 +54,9 @@ class ParkinglotAPI: BaseAPI {
     static func within(lat:String, lon:String, radius:String, start:String, end:String, productType:ProductType, monthlyFrom:String, monthlyCount:Int, filter:FilterType, httpMethod:HttpMethod = .post, auth:APIAuthType = .OAuth2) -> RestURL  {
    //    let filter:Params = ["fee":["from":filter.fee.from, "to":filter.fee.to], "lotType":filter.operationType.param, "sort": filter.sortType.rawValue, "option":["cctv":filter.option.cctv, "iotSensor":filter.option.iotSensor, "mechanical":filter.option.mechanical, "allDayOperation":filter.option.allDay, "outsideFlag":filter.option.outside]]
         
-        let filterParams:Params = ["fee":["from":filter.fee.from, "to":filter.fee.to], "option":["cctv":filter.option.cctv, "iotSensor":filter.option.iotSensor, "mechanical":filter.option.mechanical, "allDayOperation":filter.option.allDay, "outsideFlag":filter.option.outside]]
+        let filterParams:Params = ["fee":["from":filter.fee.from, "to":filter.fee.to], "option":["cctv":filter.option.cctv, "iotSensor":filter.option.iotSensor, "mechanical":filter.option.mechanical, "allDayOperation":filter.option.allDay, "outsideFlag":filter.areaType.rawValue]]
         
-        let params:Params = ["lat": lat, "lon":lon, "radius":radius, "start":start , "end":end, "productType":productType.rawValue, "monthlyFrom":monthlyFrom, "monthlyCount":monthlyCount, "filter":filterParams, "lotType":filter.operationType.param, "sort": filter.sortType.rawValue]
+        let params:Params = ["lat": lat, "lon":lon, "radius":radius, "start":start , "end":end, "productType":productType.rawValue, "monthlyFrom":monthlyFrom, "monthlyCount":monthlyCount, "filter":filterParams, "lotType":filter.operationType.rawValue, "sort": filter.sortType.rawValue]
         
         debugPrint("[PARAMS] : ", params)
         let url = build(host:host, endpoint:"/parkinglots/within", params: nil)

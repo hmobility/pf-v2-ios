@@ -94,6 +94,7 @@ extension UIView {
         guard let view = nib.instantiate(withOwner: withOwner, options: options).first as? T else {
             fatalError("Could not load view from nib file.")
         }
+        
         return view
     }
 }

@@ -36,7 +36,11 @@ extension UIViewController {
     }
     
     public func push(_ viewController: UIViewController) {
-        navigationController?.show(viewController, sender: self)
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    public func pop(animated: Bool = true) {
+        self.navigationController?.popViewController(animated: animated)
     }
     
     public func backToPrevious(animated: Bool = true) {
@@ -56,8 +60,8 @@ extension UIViewController {
         }
     }
     
-    public func dismissModal(completion: (() -> Void)? = nil) {
-        presentingViewController?.dismiss(animated: true, completion: completion)
+    public func dismissModal(animated: Bool = true, completion: (() -> Void)? = nil) {
+        presentingViewController?.dismiss(animated: animated, completion: completion)
     }
     
     public func dismissToTop(animated: Bool = true, completion: (() -> Void)? = nil) {
@@ -73,5 +77,4 @@ extension UIViewController {
             navigationController.dismiss(animated: true, completion: completion)
         }
     }
-    
 }

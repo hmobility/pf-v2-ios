@@ -14,7 +14,7 @@ import ObjectMapper
 
 class Cards: BaseModelType {
     var totalCount:Int = 0
-    var elements:[Card] = [Card]()
+    var elements:[CardElement] = [CardElement]()
     
     required init?(map: Map) {
         super.init(map: map)
@@ -26,7 +26,7 @@ class Cards: BaseModelType {
     }
 }
 
-class Card: BaseModelType {
+public class CardElement: BaseModelType {
     var id:Int = 0
     var name:String = ""
     var defaultFlag:Bool = false
@@ -35,7 +35,7 @@ class Card: BaseModelType {
         super.init(map: map)
     }
       
-    override func mapping(map: Map) {
+    override public func mapping(map: Map) {
         id <- map["id"]
         name <- map["name"]
         defaultFlag <- (map["defaultFlag"], BoolTransform())

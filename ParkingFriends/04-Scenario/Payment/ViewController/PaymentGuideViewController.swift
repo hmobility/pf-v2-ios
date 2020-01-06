@@ -91,10 +91,10 @@ class PaymentGuideViewController: UIViewController {
                 .map { (_) -> Bool in
                     return !self.noDisplayButton.isSelected
                 }
-                .do(onNext: { (isSelected) in
-                    self.noDisplayButton.isSelected = isSelected
+                .do(onNext: { (display) in
+                    self.noDisplayButton.isSelected = display ? false : true
                 })
-                .bind(to: self.viewModel.noDisplayState)
+                .bind(to: self.viewModel.displayState)
                 .disposed(by: disposeBag)
 
         agreementButton.rx.tap.do(onNext: { [unowned self] in

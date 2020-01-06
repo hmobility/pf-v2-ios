@@ -77,7 +77,8 @@ class ParkingTapViewController: UIViewController {
     }
     
     private func setupSortOrderButtonBinding() {
-        sortOrderButton.rx.tap.asDriver()
+        sortOrderButton.rx.tap
+            .asDriver()
             .drive(onNext: { _ in
                 self.showSortOrderDiaglog()
             })

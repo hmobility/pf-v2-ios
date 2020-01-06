@@ -33,7 +33,12 @@ class SplashViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         trackScreen()
-        navigateEntry()
+        
+        if let _ = UserData.shared.login {
+            navigateToMain()
+        } else {
+            navigateEntry()
+        }
     }
     
     // MARK: - Navigation
@@ -42,6 +47,11 @@ class SplashViewController: UIViewController {
         let entry = Storyboard.entry.instantiateInitialViewController() as! UINavigationController
         self.modal(entry, animated: false)
     }
+    
+    private func navigateToMain() {
+         let target = Storyboard.main.instantiateInitialViewController() as! UINavigationController
+         self.modal(target, animated: true)
+     }
 
     /*
     // In a storyboard-based application, you will often want to do a little preparation before navigation
