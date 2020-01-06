@@ -283,7 +283,7 @@
 
 // Popup
 "ttl_pop_logout" = "로그아웃";
-"dsc_pop_logut" = "로그아웃 하면 시작 페이지로 이동합니다. \n 로그아웃 하시겠습니까?";
+"dsc_pop_logut" = "로그아웃 하면 시작 페이지로 이동합니다.\n로그아웃 하시겠습니까?";
 
 // Message
 "msg_login_mismatch" = "비밀번호가 일치하지 않습니다.";

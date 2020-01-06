@@ -14,7 +14,7 @@ fileprivate let kBasicZoomLevel = 14.0
 fileprivate let kMinZoomLevel = 10.0
 fileprivate let kMaxZoomLevel = 16.0
 
-fileprivate let kDisctrictZoomLevel = 15.0
+fileprivate let kDisctrictZoomLevel = 12.5
 
 typealias ExtentType = (southWestLat:Double, southWestLng:Double, northEastLat:Double, northEastLng:Double)
 
@@ -60,7 +60,7 @@ class MapModel: NSObject, MapModelType {
     // MARK: - Public Methods
     
     func isDistrictZoomLevel(_ zoomLevel:Double) -> Observable<Bool> {
-        return Observable.just(zoomLevel >= districtZoomLevel)
+        return Observable.just(zoomLevel <= districtZoomLevel)
     }
     
     func zoomIn() -> Observable<Double> {

@@ -20,12 +20,17 @@ class SearchOptionViewController: UIViewController {
     @IBOutlet weak var headearView: UIView!
     @IBOutlet weak var topRoundedTipView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
+    
+    @IBOutlet weak var priceStartLabel: UILabel!
+    @IBOutlet weak var priceEndLabel: UILabel!
+    @IBOutlet weak var priceUnitLabel: UILabel!
+    @IBOutlet weak var priceRangeSeekSlider: RangeSeekSlider!
     @IBOutlet weak var pricePerUnitLabel: UILabel!
     @IBOutlet weak var priceRangeLabel: UILabel!
-    @IBOutlet weak var priceRangeSeekSlider: RangeSeekSlider!
     @IBOutlet weak var priceGuideLabel: UILabel!
     @IBOutlet weak var priceLowLabel: UILabel!
     @IBOutlet weak var priceMaxLabel: UILabel!
+    
     @IBOutlet weak var sortTypeLabel: UILabel!
     @IBOutlet weak var sortingSegmentedControl: UISegmentedControl!
     @IBOutlet weak var operationTypeLabel: UILabel!
@@ -73,8 +78,8 @@ class SearchOptionViewController: UIViewController {
             self.priceRangeSeekSlider.selectedMinValue = value.from.toCGFloat
             self.priceRangeSeekSlider.selectedMaxValue = value.to.toCGFloat
             self.sortingSegmentedControl.selectedSegmentIndex = value.sortType.index
-            self.operationSegmentedControl.selectedSegmentIndex = value.operationType.index
-            self.areaSegmentedControl.selectedSegmentIndex = value.areaType.index
+            self.operationSegmentedControl.selectedSegmentIndex = value.lotType.index
+            self.areaSegmentedControl.selectedSegmentIndex = value.lotType.index
             self.cctvButton.isSelected = value.isCCTV
             self.iotSensorButton.isSelected = value.isIotSensor
             self.noMechanicalButton.isSelected = value.isNoMechanical
@@ -105,25 +110,39 @@ class SearchOptionViewController: UIViewController {
     }
     
     private func priceSectionBinding() {
-        viewModel.pricePerHourText
-                 .drive(pricePerUnitLabel.rx.text)
-                 .disposed(by: disposeBag)
+        viewModel.priceStartText
+            .asDriver()
+            .drive(priceStartLabel.rx.text)
+            .disposed(by: disposeBag)
         
-        viewModel.priceRangeText
-                .drive(priceRangeLabel.rx.text)
-                .disposed(by: disposeBag)
+        viewModel.priceEndText
+            .asDriver()
+            .drive(priceEndLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        viewModel.priceUnitText
+            .drive(priceUnitLabel.rx.text)
+            .disposed(by: disposeBag)
                 
+        viewModel.pricePerHourText
+            .drive(pricePerUnitLabel.rx.text)
+            .disposed(by: disposeBag)
+    /*
+        viewModel.priceRangeText
+            .drive(priceRangeLabel.rx.text)
+            .disposed(by: disposeBag)
+      */
         viewModel.priceMinimumText
-                .drive(priceLowLabel.rx.text)
-                .disposed(by: disposeBag)
+            .drive(priceLowLabel.rx.text)
+            .disposed(by: disposeBag)
         
         viewModel.priceMaximumText
-                .drive(priceMaxLabel.rx.text)
-                .disposed(by: disposeBag)
+            .drive(priceMaxLabel.rx.text)
+            .disposed(by: disposeBag)
         
         viewModel.priceGuideText
-                .drive(priceGuideLabel.rx.text)
-                .disposed(by: disposeBag)
+            .drive(priceGuideLabel.rx.text)
+            .disposed(by: disposeBag)
         
         priceRangeSeekSlider.delegate = viewModel as? RangeSeekSliderDelegate
     }
@@ -132,7 +151,14 @@ class SearchOptionViewController: UIViewController {
         viewModel.sortTypeText
                 .drive(sortTypeLabel.rx.text)
                 .disposed(by: disposeBag)
-
+        
+      //  sortingSegmentedControl.removeAllSegments()
+        
+        for (index, item) in viewModel.sortSegmentedControl.enumerated() {
+            debugPrint("[ITEM] - ", item.title)
+            sortingSegmentedControl.setTitle(item.title, forSegmentAt: index)
+        }
+     /*
         viewModel.sortItemLowPrice
                 .drive(sortingSegmentedControl.rx.titleForSegment(at: 0))
                 .disposed(by: disposeBag)
@@ -140,11 +166,11 @@ class SearchOptionViewController: UIViewController {
         viewModel.sortItemNearby
                 .drive(sortingSegmentedControl.rx.titleForSegment(at: 1))
                 .disposed(by: disposeBag)
- 
+         */
         sortingSegmentedControl.rx.selectedSegmentIndex
             .asDriver()
-            .map { value in
-                return SortType(index: value)
+            .map { index in
+                return self.viewModel.sortSegmentedControl[index].type
             }
             .drive(self.viewModel.selectedSortType)
             .disposed(by: disposeBag)
@@ -226,7 +252,7 @@ class SearchOptionViewController: UIViewController {
                 }
 
             }
-            .drive(self.viewModel.selectedAreaType)
+            .drive(self.viewModel.selectedInOutType)
             .disposed(by: disposeBag)
     }
     

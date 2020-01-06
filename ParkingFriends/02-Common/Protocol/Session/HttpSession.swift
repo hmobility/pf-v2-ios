@@ -79,7 +79,7 @@ class HttpSession: NSObject {
         return Observable.create { [unowned self] observer -> Disposable in
             dataTask.validate(statusCode: self.acceptableStatusCodes).validate(contentType: self.acceptableContentType).responseJSON(completionHandler:{ (response) in
                 response.result.ifSuccess ({
-                    print("[SUCCESS]", response.debugDescription, terminator:"\n")
+                   // print("[SUCCESS]", response.debugDescription, terminator:"\n")
                     let object = response.result.value as! [String : Any]
                     let result = ServerResult(JSON: object)!
                     

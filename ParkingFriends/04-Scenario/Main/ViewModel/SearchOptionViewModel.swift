@@ -11,8 +11,12 @@ import RangeSeekSlider
 
 protocol SearchOptionViewModelType {
     var viewTitleText: Driver<String> { get }
+    
+    var priceUnitText: Driver<String> { get }
+    var priceStartText: BehaviorRelay<String> { get }
+    var priceEndText: BehaviorRelay<String> { get }
     var pricePerHourText: Driver<String> { get }
-    var priceRangeText: Driver<String> { get }
+    //var priceRangeText: Driver<String> { get }
     var priceMinimumText: Driver<String> { get }
     var priceMaximumText: Driver<String> { get }
     var priceGuideText: Driver<String> { get }
@@ -20,9 +24,11 @@ protocol SearchOptionViewModelType {
     var selectedMaximumPrice: BehaviorRelay<Int> { get }
     
     var sortTypeText: Driver<String> { get }
-    var sortItemLowPrice: Driver<String> { get }
-    var sortItemNearby: Driver<String> { get }
+    //var sortItemLowPrice: Driver<String> { get }
+    //var sortItemNearby: Driver<String> { get }
     var selectedSortType: BehaviorRelay<SortType> { get }
+    
+    var sortSegmentedControl: [(type:SortType, title:String)]  { get }
     
     var operationTypeText: Driver<String> { get }
     var operationItemNone: Driver<String> { get }
@@ -34,7 +40,7 @@ protocol SearchOptionViewModelType {
     var areaItemNone: Driver<String> { get }
     var areaItemOutdoor: Driver<String> { get }
     var areaItemIndoor: Driver<String> { get }
-    var selectedAreaType: BehaviorRelay<InOutDoorType> { get }
+    var selectedInOutType: BehaviorRelay<InOutDoorType> { get }
     
     var optionTypeText: Driver<String> { get }
     var optionItemCCTV: Driver<String> { get }
@@ -59,8 +65,11 @@ protocol SearchOptionViewModelType {
 class SearchOptionViewModel: NSObject, SearchOptionViewModelType {
     var viewTitleText: Driver<String>
     
+    var priceUnitText: Driver<String>
+    var priceStartText: BehaviorRelay<String>
+    var priceEndText: BehaviorRelay<String>
     var pricePerHourText: Driver<String>
-    var priceRangeText: Driver<String>
+   // var priceRangeText: Driver<String>
     var priceMinimumText: Driver<String>
     var priceMaximumText: Driver<String>
     var priceGuideText: Driver<String>
@@ -68,9 +77,11 @@ class SearchOptionViewModel: NSObject, SearchOptionViewModelType {
     var selectedMaximumPrice: BehaviorRelay<Int>
     
     var sortTypeText: Driver<String>
-    var sortItemLowPrice: Driver<String>
-    var sortItemNearby: Driver<String>
+  //  var sortItemLowPrice: Driver<String>
+  //  var sortItemNearby: Driver<String>
     var selectedSortType: BehaviorRelay<SortType>
+    
+    var sortSegmentedControl: [(type:SortType, title:String)]
     
     var operationTypeText: Driver<String>
     var operationItemNone: Driver<String>
@@ -82,7 +93,7 @@ class SearchOptionViewModel: NSObject, SearchOptionViewModelType {
     var areaItemNone: Driver<String>
     var areaItemOutdoor: Driver<String>
     var areaItemIndoor: Driver<String>
-    var selectedAreaType: BehaviorRelay<InOutDoorType>
+    var selectedInOutType: BehaviorRelay<InOutDoorType>
     
     var optionTypeText: Driver<String>
     var optionItemCCTV: Driver<String>
@@ -108,15 +119,18 @@ class SearchOptionViewModel: NSObject, SearchOptionViewModelType {
         self.userData = userData
         
         viewTitleText = localizer.localized("ttl_search_option")
+        
+        priceUnitText = localizer.localized("txt_money_unit")
         pricePerHourText = localizer.localized("ttl_price_per_unit")
-        priceRangeText = localizer.localized("txt_price_range")
+        //priceRangeText = localizer.localized("txt_price_range")
         priceMinimumText = localizer.localized("txt_price_min")
         priceMaximumText = localizer.localized("txt_price_max")
         priceGuideText = localizer.localized("txt_price_guide")
         
         sortTypeText = localizer.localized("ttl_order_sorting")
-        sortItemLowPrice = localizer.localized("itm_low_price")
-        sortItemNearby = localizer.localized("itm_nearby")
+        //sortItemLowPrice = localizer.localized("itm_low_price")
+        //sortItemNearby = localizer.localized("itm_nearby")
+        sortSegmentedControl = [(.price, localizer.localized("itm_order_price")), (.distance, localizer.localized("itm_order_distance"))]
         
         operationTypeText = localizer.localized("ttl_parkinglot_type")
         operationItemNone = localizer.localized("itm_parkinglot_none")
@@ -136,17 +150,22 @@ class SearchOptionViewModel: NSObject, SearchOptionViewModelType {
         
         resetText = localizer.localized("btn_to_reset")
         saveText = localizer.localized("btn_to_save")
-        
+  
         selectedMinimumPrice = BehaviorRelay(value:userData.filter.from)
         selectedMaximumPrice = BehaviorRelay(value:userData.filter.to)
         selectedSortType = BehaviorRelay(value:userData.filter.sortType)
-        selectedOperationType = BehaviorRelay(value:userData.filter.operationType)
-        selectedAreaType = BehaviorRelay(value:userData.filter.areaType)
+        selectedOperationType = BehaviorRelay(value:userData.filter.lotType)
+        selectedInOutType = BehaviorRelay(value:userData.filter.inOutType)
         isItemCCTV = BehaviorRelay(value:userData.filter.isCCTV)
         isItemIotSensor = BehaviorRelay(value:userData.filter.isIotSensor)
         isItemMechanical =  BehaviorRelay(value:userData.filter.isNoMechanical)
         isItemFullTime =  BehaviorRelay(value:userData.filter.isAllDay)
-
+        
+        let start = (userData.filter.from > 0) ? userData.filter.from.withComma : localizer.localized("txt_free")
+   
+        priceStartText = BehaviorRelay(value: start)
+        priceEndText = BehaviorRelay(value: userData.filter.to.withComma)
+        
         super.init()
         initialize()
     }
@@ -159,22 +178,35 @@ class SearchOptionViewModel: NSObject, SearchOptionViewModelType {
     
     // MARK: - Local Methods
     
-    func updatePriceRange(start:String, end:String) {
+    func setMinimumPrice(_ price:Int) {
+        let value:String = (price == 0) ? localizer.localized("txt_free") : price.withComma
         
+        selectedMinimumPrice.accept(price)
+        priceStartText.accept(value)
+    }
+    
+    func setMaximumPrice(_ price:Int) {
+        selectedMaximumPrice.accept(price)
+        priceEndText.accept(price.withComma)
     }
     
     // MARK: - Public Methods
+    
+    func setPrice(start:Int, end:Int) {
+        
+    }
     
     func getStoredValue() -> FilterOption? {
         return userData.filter
     }
     
     func reset() {
-        selectedMinimumPrice.accept(defaultFilterOption.from)
-        selectedMaximumPrice.accept(defaultFilterOption.to)
+        setMinimumPrice(defaultFilterOption.from)
+        setMaximumPrice(defaultFilterOption.to)
+  
         selectedSortType.accept(defaultFilterOption.sortType)
-        selectedOperationType.accept(defaultFilterOption.operationType)
-        selectedAreaType.accept(defaultFilterOption.areaType)
+        selectedOperationType.accept(defaultFilterOption.lotType)
+        selectedInOutType.accept(defaultFilterOption.inOutType)
         isItemCCTV.accept(defaultFilterOption.isCCTV)
         isItemIotSensor.accept(defaultFilterOption.isIotSensor)
         isItemMechanical.accept(defaultFilterOption.isNoMechanical)
@@ -187,8 +219,8 @@ class SearchOptionViewModel: NSObject, SearchOptionViewModelType {
         userData.filter.from = selectedMinimumPrice.value
         userData.filter.to = selectedMaximumPrice.value
         userData.filter.sortType = selectedSortType.value
-        userData.filter.operationType = selectedOperationType.value
-        userData.filter.areaType = selectedAreaType.value
+        userData.filter.lotType = selectedOperationType.value
+        userData.filter.inOutType = selectedInOutType.value
         userData.filter.isCCTV = isItemCCTV.value
         userData.filter.isIotSensor = isItemIotSensor.value
         userData.filter.isNoMechanical = isItemMechanical.value
@@ -202,14 +234,15 @@ class SearchOptionViewModel: NSObject, SearchOptionViewModelType {
 
 extension SearchOptionViewModel: RangeSeekSliderDelegate {
     func rangeSeekSlider(_ slider: RangeSeekSlider, didChange minValue: CGFloat, maxValue: CGFloat) {
-        if selectedMaximumPrice.value != Int(maxValue) {
-            selectedMaximumPrice.accept(Int(maxValue))
+        let max = Int(maxValue)
+        let min = Int(minValue)
+        
+        if selectedMaximumPrice.value != max {
+            setMaximumPrice(max)
         }
         
-        if selectedMinimumPrice.value != Int(minValue) {
-            selectedMinimumPrice.accept(Int(minValue))
+        if selectedMinimumPrice.value != min {
+            setMinimumPrice(min)
         }
-        
-        
     }
 }

@@ -25,17 +25,23 @@ extension Reactive where Base:  NMFMapView {
     }
     
     public var maxZoomLevel: Binder<Double> {
-           return Binder(self.base) { map, zoomLevel in
-               map.maxZoomLevel = zoomLevel
-           }
-       }
+        return Binder(self.base) { map, zoomLevel in
+            map.maxZoomLevel = zoomLevel
+        }
+    }
     
     public var minZoomLevel: Binder<Double> {
-           return Binder(self.base) { map, zoomLevel in
-               map.minZoomLevel = zoomLevel
-           }
-       }
-      
+        return Binder(self.base) { map, zoomLevel in
+            map.minZoomLevel = zoomLevel
+        }
+    }
+    
+    public var radius:Double {
+        get {
+            let width = self.base.mapWidth
+            return ((self.base.projection.metersPerPixel() * (width / 2)) / 1000)
+        }
+    }
     // MRAK: - Delegate
         
     public var delegate: DelegateProxy<NMFMapView, NMFMapViewDelegate> {
