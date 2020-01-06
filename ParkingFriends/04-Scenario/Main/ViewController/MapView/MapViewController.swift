@@ -192,7 +192,13 @@ class MapViewController: UIViewController {
         var settings = SideMenuSettings()
         settings.presentationStyle = presentationStyle
         settings.statusBarEndAlpha = 0
-        settings.menuWidth = 300
+//        settings.menuWidth = 300
+        
+        // Add by Rao
+        let appWindowRect = UIApplication.shared.keyWindow?.bounds ?? UIWindow().bounds
+        settings.menuWidth = min(round(min((appWindowRect.width), (appWindowRect.height)) * 0.87), 326)
+        //
+        
         target.settings = settings
 
         present(target, animated: true, completion: nil)
