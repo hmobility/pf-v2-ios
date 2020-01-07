@@ -16,7 +16,6 @@ protocol SearchOptionViewModelType {
     var priceStartText: BehaviorRelay<String> { get }
     var priceEndText: BehaviorRelay<String> { get }
     var pricePerHourText: Driver<String> { get }
-    //var priceRangeText: Driver<String> { get }
     var priceMinimumText: Driver<String> { get }
     var priceMaximumText: Driver<String> { get }
     var priceGuideText: Driver<String> { get }
@@ -24,22 +23,16 @@ protocol SearchOptionViewModelType {
     var selectedMaximumPrice: BehaviorRelay<Int> { get }
     
     var sortTypeText: Driver<String> { get }
-    //var sortItemLowPrice: Driver<String> { get }
-    //var sortItemNearby: Driver<String> { get }
     var selectedSortType: BehaviorRelay<SortType> { get }
-    
-    var sortSegmentedControl: [(type:SortType, title:String)]  { get }
+    var sortSegmentedItems: [(type:SortType, title:String)]  { get }
     
     var operationTypeText: Driver<String> { get }
-    var operationItemNone: Driver<String> { get }
-    var operationItemPublic: Driver<String> { get }
-    var operationItemPrivate: Driver<String> { get }
+    var operationSegmentedItems: [(type:ParkingLotType, title:String)] { get }
     var selectedOperationType: BehaviorRelay<ParkingLotType> { get }
     
     var areaTypeText: Driver<String> { get }
-    var areaItemNone: Driver<String> { get }
-    var areaItemOutdoor: Driver<String> { get }
-    var areaItemIndoor: Driver<String> { get }
+
+    var areaInOutSegmentedItems: [(type:InOutDoorType, title:String)] { get }
     var selectedInOutType: BehaviorRelay<InOutDoorType> { get }
     
     var optionTypeText: Driver<String> { get }
@@ -69,7 +62,6 @@ class SearchOptionViewModel: NSObject, SearchOptionViewModelType {
     var priceStartText: BehaviorRelay<String>
     var priceEndText: BehaviorRelay<String>
     var pricePerHourText: Driver<String>
-   // var priceRangeText: Driver<String>
     var priceMinimumText: Driver<String>
     var priceMaximumText: Driver<String>
     var priceGuideText: Driver<String>
@@ -77,22 +69,16 @@ class SearchOptionViewModel: NSObject, SearchOptionViewModelType {
     var selectedMaximumPrice: BehaviorRelay<Int>
     
     var sortTypeText: Driver<String>
-  //  var sortItemLowPrice: Driver<String>
-  //  var sortItemNearby: Driver<String>
     var selectedSortType: BehaviorRelay<SortType>
-    
-    var sortSegmentedControl: [(type:SortType, title:String)]
+    var sortSegmentedItems: [(type:SortType, title:String)]
     
     var operationTypeText: Driver<String>
-    var operationItemNone: Driver<String>
-    var operationItemPublic: Driver<String>
-    var operationItemPrivate: Driver<String>
+    var operationSegmentedItems: [(type:ParkingLotType, title:String)]
     var selectedOperationType: BehaviorRelay<ParkingLotType>
-    
+
     var areaTypeText: Driver<String>
-    var areaItemNone: Driver<String>
-    var areaItemOutdoor: Driver<String>
-    var areaItemIndoor: Driver<String>
+    
+    var areaInOutSegmentedItems: [(type:InOutDoorType, title:String)]
     var selectedInOutType: BehaviorRelay<InOutDoorType>
     
     var optionTypeText: Driver<String>
@@ -122,26 +108,19 @@ class SearchOptionViewModel: NSObject, SearchOptionViewModelType {
         
         priceUnitText = localizer.localized("txt_money_unit")
         pricePerHourText = localizer.localized("ttl_price_per_unit")
-        //priceRangeText = localizer.localized("txt_price_range")
         priceMinimumText = localizer.localized("txt_price_min")
         priceMaximumText = localizer.localized("txt_price_max")
         priceGuideText = localizer.localized("txt_price_guide")
         
         sortTypeText = localizer.localized("ttl_order_sorting")
-        //sortItemLowPrice = localizer.localized("itm_low_price")
-        //sortItemNearby = localizer.localized("itm_nearby")
-        sortSegmentedControl = [(.price, localizer.localized("itm_order_price")), (.distance, localizer.localized("itm_order_distance"))]
+        sortSegmentedItems = [(.price, localizer.localized("itm_order_price")), (.distance, localizer.localized("itm_order_distance"))]
         
         operationTypeText = localizer.localized("ttl_parkinglot_type")
-        operationItemNone = localizer.localized("itm_parkinglot_none")
-        operationItemPublic = localizer.localized("itm_parkinglot_public")
-        operationItemPrivate = localizer.localized("itm_parkinglot_private")
+        operationSegmentedItems = [(.none, localizer.localized("itm_parkinglot_none")), (.public_lot, localizer.localized("itm_parkinglot_public")), (.private_lot, localizer.localized("itm_parkinglot_public"))]
         
         areaTypeText = localizer.localized("ttl_area_type")
-        areaItemNone = localizer.localized("itm_area_none")
-        areaItemOutdoor = localizer.localized("itm_area_outdoor")
-        areaItemIndoor = localizer.localized("itm_area_indoor")
-        
+        areaInOutSegmentedItems = [(.none, localizer.localized("itm_area_none")), (.outdoor, localizer.localized("itm_area_outdoor")), (.indoor, localizer.localized("itm_area_indoor"))]
+ 
         optionTypeText = localizer.localized("ttl_extra_option")
         optionItemCCTV = localizer.localized("itm_option_cctv")
         optionItemIotSensor = localizer.localized("itm_option_iot_sensor")

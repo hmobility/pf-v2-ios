@@ -37,7 +37,7 @@ class SearchOptionViewController: UIViewController {
     @IBOutlet weak var operationSegmentedControl: UISegmentedControl!
     @IBOutlet weak var parkinglotTypeLabel: UILabel!
     @IBOutlet weak var areaTypeLabel: UILabel!
-    @IBOutlet weak var areaSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var areaInOutSegmentedControl: UISegmentedControl!
     @IBOutlet weak var extraOptionLabel: UILabel!
     @IBOutlet weak var cctvButton: UIButton!
     @IBOutlet weak var iotSensorButton: UIButton!
@@ -49,43 +49,6 @@ class SearchOptionViewController: UIViewController {
     
     private var viewModel: SearchOptionViewModelType
     private let disposeBag = DisposeBag()
-    
-    // MARK: - Initialize
-
-    init() {
-        self.viewModel =  SearchOptionViewModel()
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        viewModel =  SearchOptionViewModel()
-        super.init(coder: aDecoder)
-    }
-    
-    private func initialize() {
-        navigationBinding()
-        priceSectionBinding()
-        sortingSectionBinding()
-        operationTypeSectionBinding()
-        optionTypeBinding()
-        buttonBinding()
-        
-        setupInitialValue()
-    }
-    
-    private func setupInitialValue() {
-        if let value = viewModel.getStoredValue() {
-            self.priceRangeSeekSlider.selectedMinValue = value.from.toCGFloat
-            self.priceRangeSeekSlider.selectedMaxValue = value.to.toCGFloat
-            self.sortingSegmentedControl.selectedSegmentIndex = value.sortType.index
-            self.operationSegmentedControl.selectedSegmentIndex = value.lotType.index
-            self.areaSegmentedControl.selectedSegmentIndex = value.lotType.index
-            self.cctvButton.isSelected = value.isCCTV
-            self.iotSensorButton.isSelected = value.isIotSensor
-            self.noMechanicalButton.isSelected = value.isNoMechanical
-            self.allDayButton.isSelected = value.isAllDay
-        }
-    }
     
     // MARK: - Binding
     
@@ -127,11 +90,7 @@ class SearchOptionViewController: UIViewController {
         viewModel.pricePerHourText
             .drive(pricePerUnitLabel.rx.text)
             .disposed(by: disposeBag)
-    /*
-        viewModel.priceRangeText
-            .drive(priceRangeLabel.rx.text)
-            .disposed(by: disposeBag)
-      */
+
         viewModel.priceMinimumText
             .drive(priceLowLabel.rx.text)
             .disposed(by: disposeBag)
@@ -152,25 +111,18 @@ class SearchOptionViewController: UIViewController {
                 .drive(sortTypeLabel.rx.text)
                 .disposed(by: disposeBag)
         
-      //  sortingSegmentedControl.removeAllSegments()
-        
-        for (index, item) in viewModel.sortSegmentedControl.enumerated() {
-            debugPrint("[ITEM] - ", item.title)
-            sortingSegmentedControl.setTitle(item.title, forSegmentAt: index)
-        }
-     /*
-        viewModel.sortItemLowPrice
-                .drive(sortingSegmentedControl.rx.titleForSegment(at: 0))
-                .disposed(by: disposeBag)
-        
-        viewModel.sortItemNearby
-                .drive(sortingSegmentedControl.rx.titleForSegment(at: 1))
-                .disposed(by: disposeBag)
-         */
+        _ = Observable.from(self.viewModel.sortSegmentedItems)
+             .enumerated()
+             .subscribe(onNext: { (index, element) in
+              //   _ = self.operationSegmentedControl.rx.titleForSegment(at: index)
+                 self.sortingSegmentedControl.setTitle(element.title, forSegmentAt: index)
+             })
+             .disposed(by: disposeBag)
+
         sortingSegmentedControl.rx.selectedSegmentIndex
             .asDriver()
             .map { index in
-                return self.viewModel.sortSegmentedControl[index].type
+                return self.viewModel.sortSegmentedItems[index].type
             }
             .drive(self.viewModel.selectedSortType)
             .disposed(by: disposeBag)
@@ -181,31 +133,18 @@ class SearchOptionViewController: UIViewController {
             .drive(parkinglotTypeLabel.rx.text)
             .disposed(by: disposeBag)
         
-        viewModel.operationItemNone
-            .drive(operationSegmentedControl.rx.titleForSegment(at: 0))
-            .disposed(by: disposeBag)
-        
-        viewModel.operationItemPublic
-            .drive(operationSegmentedControl.rx.titleForSegment(at: 1))
-            .disposed(by: disposeBag)
-        
-        viewModel.operationItemPrivate
-            .drive(operationSegmentedControl.rx.titleForSegment(at: 2))
+        _ = Observable.from(self.viewModel.operationSegmentedItems)
+            .enumerated()
+            .subscribe(onNext: { (index, element) in
+             //   _ = self.operationSegmentedControl.rx.titleForSegment(at: index)
+                self.operationSegmentedControl.setTitle(element.title, forSegmentAt: index)
+            })
             .disposed(by: disposeBag)
         
         operationSegmentedControl.rx.selectedSegmentIndex
             .asDriver()
-            .map { value in
-                switch value {
-                case 0:
-                    return ParkingLotType.none
-                case 1:
-                    return ParkingLotType.public_lot
-                case 2:
-                    return ParkingLotType.private_lot
-                default:
-                    return ParkingLotType.none
-                }
+            .map { index in
+                return self.viewModel.operationSegmentedItems[index].type
             }
             .drive(self.viewModel.selectedOperationType)
             .disposed(by: disposeBag)
@@ -216,41 +155,18 @@ class SearchOptionViewController: UIViewController {
             .drive(areaTypeLabel.rx.text)
             .disposed(by: disposeBag)
         
-        viewModel.operationItemNone
-            .drive(areaSegmentedControl.rx.titleForSegment(at: 0))
-            .disposed(by: disposeBag)
-        
-        viewModel.operationItemPublic
-            .drive(areaSegmentedControl.rx.titleForSegment(at: 1))
-            .disposed(by: disposeBag)
-        
-        viewModel.operationItemPrivate
-            .drive(areaSegmentedControl.rx.titleForSegment(at: 2))
-            .disposed(by: disposeBag)
-        /*
-        viewModel.selectedAreaType
-            .asDriver()
-            .map({ type in
-                return InOutDoorType(index: type)
+        _ = Observable.from(self.viewModel.areaInOutSegmentedItems)
+             .enumerated()
+             .subscribe(onNext: { (index, element) in
+              //   _ = self.operationSegmentedControl.rx.titleForSegment(at: index)
+                 self.areaInOutSegmentedControl.setTitle(element.title, forSegmentAt: index)
+             })
+             .disposed(by: disposeBag)
 
-            })
-            .drive(areaSegmentedControl.rx.selectedSegmentIndex)
-            .disposed(by: disposeBag)
-        */
-        areaSegmentedControl.rx.selectedSegmentIndex
+        areaInOutSegmentedControl.rx.selectedSegmentIndex
             .asDriver()
-            .map { value in
-                switch value {
-                case 0:
-                    return InOutDoorType.none
-                case 1:
-                    return InOutDoorType.outdoor
-                case 2:
-                    return InOutDoorType.indoor
-                default:
-                    return InOutDoorType.none
-                }
-
+            .map { index in
+                return self.viewModel.areaInOutSegmentedItems[index].type
             }
             .drive(self.viewModel.selectedInOutType)
             .disposed(by: disposeBag)
@@ -339,16 +255,53 @@ class SearchOptionViewController: UIViewController {
             .disposed(by: disposeBag)
         
         saveButton.rx.tap
-            .do {
-                self.viewModel.save()
-            }
             .subscribe({ _ in
-                self.dismissModal()
+                self.dismissModal() {
+                    self.viewModel.save()
+                }
             })
             .disposed(by: disposeBag)
     }
     
     // MARK: - Local Methods
+    
+    // MARK: - Initialize
+
+    init() {
+        self.viewModel =  SearchOptionViewModel()
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        viewModel =  SearchOptionViewModel()
+        super.init(coder: aDecoder)
+    }
+    
+    private func initialize() {
+        navigationBinding()
+        priceSectionBinding()
+        sortingSectionBinding()
+        operationTypeSectionBinding()
+        optionTypeBinding()
+        buttonBinding()
+        
+        setupInitialValue()
+    }
+    
+    
+    private func setupInitialValue() {
+        if let property = viewModel.getStoredValue() {
+            self.priceRangeSeekSlider.selectedMinValue = property.from.toCGFloat
+            self.priceRangeSeekSlider.selectedMaxValue = property.to.toCGFloat
+            self.sortingSegmentedControl.selectedSegmentIndex = viewModel.sortSegmentedItems.firstIndex(where: { $0.type == property.sortType })!
+            self.operationSegmentedControl.selectedSegmentIndex = viewModel.operationSegmentedItems.firstIndex(where: { $0.type == property.lotType })!
+            self.areaInOutSegmentedControl.selectedSegmentIndex =  viewModel.areaInOutSegmentedItems.firstIndex(where: { $0.type == property.inOutType })!
+            self.cctvButton.isSelected = property.isCCTV
+            self.iotSensorButton.isSelected = property.isIotSensor
+            self.noMechanicalButton.isSelected = property.isNoMechanical
+            self.allDayButton.isSelected = property.isAllDay
+        }
+    }
     
     // MARK: - Life Cycle
 
