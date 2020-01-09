@@ -40,8 +40,8 @@ class MapViewModel: NSObject, MapViewModelType {
     var cardViewModel:ParkingCardViewModelType?
     var parkingTapViewModel:ParkingTapViewModelType?
     
-    private var markerList:[MarkerWindow] = []
-    private var groupList:[GroupMarkerWindow] = []
+    private var lotList:[MarkerWindow] = []
+    private var districtList:[GroupMarkerWindow] = []
     
     private var destMarker:NMFMarker?
     
@@ -197,20 +197,20 @@ class MapViewModel: NSObject, MapViewModelType {
     }
     
     private func updateMarker(lots:[WithinElement]? = nil, districts:[WithinDistrictElement]? = nil) {
-        if markerList.count > 0 {
-            for item in markerList {
+        if lotList.count > 0 {
+            for item in lotList {
                 item.remove()
             }
-            
-            markerList = []
+      
+            lotList = []
         }
         
-        if groupList.count > 0 {
-            for item in groupList {
+        if districtList.count > 0 {
+            for item in districtList {
                 item.remove()
             }
-            
-            groupList = []
+     
+            districtList = []
         }
         
         if let elements = lots {
@@ -219,9 +219,9 @@ class MapViewModel: NSObject, MapViewModelType {
             updateTapElements(elements)
             
             for item in elements {
-                debugPrint("[ITEM] ", item.address)
+                debugPrint("[LOT] ", item.address)
                 if let marker = generateMarker(within: item) {
-                    markerList.append(marker)
+                    lotList.append(marker)
                 }
             }
         }
@@ -232,9 +232,9 @@ class MapViewModel: NSObject, MapViewModelType {
             updateTapElements([])
             
             for item in elements {
-                debugPrint("[ITEM] ", item.name)
+                debugPrint("[DISTRICT] ", item.name)
                 if let marker = generateGroup(district: item) {
-                    groupList.append(marker)
+                    districtList.append(marker)
                 }
             }
         }
@@ -249,7 +249,7 @@ class MapViewModel: NSObject, MapViewModelType {
         mapModel.isDistrictZoomLevel(zoomLevel)
             .asObservable()
             .subscribe(onNext: { (district) in
-                self.updateParkinglot(district: district, coord: coord, time: (start: "1600", end: "1800"))
+                self.updateParkinglot(coord:coord, district:district, time:(start: "1600", end: "1800"))
             })
             .disposed(by: disposeBag)
     }
@@ -293,31 +293,36 @@ class MapViewModel: NSObject, MapViewModelType {
     
     private func currentLocation() -> Observable<CLLocationCoordinate2D> {
         locationManager.requestWhenInUseAuthorization()
-       
+        
         return locationManager.rx.location
             .map { location in
-                return CLLocationCoordinate2DMake(testCoordinate.latitude, testCoordinate.longitude)
-               // return location?.coordinate ?? CLLocationCoordinate2DMake(defaultCoordinate.latitude, defaultCoordinate.longitude)
+                //return CLLocationCoordinate2DMake(testCoordinate.latitude, testCoordinate.longitude)
+                //return location?.coordinate ?? CLLocationCoordinate2DMake(defaultCoordinate.latitude, defaultCoordinate.longitude)
+                return location?.coordinate ?? CLLocationCoordinate2DMake(testCoordinate.latitude, testCoordinate.longitude)
             }
     }
     
-    private func updateParkinglot(district:Bool = false, coord:CoordType, time:(start:String, end:String)) {
+    private func updateParkinglot(coord:CoordType, district:Bool = false, time:(start:String, end:String)) {
         let option:FilterOption = UserData.shared.filter
         
-        option.operationType = .none
+        option.lotType = .none
+        
+        let radius = self.mapView!.rx.radius
 
-        let start = Date().dateFor(.nearestMinute(minute:60)).toString(format: .custom("HHmm"))
-        let end = Date().dateFor(.nearestMinute(minute:60)).adjust(.hour, offset: 2).toString(format: .custom("HHmm"))
+        debugPrint("[RADIUS] ", radius)
+
+        let start = Date().dateFor(.nearestMinute(minute:10)).toString(format: .custom("HHmm"))
+        let end = Date().dateFor(.nearestMinute(minute:10)).adjust(.hour, offset: 2).toString(format: .custom("HHmm"))
         let today = Date().toString(format: .custom("yyyyMMdd"))
         
         if district == true {
-            self.withinDistrict(coordinate: coord, radius: 2)
+            self.withinDistrict(coordinate: coord, radius: radius)
                 .subscribe(onNext: { elements in
                     self.updateMarker(districts: elements)
                 })
                 .disposed(by: disposeBag)
         } else {
-            self.within(coordinate:coord, filter:option.filter, month:(today, 1), time:(start, end))
+            self.within(coordinate:coord, radius: radius, filter:option.filter, month:(today, 1), time:(start, end))
                 .subscribe(onNext: { elements in
                     self.updateMarker(lots: elements)
                 })
@@ -343,8 +348,8 @@ class MapViewModel: NSObject, MapViewModelType {
             .disposed(by: disposeBag)
     }
     
-    private func within(coordinate:CoordType, filter:FilterType, month:(from:String, count:Int), time:(start:String, end:String)) -> Observable<[WithinElement]> {
-        return ParkingLot.within(lat: coordinate.latitude.toString, lon: coordinate.longitude.toString, radius:"1.4", start:time.start, end:time.end, productType:.time, monthlyFrom:month.from, monthlyCount:month.count, filter: filter)
+    private func within(coordinate:CoordType, radius:Double, filter:FilterType, month:(from:String, count:Int), time:(start:String, end:String)) -> Observable<[WithinElement]> {
+        return ParkingLot.within(lat: coordinate.latitude.toString, lon: coordinate.longitude.toString, radius:radius.toString, start:time.start, end:time.end, productType:.time, monthlyFrom:month.from, monthlyCount:month.count, filter: filter)
             .asObservable()
             .map { (within, response) in
                 return within?.elements ?? []
@@ -352,7 +357,7 @@ class MapViewModel: NSObject, MapViewModelType {
     }
     
     private func withinDistrict(coordinate:CoordType, radius:Double) -> Observable<[WithinDistrictElement]> {
-        return ParkingLot.within_district(lat:coordinate.latitude.toString, lon:coordinate.longitude.toString, radius:radius.toString)
+        return ParkingLot.within_district(lat: coordinate.latitude.toString, lon: coordinate.longitude.toString, radius: radius.toString)
             .asObservable()
             .map { (district, response) in
                 return district?.elements ?? []
@@ -383,7 +388,6 @@ class MapViewModel: NSObject, MapViewModelType {
     func placeCenter() {
         self.currentLocation()
             .subscribe(onNext: { location in
-                let zoomLevel = self.mapModel.defaultZoomLevel
                 self.placeCenter(location, zoomLevel:self.mapModel.defaultZoomLevel)
                 self.requestReverseGeocoding(CoordType(location.latitude, location.longitude))
                 self.updateParkinglot(coord: CoordType(location.latitude, location.longitude), time: (start: "1600", end: "1800"))

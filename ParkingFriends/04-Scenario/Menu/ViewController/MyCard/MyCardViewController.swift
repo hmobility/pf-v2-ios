@@ -59,8 +59,6 @@ class MyCardViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        tableView.rx.
-        
        /*
         viewModel.elements
             .map { $0.count > 0 }

@@ -29,6 +29,7 @@ class MapViewController: UIViewController {
     @IBOutlet weak var parkingInfoView: UIView!
     @IBOutlet weak var parkingInfoBottomConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var cardContainerView: UIView!
     @IBOutlet weak var cardSectionView: UIView!
     @IBOutlet weak var searchSectionView: UIView!
     
@@ -112,7 +113,8 @@ class MapViewController: UIViewController {
         viewModel.displaySettingSection
             .asDriver()
             .drive(onNext: { (search, list) in
-                self.cardSectionView.isHidden = search ? true : false
+                self.cardContainerView.isHidden = search ? true : false
+                //self.cardSectionView.isHidden = search ? true : false
                 self.searchSectionView.isHidden = search ? false : true
             })
             .disposed(by: disposeBag)
