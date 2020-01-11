@@ -13,7 +13,7 @@ protocol MapViewModelType {
     var mapView: NMFMapView? { get set }
     
     var displayAddressText: BehaviorRelay<String> { get }
-    var displayReservedTimeText: BehaviorRelay<String> { get }
+    var displayReservableTimeText: BehaviorRelay<String> { get }
     
     var cardViewModel:ParkingCardViewModelType? { get set }
     var parkingTapViewModel:ParkingTapViewModelType? { get set }
@@ -23,6 +23,8 @@ protocol MapViewModelType {
     func zoomIn()
     func zoomOut()
     func placeCenter()
+    
+    func setReservableTime(start startDate: Date, end endDate:Date)
 }
 
 let defaultCoordinate = CoordType(37.400634765624986, 127.11203073310433)
@@ -33,7 +35,7 @@ class MapViewModel: NSObject, MapViewModelType {
     var locationOverlay: NMFLocationOverlay?
     
     var displayAddressText: BehaviorRelay<String> = BehaviorRelay(value: "")
-    var displayReservedTimeText: BehaviorRelay<String> = BehaviorRelay(value: "")
+    var displayReservableTimeText: BehaviorRelay<String>
     
     var displaySettingSection: BehaviorRelay<(list:Bool, search:Bool)> = BehaviorRelay(value:(list:false, search:true))
     
@@ -47,14 +49,21 @@ class MapViewModel: NSObject, MapViewModelType {
     
     private let locationManager = CLLocationManager()
     private let mapModel = MapModel()
+    private let userData:UserData
     
     private let disposeBag = DisposeBag()
     
     // MARK: - Initialize
-    
-    init(localizer: LocalizerType = Localizer.shared, view:NMFMapView ) {
+
+    init(localizer: LocalizerType = Localizer.shared, userData:UserData = UserData.shared, view:NMFMapView) {
         self.mapView = view
+        self.userData = userData
+        
         self.locationOverlay = mapView?.locationOverlay
+        
+        let displayTime = DisplayTimeHandler().displayReservableTime(start: userData.reservableStartTime, end: userData.reservableEndTime)
+        
+        displayReservableTimeText = BehaviorRelay(value: displayTime)
         
         destMarker = NMFMarker.init(position: NMGLatLng(lat: defaultCoordinate.latitude, lng: defaultCoordinate.longitude), iconImage: NMFOverlayImage(name: "icMarkerDestination"))
     
@@ -160,6 +169,15 @@ class MapViewModel: NSObject, MapViewModelType {
         if let viewModel = parkingTapViewModel {
             viewModel.setWithinElements(elements)
         }
+    }
+    
+    // MARK: - Time Option
+    
+    public func setReservableTime(start startDate: Date, end endDate:Date) {
+        UserData.shared.setReservableTime(start:startDate, end: endDate)
+        let displayText = DisplayTimeHandler().displayReservableTime(start: startDate, end: endDate)
+        
+        self.displayReservableTimeText.accept(displayText)
     }
     
     // MARK: - Marker
@@ -296,8 +314,10 @@ class MapViewModel: NSObject, MapViewModelType {
         
         return locationManager.rx.location
             .map { location in
-                //return CLLocationCoordinate2DMake(testCoordinate.latitude, testCoordinate.longitude)
-                //return location?.coordinate ?? CLLocationCoordinate2DMake(defaultCoordinate.latitude, defaultCoordinate.longitude)
+                if let available = location, available.horizontalAccuracy == 0 {
+                    return CLLocationCoordinate2DMake(defaultCoordinate.latitude, defaultCoordinate.longitude)
+                }
+                
                 return location?.coordinate ?? CLLocationCoordinate2DMake(testCoordinate.latitude, testCoordinate.longitude)
             }
     }

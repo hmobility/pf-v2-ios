@@ -87,6 +87,14 @@ class MapViewController: UIViewController {
             .asDriver()
             .drive(navigationMenuView.mainTitleLabel.rx.text)
             .disposed(by: disposeBag)
+        
+        viewModel.displayReservableTimeText
+            .asDriver()
+            .drive(onNext:{ text in
+                self.navigationMenuView.setReservable(time: text)
+                self.timeSettingView.setReservable(time: text)
+            })
+            .disposed(by: disposeBag)
     }
     
     private func setupButtonBinding() {
@@ -160,9 +168,9 @@ class MapViewController: UIViewController {
         viewModel.placeCenter()
         
       //  print("[START]", Date().dateFor(.nearestHour(hour:1)).toString(format: .custom("HHmm")))
-        print("[START]", Date().dateFor(.nearestMinute(minute:60)).toString(format: .custom("HHmm")))
-        print("[END]", Date().dateFor(.nearestMinute(minute:60)).adjust(.hour, offset: 2).toString(format: .custom("HHmm")))
-        titleView.set(title: "TTT", subTitle: "SSSs")
+      //  print("[START]", Date().dateFor(.nearestMinute(minute:60)).toString(format: .custom("HHmm")))
+       // print("[END]", Date().dateFor(.nearestMinute(minute:60)).adjust(.hour, offset: 2).toString(format: .custom("HHmm")))
+       // titleView.set(title: "TTT", subTitle: "SSSs")
 
         // Do any additional setup after loading the view.
     }
@@ -186,7 +194,11 @@ class MapViewController: UIViewController {
     }
     
     func navigateToTimeDialog() {
-        TimeTicketDialog.show(source: self)
+        let date = UserData.shared.reservableStartTime
+        
+        TimeTicketDialog.show(source: self, start: date, handler:{ (start, end) in
+            self.viewModel.setReservableTime(start: start, end: end)
+        })
     }
     
     func showSideMenu() {

@@ -5,6 +5,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -56,7 +57,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6V7-dV-8vW" userLabel="View - Picker">
                                         <rect key="frame" x="0.0" y="41" width="414" height="210"/>
                                         <subviews>
-                                            <datePicker contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="30" translatesAutoresizingMaskIntoConstraints="NO" id="1fd-C3-Qto">
+                                            <datePicker contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="10" translatesAutoresizingMaskIntoConstraints="NO" id="1fd-C3-Qto">
                                                 <rect key="frame" x="52" y="42" width="295" height="126"/>
                                                 <locale key="locale" localeIdentifier="ko_KR"/>
                                                 <userDefinedRuntimeAttributes>
@@ -106,8 +107,9 @@
                             <constraint firstItem="3vj-M1-5G9" firstAttribute="leading" secondItem="MQa-OI-k9E" secondAttribute="leading" id="Hfa-Qg-BYM"/>
                             <constraint firstAttribute="trailing" secondItem="3vj-M1-5G9" secondAttribute="trailing" id="Qo4-U8-yIV"/>
                             <constraint firstItem="3vj-M1-5G9" firstAttribute="top" secondItem="MQa-OI-k9E" secondAttribute="top" id="fbQ-Sk-2Ge"/>
-                            <constraint firstAttribute="bottom" secondItem="3vj-M1-5G9" secondAttribute="bottom" id="gK1-O8-41S"/>
+                            <constraint firstItem="ADM-SG-jp9" firstAttribute="bottom" secondItem="3vj-M1-5G9" secondAttribute="bottom" id="gK1-O8-41S"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="ADM-SG-jp9"/>
                     </view>
                     <navigationItem key="navigationItem" id="mXU-OE-txM"/>
                     <connections>
@@ -152,7 +154,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aDO-iE-ate" userLabel="View - Picker">
                                         <rect key="frame" x="0.0" y="41" width="414" height="210"/>
                                         <subviews>
-                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jeH-eS-4zI">
+                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jeH-eS-4zI" userLabel="Hours Picker - Hours">
                                                 <rect key="frame" x="254" y="44" width="100" height="122"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="100" id="U7j-4n-oZg"/>
@@ -185,7 +187,7 @@
                                             <constraint firstItem="jeH-eS-4zI" firstAttribute="leading" secondItem="YRg-G3-OOB" secondAttribute="trailing" constant="12" id="yWR-k4-8oF"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zEP-WI-G2T" userLabel="View - Separator">
+                                    <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zEP-WI-G2T" userLabel="View - Separator">
                                         <rect key="frame" x="0.0" y="251" width="414" height="0.5"/>
                                         <color key="backgroundColor" red="0.86666666670000003" green="0.87843137250000003" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -195,15 +197,18 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="uST-SE-byX">
                                         <rect key="frame" x="0.0" y="251.5" width="414" height="52.5"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DEe-iV-Ut2" userLabel="Button - Previous">
+                                            <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DEe-iV-Ut2" userLabel="Button - Previous">
                                                 <rect key="frame" x="0.0" y="0.0" width="207" height="52.5"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="52.5" id="VXy-Oq-3Dp"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="18"/>
                                                 <inset key="contentEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 <state key="normal" title="이전">
                                                     <color key="titleColor" name="DarkGrey"/>
                                                 </state>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FDy-Bg-zCX" userLabel="Button - Save">
+                                            <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FDy-Bg-zCX" userLabel="Button - Save">
                                                 <rect key="frame" x="207" y="0.0" width="207" height="52.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="52.5" id="tEP-LR-rXe"/>
@@ -216,6 +221,9 @@
                                                 </state>
                                             </button>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="52.5" id="mR2-x5-tgG"/>
+                                        </constraints>
                                     </stackView>
                                 </subviews>
                             </stackView>
@@ -223,10 +231,11 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="cwc-kK-Y8s" firstAttribute="leading" secondItem="Bjy-R8-qLX" secondAttribute="leading" id="5um-fj-Uz3"/>
-                            <constraint firstItem="cwc-kK-Y8s" firstAttribute="bottom" secondItem="Bjy-R8-qLX" secondAttribute="bottom" id="Ccz-ZC-woi"/>
+                            <constraint firstItem="cwc-kK-Y8s" firstAttribute="bottom" secondItem="MHk-4o-4X0" secondAttribute="bottom" id="Ccz-ZC-woi"/>
                             <constraint firstItem="cwc-kK-Y8s" firstAttribute="top" secondItem="Bjy-R8-qLX" secondAttribute="top" id="Qse-Fy-9cD"/>
                             <constraint firstItem="cwc-kK-Y8s" firstAttribute="trailing" secondItem="Bjy-R8-qLX" secondAttribute="trailing" id="fd5-TQ-FY3"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="MHk-4o-4X0"/>
                     </view>
                     <navigationItem key="navigationItem" id="imj-Cg-gjZ"/>
                     <connections>

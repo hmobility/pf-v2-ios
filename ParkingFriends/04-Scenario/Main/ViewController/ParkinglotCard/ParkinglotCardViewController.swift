@@ -14,7 +14,6 @@ extension ParkinglotCardViewController : AnalyticsType {
     }
 }
 
-
 class ParkinglotCardViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!

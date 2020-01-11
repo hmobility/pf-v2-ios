@@ -9,18 +9,24 @@
 import UIKit
 
 class TimeTicketDurationViewController: UIViewController {
-    @IBOutlet weak var titleLabel: UIView!
-    @IBOutlet weak var resultLabel: UIView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var resultLabel: UILabel!
     @IBOutlet weak var hoursPicker: UIPickerView!
     @IBOutlet weak var previousButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
     
-    var disposeBag = DisposeBag()
+    private var startDate:Date?
+    private var hourRangeList:[Int] = []
+
+    var localizer:LocalizerType = Localizer.shared
+    
+    private var disposeBag = DisposeBag()
     
     // MARK: - Binding
     
-    private func setupBinding() {
-        
+    private func setupHoursPicker() {
+        let rows = hoursPicker.numberOfRows(inComponent: 0)
+        hoursPicker.selectRow((rows > 0) ? 1 : 0, inComponent: 0, animated: false)
     }
     
     private func setupButtonBinding() {
@@ -32,12 +38,44 @@ class TimeTicketDurationViewController: UIViewController {
         
         saveButton.rx.tap
             .subscribe(onNext: { _ in
-                self.dismissRoot()
+                self.dismissModal(animated: true) {
+                    let index = self.hoursPicker.selectedRow(inComponent: 0)
+                    let hours = self.hourRangeList[index]
+                    if let navigation = self.navigationController, let start = self.startDate {
+                        (navigation as! TimeTicketNavigationController).completionAction?(start, start.adjust(.hour, offset: hours))
+                    }
+                }
             })
             .disposed(by: disposeBag)
     }
+    
+    // MARK: - Public Methods
+    
+    public func setStartDate(_ date:Date) {
+        startDate = date
+    }
+    
+    // MARK: - Local Methods
+    
+    private func updatePickerHours() {
+        if let date = startDate {
+            let maxHours:Int = 24 - date.component(.hour)!
+            hourRangeList = Array(1...maxHours)
+            let fromDate = DisplayTimeHandler().diplayFromDate(date: date)
+            
+            Observable.just(fromDate)
+                .bind(to: resultLabel.rx.text)
+                .disposed(by: disposeBag)
+            
+            Observable.just(hourRangeList)
+                .bind(to: hoursPicker.rx.itemTitles) { _, item in
+                    return "\(item)"
+                }
+                .disposed(by: disposeBag)
+        }
+    }
         
-        // MARK: - Initialize
+    // MARK: - Initialize
         
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -48,11 +86,16 @@ class TimeTicketDurationViewController: UIViewController {
     }
     
     private func initialize() {
-        setupBinding()
         setupButtonBinding()
+        setupHoursPicker()
     }
     
     // MARK: - Life Cycle
+    
+    override func loadView() {
+        super.loadView()
+        updatePickerHours()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,11 +104,10 @@ class TimeTicketDurationViewController: UIViewController {
     
     // MARK: - Navigation
      
-     func navigateToHoursPicker() {
-         let target = Storyboard.timeTicketDialog.instantiateViewController(withIdentifier: "TimeTicketDurationViewController") as! TimeTicketDurationViewController
-         self.push(target)
-      }
-    
+    func navigateToHoursPicker() {
+        let target = Storyboard.timeTicketDialog.instantiateViewController(withIdentifier: "TimeTicketDurationViewController") as! TimeTicketDurationViewController
+        self.push(target)
+    }
 
     /*
 

@@ -1,21 +1,20 @@
 //
-//  ParkinglotDetailViewController.swift
+//  CctvParkingViewController.swift
 //  ParkingFriends
 //
-//  Created by PlankFish on 2019/12/16.
-//  Copyright © 2019 Hancom Mobility. All rights reserved.
+//  Created by PlankFish on 2020/01/10.
+//  Copyright © 2020 Hancom Mobility. All rights reserved.
 //
 
 import UIKit
 
-extension ParkinglotDetailViewController : AnalyticsType {
+extension CctvParkingViewController : AnalyticsType {
     var screenName: String {
-        return "[SCREEN] Parkinglot Detail"
+        return "[SCREEN] CCTV Parkinglot"
     }
 }
 
-
-class ParkinglotDetailViewController: UIViewController {
+class CctvParkingViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -19,11 +19,18 @@
 "btn_to_agree" = "동의합니다";
 "btn_road_guide" = "길안내 받기";
 "btn_reservation_extend" = "예약 연장";
+"btn_reservation_cancel" = "예약 취소";
+"btn_no" = "아니요";
+"btn_yes" = "맞아요!";
+"btn_not_yet" = "아직이요";
 "btn_to_reset" = "설정 초기화";
+"btn_add" = "추가";
+"txt_none" = "없음";
 "txt_today" = "오늘";
 "txt_tomorrow" = "내일";
 "txt_am" = "오전";
 "txt_pm" = "오후";
+"txt_date" = "%@월%@일";
 "txt_minutes" = "분";
 "txt_from" = "부터";
 "txt_distance_unit" = "m";
@@ -266,6 +273,16 @@
 "ttl_settings_withdraw" = "회원 탈퇴";
 "txt_credit" = "㈜한컴모빌리티/n사업자 등록번호 : 119-86-70032  |  대표자 : 최천우, 현재영/n주소 : 서울특별시 금천구 서부샛길 606, B동 1703-1(가산동, 대성디폴리스)  |  대표전화 : 02-522-6161";
 
+// Parkinglot Label Guide
+"ttl_reserve_label" = "예약권 라벨";
+"txt_guide_existing_time" = "기존 설정 예약시간";
+"txt_guide_available_time" = "예약 가능시간";
+"txt_guide_unavailable_time" = "예약 불가시간";
+"dsc_guide_unavailable_time" = "(운영시간외+예약됨)";
+"ttl_monthly_label" = "정기권 라벨";
+"txt_guide_available_day" = "예약 불가일";
+"txt_guide_unavailable_day" = "예약 가능일";
+
 // Level Guide
 "ttl_level_guide" = "회원 등급 안내";
 "ttl_member_level" = "%@ %@!";
@@ -286,6 +303,24 @@
 "ttl_level_5" = "회장님";
 "dsc_level_5" = "이용실적 상위 1%";
 "txt_level_5_benefit" = "포인트 10% 추가적립";
+
+// CCTV
+"ttl_reservation_cancel" = "예약을 취소할까요?";
+"txt_payment_price" = "• 결제 금액";
+"txt_cancellation_price" = "• 취소 수수료";
+"txt_refund_price" = "• 환불 예정 금액";
+"ttl_departure" = "출차하셨나요?";
+"dsc_departure_with_extra" = "예약 시간이 %@분 초과되어\n10분 단위로 추가 요금이 부과됩니다.";
+"dsc_departure_no_extra" = "출차 처리를 하지 않을 경우\n초과 요금이 부과될 수 있습니다.";
+"ttl_charge_extra" = "현재 추가 요금 : ";
+"ttl_parking_entrance_confirm" = "본인 주차 여부 확인";
+"dsc_parking_entrance_confirm" = "예약하신 주차면에 입차 정보가 감지되었습니다.\n혹시 직접 주차하셨나요?";
+
+// Navigation
+"ttl_navigation_guide" = "어떤 앱으로 안내할까요?";
+"ttl_kakao_navi" = "카카오내비";
+"ttl_t_map" = "T map";
+"ttl_naver_map" = "네이버지도";
 
 // Popup
 "ttl_pop_logout" = "로그아웃";

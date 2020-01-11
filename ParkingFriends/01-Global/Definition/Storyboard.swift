@@ -15,9 +15,11 @@ struct Storyboard {
     static let entry = UIStoryboard(name: "Entry", bundle: nil)
     static let registration = UIStoryboard(name: "Registration", bundle: nil)
     static let main = UIStoryboard(name: "Main", bundle: nil)
+    static let detail = UIStoryboard(name: "Detail", bundle: nil)
     static let event = UIStoryboard(name: "Event", bundle: nil)
     static let payment = UIStoryboard(name: "Payment", bundle: nil)
     static let menu = UIStoryboard(name: "Menu", bundle: nil)
+    static let parking = UIStoryboard(name: "Parking", bundle: nil)
     
     static let timeTicketDialog = UIStoryboard(name: "TimeTicketDialog", bundle: nil)
 }

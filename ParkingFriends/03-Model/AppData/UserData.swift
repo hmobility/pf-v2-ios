@@ -15,7 +15,42 @@ class UserData: NSObject, NSCoding {
     var displayPaymentGuide: Bool?
     var productOption: ProductOption?
     
+    var reservableStartTime: Date  {
+        get {
+            return start ?? today
+        }
+    }
+    
+    var reservableEndTime: Date {
+        get {
+            return end ?? today.adjust(.hour, offset: 2)
+        }
+    }
+    
+    private var start: Date?
+    private var end: Date?
+    
+    private var today: Date {
+        get {
+            var start = Date().dateFor(.nearestMinute(minute:10))
+            
+            if Date().compare(.isLater(than: start)) == true {
+                start = start.adjust(.minute, offset: 10)
+            }
+            
+            return start
+        }
+    }
+    
     // MARK: - Public Methods
+    
+    public func setReservableTime(start startDate: Date, end endDate:Date? = nil) {
+        start = startDate
+        
+        if let date = endDate {
+            self.end = date
+        }
+    }
     
     public func setAuth(_ data:Login?) -> UserData {
         guard data != nil else {
