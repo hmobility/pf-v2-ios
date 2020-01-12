@@ -160,6 +160,9 @@
 "ttl_ticket_time" = "예약권";
 "ttl_ticket_fixed" = "정액권";
 "ttl_ticket_monthly" = "정기권";
+"ttl_ticket_fixed_day" = "주간권";
+"ttl_ticket_fixed_night" = "야간권";
+"ttl_ticket_fixed_all_day" = "종일권";
 "ttl_no_ticket_time" = "예약 가능한 주차장이 없습니다.";
 "txt_no_ticket_time" = "지도 안에 주차장이 있을 때, 이곳에 목록으로 표시됩니다.\n대상 지역이나 지도 범위를 변경해보세요.";
 "itm_price_low" = "낮은가격순";

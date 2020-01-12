@@ -55,7 +55,8 @@ class ParkingTapViewController: UIViewController {
     }
     
     private func setupTapButtonBinding() {
-        viewModel.selectedProductType.asDriver()
+        viewModel.selectedProductType
+            .asDriver()
             .drive(onNext: { type in
                 self.timeTicketButton.isSelected = (type == .time) ? true : false
                 self.fixedTicketButton.isSelected = (type == .fixed) ? true : false
@@ -78,17 +79,21 @@ class ParkingTapViewController: UIViewController {
     
     private func setupSortOrderButtonBinding() {
         sortOrderButton.rx.tap
-            .asDriver()
-            .drive(onNext: { _ in
-                self.showSortOrderDiaglog()
+            .asObservable()
+            .map({
+                return self.viewModel.selectedSortType.value
+            })
+            .asDriver(onErrorJustReturn: .distance)
+            .drive(onNext: { (sort) in
+                self.showSortOrderDiaglog(with: sort)
             })
             .disposed(by: disposeBag)
     }
 
     // MARK: - Local Methdos
     
-    private func showSortOrderDiaglog() {
-        SortOrderDialog.show { (finished, sort) in
+    private func showSortOrderDiaglog(with sortType:SortType) {
+        SortOrderDialog.show(selected: sortType) { (finished, sort) in
             if finished {
                 self.viewModel.setSortType(sort!)
             }
@@ -122,8 +127,8 @@ class ParkingTapViewController: UIViewController {
             .disposed(by: disposeBag)
         
         viewModel.elements
-            .map { element in
-                    return element.count == 0
+            .map { source in
+                return source.count == 0
             }
             .subscribe(onNext: { isEmpty in
                 self.dataView.isHidden = isEmpty ? true : false
@@ -139,6 +144,7 @@ class ParkingTapViewController: UIViewController {
                 return cell
             }
             .disposed(by: disposeBag)
+ 
    /*
         tableView.register(ParkingDistanceTableViewCell.self, forCellReuseIdentifier: "ParkingDistanceTableViewCell")
         tableView.register(ParkingPriceTableViewCell.self, forCellReuseIdentifier: "ParkingPriceTableViewCell")

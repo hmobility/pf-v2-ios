@@ -22,4 +22,5 @@ struct Storyboard {
     static let parking = UIStoryboard(name: "Parking", bundle: nil)
     
     static let timeTicketDialog = UIStoryboard(name: "TimeTicketDialog", bundle: nil)
+    static let fixedTicketDialog = UIStoryboard(name: "FixedTicketDialog", bundle: nil)
 }

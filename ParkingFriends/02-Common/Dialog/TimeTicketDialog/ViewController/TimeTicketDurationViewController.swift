@@ -61,7 +61,7 @@ class TimeTicketDurationViewController: UIViewController {
         if let date = startDate {
             let maxHours:Int = 24 - date.component(.hour)!
             hourRangeList = Array(1...maxHours)
-            let fromDate = DisplayTimeHandler().diplayFromDate(date: date)
+            let fromDate = DisplayTimeHandler().diplayTimeTicketFromDate(date: date)
             
             Observable.just(fromDate)
                 .bind(to: resultLabel.rx.text)

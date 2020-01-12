@@ -9,6 +9,7 @@
 import UIKit
 
 class BorderButton: UIButton {
+    /*
     @IBInspectable var normalBorderColor: UIColor?
     @IBInspectable var disabledBorderColor: UIColor?
     @IBInspectable var highlightedBorderColor: UIColor?
@@ -56,7 +57,7 @@ class BorderButton: UIButton {
             }
         }
     }
-    
+    */
     // MARK: - Layout
     
     /*

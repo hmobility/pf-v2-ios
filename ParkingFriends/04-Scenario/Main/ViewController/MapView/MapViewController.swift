@@ -194,11 +194,20 @@ class MapViewController: UIViewController {
     }
     
     func navigateToTimeDialog() {
-        let date = UserData.shared.reservableStartTime
+        let date = UserData.shared.getReservableDate()
+        let productType = UserData.shared.getProductType()
         
-        TimeTicketDialog.show(source: self, start: date, handler:{ (start, end) in
-            self.viewModel.setReservableTime(start: start, end: end)
-        })
+        if productType == .time {
+            TimeTicketDialog.show(source: self, start: date.start, handler:{ (start, end) in
+                self.viewModel.setTimeTicketRange(start: start, end: end)
+            })
+        } else if productType == .fixed {
+            FixedTicketDialog.show(source: self, start: date.start, handler:{ (start, hours) in
+                self.viewModel.setFixedTicketTime(start: start, hours: hours)
+            })
+        } else if productType == .monthly {
+    
+        }
     }
     
     func showSideMenu() {

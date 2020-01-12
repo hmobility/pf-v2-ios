@@ -37,7 +37,7 @@ struct DisplayTimeHandler {
     }
     
     // For dialog of reservable time selection
-    func diplayFromDate(date:Date) -> String {
+    func diplayTimeTicketFromDate(date:Date) -> String {
         let day:String = date.compare(.isToday) ? localizer.localized("txt_today") : "\(date.toString(format:(.custom("M")))):\(date.toString(format:(.custom("d"))))"
         
         let amPm:String = (date.toString(format:(.custom("a"))) == "AM") ? localizer.localized("txt_am") : localizer.localized("txt_pm")
@@ -45,5 +45,12 @@ struct DisplayTimeHandler {
         let time:String = date.toString(format:(.custom("h:m")))
         
         return "\(day)\(localizer.localized("txt_from")) \(amPm) \(time)"
+    }
+    
+    // For dialog of reservable time selection
+    func diplayFixedTicketFromDate(date:Date, hours:Int) -> String {
+        let day:String = date.compare(.isToday) ? localizer.localized("txt_today") : "\(date.toString(format:(.custom("M")))):\(date.toString(format:(.custom("d"))))"
+        
+        return "\(day),\(localizer.localized("txt_fixed_ticket_day")) \(hours) \(localizer.localized("txt_hours"))"
     }
 }

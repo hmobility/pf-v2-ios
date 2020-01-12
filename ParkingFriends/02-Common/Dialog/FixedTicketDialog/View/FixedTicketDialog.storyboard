@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Fixed Ticket Navigation Controller-->
+        <scene sceneID="8gq-WC-Fxo">
+            <objects>
+                <navigationController storyboardIdentifier="FixedTicketNavigationController" navigationBarHidden="YES" id="tzc-FT-H5F" customClass="FixedTicketNavigationController" customModule="ParkingFriends" customModuleProvider="target" sceneMemberID="viewController">
+                    <value key="contentSizeForViewInPopover" type="size" width="0.0" height="304"/>
+                    <size key="freeformSize" width="414" height="304"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="CsA-8g-qmg">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Mub-Kh-Nkp" kind="relationship" relationship="rootViewController" id="x6W-gr-xnK"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Hpm-AC-gC9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-862" y="16"/>
+        </scene>
+        <!--Fixed Ticket Duration View Controller-->
+        <scene sceneID="KNa-Kt-Crw">
+            <objects>
+                <viewController storyboardIdentifier="FixedTicketDurationViewController" id="Mub-Kh-Nkp" customClass="FixedTicketDurationViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="95N-Z4-d0c">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="304"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="rJy-Ae-1E8">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="304"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1hj-H2-TYP" userLabel="View - Title">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="41"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="몇시간동안 주차하세요?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Srh-B8-ZAe" userLabel="Label - Title">
+                                                <rect key="frame" x="20" y="24" width="150" height="19.5"/>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="16"/>
+                                                <color key="textColor" name="DarkGrey"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstItem="Srh-B8-ZAe" firstAttribute="leading" secondItem="1hj-H2-TYP" secondAttribute="leading" constant="20" id="0Lv-5U-eGs"/>
+                                            <constraint firstItem="Srh-B8-ZAe" firstAttribute="top" secondItem="1hj-H2-TYP" secondAttribute="top" constant="24" id="aq9-WK-ogm"/>
+                                            <constraint firstAttribute="height" constant="41" id="bVn-iw-PT8"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cT7-pt-ym3" userLabel="View - Picker">
+                                        <rect key="frame" x="0.0" y="41" width="414" height="210"/>
+                                        <subviews>
+                                            <pickerView contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lHC-cx-W3a" userLabel="Hours Picker - Hours">
+                                                <rect key="frame" x="184" y="44" width="100" height="122"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="100" id="MWY-po-Z67"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="indicatorColor">
+                                                        <color key="value" name="AlgaeGreen"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                                        <color key="value" name="CharcoalGrey2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </pickerView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="주간권" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lw6-mY-WKh" userLabel="Label - Result Date">
+                                                <rect key="frame" x="97" y="95.5" width="71" height="19.5"/>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="16"/>
+                                                <color key="textColor" name="DarkGrey"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstItem="lHC-cx-W3a" firstAttribute="top" secondItem="cT7-pt-ym3" secondAttribute="top" constant="44" id="F5x-r1-iU7"/>
+                                            <constraint firstAttribute="height" constant="210" id="V3z-qw-NPF"/>
+                                            <constraint firstAttribute="trailing" secondItem="lHC-cx-W3a" secondAttribute="trailing" constant="130" id="Vjj-NB-axw"/>
+                                            <constraint firstItem="lw6-mY-WKh" firstAttribute="centerY" secondItem="lHC-cx-W3a" secondAttribute="centerY" id="W9A-J6-fAn"/>
+                                            <constraint firstItem="lw6-mY-WKh" firstAttribute="leading" secondItem="cT7-pt-ym3" secondAttribute="leading" constant="97" id="Wxg-zL-uWJ"/>
+                                            <constraint firstItem="lw6-mY-WKh" firstAttribute="centerY" secondItem="cT7-pt-ym3" secondAttribute="centerY" id="bdA-15-Dw2"/>
+                                            <constraint firstAttribute="bottom" secondItem="lHC-cx-W3a" secondAttribute="bottom" constant="44" id="nko-6r-RJ1"/>
+                                            <constraint firstItem="lHC-cx-W3a" firstAttribute="leading" secondItem="lw6-mY-WKh" secondAttribute="trailing" constant="16" id="yPS-Zh-z2e"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qSW-g1-t6A" userLabel="View - Separator">
+                                        <rect key="frame" x="0.0" y="251" width="414" height="0.5"/>
+                                        <color key="backgroundColor" red="0.86666666670000003" green="0.87843137250000003" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="0.5" id="5KO-YR-TqU"/>
+                                        </constraints>
+                                    </view>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="hQJ-kQ-FQt">
+                                        <rect key="frame" x="0.0" y="251.5" width="414" height="52.5"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fdm-wF-R7w" userLabel="Button - Save">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="52.5"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="52.5" id="oRt-mI-P0K"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="18"/>
+                                                <state key="normal" title="저장하기">
+                                                    <color key="titleColor" name="DarkGrey"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="52.5" id="ea8-8N-mey"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="rJy-Ae-1E8" firstAttribute="trailing" secondItem="95N-Z4-d0c" secondAttribute="trailing" id="FQy-2J-8bX"/>
+                            <constraint firstItem="rJy-Ae-1E8" firstAttribute="bottom" secondItem="ejQ-lk-ChF" secondAttribute="bottom" id="LlE-4o-peB"/>
+                            <constraint firstItem="rJy-Ae-1E8" firstAttribute="top" secondItem="95N-Z4-d0c" secondAttribute="top" id="cIh-X7-33k"/>
+                            <constraint firstItem="rJy-Ae-1E8" firstAttribute="leading" secondItem="95N-Z4-d0c" secondAttribute="leading" id="kNu-5d-84X"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ejQ-lk-ChF"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="HbL-s1-tb3"/>
+                    <size key="freeformSize" width="414" height="304"/>
+                    <connections>
+                        <outlet property="fixedTicketTitleLabel" destination="lw6-mY-WKh" id="cet-gz-3kr"/>
+                        <outlet property="hoursPicker" destination="lHC-cx-W3a" id="Vjc-c5-0D9"/>
+                        <outlet property="saveButton" destination="Fdm-wF-R7w" id="BbW-G5-8vm"/>
+                        <outlet property="titleLabel" destination="1hj-H2-TYP" id="Unm-d8-6wm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0WS-go-oVq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-83" y="15"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="dT6-c7-UGx">
+            <objects>
+                <viewController storyboardIdentifier="FixedTicketDateViewController" id="oEn-aP-iCs" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2EQ-SR-3da">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="304"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="AZE-Ry-MBL">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="304"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k22-G4-44h" userLabel="View - Title">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="41"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="정액권 종류를 선택하세요." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ua-wP-8sr" userLabel="Label - Title">
+                                                <rect key="frame" x="20" y="24" width="165" height="19.5"/>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="16"/>
+                                                <color key="textColor" name="DarkGrey"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstItem="7ua-wP-8sr" firstAttribute="leading" secondItem="k22-G4-44h" secondAttribute="leading" constant="20" id="Dra-iu-e2r"/>
+                                            <constraint firstAttribute="height" constant="41" id="aww-wu-nxX"/>
+                                            <constraint firstItem="7ua-wP-8sr" firstAttribute="top" secondItem="k22-G4-44h" secondAttribute="top" constant="24" id="d7m-oN-FtO"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kz3-Lp-Izm" userLabel="View - TIcket Type">
+                                        <rect key="frame" x="0.0" y="41" width="414" height="210"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="AJI-5V-XnG" userLabel="Stack View - Ticket ">
+                                                <rect key="frame" x="16" y="20" width="382" height="170"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WHg-2k-6TR" userLabel="Button - Day">
+                                                        <rect key="frame" x="0.0" y="0.0" width="382" height="51.5"/>
+                                                        <state key="normal" title="주간권">
+                                                            <color key="titleColor" name="DarkGrey3"/>
+                                                        </state>
+                                                        <state key="selected" image="icCheckGreen">
+                                                            <color key="titleColor" name="ShamrockGreen"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                <real key="value" value="0.80000000000000004"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" name="LightBlueGrey"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="selectedBorderColor">
+                                                                <color key="value" name="ShamrockGreen"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="normalBorderColor">
+                                                                <color key="value" name="LightBlueGrey"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uK4-oj-8FF" userLabel="Button - Night">
+                                                        <rect key="frame" x="0.0" y="59.5" width="382" height="51"/>
+                                                        <state key="normal" title="야간권">
+                                                            <color key="titleColor" name="DarkGrey3"/>
+                                                        </state>
+                                                        <state key="selected" image="icCheckGreen">
+                                                            <color key="titleColor" name="ShamrockGreen"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                <real key="value" value="0.80000000000000004"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" name="LightBlueGrey"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="selectedBorderColor">
+                                                                <color key="value" name="ShamrockGreen"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="normalBorderColor">
+                                                                <color key="value" name="LightBlueGrey"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RBQ-zj-yjA" userLabel="Button - All Day">
+                                                        <rect key="frame" x="0.0" y="118.5" width="382" height="51.5"/>
+                                                        <state key="normal" title="종일권">
+                                                            <color key="titleColor" name="DarkGrey3"/>
+                                                        </state>
+                                                        <state key="selected" image="icCheckGreen">
+                                                            <color key="titleColor" name="ShamrockGreen"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                <real key="value" value="0.80000000000000004"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" name="LightBlueGrey"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="selectedBorderColor">
+                                                                <color key="value" name="ShamrockGreen"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="normalBorderColor">
+                                                                <color key="value" name="LightBlueGrey"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="210" id="OQf-Pl-tce"/>
+                                            <constraint firstItem="AJI-5V-XnG" firstAttribute="top" secondItem="kz3-Lp-Izm" secondAttribute="top" constant="20" symbolic="YES" id="PKJ-JI-XKc"/>
+                                            <constraint firstItem="AJI-5V-XnG" firstAttribute="leading" secondItem="kz3-Lp-Izm" secondAttribute="leading" constant="16" id="YFL-BN-6Vj"/>
+                                            <constraint firstAttribute="bottom" secondItem="AJI-5V-XnG" secondAttribute="bottom" constant="20" symbolic="YES" id="au0-zp-Tpz"/>
+                                            <constraint firstAttribute="trailing" secondItem="AJI-5V-XnG" secondAttribute="trailing" constant="16" id="sGs-Vv-9kJ"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sNW-vg-aAz" userLabel="View - Separator">
+                                        <rect key="frame" x="0.0" y="251" width="414" height="0.5"/>
+                                        <color key="backgroundColor" red="0.86666666670000003" green="0.87843137250000003" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="0.5" id="v3A-1K-jjk"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bkm-LF-Z0a" userLabel="Button - Next">
+                                        <rect key="frame" x="0.0" y="251.5" width="414" height="52.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="52.5" id="z0v-uW-yiC"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="18"/>
+                                        <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="23" maxY="0.0"/>
+                                        <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="4" maxY="0.0"/>
+                                        <state key="normal" title="다음으로" image="icNextGrey">
+                                            <color key="titleColor" name="DarkGrey"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="AZE-Ry-MBL" firstAttribute="top" secondItem="2EQ-SR-3da" secondAttribute="top" id="4XI-9M-R4Z"/>
+                            <constraint firstItem="AZE-Ry-MBL" firstAttribute="leading" secondItem="2EQ-SR-3da" secondAttribute="leading" id="95I-xj-Ktz"/>
+                            <constraint firstItem="87R-f8-tRb" firstAttribute="bottom" secondItem="AZE-Ry-MBL" secondAttribute="bottom" id="lg5-6Q-Qgi"/>
+                            <constraint firstAttribute="trailing" secondItem="AZE-Ry-MBL" secondAttribute="trailing" id="uBN-bv-OX1"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="87R-f8-tRb"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="zp4-zP-oyb"/>
+                    <size key="freeformSize" width="414" height="304"/>
+                    <connections>
+                        <outlet property="nextButton" destination="bkm-LF-Z0a" id="TmH-st-2fR"/>
+                        <outlet property="titleLabel" destination="k22-G4-44h" id="VIy-88-j73"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7JR-ZG-bEk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-84" y="321"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="icCheckGreen" width="24" height="24"/>
+        <image name="icNextGrey" width="16" height="16"/>
+        <namedColor name="AlgaeGreen">
+            <color red="0.14499999582767487" green="0.83899998664855957" blue="0.3880000114440918" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="CharcoalGrey2">
+            <color red="0.17299999296665192" green="0.18000000715255737" blue="0.20000000298023224" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="DarkGrey">
+            <color red="0.10199999809265137" green="0.10199999809265137" blue="0.10599999874830246" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="DarkGrey3">
+            <color red="0.10999999940395355" green="0.11400000005960464" blue="0.11400000005960464" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="LightBlueGrey">
+            <color red="0.80800002813339233" green="0.81999999284744263" blue="0.83099997043609619" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="ShamrockGreen">
+            <color red="0.035000000149011612" green="0.81599998474121094" blue="0.27500000596046448" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

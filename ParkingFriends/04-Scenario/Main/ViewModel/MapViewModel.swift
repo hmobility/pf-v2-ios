@@ -24,7 +24,8 @@ protocol MapViewModelType {
     func zoomOut()
     func placeCenter()
     
-    func setReservableTime(start startDate: Date, end endDate:Date)
+    func setTimeTicketRange(start startDate: Date, end endDate:Date)
+    func setFixedTicketTime(start startDate: Date, hours:Int)
 }
 
 let defaultCoordinate = CoordType(37.400634765624986, 127.11203073310433)
@@ -61,7 +62,8 @@ class MapViewModel: NSObject, MapViewModelType {
         
         self.locationOverlay = mapView?.locationOverlay
         
-        let displayTime = DisplayTimeHandler().displayReservableTime(start: userData.reservableStartTime, end: userData.reservableEndTime)
+        let date = userData.getReservableDate()
+        let displayTime = DisplayTimeHandler().displayReservableTime(start: date.start, end: date.end)
         
         displayReservableTimeText = BehaviorRelay(value: displayTime)
         
@@ -173,9 +175,17 @@ class MapViewModel: NSObject, MapViewModelType {
     
     // MARK: - Time Option
     
-    public func setReservableTime(start startDate: Date, end endDate:Date) {
-        UserData.shared.setReservableTime(start:startDate, end: endDate)
+    public func setTimeTicketRange(start startDate: Date, end endDate:Date) {
+        UserData.shared.setReservableTime(start:startDate, end:endDate)
         let displayText = DisplayTimeHandler().displayReservableTime(start: startDate, end: endDate)
+        
+        self.displayReservableTimeText.accept(displayText)
+    }
+    
+    public func setFixedTicketTime(start startDate: Date, hours:Int) {
+        let endDate = startDate.adjust(.hour, offset: hours)
+        UserData.shared.setReservableTime(start:startDate, end:endDate)
+        let displayText = DisplayTimeHandler().diplayFixedTicketFromDate(date: startDate, hours: hours)
         
         self.displayReservableTimeText.accept(displayText)
     }
@@ -284,7 +294,6 @@ class MapViewModel: NSObject, MapViewModelType {
         displayAddressText.accept(addr)
     }
     
-    
     // MARK: - Handle Location
     
     private func updateCamera(_ coordinate:CLLocationCoordinate2D) {
@@ -330,9 +339,8 @@ class MapViewModel: NSObject, MapViewModelType {
         let radius = self.mapView!.rx.radius
 
         debugPrint("[RADIUS] ", radius)
+        let schedule = UserData.shared.getReservableTime()
 
-        let start = Date().dateFor(.nearestMinute(minute:10)).toString(format: .custom("HHmm"))
-        let end = Date().dateFor(.nearestMinute(minute:10)).adjust(.hour, offset: 2).toString(format: .custom("HHmm"))
         let today = Date().toString(format: .custom("yyyyMMdd"))
         
         if district == true {
@@ -342,7 +350,7 @@ class MapViewModel: NSObject, MapViewModelType {
                 })
                 .disposed(by: disposeBag)
         } else {
-            self.within(coordinate:coord, radius: radius, filter:option.filter, month:(today, 1), time:(start, end))
+            self.within(coordinate:coord, radius: radius, filter:option.filter, month:(today, 1), time:(schedule.start, schedule.end))
                 .subscribe(onNext: { elements in
                     self.updateMarker(lots: elements)
                 })
