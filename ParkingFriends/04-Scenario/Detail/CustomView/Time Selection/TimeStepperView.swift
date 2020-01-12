@@ -16,6 +16,7 @@ protocol TimeStepperViewType {
     var minutesLabel: UILabel! { get set }
     
     func setStartTime(_ date:Date)
+    func getTime() -> Date 
 }
 
 class TimeStepperView: UIView, TimeStepperViewType {
@@ -26,7 +27,7 @@ class TimeStepperView: UIView, TimeStepperViewType {
     
     private var start:Date?
     private var adjust:Date?
-    
+ 
     private let offsetMinutes = 30
     
     private var disposeBag = DisposeBag()
@@ -35,8 +36,15 @@ class TimeStepperView: UIView, TimeStepperViewType {
     
     public func setStartTime(_ date:Date) {
         start = date
-        
         updateTime(date)
+    }
+    
+    func getTime() -> Date {
+        guard adjust != nil else {
+            return start!
+        }
+        
+        return adjust!
     }
     
     // MARK: - Local Methods
@@ -51,7 +59,8 @@ class TimeStepperView: UIView, TimeStepperViewType {
     
     func chagneTime(offset:Int){
         if let date = start, date.compare(.isLater(than: start!)) == true {
-            updateTime(date)
+            adjust = date.adjust(.hour, offset: offset)
+            updateTime(adjust!)
         }
     }
     
