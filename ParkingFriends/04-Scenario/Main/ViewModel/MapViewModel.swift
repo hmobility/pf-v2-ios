@@ -323,11 +323,11 @@ class MapViewModel: NSObject, MapViewModelType {
         
         return locationManager.rx.location
             .map { location in
-                if let available = location, available.horizontalAccuracy == 0 {
+                if let available = location, available.verticalAccuracy < 0  || available.horizontalAccuracy < 0 {
                     return CLLocationCoordinate2DMake(defaultCoordinate.latitude, defaultCoordinate.longitude)
                 }
                 
-                return location?.coordinate ?? CLLocationCoordinate2DMake(testCoordinate.latitude, testCoordinate.longitude)
+                return location?.coordinate ?? CLLocationCoordinate2DMake(defaultCoordinate.latitude, defaultCoordinate.longitude)
             }
     }
     

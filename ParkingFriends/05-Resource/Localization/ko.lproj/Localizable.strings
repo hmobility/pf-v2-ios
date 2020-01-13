@@ -20,6 +20,7 @@
 "btn_road_guide" = "길안내 받기";
 "btn_reservation_extend" = "예약 연장";
 "btn_reservation_cancel" = "예약 취소";
+"btn_extend" = "연장하기";
 "btn_no" = "아니요";
 "btn_yes" = "맞아요!";
 "btn_not_yet" = "아직이요";
@@ -312,6 +313,15 @@
 "ttl_charge_extra" = "현재 추가 요금 : ";
 "ttl_parking_entrance_confirm" = "본인 주차 여부 확인";
 "dsc_parking_entrance_confirm" = "예약하신 주차면에 입차 정보가 감지되었습니다.\n혹시 직접 주차하셨나요?";
+
+// Dialog
+"dlg_ttl_time_ticket_duration" = "몇시간동안 주차하세요?";
+"dlt_ttl_time_ticket_start" = "주차 시작 시간을 선택하세요.";
+"dlg_ttl_fixed_ticket" = "주차시간을 선택하세요.";
+"dlg_ttl_monthly_ticket" = "주차일자와 주차기간을 선택하세요.";
+"dlg_txt_from" = "부터";
+"dlg_txt_duration_month" = "개월간";
+"dlg_ttl_extend_duration" = "예약을 얼마나 연장할까요?";
 
 // Navigation
 "ttl_navigation_guide" = "어떤 앱으로 안내할까요?";

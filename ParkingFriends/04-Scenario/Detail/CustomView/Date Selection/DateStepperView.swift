@@ -52,7 +52,7 @@ class DateStepperView: UIView, DateStepperViewType {
         dateLabel.text = date
     }
     
-    func chagneDate(offset:Int){
+    func changeDate(offset:Int){
         if let date = start, date.compare(.isLater(than: start!)) == true {
             adjust = date.adjust(.day, offset: offset)
             updateDate(adjust!)
@@ -61,12 +61,12 @@ class DateStepperView: UIView, DateStepperViewType {
     
     func incrementDay() {
         let offset = offsetDay
-        chagneDate(offset: offset)
+        changeDate(offset: offset)
     }
     
     func decrementDay() {
         let offset = -offsetDay
-        chagneDate(offset: offset)
+        changeDate(offset: offset)
     }
     
     // MARK: - Binding

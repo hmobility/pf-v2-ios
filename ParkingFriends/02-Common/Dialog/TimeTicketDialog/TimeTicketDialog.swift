@@ -10,7 +10,7 @@ import Foundation
 
 public struct TimeTicketDialog {
     static func show(source:UIViewController, start:Date, handler:((_ start:Date, _ end:Date) -> Void)?) {
-        let target = Storyboard.timeTicketDialog.instantiateViewController(withIdentifier: "TimeTicketNavigationController") as! TimeTicketNavigationController
+        let target = Dialog.timeTicket.instantiateViewController(withIdentifier: "TimeTicketNavigationController") as! TimeTicketNavigationController
         
         target.setStart(date: start)
     
