@@ -26,10 +26,10 @@
             </objects>
             <point key="canvasLocation" x="-862" y="16"/>
         </scene>
-        <!--Fixed Ticket Duration View Controller-->
+        <!--Monthly Ticket Duration View Controller-->
         <scene sceneID="aiP-vi-AsR">
             <objects>
-                <viewController storyboardIdentifier="FixedTicketDurationViewController" id="Iqp-ab-hBZ" customClass="FixedTicketDurationViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MonthlyTicketDurationViewController" id="Iqp-ab-hBZ" customClass="MonthlyTicketDurationViewController" customModule="ParkingFriends" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="dNd-uf-idX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="304"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -40,8 +40,8 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a6K-od-ic4" userLabel="View - Title">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="41"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="몇시간동안 주차하세요?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bg1-oI-LYT" userLabel="Label - Title">
-                                                <rect key="frame" x="20" y="24" width="150" height="19.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="주차일자와 주차기간을 선택하세요." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bg1-oI-LYT" userLabel="Label - Title">
+                                                <rect key="frame" x="20" y="24" width="220.5" height="19.5"/>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="16"/>
                                                 <color key="textColor" name="DarkGrey"/>
                                                 <nil key="highlightedColor"/>
@@ -57,10 +57,31 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="csr-Mh-NQ0" userLabel="View - Picker">
                                         <rect key="frame" x="0.0" y="41" width="414" height="210"/>
                                         <subviews>
-                                            <pickerView contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g8N-5w-o5X" userLabel="Hours Picker - Hours">
-                                                <rect key="frame" x="248" y="44" width="100" height="122"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="부터" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MjC-Gq-y61" userLabel="Label - From">
+                                                <rect key="frame" x="197.5" y="89.5" width="45" height="31.5"/>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="26"/>
+                                                <color key="textColor" name="DarkGrey"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <datePicker contentMode="scaleToFill" horizontalCompressionResistancePriority="749" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="fsq-BI-uPf">
+                                                <rect key="frame" x="40" y="44" width="153.5" height="122"/>
+                                                <locale key="locale" localeIdentifier="ko_KR"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="indicatorColor">
+                                                        <color key="value" name="AlgaeGreen"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </datePicker>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="개월간" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jbN-B3-tsn" userLabel="Label - To">
+                                                <rect key="frame" x="316.5" y="89.5" width="67.5" height="31.5"/>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="26"/>
+                                                <color key="textColor" name="DarkGrey"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <pickerView contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g8N-5w-o5X" userLabel="Hours Picker - Hours">
+                                                <rect key="frame" x="262.5" y="44" width="50" height="122"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="100" id="KbQ-es-bmH"/>
+                                                    <constraint firstAttribute="width" constant="50" id="KbQ-es-bmH"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="indicatorColor">
@@ -71,28 +92,21 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </pickerView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" text="부터" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MjC-Gq-y61" userLabel="Label - Result Date">
-                                                <rect key="frame" x="204" y="95.5" width="28" height="19.5"/>
-                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="16"/>
-                                                <color key="textColor" name="DarkGrey"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <datePicker contentMode="scaleToFill" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="fsq-BI-uPf">
-                                                <rect key="frame" x="34" y="44" width="159" height="122"/>
-                                                <locale key="locale" localeIdentifier="ko_KR"/>
-                                            </datePicker>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
-                                            <constraint firstItem="MjC-Gq-y61" firstAttribute="centerY" secondItem="csr-Mh-NQ0" secondAttribute="centerY" id="A8C-Bc-Gvo"/>
+                                            <constraint firstItem="jbN-B3-tsn" firstAttribute="centerY" secondItem="g8N-5w-o5X" secondAttribute="centerY" id="4rb-Cv-Nr4"/>
+                                            <constraint firstItem="g8N-5w-o5X" firstAttribute="leading" secondItem="MjC-Gq-y61" secondAttribute="trailing" constant="20" id="A3X-ov-Dtz"/>
+                                            <constraint firstAttribute="trailing" secondItem="jbN-B3-tsn" secondAttribute="trailing" constant="30" id="Atf-do-2In"/>
                                             <constraint firstAttribute="height" constant="210" id="B3V-vY-2zQ"/>
                                             <constraint firstItem="MjC-Gq-y61" firstAttribute="centerY" secondItem="g8N-5w-o5X" secondAttribute="centerY" id="Lt1-0Y-2Ye"/>
+                                            <constraint firstItem="fsq-BI-uPf" firstAttribute="leading" secondItem="csr-Mh-NQ0" secondAttribute="leading" constant="40" id="OE4-YJ-pdH"/>
                                             <constraint firstAttribute="bottom" secondItem="fsq-BI-uPf" secondAttribute="bottom" constant="44" id="PEQ-5x-Y4Y"/>
-                                            <constraint firstItem="g8N-5w-o5X" firstAttribute="leading" secondItem="MjC-Gq-y61" secondAttribute="trailing" constant="16" id="PfC-j5-kKG"/>
                                             <constraint firstAttribute="bottom" secondItem="g8N-5w-o5X" secondAttribute="bottom" constant="44" id="SHF-Yc-aeg"/>
+                                            <constraint firstItem="MjC-Gq-y61" firstAttribute="leading" secondItem="fsq-BI-uPf" secondAttribute="trailing" constant="4" id="SvN-Uq-Ga7"/>
                                             <constraint firstItem="fsq-BI-uPf" firstAttribute="top" secondItem="csr-Mh-NQ0" secondAttribute="top" constant="44" id="emG-jv-7uf"/>
-                                            <constraint firstAttribute="trailing" secondItem="g8N-5w-o5X" secondAttribute="trailing" constant="24" id="gQv-od-PAe"/>
                                             <constraint firstItem="g8N-5w-o5X" firstAttribute="top" secondItem="csr-Mh-NQ0" secondAttribute="top" constant="44" id="nWm-CD-EIk"/>
+                                            <constraint firstItem="jbN-B3-tsn" firstAttribute="leading" secondItem="g8N-5w-o5X" secondAttribute="trailing" constant="4" id="x0R-Ov-E8L"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wnR-kl-oaa" userLabel="View - Separator">
@@ -135,10 +149,12 @@
                     <navigationItem key="navigationItem" id="hT3-jq-6tx"/>
                     <size key="freeformSize" width="414" height="304"/>
                     <connections>
-                        <outlet property="fixedTicketTitleLabel" destination="MjC-Gq-y61" id="qXI-1L-voQ"/>
-                        <outlet property="hoursPicker" destination="g8N-5w-o5X" id="BdY-8M-QIB"/>
+                        <outlet property="datePicker" destination="fsq-BI-uPf" id="Vro-8o-s32"/>
+                        <outlet property="fromLabel" destination="MjC-Gq-y61" id="f30-bb-l93"/>
+                        <outlet property="monthPicker" destination="g8N-5w-o5X" id="mV7-Sy-0i7"/>
                         <outlet property="saveButton" destination="Kuo-W2-ujb" id="YfH-ZP-BL2"/>
                         <outlet property="titleLabel" destination="a6K-od-ic4" id="gQ8-uy-8Lo"/>
+                        <outlet property="toLabel" destination="jbN-B3-tsn" id="Ork-W0-ljk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tJn-Ip-Ekc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

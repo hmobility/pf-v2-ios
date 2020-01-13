@@ -20,7 +20,10 @@ struct Storyboard {
     static let payment = UIStoryboard(name: "Payment", bundle: nil)
     static let menu = UIStoryboard(name: "Menu", bundle: nil)
     static let parking = UIStoryboard(name: "Parking", bundle: nil)
-    
-    static let timeTicketDialog = UIStoryboard(name: "TimeTicketDialog", bundle: nil)
-    static let fixedTicketDialog = UIStoryboard(name: "FixedTicketDialog", bundle: nil)
+}
+
+struct Dialog {
+    static let timeTicket = UIStoryboard(name: "TimeTicketDialog", bundle: nil)
+    static let fixedTicket = UIStoryboard(name: "FixedTicketDialog", bundle: nil)
+    static let monthlyTicket = UIStoryboard(name: "MonthlyTicketDialog", bundle: nil)
 }

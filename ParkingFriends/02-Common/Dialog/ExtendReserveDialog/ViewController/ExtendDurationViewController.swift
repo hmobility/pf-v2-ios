@@ -1,17 +1,18 @@
 //
-//  FixedTicketDurationViewController.swift
+//  ExtendDurationViewController.swift
 //  ParkingFriends
 //
-//  Created by PlankFish on 2020/01/12.
+//  Created by PlankFish on 2020/01/13.
 //  Copyright © 2020 Hancom Mobility. All rights reserved.
 //
 
 import UIKit
 
-class FixedTicketDurationViewController: UIViewController {
+class ExtendDurationViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var fixedTicketTitleLabel: UILabel!
+    @IBOutlet weak var extendDurationTitleLabel: UILabel!
     @IBOutlet weak var hoursPicker: UIPickerView!
+    @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
     
     private var startDate:Date?
@@ -21,6 +22,7 @@ class FixedTicketDurationViewController: UIViewController {
     
     private var disposeBag = DisposeBag()
     
+    
     // MARK: - Binding
     
     private func setupHoursPicker() {
@@ -29,11 +31,16 @@ class FixedTicketDurationViewController: UIViewController {
     }
     
     private func setupBinding() {
-        titleLabel.text = localizer.localized("dlg_ttl_fixed_ticket")
-        fixedTicketTitleLabel.text = localizer.localized("ttl_ticket_fixed_day")
+        extendDurationTitleLabel.text = localizer.localized("ttl_extend_duration")
     }
     
     private func setupButtonBinding() {
+        cancelButton.rx.tap
+            .subscribe(onNext: { _ in
+                self.dismissModal(animated: true)
+            })
+            .disposed(by: disposeBag)
+        
         saveButton.rx.tap
             .subscribe(onNext: { _ in
                 self.dismissModal(animated: true) {
@@ -47,50 +54,15 @@ class FixedTicketDurationViewController: UIViewController {
             .disposed(by: disposeBag)
     }
     
-    // MARK: - Public Methods
-    
-    public func setStartDate(_ date:Date) {
-        startDate = date
-    }
-    
-    // MARK: - Local Methods
-    
-    private func updatePickerHours() {
-        if let date = startDate {
-            let maxHours:Int = 24 - date.component(.hour)!
-            hourRangeList = Array(1...maxHours)
- 
-            Observable.just(hourRangeList)
-                .bind(to: hoursPicker.rx.itemTitles) { _, item in
-                    return "\(item)"
-            }
-            .disposed(by: disposeBag)
-        }
-    }
-    
-    // MARK: - Initialize
-    
-    init() {
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-    
-    private func initialize() {
-        setupButtonBinding()
-        setupHoursPicker()
-        setupBinding()
-    }
-    
     // MARK: - Life Cycle
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        initialize()
+
+        // Do any additional setup after loading the view.
     }
     
+
     /*
     // MARK: - Navigation
 

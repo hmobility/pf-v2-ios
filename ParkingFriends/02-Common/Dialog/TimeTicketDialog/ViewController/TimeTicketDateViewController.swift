@@ -84,7 +84,7 @@ class TimeTicketDateViewController: UIViewController {
     // MARK: - Navigation
     
     func navigateToHoursPicker() {
-        let target = Storyboard.timeTicketDialog.instantiateViewController(withIdentifier: "TimeTicketDurationViewController") as! TimeTicketDurationViewController
+        let target = Dialog.timeTicket.instantiateViewController(withIdentifier: "TimeTicketDurationViewController") as! TimeTicketDurationViewController
         
         let date = datePicker.date
         target.setStartDate(date)

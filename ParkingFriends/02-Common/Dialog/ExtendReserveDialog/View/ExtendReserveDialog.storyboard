@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Time Ticket Navigation Controller-->
+        <scene sceneID="YPz-1M-yVH">
+            <objects>
+                <navigationController storyboardIdentifier="TimeTicketNavigationController" navigationBarHidden="YES" id="7SD-8M-LHM" customClass="TimeTicketNavigationController" customModule="ParkingFriends" customModuleProvider="target" sceneMemberID="viewController">
+                    <value key="contentSizeForViewInPopover" type="size" width="0.0" height="304"/>
+                    <size key="freeformSize" width="414" height="304"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="PKs-4u-rg7">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="lMf-7b-ccG" kind="relationship" relationship="rootViewController" id="UvA-vM-hAo"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fcz-lz-dqN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-862" y="16"/>
+        </scene>
+        <!--Extend Duration View Controller-->
+        <scene sceneID="K2s-3k-YZe">
+            <objects>
+                <viewController storyboardIdentifier="ExtendDurationViewController" id="lMf-7b-ccG" customClass="ExtendDurationViewController" customModule="ParkingFriends" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Kpb-dh-XpW">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="304"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="KkT-AJ-XHn">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="304"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BdU-R7-RcR" userLabel="View - Title">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="41"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="예약을 얼마나 연장할까요?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cjc-nS-oRt" userLabel="Label - Title">
+                                                <rect key="frame" x="20" y="24" width="168" height="19.5"/>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="16"/>
+                                                <color key="textColor" name="DarkGrey"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="41" id="Hzl-Ry-ghE"/>
+                                            <constraint firstItem="cjc-nS-oRt" firstAttribute="leading" secondItem="BdU-R7-RcR" secondAttribute="leading" constant="20" id="Xij-06-q0B"/>
+                                            <constraint firstItem="cjc-nS-oRt" firstAttribute="top" secondItem="BdU-R7-RcR" secondAttribute="top" constant="24" id="ioj-D8-REH"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1FG-5y-bMS" userLabel="View - Picker">
+                                        <rect key="frame" x="0.0" y="41" width="414" height="210"/>
+                                        <subviews>
+                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="euX-jq-jUk" userLabel="Hours Picker - Hours">
+                                                <rect key="frame" x="254" y="44" width="100" height="122"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="100" id="jUO-Fx-NK4"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="indicatorColor">
+                                                        <color key="value" name="AlgaeGreen"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                                        <color key="value" name="CharcoalGrey2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </pickerView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘 오후 12:30분부터" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fK0-8t-wB2" userLabel="Label - Result Date">
+                                                <rect key="frame" x="12" y="95.5" width="230" height="19.5"/>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="16"/>
+                                                <color key="textColor" name="DarkGrey"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="euX-jq-jUk" secondAttribute="bottom" constant="44" id="GFT-uw-bLd"/>
+                                            <constraint firstItem="euX-jq-jUk" firstAttribute="top" secondItem="1FG-5y-bMS" secondAttribute="top" constant="44" id="KeX-vc-czH"/>
+                                            <constraint firstItem="fK0-8t-wB2" firstAttribute="leading" secondItem="1FG-5y-bMS" secondAttribute="leading" constant="12" id="b86-zX-CId"/>
+                                            <constraint firstAttribute="height" constant="210" id="i4Y-hC-oby"/>
+                                            <constraint firstItem="fK0-8t-wB2" firstAttribute="centerY" secondItem="euX-jq-jUk" secondAttribute="centerY" id="lGX-hh-Bvs"/>
+                                            <constraint firstItem="fK0-8t-wB2" firstAttribute="centerY" secondItem="1FG-5y-bMS" secondAttribute="centerY" id="qu5-Kk-QtI"/>
+                                            <constraint firstAttribute="trailing" secondItem="euX-jq-jUk" secondAttribute="trailing" constant="60" id="yWJ-pi-Chy"/>
+                                            <constraint firstItem="euX-jq-jUk" firstAttribute="leading" secondItem="fK0-8t-wB2" secondAttribute="trailing" constant="12" id="ye6-3B-IUz"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xiG-SS-n2l" userLabel="View - Separator">
+                                        <rect key="frame" x="0.0" y="251" width="414" height="0.5"/>
+                                        <color key="backgroundColor" red="0.86666666670000003" green="0.87843137250000003" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="0.5" id="KjF-WA-jOR"/>
+                                        </constraints>
+                                    </view>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="z22-Tq-n72">
+                                        <rect key="frame" x="0.0" y="251.5" width="414" height="52.5"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EoY-Gb-dAe" userLabel="Button - Previous">
+                                                <rect key="frame" x="0.0" y="0.0" width="207" height="52.5"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="52.5" id="dPS-x6-oKm"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="18"/>
+                                                <inset key="contentEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <state key="normal" title="취소">
+                                                    <color key="titleColor" name="DarkGrey"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n6I-78-1BO" userLabel="Button - Save">
+                                                <rect key="frame" x="207" y="0.0" width="207" height="52.5"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="52.5" id="K0o-e3-Ge3"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="18"/>
+                                                <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="23" maxY="0.0"/>
+                                                <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="4" maxY="0.0"/>
+                                                <state key="normal" title="저장하기" image="icNextGrey">
+                                                    <color key="titleColor" name="DarkGrey"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="52.5" id="Lo0-vB-Gzn"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="KkT-AJ-XHn" firstAttribute="trailing" secondItem="Kpb-dh-XpW" secondAttribute="trailing" id="0N2-Fj-gUV"/>
+                            <constraint firstItem="KkT-AJ-XHn" firstAttribute="bottom" secondItem="2fG-Sj-H8V" secondAttribute="bottom" id="PcZ-Dp-YTm"/>
+                            <constraint firstItem="KkT-AJ-XHn" firstAttribute="top" secondItem="Kpb-dh-XpW" secondAttribute="top" id="TLC-oS-p3z"/>
+                            <constraint firstItem="KkT-AJ-XHn" firstAttribute="leading" secondItem="Kpb-dh-XpW" secondAttribute="leading" id="srh-YE-9fC"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="2fG-Sj-H8V"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="lcf-hQ-i0q"/>
+                    <connections>
+                        <outlet property="cancelButton" destination="EoY-Gb-dAe" id="cni-ip-i7I"/>
+                        <outlet property="extendDurationTitleLabel" destination="fK0-8t-wB2" id="Lac-zg-HIS"/>
+                        <outlet property="hoursPicker" destination="euX-jq-jUk" id="iGL-SQ-4iu"/>
+                        <outlet property="saveButton" destination="n6I-78-1BO" id="cQm-2g-d0W"/>
+                        <outlet property="titleLabel" destination="BdU-R7-RcR" id="bSL-5y-k9e"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cME-SA-8Qj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3" y="15"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="icNextGrey" width="16" height="16"/>
+        <namedColor name="AlgaeGreen">
+            <color red="0.14499999582767487" green="0.83899998664855957" blue="0.3880000114440918" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="CharcoalGrey2">
+            <color red="0.17299999296665192" green="0.18000000715255737" blue="0.20000000298023224" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="DarkGrey">
+            <color red="0.10199999809265137" green="0.10199999809265137" blue="0.10599999874830246" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

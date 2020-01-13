@@ -522,7 +522,7 @@
                                     <view contentMode="scaleToFill" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vFB-JC-60R" userLabel="View - Background">
                                         <rect key="frame" x="0.0" y="216" width="414" height="1142"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Gwh-cA-Ae7">
+                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Gwh-cA-Ae7">
                                                 <rect key="frame" x="0.0" y="20" width="414" height="1766"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zKP-76-ADc" userLabel="View - Tags">
@@ -1594,10 +1594,10 @@
                                                             </view>
                                                         </subviews>
                                                     </stackView>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vkr-qH-iNj" userLabel="View - Contents">
+                                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vkr-qH-iNj" userLabel="View - Contents">
                                                         <rect key="frame" x="0.0" y="1638" width="414" height="128"/>
                                                         <subviews>
-                                                            <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3RT-Yn-7vB" userLabel="Tag List View - Tags" customClass="TagListView" customModule="TagListView">
+                                                            <view contentMode="scaleToFill" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3RT-Yn-7vB" userLabel="Tag List View - Tags" customClass="TagListView" customModule="TagListView">
                                                                 <rect key="frame" x="24" y="0.0" width="366" height="64"/>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                                 <userDefinedRuntimeAttributes>
