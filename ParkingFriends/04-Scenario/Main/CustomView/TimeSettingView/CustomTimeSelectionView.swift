@@ -30,7 +30,7 @@ class CustomTimeSettingView: UIView {
     
     // MARK: - Public Methods
     
-    public func setTime(time:String) {
+    public func setReservable(time:String) {
         timeSettingLabel.text = time
     }
     

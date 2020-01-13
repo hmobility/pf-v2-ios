@@ -7,47 +7,55 @@
 //
 
 import UIKit
-import AFDateHelper
 
 class ProductOption: NSObject, NSCoding {
-    var radius:Int = 0
     var monthlyFrom:Int = 0
     var monthlyCount:Int = 0
-    var sort:SortType = .distance
     
     var selectedProductType:ProductType = .fixed
     
-    var start:String {
+    var reservableStartTime: Date  {
         get {
-            return Date().dateFor(.nearestHour(hour:1)).toString(format: .custom("HHmm"))
-           //return Date().dateRoundedAt(at:.toCeilMins(60)).toString(format: "HHmm")
+            return start ?? today
         }
     }
     
-    var end:String {
+    var reservableEndTime: Date {
         get {
-            return Date().dateFor(.nearestHour(hour:1)).adjust(.hour, offset: +2).toString(format: .custom("HHmm"))
+            return end ?? today.adjust(.hour, offset: 2)
         }
     }
     
+    var start: Date?
+    var end: Date?
+    
+    private var today: Date {
+        get {
+            var start = Date().dateFor(.nearestMinute(minute:10))
+            
+            if Date().compare(.isLater(than: start)) == true {
+                start = start.adjust(.minute, offset: 10)
+            }
+            
+            return start
+        }
+    }
+    
+    // MARK: - Initialize
+
     override init() {
+        super.init()
     }
 
     required init(coder aDecoder: NSCoder) {
-        radius = aDecoder.decodeObject(forKey: "radius") as? Int ?? 15
-       // start = aDecoder.decodeObject(forKey: "start") as? NSDate ?? 15
-       // end = aDecoder.decodeObject(forKey: "end") as? NSDate ?? 15
-        monthlyFrom = aDecoder.decodeObject(forKey: "radius") as? Int ?? 0
-        monthlyCount = aDecoder.decodeObject(forKey: "radius") as? Int ?? 0
-        sort = aDecoder.decodeObject(forKey: "radius") as? SortType ?? .distance
-        selectedProductType = aDecoder.decodeObject(forKey: "selectedProductType") as? ProductType ?? .fixed
+     //   monthlyFrom = aDecoder.decodeObject(forKey: "monthlyFrom") as? Int ?? 0
+     //   monthlyCount = aDecoder.decodeObject(forKey: "monthlyCount") as? Int ?? 0
+        selectedProductType = ProductType(rawValue: aDecoder.decodeObject(forKey: "selectedProductType") as! String) ?? .fixed
     }
 
     func encode(with aCoder: NSCoder) {
-        aCoder.encode(radius, forKey: "radius")
-        aCoder.encode(radius, forKey: "monthlyFrom")
-        aCoder.encode(radius, forKey: "monthlyCount")
-        aCoder.encode(radius, forKey: "sort")
-        aCoder.encode(selectedProductType, forKey: "selectedProductType")
+       // aCoder.encode(monthlyFrom, forKey: "monthlyFrom")
+      //  aCoder.encode(monthlyCount, forKey: "monthlyCount")
+        aCoder.encode(selectedProductType.rawValue, forKey: "selectedProductType")
     }
 }

@@ -1826,7 +1826,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="718"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tzs-lT-zeL" userLabel="View - Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="366"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="369"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="g1h-nN-Jxx" userLabel="Stack View - Phone Number" customClass="CustomInputSection" customModule="ParkingFriends" customModuleProvider="target">
                                                 <rect key="frame" x="20" y="24" width="374" height="104"/>
@@ -1843,8 +1843,25 @@
                                                                 <color key="textColor" red="0.1019607843" green="0.1019607843" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
+                                                            <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3d3-TY-0Vv" userLabel="Button - Change">
+                                                                <rect key="frame" x="295" y="43" width="79" height="36"/>
+                                                                <color key="backgroundColor" red="0.1450980392" green="0.83921568629999999" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="79" id="5Sf-fX-yNk"/>
+                                                                    <constraint firstAttribute="height" constant="36" id="j6P-Vr-Fvo"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="17"/>
+                                                                <state key="normal" title="변경">
+                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                        <real key="value" value="16"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="010-1234-1234" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ho6-Pe-p2b" userLabel="Label - Phone Number">
-                                                                <rect key="frame" x="16" y="49" width="342" height="24"/>
+                                                                <rect key="frame" x="16" y="49" width="269" height="24"/>
                                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="20"/>
                                                                 <color key="textColor" name="LightBlueGrey"/>
                                                                 <nil key="highlightedColor"/>
@@ -1853,12 +1870,14 @@
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstItem="jJj-zA-mOG" firstAttribute="leading" secondItem="DLE-YC-PcI" secondAttribute="leading" constant="14" id="IRD-tN-kmf"/>
-                                                            <constraint firstAttribute="trailing" secondItem="ho6-Pe-p2b" secondAttribute="trailing" constant="16" id="Sao-me-LbV"/>
+                                                            <constraint firstAttribute="trailing" secondItem="3d3-TY-0Vv" secondAttribute="trailing" id="RVZ-vb-7GV"/>
                                                             <constraint firstItem="ho6-Pe-p2b" firstAttribute="leading" secondItem="DLE-YC-PcI" secondAttribute="leading" constant="16" id="XLd-7a-7GC"/>
                                                             <constraint firstAttribute="bottom" secondItem="ho6-Pe-p2b" secondAttribute="bottom" constant="15" id="ag4-FJ-lmL"/>
                                                             <constraint firstItem="ho6-Pe-p2b" firstAttribute="top" secondItem="jJj-zA-mOG" secondAttribute="bottom" constant="17" id="bKd-SG-DQb"/>
                                                             <constraint firstAttribute="trailing" secondItem="jJj-zA-mOG" secondAttribute="trailing" constant="14" id="c0i-8w-fFN"/>
+                                                            <constraint firstItem="3d3-TY-0Vv" firstAttribute="centerY" secondItem="ho6-Pe-p2b" secondAttribute="centerY" id="fxE-pD-W3a"/>
                                                             <constraint firstItem="jJj-zA-mOG" firstAttribute="top" secondItem="DLE-YC-PcI" secondAttribute="top" id="wUH-iU-kgt"/>
+                                                            <constraint firstItem="3d3-TY-0Vv" firstAttribute="leading" secondItem="ho6-Pe-p2b" secondAttribute="trailing" constant="10" id="y7k-dp-fxY"/>
                                                         </constraints>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
@@ -1901,10 +1920,10 @@
                                                 </connections>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="vpw-cs-AOf" userLabel="Stack View - email" customClass="CustomInputSection" customModule="ParkingFriends" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="136" width="374" height="101"/>
+                                                <rect key="frame" x="20" y="136" width="374" height="104"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cAY-qO-7s8" userLabel="View - Input Area">
-                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="85"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="88"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이메일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UXn-CA-VPV" userLabel="Label - Field Title">
                                                                 <rect key="frame" x="14" y="0.0" width="346" height="32"/>
@@ -1915,29 +1934,41 @@
                                                                 <color key="textColor" red="0.1019607843" green="0.1019607843" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="-를 제외하고 입력" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="1vL-ou-kTP" userLabel="TextField - Verification">
-                                                                <rect key="frame" x="16" y="49" width="342" height="20"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="20" id="66W-zB-nj6"/>
-                                                                </constraints>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="email@hancom.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Whi-0B-jNg" userLabel="Label - Phone Number">
+                                                                <rect key="frame" x="16" y="49" width="269" height="24"/>
                                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="20"/>
-                                                                <textInputTraits key="textInputTraits" autocorrectionType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="email"/>
+                                                                <color key="textColor" name="LightBlueGrey"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ko5-U1-F5o" userLabel="Button - Change">
+                                                                <rect key="frame" x="295" y="43" width="79" height="36"/>
+                                                                <color key="backgroundColor" red="0.1450980392" green="0.83921568629999999" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="79" id="Zo7-Ng-21g"/>
+                                                                    <constraint firstAttribute="height" constant="36" id="gjI-56-2hK"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="17"/>
+                                                                <state key="normal" title="변경">
+                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
                                                                 <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="color" keyPath="cursorColor">
-                                                                        <color key="value" name="LightSeafoam"/>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                        <real key="value" value="16"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
-                                                            </textField>
+                                                            </button>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="trailing" secondItem="UXn-CA-VPV" secondAttribute="trailing" constant="14" id="1aH-vZ-u3z"/>
-                                                            <constraint firstItem="1vL-ou-kTP" firstAttribute="leading" secondItem="cAY-qO-7s8" secondAttribute="leading" constant="16" id="4MY-iw-C5H"/>
                                                             <constraint firstItem="UXn-CA-VPV" firstAttribute="top" secondItem="cAY-qO-7s8" secondAttribute="top" id="90R-Xc-ZbY"/>
-                                                            <constraint firstAttribute="trailing" secondItem="1vL-ou-kTP" secondAttribute="trailing" constant="16" id="qkH-hS-hVo"/>
-                                                            <constraint firstAttribute="bottom" secondItem="1vL-ou-kTP" secondAttribute="bottom" constant="16" id="xx5-IS-nct"/>
+                                                            <constraint firstAttribute="bottom" secondItem="Whi-0B-jNg" secondAttribute="bottom" constant="15" id="DJ2-nM-zFf"/>
+                                                            <constraint firstItem="Whi-0B-jNg" firstAttribute="top" secondItem="UXn-CA-VPV" secondAttribute="bottom" constant="17" id="GjD-VT-JTE"/>
+                                                            <constraint firstItem="Whi-0B-jNg" firstAttribute="leading" secondItem="cAY-qO-7s8" secondAttribute="leading" constant="16" id="H3g-W5-A59"/>
+                                                            <constraint firstItem="Ko5-U1-F5o" firstAttribute="leading" secondItem="Whi-0B-jNg" secondAttribute="trailing" constant="10" id="Y49-lU-Gfc"/>
+                                                            <constraint firstAttribute="trailing" secondItem="Ko5-U1-F5o" secondAttribute="trailing" id="nyu-8D-flb"/>
                                                             <constraint firstItem="UXn-CA-VPV" firstAttribute="leading" secondItem="cAY-qO-7s8" secondAttribute="leading" constant="14" id="yWM-fr-P3o"/>
-                                                            <constraint firstItem="1vL-ou-kTP" firstAttribute="top" secondItem="UXn-CA-VPV" secondAttribute="bottom" constant="17" id="zvm-gN-J6Y"/>
+                                                            <constraint firstItem="Ko5-U1-F5o" firstAttribute="centerY" secondItem="Whi-0B-jNg" secondAttribute="centerY" id="yuY-YV-34n"/>
                                                         </constraints>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
@@ -1952,7 +1983,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이미 사용중인 닉네임입니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0sk-Qx-h0R" userLabel="Label - Message">
-                                                        <rect key="frame" x="0.0" y="85" width="374" height="16"/>
+                                                        <rect key="frame" x="0.0" y="88" width="374" height="16"/>
                                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="13"/>
                                                         <color key="textColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -1975,12 +2006,11 @@
                                                 <connections>
                                                     <outlet property="backgroundView" destination="cAY-qO-7s8" id="yKG-tk-JWu"/>
                                                     <outlet property="fieldTitleLabel" destination="UXn-CA-VPV" id="ToS-cr-0bd"/>
-                                                    <outlet property="inputTextField" destination="1vL-ou-kTP" id="SO1-o8-k3F"/>
                                                     <outlet property="messageLabel" destination="0sk-Qx-h0R" id="nuS-7l-hgx"/>
                                                 </connections>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="6Fj-eU-YgK" userLabel="Stack View - Nickname" customClass="CustomInputSection" customModule="ParkingFriends" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="245" width="374" height="101"/>
+                                                <rect key="frame" x="20" y="248" width="374" height="101"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bXX-XN-FUN" userLabel="View - Input Area">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="85"/>
@@ -2131,7 +2161,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wuB-Bc-oNX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="651" y="789"/>
+            <point key="canvasLocation" x="650.72463768115949" y="788.83928571428567"/>
         </scene>
         <!--Empty Card View Controller-->
         <scene sceneID="ue0-GM-F99">

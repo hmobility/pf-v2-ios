@@ -43,10 +43,13 @@ target 'ParkingFriends' do
   
   pod 'FloatingPanel'
   pod 'SideMenu', '~> 6.0'
+  pod "MXParallaxHeader"
   
   pod 'TagListView', '~> 1.3.2'
   
   pod 'RangeSeekSlider'
+  
+  pod 'Cosmos', '~> 20.0'
   
 end
 

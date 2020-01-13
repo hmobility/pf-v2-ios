@@ -12,11 +12,11 @@ import UIKit
 extension UIPickerView {
     @IBInspectable var indicatorColor: UIColor? {
         get {
-            return (self.subviews[0].subviews[1].backgroundColor)!
+            return (self.subviews[1].backgroundColor)!
         }
         set {
-            self.subviews[0].subviews[1].backgroundColor = newValue
-            self.subviews[0].subviews[2].backgroundColor = newValue
+            self.subviews[1].backgroundColor = newValue
+            self.subviews[2].backgroundColor = newValue
         }
     }
     
@@ -26,11 +26,7 @@ extension UIPickerView {
         }
         set {
             self.setValue(newValue, forKey: "textColor")
-            self.performSelector(inBackground: Selector(("setHighlightsToday:")), with:newValue)
-            /*
-            self.subviews[0].subviews[3].setValue(newValue, forKey: "textColor")
-            self.subviews[0].subviews[4].setValue(newValue, forKey: "textColor")
-             */
+            self.performSelector(inBackground: Selector(("setHighlightsToday:")), with: newValue)
         }
     }
 }

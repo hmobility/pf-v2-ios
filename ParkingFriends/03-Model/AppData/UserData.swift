@@ -12,10 +12,73 @@ import ObjectMapper
 class UserData: NSObject, NSCoding {
     var login: Login?
     var filter: FilterOption = FilterOption()
-    var displayPaymentGuide: Bool?
-    var productOption: ProductOption?
     
+    var displayPaymentGuide: Bool?
+    
+    private var basis: ProductOption = ProductOption()
+    /*
+    var reservableStartTime: Date  {
+        get {
+            return start ?? today
+        }
+    }
+    
+    var reservableEndTime: Date {
+        get {
+            return end ?? today.adjust(.hour, offset: 2)
+        }
+    }
+    
+    private var start: Date?
+    private var end: Date?
+    
+    private var today: Date {
+        get {
+            var start = Date().dateFor(.nearestMinute(minute:10))
+            
+            if Date().compare(.isLater(than: start)) == true {
+                start = start.adjust(.minute, offset: 10)
+            }
+            
+            return start
+        }
+    }
+    */
     // MARK: - Public Methods
+    
+    // MARK: - Product
+    
+    public func getProductType() -> ProductType {
+        return basis.selectedProductType
+    }
+    
+    public func setProduct(type:ProductType) -> UserData {
+         basis.selectedProductType = type
+         return self
+    }
+    
+    // MARK: - Reservable Time
+    
+    public func getReservableDate() -> (start:Date, end:Date)  {
+        return (basis.reservableStartTime, basis.reservableEndTime)
+    }
+    
+    public func getReservableTime() -> (start:String, end:String) {
+        let start = basis.reservableStartTime.toString(format: .custom("HHmm"))
+        let end = basis.reservableEndTime.toString(format: .custom("HHmm"))
+        
+        return (start, end)
+     }
+    
+    public func setReservableTime(start startDate:Date, end endDate:Date? = nil) {
+        self.basis.start = startDate
+        
+        if let date = endDate {
+            self.basis.end = date
+        }
+    }
+    
+    // MARK: - Auth
     
     public func setAuth(_ data:Login?) -> UserData {
         guard data != nil else {
@@ -66,7 +129,7 @@ class UserData: NSObject, NSCoding {
         self.login = nil
         self.filter = FilterOption()
         self.displayPaymentGuide = nil
-        self.productOption = nil
+        self.basis = ProductOption()
         
         save()
     }
@@ -92,15 +155,17 @@ class UserData: NSObject, NSCoding {
     required init?(coder aDecoder: NSCoder) {
         self.login = aDecoder.decodeObject(forKey: "login") as? Login
         self.filter = aDecoder.decodeObject(forKey: "filter") as! FilterOption
+        self.basis = aDecoder.decodeObject(forKey: "productOption") as? ProductOption ?? ProductOption()
+        
         self.displayPaymentGuide = aDecoder.decodeObject(forKey: "displayPaymentGuide") as? Bool ?? true
-        self.productOption = aDecoder.decodeObject(forKey: "productOption") as? ProductOption
     }
     
     func encode(with aCoder: NSCoder) {
         aCoder.encode(login, forKey:"login")
         aCoder.encode(filter, forKey: "filter")
+        aCoder.encode(basis, forKey: "productOption")
+        
         aCoder.encode(displayPaymentGuide, forKey: "displayPaymentGuide")
-        aCoder.encode(productOption, forKey: "displayPaymentGuide")
     }
     
     static var shared:UserData {

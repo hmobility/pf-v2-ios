@@ -88,7 +88,7 @@ class HttpSession: NSObject {
                 })
                 
                 response.result.ifFailure ({
-                    debugPrint("[FAILURE]", response.debugDescription, terminator:"\n")
+                    debugPrint("[FAILURE]", response.debugDescription)
                     let statusCode = response.response?.statusCode ?? -1
                     observer.onError(NSError(domain: "", code: statusCode, userInfo: nil))
                 })

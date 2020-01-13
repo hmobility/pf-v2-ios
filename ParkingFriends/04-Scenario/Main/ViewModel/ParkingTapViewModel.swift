@@ -50,8 +50,11 @@ class ParkingTapViewModel: ParkingTapViewModelType {
         timeTicketText = localizer.localized("ttl_ticket_time")
         fixedTicketText = localizer.localized("ttl_ticket_fixed")
         monthlyTicketText = localizer.localized("ttl_ticket_monthly")
+        
+        selectedSortType = BehaviorRelay(value: self.userData.filter.sortType)
         sortOrderText = BehaviorRelay(value: (self.userData.filter.sortType == .price) ? localizer.localized("itm_order_price")
             : localizer.localized("itm_order_distance"))
+        
         initialize()
     }
     
@@ -62,15 +65,15 @@ class ParkingTapViewModel: ParkingTapViewModelType {
     // MARK: - Binding
     
     private func setupProductBinding() {
-        if let option = userData.productOption {
-            selectedProductType.accept(option.selectedProductType)
-        }
+        let productType = userData.getProductType()
+        selectedProductType.accept(productType)
     }
     
     // MARK: - Public Methods
     
     func setProductType(_ type: ProductType) {
         selectedProductType.accept(type)
+        userData.setProduct(type: type).save()
     }
     
     func setSortType(_ type: SortType) {

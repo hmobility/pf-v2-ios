@@ -13,6 +13,9 @@ var disabledColorHandle: UInt8 = 0
 var highlightedColorHandle: UInt8 = 0
 var selectedColorHandle: UInt8 = 0
 
+var normalBorderColorHandle: UInt8 = 0
+var selectedBorderColorHandle: UInt8 = 0
+
 @IBDesignable
 extension UIButton {
     private func image(withColor color: UIColor) -> UIImage? {
@@ -31,6 +34,59 @@ extension UIButton {
 
     func setBackgroundColor(_ color: UIColor, for state: UIControl.State) {
         self.setBackgroundImage(image(withColor: color), for: state)
+    }
+    
+    private func setBorderColor(_ color: UIColor, for state: UIControl.State) {
+        self.layer.borderColor = color.cgColor
+    }
+    
+    @IBInspectable
+    override public var isSelected: Bool {
+        didSet {
+            if isSelected {
+                if let color = selectedBorderColor {
+                    setBorderColor(color, for: .selected)
+                }
+            } else {
+                if let color = normalBorderColor {
+                   setBorderColor(color, for: .normal)
+               }
+            }
+        }
+    }
+    
+    @IBInspectable
+    var normalBorderColor: UIColor? {
+        get {
+            if let color = objc_getAssociatedObject(self, &normalBorderColorHandle) as? UIColor {
+                return color
+            }
+            return nil
+        }
+        set {
+            if let color = newValue {
+                objc_setAssociatedObject(self, &normalBorderColorHandle, color, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            } else {
+                objc_setAssociatedObject(self, &normalBorderColorHandle, nil, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            }
+        }
+    }
+    
+    @IBInspectable
+    var selectedBorderColor: UIColor? {
+        get {
+            if let color = objc_getAssociatedObject(self, &selectedBorderColorHandle) as? UIColor {
+                return color
+            }
+            return nil
+        }
+        set {
+            if let color = newValue {
+                objc_setAssociatedObject(self, &selectedBorderColorHandle, color, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            } else {
+                objc_setAssociatedObject(self, &selectedBorderColorHandle, nil, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            }
+        }
     }
 
     @IBInspectable

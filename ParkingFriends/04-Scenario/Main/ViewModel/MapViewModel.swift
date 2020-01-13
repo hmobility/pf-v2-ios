@@ -13,7 +13,7 @@ protocol MapViewModelType {
     var mapView: NMFMapView? { get set }
     
     var displayAddressText: BehaviorRelay<String> { get }
-    var displayReservedTimeText: BehaviorRelay<String> { get }
+    var displayReservableTimeText: BehaviorRelay<String> { get }
     
     var cardViewModel:ParkingCardViewModelType? { get set }
     var parkingTapViewModel:ParkingTapViewModelType? { get set }
@@ -23,6 +23,9 @@ protocol MapViewModelType {
     func zoomIn()
     func zoomOut()
     func placeCenter()
+    
+    func setTimeTicketRange(start startDate: Date, end endDate:Date)
+    func setFixedTicketTime(start startDate: Date, hours:Int)
 }
 
 let defaultCoordinate = CoordType(37.400634765624986, 127.11203073310433)
@@ -33,7 +36,7 @@ class MapViewModel: NSObject, MapViewModelType {
     var locationOverlay: NMFLocationOverlay?
     
     var displayAddressText: BehaviorRelay<String> = BehaviorRelay(value: "")
-    var displayReservedTimeText: BehaviorRelay<String> = BehaviorRelay(value: "")
+    var displayReservableTimeText: BehaviorRelay<String>
     
     var displaySettingSection: BehaviorRelay<(list:Bool, search:Bool)> = BehaviorRelay(value:(list:false, search:true))
     
@@ -47,14 +50,22 @@ class MapViewModel: NSObject, MapViewModelType {
     
     private let locationManager = CLLocationManager()
     private let mapModel = MapModel()
+    private let userData:UserData
     
     private let disposeBag = DisposeBag()
     
     // MARK: - Initialize
-    
-    init(localizer: LocalizerType = Localizer.shared, view:NMFMapView ) {
+
+    init(localizer: LocalizerType = Localizer.shared, userData:UserData = UserData.shared, view:NMFMapView) {
         self.mapView = view
+        self.userData = userData
+        
         self.locationOverlay = mapView?.locationOverlay
+        
+        let date = userData.getReservableDate()
+        let displayTime = DisplayTimeHandler().displayReservableTime(start: date.start, end: date.end)
+        
+        displayReservableTimeText = BehaviorRelay(value: displayTime)
         
         destMarker = NMFMarker.init(position: NMGLatLng(lat: defaultCoordinate.latitude, lng: defaultCoordinate.longitude), iconImage: NMFOverlayImage(name: "icMarkerDestination"))
     
@@ -162,6 +173,23 @@ class MapViewModel: NSObject, MapViewModelType {
         }
     }
     
+    // MARK: - Time Option
+    
+    public func setTimeTicketRange(start startDate: Date, end endDate:Date) {
+        UserData.shared.setReservableTime(start:startDate, end:endDate)
+        let displayText = DisplayTimeHandler().displayReservableTime(start: startDate, end: endDate)
+        
+        self.displayReservableTimeText.accept(displayText)
+    }
+    
+    public func setFixedTicketTime(start startDate: Date, hours:Int) {
+        let endDate = startDate.adjust(.hour, offset: hours)
+        UserData.shared.setReservableTime(start:startDate, end:endDate)
+        let displayText = DisplayTimeHandler().diplayFixedTicketFromDate(date: startDate, hours: hours)
+        
+        self.displayReservableTimeText.accept(displayText)
+    }
+    
     // MARK: - Marker
 
     // 개별 주차면 표시
@@ -266,7 +294,6 @@ class MapViewModel: NSObject, MapViewModelType {
         displayAddressText.accept(addr)
     }
     
-    
     // MARK: - Handle Location
     
     private func updateCamera(_ coordinate:CLLocationCoordinate2D) {
@@ -296,8 +323,10 @@ class MapViewModel: NSObject, MapViewModelType {
         
         return locationManager.rx.location
             .map { location in
-                //return CLLocationCoordinate2DMake(testCoordinate.latitude, testCoordinate.longitude)
-                //return location?.coordinate ?? CLLocationCoordinate2DMake(defaultCoordinate.latitude, defaultCoordinate.longitude)
+                if let available = location, available.horizontalAccuracy == 0 {
+                    return CLLocationCoordinate2DMake(defaultCoordinate.latitude, defaultCoordinate.longitude)
+                }
+                
                 return location?.coordinate ?? CLLocationCoordinate2DMake(testCoordinate.latitude, testCoordinate.longitude)
             }
     }
@@ -310,9 +339,8 @@ class MapViewModel: NSObject, MapViewModelType {
         let radius = self.mapView!.rx.radius
 
         debugPrint("[RADIUS] ", radius)
+        let schedule = UserData.shared.getReservableTime()
 
-        let start = Date().dateFor(.nearestMinute(minute:10)).toString(format: .custom("HHmm"))
-        let end = Date().dateFor(.nearestMinute(minute:10)).adjust(.hour, offset: 2).toString(format: .custom("HHmm"))
         let today = Date().toString(format: .custom("yyyyMMdd"))
         
         if district == true {
@@ -322,7 +350,7 @@ class MapViewModel: NSObject, MapViewModelType {
                 })
                 .disposed(by: disposeBag)
         } else {
-            self.within(coordinate:coord, radius: radius, filter:option.filter, month:(today, 1), time:(start, end))
+            self.within(coordinate:coord, radius: radius, filter:option.filter, month:(today, 1), time:(schedule.start, schedule.end))
                 .subscribe(onNext: { elements in
                     self.updateMarker(lots: elements)
                 })
