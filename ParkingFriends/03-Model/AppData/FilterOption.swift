@@ -10,42 +10,6 @@ import Foundation
 
 typealias FilterType = (fee:(from:Int, to:Int), sortType:SortType, lotType:ParkingLotType, inOutType:InOutDoorType, option:(cctv:Bool, iotSensor:Bool, mechanical:Bool, allDay:Bool, outsideFlag:InOutDoorType, bleGateFlag:Bool))
 
-// FilterType 용
-/*
-enum FilterSortType: Int {
-    case low_price, nearby
-    
-    var param: String {
-        switch self {
-        case .low_price:
-            return SortType.price.rawValue
-        case .nearby:
-            return SortType.distance.rawValue
-        }
-    }
-}
-*/
-/*
-enum FilterOperationType: Int {
-    case none, public_area, private_area
-    
-    var param: String {
-        switch self {
-        case .none:
-            return ""
-        case .public_area:
-            return ParkingLotType.public_lot.rawValue
-        case .private_area:
-            return ParkingLotType.private_lot.rawValue
-        }
-    }
-}
-*/
-/*
-enum FilterAreaType: Int {
-    case none, indoor, outdoor
-}
-*/
 class FilterOption: NSObject, NSCoding {
     var from:Int = 0
     var to:Int = 10000
@@ -75,7 +39,7 @@ class FilterOption: NSObject, NSCoding {
         lotType = aDecoder.decodeObject(forKey: "operationType") as? ParkingLotType ?? .none
         inOutType = aDecoder.decodeObject(forKey: "inOutType") as? InOutDoorType ?? .none
         isCCTV = aDecoder.decodeObject(forKey: "isCCTV") as? Bool ?? false
-        isIotSensor = aDecoder.decodeObject(forKey: "isIotSensor") as? Bool ?? false
+        isIotSensor = aDecoder.decodeObject(forKey: "isIotSensor") as? Bool ?? true
         isNoMechanical = aDecoder.decodeObject(forKey: "isNoMechanical") as? Bool ?? false
         isAllDay = aDecoder.decodeObject(forKey: "isAllDay") as? Bool ?? false
         isOutsideFlag = aDecoder.decodeObject(forKey: "isOutsideFlag") as? InOutDoorType ?? .none

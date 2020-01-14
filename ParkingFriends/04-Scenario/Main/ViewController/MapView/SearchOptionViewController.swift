@@ -114,7 +114,6 @@ class SearchOptionViewController: UIViewController {
         _ = Observable.from(self.viewModel.sortSegmentedItems)
              .enumerated()
              .subscribe(onNext: { (index, element) in
-              //   _ = self.operationSegmentedControl.rx.titleForSegment(at: index)
                  self.sortingSegmentedControl.setTitle(element.title, forSegmentAt: index)
              })
              .disposed(by: disposeBag)
@@ -136,7 +135,6 @@ class SearchOptionViewController: UIViewController {
         _ = Observable.from(self.viewModel.operationSegmentedItems)
             .enumerated()
             .subscribe(onNext: { (index, element) in
-             //   _ = self.operationSegmentedControl.rx.titleForSegment(at: index)
                 self.operationSegmentedControl.setTitle(element.title, forSegmentAt: index)
             })
             .disposed(by: disposeBag)
@@ -196,7 +194,7 @@ class SearchOptionViewController: UIViewController {
             }
             .do(onNext: { (isSelected) in
                 self.cctvButton.isSelected = isSelected
-                self.viewModel.isItemCCTV.accept(isSelected)
+                self.viewModel.setItemCCTV(isSelected)
             })
             .bind(to: viewModel.isItemCCTV)
             .disposed(by: disposeBag)
@@ -208,7 +206,7 @@ class SearchOptionViewController: UIViewController {
             }
             .do(onNext: { (isSelected) in
                 self.iotSensorButton.isSelected = isSelected
-                self.viewModel.isItemIotSensor.accept(isSelected)
+                self.viewModel.setItemIotSensor(isSelected)
             })
             .bind(to: viewModel.isItemIotSensor)
             .disposed(by: disposeBag)
@@ -220,7 +218,7 @@ class SearchOptionViewController: UIViewController {
             }
             .do(onNext: { (isSelected) in
                 self.noMechanicalButton.isSelected = isSelected
-                self.viewModel.isItemMechanical.accept(isSelected)
+                self.viewModel.setItemMechanical(isSelected)
             })
             .bind(to: viewModel.isItemMechanical)
             .disposed(by: disposeBag)
@@ -232,7 +230,7 @@ class SearchOptionViewController: UIViewController {
             }
             .do(onNext: { (isSelected) in
                 self.allDayButton.isSelected = isSelected
-                self.viewModel.isItemFullTime.accept(isSelected)
+                self.viewModel.setItemFullTime(isSelected)
             })
             .bind(to: viewModel.isItemFullTime)
             .disposed(by: disposeBag)
