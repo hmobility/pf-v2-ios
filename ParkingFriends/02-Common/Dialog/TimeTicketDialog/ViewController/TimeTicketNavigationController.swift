@@ -10,7 +10,7 @@ import UIKit
 
 class TimeTicketNavigationController: UINavigationController {
     
-    var completionAction: ((_ start:Date, _ end:Date) -> Void)?
+    var completeAction: ((_ start:Date, _ end:Date) -> Void)?
     var startDate:Date?
     
     // MARK: - Public Method
@@ -23,8 +23,6 @@ class TimeTicketNavigationController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     
     // MARK: - Navigation

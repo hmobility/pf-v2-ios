@@ -9,14 +9,14 @@
 import Foundation
 
 public struct MonthlyTicketDialog {
-    static func show(source:UIViewController, start:Date, handler:((_ start: Date, _ hours: Int) -> Void)?) {
+    static func show(source:UIViewController, start:Date, handler:((_ start: Date, _ months: Int) -> Void)?) {
         let target = Dialog.monthlyTicket.instantiateViewController(withIdentifier: "MonthlyTicketNavigationController") as! MonthlyTicketNavigationController
         
         target.setStart(date: start)
     
-        target.completionAction = { (start, hours) in
+        target.completeAction = { (start, months) in
             if let completion = handler {
-                completion(start, hours)
+                completion(start, months)
             }
         }
         

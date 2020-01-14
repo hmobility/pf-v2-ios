@@ -37,10 +37,9 @@ class FixedTicketDurationViewController: UIViewController {
         saveButton.rx.tap
             .subscribe(onNext: { _ in
                 self.dismissModal(animated: true) {
-                    let index = self.hoursPicker.selectedRow(inComponent: 0)
-                    let hours = self.hourRangeList[index]
+                    let hours = self.getHour()
                     if let navigation = self.navigationController, let start = self.startDate {
-                        (navigation as! FixedTicketNavigationController).completionAction?(start, hours)
+                        (navigation as! FixedTicketNavigationController).completeAction?(start, hours)
                     }
                 }
             })
@@ -54,6 +53,11 @@ class FixedTicketDurationViewController: UIViewController {
     }
     
     // MARK: - Local Methods
+    
+    private func getHour() -> Int {
+        let index = self.hoursPicker.selectedRow(inComponent: 0)
+        return self.hourRangeList[index]
+    }
     
     private func updatePickerHours() {
         if let date = startDate {
@@ -85,6 +89,11 @@ class FixedTicketDurationViewController: UIViewController {
     }
     
     // MARK: - Life Cycle
+    
+    override func loadView() {
+        super.loadView()
+        updatePickerHours()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

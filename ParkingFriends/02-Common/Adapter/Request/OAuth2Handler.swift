@@ -52,9 +52,6 @@ class OAuth2Handler: RequestAdapter, RequestRetrier {
 
     func should(_ manager: SessionManager, retry request: Request, with error: Error, completion: @escaping RequestRetryCompletion) {
         lock.lock() ; defer { lock.unlock() }
-        if let res = request.task?.response as? HTTPURLResponse {
-            debugPrint("[RequestRetrier] should - ", res.statusCode)
-        }
         
         if let response = request.task?.response as? HTTPURLResponse, response.statusCode == 401 {
             requestsToRetry.append(completion)
@@ -96,11 +93,14 @@ class OAuth2Handler: RequestAdapter, RequestRetrier {
         
         sessionManager.request(url.url).responseJSON { [weak self] response in
                 guard let strongSelf = self else { return }
-
+            
+                debugPrint("[TOKEN] Reissued a token")
+            
                 if
                     let json = response.result.value as? [String: Any],
-                    let accessToken = json["accessToken"] as? String,
-                    let refreshToken = json["refreshToken"] as? String
+                    let data = json["data"] as? [String: Any],
+                    let accessToken = data["accessToken"] as? String,
+                    let refreshToken = data["refreshToken"] as? String
                 {
                     completion(true, accessToken, refreshToken)
                 } else {

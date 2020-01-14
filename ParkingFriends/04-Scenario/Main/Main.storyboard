@@ -978,11 +978,11 @@
                     <connections>
                         <outlet property="dataView" destination="Tge-fZ-jLb" id="XpM-uQ-Hif"/>
                         <outlet property="emptyView" destination="iib-0f-j4d" id="MgM-Hg-VL3"/>
-                        <outlet property="fixedTicketButton" destination="mtt-kd-qg2" id="6mn-tS-7lg"/>
+                        <outlet property="fixedTicketButton" destination="mtt-kd-qg2" id="1ju-v0-dKy"/>
                         <outlet property="monthlyTicketButton" destination="pvc-ud-nZB" id="R7Q-iW-LzB"/>
                         <outlet property="sortOrderButton" destination="SxN-Hl-AXI" id="NxU-f7-Nvg"/>
                         <outlet property="tableView" destination="NZf-Eh-U8B" id="H5y-O8-w0G"/>
-                        <outlet property="timeTicketButton" destination="JB0-Sc-dQB" id="8kt-SS-K7w"/>
+                        <outlet property="timeTicketButton" destination="JB0-Sc-dQB" id="Czc-mq-3Ow"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wiK-9y-my4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1736,7 +1736,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" image="icOnfoot" translatesAutoresizingMaskIntoConstraints="NO" id="sHt-VX-Wp4" userLabel="ImageView - Icon">
-                                                    <rect key="frame" x="330" y="52.5" width="30" height="30"/>
+                                                    <rect key="frame" x="345" y="60" width="15" height="15"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>

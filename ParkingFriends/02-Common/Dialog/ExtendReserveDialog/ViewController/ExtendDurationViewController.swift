@@ -47,7 +47,7 @@ class ExtendDurationViewController: UIViewController {
                     let index = self.hoursPicker.selectedRow(inComponent: 0)
                     let hours = self.hourRangeList[index]
                     if let navigation = self.navigationController, let start = self.startDate {
-                        (navigation as! FixedTicketNavigationController).completionAction?(start, hours)
+                        (navigation as! FixedTicketNavigationController).completeAction?(start, hours)
                     }
                 }
             })

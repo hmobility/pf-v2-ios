@@ -14,7 +14,7 @@ public struct FixedTicketDialog {
         
         target.setStart(date: start)
     
-        target.completionAction = { (start, hours) in
+        target.completeAction = { (start, hours) in
             if let completion = handler {
                 completion(start, hours)
             }

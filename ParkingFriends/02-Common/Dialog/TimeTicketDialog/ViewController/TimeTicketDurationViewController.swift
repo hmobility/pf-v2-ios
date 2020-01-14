@@ -42,7 +42,7 @@ class TimeTicketDurationViewController: UIViewController {
                     let index = self.hoursPicker.selectedRow(inComponent: 0)
                     let hours = self.hourRangeList[index]
                     if let navigation = self.navigationController, let start = self.startDate {
-                        (navigation as! TimeTicketNavigationController).completionAction?(start, start.adjust(.hour, offset: hours))
+                        (navigation as! TimeTicketNavigationController).completeAction?(start, start.adjust(.hour, offset: hours))
                     }
                 }
             })

@@ -48,7 +48,7 @@ class ParkingTapViewController: UIViewController {
         viewModel.monthlyTicketText
             .drive(monthlyTicketButton.rx.title())
             .disposed(by: disposeBag)
-        
+   
         viewModel.sortOrderText.asDriver()
             .drive(sortOrderButton.rx.title())
             .disposed(by: disposeBag)
@@ -65,8 +65,8 @@ class ParkingTapViewController: UIViewController {
             .disposed(by: disposeBag)
         
         let observable = Observable.merge (
-            timeTicketButton.rx.tap.map { return ProductType.time},
-            fixedTicketButton.rx.tap.map { return ProductType.fixed},
+            timeTicketButton.rx.tap.map { return ProductType.time },
+            fixedTicketButton.rx.tap.map { return ProductType.fixed },
             monthlyTicketButton.rx.tap.map { return ProductType.monthly}
         )
         
@@ -75,6 +75,7 @@ class ParkingTapViewController: UIViewController {
                 self.viewModel.setProductType(type)
             })
             .disposed(by: disposeBag)
+        
     }
     
     private func setupSortOrderButtonBinding() {

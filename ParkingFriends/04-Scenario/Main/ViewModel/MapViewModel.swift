@@ -26,6 +26,7 @@ protocol MapViewModelType {
     
     func setTimeTicketRange(start startDate: Date, end endDate:Date)
     func setFixedTicketTime(start startDate: Date, hours:Int)
+    func setMonthlyTicketTime(start startDate: Date, months:Int)
 }
 
 let defaultCoordinate = CoordType(37.400634765624986, 127.11203073310433)
@@ -188,6 +189,10 @@ class MapViewModel: NSObject, MapViewModelType {
         let displayText = DisplayTimeHandler().diplayFixedTicketFromDate(date: startDate, hours: hours)
         
         self.displayReservableTimeText.accept(displayText)
+    }
+    
+    public func setMonthlyTicketTime(start startDate: Date, months:Int) {
+        
     }
     
     // MARK: - Marker
@@ -425,7 +430,7 @@ class MapViewModel: NSObject, MapViewModelType {
 
 // MARK:- MapView Delegate
 // Deprecated
-
+/*
 extension MapViewModel: NMFMapViewDelegate {
     func didTapMapView(_ point: CGPoint, latLng latlng: NMGLatLng) {
 
@@ -451,4 +456,4 @@ extension MapViewModel: NMFMapViewDelegate {
         return false
     }
 }
-
+*/
