@@ -29,7 +29,7 @@
         <!--Fixed Ticket Duration View Controller-->
         <scene sceneID="KNa-Kt-Crw">
             <objects>
-                <viewController storyboardIdentifier="FixedTicketDurationViewController" id="Mub-Kh-Nkp" customClass="FixedTicketDurationViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FixedTicketDurationViewController" id="Mub-Kh-Nkp" customClass="FixedTicketDurationViewController" customModule="ParkingFriends" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="95N-Z4-d0c">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="304"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -58,9 +58,9 @@
                                         <rect key="frame" x="0.0" y="41" width="414" height="210"/>
                                         <subviews>
                                             <pickerView contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lHC-cx-W3a" userLabel="Hours Picker - Hours">
-                                                <rect key="frame" x="184" y="44" width="100" height="122"/>
+                                                <rect key="frame" x="224" y="22" width="60" height="166"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="100" id="MWY-po-Z67"/>
+                                                    <constraint firstAttribute="width" constant="60" id="j1J-4D-7ei"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="indicatorColor">
@@ -72,7 +72,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </pickerView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="주간권" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lw6-mY-WKh" userLabel="Label - Result Date">
-                                                <rect key="frame" x="97" y="95.5" width="71" height="19.5"/>
+                                                <rect key="frame" x="97" y="95.5" width="111" height="19.5"/>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="16"/>
                                                 <color key="textColor" name="DarkGrey"/>
                                                 <nil key="highlightedColor"/>
@@ -80,13 +80,13 @@
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
-                                            <constraint firstItem="lHC-cx-W3a" firstAttribute="top" secondItem="cT7-pt-ym3" secondAttribute="top" constant="44" id="F5x-r1-iU7"/>
+                                            <constraint firstItem="lHC-cx-W3a" firstAttribute="top" secondItem="cT7-pt-ym3" secondAttribute="top" constant="22" id="F5x-r1-iU7"/>
                                             <constraint firstAttribute="height" constant="210" id="V3z-qw-NPF"/>
                                             <constraint firstAttribute="trailing" secondItem="lHC-cx-W3a" secondAttribute="trailing" constant="130" id="Vjj-NB-axw"/>
                                             <constraint firstItem="lw6-mY-WKh" firstAttribute="centerY" secondItem="lHC-cx-W3a" secondAttribute="centerY" id="W9A-J6-fAn"/>
                                             <constraint firstItem="lw6-mY-WKh" firstAttribute="leading" secondItem="cT7-pt-ym3" secondAttribute="leading" constant="97" id="Wxg-zL-uWJ"/>
                                             <constraint firstItem="lw6-mY-WKh" firstAttribute="centerY" secondItem="cT7-pt-ym3" secondAttribute="centerY" id="bdA-15-Dw2"/>
-                                            <constraint firstAttribute="bottom" secondItem="lHC-cx-W3a" secondAttribute="bottom" constant="44" id="nko-6r-RJ1"/>
+                                            <constraint firstAttribute="bottom" secondItem="lHC-cx-W3a" secondAttribute="bottom" constant="22" id="nko-6r-RJ1"/>
                                             <constraint firstItem="lHC-cx-W3a" firstAttribute="leading" secondItem="lw6-mY-WKh" secondAttribute="trailing" constant="16" id="yPS-Zh-z2e"/>
                                         </constraints>
                                     </view>
@@ -133,7 +133,7 @@
                         <outlet property="fixedTicketTitleLabel" destination="lw6-mY-WKh" id="cet-gz-3kr"/>
                         <outlet property="hoursPicker" destination="lHC-cx-W3a" id="Vjc-c5-0D9"/>
                         <outlet property="saveButton" destination="Fdm-wF-R7w" id="BbW-G5-8vm"/>
-                        <outlet property="titleLabel" destination="1hj-H2-TYP" id="Unm-d8-6wm"/>
+                        <outlet property="titleLabel" destination="Srh-B8-ZAe" id="9z7-Ud-bj8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0WS-go-oVq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -143,7 +143,7 @@
         <!--View Controller-->
         <scene sceneID="dT6-c7-UGx">
             <objects>
-                <viewController storyboardIdentifier="FixedTicketDateViewController" id="oEn-aP-iCs" sceneMemberID="viewController">
+                <viewController id="oEn-aP-iCs" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2EQ-SR-3da">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="304"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -288,10 +288,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="zp4-zP-oyb"/>
                     <size key="freeformSize" width="414" height="304"/>
-                    <connections>
-                        <outlet property="nextButton" destination="bkm-LF-Z0a" id="TmH-st-2fR"/>
-                        <outlet property="titleLabel" destination="k22-G4-44h" id="VIy-88-j73"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7JR-ZG-bEk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

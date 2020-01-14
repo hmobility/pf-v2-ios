@@ -34,7 +34,7 @@ class HttpSession: NSObject {
     
     private var sessionManager:SessionManager?
 
-    private let acceptableStatusCodes:[Int] = [200, 201, 204, 304, 400, 401, 403, 404, 410, 500, 503]
+    private let acceptableStatusCodes:[Int] = [200, 201, 204, 304, 400, 403, 404, 410, 500, 503]
     private let acceptableContentType:[String] = ["application/json", "text/json", "text/plain", "text/html"]
     
     private func adapt(_ urlRequest: RequestAdapter, retrier:Bool = false) {
@@ -62,10 +62,6 @@ class HttpSession: NSObject {
         case .OAuth2:
             let token = getAccessToken()
             self.adapt(OAuth2Handler(accessToken: token.access, refreshToken: token.refresh, type: token.type), retrier: true)
-           // let oAuth = OAuth2Handler(accessToken: token.access, refreshToken: token.refresh, type: token.type)
-            //self.httpSession.adapter = oAuth
-            // self.httpSession.retrier = oAuth
-            //self.adapt(AccessTokenAdapter(type:token.type, accessToken: token.access))
         case .serviceKey:
             self.adapt(ServiceKeyAdapter(serviceKey: AppInfo.serviceKey))
         default:
@@ -79,7 +75,7 @@ class HttpSession: NSObject {
         return Observable.create { [unowned self] observer -> Disposable in
             dataTask.validate(statusCode: self.acceptableStatusCodes).validate(contentType: self.acceptableContentType).responseJSON(completionHandler:{ (response) in
                 response.result.ifSuccess ({
-                   // print("[SUCCESS]", response.debugDescription, terminator:"\n")
+                    //print("[SUCCESS]", response.debugDescription, terminator:"\n")
                     let object = response.result.value as! [String : Any]
                     let result = ServerResult(JSON: object)!
                     
@@ -118,8 +114,6 @@ class HttpSession: NSObject {
                 
                 response.result.ifFailure ({
                     debugPrint("[Failure]", response.debugDescription, terminator:"\n")
-                 //   let object = response.result.value as! [String : Any]
-                   // let result = MapResult(JSON: object)!
                     let statusCode = response.response?.statusCode ?? -1
                     observer.onError(NSError(domain: "", code: statusCode, userInfo: nil))
                 })

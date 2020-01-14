@@ -15,8 +15,9 @@ extension UIPickerView {
             return (self.subviews[1].backgroundColor)!
         }
         set {
-            self.subviews[1].backgroundColor = newValue
-            self.subviews[2].backgroundColor = newValue
+            self.subviews.forEach ({
+                $0.backgroundColor = newValue
+            })
         }
     }
     

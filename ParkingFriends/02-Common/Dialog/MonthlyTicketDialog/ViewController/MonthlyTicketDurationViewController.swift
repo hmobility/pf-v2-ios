@@ -11,12 +11,13 @@ import UIKit
 class MonthlyTicketDurationViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var fromLabel: UILabel!
-    @IBOutlet weak var toLabel: UILabel!
-    @IBOutlet weak var datePicker: UIDatePicker!
-    @IBOutlet weak var monthPicker: UIPickerView!
+    @IBOutlet weak var durationMonthLabel: UILabel!
+    @IBOutlet weak var dayPicker: UIPickerView!
+    @IBOutlet weak var durationPicker: UIPickerView!
     @IBOutlet weak var saveButton: UIButton!
     
     private var startDate:Date?
+    private var dayRangeList:[Int] = []
     private var monthRangeList:[Int] = [1, 2, 3]
     private var selectableDayDuration = 10
 
@@ -25,36 +26,27 @@ class MonthlyTicketDurationViewController: UIViewController {
     private var disposeBag = DisposeBag()
     
     // MARK: - Binding
-    
-    private func setupDatePicker() {
-        if let date = startDate {
-            datePicker.minimumDate = date
-            datePicker.maximumDate = date.adjust(.day, offset: selectableDayDuration)
-        }
-    }
-    
+        
     private func setupMonthPicker() {
-        let rows = monthPicker.numberOfRows(inComponent: 0)
-        monthPicker.selectRow((rows > 0) ? 1 : 0, inComponent: 0, animated: false)
+        let rows = durationPicker.numberOfRows(inComponent: 0)
+        durationPicker.selectRow((rows > 0) ? 1 : 0, inComponent: 0, animated: false)
     }
     
     private func setupBinding() {
         titleLabel.text = localizer.localized("dlg_ttl_monthly_ticket")
-        fromLabel.text = localizer.localized("dlg_ttl_from")
-        toLabel.text = localizer.localized("dlg_txt_duration_month")
+        fromLabel.text = localizer.localized("dlg_txt_from")
+        durationMonthLabel.text = localizer.localized("dlg_txt_duration_month")
     }
     
     private func setupButtonBinding() {
         saveButton.rx.tap
             .subscribe(onNext: { _ in
                 self.dismissModal(animated: true) {
-                    let index = self.monthPicker.selectedRow(inComponent: 0)
-                    let months = self.monthRangeList[index]
-                    
-                    let start = self.datePicker.date
-                    
-                    if let navigation = self.navigationController, let start = self.startDate {
-                        (navigation as! MonthlyTicketNavigationController).completionAction?(start, months)
+                    let start = self.getStartDate()
+                    let months = self.getMonth()
+        
+                    if let navigation = self.navigationController {
+                        (navigation as! MonthlyTicketNavigationController).completeAction?(start, months)
                     }
                 }
             })
@@ -63,13 +55,42 @@ class MonthlyTicketDurationViewController: UIViewController {
     
     // MARK: - Local Methods
     
-    private func updatePickerHours() {
-        Observable.just(monthRangeList)
-            .bind(to: monthPicker.rx.itemTitles) { _, item in
+    private func getStartDate() -> Date {
+        let index = self.dayPicker.selectedRow(inComponent: 0)
+        let offset = self.dayRangeList[index]
+        return (startDate?.adjust(.day, offset: offset))!
+    }
+    
+    private func getMonth() -> Int {
+        let index = self.durationPicker.selectedRow(inComponent: 0)
+        return self.monthRangeList[index]
+    }
+    
+    private func updatePicker() {
+        if let date = startDate {
+            let startDay = date.component(.day)!
+            let endDay = startDay + selectableDayDuration
+            dayRangeList = Array(startDay ... endDay)
+        }
+        
+        Observable.just(dayRangeList)
+            .bind(to: dayPicker.rx.itemTitles) { _, item in
                 return "\(item)"
             }
             .disposed(by: disposeBag)
+        
+        Observable.just(monthRangeList)
+            .bind(to: durationPicker.rx.itemTitles) { _, item in
+                return "\(item)"
+             }
+            .disposed(by: disposeBag)
     }
+    
+    // MARK: - Public Methods
+     
+     public func setStartDate(_ date:Date) {
+         startDate = date
+     }
     
     // MARK: - Initialize
     
@@ -88,6 +109,11 @@ class MonthlyTicketDurationViewController: UIViewController {
     }
     
     // MARK: - Life Cycle
+    
+    override func loadView() {
+        super.loadView()
+        updatePicker()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

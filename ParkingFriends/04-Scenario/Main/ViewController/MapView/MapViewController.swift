@@ -206,7 +206,9 @@ class MapViewController: UIViewController {
                 self.viewModel.setFixedTicketTime(start: start, hours: hours)
             })
         } else if productType == .monthly {
-    
+            MonthlyTicketDialog.show(source: self, start: date.start, handler:{ (start, months) in
+                self.viewModel.setMonthlyTicketTime(start: start, months: months)
+            })
         }
     }
     

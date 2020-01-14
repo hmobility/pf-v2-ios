@@ -45,6 +45,8 @@ target 'ParkingFriends' do
   pod 'SideMenu', '~> 6.0'
   pod "MXParallaxHeader"
   
+  pod 'LGSegmentedControl'
+  
   pod 'TagListView', '~> 1.3.2'
   
   pod 'RangeSeekSlider'

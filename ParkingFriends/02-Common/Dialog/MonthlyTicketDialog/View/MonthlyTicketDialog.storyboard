@@ -57,31 +57,10 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="csr-Mh-NQ0" userLabel="View - Picker">
                                         <rect key="frame" x="0.0" y="41" width="414" height="210"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="부터" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MjC-Gq-y61" userLabel="Label - From">
-                                                <rect key="frame" x="197.5" y="89.5" width="45" height="31.5"/>
-                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="26"/>
-                                                <color key="textColor" name="DarkGrey"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <datePicker contentMode="scaleToFill" horizontalCompressionResistancePriority="749" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="fsq-BI-uPf">
-                                                <rect key="frame" x="40" y="44" width="153.5" height="122"/>
-                                                <locale key="locale" localeIdentifier="ko_KR"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="indicatorColor">
-                                                        <color key="value" name="AlgaeGreen"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                            </datePicker>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="개월간" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jbN-B3-tsn" userLabel="Label - To">
-                                                <rect key="frame" x="316.5" y="89.5" width="67.5" height="31.5"/>
-                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="26"/>
-                                                <color key="textColor" name="DarkGrey"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <pickerView contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g8N-5w-o5X" userLabel="Hours Picker - Hours">
-                                                <rect key="frame" x="262.5" y="44" width="50" height="122"/>
+                                            <pickerView contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0yH-dE-b57" userLabel="Hours Picker - Day">
+                                                <rect key="frame" x="58.5" y="22" width="80" height="166"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="50" id="KbQ-es-bmH"/>
+                                                    <constraint firstAttribute="width" constant="80" id="55W-n6-hjI"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="indicatorColor">
@@ -92,20 +71,45 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </pickerView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="부터" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MjC-Gq-y61" userLabel="Label - From">
+                                                <rect key="frame" x="142.5" y="89.5" width="45" height="31.5"/>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="26"/>
+                                                <color key="textColor" name="DarkGrey"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <pickerView contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g8N-5w-o5X" userLabel="Hours Picker - Duration">
+                                                <rect key="frame" x="207.5" y="22" width="80" height="166"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="80" id="KbQ-es-bmH"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="indicatorColor">
+                                                        <color key="value" name="AlgaeGreen"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                                        <color key="value" name="CharcoalGrey2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </pickerView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="개월간" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jbN-B3-tsn" userLabel="Label - Duration Month">
+                                                <rect key="frame" x="291.5" y="89.5" width="67.5" height="31.5"/>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="26"/>
+                                                <color key="textColor" name="DarkGrey"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
+                                            <constraint firstItem="MjC-Gq-y61" firstAttribute="leading" secondItem="0yH-dE-b57" secondAttribute="trailing" constant="4" id="0rg-NG-dZ3"/>
+                                            <constraint firstItem="0yH-dE-b57" firstAttribute="top" secondItem="csr-Mh-NQ0" secondAttribute="top" constant="22" id="3Y4-xN-ZCu"/>
                                             <constraint firstItem="jbN-B3-tsn" firstAttribute="centerY" secondItem="g8N-5w-o5X" secondAttribute="centerY" id="4rb-Cv-Nr4"/>
                                             <constraint firstItem="g8N-5w-o5X" firstAttribute="leading" secondItem="MjC-Gq-y61" secondAttribute="trailing" constant="20" id="A3X-ov-Dtz"/>
-                                            <constraint firstAttribute="trailing" secondItem="jbN-B3-tsn" secondAttribute="trailing" constant="30" id="Atf-do-2In"/>
+                                            <constraint firstAttribute="trailing" secondItem="jbN-B3-tsn" secondAttribute="trailing" constant="55" id="Atf-do-2In"/>
                                             <constraint firstAttribute="height" constant="210" id="B3V-vY-2zQ"/>
                                             <constraint firstItem="MjC-Gq-y61" firstAttribute="centerY" secondItem="g8N-5w-o5X" secondAttribute="centerY" id="Lt1-0Y-2Ye"/>
-                                            <constraint firstItem="fsq-BI-uPf" firstAttribute="leading" secondItem="csr-Mh-NQ0" secondAttribute="leading" constant="40" id="OE4-YJ-pdH"/>
-                                            <constraint firstAttribute="bottom" secondItem="fsq-BI-uPf" secondAttribute="bottom" constant="44" id="PEQ-5x-Y4Y"/>
-                                            <constraint firstAttribute="bottom" secondItem="g8N-5w-o5X" secondAttribute="bottom" constant="44" id="SHF-Yc-aeg"/>
-                                            <constraint firstItem="MjC-Gq-y61" firstAttribute="leading" secondItem="fsq-BI-uPf" secondAttribute="trailing" constant="4" id="SvN-Uq-Ga7"/>
-                                            <constraint firstItem="fsq-BI-uPf" firstAttribute="top" secondItem="csr-Mh-NQ0" secondAttribute="top" constant="44" id="emG-jv-7uf"/>
-                                            <constraint firstItem="g8N-5w-o5X" firstAttribute="top" secondItem="csr-Mh-NQ0" secondAttribute="top" constant="44" id="nWm-CD-EIk"/>
+                                            <constraint firstAttribute="bottom" secondItem="g8N-5w-o5X" secondAttribute="bottom" constant="22" id="SHF-Yc-aeg"/>
+                                            <constraint firstAttribute="bottom" secondItem="0yH-dE-b57" secondAttribute="bottom" constant="22" id="jTN-Ct-6GN"/>
+                                            <constraint firstItem="g8N-5w-o5X" firstAttribute="top" secondItem="csr-Mh-NQ0" secondAttribute="top" constant="22" id="nWm-CD-EIk"/>
                                             <constraint firstItem="jbN-B3-tsn" firstAttribute="leading" secondItem="g8N-5w-o5X" secondAttribute="trailing" constant="4" id="x0R-Ov-E8L"/>
                                         </constraints>
                                     </view>
@@ -149,12 +153,12 @@
                     <navigationItem key="navigationItem" id="hT3-jq-6tx"/>
                     <size key="freeformSize" width="414" height="304"/>
                     <connections>
-                        <outlet property="datePicker" destination="fsq-BI-uPf" id="Vro-8o-s32"/>
+                        <outlet property="dayPicker" destination="0yH-dE-b57" id="bdF-8b-eOW"/>
+                        <outlet property="durationMonthLabel" destination="jbN-B3-tsn" id="rqT-ap-8NM"/>
+                        <outlet property="durationPicker" destination="g8N-5w-o5X" id="7Tx-h6-nsi"/>
                         <outlet property="fromLabel" destination="MjC-Gq-y61" id="f30-bb-l93"/>
-                        <outlet property="monthPicker" destination="g8N-5w-o5X" id="mV7-Sy-0i7"/>
                         <outlet property="saveButton" destination="Kuo-W2-ujb" id="YfH-ZP-BL2"/>
-                        <outlet property="titleLabel" destination="a6K-od-ic4" id="gQ8-uy-8Lo"/>
-                        <outlet property="toLabel" destination="jbN-B3-tsn" id="Ork-W0-ljk"/>
+                        <outlet property="titleLabel" destination="Bg1-oI-LYT" id="gcW-KJ-I2P"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tJn-Ip-Ekc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

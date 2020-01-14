@@ -14,7 +14,7 @@ public struct TimeTicketDialog {
         
         target.setStart(date: start)
     
-        target.completionAction = { (start, end) in
+        target.completeAction = { (start, end) in
             if let completion = handler {
                 completion(start, end)
             }

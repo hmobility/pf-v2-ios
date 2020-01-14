@@ -39,7 +39,7 @@ extension UIButton {
     private func setBorderColor(_ color: UIColor, for state: UIControl.State) {
         self.layer.borderColor = color.cgColor
     }
-    
+  /*
     @IBInspectable
     override public var isSelected: Bool {
         didSet {
@@ -88,7 +88,7 @@ extension UIButton {
             }
         }
     }
-
+*/
     @IBInspectable
     var disabledColor: UIColor? {
         get {

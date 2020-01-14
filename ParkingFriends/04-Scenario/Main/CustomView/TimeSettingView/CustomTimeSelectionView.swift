@@ -26,6 +26,7 @@ class CustomTimeSettingView: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
+    
     // MARK: - Local Methods
     
     // MARK: - Public Methods
