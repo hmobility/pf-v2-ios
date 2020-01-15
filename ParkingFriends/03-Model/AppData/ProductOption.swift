@@ -9,10 +9,13 @@
 import UIKit
 
 class ProductOption: NSObject, NSCoding {
-    var monthlyFrom:Int = 0
-    var monthlyCount:Int = 0
-    
     var selectedProductType:ProductType = .fixed
+    
+    var reservableMonthly:(Date, Int) {
+        get {
+            return (monthlyFrom ?? today, monthlyCount)
+        }
+    }
     
     var reservableStartTime: Date  {
         get {
@@ -26,6 +29,9 @@ class ProductOption: NSObject, NSCoding {
         }
     }
     
+    var monthlyFrom:Date?
+    var monthlyCount:Int = 1
+       
     var start: Date?
     var end: Date?
     
@@ -48,14 +54,14 @@ class ProductOption: NSObject, NSCoding {
     }
 
     required init(coder aDecoder: NSCoder) {
-     //   monthlyFrom = aDecoder.decodeObject(forKey: "monthlyFrom") as? Int ?? 0
-     //   monthlyCount = aDecoder.decodeObject(forKey: "monthlyCount") as? Int ?? 0
+        monthlyFrom = aDecoder.decodeObject(forKey: "monthlyFrom") as? Date ?? Date()
+        monthlyCount = aDecoder.decodeObject(forKey: "monthlyCount") as? Int ?? 1
         selectedProductType = ProductType(rawValue: aDecoder.decodeObject(forKey: "selectedProductType") as! String) ?? .fixed
     }
 
     func encode(with aCoder: NSCoder) {
-       // aCoder.encode(monthlyFrom, forKey: "monthlyFrom")
-      //  aCoder.encode(monthlyCount, forKey: "monthlyCount")
+        aCoder.encode(monthlyFrom, forKey: "monthlyFrom")
+        aCoder.encode(monthlyCount, forKey: "monthlyCount")
         aCoder.encode(selectedProductType.rawValue, forKey: "selectedProductType")
     }
 }

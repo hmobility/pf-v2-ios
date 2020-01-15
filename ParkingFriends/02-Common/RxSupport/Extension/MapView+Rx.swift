@@ -38,8 +38,10 @@ extension Reactive where Base:  NMFMapView {
     
     public var radius:Double {
         get {
-            let width = self.base.mapWidth
-            return ((self.base.projection.metersPerPixel() * (width / 2)) / 1000)
+            let width = UIScreen.main.nativeBounds.width / 2
+            let metersPerPixel = self.base.projection.metersPerPixel()
+            
+            return (metersPerPixel * Double(width)) / 1000
         }
     }
     // MRAK: - Delegate

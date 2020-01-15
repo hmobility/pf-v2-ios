@@ -47,7 +47,8 @@ enum ParkingLotType:String {
     case public_lot = "PUBLIC"
     case alliance = "ALLIANCE"
     case green = "GREEN"
-    case resident = "RESIDENT"
+    case resident_section = "RESIDENT_SECTION"
+    case resident_slot = "RESIDENT_SLOT"
 }
 
 enum InOutDoorType:String {

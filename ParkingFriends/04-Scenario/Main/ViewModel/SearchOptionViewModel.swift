@@ -53,6 +53,11 @@ protocol SearchOptionViewModelType {
     func reset()
     
     func getStoredValue() -> FilterOption?
+    
+    func setItemCCTV(_ flag:Bool)
+    func setItemIotSensor(_ flag:Bool)
+    func setItemMechanical(_ flag:Bool)
+    func setItemFullTime(_ flag:Bool)
 }
 
 class SearchOptionViewModel: NSObject, SearchOptionViewModelType {
@@ -116,7 +121,7 @@ class SearchOptionViewModel: NSObject, SearchOptionViewModelType {
         sortSegmentedItems = [(.price, localizer.localized("itm_order_price")), (.distance, localizer.localized("itm_order_distance"))]
         
         operationTypeText = localizer.localized("ttl_parkinglot_type")
-        operationSegmentedItems = [(.none, localizer.localized("itm_parkinglot_none")), (.public_lot, localizer.localized("itm_parkinglot_public")), (.private_lot, localizer.localized("itm_parkinglot_public"))]
+        operationSegmentedItems = [(.none, localizer.localized("itm_parkinglot_none")), (.public_lot, localizer.localized("itm_parkinglot_public")), (.private_lot, localizer.localized("itm_parkinglot_private"))]
         
         areaTypeText = localizer.localized("ttl_area_type")
         areaInOutSegmentedItems = [(.none, localizer.localized("itm_area_none")), (.outdoor, localizer.localized("itm_area_outdoor")), (.indoor, localizer.localized("itm_area_indoor"))]
@@ -170,6 +175,21 @@ class SearchOptionViewModel: NSObject, SearchOptionViewModelType {
     }
     
     // MARK: - Public Methods
+    func setItemCCTV(_ flag:Bool) {
+        self.isItemIotSensor.accept(flag)
+    }
+    
+    func setItemIotSensor(_ flag:Bool) {
+        self.isItemIotSensor.accept(flag)
+    }
+    
+    func setItemMechanical(_ flag:Bool) {
+        self.isItemMechanical.accept(flag)
+    }
+    
+    func setItemFullTime(_ flag:Bool) {
+        self.isItemFullTime.accept(flag)
+    }
     
     func setPrice(start:Int, end:Int) {
         
