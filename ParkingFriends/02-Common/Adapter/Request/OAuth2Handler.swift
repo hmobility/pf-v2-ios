@@ -66,7 +66,7 @@ class OAuth2Handler: RequestAdapter, RequestRetrier {
                         strongSelf.accessToken = accessToken
                         strongSelf.refreshToken = refreshToken
                         self?.restoreToken(accessToken: accessToken, refrehToken: refreshToken)
-                        debugPrint("[TOKEN] Reissued a token - Finished")
+                        debugPrint("[TOKEN] Reissued Token - Saved")
                     }
 
                     strongSelf.requestsToRetry.forEach { $0(succeeded, 0.0) }
@@ -94,7 +94,7 @@ class OAuth2Handler: RequestAdapter, RequestRetrier {
         sessionManager.request(url.url).responseJSON { [weak self] response in
                 guard let strongSelf = self else { return }
             
-                debugPrint("[TOKEN] Reissued a token")
+                debugPrint("[TOKEN] REISSUE a New Token")
             
                 if
                     let json = response.result.value as? [String: Any],

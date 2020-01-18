@@ -19,20 +19,24 @@ class FixedTicketNavigationController: UINavigationController {
         startDate = date
     }
     
+    // MARK: - Local Method
+    
+    private func initialize() {
+        if let target = self.topViewController as? FixedTicketDurationViewController, let date = startDate {
+            target.setStartDate(date)
+        }
+    }
+
     // MARK: - Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        initialize()
     }
 
     // MARK: - Navigation
-    
+    /*
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let target = segue.destination as? FixedTicketDurationViewController {
-            if let start = self.startDate {
-                target.setStartDate(start)
-            }
-        }
     }
-
+*/
 }

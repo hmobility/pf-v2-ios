@@ -137,34 +137,24 @@ class ParkingTapViewController: UIViewController {
             .disposed(by: disposeBag)
         
         viewModel.elements
-            .bind(to: tableView.rx.items) { (tableView, row, item) -> UITableViewCell in
-                let cell = self.tableView.dequeueReusableCell(withIdentifier:
-                    "ParkingDistanceTableViewCell", for: IndexPath(item: row, section: 0)) as! ParkingDistanceTableViewCell
-                cell.configure(item, tags: self.viewModel.getTags(item))
-                
-                return cell
-            }
-            .disposed(by: disposeBag)
- 
-   /*
-        tableView.register(ParkingDistanceTableViewCell.self, forCellReuseIdentifier: "ParkingDistanceTableViewCell")
-        tableView.register(ParkingPriceTableViewCell.self, forCellReuseIdentifier: "ParkingPriceTableViewCell")
-        
-        viewModel.elements
-            .bind(to: tableView.rx.items) { (tableView, row, item) -> UITableViewCell in
     
-                let cell = tableView.dequeueReusableCell(withIdentifier: "ParkingDistanceTableViewCell") as! ParkingDistanceTableViewCell
-        
-                cell.configure(item, tags: self.viewModel.getTags(item))
-        
-                          
-                //let cell = tableView.dequeueReusableCell(withIdentifier: "ParkingDistanceTableViewCell", for: IndexPath.init(row: row, section: 0)) as! ParkingDistanceTableViewCell
+            .bind(to: tableView.rx.items) { (tableView, row, item) -> UITableViewCell in
+                let indexPath = IndexPath(item: row, section: 0)
+                let sort = self.viewModel.selectedSortType.value
                 
-               // let cell = tableView.dequeueReusableCell(withIdentifier: "ParkingPriceTableViewCell", for: IndexPath.init(row: row, section: 0))
-                return cell
+                if sort == .distance {
+                    let cell = self.tableView.dequeueReusableCell(withIdentifier:
+                    "ParkingDistanceTableViewCell", for: indexPath) as! ParkingDistanceTableViewCell
+                    cell.configure(item, tags: self.viewModel.getTags(item))
+                    return cell
+                } else {
+                    let cell = self.tableView.dequeueReusableCell(withIdentifier:
+                        "ParkingPriceTableViewCell", for: indexPath) as! ParkingPriceTableViewCell
+                    cell.configure(item, tags: self.viewModel.getTags(item))
+                    return cell
+                }
             }
             .disposed(by: disposeBag)
- */
     }
     
     // MARK: - Public Methods
@@ -195,5 +185,4 @@ class ParkingTapViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
 }

@@ -18,12 +18,12 @@ class SortOrderDialogView: MessageView {
     
     private let disposeBag = DisposeBag()
     
-    var completionAction: ((_ sort:SortType) -> Void)?
+    var completeAction: ((_ sort:SortType) -> Void)?
     
     // MARK: - Button Action
      
      @IBAction func closeAction() {
-        if let action = completionAction {
+        if let action = completeAction {
             action(self.sortType)
         }
      }
@@ -46,25 +46,25 @@ class SortOrderDialogView: MessageView {
     
     private func setupBinding() {
         priceView.tapItem()
-            .map { _ in
-                self.priceView.selected(true)
-            }
-            .subscribe(onNext: { _ in
+            .subscribe(onNext: { type in
                 self.distanceView.selected(false)
+                self.updateSelectedItem(type)
             })
             .disposed(by: disposeBag)
         
         distanceView.tapItem()
-            .map {_ in
-                self.distanceView.selected(true)
-            }
-            .subscribe(onNext: { _ in
+            .subscribe(onNext: { type in
                 self.priceView.selected(false)
+                self.updateSelectedItem(type)
             })
             .disposed(by: disposeBag)
     }
     
     // MARK: - Local Methods
+    
+    private func updateSelectedItem(_ item:SortType) {
+        sortType = item
+    }
     
     private func selectItem(_ type:SortType) {
         priceView.selected((type == .price))
@@ -87,7 +87,7 @@ class SortOrderDialogView: MessageView {
       
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.initialize()
+        initialize()
     }
 
 }

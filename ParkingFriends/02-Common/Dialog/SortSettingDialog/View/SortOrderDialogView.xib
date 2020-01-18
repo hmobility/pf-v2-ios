@@ -16,13 +16,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WBv-N2-l4j" userLabel="View - Background">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="252"/>
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="229"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="XNA-6V-OYr">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="232"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="229"/>
                             <subviews>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J3U-5y-9lg">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="179"/>
+                                <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J3U-5y-9lg" userLabel="View -Contents">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="176"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="주차장 정렬 기준을 선택하세요." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e39-ym-IaI" userLabel="Label - Title">
                                             <rect key="frame" x="20" y="24" width="370" height="16"/>
@@ -33,23 +33,23 @@
                                             <color key="textColor" name="DarkGrey"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="26" translatesAutoresizingMaskIntoConstraints="NO" id="Jd3-vT-s4c">
-                                            <rect key="frame" x="36" y="79" width="358" height="74"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" distribution="fillEqually" spacing="26" translatesAutoresizingMaskIntoConstraints="NO" id="Jd3-vT-s4c">
+                                            <rect key="frame" x="36" y="79" width="358" height="71"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8ar-4Z-thG" userLabel="Stack View - Price" customClass="CustomSortItemView" customModule="ParkingFriends" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="0.0" width="358" height="24"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="358" height="22.5"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qsv-32-71N" userLabel="View - Price">
-                                                            <rect key="frame" x="0.0" y="0.0" width="358" height="24"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="358" height="22.5"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="낮은 가격순" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pEO-IO-AaB" userLabel="Label - Price">
-                                                                    <rect key="frame" x="0.0" y="2" width="358" height="20.5"/>
+                                                                    <rect key="frame" x="0.0" y="1" width="358" height="20.5"/>
                                                                     <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="17"/>
                                                                     <color key="textColor" name="DarkGrey3"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" highlightedImage="icCheckGreen" translatesAutoresizingMaskIntoConstraints="NO" id="GE2-AN-VwH" userLabel="Image View - Check">
-                                                                    <rect key="frame" x="334" y="0.0" width="24" height="24"/>
+                                                                    <rect key="frame" x="334" y="-0.5" width="24" height="24"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="24" id="FpZ-ps-pjf"/>
                                                                         <constraint firstAttribute="width" constant="24" id="yVa-PH-neR"/>
@@ -74,19 +74,19 @@
                                                     </connections>
                                                 </stackView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="66p-0k-ISf" userLabel="Stack View - Distance" customClass="CustomSortItemView" customModule="ParkingFriends" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="50" width="358" height="24"/>
+                                                    <rect key="frame" x="0.0" y="48.5" width="358" height="22.5"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cVY-Rc-bPD" userLabel="View - Distance">
-                                                            <rect key="frame" x="0.0" y="0.0" width="358" height="24"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="358" height="22.5"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="가까운순" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9hL-Vg-UCa" userLabel="Label - Distance">
-                                                                    <rect key="frame" x="0.0" y="2" width="334" height="20.5"/>
+                                                                    <rect key="frame" x="0.0" y="1" width="334" height="20.5"/>
                                                                     <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="17"/>
                                                                     <color key="textColor" name="DarkGrey3"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" highlightedImage="icCheckGreen" translatesAutoresizingMaskIntoConstraints="NO" id="cs5-PB-SCa" userLabel="Image View - Check">
-                                                                    <rect key="frame" x="334" y="0.0" width="24" height="24"/>
+                                                                    <rect key="frame" x="334" y="-0.5" width="24" height="24"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="24" id="FjY-p7-vk0"/>
                                                                         <constraint firstAttribute="height" constant="24" id="qvx-hn-lsx"/>
@@ -118,21 +118,21 @@
                                         <constraint firstAttribute="trailing" secondItem="e39-ym-IaI" secondAttribute="trailing" constant="24" id="3pE-Tn-XjU"/>
                                         <constraint firstItem="Jd3-vT-s4c" firstAttribute="top" secondItem="e39-ym-IaI" secondAttribute="bottom" constant="39" id="QUa-hF-REi"/>
                                         <constraint firstItem="e39-ym-IaI" firstAttribute="top" secondItem="J3U-5y-9lg" secondAttribute="top" constant="24" id="Tiu-hy-pyv"/>
-                                        <constraint firstAttribute="bottom" secondItem="Jd3-vT-s4c" secondAttribute="bottom" constant="26" id="WTX-x3-Xbg"/>
                                         <constraint firstItem="Jd3-vT-s4c" firstAttribute="leading" secondItem="J3U-5y-9lg" secondAttribute="leading" constant="36" id="c8R-cp-4tZ"/>
                                         <constraint firstItem="e39-ym-IaI" firstAttribute="leading" secondItem="J3U-5y-9lg" secondAttribute="leading" constant="20" id="guj-aU-PKX"/>
                                         <constraint firstAttribute="trailing" secondItem="Jd3-vT-s4c" secondAttribute="trailing" constant="20" id="kAD-TG-XWQ"/>
+                                        <constraint firstAttribute="bottom" secondItem="Jd3-vT-s4c" secondAttribute="bottom" constant="26" id="uc9-Lw-wLt"/>
                                     </constraints>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YEv-cs-QRd" userLabel="View - Separator">
-                                    <rect key="frame" x="0.0" y="179" width="414" height="0.5"/>
+                                <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YEv-cs-QRd" userLabel="View - Separator">
+                                    <rect key="frame" x="0.0" y="176" width="414" height="0.5"/>
                                     <color key="backgroundColor" red="0.86666666670000003" green="0.87843137250000003" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="0.5" id="HLa-Oe-98s"/>
                                     </constraints>
                                 </view>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LEZ-8X-bF0" userLabel="Button - Save">
-                                    <rect key="frame" x="0.0" y="179.5" width="414" height="52.5"/>
+                                    <rect key="frame" x="0.0" y="176.5" width="414" height="52.5"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="52.5" id="aKg-pU-51D"/>
                                     </constraints>
@@ -149,10 +149,10 @@
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <constraints>
-                        <constraint firstAttribute="bottom" secondItem="XNA-6V-OYr" secondAttribute="bottom" constant="20" symbolic="YES" id="UIY-KF-sZV"/>
                         <constraint firstItem="XNA-6V-OYr" firstAttribute="top" secondItem="WBv-N2-l4j" secondAttribute="top" id="b80-BQ-mOS"/>
                         <constraint firstAttribute="trailing" secondItem="XNA-6V-OYr" secondAttribute="trailing" id="bRE-u5-VzU"/>
                         <constraint firstItem="XNA-6V-OYr" firstAttribute="leading" secondItem="WBv-N2-l4j" secondAttribute="leading" id="jrG-Q9-88C"/>
+                        <constraint firstItem="ldc-B4-LTb" firstAttribute="bottom" secondItem="XNA-6V-OYr" secondAttribute="bottom" id="z9l-Lp-skr"/>
                     </constraints>
                     <viewLayoutGuide key="safeArea" id="ldc-B4-LTb"/>
                 </view>

@@ -62,14 +62,14 @@ class TimeTicketDurationViewController: UIViewController {
             let maxHours:Int = 24 - date.component(.hour)!
             hourRangeList = Array(1...maxHours)
             let fromDate = DisplayTimeHandler().diplayTimeTicketFromDate(date: date)
-            
+            let unit = localizer.localized("txt_hours") as String
             Observable.just(fromDate)
                 .bind(to: resultLabel.rx.text)
                 .disposed(by: disposeBag)
             
             Observable.just(hourRangeList)
                 .bind(to: hoursPicker.rx.itemTitles) { _, item in
-                    return "\(item)"
+                    return "\(item)\(unit)"
                 }
                 .disposed(by: disposeBag)
         }

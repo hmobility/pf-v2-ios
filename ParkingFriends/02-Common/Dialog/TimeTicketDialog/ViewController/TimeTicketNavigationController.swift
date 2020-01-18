@@ -19,22 +19,25 @@ class TimeTicketNavigationController: UINavigationController {
         startDate = date
     }
     
+    // MARK: - Local Methods
+    
+    private func initialize() {
+        if let target = self.topViewController as? TimeTicketDateViewController, let date = startDate {
+            target.setStart(date: date)
+        }
+    }
+    
     // MARK: - Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        initialize()
     }
     
     // MARK: - Navigation
-
+/*
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let target = segue.destination as? TimeTicketDateViewController {
-            if let start = self.startDate {
-                target.setStart(date: start)
-            }
-        }
-       
     }
-
+*/
 }

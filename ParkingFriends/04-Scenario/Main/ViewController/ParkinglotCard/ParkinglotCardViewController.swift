@@ -15,7 +15,10 @@ extension ParkinglotCardViewController : AnalyticsType {
 }
 
 class ParkinglotCardViewController: UIViewController {
-
+    
+    var detailButtonAction: ((_ element:WithinElement) -> Void)?
+    var reserveButtonAction: ((_ element:WithinElement) -> Void)?
+    
     @IBOutlet weak var collectionView: UICollectionView!
     
     let columnLayout = ColumnFlowLayout(
@@ -58,6 +61,16 @@ class ParkinglotCardViewController: UIViewController {
         return self.viewModel
     }
     
+    // MARK: - Local Methods
+    
+    private func setDetailParkinglot(_ element:WithinElement) {
+        detailButtonAction?(element)
+    }
+    
+    private func setReserveParkinglot(_ element:WithinElement) {
+        reserveButtonAction?(element)
+    }
+    
     // MARK: - Fetch Collection View
     
     private func fetchWithinElements() {
@@ -73,6 +86,29 @@ class ParkinglotCardViewController: UIViewController {
                 cell.setTitle(item.name, distance: item.distance)
                 cell.setPrice(item.price)
                 cell.setTagList(tags)
+                cell.setReserveEnabled(item.available)
+                
+                cell.detailTap
+                    .asObservable()
+                    .subscribe(onNext: { indexPath in
+                        if let index = indexPath?.row {
+                            let element = self.viewModel.elements.value[index]
+                            self.setDetailParkinglot(element)
+                        }
+                        debugPrint("[DETAIL INDEX]", indexPath)
+                    })
+                    .disposed(by: self.disposeBag)
+                
+                cell.rserveTap
+                    .asObservable()
+                    .subscribe(onNext: { indexPath in
+                        if let index = indexPath?.row {
+                            let element = self.viewModel.elements.value[index]
+                            self.setReserveParkinglot(element)
+                        }
+                        debugPrint("[RSERVE INDEX]", indexPath)
+                    })
+                    .disposed(by: self.disposeBag)
             }
             .disposed(by: disposeBag)
     }
@@ -84,9 +120,9 @@ class ParkinglotCardViewController: UIViewController {
         initialize()
     }
     
+    // MARK: - Navigation
 
     /*
-    // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

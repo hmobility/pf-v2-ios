@@ -19,9 +19,9 @@ public struct SortOrderDialog {
         
         view.configureContent(title: title, body: nil, iconImage: nil, iconText: nil, buttonImage: nil, buttonTitle: done, buttonTapHandler: nil)
         
-        view.completionAction = { (sort) in
+        view.completeAction = { (sort) in
             if let handler = handler {
-                handler(true, sortType)
+                handler(true, sort)
             }
             
             SwiftMessages.hide()

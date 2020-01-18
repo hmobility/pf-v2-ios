@@ -25,8 +25,7 @@ class ParkinglotAPI: BaseAPI {
     }
     
     // 주차장 공유  - Multiparts(formadata)
-    
-    static func share(address:String, images:[Image], httpMethod:HttpMethod = .post, auth:APIAuthType = .OAuth2) -> RestURL  {
+    static func share(address:String, images:[ImageElement], httpMethod:HttpMethod = .post, auth:APIAuthType = .OAuth2) -> RestURL  {
         let query:Params = ["address": address, "images":images]
         let url = build(host:host, endpoint:"/parkinglots/share", params: query)
         return (httpMethod, url, auth, nil)

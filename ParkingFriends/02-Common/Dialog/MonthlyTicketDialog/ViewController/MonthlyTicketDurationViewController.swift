@@ -73,9 +73,18 @@ class MonthlyTicketDurationViewController: UIViewController {
             dayRangeList = Array(startDay ... endDay)
         }
         
+        let unit = self.localizer.localized("txt_day_unit") as String
+        
         Observable.just(dayRangeList)
-            .bind(to: dayPicker.rx.itemTitles) { _, item in
-                return "\(item)"
+            .bind(to: dayPicker.rx.itemTitles) { [unowned self] index, item in
+                switch index {
+                case 0:
+                    return self.localizer.localized("txt_today") as String
+                case 1:
+                    return self.localizer.localized("txt_tomorrow") as String
+                default:
+                    return  "\(item)\(unit)"
+                }
             }
             .disposed(by: disposeBag)
         

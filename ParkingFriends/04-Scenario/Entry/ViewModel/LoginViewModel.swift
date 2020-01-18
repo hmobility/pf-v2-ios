@@ -88,7 +88,7 @@ class LoginViewModel: LoginViewModelType {
     }
     
     func checkCredentials(username:String, password:String) {
-        print("[USERNAME] ", username, " , [PASSWORD] ", password)
+        debugPrint("[USERNAME] ", username, " , [PASSWORD] ", password)
         Auth.login(username: username, password: password).subscribe(onNext: { (login, code) in
             if code == .success {
                 self.updateStatus(.verified)

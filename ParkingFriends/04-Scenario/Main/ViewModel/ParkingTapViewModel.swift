@@ -21,7 +21,7 @@ protocol ParkingTapViewModelType {
     
     func setProductType(_ type:ProductType)
     func setSortType(_ type: SortType)
-    func setWithinElements(_ elements:[WithinElement])
+    func setWithinElements(_ elements:[WithinElement]?)
     func getTags(_ element:WithinElement) -> [String]
 }
 
@@ -51,9 +51,9 @@ class ParkingTapViewModel: ParkingTapViewModelType {
         fixedTicketText = localizer.localized("ttl_ticket_fixed")
         monthlyTicketText = localizer.localized("ttl_ticket_monthly")
         
-        selectedSortType = BehaviorRelay(value: self.userData.filter.sortType)
-        sortOrderText = BehaviorRelay(value: (self.userData.filter.sortType == .price) ? localizer.localized("itm_order_price")
-            : localizer.localized("itm_order_distance"))
+        let sortType = self.userData.getSortType()
+        selectedSortType = BehaviorRelay(value: sortType)
+        sortOrderText = BehaviorRelay(value: (sortType == .price) ? localizer.localized("itm_order_price") : localizer.localized("itm_order_distance"))
         
         initialize()
     }
@@ -77,6 +77,13 @@ class ParkingTapViewModel: ParkingTapViewModelType {
     }
     
     func setSortType(_ type: SortType) {
+        guard selectedSortType.value != type else {
+            return
+        }
+        
+        selectedSortType.accept(type)
+        userData.setSort(type: type).save()
+        
         switch type {
         case .price:
             sortOrderText.accept(localizer.localized("itm_order_price"))
@@ -109,7 +116,11 @@ class ParkingTapViewModel: ParkingTapViewModelType {
         return tags
     }
     
-    func setWithinElements(_ elements:[WithinElement]){
-        self.elements.accept(elements)
-    }
+      func setWithinElements(_ elements:[WithinElement]?){
+          if let items = elements {
+              self.elements.accept(items)
+          } else {
+              self.elements.accept([])
+          }
+      }
 }

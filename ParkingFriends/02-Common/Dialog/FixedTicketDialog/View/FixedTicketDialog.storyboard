@@ -58,9 +58,9 @@
                                         <rect key="frame" x="0.0" y="41" width="414" height="210"/>
                                         <subviews>
                                             <pickerView contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lHC-cx-W3a" userLabel="Hours Picker - Hours">
-                                                <rect key="frame" x="224" y="22" width="60" height="166"/>
+                                                <rect key="frame" x="204" y="22" width="80" height="166"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="60" id="j1J-4D-7ei"/>
+                                                    <constraint firstAttribute="width" constant="80" id="j1J-4D-7ei"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="indicatorColor">
@@ -72,7 +72,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </pickerView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="주간권" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lw6-mY-WKh" userLabel="Label - Result Date">
-                                                <rect key="frame" x="97" y="95.5" width="111" height="19.5"/>
+                                                <rect key="frame" x="97" y="95.5" width="91" height="19.5"/>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="16"/>
                                                 <color key="textColor" name="DarkGrey"/>
                                                 <nil key="highlightedColor"/>

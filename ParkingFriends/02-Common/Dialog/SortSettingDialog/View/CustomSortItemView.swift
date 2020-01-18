@@ -34,8 +34,10 @@ class CustomSortItemView: UIStackView {
     // MARK: - Public Methods
     
     public func selected(_ flag:Bool) {
-        isSelected = flag
-        markImageView.isHighlighted = flag
+        if isSelected != flag {
+            isSelected = flag
+            markImageView.isHighlighted = flag
+        }
     }
     
     public func setItem(title:String, value:SortType, selected:Bool) {
@@ -48,8 +50,11 @@ class CustomSortItemView: UIStackView {
         return Observable.just(itemValue)
     }
     
-    public func tapItem() -> Observable<UITapGestureRecognizer> {
-        return backgroundView.rx.tapGesture().when(.recognized)
+    public func tapItem() -> Observable<SortType> {
+        return backgroundView.rx.tapGesture().when(.recognized).asObservable().map {_ in
+            self.selected(true)
+            return self.itemValue
+        }
     }
     /*
     // Only override draw() if you perform custom drawing.

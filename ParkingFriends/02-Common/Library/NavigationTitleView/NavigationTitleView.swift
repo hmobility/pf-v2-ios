@@ -58,14 +58,19 @@ class NavigationTitleView: UIView {
         contentStackView.axis = .vertical
         contentStackView.alignment = .center
         contentStackView.distribution  = .fill
-        contentStackView.spacing = 5
+        contentStackView.spacing = 4
 
         self.backgroundColor = .clear
         self.titleLabel.textColor = titleColor
         self.subTitleLabel.textColor = subTitleColor
         
-        //self.titleLabel.font = titleFont
-        //self.subTitleLabel.font = subTitleFont
+        if let font = titleFont {
+            self.titleLabel.font = font
+        }
+        
+        if let font = subTitleFont {
+            self.subTitleLabel.font = font
+        }
     }
 
     private func addViewsConfig() {

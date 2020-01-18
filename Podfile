@@ -23,6 +23,7 @@ target 'ParkingFriends' do
   pod 'Alamofire', '~> 4.7'
   pod 'AlamofireObjectMapper', '~> 5.2.1'
   pod 'ObjectMapper', '~> 3.4'
+  pod 'Kingfisher', '~> 5.0'
   
 #  pod 'SwiftDate', '~> 5.0'
   pod 'AFDateHelper', '~> 4.3.0'
@@ -44,6 +45,9 @@ target 'ParkingFriends' do
   pod 'FloatingPanel'
   pod 'SideMenu', '~> 6.0'
   pod "MXParallaxHeader"
+  
+  pod 'ImageSlideshow', '~> 1.8.1'
+  pod "ImageSlideshow/Kingfisher"
   
   pod 'LGSegmentedControl'
   

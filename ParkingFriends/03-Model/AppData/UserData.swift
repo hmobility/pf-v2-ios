@@ -57,6 +57,17 @@ class UserData: NSObject, NSCoding {
          return self
     }
     
+    // MARK: - Order Type
+    
+    public func getSortType() -> SortType {
+        return filter.sortType
+    }
+      
+    public func setSort(type:SortType) -> UserData {
+        filter.sortType = type
+        return self
+    }
+    
     // MARK: - Reservable Time
     
     public func getReservableDate() -> (start:Date, end:Date)  {

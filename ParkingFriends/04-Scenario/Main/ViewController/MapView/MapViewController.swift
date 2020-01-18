@@ -49,6 +49,8 @@ class MapViewController: UIViewController {
     
     fileprivate var floatingPanelController: FloatingPanelController!
     
+    fileprivate var cardViewController: ParkinglotCardViewController?
+    
     // MARK: - Bindings
     
     private func setupNavigation() {
@@ -120,9 +122,8 @@ class MapViewController: UIViewController {
     private func timeSettingAreaBinding() {
         viewModel.displaySettingSection
             .asDriver()
-            .drive(onNext: { (search, list) in
-                self.cardContainerView.isHidden = search ? true : false
-                //self.cardSectionView.isHidden = search ? true : false
+            .drive(onNext: { (list, search) in
+                self.cardContainerView.isHidden = list ? false : true
                 self.searchSectionView.isHidden = search ? false : true
             })
             .disposed(by: disposeBag)
@@ -138,6 +139,22 @@ class MapViewController: UIViewController {
                 self.navigateToTimeDialog()
             }
             .disposed(by: disposeBag)
+    }
+    
+    // MARK: - Card Event Handling
+    
+    private func handleCardEvents() {
+        if let card = cardViewController {
+            card.detailButtonAction = { element  in
+                debugPrint("[CARD] - Detail, Handle events from cards")
+                self.navigateToDetail(with: element)
+            }
+            
+            card.reserveButtonAction = { element  in
+                debugPrint("[CARD] - Rerverve, Handle events from cards")
+                self.navigateToReserveTicket()
+            }
+        }
     }
     
     // MARK: - Initialize
@@ -157,6 +174,8 @@ class MapViewController: UIViewController {
         setupNavigation()
         setupNavigationBinding()
         setupButtonBinding()
+        
+        handleCardEvents()
     }
     
     // MARK: - Life Cycle
@@ -165,7 +184,7 @@ class MapViewController: UIViewController {
         super.viewDidLoad()
         initialize()
       //  setupParkingLot()
-        viewModel.placeCenter()
+        viewModel.placeCenter(search: true)
         
       //  print("[START]", Date().dateFor(.nearestHour(hour:1)).toString(format: .custom("HHmm")))
       //  print("[START]", Date().dateFor(.nearestMinute(minute:60)).toString(format: .custom("HHmm")))
@@ -191,6 +210,17 @@ class MapViewController: UIViewController {
     func navigateToEvents() {
         let target = Storyboard.main.instantiateViewController(withIdentifier: "EventViewController") as! SearchOptionViewController
         self.modal(target, transparent: true)
+    }
+    
+    func navigateToDetail(with element:WithinElement) {
+        let target = Storyboard.detail.instantiateViewController(withIdentifier: "ParkinglotDetailNavigationController") as! ParkinglotDetailNavigationController
+        target.setWithinElement(element)
+        self.modal(target)
+    }
+    
+    func navigateToReserveTicket() {
+        let target = Storyboard.payment.instantiateViewController(withIdentifier: "PaymentNavigationController") as! UINavigationController
+        self.modal(target)
     }
     
     func navigateToTimeDialog() {
@@ -237,6 +267,7 @@ class MapViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ParkingCardView" {
             if let destination = segue.destination as? ParkinglotCardViewController {
+                self.cardViewController = destination
                 self.viewModel.cardViewModel = destination.getViewModel()
             }
         }

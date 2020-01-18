@@ -77,7 +77,7 @@ enum AddressType:String {
 
 // 주차장 상세 조회
 enum OperationTimeType:String {
-    case base = "BASE"
+    case weekday = "WEEKDAY"
     case holiday = "HOLIDAY"
     case saturday = "SATURDAY"
     case sunday = "SUNDAY"

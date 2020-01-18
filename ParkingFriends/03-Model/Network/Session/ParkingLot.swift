@@ -12,7 +12,7 @@ class ParkingLot : HttpSession {
     static public func parkinglots(lat:String, long:String, radius:String, sort:SortType, start:String, end:String, productType:ProductType) -> Observable<(Parkinglots?, ResponseCodeType)>  {
         let data = ParkinglotAPI.parkinglots(lat: lat, long: long, radius: radius, sort: sort, start:start, end: end, productType: productType)
         
-        return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params!)
+        return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params)
             .map ({  result in
                 return (Parkinglots(JSON: result.data), result.codeType)
             })
@@ -21,16 +21,16 @@ class ParkingLot : HttpSession {
     static public func parkinglots(id:Int, from:String, to:String, type:ProductType, monthlyFrom:String, monthlyCount:Int) -> Observable<(Parkinglot?, ResponseCodeType)>  {
         let data = ParkinglotAPI.parkinglots(id: id, from: from, to: to, type:type, monthlyFrom: monthlyFrom, monthlyCount: monthlyCount)
         
-        return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params!)
+        return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params)
             .map ({  result in
                 return (Parkinglot(JSON: result.data), result.codeType)
             })
     }
     
-    static public func share(address:String, images:[Image]) -> Observable<ResponseCodeType>  {
+    static public func share(address:String, images:[ImageElement]) -> Observable<ResponseCodeType>  {
         let data = ParkinglotAPI.share(address: address, images: images)
         
-        return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params!)
+        return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params)
             .map ({  result in
                 return result.codeType
             })
@@ -39,7 +39,7 @@ class ParkingLot : HttpSession {
     static public func favorites() -> Observable<ResponseCodeType>  {
         let data = ParkinglotAPI.favorites()
         
-        return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params!)
+        return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params)
             .map ({  result in
                 return result.codeType
             })
@@ -48,7 +48,7 @@ class ParkingLot : HttpSession {
     static public func favorites(parkinglotId:Int) -> Observable<ResponseCodeType>  {
         let data = ParkinglotAPI.favorites(parkinglotId:parkinglotId)
         
-        return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params!)
+        return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params)
             .map ({  result in
                 return result.codeType
             })
@@ -57,7 +57,7 @@ class ParkingLot : HttpSession {
     static public func delete_favorites(parkinglotId:Int) -> Observable<ResponseCodeType>  {
         let data = ParkinglotAPI.delete_favorites(parkinglotId:parkinglotId)
         
-        return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params!)
+        return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params)
             .map ({  result in
                 return result.codeType
             })
@@ -68,7 +68,7 @@ class ParkingLot : HttpSession {
     static public func within(lat:String, lon:String, radius:String, start:String, end:String, productType:ProductType, monthlyFrom:String, monthlyCount:Int, filter:FilterType) -> Observable<(Within?, ResponseCodeType)>  {
         let data = ParkinglotAPI.within(lat: lat, lon: lon, radius: radius, start: start, end: end, productType:productType, monthlyFrom: monthlyFrom, monthlyCount: monthlyCount, filter: filter)
         
-        return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params!)
+        return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params)
             .map ({  result in
                 return (Within(JSON: result.data), result.codeType)
             })
@@ -77,7 +77,7 @@ class ParkingLot : HttpSession {
     static public func available_times(id:Int, from:String, to:String, type:ProductType, monthlyFrom:String, monthlyCount:Int) -> Observable<ResponseCodeType>  {
         let data = ParkinglotAPI.available_times(id: id, from: from, to: to, type: type, monthlyFrom: monthlyFrom, monthlyCount: monthlyCount)
         
-        return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params!)
+        return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params)
             .map ({  result in
                 return result.codeType
             })
@@ -86,7 +86,7 @@ class ParkingLot : HttpSession {
     static public func within_district(lat:String, lon:String, radius:String) -> Observable<(WithinDistrict?, ResponseCodeType)>  {
         let data = ParkinglotAPI.within_district(lat:lat, lon:lon, radius:radius)
         
-        return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params!)
+        return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params)
             .map ({  result in
                 return (WithinDistrict(JSON: result.data), result.codeType)
             })

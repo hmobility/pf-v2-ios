@@ -18,21 +18,24 @@ class MonthlyTicketNavigationController: UINavigationController {
         startDate = date
     }
     
+    // MARK: - Local Method
+    
+    private func initialize() {
+        if let target = self.topViewController as? MonthlyTicketDurationViewController, let date = startDate {
+            target.setStartDate(date)
+        }
+    }
+
     // MARK: - Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        initialize()
     }
 
     // MARK: - Navigation
-
+/*
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let target = segue.destination as? MonthlyTicketDurationViewController {
-            if let start = self.startDate {
-                target.setStartDate(start)
-            }
-        }
     }
+ */
 }

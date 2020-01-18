@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import ObjectMapper
 
-public class Image: BaseModelType {
+public class ImageElement: BaseModelType {
     var url:String = ""
     var name:String = ""
     

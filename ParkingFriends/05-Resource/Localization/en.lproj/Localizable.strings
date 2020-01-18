@@ -25,6 +25,9 @@
 "btn_yes" = "맞아요!";
 "btn_not_yet" = "아직이요";
 "btn_to_reset" = "설정 초기화";
+"btn_detail" = "상세정보";
+"btn_reservation_disabled" = "예약불가";
+"btn_to_reserve" = "예약하기";
 "btn_add" = "추가";
 "txt_none" = "없음";
 "txt_today" = "오늘";
@@ -35,6 +38,7 @@
 "txt_minutes" = "분";
 "txt_from" = "부터";
 "txt_distance_unit" = "m";
+"txt_day_unit" = "일";
 "txt_money_unit" = "원";
 "txt_free" = "무료";
 "txt_hours" = "시간";
@@ -200,6 +204,26 @@
 "itm_option_iot_sensor" = "IoT센서 설치";
 "itm_option_mechanical" = "기계식주차 제외";
 "itm_option_full_time" = "24시간 운영";
+
+// Parkinglot Detail
+"itm_symbol_ble_gate" = "파프앱키";
+"itm_symbol_cctv" = "CCTV";
+"itm_symbol_charger" = "충전기";
+"itm_symbol_iot_sensor" = "IoT센서";
+"itm_symbol_outdoor" = "실외주차장";
+"itm_symbol_indoor" = "실내주차장";
+"itm_symbol_partner" = "AJ파크제휴";
+"txt_detail_time_extra_fee" = "연장 결제는 %@분 단위로 가능";
+"ttl_detail_real_time_reserve_state" = "실시간 예약현황";
+"ttl_detail_schedule_change" = "예약시간 변경하기";
+"ttl_detail_operating_time" = "운영시간";
+"ttl_operationg_time_weekday" = "평일";
+"ttl_operationg_time_weekend" = "토·일요일";
+"ttl_operationg_time_holliday" = "공휴일";
+"txt_day_closed" = "휴무";
+"ttl_detail_guide_line" = "안내·유의사항";
+"dsc_detail_guide_line" = "• 지역 주민과 함께 쓰는 주차장, 깨끗하게 사용해주세요/n• 최소 예약 가능시간은 2시간입니다./n• 연장 결제는 30분 단위로 가능합니다./n";
+
 
 // Payment
 "ttl_payment_guide" = "유의사항을 확인하세요!";

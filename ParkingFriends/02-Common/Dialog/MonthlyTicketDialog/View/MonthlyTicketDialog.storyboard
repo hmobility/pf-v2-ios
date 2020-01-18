@@ -58,7 +58,7 @@
                                         <rect key="frame" x="0.0" y="41" width="414" height="210"/>
                                         <subviews>
                                             <pickerView contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0yH-dE-b57" userLabel="Hours Picker - Day">
-                                                <rect key="frame" x="58.5" y="22" width="80" height="166"/>
+                                                <rect key="frame" x="88.5" y="22" width="80" height="166"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="80" id="55W-n6-hjI"/>
                                                 </constraints>
@@ -72,15 +72,15 @@
                                                 </userDefinedRuntimeAttributes>
                                             </pickerView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="부터" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MjC-Gq-y61" userLabel="Label - From">
-                                                <rect key="frame" x="142.5" y="89.5" width="45" height="31.5"/>
+                                                <rect key="frame" x="172.5" y="89.5" width="45" height="31.5"/>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="26"/>
                                                 <color key="textColor" name="DarkGrey"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <pickerView contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g8N-5w-o5X" userLabel="Hours Picker - Duration">
-                                                <rect key="frame" x="207.5" y="22" width="80" height="166"/>
+                                                <rect key="frame" x="237.5" y="22" width="50" height="166"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="80" id="KbQ-es-bmH"/>
+                                                    <constraint firstAttribute="width" constant="50" id="KbQ-es-bmH"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="indicatorColor">

@@ -22,11 +22,17 @@ protocol MapViewModelType {
     
     func zoomIn()
     func zoomOut()
-    func placeCenter()
+    func placeCenter(search:Bool)
     
     func setTimeTicketRange(start startDate: Date, end endDate:Date)
     func setFixedTicketTime(start startDate: Date, hours:Int)
     func setMonthlyTicketTime(start startDate: Date, months:Int)
+}
+
+extension MapViewModelType {
+    func placeCenter() {
+        placeCenter(search: false)
+    }
 }
 
 #if DEBUG
@@ -48,7 +54,7 @@ class MapViewModel: NSObject, MapViewModelType {
     var parkingTapViewModel:ParkingTapViewModelType?
     
     private var lotList:[MarkerWindow] = []
-    private var districtList:[GroupMarkerWindow] = []
+    private var districtList:[DistrictMarkerWindow] = []
     
     private var destMarker:NMFMarker?
     
@@ -153,7 +159,7 @@ class MapViewModel: NSObject, MapViewModelType {
     
     private func setupLocationBinding() {
         _ = currentLocation().subscribe(onNext: { coordinate in
-            self.placeCenter(coordinate, zoomLevel: self.mapModel.defaultZoomLevel)
+            self.setCenterPosition(with: coordinate, zoomLevel: self.mapModel.defaultZoomLevel)
         }).disposed(by: disposeBag)
     }
     
@@ -169,13 +175,25 @@ class MapViewModel: NSObject, MapViewModelType {
     
     // MARK: - Local Methods
     
-    private func updateCardElements(_ elements:[WithinElement]) {
+    private func updateSubModel(district:Bool, within elements:[WithinElement]?, section:(list:Bool, search:Bool)? = nil) {
+        if district {
+            self.updateTapElements(nil)
+            self.updateCardElements(nil)
+            displaySettingSection.accept(section ?? (list:false, search:true))
+        } else {
+            self.updateTapElements(elements)
+            self.updateCardElements(elements)
+            displaySettingSection.accept(section ?? (list:true, search:false))
+        }
+    }
+    
+    private func updateCardElements(_ elements:[WithinElement]?) {
         if let viewModel = cardViewModel {
             viewModel.setWithinElements(elements)
         }
     }
     
-    private func updateTapElements(_ elements:[WithinElement]) {
+    private func updateTapElements(_ elements:[WithinElement]?) {
         if let viewModel = parkingTapViewModel {
             viewModel.setWithinElements(elements)
         }
@@ -214,9 +232,9 @@ class MapViewModel: NSObject, MapViewModelType {
     }
     
     // 구별 주차면 표시
-    private func generateGroup(district element:WithinDistrictElement) -> GroupMarkerWindow? {
+    private func generateDistrict(district element:WithinDistrictElement) -> DistrictMarkerWindow? {
         if let map = mapView {
-            return GroupMarkerWindow(district:element, map:map)
+            return DistrictMarkerWindow(district:element, map:map)
         }
         
         return nil
@@ -254,10 +272,6 @@ class MapViewModel: NSObject, MapViewModelType {
         }
         
         if let elements = lots {
-            displaySettingSection.accept((list:true, search:false))
-            updateCardElements(elements)
-            updateTapElements(elements)
-            
             for item in elements {
                 debugPrint("[LOT] ", item.address)
                 if let marker = generateMarker(within: item) {
@@ -267,13 +281,9 @@ class MapViewModel: NSObject, MapViewModelType {
         }
         
         if let elements = districts {
-            displaySettingSection.accept((list:false, search:true))
-            updateCardElements([])
-            updateTapElements([])
-            
             for item in elements {
                 debugPrint("[DISTRICT] ", item.name)
-                if let marker = generateGroup(district: item) {
+                if let marker = generateDistrict(district: item) {
                     districtList.append(marker)
                 }
             }
@@ -323,7 +333,7 @@ class MapViewModel: NSObject, MapViewModelType {
         }
     }
     
-    private func placeCenter(_ coordinate:CLLocationCoordinate2D, zoomLevel:Double) {
+    private func setCenterPosition(with coordinate:CLLocationCoordinate2D, zoomLevel:Double) {
         let position = NMFCameraPosition(NMGLatLng(from:coordinate), zoom: zoomLevel, tilt: 0, heading: 0)
         
         if let map = self.mapView {
@@ -340,14 +350,13 @@ class MapViewModel: NSObject, MapViewModelType {
                 if let available = location, available.verticalAccuracy < 0  || available.horizontalAccuracy < 0 {
                     return CLLocationCoordinate2DMake(defaultCoordinate.latitude, defaultCoordinate.longitude)
                 }
-
-                return location?.coordinate ?? CLLocationCoordinate2DMake(defaultCoordinate.latitude, defaultCoordinate.longitude)
-            }
+                
+            return location?.coordinate ?? CLLocationCoordinate2DMake(defaultCoordinate.latitude, defaultCoordinate.longitude)
+        }
     }
     
-    private func updateParkinglot(coord:CoordType, district:Bool = false) {
+    private func updateParkinglot(coord:CoordType, district:Bool = false, search:Bool = false) {
         let option:FilterOption = UserData.shared.filter
-        
         let radius = self.mapView!.rx.radius
 
         debugPrint("[RADIUS] ", radius)
@@ -358,14 +367,16 @@ class MapViewModel: NSObject, MapViewModelType {
             self.withinDistrict(coordinate: coord, radius: radius)
                 .subscribe(onNext: { elements in
                     self.updateMarker(districts: elements)
+                    self.updateSubModel(district: true, within: nil)
                 })
                 .disposed(by: disposeBag)
         } else {
             self.within(coordinate:coord, radius: radius, filter:option.filter, month:(today, 1), time:(time.start, time.end))
                 .subscribe(onNext: { elements in
                     self.updateMarker(lots: elements)
+                    self.updateSubModel(district: false, within: elements, section: search ? (list:false, search:true) : nil)
                 })
-              .disposed(by: disposeBag)
+                .disposed(by: disposeBag)
         }
     }
     
@@ -424,12 +435,12 @@ class MapViewModel: NSObject, MapViewModelType {
     }
     
     // Move the camera to the current position
-    func placeCenter() {
+    func placeCenter(search:Bool) {
         self.currentLocation()
             .subscribe(onNext: { location in
-                self.placeCenter(location, zoomLevel:self.mapModel.defaultZoomLevel)
+                self.setCenterPosition(with: location, zoomLevel:self.mapModel.defaultZoomLevel)
                 self.requestReverseGeocoding(CoordType(location.latitude, location.longitude))
-                self.updateParkinglot(coord: CoordType(location.latitude, location.longitude))
+                self.updateParkinglot(coord: CoordType(location.latitude, location.longitude), search: search)
             }).disposed(by: disposeBag)
     }
 }

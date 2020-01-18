@@ -15,16 +15,33 @@ class ParkinglotCardCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var unitLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var detailButton: UIButton!
-    @IBOutlet weak var resevationButton: UIButton!
+    @IBOutlet weak var reservationButton: UIButton!
     @IBOutlet weak var tagListView: TagListView!
     
     private lazy var localizer:LocalizerType = Localizer.shared
     
+    var disposeBag = DisposeBag()
+    
+    public var detailTap: Observable<IndexPath?> {
+        return self.detailButton.rx.tap.map { _ in
+            return self.indexPath
+        }
+    }
+    
+    public var rserveTap: Observable<IndexPath?> {
+        return self.reservationButton.rx.tap.map { _ in
+            return self.indexPath
+        }
+    }
+    
     // MARK: - Initialize
+    
+    override func prepareForReuse() {
+        initialize()
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        initialize()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -32,14 +49,40 @@ class ParkinglotCardCollectionViewCell: UICollectionViewCell {
     }
     
     private func initialize() {
-        tagListView.textFont = Font.gothicNeoRegular14
+        setupBinding()
+    }
+    
+    // MARK: - Life Cycle
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        initialize()
     }
     
     // MARK: - Binding
     
+    private func setupBinding() {
+        self.localizer.localized("btn_reservation_diabled")
+                .asDriver()
+                .drive(self.reservationButton.rx.title(for: .disabled))
+                .disposed(by: disposeBag)
+        
+        self.localizer.localized("btn_to_reserve")
+                .asDriver()
+                .drive(self.reservationButton.rx.title(for: .normal))
+                .disposed(by: disposeBag)
+        
+        self.localizer.localized("btn_detail")
+                .asDriver()
+                .drive(self.detailButton.rx.title(for: .normal))
+                .disposed(by: disposeBag)
+    }
+    
     // MARK: - Public Methods
  
     public func setTagList(_ tags:[String]) {
+        tagListView.removeAllTags()
+        tagListView.textFont = Font.gothicNeoRegular14
         tagListView.addTags(tags)
     }
     
@@ -54,5 +97,9 @@ class ParkinglotCardCollectionViewCell: UICollectionViewCell {
         let hourTxt = localizer.localized("txt_hours") as String
         priceLabel.text = price.withComma
         unitLabel.text = "\(moneyUnit)/\(hourTxt)"
+    }
+    
+    public func setReserveEnabled(_ flag:Bool) {
+        reservationButton.isEnabled = flag
     }
 }

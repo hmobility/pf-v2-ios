@@ -63,10 +63,10 @@ class FixedTicketDurationViewController: UIViewController {
         if let date = startDate {
             let maxHours:Int = 24 - date.component(.hour)!
             hourRangeList = Array(1...maxHours)
- 
+            let unit = localizer.localized("txt_months") as String
             Observable.just(hourRangeList)
                 .bind(to: hoursPicker.rx.itemTitles) { _, item in
-                    return "\(item)"
+                    return "\(item)\(unit)"
             }
             .disposed(by: disposeBag)
         }

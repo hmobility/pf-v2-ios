@@ -37,7 +37,7 @@ class ParkinglotElement: BaseModelType {
     var type:ParkingLotType?
     var partnerFlag:Bool = false
     var address:String = ""
-    var images:[Image] = [Image]()
+    var images:[ImageElement] = [ImageElement]()
     var thumbnail:String = ""
     var cctvCount:Int = 0
     var baseOperationTime:OperationTime?

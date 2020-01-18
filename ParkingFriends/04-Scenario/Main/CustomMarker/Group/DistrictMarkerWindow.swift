@@ -11,7 +11,7 @@ import NMapsMap
 
 // MARK: - NMFInfoWindow - Custom
 
-class GroupMarkerWindow: NMFInfoWindow {
+class DistrictMarkerWindow: NMFInfoWindow {
     private var element:WithinDistrictElement?
     private var markerSource:GroupMarkerDataSource?
     
