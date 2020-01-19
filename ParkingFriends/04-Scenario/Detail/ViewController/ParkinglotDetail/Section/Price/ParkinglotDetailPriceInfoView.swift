@@ -58,7 +58,8 @@ class ParkinglotDetailPriceInfoView: UIStackView {
             }
             .subscribe(onNext: { result in
                 self.timeView.descFirstLabel.text = result
-            }).disposed(by: disposeBag)
+            })
+            .disposed(by: disposeBag)
         
         baseFee.asObservable()
             .filter({
@@ -66,7 +67,8 @@ class ParkinglotDetailPriceInfoView: UIStackView {
             })
             .map { fee in
                 let minutes = String(fee!.addMinute)
-                let text = self.localizer.localized("txt_detail_time_extra_fee", arguments: minutes) as String
+                let timeUnit:String = (fee!.addMinute >= 60) ? self.localizer.localized("txt_hours") : self.localizer.localized("txt_minutes")
+                let text = self.localizer.localized("txt_detail_time_extra_fee", arguments: minutes, timeUnit) as String
                 return text
             }
             .subscribe(onNext: { result in
@@ -75,15 +77,7 @@ class ParkinglotDetailPriceInfoView: UIStackView {
     }
 
     // MARK: - Initializer
-    /*
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-    }
-    
-    required init(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    */
+
     private func initialize() {
         setupBinding()
         udpatePriceTable()

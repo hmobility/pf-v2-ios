@@ -36,12 +36,12 @@ class ParkingLot : HttpSession {
             })
     }
     
-    static public func favorites() -> Observable<ResponseCodeType>  {
+    static public func favorites() -> Observable<(Favorites?, ResponseCodeType)>  {
         let data = ParkinglotAPI.favorites()
         
         return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params)
             .map ({  result in
-                return result.codeType
+                return (Favorites(JSON: result.data), result.codeType)
             })
     }
     

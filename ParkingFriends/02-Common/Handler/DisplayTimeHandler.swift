@@ -53,4 +53,19 @@ struct DisplayTimeHandler {
         
         return "\(day),\(localizer.localized("txt_fixed_ticket_day")) \(hours) \(localizer.localized("txt_hours"))"
     }
+    
+    // For Operatim time
+    func displayOperationTime(start:String, end:String) -> String {
+        let startHours = start.first(char: 2).intValue
+        let startMinutes = start.last(char: 2).intValue
+        let startAmPm:String = (startHours < 12) ? localizer.localized("txt_am") : localizer.localized("txt_pm")
+        let startTime = "\(startAmPm) " + ((startHours < 12 ) ? "\(startHours)" : "\(startHours % 12)") +  "\(localizer.localized("txt_hour_unit"))" + ((startMinutes > 0) ? "\(startMinutes)\(localizer.localized("txt_minute_unit"))" : "")
+        
+        let endHours = end.first(char: 2).intValue
+        let endMinutes = end.last(char: 2).intValue
+        let endAmPm:String = (endHours < 12) ? localizer.localized("txt_am") : localizer.localized("txt_pm")
+        let endTime = "\(endAmPm) " + ((endHours < 12 ) ? "\(endHours)" : "\(endHours % 12)") + " \(localizer.localized("txt_hour_unit"))" + ((endMinutes > 0) ? "\(endMinutes)\(localizer.localized("txt_minute_unit"))" : "")
+        
+        return "\(startTime) ~ \(endTime)"
+    }
 }

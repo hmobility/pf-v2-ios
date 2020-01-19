@@ -24,8 +24,23 @@ extension String {
         return (self as NSString).doubleValue
     }
     
-    // MARK: - Pattern Matching
+    var intValue: Int {
+        return Int((self as NSString).intValue)
+    }
     
+    func first(char:Int) -> String {
+        return String(self.prefix(char))
+    }
+
+    func last(char:Int) -> String {
+        return String(self.suffix(char))
+    }
+}
+
+
+// MARK: - Pattern Matching
+
+extension String {
     func matches(_ regex: String) -> Bool {
         return self.range(of: regex, options: .regularExpression, range: nil, locale: nil) != nil
     }
@@ -39,7 +54,7 @@ extension String {
         case .email:
             regEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         }
- 
+        
         let stringTest = NSPredicate(format: "SELF MATCHES %@", regEx)
         
         return stringTest.evaluate(with: self)

@@ -18,6 +18,8 @@ protocol ParkinglotDetailViewModelType {
     
     var imageList: BehaviorRelay<[ImageElement]> { get }
     var markSymbolList: BehaviorRelay<[SymbolType]> { get }
+    var operationTimeList: BehaviorRelay<[ParkinglotOperationTime]> { get }
+    var noticeList: BehaviorRelay<[String]> { get }
     
     func loadDetailInfo()
 }
@@ -30,6 +32,8 @@ class ParkinglotDetailViewModel: ParkinglotDetailViewModelType {
     
     var imageList: BehaviorRelay<[ImageElement]> = BehaviorRelay(value: [])
     var markSymbolList: BehaviorRelay<[SymbolType]> = BehaviorRelay(value: [])
+    var operationTimeList: BehaviorRelay<[ParkinglotOperationTime]> = BehaviorRelay(value: [])
+    var noticeList: BehaviorRelay<[String]> = BehaviorRelay(value: [])
     
     private var localizer:LocalizerType
 
@@ -77,7 +81,13 @@ class ParkinglotDetailViewModel: ParkinglotDetailViewModelType {
             updateParkingSymbols(flags)
         }
         
-       // element.
+        if element.notices.count > 0 {
+            updateNotice(element.notices)
+        }
+        
+        if element.operationTimes.count > 0 {
+            udpateOperationTime(element.operationTimes)
+        }
     }
     
     // MARK: - Header
@@ -126,10 +136,16 @@ class ParkinglotDetailViewModel: ParkinglotDetailViewModelType {
         return symbols
     }
     
-    // MARK: - Price
+    // MARK: - Operation Time
     
-    func udpatePriceTable(_ price:Int) {
-        
+    func udpateOperationTime(_ items:[ParkinglotOperationTime]) {
+        operationTimeList.accept(items)
+    }
+    
+    // MARK: - Notice
+    
+    func updateNotice(_ items:[String]) {
+        noticeList.accept(items)
     }
     
     // MARK: - Network
@@ -151,6 +167,10 @@ class ParkinglotDetailViewModel: ParkinglotDetailViewModelType {
             .map { (parkinglot, code) in
                 return parkinglot
             }
+    }
+    
+    func bookmark(id:Int) {
+       
     }
 }
 

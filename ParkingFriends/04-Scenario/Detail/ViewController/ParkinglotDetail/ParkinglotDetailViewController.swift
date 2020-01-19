@@ -20,6 +20,8 @@ class ParkinglotDetailViewController: UIViewController {
     @IBOutlet var headerView:ParkinglotDetailHeaderView!
     @IBOutlet var symbolView:ParkinglotDetailSymbolView!
     @IBOutlet var priceView:ParkinglotDetailPriceInfoView!
+    @IBOutlet var operationTimeView:ParkinglotDetailOperationTimeView!
+    @IBOutlet var noticeView:ParkinglotDetailGuideView!
     
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var moreButton: UIButton!
@@ -98,6 +100,30 @@ class ParkinglotDetailViewController: UIViewController {
             .disposed(by: disposeBag)
     }
     
+    private func setupOperationTimeView() {
+        viewModel.operationTimeList
+            .asDriver()
+            .drive(onNext: { operations in
+                self.operationTimeView.setOperationTimeList(operations)
+            })
+            .disposed(by: disposeBag)
+       }
+    
+    private func setupGuideView() {
+        viewModel.noticeList
+            .asDriver()
+            .drive(onNext: { notices in
+                
+                let items = ["• 무인으로 운영되는 거주자우선주차구역입니다./n주차장 운영시간 및 예약시간을 준수해주세요.",
+                "• 입차시 비어있는 주차면에 자유롭게 주차 가능합니다.",
+                "• 최소 예약 가능시간은 1시간입니다.",
+                "• 연장 결제는 30분 단위로 가능합니다."]
+                 
+                self.noticeView.setContents(items)
+            })
+            .disposed(by: disposeBag)
+    }
+    
     // MARK: - Setup ScrollView
     
     private func setupScrollView() {
@@ -125,6 +151,8 @@ class ParkinglotDetailViewController: UIViewController {
         setupHeaderView()
         setupSymbolView()
         setupPriceView()
+        setupOperationTimeView()
+        setupGuideView()
     }
         
     // MARK: - Life Cycle

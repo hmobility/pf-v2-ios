@@ -28,7 +28,7 @@ class Favorites: BaseModelType {
 
 class FavoriteElement: BaseModelType {
     var id:Int = 0
-    var parkinglot:[FavoriteParkingElement] = [FavoriteParkingElement]()
+    var parkinglot:[FavoriteParkinglotElement] = [FavoriteParkinglotElement]()
     
     required init?(map: Map) {
         super.init(map: map)
@@ -40,7 +40,7 @@ class FavoriteElement: BaseModelType {
     }
 }
 
-class FavoriteParkingElement: BaseModelType {
+class FavoriteParkinglotElement: BaseModelType {
     var id:Int = 0
     var name:String = ""
     
