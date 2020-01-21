@@ -23,33 +23,36 @@ class ParkinglotDetailViewController: UIViewController {
     @IBOutlet var operationTimeView:ParkinglotDetailOperationTimeView!
     @IBOutlet var noticeView:ParkinglotDetailGuideView!
     
+    @IBOutlet var navigationBar:TransparentNavigationBar!
+    
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var moreButton: UIButton!
     
     private var within:WithinElement?
     
     private lazy var viewModel: ParkinglotDetailViewModelType = ParkinglotDetailViewModel(within: within!)
-    private lazy var titleView = NavigationTitleView()
+    private lazy var titleView:NavigationTitleView = NavigationTitleView()
     
     private let disposeBag = DisposeBag()
 
     // MARK: - Binding
     
     private func setupNavigationBinding() {
-        navigationItem.titleView = titleView
+        titleView = NavigationTitleView()
+        
+        self.navigationBar.topItem?.titleView = titleView
         
         titleView.titleColor = UIColor.white
+        titleView.subtitleColor = UIColor.white
         titleView.titleFont = Font.gothicNeoSemiBold19
-        titleView.subTitleColor = UIColor.white
-        titleView.subTitleFont = Font.helvetica12
-        
+        titleView.subtitleFont = Font.helvetica12
+      
         viewModel.viewTitleText
-            .drive(titleView.titleLabel.rx.text)
+            .drive(self.titleView.titleLabel.rx.text)
             .disposed(by: disposeBag)
         
-        
         viewModel.viewSubtitleText
-            .drive(titleView.subTitleLabel.rx.text)
+            .drive(titleView.subtitleLabel.rx.text)
             .disposed(by: disposeBag)
     }
     
@@ -113,13 +116,7 @@ class ParkinglotDetailViewController: UIViewController {
         viewModel.noticeList
             .asDriver()
             .drive(onNext: { notices in
-                
-                let items = ["• 무인으로 운영되는 거주자우선주차구역입니다./n주차장 운영시간 및 예약시간을 준수해주세요.",
-                "• 입차시 비어있는 주차면에 자유롭게 주차 가능합니다.",
-                "• 최소 예약 가능시간은 1시간입니다.",
-                "• 연장 결제는 30분 단위로 가능합니다."]
-                 
-                self.noticeView.setContents(items)
+                self.noticeView.setContents(notices)
             })
             .disposed(by: disposeBag)
     }
@@ -127,10 +124,17 @@ class ParkinglotDetailViewController: UIViewController {
     // MARK: - Setup ScrollView
     
     private func setupScrollView() {
+        let minY = navigationBar.frame.minY
+        let maxY = navigationBar.frame.maxY
+        let height = headerView.bounds.size.height
+        
+        debugPrint("[HEADER] height : ", height, " Min Y :" , minY)
+     
         scrollView.parallaxHeader.view = headerView
-        scrollView.parallaxHeader.height = 300
+        scrollView.parallaxHeader.height = (height + minY)
+        scrollView.parallaxHeader.minimumHeight = maxY
         scrollView.parallaxHeader.mode = .topFill
-        scrollView.parallaxHeader.delegate = self
+        scrollView.parallaxHeader.delegate = headerView
     }
     
     // MARK: - Initialize
@@ -192,11 +196,13 @@ class ParkinglotDetailViewController: UIViewController {
     */
 
 }
-
-
+/*
 // MARK: - Parallax header delegate
 extension ParkinglotDetailViewController: MXParallaxHeaderDelegate {
     func parallaxHeaderDidScroll(_ parallaxHeader: MXParallaxHeader) {
         NSLog("progress %f", parallaxHeader.progress)
+        let alphaValue = parallaxHeader.progress.truncatingRemainder(dividingBy: 1.0)
+        headerView.setDimmedAlpha(alphaValue)
     }
 }
+*/

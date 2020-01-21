@@ -8,9 +8,11 @@
 
 import UIKit
 import ImageSlideshow
+import MXParallaxHeader
 
 class ParkinglotDetailHeaderView: UIView {
     @IBOutlet weak var imageSlideView: ImageSlideshow!
+    @IBOutlet weak var dimmedImageView: UIImageView!
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var navigationButton: UIButton!
@@ -33,6 +35,7 @@ class ParkinglotDetailHeaderView: UIView {
     private func initialize() {
         setupImageView()
         setupPageControl()
+        setupButtonBinding()
     }
     
     // MARK: - Public Methods
@@ -43,6 +46,12 @@ class ParkinglotDetailHeaderView: UIView {
         }
         
         self.imageSlideView.setImageInputs(sources as! [InputSource])
+    }
+    
+    public func setAlpha(_ value:CGFloat) {
+        if dimmedImageView != nil {
+            dimmedImageView.alpha = value
+        }
     }
     
     // MARK: - Local Methods
@@ -57,7 +66,7 @@ class ParkinglotDetailHeaderView: UIView {
         pageControl.pageIndicatorTintColor = UIColor.init(white: 1.0, alpha: 0.48)
 
         imageSlideView.pageIndicator = pageControl
-        imageSlideView.pageIndicatorPosition = .init(horizontal: .center, vertical: .top)
+        imageSlideView.pageIndicatorPosition = .init(horizontal: .center, vertical: .customTop(padding: 87))
     }
     
     // MARK: -  Binding
@@ -84,16 +93,21 @@ class ParkinglotDetailHeaderView: UIView {
       
     override func layoutSubviews() {
         super.layoutSubviews()
-        initialize()
-        setupButtonBinding()
     }
-    
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
 
+    override func draw(_ rect: CGRect) {
+        initialize()
+    }
+
+}
+
+// MARK: - Parallax header delegate
+
+extension ParkinglotDetailHeaderView: MXParallaxHeaderDelegate {
+    func parallaxHeaderDidScroll(_ parallaxHeader: MXParallaxHeader) {
+        NSLog("progress %f", parallaxHeader.progress)
+        let alpha = (1 - parallaxHeader.progress / 1)
+        NSLog("progress %f , alpha %f", parallaxHeader.progress, alpha)
+        setAlpha(alpha)
+    }
 }

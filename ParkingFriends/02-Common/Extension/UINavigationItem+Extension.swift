@@ -8,6 +8,7 @@
 
 import UIKit
 
+/*
 extension UINavigationItem {
     func setTitle(title:String, subtitle:String) {
         let titleLabel = UILabel()
@@ -36,3 +37,4 @@ extension UINavigationItem {
         self.titleView = stackView
     }
 }
+*/

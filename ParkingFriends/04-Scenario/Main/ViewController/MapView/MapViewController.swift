@@ -58,8 +58,8 @@ class MapViewController: UIViewController {
         
         titleView.titleColor = Color.darkGrey
         titleView.titleFont = Font.gothicNeoMedium26
-        titleView.subTitleColor = Color.darkGrey
-        titleView.subTitleFont = Font.helvetica12
+        titleView.subtitleColor = Color.darkGrey
+        titleView.subtitleFont = Font.helvetica12
         
         if let navigationBar = self.navigationController?.navigationBar {
             navigationBar.isHidden = true

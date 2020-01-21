@@ -9,6 +9,8 @@
 import Foundation
 import ObjectMapper
 
+fileprivate let kReservableTimeFormat = "yyyyMMddHHmm"
+
 class UserData: NSObject, NSCoding {
     var login: Login?
     var filter: FilterOption = FilterOption()
@@ -75,8 +77,8 @@ class UserData: NSObject, NSCoding {
     }
     
     public func getReservableTime() -> (start:String, end:String) {
-        let start = basis.reservableStartTime.toString(format: .custom("HHmm"))
-        let end = basis.reservableEndTime.toString(format: .custom("HHmm"))
+        let start = basis.reservableStartTime.toString(format: .custom(kReservableTimeFormat))
+        let end = basis.reservableEndTime.toString(format: .custom(kReservableTimeFormat))
         
         return (start, end)
      }

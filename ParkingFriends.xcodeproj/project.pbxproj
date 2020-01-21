@@ -32,6 +32,12 @@
 		621BCC8223D412B9009FE1EC /* ParkinglotDetailGuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621BCC8123D412B9009FE1EC /* ParkinglotDetailGuideView.swift */; };
 		621BCC8423D415A2009FE1EC /* ParkinglotDetailGuideItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 621BCC8323D415A2009FE1EC /* ParkinglotDetailGuideItemView.xib */; };
 		621BCC8723D432E8009FE1EC /* ParkinglotDetailOperationTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621BCC8623D432E8009FE1EC /* ParkinglotDetailOperationTimeView.swift */; };
+		621BCC8E23D5AAC4009FE1EC /* TransparentNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621BCC8D23D5AAC4009FE1EC /* TransparentNavigationBar.swift */; };
+		621BCC9023D68649009FE1EC /* ParkinglotDetailPriceItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 621BCC8F23D68649009FE1EC /* ParkinglotDetailPriceItemView.xib */; };
+		621BCC9223D686CC009FE1EC /* ParkinglotDetailPriceItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621BCC9123D686CC009FE1EC /* ParkinglotDetailPriceItemView.swift */; };
+		621BCC9423D68724009FE1EC /* ParkinglotDetailMonthlyTicketPriceItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621BCC9323D68724009FE1EC /* ParkinglotDetailMonthlyTicketPriceItemView.swift */; };
+		621BCC9623D68836009FE1EC /* ParkinglotDetailExtraFeeItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621BCC9523D68836009FE1EC /* ParkinglotDetailExtraFeeItemView.swift */; };
+		621BCC9823D68AE3009FE1EC /* ParkinglotDetailMonthlyTicketPriceItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 621BCC9723D68AE3009FE1EC /* ParkinglotDetailMonthlyTicketPriceItemView.xib */; };
 		62254E8B238B992500AF82B9 /* Parkinglots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62254E8A238B992500AF82B9 /* Parkinglots.swift */; };
 		62254E8D238B995A00AF82B9 /* ParkinglotAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62254E8C238B995A00AF82B9 /* ParkinglotAPI.swift */; };
 		62269BC723A8B5F400BFACC1 /* ProductOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62269BC623A8B5F400BFACC1 /* ProductOption.swift */; };
@@ -201,6 +207,8 @@
 		62601DDD2397512000B78033 /* OverFee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62601DDC2397512000B78033 /* OverFee.swift */; };
 		62601DDF2397521B00B78033 /* Recommend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62601DDE2397521B00B78033 /* Recommend.swift */; };
 		62601DE12397545100B78033 /* Receipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62601DE02397545100B78033 /* Receipt.swift */; };
+		6261583723D6C8ED00C08CCA /* ParkinglotDetailReserveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6261583623D6C8ED00C08CCA /* ParkinglotDetailReserveView.swift */; };
+		6261583923D6C90400C08CCA /* ParkinglotDetailEditTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6261583823D6C90400C08CCA /* ParkinglotDetailEditTimeView.swift */; };
 		62630B422383E4BD0029724B /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62630B412383E4BD0029724B /* String+Extension.swift */; };
 		62630B45238506490029724B /* PhoneNumberViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62630B44238506490029724B /* PhoneNumberViewModel.swift */; };
 		62630B47238534FB0029724B /* CodeVerifyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62630B46238534FB0029724B /* CodeVerifyViewModel.swift */; };
@@ -220,7 +228,7 @@
 		629C287423700FF500E0E5E1 /* AgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629C287323700FF500E0E5E1 /* AgreementViewController.swift */; };
 		629C28762370103C00E0E5E1 /* AgreementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629C28752370103C00E0E5E1 /* AgreementViewModel.swift */; };
 		629C28782370F45500E0E5E1 /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629C28772370F45500E0E5E1 /* TermsViewController.swift */; };
-		629C287A2370FCA500E0E5E1 /* UINavigation+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629C28792370FCA500E0E5E1 /* UINavigation+Extension.swift */; };
+		629C287A2370FCA500E0E5E1 /* UINavigationItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629C28792370FCA500E0E5E1 /* UINavigationItem+Extension.swift */; };
 		629C287C2371093700E0E5E1 /* RegiCarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629C287B2371093700E0E5E1 /* RegiCarViewController.swift */; };
 		629C287E237109B500E0E5E1 /* RegiCreditCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629C287D237109B500E0E5E1 /* RegiCreditCardViewController.swift */; };
 		629C288023710B4B00E0E5E1 /* RegiCreditCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629C287F23710B4B00E0E5E1 /* RegiCreditCardViewModel.swift */; };
@@ -358,6 +366,12 @@
 		621BCC8123D412B9009FE1EC /* ParkinglotDetailGuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkinglotDetailGuideView.swift; sourceTree = "<group>"; };
 		621BCC8323D415A2009FE1EC /* ParkinglotDetailGuideItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ParkinglotDetailGuideItemView.xib; sourceTree = "<group>"; };
 		621BCC8623D432E8009FE1EC /* ParkinglotDetailOperationTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkinglotDetailOperationTimeView.swift; sourceTree = "<group>"; };
+		621BCC8D23D5AAC4009FE1EC /* TransparentNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransparentNavigationBar.swift; sourceTree = "<group>"; };
+		621BCC8F23D68649009FE1EC /* ParkinglotDetailPriceItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ParkinglotDetailPriceItemView.xib; sourceTree = "<group>"; };
+		621BCC9123D686CC009FE1EC /* ParkinglotDetailPriceItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkinglotDetailPriceItemView.swift; sourceTree = "<group>"; };
+		621BCC9323D68724009FE1EC /* ParkinglotDetailMonthlyTicketPriceItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkinglotDetailMonthlyTicketPriceItemView.swift; sourceTree = "<group>"; };
+		621BCC9523D68836009FE1EC /* ParkinglotDetailExtraFeeItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkinglotDetailExtraFeeItemView.swift; sourceTree = "<group>"; };
+		621BCC9723D68AE3009FE1EC /* ParkinglotDetailMonthlyTicketPriceItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ParkinglotDetailMonthlyTicketPriceItemView.xib; sourceTree = "<group>"; };
 		62254E8A238B992500AF82B9 /* Parkinglots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parkinglots.swift; sourceTree = "<group>"; };
 		62254E8C238B995A00AF82B9 /* ParkinglotAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkinglotAPI.swift; sourceTree = "<group>"; };
 		62269BC623A8B5F400BFACC1 /* ProductOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductOption.swift; sourceTree = "<group>"; };
@@ -526,6 +540,8 @@
 		62601DDC2397512000B78033 /* OverFee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverFee.swift; sourceTree = "<group>"; };
 		62601DDE2397521B00B78033 /* Recommend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recommend.swift; sourceTree = "<group>"; };
 		62601DE02397545100B78033 /* Receipt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Receipt.swift; sourceTree = "<group>"; };
+		6261583623D6C8ED00C08CCA /* ParkinglotDetailReserveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkinglotDetailReserveView.swift; sourceTree = "<group>"; };
+		6261583823D6C90400C08CCA /* ParkinglotDetailEditTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkinglotDetailEditTimeView.swift; sourceTree = "<group>"; };
 		62630B412383E4BD0029724B /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		62630B44238506490029724B /* PhoneNumberViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberViewModel.swift; sourceTree = "<group>"; };
 		62630B46238534FB0029724B /* CodeVerifyViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodeVerifyViewModel.swift; sourceTree = "<group>"; };
@@ -545,7 +561,7 @@
 		629C287323700FF500E0E5E1 /* AgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementViewController.swift; sourceTree = "<group>"; };
 		629C28752370103C00E0E5E1 /* AgreementViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementViewModel.swift; sourceTree = "<group>"; };
 		629C28772370F45500E0E5E1 /* TermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
-		629C28792370FCA500E0E5E1 /* UINavigation+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigation+Extension.swift"; sourceTree = "<group>"; };
+		629C28792370FCA500E0E5E1 /* UINavigationItem+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationItem+Extension.swift"; sourceTree = "<group>"; };
 		629C287B2371093700E0E5E1 /* RegiCarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegiCarViewController.swift; sourceTree = "<group>"; };
 		629C287D237109B500E0E5E1 /* RegiCreditCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegiCreditCardViewController.swift; sourceTree = "<group>"; };
 		629C287F23710B4B00E0E5E1 /* RegiCreditCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegiCreditCardViewModel.swift; sourceTree = "<group>"; };
@@ -733,6 +749,8 @@
 				621BCC7B23D2B941009FE1EC /* Header */,
 				621BCC7A23D2B932009FE1EC /* Symbol */,
 				621BCC7C23D2B94B009FE1EC /* Price */,
+				6261583423D6C8B700C08CCA /* Reserve */,
+				6261583523D6C8CB00C08CCA /* EditTime */,
 				621BCC8523D432C9009FE1EC /* OperationTime */,
 				621BCC8023D4127B009FE1EC /* Guide */,
 			);
@@ -760,6 +778,11 @@
 			isa = PBXGroup;
 			children = (
 				621BCC7523D196B8009FE1EC /* ParkinglotDetailPriceInfoView.swift */,
+				621BCC8F23D68649009FE1EC /* ParkinglotDetailPriceItemView.xib */,
+				621BCC9123D686CC009FE1EC /* ParkinglotDetailPriceItemView.swift */,
+				621BCC9323D68724009FE1EC /* ParkinglotDetailMonthlyTicketPriceItemView.swift */,
+				621BCC9723D68AE3009FE1EC /* ParkinglotDetailMonthlyTicketPriceItemView.xib */,
+				621BCC9523D68836009FE1EC /* ParkinglotDetailExtraFeeItemView.swift */,
 			);
 			path = Price;
 			sourceTree = "<group>";
@@ -779,6 +802,14 @@
 				621BCC8623D432E8009FE1EC /* ParkinglotDetailOperationTimeView.swift */,
 			);
 			path = OperationTime;
+			sourceTree = "<group>";
+		};
+		621BCC8C23D5AAAA009FE1EC /* NavigationBar */ = {
+			isa = PBXGroup;
+			children = (
+				621BCC8D23D5AAC4009FE1EC /* TransparentNavigationBar.swift */,
+			);
+			path = NavigationBar;
 			sourceTree = "<group>";
 		};
 		62254E89238B98C600AF82B9 /* Parkinglots */ = {
@@ -926,12 +957,13 @@
 		624F539D23B9D2CF005D7FD8 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				629DB19123C1A16B00E68A94 /* Menu */,
 				624F53B123BB2E5A005D7FD8 /* UserLevel */,
+				629DB19123C1A16B00E68A94 /* Menu */,
 				629DB19623C1BB1400E68A94 /* MyCard */,
-				62576C4923BC838D007BA1F7 /* ParkingSearchViewController.swift */,
-				62576C6A23BF42BE007BA1F7 /* MyInfoViewController.swift */,
-				62576C6E23BF4722007BA1F7 /* SettingsViewController.swift */,
+				6261583C23D6F68F00C08CCA /* Settings */,
+				6261583B23D6F68000C08CCA /* MyInfo */,
+				6261583D23D6F6AD00C08CCA /* Search */,
+				6261583E23D7020C00C08CCA /* Withdraw */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1143,8 +1175,7 @@
 			isa = PBXGroup;
 			children = (
 				62C3096323A778A300152A5A /* ParkinglotDetail */,
-				6257DDFD23C59A6C001091B0 /* TimeLabelGuideViewController.swift */,
-				6257DDFF23C59A93001091B0 /* TimeFixedLabelGuideViewController.swift */,
+				6261583A23D6DB4800C08CCA /* LabelGuide */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1486,6 +1517,62 @@
 				62601DD623974C3D00B78033 /* OrderParkinglot.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		6261583423D6C8B700C08CCA /* Reserve */ = {
+			isa = PBXGroup;
+			children = (
+				6261583623D6C8ED00C08CCA /* ParkinglotDetailReserveView.swift */,
+			);
+			path = Reserve;
+			sourceTree = "<group>";
+		};
+		6261583523D6C8CB00C08CCA /* EditTime */ = {
+			isa = PBXGroup;
+			children = (
+				6261583823D6C90400C08CCA /* ParkinglotDetailEditTimeView.swift */,
+			);
+			path = EditTime;
+			sourceTree = "<group>";
+		};
+		6261583A23D6DB4800C08CCA /* LabelGuide */ = {
+			isa = PBXGroup;
+			children = (
+				6257DDFD23C59A6C001091B0 /* TimeLabelGuideViewController.swift */,
+				6257DDFF23C59A93001091B0 /* TimeFixedLabelGuideViewController.swift */,
+			);
+			path = LabelGuide;
+			sourceTree = "<group>";
+		};
+		6261583B23D6F68000C08CCA /* MyInfo */ = {
+			isa = PBXGroup;
+			children = (
+				62576C6A23BF42BE007BA1F7 /* MyInfoViewController.swift */,
+			);
+			path = MyInfo;
+			sourceTree = "<group>";
+		};
+		6261583C23D6F68F00C08CCA /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				62576C6E23BF4722007BA1F7 /* SettingsViewController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		6261583D23D6F6AD00C08CCA /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				62576C4923BC838D007BA1F7 /* ParkingSearchViewController.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		6261583E23D7020C00C08CCA /* Withdraw */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Withdraw;
 			sourceTree = "<group>";
 		};
 		62630B4A23862F160029724B /* Model */ = {
@@ -1934,6 +2021,7 @@
 			children = (
 				62576C6323BED882007BA1F7 /* BorderButton */,
 				6294536723B1F66B0048FEA8 /* CollectionViewLayout */,
+				621BCC8C23D5AAAA009FE1EC /* NavigationBar */,
 				62601D8D23938A0500B78033 /* NavigationTitleView */,
 				A4225E662355B337004F48C4 /* ObjectMapper */,
 			);
@@ -1981,7 +2069,7 @@
 				62576C3923BB77ED007BA1F7 /* UIProgressView+Extension.swift */,
 				62576C5923BDE9A7007BA1F7 /* UIPickerView+Extension.swift */,
 				62576C5B23BDEA9C007BA1F7 /* UIDatePicker+Extension.swift */,
-				629C28792370FCA500E0E5E1 /* UINavigation+Extension.swift */,
+				629C28792370FCA500E0E5E1 /* UINavigationItem+Extension.swift */,
 				6253923F23716D870041EBF1 /* UITextField+Extension.swift */,
 				62630B412383E4BD0029724B /* String+Extension.swift */,
 				62601D7E239232D000B78033 /* Bool+Extension.swift */,
@@ -2220,6 +2308,8 @@
 				6257DE3923CAEFBA001091B0 /* MonthlyTicketDialog.storyboard in Resources */,
 				622BC10123697B8000A43F02 /* Splash.storyboard in Resources */,
 				6257DE4B23CBEF97001091B0 /* ExtendReserveDialog.storyboard in Resources */,
+				621BCC9023D68649009FE1EC /* ParkinglotDetailPriceItemView.xib in Resources */,
+				621BCC9823D68AE3009FE1EC /* ParkinglotDetailMonthlyTicketPriceItemView.xib in Resources */,
 				621BCC8423D415A2009FE1EC /* ParkinglotDetailGuideItemView.xib in Resources */,
 				62269BDE23B085C100BFACC1 /* GroupMarkerView.xib in Resources */,
 				A40ACD3A23543F8E000E4967 /* Assets.xcassets in Resources */,
@@ -2343,6 +2433,7 @@
 				629C2861236BF2A300E0E5E1 /* EntryViewModel.swift in Sources */,
 				62576C4623BC4B43007BA1F7 /* IconType.swift in Sources */,
 				62601D702390A59200B78033 /* Member.swift in Sources */,
+				6261583923D6C90400C08CCA /* ParkinglotDetailEditTimeView.swift in Sources */,
 				622BC0E22368012A00A43F02 /* GuideContentViewController.swift in Sources */,
 				6257DE0623C6A702001091B0 /* DepartureConfirmViewController.swift in Sources */,
 				62601DBF239647D900B78033 /* ParkinglotCardCollectionViewCell.swift in Sources */,
@@ -2362,6 +2453,7 @@
 				621BCC6723CFF340009FE1EC /* ParkingTicketModel.swift in Sources */,
 				62601DA32394FD7A00B78033 /* PaymentGuideViewController.swift in Sources */,
 				62601DD22397435F00B78033 /* Transaction.swift in Sources */,
+				621BCC9423D68724009FE1EC /* ParkinglotDetailMonthlyTicketPriceItemView.swift in Sources */,
 				62601DA52394FF8700B78033 /* PaymentGuideViewModel.swift in Sources */,
 				62601D972394E13C00B78033 /* Address.swift in Sources */,
 				629C285F236BF25F00E0E5E1 /* EntryViewController.swift in Sources */,
@@ -2393,7 +2485,7 @@
 				62254E8B238B992500AF82B9 /* Parkinglots.swift in Sources */,
 				62601D8A2393783A00B78033 /* CarBrandTableViewCell.swift in Sources */,
 				629C2870236E9A1B00E0E5E1 /* CustomInputSection.swift in Sources */,
-				629C287A2370FCA500E0E5E1 /* UINavigation+Extension.swift in Sources */,
+				629C287A2370FCA500E0E5E1 /* UINavigationItem+Extension.swift in Sources */,
 				62601DA92395F91B00B78033 /* Parkinglot.swift in Sources */,
 				6257DE3423CAE777001091B0 /* FixedTicketNavigationController.swift in Sources */,
 				62576C6F23BF4722007BA1F7 /* SettingsViewController.swift in Sources */,
@@ -2431,6 +2523,7 @@
 				6210BAC223792D33001C6065 /* MapViewController.swift in Sources */,
 				62576C5C23BDEA9C007BA1F7 /* UIDatePicker+Extension.swift in Sources */,
 				629DB1A223C1C9BD00E68A94 /* MyCardHeaderView.swift in Sources */,
+				621BCC8E23D5AAC4009FE1EC /* TransparentNavigationBar.swift in Sources */,
 				629C28782370F45500E0E5E1 /* TermsViewController.swift in Sources */,
 				62601DD523974BED00B78033 /* OrderProduct.swift in Sources */,
 				6204555B2398FA09007ADF88 /* FAQsContents.swift in Sources */,
@@ -2547,8 +2640,10 @@
 				625BD91F23B732AA00C3D4E9 /* EmptyParkingTicketViewController.swift in Sources */,
 				6257DE3223CAD6E1001091B0 /* FixedTicketDurationViewController.swift in Sources */,
 				629C2888237149D200E0E5E1 /* ChangePhoneNumberViewController.swift in Sources */,
+				6261583723D6C8ED00C08CCA /* ParkinglotDetailReserveView.swift in Sources */,
 				6257DE1323C6AEFB001091B0 /* ParkingConfirmViewModel.swift in Sources */,
 				62601D7A23921C8C00B78033 /* NicknameModel.swift in Sources */,
+				621BCC9623D68836009FE1EC /* ParkinglotDetailExtraFeeItemView.swift in Sources */,
 				62269BE623B1904100BFACC1 /* UserInfoModel.swift in Sources */,
 				622BC0E623681FE300A43F02 /* UIStoryboard+Extension.swift in Sources */,
 				629C287C2371093700E0E5E1 /* RegiCarViewController.swift in Sources */,
@@ -2584,6 +2679,7 @@
 				A4BA4BD1235EC91A00D30DFE /* Auth.swift in Sources */,
 				625ACE7C23A0CBBB002D0653 /* ParkingTapViewController.swift in Sources */,
 				625468072367BCE300198833 /* SplashViewController.swift in Sources */,
+				621BCC9223D686CC009FE1EC /* ParkinglotDetailPriceItemView.swift in Sources */,
 				6257DE0F23C6AE1B001091B0 /* DepartureNoExtraViewModel.swift in Sources */,
 				629C28762370103C00E0E5E1 /* AgreementViewModel.swift in Sources */,
 			);

@@ -15,18 +15,36 @@ extension MyInfoViewController: AnalyticsType {
 }
 
 class MyInfoViewController: UIViewController {
-    @IBOutlet weak var saveButton: UIButton!
-    @IBOutlet weak var saveButtonBottomConstraint: NSLayoutConstraint!
-    
     @IBOutlet weak var phoneNumberField: CustomInputSection!
     @IBOutlet weak var emailField: CustomInputSection!
     @IBOutlet weak var nicknameField: CustomInputSection!
-     
     
+    @IBOutlet weak var scrollView: UIScrollView!
+    
+    @IBOutlet weak var backButton: UIButton!
+    
+    @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var saveButtonBottomConstraint: NSLayoutConstraint!
+     
     private lazy var viewModel: MyInfoViewModel = MyInfoViewModel()
     
     private let disposeBag = DisposeBag()
     
+    // MARK: - Binding
+    
+    private func setupNavigationBinding() {
+        viewModel.viewTitle
+            .drive(self.navigationItem.rx.title)
+            .disposed(by: disposeBag)
+    }
+    
+    private func setupButtonBinding() {
+        backButton.rx.tap
+            .subscribe(onNext: { _ in
+                self.dismissRoot()
+            })
+            .disposed(by: disposeBag)
+    }
     
     // MARK: - Initialize
      
@@ -39,7 +57,8 @@ class MyInfoViewController: UIViewController {
      }
      
      private func initialize() {
-
+        setupNavigationBinding()
+        setupButtonBinding()
      }
     
     // MARK: - Life Cycle

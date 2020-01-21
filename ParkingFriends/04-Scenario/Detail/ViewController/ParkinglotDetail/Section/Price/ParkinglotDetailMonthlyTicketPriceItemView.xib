@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z5h-SQ-ps7" userLabel="View - Monthly" customClass="ParkinglotDetailMonthlyTicketPriceItemView" customModule="ParkingFriends" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="95"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="정기권" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tvR-2v-lTR" userLabel="Label - Title">
+                    <rect key="frame" x="24" y="0.0" width="42" height="19.5"/>
+                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="16"/>
+                    <color key="textColor" name="Steel"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="2,500원 / 1시간" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aYP-I3-m6Z" userLabel="Label - Price Per 1 Month">
+                    <rect key="frame" x="288.5" y="0.0" width="101.5" height="16"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="16" id="Bbj-uD-Cx3"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="16"/>
+                    <color key="textColor" name="DarkGrey"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="2,500원 / 1시간" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q2I-X0-29k" userLabel="Label - Price Per 2 Month">
+                    <rect key="frame" x="288.5" y="32" width="101.5" height="16"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="16" id="kKT-27-eOA"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="16"/>
+                    <color key="textColor" name="DarkGrey"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2,500원 / 1시간" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MQP-U1-iHJ" userLabel="Label - Price Per 3 Month">
+                    <rect key="frame" x="288.5" y="64" width="101.5" height="16"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="16" id="3IR-iT-4hJ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="16"/>
+                    <color key="textColor" name="DarkGrey"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstItem="tvR-2v-lTR" firstAttribute="top" secondItem="z5h-SQ-ps7" secondAttribute="top" id="HUt-D0-SFd"/>
+                <constraint firstAttribute="height" constant="95" id="RnW-eA-xCB"/>
+                <constraint firstAttribute="trailing" secondItem="q2I-X0-29k" secondAttribute="trailing" constant="24" id="STM-fQ-xOK"/>
+                <constraint firstAttribute="trailing" secondItem="aYP-I3-m6Z" secondAttribute="trailing" constant="24" id="V3o-JB-a5S"/>
+                <constraint firstItem="q2I-X0-29k" firstAttribute="top" secondItem="aYP-I3-m6Z" secondAttribute="bottom" constant="16" id="V8v-vr-iql"/>
+                <constraint firstAttribute="trailing" secondItem="MQP-U1-iHJ" secondAttribute="trailing" constant="24" id="Znx-si-V7P"/>
+                <constraint firstItem="aYP-I3-m6Z" firstAttribute="top" secondItem="z5h-SQ-ps7" secondAttribute="top" id="fVu-eO-C8v"/>
+                <constraint firstItem="tvR-2v-lTR" firstAttribute="leading" secondItem="z5h-SQ-ps7" secondAttribute="leading" constant="24" id="oRr-Pc-FIy"/>
+                <constraint firstItem="MQP-U1-iHJ" firstAttribute="top" secondItem="q2I-X0-29k" secondAttribute="bottom" constant="16" id="sEZ-6j-zxZ"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="titleLabel" destination="tvR-2v-lTR" id="RGO-zI-wbo"/>
+                <outletCollection property="priceLabel" destination="aYP-I3-m6Z" collectionClass="NSMutableArray" id="sKE-iB-aAd"/>
+                <outletCollection property="priceLabel" destination="q2I-X0-29k" collectionClass="NSMutableArray" id="UeB-PD-OKf"/>
+                <outletCollection property="priceLabel" destination="MQP-U1-iHJ" collectionClass="NSMutableArray" id="2JH-no-zZc"/>
+            </connections>
+            <point key="canvasLocation" x="139" y="-492"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="DarkGrey">
+            <color red="0.10199999809265137" green="0.10199999809265137" blue="0.10599999874830246" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Steel">
+            <color red="0.44699999690055847" green="0.50199997425079346" blue="0.55699998140335083" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

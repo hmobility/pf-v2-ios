@@ -151,6 +151,13 @@ class MenuViewController: UIViewController {
                 self.navigateToSettings()
             })
             .disposed(by: disposeBag)
+        
+        myInfoButton.rx.tap
+            .asDriver()
+            .drive(onNext: { _ in
+                self.navigateToMyInfo()
+            })
+            .disposed(by: disposeBag)
     }
     
     private func setupReportSectionBinding() {
@@ -162,6 +169,7 @@ class MenuViewController: UIViewController {
             .drive(shareMyParkinglotButton.rx.title())
             .disposed(by: disposeBag)
     }
+    
     // MARK: - Initialize
 
     init() {
@@ -191,19 +199,21 @@ class MenuViewController: UIViewController {
 
     func navigateToLevelGuide() {
         let target = Storyboard.menu.instantiateViewController(withIdentifier: "LevelGuideViewController") as! LevelGuideViewController
-        
         self.modal(target, animated: true)
     }
     
     func navigateToSettings() {
         let target = Storyboard.menu.instantiateViewController(withIdentifier: "SettingsViewController") as! SettingsViewController
-        
         self.modal(target)
     }
     
     func navigateToMyCard() {
         let target = Storyboard.menu.instantiateViewController(withIdentifier: "MyCardNavigationController") as! UINavigationController
-        
+        self.modal(target)
+    }
+    
+    func navigateToMyInfo() {
+        let target = Storyboard.menu.instantiateViewController(withIdentifier: "MyInfoNavigationController") as! UINavigationController
         self.modal(target)
     }
      

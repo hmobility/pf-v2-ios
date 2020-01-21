@@ -11,8 +11,22 @@ import UIKit
 class ParkinglotDetailGuideItemView: UIView {
     @IBOutlet weak var titleLabel: UILabel!
     
+    private let disposeBag = DisposeBag()
+    
     public func setContent(_ item:String) {
-        titleLabel.text = item
+        _ = Observable.of(item)
+                .map ({ text in
+                    let paragraph = NSMutableParagraphStyle()
+                    paragraph.lineSpacing = 3
+                    paragraph.headIndent = 12
+            
+                    return  NSMutableAttributedString(string: text,
+                                attributes:[NSAttributedString.Key.foregroundColor: Color.slateGrey,
+                                            NSAttributedString.Key.font: Font.gothicNeoRegular15,
+                                                NSAttributedString.Key.paragraphStyle:paragraph])
+                })
+                .bind(to: titleLabel.rx.attributedText)
+                .disposed(by: disposeBag)
     }
 }
 
@@ -31,7 +45,6 @@ class ParkinglotDetailGuideView: UIStackView {
     
     private func initialize() {
         setupBinding()
-        setupContentsBinding()
     }
     
     // MARK: - Binding
@@ -49,25 +62,14 @@ class ParkinglotDetailGuideView: UIStackView {
                     let isHidden = items.count > 0 ? false : true
                     self.titleHeaderView.isHidden = isHidden
                     self.footerView.isHidden = isHidden
-                    
-                    for (_, item) in items.enumerated() {
-                        let itemView = (ParkinglotDetailGuideItemView.loadFromXib()) as ParkinglotDetailGuideItemView
+                
+                    for item in items {
+                        let itemView = ParkinglotDetailGuideItemView.loadFromXib() as ParkinglotDetailGuideItemView
                         itemView.setContent(item)
-                        
-                       // self.contentsView.addArrangedSubview(itemView)
+                        self.contentsView.addArrangedSubview(itemView)
                     }
                 })
                 .disposed(by: disposeBag)
-        /*
-        _ = Observable.from(stringItems.value)
-                .asObservable()
-                .subscribe(onNext: { [unowned self] (stringItem) in
-                    let itemView = (ParkinglotDetailGuideItemView.loadFromXib()) as ParkinglotDetailGuideItemView
-                    itemView.setContent(stringItem)
-                    self.contentsView.addArrangedSubview(itemView)
-                })
-                .disposed(by: disposeBag)
- */
     }
     
     // MARK: - Public Methods
@@ -78,16 +80,17 @@ class ParkinglotDetailGuideView: UIStackView {
     
     // MARK: - Life Cycle
     
+
     override func layoutSubviews() {
         super.layoutSubviews()
         initialize()
     }
-    /*
+ 
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
-        // Drawing code
+        setupContentsBinding()
     }
-    */
+  
 
 }

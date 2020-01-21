@@ -183,7 +183,8 @@ class MapViewModel: NSObject, MapViewModelType {
         } else {
             self.updateTapElements(elements)
             self.updateCardElements(elements)
-            displaySettingSection.accept(section ?? (list:true, search:false))
+            let showList = (elements?.count ?? 0) > 0 ? true : false
+            displaySettingSection.accept(section ?? (list:showList, search:!showList))
         }
     }
     

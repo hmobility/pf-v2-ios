@@ -511,9 +511,8 @@
         <!--Parkinglot Detail Navigation Controller-->
         <scene sceneID="u8P-2Y-ryr">
             <objects>
-                <navigationController storyboardIdentifier="ParkinglotDetailNavigationController" id="Yc8-mE-s3A" customClass="ParkinglotDetailNavigationController" customModule="ParkingFriends" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="ParkinglotDetailNavigationController" navigationBarHidden="YES" id="Yc8-mE-s3A" customClass="ParkinglotDetailNavigationController" customModule="ParkingFriends" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="fUW-MK-Zas">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>
@@ -530,7 +529,7 @@
             <objects>
                 <viewController storyboardIdentifier="ParkinglotDetailViewController" id="oD5-jI-trf" customClass="ParkinglotDetailViewController" customModule="ParkingFriends" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="VQy-tx-fJt">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="2112"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="2200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gzY-Ut-W8R" userLabel="Scroll View - Contents" customClass="MXScrollView" customModule="ParkingFriends" customModuleProvider="target">
@@ -540,12 +539,12 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="1766"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Gwh-cA-Ae7" userLabel="Stack View - Contents">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="1745"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="2064"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zKP-76-ADc" userLabel="View - Symbol" customClass="ParkinglotDetailSymbolView" customModule="ParkingFriends" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="118"/>
                                                         <subviews>
-                                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="5NS-ef-uad" userLabel="Collection View - Symbol">
+                                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="5NS-ef-uad" userLabel="Collection View - Symbol">
                                                                 <rect key="frame" x="15" y="0.0" width="388" height="117"/>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                                 <constraints>
@@ -612,114 +611,36 @@
                                                             <outlet property="collectionView" destination="5NS-ef-uad" id="rIQ-vU-Cov"/>
                                                         </connections>
                                                     </view>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="mi5-Kw-1Sv" userLabel="Stack View - Price Table" customClass="ParkinglotDetailPriceInfoView" customModule="ParkingFriends" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="118" width="414" height="289"/>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="mi5-Kw-1Sv" userLabel="Stack View - Price Table" customClass="ParkinglotDetailPriceInfoView" customModule="ParkingFriends" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="118" width="414" height="192"/>
                                                         <subviews>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Wg-NJ-59y" userLabel="View - Header">
-                                                                <rect key="frame" x="0.0" y="0.0" width="414" height="78"/>
+                                                            <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Wg-NJ-59y" userLabel="View - Header">
+                                                                <rect key="frame" x="0.0" y="0.0" width="414" height="77"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="요금정보" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oA6-AH-aKQ" userLabel="Label - Title">
-                                                                        <rect key="frame" x="20" y="32" width="374" height="19.5"/>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="요금정보" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oA6-AH-aKQ" userLabel="Label - Title">
+                                                                        <rect key="frame" x="20" y="32" width="374" height="16"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="16" id="8QX-YH-W5c"/>
+                                                                        </constraints>
                                                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="16"/>
                                                                         <color key="textColor" name="DarkGrey"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                 </subviews>
-                                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="trailing" secondItem="oA6-AH-aKQ" secondAttribute="trailing" constant="20" id="2gO-Ke-sbn"/>
-                                                                    <constraint firstAttribute="height" constant="78" id="JFe-JB-HNv"/>
+                                                                    <constraint firstAttribute="height" constant="77" id="JFe-JB-HNv"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="oA6-AH-aKQ" secondAttribute="bottom" constant="29" id="eDo-C4-En5"/>
                                                                     <constraint firstItem="oA6-AH-aKQ" firstAttribute="top" secondItem="3Wg-NJ-59y" secondAttribute="top" constant="32" id="erQ-zu-2KM"/>
                                                                     <constraint firstItem="oA6-AH-aKQ" firstAttribute="leading" secondItem="3Wg-NJ-59y" secondAttribute="leading" constant="20" id="lFh-XA-UPQ"/>
                                                                 </constraints>
                                                             </view>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fhS-zr-939" userLabel="View - Time" customClass="PriceItemView" customModule="ParkingFriends" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="78" width="414" height="32"/>
-                                                                <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="예약권" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IwK-tp-cIZ" userLabel="Label - Time">
-                                                                        <rect key="frame" x="24" y="0.0" width="42" height="19.5"/>
-                                                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="16"/>
-                                                                        <color key="textColor" name="Steel"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2,500원 / 1시간" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ldB-cE-Swp" userLabel="Label - Price">
-                                                                        <rect key="frame" x="288.5" y="0.0" width="101.5" height="19.5"/>
-                                                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="16"/>
-                                                                        <color key="textColor" name="DarkGrey"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                </subviews>
-                                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                                                <constraints>
-                                                                    <constraint firstItem="IwK-tp-cIZ" firstAttribute="leading" secondItem="fhS-zr-939" secondAttribute="leading" constant="24" id="AR7-Bz-VqD"/>
-                                                                    <constraint firstItem="IwK-tp-cIZ" firstAttribute="top" secondItem="fhS-zr-939" secondAttribute="top" id="Pip-f7-4TV"/>
-                                                                    <constraint firstItem="ldB-cE-Swp" firstAttribute="top" secondItem="fhS-zr-939" secondAttribute="top" id="WdM-ra-Ufn"/>
-                                                                    <constraint firstAttribute="height" constant="32" id="ejN-Cm-9wm"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="ldB-cE-Swp" secondAttribute="trailing" constant="24" id="oQQ-ft-aZj"/>
-                                                                </constraints>
-                                                                <connections>
-                                                                    <outlet property="descFirstLabel" destination="ldB-cE-Swp" id="JXG-bZ-kae"/>
-                                                                    <outlet property="titleLabel" destination="IwK-tp-cIZ" id="lfF-qZ-1ja"/>
-                                                                </connections>
-                                                            </view>
-                                                            <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VKx-V0-AXr" userLabel="View - Monthly" customClass="PriceItemView" customModule="ParkingFriends" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="110" width="414" height="114"/>
-                                                                <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="정기권" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fqy-l3-P3f" userLabel="Label - Time">
-                                                                        <rect key="frame" x="24" y="0.0" width="42" height="19.5"/>
-                                                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="16"/>
-                                                                        <color key="textColor" name="Steel"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="2,500원 / 1시간" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xIW-MI-a6R" userLabel="Label - Price Per 1 Month">
-                                                                        <rect key="frame" x="288.5" y="0.0" width="101.5" height="16"/>
-                                                                        <constraints>
-                                                                            <constraint firstAttribute="height" constant="16" id="JRy-jS-mAR"/>
-                                                                        </constraints>
-                                                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="16"/>
-                                                                        <color key="textColor" name="DarkGrey"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="2,500원 / 1시간" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oCo-54-Guz" userLabel="Label - Price Per 2 Month">
-                                                                        <rect key="frame" x="288.5" y="32" width="101.5" height="16"/>
-                                                                        <constraints>
-                                                                            <constraint firstAttribute="height" constant="16" id="yHS-ex-e0y"/>
-                                                                        </constraints>
-                                                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="16"/>
-                                                                        <color key="textColor" name="DarkGrey"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2,500원 / 1시간" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RDo-Sy-Jhq" userLabel="Label - Price Per 3 Month">
-                                                                        <rect key="frame" x="288.5" y="64" width="101.5" height="16"/>
-                                                                        <constraints>
-                                                                            <constraint firstAttribute="height" constant="16" id="gXq-Wj-Bj3"/>
-                                                                        </constraints>
-                                                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="16"/>
-                                                                        <color key="textColor" name="DarkGrey"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                </subviews>
-                                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                                                <constraints>
-                                                                    <constraint firstItem="oCo-54-Guz" firstAttribute="top" secondItem="xIW-MI-a6R" secondAttribute="bottom" constant="16" id="55a-dW-bT9"/>
-                                                                    <constraint firstItem="fqy-l3-P3f" firstAttribute="top" secondItem="VKx-V0-AXr" secondAttribute="top" id="9JQ-cB-gL2"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="xIW-MI-a6R" secondAttribute="trailing" constant="24" id="AOD-Nb-ttJ"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="RDo-Sy-Jhq" secondAttribute="trailing" constant="24" id="Agb-HQ-FrH"/>
-                                                                    <constraint firstItem="fqy-l3-P3f" firstAttribute="leading" secondItem="VKx-V0-AXr" secondAttribute="leading" constant="24" id="Fqo-iC-HUS"/>
-                                                                    <constraint firstAttribute="height" constant="114" id="WGp-ZL-2nJ"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="oCo-54-Guz" secondAttribute="trailing" constant="24" id="bnJ-6a-EdU"/>
-                                                                    <constraint firstItem="RDo-Sy-Jhq" firstAttribute="top" secondItem="oCo-54-Guz" secondAttribute="bottom" constant="16" id="gVx-pT-gsJ"/>
-                                                                    <constraint firstItem="xIW-MI-a6R" firstAttribute="top" secondItem="VKx-V0-AXr" secondAttribute="top" id="ynb-4P-vIb"/>
-                                                                </constraints>
-                                                                <connections>
-                                                                    <outlet property="descFirstLabel" destination="xIW-MI-a6R" id="yH9-Fs-0ma"/>
-                                                                    <outlet property="descSecondLabel" destination="oCo-54-Guz" id="U1a-9u-qPV"/>
-                                                                    <outlet property="descThirdLabel" destination="RDo-Sy-Jhq" id="Eyj-4M-9oJ"/>
-                                                                    <outlet property="titleLabel" destination="fqy-l3-P3f" id="eEh-I0-Ero"/>
-                                                                </connections>
-                                                            </view>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8m9-Y9-2bQ" userLabel="View - Extra Fee" customClass="PriceItemView" customModule="ParkingFriends" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="224" width="414" height="64"/>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="fmg-rE-4Lz" userLabel="Stack View - Price Section">
+                                                                <rect key="frame" x="0.0" y="77" width="414" height="50"/>
+                                                            </stackView>
+                                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8m9-Y9-2bQ" userLabel="View - Extra Fee" customClass="ParkinglotDetailExtraFeeItemView" customModule="ParkingFriends" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="127" width="414" height="64"/>
                                                                 <subviews>
                                                                     <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cVJ-hu-IEv" userLabel="View - Rounded Background">
                                                                         <rect key="frame" x="16" y="20" width="382" height="32"/>
@@ -745,7 +666,7 @@
                                                                         </userDefinedRuntimeAttributes>
                                                                     </view>
                                                                 </subviews>
-                                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstItem="cVJ-hu-IEv" firstAttribute="top" secondItem="8m9-Y9-2bQ" secondAttribute="top" constant="20" symbolic="YES" id="2rd-BT-B4V"/>
                                                                     <constraint firstAttribute="height" constant="64" id="bDH-zT-BYh"/>
@@ -753,11 +674,11 @@
                                                                     <constraint firstItem="cVJ-hu-IEv" firstAttribute="leading" secondItem="8m9-Y9-2bQ" secondAttribute="leading" constant="16" id="p6O-f0-lsK"/>
                                                                 </constraints>
                                                                 <connections>
-                                                                    <outlet property="titleLabel" destination="zMP-D8-F5e" id="227-bD-jDQ"/>
+                                                                    <outlet property="titleLabel" destination="zMP-D8-F5e" id="GMy-z5-z2L"/>
                                                                 </connections>
                                                             </view>
-                                                            <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sSb-RT-7DY" userLabel="View - Bottom Line" customClass="PriceItemView" customModule="ParkingFriends" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="288" width="414" height="1"/>
+                                                            <view contentMode="scaleToFill" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sSb-RT-7DY" userLabel="View - Bottom Line" customClass="PriceItemView" customModule="ParkingFriends" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="191" width="414" height="1"/>
                                                                 <color key="backgroundColor" name="IceBlue"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="1" id="Xcp-vJ-WPW"/>
@@ -770,13 +691,12 @@
                                                         </constraints>
                                                         <connections>
                                                             <outlet property="extraFeeView" destination="8m9-Y9-2bQ" id="Jgd-7R-oBg"/>
-                                                            <outlet property="monthlyView" destination="VKx-V0-AXr" id="Zrn-Qp-E3x"/>
-                                                            <outlet property="timeView" destination="fhS-zr-939" id="E77-og-tMa"/>
+                                                            <outlet property="priceTableView" destination="fmg-rE-4Lz" id="Vkn-jd-ckT"/>
                                                             <outlet property="titleLabel" destination="oA6-AH-aKQ" id="adk-b6-w6V"/>
                                                         </connections>
                                                     </stackView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="FhZ-in-LHU" userLabel="Stack View - Operation Time" customClass="ParkinglotDetailOperationTimeView" customModule="ParkingFriends" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="407" width="414" height="197"/>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="FhZ-in-LHU" userLabel="Stack View - Operation Time" customClass="ParkinglotDetailOperationTimeView" customModule="ParkingFriends" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="310" width="414" height="229"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cdQ-Ep-MuO" userLabel="View - Header">
                                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="78"/>
@@ -788,7 +708,7 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                 </subviews>
-                                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="78" id="Siq-92-EyB"/>
                                                                     <constraint firstItem="DeU-YU-mLG" firstAttribute="leading" secondItem="cdQ-Ep-MuO" secondAttribute="leading" constant="20" id="lVx-lh-sbG"/>
@@ -797,7 +717,7 @@
                                                                 </constraints>
                                                             </view>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="2Gw-sP-nz3">
-                                                                <rect key="frame" x="0.0" y="78" width="414" height="80"/>
+                                                                <rect key="frame" x="0.0" y="78" width="414" height="112"/>
                                                                 <subviews>
                                                                     <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vkY-LV-DFx" userLabel="View - Weekday" customClass="ParkinglotDetailOperationgTimeItemView" customModule="ParkingFriends" customModuleProvider="target">
                                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="16"/>
@@ -815,7 +735,7 @@
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                         </subviews>
-                                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="trailing" secondItem="2Hl-bV-5HA" secondAttribute="trailing" constant="24" id="Cz7-HJ-qKD"/>
                                                                             <constraint firstItem="Pcm-b6-7wX" firstAttribute="leading" secondItem="vkY-LV-DFx" secondAttribute="leading" constant="24" id="FbF-Mq-erk"/>
@@ -844,7 +764,7 @@
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                         </subviews>
-                                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <constraints>
                                                                             <constraint firstItem="wA7-sh-wDv" firstAttribute="centerY" secondItem="38v-PG-THz" secondAttribute="centerY" id="1mJ-M6-JAk"/>
                                                                             <constraint firstAttribute="trailing" secondItem="87n-pg-bSJ" secondAttribute="trailing" constant="24" id="5RG-Gc-N8b"/>
@@ -858,7 +778,7 @@
                                                                         </connections>
                                                                     </view>
                                                                     <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="If1-Ml-bG9" userLabel="View -Sunday" customClass="ParkinglotDetailOperationgTimeItemView" customModule="ParkingFriends" customModuleProvider="target">
-                                                                        <rect key="frame" x="0.0" y="32" width="414" height="16"/>
+                                                                        <rect key="frame" x="0.0" y="64" width="414" height="16"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="토·일요일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CJl-lp-gNE" userLabel="Label - Day">
                                                                                 <rect key="frame" x="24" y="-1.5" width="60.5" height="19.5"/>
@@ -873,7 +793,7 @@
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                         </subviews>
-                                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <constraints>
                                                                             <constraint firstItem="CJl-lp-gNE" firstAttribute="leading" secondItem="If1-Ml-bG9" secondAttribute="leading" constant="24" id="9kg-Wt-g0i"/>
                                                                             <constraint firstAttribute="height" constant="16" id="BvL-7K-AkL"/>
@@ -887,7 +807,7 @@
                                                                         </connections>
                                                                     </view>
                                                                     <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="69A-9X-7ZF" userLabel="View - Holiday" customClass="ParkinglotDetailOperationgTimeItemView" customModule="ParkingFriends" customModuleProvider="target">
-                                                                        <rect key="frame" x="0.0" y="64" width="414" height="16"/>
+                                                                        <rect key="frame" x="0.0" y="96" width="414" height="16"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="공휴일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cs5-aN-htt" userLabel="Label - Day">
                                                                                 <rect key="frame" x="24" y="-1.5" width="42" height="19.5"/>
@@ -902,7 +822,7 @@
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                         </subviews>
-                                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <constraints>
                                                                             <constraint firstItem="Cs5-aN-htt" firstAttribute="leading" secondItem="69A-9X-7ZF" secondAttribute="leading" constant="24" id="0Hu-Qm-AhA"/>
                                                                             <constraint firstItem="Cs5-aN-htt" firstAttribute="centerY" secondItem="69A-9X-7ZF" secondAttribute="centerY" id="FJA-EW-oMB"/>
@@ -918,7 +838,7 @@
                                                                 </subviews>
                                                             </stackView>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W3v-Bn-VBv" userLabel="View - Footer">
-                                                                <rect key="frame" x="0.0" y="158" width="414" height="39"/>
+                                                                <rect key="frame" x="0.0" y="190" width="414" height="39"/>
                                                                 <subviews>
                                                                     <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="79R-KS-R3B" userLabel="View - Bottom Line">
                                                                         <rect key="frame" x="0.0" y="38" width="414" height="1"/>
@@ -945,11 +865,123 @@
                                                             <outlet property="weekdayView" destination="vkY-LV-DFx" id="hpZ-2l-LGd"/>
                                                         </connections>
                                                     </stackView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="BkW-t5-4d3" userLabel="Stack View - Edit Time">
-                                                        <rect key="frame" x="0.0" y="604" width="414" height="460"/>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="cQ5-gk-ljE" userLabel="Stack View - Reseve Status" customClass="ParkinglotDetailReserveView" customModule="ParkingFriends" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="539" width="414" height="252"/>
                                                         <subviews>
-                                                            <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lNa-wL-dkQ" userLabel="View - Header">
+                                                            <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ddm-8j-Bii" userLabel="View - Header">
                                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="78"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="실시간 예약현황" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nmY-gJ-E98" userLabel="Label - Title">
+                                                                        <rect key="frame" x="20" y="32" width="101.5" height="19.5"/>
+                                                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="16"/>
+                                                                        <color key="textColor" name="DarkGrey"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aka-fi-aNn" userLabel="Button - Info">
+                                                                        <rect key="frame" x="125.5" y="30" width="24" height="24"/>
+                                                                        <state key="normal" image="icHelpOutlineGrey"/>
+                                                                    </button>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" text="2대 주차 가능" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RyL-re-XIL" userLabel="Label - Available Lots">
+                                                                        <rect key="frame" x="316" y="29" width="87" height="20"/>
+                                                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="16"/>
+                                                                        <color key="textColor" name="DarkGrey"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <constraints>
+                                                                    <constraint firstItem="RyL-re-XIL" firstAttribute="centerY" secondItem="nmY-gJ-E98" secondAttribute="centerY" id="Kpl-nm-Pgl"/>
+                                                                    <constraint firstItem="Aka-fi-aNn" firstAttribute="leading" secondItem="nmY-gJ-E98" secondAttribute="trailing" constant="4" id="NZm-Sy-OYZ"/>
+                                                                    <constraint firstItem="Aka-fi-aNn" firstAttribute="centerY" secondItem="nmY-gJ-E98" secondAttribute="centerY" id="OI4-20-Wu1"/>
+                                                                    <constraint firstItem="nmY-gJ-E98" firstAttribute="top" secondItem="ddm-8j-Bii" secondAttribute="top" constant="32" id="YW1-eR-4LJ"/>
+                                                                    <constraint firstAttribute="height" constant="78" id="eP0-nQ-bpN"/>
+                                                                    <constraint firstItem="nmY-gJ-E98" firstAttribute="leading" secondItem="ddm-8j-Bii" secondAttribute="leading" constant="20" id="hOv-Yu-HWI"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="RyL-re-XIL" secondAttribute="trailing" constant="20" id="yg9-sN-q8b"/>
+                                                                </constraints>
+                                                            </view>
+                                                            <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ypc-Yc-cIU" userLabel="View - Ticket Button">
+                                                                <rect key="frame" x="0.0" y="78" width="414" height="59"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="59" id="p2L-lo-e5k"/>
+                                                                </constraints>
+                                                            </view>
+                                                            <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cy9-en-6uf" userLabel="View - Time Range">
+                                                                <rect key="frame" x="0.0" y="137" width="414" height="115"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="115" id="erU-3Z-ZCB"/>
+                                                                </constraints>
+                                                            </view>
+                                                        </subviews>
+                                                        <connections>
+                                                            <outlet property="availableParkinglotLabel" destination="RyL-re-XIL" id="dyc-pu-zdQ"/>
+                                                            <outlet property="infoButton" destination="Aka-fi-aNn" id="LDR-rK-biD"/>
+                                                            <outlet property="titleLabel" destination="nmY-gJ-E98" id="MLP-re-KgA"/>
+                                                        </connections>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="BkW-t5-4d3" userLabel="Stack View - Edit Time">
+                                                        <rect key="frame" x="0.0" y="791" width="414" height="592"/>
+                                                        <subviews>
+                                                            <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jYt-3x-OiV" userLabel="View - Change Time">
+                                                                <rect key="frame" x="0.0" y="0.0" width="414" height="132"/>
+                                                                <subviews>
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QCI-VV-D1t">
+                                                                        <rect key="frame" x="20" y="20" width="374" height="68"/>
+                                                                        <subviews>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="예약시간 변경 하기" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zvs-d9-nGb" userLabel="Label - Title">
+                                                                                <rect key="frame" x="120" y="18" width="134.5" height="18"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="height" constant="18" id="sR2-Ij-kfE"/>
+                                                                                </constraints>
+                                                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="18"/>
+                                                                                <color key="textColor" name="DarkGrey3"/>
+                                                                                <nil key="highlightedColor"/>
+                                                                            </label>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘 11:00 - 15:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iMG-cq-O60" userLabel="Label - Description">
+                                                                                <rect key="frame" x="134.5" y="41" width="105.5" height="16"/>
+                                                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                                                <color key="textColor" name="Steel"/>
+                                                                                <nil key="highlightedColor"/>
+                                                                            </label>
+                                                                        </subviews>
+                                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                        <constraints>
+                                                                            <constraint firstItem="iMG-cq-O60" firstAttribute="centerX" secondItem="QCI-VV-D1t" secondAttribute="centerX" id="8vm-cz-xBo"/>
+                                                                            <constraint firstItem="zvs-d9-nGb" firstAttribute="top" secondItem="QCI-VV-D1t" secondAttribute="top" constant="18" id="Fru-zC-YNa"/>
+                                                                            <constraint firstItem="zvs-d9-nGb" firstAttribute="centerX" secondItem="QCI-VV-D1t" secondAttribute="centerX" id="MQh-LZ-ZGE"/>
+                                                                            <constraint firstAttribute="height" constant="68" id="e9L-C8-R1R"/>
+                                                                            <constraint firstItem="iMG-cq-O60" firstAttribute="top" secondItem="zvs-d9-nGb" secondAttribute="bottom" constant="5" id="ifK-L2-vAI"/>
+                                                                        </constraints>
+                                                                        <userDefinedRuntimeAttributes>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                                <real key="value" value="34"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                                <real key="value" value="0.80000000000000004"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                                <color key="value" name="LightBlueGrey"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                                                                <size key="value" width="0.0" height="-3"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                                                <color key="value" name="VeryLightPink"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                        </userDefinedRuntimeAttributes>
+                                                                    </view>
+                                                                </subviews>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="132" id="38g-kF-JaW"/>
+                                                                    <constraint firstItem="QCI-VV-D1t" firstAttribute="top" secondItem="jYt-3x-OiV" secondAttribute="top" constant="20" symbolic="YES" id="4Lu-Ls-B2S"/>
+                                                                    <constraint firstItem="QCI-VV-D1t" firstAttribute="leading" secondItem="jYt-3x-OiV" secondAttribute="leading" constant="20" id="gxs-WW-aWY"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="QCI-VV-D1t" secondAttribute="trailing" constant="20" id="zcJ-ba-5hJ"/>
+                                                                </constraints>
+                                                            </view>
+                                                            <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lNa-wL-dkQ" userLabel="View - Header">
+                                                                <rect key="frame" x="0.0" y="132" width="414" height="78"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="예약시간 변경" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HFl-fu-El5" userLabel="Label - Title">
                                                                         <rect key="frame" x="20" y="32" width="374" height="19.5"/>
@@ -967,7 +999,7 @@
                                                                 </constraints>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3hy-Sg-i22" userLabel="View - Contents">
-                                                                <rect key="frame" x="0.0" y="78" width="414" height="262"/>
+                                                                <rect key="frame" x="0.0" y="210" width="414" height="262"/>
                                                                 <subviews>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" distribution="equalSpacing" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="JPe-hX-zL2">
                                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="262"/>
@@ -1432,7 +1464,7 @@
                                                                 </constraints>
                                                             </view>
                                                             <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XWX-Zb-iVS" userLabel="View - Footer">
-                                                                <rect key="frame" x="0.0" y="340" width="414" height="120"/>
+                                                                <rect key="frame" x="0.0" y="472" width="414" height="120"/>
                                                                 <subviews>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="mO0-2N-eiP">
                                                                         <rect key="frame" x="20" y="36" width="374" height="48"/>
@@ -1489,7 +1521,7 @@
                                                         </constraints>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="7v0-7r-pJ9" userLabel="Stack View - Guide" customClass="ParkinglotDetailGuideView" customModule="ParkingFriends" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="1064" width="414" height="167"/>
+                                                        <rect key="frame" x="0.0" y="1383" width="414" height="167"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jA5-Nc-fTP" userLabel="View - Header" customClass="ParkinglotDetailGuideItemView" customModule="ParkingFriends" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="78"/>
@@ -1504,7 +1536,7 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                 </subviews>
-                                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="trailing" secondItem="BkY-XR-wad" secondAttribute="trailing" constant="20" id="9Rf-aW-9l7"/>
                                                                     <constraint firstItem="BkY-XR-wad" firstAttribute="leading" secondItem="jA5-Nc-fTP" secondAttribute="leading" constant="20" id="FaI-7E-Deb"/>
@@ -1516,7 +1548,7 @@
                                                                 </connections>
                                                             </view>
                                                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="1ee-tU-Ud5" userLabel="Stack View - Contents">
-                                                                <rect key="frame" x="0.0" y="78" width="414" height="0.0"/>
+                                                                <rect key="frame" x="0.0" y="78" width="414" height="50"/>
                                                             </stackView>
                                                             <view contentMode="scaleToFill" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tmq-5R-hi3" userLabel="View - Footer">
                                                                 <rect key="frame" x="0.0" y="128" width="414" height="39"/>
@@ -1529,7 +1561,7 @@
                                                                         </constraints>
                                                                     </view>
                                                                 </subviews>
-                                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="trailing" secondItem="tOw-Jb-uQn" secondAttribute="trailing" id="83T-Zr-iYe"/>
                                                                     <constraint firstAttribute="height" constant="39" id="QJ4-nV-DuH"/>
@@ -1539,13 +1571,13 @@
                                                             </view>
                                                         </subviews>
                                                         <connections>
-                                                            <outlet property="contentsView" destination="1ee-tU-Ud5" id="Ngk-yn-qOm"/>
+                                                            <outlet property="contentsView" destination="1ee-tU-Ud5" id="Qvg-TD-CeN"/>
                                                             <outlet property="footerView" destination="Tmq-5R-hi3" id="NaR-zf-hRG"/>
                                                             <outlet property="titleHeaderView" destination="jA5-Nc-fTP" id="W3d-H4-eqD"/>
                                                         </connections>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="kyg-Lh-r6Z" userLabel="Stack View - Review and Points">
-                                                        <rect key="frame" x="0.0" y="1231" width="414" height="310"/>
+                                                        <rect key="frame" x="0.0" y="1550" width="414" height="310"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uth-89-d5j" userLabel="View - Header">
                                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="76"/>
@@ -1557,7 +1589,7 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                 </subviews>
-                                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstItem="ObU-BY-NDd" firstAttribute="leading" secondItem="uth-89-d5j" secondAttribute="leading" constant="20" id="KQF-4Q-2LA"/>
                                                                     <constraint firstAttribute="height" constant="76" id="QPb-WQ-xNT"/>
@@ -1596,7 +1628,7 @@
                                                                         </userDefinedRuntimeAttributes>
                                                                     </view>
                                                                 </subviews>
-                                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstItem="NxS-dF-JHE" firstAttribute="top" secondItem="0dV-Jw-iU1" secondAttribute="top" constant="20" symbolic="YES" id="I2D-p1-qVV"/>
                                                                     <constraint firstAttribute="trailing" secondItem="NxS-dF-JHE" secondAttribute="trailing" constant="48" id="ZAa-lD-uIn"/>
@@ -1653,7 +1685,7 @@
                                                                         </userDefinedRuntimeAttributes>
                                                                     </view>
                                                                 </subviews>
-                                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstItem="vm5-VZ-QQs" firstAttribute="leading" secondItem="jcE-uB-PHQ" secondAttribute="leading" constant="20" id="KUf-Em-Nwn"/>
                                                                     <constraint firstAttribute="trailing" secondItem="vm5-VZ-QQs" secondAttribute="trailing" constant="20" id="Z7F-yz-8pp"/>
@@ -1664,7 +1696,7 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="hic-vZ-cko" userLabel="Stack View - Relative Tag">
-                                                        <rect key="frame" x="0.0" y="1541" width="414" height="76"/>
+                                                        <rect key="frame" x="0.0" y="1860" width="414" height="76"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qrD-hT-DCv" userLabel="View - Header">
                                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="76"/>
@@ -1676,7 +1708,7 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                 </subviews>
-                                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="trailing" secondItem="eE3-hd-OgA" secondAttribute="trailing" constant="20" id="21Q-BR-EuP"/>
                                                                     <constraint firstAttribute="height" constant="76" id="7AI-I2-Hau"/>
@@ -1687,7 +1719,7 @@
                                                         </subviews>
                                                     </stackView>
                                                     <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vkr-qH-iNj" userLabel="View - Contents">
-                                                        <rect key="frame" x="0.0" y="1617" width="414" height="128"/>
+                                                        <rect key="frame" x="0.0" y="1936" width="414" height="128"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3RT-Yn-7vB" userLabel="Tag List View - Tags" customClass="TagListView" customModule="TagListView">
                                                                 <rect key="frame" x="24" y="0.0" width="366" height="64"/>
@@ -1717,7 +1749,7 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
                                                         </subviews>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="trailing" secondItem="3RT-Yn-7vB" secondAttribute="trailing" constant="24" id="1S3-7g-Ba2"/>
                                                             <constraint firstAttribute="bottom" secondItem="3RT-Yn-7vB" secondAttribute="bottom" constant="64" id="IQn-1o-xgV"/>
@@ -1747,12 +1779,11 @@
                                     <constraint firstItem="vFB-JC-60R" firstAttribute="width" secondItem="lHG-Gz-QqP" secondAttribute="width" id="aQt-Ax-cTo"/>
                                     <constraint firstItem="vFB-JC-60R" firstAttribute="trailing" secondItem="AQ6-BC-8yX" secondAttribute="trailing" id="z5V-fs-Yuj"/>
                                 </constraints>
-                                <viewLayoutGuide key="safeArea" id="bHE-lb-89m"/>
                                 <viewLayoutGuide key="contentLayoutGuide" id="lHG-Gz-QqP"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="AQ6-BC-8yX"/>
                             </scrollView>
                             <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="xQE-6z-CYs" userLabel="Stack View - Button Area">
-                                <rect key="frame" x="0.0" y="2022" width="414" height="56"/>
+                                <rect key="frame" x="0.0" y="2110" width="414" height="56"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LKa-1T-nY3" userLabel="Button - Gift">
                                         <rect key="frame" x="0.0" y="0.0" width="207" height="56"/>
@@ -1781,21 +1812,52 @@
                                     <constraint firstAttribute="height" constant="56" id="IOb-ea-5fT"/>
                                 </constraints>
                             </stackView>
+                            <navigationBar contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" shadowImage="imgPixel" translatesAutoresizingMaskIntoConstraints="NO" id="MTt-Go-rKH" customClass="TransparentNavigationBar" customModule="ParkingFriends" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <viewLayoutGuide key="safeArea" id="bnE-ji-Rsa"/>
+                                <items>
+                                    <navigationItem title="Title" id="OWS-8j-LtV">
+                                        <barButtonItem key="leftBarButtonItem" style="plain" id="irS-TM-BAw">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="IRT-Wg-98e" userLabel="Button - Back">
+                                                <rect key="frame" x="20" y="0.0" width="48" height="44"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" image="icBackBlack"/>
+                                            </button>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" style="plain" id="M6o-Uw-RhY">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="jnz-Bo-x12" userLabel="Button - More">
+                                                <rect key="frame" x="346" y="0.0" width="48" height="44"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" image="icMoreWhite"/>
+                                            </button>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="transparentBackground" value="NO"/>
+                                </userDefinedRuntimeAttributes>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="xQE-6z-CYs" firstAttribute="leading" secondItem="dRB-Eh-Iba" secondAttribute="leading" id="01L-qA-1L8"/>
                             <constraint firstItem="gzY-Ut-W8R" firstAttribute="top" secondItem="VQy-tx-fJt" secondAttribute="top" id="7O0-Jv-edD"/>
+                            <constraint firstAttribute="trailing" secondItem="MTt-Go-rKH" secondAttribute="trailing" id="7bI-OU-Lfl"/>
+                            <constraint firstItem="MTt-Go-rKH" firstAttribute="leading" secondItem="VQy-tx-fJt" secondAttribute="leading" id="PGk-s8-9JS"/>
                             <constraint firstItem="dRB-Eh-Iba" firstAttribute="trailing" secondItem="gzY-Ut-W8R" secondAttribute="trailing" id="PPy-HJ-5M5"/>
                             <constraint firstItem="xQE-6z-CYs" firstAttribute="top" secondItem="gzY-Ut-W8R" secondAttribute="bottom" id="ZGB-kI-3js"/>
                             <constraint firstItem="dRB-Eh-Iba" firstAttribute="trailing" secondItem="xQE-6z-CYs" secondAttribute="trailing" id="cy3-ZO-Dxr"/>
                             <constraint firstItem="gzY-Ut-W8R" firstAttribute="leading" secondItem="dRB-Eh-Iba" secondAttribute="leading" id="eJE-o2-01E"/>
                             <constraint firstItem="gzY-Ut-W8R" firstAttribute="width" secondItem="VQy-tx-fJt" secondAttribute="width" id="rxw-CI-pB0"/>
                             <constraint firstItem="dRB-Eh-Iba" firstAttribute="bottom" secondItem="xQE-6z-CYs" secondAttribute="bottom" id="xeb-ug-iay"/>
+                            <constraint firstItem="MTt-Go-rKH" firstAttribute="top" secondItem="dRB-Eh-Iba" secondAttribute="top" id="xxJ-1N-ePK"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dRB-Eh-Iba"/>
                     </view>
                     <navigationItem key="navigationItem" id="bUE-uc-Vqb">
+                        <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" style="plain" id="XXn-gM-4PU">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ulp-Sm-iJn" userLabel="Button - Back">
                                 <rect key="frame" x="20" y="0.0" width="50" height="44"/>
@@ -1818,9 +1880,10 @@
                     </navigationItem>
                     <size key="freeformSize" width="414" height="2200"/>
                     <connections>
-                        <outlet property="backButton" destination="ulp-Sm-iJn" id="Ocr-DR-TSP"/>
+                        <outlet property="backButton" destination="IRT-Wg-98e" id="0XG-on-mUc"/>
                         <outlet property="headerView" destination="Aj3-wk-EUa" id="VbU-y5-hD2"/>
-                        <outlet property="moreButton" destination="PaC-R2-2A6" id="yLM-vo-y2h"/>
+                        <outlet property="moreButton" destination="jnz-Bo-x12" id="RZc-hG-rCw"/>
+                        <outlet property="navigationBar" destination="MTt-Go-rKH" id="6nb-JH-ch8"/>
                         <outlet property="noticeView" destination="7v0-7r-pJ9" id="qZ8-A3-QL5"/>
                         <outlet property="operationTimeView" destination="FhZ-in-LHU" id="fk2-uE-8PD"/>
                         <outlet property="priceView" destination="mi5-Kw-1Sv" id="dvk-8F-cFb"/>
@@ -1829,16 +1892,19 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yZ2-qm-4dt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Aj3-wk-EUa" userLabel="View - Header View" customClass="ParkinglotDetailHeaderView" customModule="ParkingFriends" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="271"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <view contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aj3-wk-EUa" userLabel="View - Header View" customClass="ParkinglotDetailHeaderView" customModule="ParkingFriends" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="221"/>
                     <subviews>
-                        <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f7e-Gb-teb" userLabel="View - Slide View" customClass="ImageSlideshow" customModule="ImageSlideshow">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="271"/>
+                        <view contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f7e-Gb-teb" userLabel="View - Slide View" customClass="ImageSlideshow" customModule="ImageSlideshow">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="241"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         </view>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E6f-LK-fZY" userLabel="Image View - Dimmed Screen">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="241"/>
+                            <color key="backgroundColor" red="0.10999999940395355" green="0.11400000005960464" blue="0.11400000005960464" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                        </imageView>
                         <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XdL-Cd-049" userLabel="Button - Favorite">
-                            <rect key="frame" x="350" y="142" width="48" height="48"/>
+                            <rect key="frame" x="350" y="122" width="48" height="48"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="48" id="8Ov-su-CMz"/>
@@ -1865,7 +1931,7 @@
                             </userDefinedRuntimeAttributes>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cw6-9B-arF" userLabel="Button - Navigate">
-                            <rect key="frame" x="350" y="196" width="48" height="48"/>
+                            <rect key="frame" x="350" y="176" width="48" height="48"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="48" id="KJ7-6G-phU"/>
@@ -1890,8 +1956,8 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </button>
-                        <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FrP-pM-YmP" userLabel="View - Bottom View">
-                            <rect key="frame" x="0.0" y="256" width="414" height="30"/>
+                        <view contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FrP-pM-YmP" userLabel="View - Bottom View">
+                            <rect key="frame" x="0.0" y="207" width="414" height="30"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="66Q-iR-my7"/>
@@ -1923,17 +1989,22 @@
                         <constraint firstItem="f7e-Gb-teb" firstAttribute="top" secondItem="Aj3-wk-EUa" secondAttribute="top" id="46V-7F-RR6"/>
                         <constraint firstAttribute="trailing" secondItem="cw6-9B-arF" secondAttribute="trailing" constant="16" id="DP6-UU-20C"/>
                         <constraint firstAttribute="bottom" secondItem="FrP-pM-YmP" secondAttribute="bottom" constant="-15" id="NKo-2K-AVK"/>
+                        <constraint firstAttribute="bottom" secondItem="E6f-LK-fZY" secondAttribute="bottom" id="TIZ-0I-Pky"/>
                         <constraint firstItem="cw6-9B-arF" firstAttribute="top" secondItem="XdL-Cd-049" secondAttribute="bottom" constant="6" id="TZv-xu-T8u"/>
                         <constraint firstItem="FrP-pM-YmP" firstAttribute="trailing" secondItem="Aj3-wk-EUa" secondAttribute="trailing" id="Yph-dc-WQN"/>
                         <constraint firstAttribute="trailing" secondItem="XdL-Cd-049" secondAttribute="trailing" constant="16" id="frp-bc-EQE"/>
                         <constraint firstItem="f7e-Gb-teb" firstAttribute="leading" secondItem="Aj3-wk-EUa" secondAttribute="leading" id="hb5-Tz-BIc"/>
+                        <constraint firstAttribute="trailing" secondItem="E6f-LK-fZY" secondAttribute="trailing" id="jFt-Rj-XA2"/>
                         <constraint firstItem="cw6-9B-arF" firstAttribute="top" secondItem="XdL-Cd-049" secondAttribute="bottom" constant="6" id="jym-BN-WSs"/>
                         <constraint firstAttribute="bottom" secondItem="f7e-Gb-teb" secondAttribute="bottom" id="kEy-FN-N2C"/>
                         <constraint firstItem="FrP-pM-YmP" firstAttribute="leading" secondItem="Aj3-wk-EUa" secondAttribute="leading" id="oZn-kx-Oai"/>
                         <constraint firstAttribute="bottom" secondItem="cw6-9B-arF" secondAttribute="bottom" constant="27" id="r7e-1b-QH5"/>
                         <constraint firstAttribute="trailing" secondItem="f7e-Gb-teb" secondAttribute="trailing" id="tcd-fa-hUE"/>
+                        <constraint firstItem="E6f-LK-fZY" firstAttribute="top" secondItem="Aj3-wk-EUa" secondAttribute="top" id="v6Q-60-3C8"/>
+                        <constraint firstItem="E6f-LK-fZY" firstAttribute="leading" secondItem="Aj3-wk-EUa" secondAttribute="leading" id="xhX-yn-VJk"/>
                     </constraints>
                     <connections>
+                        <outlet property="dimmedImageView" destination="E6f-LK-fZY" id="TVK-ur-GiH"/>
                         <outlet property="favoriteButton" destination="XdL-Cd-049" id="U3R-vr-Tzb"/>
                         <outlet property="imageSlideView" destination="f7e-Gb-teb" id="Zqd-sp-3qt"/>
                         <outlet property="navigationButton" destination="cw6-9B-arF" id="i12-ne-Be2"/>
@@ -1947,6 +2018,7 @@
         <image name="icBackBlack" width="24" height="24"/>
         <image name="icFavoriteOff" width="24" height="24"/>
         <image name="icFavoriteOn" width="24" height="24"/>
+        <image name="icHelpOutlineGrey" width="24" height="24"/>
         <image name="icMoreWhite" width="24" height="24"/>
         <image name="icNavigationGreen" width="24" height="24"/>
         <image name="icNextGreen" width="16" height="16"/>
@@ -1954,6 +2026,7 @@
         <image name="icPreviousGreen" width="16" height="16"/>
         <image name="icRatingBigOff" width="56" height="56"/>
         <image name="icRatingBigOn" width="56" height="56"/>
+        <image name="imgPixel" width="1" height="1"/>
         <namedColor name="AlgaeGreen">
             <color red="0.14499999582767487" green="0.83899998664855957" blue="0.3880000114440918" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -1971,6 +2044,9 @@
         </namedColor>
         <namedColor name="DarkGrey2">
             <color red="0.11400000005960464" green="0.11800000071525574" blue="0.125" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="DarkGrey3">
+            <color red="0.10999999940395355" green="0.11400000005960464" blue="0.11400000005960464" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="IceBlue">
             <color red="0.93699997663497925" green="0.94900000095367432" blue="0.96100002527236938" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
