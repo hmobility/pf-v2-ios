@@ -7,11 +7,14 @@
 //
 
 import UIKit
+import Charts
 
 class ParkinglotDetailReserveView: UIStackView {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var infoButton: UIButton!
     @IBOutlet weak var availableParkinglotLabel: UILabel!
+    
+    @IBOutlet var chartView: HorizontalBarChartView!
     
     private let disposeBag = DisposeBag()
     
@@ -47,20 +50,60 @@ class ParkinglotDetailReserveView: UIStackView {
             .disposed(by: disposeBag)
     }
     
+    // MARK: - Local Methods
+    
+    private func updateChartData() {
+        let barWidth = 40.0
+        let spaceForBar = 0
+        
+        chartView.cornerRadius = 20
+        chartView.maxVisibleCount = 0
+        
+        let xAxis = chartView.xAxis
+        xAxis.labelPosition = .top
+        xAxis.drawAxisLineEnabled = true
+        xAxis.granularity = 1
+        
+        chartView.rightAxis.enabled = false
+        
+        let legend = chartView.legend
+        
+        let count = 1
+        let range:UInt32 = 24
+        
+        let yVals = (0..<count).map { (i) -> BarChartDataEntry in
+            let mult:UInt32 =  1 + range
+            let val1 = Double(arc4random_uniform(mult) + mult / 3)
+            let val2 = Double(arc4random_uniform(mult) + mult / 3)
+            let val3 = Double(arc4random_uniform(mult) + mult / 3)
+            
+            return BarChartDataEntry(x: Double(i), yValues: [val1, val2, val3], icon: nil)
+        }
+        
+        let set1 = BarChartDataSet(entries: yVals, label: nil)
+        set1.colors = ChartColorTemplates.material()
+        set1.drawIconsEnabled = false
+        
+        let data = BarChartData(dataSet: set1)
+        data.setValueFont(UIFont(name:"HelveticaNeue-Light", size:10)!)
+        data.barWidth = barWidth
+        
+        chartView.data = data
+        
+        
+        chartView.animate(yAxisDuration: 0)
+    }
+    
     // MARK: - Life Cycle
     
     override func layoutSubviews() {
         super.layoutSubviews()
         initialize()
     }
-    
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
+
     override func draw(_ rect: CGRect) {
-        // Drawing code
+        updateChartData()
     }
-    */
     
     // MARK: - Navigation
     

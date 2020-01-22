@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -527,7 +527,7 @@
         <!--Parkinglot Detail View Controller-->
         <scene sceneID="G1Q-TZ-ATj">
             <objects>
-                <viewController storyboardIdentifier="ParkinglotDetailViewController" id="oD5-jI-trf" customClass="ParkinglotDetailViewController" customModule="ParkingFriends" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ParkinglotDetailViewController" id="oD5-jI-trf" customClass="ParkinglotDetailViewController" customModule="ParkingFriends" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="VQy-tx-fJt">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="2200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -539,13 +539,13 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="1766"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Gwh-cA-Ae7" userLabel="Stack View - Contents">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="2064"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="2005"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zKP-76-ADc" userLabel="View - Symbol" customClass="ParkinglotDetailSymbolView" customModule="ParkingFriends" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="118"/>
                                                         <subviews>
                                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="5NS-ef-uad" userLabel="Collection View - Symbol">
-                                                                <rect key="frame" x="15" y="0.0" width="388" height="117"/>
+                                                                <rect key="frame" x="15" y="0.0" width="384" height="117"/>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="117" id="FzS-br-hR7"/>
@@ -866,7 +866,7 @@
                                                         </connections>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="cQ5-gk-ljE" userLabel="Stack View - Reseve Status" customClass="ParkinglotDetailReserveView" customModule="ParkingFriends" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="539" width="414" height="252"/>
+                                                        <rect key="frame" x="0.0" y="539" width="414" height="193"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ddm-8j-Bii" userLabel="View - Header">
                                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="78"/>
@@ -899,29 +899,35 @@
                                                                     <constraint firstAttribute="trailing" secondItem="RyL-re-XIL" secondAttribute="trailing" constant="20" id="yg9-sN-q8b"/>
                                                                 </constraints>
                                                             </view>
-                                                            <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ypc-Yc-cIU" userLabel="View - Ticket Button">
-                                                                <rect key="frame" x="0.0" y="78" width="414" height="59"/>
-                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="59" id="p2L-lo-e5k"/>
-                                                                </constraints>
-                                                            </view>
                                                             <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cy9-en-6uf" userLabel="View - Time Range">
-                                                                <rect key="frame" x="0.0" y="137" width="414" height="115"/>
-                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <rect key="frame" x="0.0" y="78" width="414" height="115"/>
+                                                                <subviews>
+                                                                    <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dxa-lr-jcS" userLabel="View - Chart" customClass="HorizontalBarChartView" customModule="Charts">
+                                                                        <rect key="frame" x="20" y="0.0" width="374" height="59"/>
+                                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="59" id="8pe-P6-fqG"/>
+                                                                        </constraints>
+                                                                    </view>
+                                                                </subviews>
+                                                                <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
+                                                                    <constraint firstAttribute="trailing" secondItem="dxa-lr-jcS" secondAttribute="trailing" constant="20" id="Jos-qI-07e"/>
                                                                     <constraint firstAttribute="height" constant="115" id="erU-3Z-ZCB"/>
+                                                                    <constraint firstItem="dxa-lr-jcS" firstAttribute="top" secondItem="Cy9-en-6uf" secondAttribute="top" id="q7w-d0-nVo"/>
+                                                                    <constraint firstItem="dxa-lr-jcS" firstAttribute="leading" secondItem="Cy9-en-6uf" secondAttribute="leading" constant="20" id="tEJ-dv-LWc"/>
                                                                 </constraints>
                                                             </view>
                                                         </subviews>
                                                         <connections>
                                                             <outlet property="availableParkinglotLabel" destination="RyL-re-XIL" id="dyc-pu-zdQ"/>
+                                                            <outlet property="chartView" destination="dxa-lr-jcS" id="OhP-gx-tN1"/>
                                                             <outlet property="infoButton" destination="Aka-fi-aNn" id="LDR-rK-biD"/>
                                                             <outlet property="titleLabel" destination="nmY-gJ-E98" id="MLP-re-KgA"/>
                                                         </connections>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="BkW-t5-4d3" userLabel="Stack View - Edit Time">
-                                                        <rect key="frame" x="0.0" y="791" width="414" height="592"/>
+                                                        <rect key="frame" x="0.0" y="732" width="414" height="592"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jYt-3x-OiV" userLabel="View - Change Time">
                                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="132"/>
@@ -975,7 +981,7 @@
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="132" id="38g-kF-JaW"/>
-                                                                    <constraint firstItem="QCI-VV-D1t" firstAttribute="top" secondItem="jYt-3x-OiV" secondAttribute="top" constant="20" symbolic="YES" id="4Lu-Ls-B2S"/>
+                                                                    <constraint firstItem="QCI-VV-D1t" firstAttribute="top" secondItem="jYt-3x-OiV" secondAttribute="top" id="4Lu-Ls-B2S"/>
                                                                     <constraint firstItem="QCI-VV-D1t" firstAttribute="leading" secondItem="jYt-3x-OiV" secondAttribute="leading" constant="20" id="gxs-WW-aWY"/>
                                                                     <constraint firstAttribute="trailing" secondItem="QCI-VV-D1t" secondAttribute="trailing" constant="20" id="zcJ-ba-5hJ"/>
                                                                 </constraints>
@@ -1521,7 +1527,7 @@
                                                         </constraints>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="7v0-7r-pJ9" userLabel="Stack View - Guide" customClass="ParkinglotDetailGuideView" customModule="ParkingFriends" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="1383" width="414" height="167"/>
+                                                        <rect key="frame" x="0.0" y="1324" width="414" height="167"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jA5-Nc-fTP" userLabel="View - Header" customClass="ParkinglotDetailGuideItemView" customModule="ParkingFriends" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="78"/>
@@ -1577,7 +1583,7 @@
                                                         </connections>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="kyg-Lh-r6Z" userLabel="Stack View - Review and Points">
-                                                        <rect key="frame" x="0.0" y="1550" width="414" height="310"/>
+                                                        <rect key="frame" x="0.0" y="1491" width="414" height="310"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uth-89-d5j" userLabel="View - Header">
                                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="76"/>
@@ -1696,7 +1702,7 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="hic-vZ-cko" userLabel="Stack View - Relative Tag">
-                                                        <rect key="frame" x="0.0" y="1860" width="414" height="76"/>
+                                                        <rect key="frame" x="0.0" y="1801" width="414" height="76"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qrD-hT-DCv" userLabel="View - Header">
                                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="76"/>
@@ -1719,7 +1725,7 @@
                                                         </subviews>
                                                     </stackView>
                                                     <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vkr-qH-iNj" userLabel="View - Contents">
-                                                        <rect key="frame" x="0.0" y="1936" width="414" height="128"/>
+                                                        <rect key="frame" x="0.0" y="1877" width="414" height="128"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3RT-Yn-7vB" userLabel="Tag List View - Tags" customClass="TagListView" customModule="TagListView">
                                                                 <rect key="frame" x="24" y="0.0" width="366" height="64"/>
@@ -1892,19 +1898,19 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yZ2-qm-4dt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <view contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aj3-wk-EUa" userLabel="View - Header View" customClass="ParkinglotDetailHeaderView" customModule="ParkingFriends" customModuleProvider="target">
+                <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aj3-wk-EUa" userLabel="View - Header View" customClass="ParkinglotDetailHeaderView" customModule="ParkingFriends" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="221"/>
                     <subviews>
-                        <view contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f7e-Gb-teb" userLabel="View - Slide View" customClass="ImageSlideshow" customModule="ImageSlideshow">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="241"/>
+                        <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f7e-Gb-teb" userLabel="View - Slide View" customClass="ImageSlideshow" customModule="ImageSlideshow">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="221"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         </view>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E6f-LK-fZY" userLabel="Image View - Dimmed Screen">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="241"/>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E6f-LK-fZY" userLabel="Image View - Dimmed Screen">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="221"/>
                             <color key="backgroundColor" red="0.10999999940395355" green="0.11400000005960464" blue="0.11400000005960464" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XdL-Cd-049" userLabel="Button - Favorite">
-                            <rect key="frame" x="350" y="122" width="48" height="48"/>
+                            <rect key="frame" x="350" y="92" width="48" height="48"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="48" id="8Ov-su-CMz"/>
@@ -1931,7 +1937,7 @@
                             </userDefinedRuntimeAttributes>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cw6-9B-arF" userLabel="Button - Navigate">
-                            <rect key="frame" x="350" y="176" width="48" height="48"/>
+                            <rect key="frame" x="350" y="146" width="48" height="48"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="48" id="KJ7-6G-phU"/>

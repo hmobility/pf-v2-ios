@@ -70,7 +70,9 @@ class ParkinglotDetailViewController: UIViewController {
         viewModel.imageList
             .asDriver()
             .drive(onNext: { images in
-                self.headerView.setImageUrl(images)
+                if images.count > 0 {
+                    self.headerView.setImageUrl(images)
+                }
             })
             .disposed(by: disposeBag)
 
@@ -172,6 +174,10 @@ class ParkinglotDetailViewController: UIViewController {
         viewModel.loadDetailInfo()
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     // MARK: - Local Methods
     
     private func updateDetail(with element:Parkinglot) {
@@ -196,13 +202,3 @@ class ParkinglotDetailViewController: UIViewController {
     */
 
 }
-/*
-// MARK: - Parallax header delegate
-extension ParkinglotDetailViewController: MXParallaxHeaderDelegate {
-    func parallaxHeaderDidScroll(_ parallaxHeader: MXParallaxHeader) {
-        NSLog("progress %f", parallaxHeader.progress)
-        let alphaValue = parallaxHeader.progress.truncatingRemainder(dividingBy: 1.0)
-        headerView.setDimmedAlpha(alphaValue)
-    }
-}
-*/

@@ -33,7 +33,7 @@ class ParkinglotDetailHeaderView: UIView {
     }
     
     private func initialize() {
-        setupImageView()
+      //  setupImageView()
         setupPageControl()
         setupButtonBinding()
     }
@@ -93,6 +93,7 @@ class ParkinglotDetailHeaderView: UIView {
       
     override func layoutSubviews() {
         super.layoutSubviews()
+        setupImageView()
     }
 
     override func draw(_ rect: CGRect) {
