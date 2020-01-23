@@ -283,10 +283,10 @@ class MapViewModel: NSObject, MapViewModelType {
         
         if let elements = districts {
             for item in elements {
-                debugPrint("[DISTRICT] ", item.name)
+//                debugPrint("[DISTRICT] ", item.name)
                 if let marker = generateDistrict(district: item) {
                     districtList.append(marker)
-                }
+                }                                                      
             }
         }
     }
