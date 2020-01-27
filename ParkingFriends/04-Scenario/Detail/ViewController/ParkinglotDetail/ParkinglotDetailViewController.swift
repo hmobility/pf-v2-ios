@@ -17,11 +17,12 @@ extension ParkinglotDetailViewController : AnalyticsType {
 
 class ParkinglotDetailViewController: UIViewController {
     @IBOutlet weak var scrollView: MXScrollView!
-    @IBOutlet var headerView:ParkinglotDetailHeaderView!
-    @IBOutlet var symbolView:ParkinglotDetailSymbolView!
-    @IBOutlet var priceView:ParkinglotDetailPriceInfoView!
-    @IBOutlet var operationTimeView:ParkinglotDetailOperationTimeView!
-    @IBOutlet var noticeView:ParkinglotDetailGuideView!
+    @IBOutlet weak var headerView:ParkinglotDetailHeaderView!
+    @IBOutlet weak var symbolView:ParkinglotDetailSymbolView!
+    @IBOutlet weak var reserveStatusView: ParkinglotDetailReserveView!
+    @IBOutlet weak var priceView:ParkinglotDetailPriceInfoView!
+    @IBOutlet weak var operationTimeView:ParkinglotDetailOperationTimeView!
+    @IBOutlet weak var noticeView:ParkinglotDetailGuideView!
     
     @IBOutlet var navigationBar:TransparentNavigationBar!
     
@@ -70,7 +71,9 @@ class ParkinglotDetailViewController: UIViewController {
         viewModel.imageList
             .asDriver()
             .drive(onNext: { images in
-                self.headerView.setImageUrl(images)
+                if images.count > 0 {
+                    self.headerView.setImageUrl(images)
+                }
             })
             .disposed(by: disposeBag)
 
@@ -110,7 +113,7 @@ class ParkinglotDetailViewController: UIViewController {
                 self.operationTimeView.setOperationTimeList(operations)
             })
             .disposed(by: disposeBag)
-       }
+    }
     
     private func setupGuideView() {
         viewModel.noticeList
@@ -119,6 +122,14 @@ class ParkinglotDetailViewController: UIViewController {
                 self.noticeView.setContents(notices)
             })
             .disposed(by: disposeBag)
+    }
+    
+    // MARK: - Setup View Model
+    
+    private func setupReserveSatusViewModel() {
+        if let viewModel = reserveStatusView.getViewModel() {
+            self.viewModel.setReserveViewModel(viewModel)
+        }
     }
     
     // MARK: - Setup ScrollView
@@ -157,6 +168,8 @@ class ParkinglotDetailViewController: UIViewController {
         setupPriceView()
         setupOperationTimeView()
         setupGuideView()
+        
+        setupReserveSatusViewModel()
     }
         
     // MARK: - Life Cycle
@@ -170,6 +183,10 @@ class ParkinglotDetailViewController: UIViewController {
         initialize()
         
         viewModel.loadDetailInfo()
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
     
     // MARK: - Local Methods
@@ -196,13 +213,3 @@ class ParkinglotDetailViewController: UIViewController {
     */
 
 }
-/*
-// MARK: - Parallax header delegate
-extension ParkinglotDetailViewController: MXParallaxHeaderDelegate {
-    func parallaxHeaderDidScroll(_ parallaxHeader: MXParallaxHeader) {
-        NSLog("progress %f", parallaxHeader.progress)
-        let alphaValue = parallaxHeader.progress.truncatingRemainder(dividingBy: 1.0)
-        headerView.setDimmedAlpha(alphaValue)
-    }
-}
-*/

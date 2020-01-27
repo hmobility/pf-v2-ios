@@ -224,7 +224,7 @@ class MapViewController: UIViewController {
     }
     
     func navigateToTimeDialog() {
-        let date = UserData.shared.getReservableDate()
+        let date = UserData.shared.getOnReserveDate()
         let productType = UserData.shared.getProductType()
         
         if productType == .time {

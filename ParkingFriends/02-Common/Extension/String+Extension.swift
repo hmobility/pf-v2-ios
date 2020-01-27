@@ -37,6 +37,14 @@ extension String {
     }
 }
 
+extension String {
+    var toDate: Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        
+        return dateFormatter.date(from: self) ?? nil
+    }
+}
 
 // MARK: - Pattern Matching
 
