@@ -7,36 +7,50 @@
 //
 
 import UIKit
-import Charts
+import AAInfographics
 
 class ParkinglotDetailReserveView: UIStackView {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var infoButton: UIButton!
     @IBOutlet weak var availableParkinglotLabel: UILabel!
     
-    @IBOutlet var chartView: HorizontalBarChartView!
+    @IBOutlet var chartView: UIView!
+    
+    private var aaChartView:AAChartView?
+    private var chartOptions:AAOptions?
+    
+    lazy var viewModel: ParkinglotDetailReserveViewModelType = ParkinglotDetailReserveViewModel()
     
     private let disposeBag = DisposeBag()
     
     private var localizer:LocalizerType = Localizer.shared
     
-    
     // MARK: - Initializer
-
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+    
+    required init(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
     private func initialize() {
         setupBinding()
         setupButtonBinding()
+        
+        setupChartView()
     }
     
     // MARK: - Binding
     
     private func setupBinding() {
-        localizer.localized("ttl_detail_real_time_reserve_state")
+        viewModel.viewTitleText
             .asDriver()
             .drive(self.titleLabel.rx.text)
             .disposed(by: disposeBag)
         
-        localizer.localized("txt_detail_real_time_available_lots")
+        viewModel.availableParkinglotText
             .asDriver()
             .drive(self.availableParkinglotLabel.rx.text)
             .disposed(by: disposeBag)
@@ -50,48 +64,115 @@ class ParkinglotDetailReserveView: UIStackView {
             .disposed(by: disposeBag)
     }
     
+    // MARK: - Public Methods
+    
+    public func getViewModel() -> ParkinglotDetailReserveViewModel? {
+        return (viewModel as! ParkinglotDetailReserveViewModel) 
+    }
+    
     // MARK: - Local Methods
     
-    private func updateChartData() {
-        let barWidth = 40.0
-        let spaceForBar = 0
+    // MARK: - Chart Update
+    
+    private func setupChartView() {
+        aaChartView = AAChartView()
+        let width = chartView.frame.size.width
+        let height:CGFloat =  chartView.frame.size.height
         
-        chartView.cornerRadius = 20
-        chartView.maxVisibleCount = 0
-        
-        let xAxis = chartView.xAxis
-        xAxis.labelPosition = .top
-        xAxis.drawAxisLineEnabled = true
-        xAxis.granularity = 1
-        
-        chartView.rightAxis.enabled = false
-        
-        let legend = chartView.legend
-        
-        let count = 1
-        let range:UInt32 = 24
-        
-        let yVals = (0..<count).map { (i) -> BarChartDataEntry in
-            let mult:UInt32 =  1 + range
-            let val1 = Double(arc4random_uniform(mult) + mult / 3)
-            let val2 = Double(arc4random_uniform(mult) + mult / 3)
-            let val3 = Double(arc4random_uniform(mult) + mult / 3)
+        if let view = aaChartView {
+            chartOptions = getChartOption()
+            debugPrint("[CHART FRAME] width: ", width, " height : ", height)
+            view.frame = CGRect(x: -8, y: -150, width: width, height: 300)
+            view.contentWidth = width - ((width / 25) - 8)
+            view.contentHeight = 300
+            view.scrollEnabled = false
             
-            return BarChartDataEntry(x: Double(i), yValues: [val1, val2, val3], icon: nil)
+            chartView.addSubview(view)
+        }
+    }
+    
+    private func getChartOption() -> AAOptions {
+        let aaChartModel = AAChartModel()
+            .title("")
+            .chartType(.columnrange)
+            .animationDuration(0)
+            .backgroundColor(Color.iceBlue.hexString)
+            .yAxisMin(0)
+            .yAxisMax(24)
+            .yAxisTitle("")
+            .marginBottom(0)
+            .marginRight(0)
+            .marginLeft(0)
+            .inverted(true)
+            .dataLabelsEnabled(false)
+            .xAxisLabelsEnabled(false)
+            .xAxisGridLineWidth(0)
+            .yAxisGridLineWidth(0)
+            .legendEnabled(false)
+            .tooltipEnabled(false)
+            .series([AASeriesElement()])
+        
+        let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
+        
+        return aaOptions
+    }
+    
+    func getAvailableTimes(_ times:[OperationTime]) -> [AAPlotBandsElement]? {
+        var plotBands:[AAPlotBandsElement] = []
+        let availableTimeColor = Color.lightSeafoam.hexString
+        
+        for element in times {
+            let item = getPlotBand(start:element.from.toDate, end:element.to.toDate, color:availableTimeColor)
+            plotBands.append(item)
         }
         
-        let set1 = BarChartDataSet(entries: yVals, label: nil)
-        set1.colors = ChartColorTemplates.material()
-        set1.drawIconsEnabled = false
+        return plotBands.count > 0 ? plotBands : nil
+    }
+    
+    func getPlotBand(start:Date?, end:Date?, color:String) -> AAPlotBandsElement {
+        let start = Float(start?.hours ?? 0)
+        let end = Float(end?.hours ?? 0)
+        let bandColor = color
         
-        let data = BarChartData(dataSet: set1)
-        data.setValueFont(UIFont(name:"HelveticaNeue-Light", size:10)!)
-        data.barWidth = barWidth
+        let item = AAPlotBandsElement()
+                      .from(start)
+                      .to(end)
+                      .color(bandColor)
         
-        chartView.data = data
+        return item
+    }
+    
+    private func updateAvailableTimeChart() {
+        viewModel.availableTimeList
+            .asObservable()
+            .map({ times in
+                return self.getAvailableTimes(times)
+            })
+            .subscribe(onNext:{ [unowned self] bands in
+                if let times = bands, let view = self.aaChartView, let options = self.chartOptions {
+                    options.yAxis?.plotBands(times)
+                    view.aa_drawChartWithChartOptions(options)
+                }
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func updateOnReserveTime() {
+        let onReserveColor = Color.algaeGreen.hexString
         
-        
-        chartView.animate(yAxisDuration: 0)
+        viewModel.onReserveTime
+                .compactMap { $0 }
+                .asObservable()
+                .map({ duration in
+                    return self.getPlotBand(start:duration.start, end:duration.end, color: onReserveColor)
+                })
+                .subscribe(onNext:{ [unowned self] bandElement in
+                    if let view = self.aaChartView, let options = self.chartOptions {
+                        options.yAxis?.plotBands?.append(bandElement)
+                        view.aa_drawChartWithChartOptions(options)
+                    }
+                })
+                .disposed(by: disposeBag)
     }
     
     // MARK: - Life Cycle
@@ -102,7 +183,8 @@ class ParkinglotDetailReserveView: UIStackView {
     }
 
     override func draw(_ rect: CGRect) {
-        updateChartData()
+        updateAvailableTimeChart()
+        updateOnReserveTime()
     }
     
     // MARK: - Navigation

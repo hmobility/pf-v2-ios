@@ -72,7 +72,7 @@ class MapViewModel: NSObject, MapViewModelType {
         
         self.locationOverlay = mapView?.locationOverlay
         
-        let date = userData.getReservableDate()
+        let date = userData.getOnReserveDate()
         let displayTime = DisplayTimeHandler().displayReservableTime(start: date.start, end: date.end)
         
         displayReservableTimeText = BehaviorRelay(value: displayTime)
@@ -203,7 +203,7 @@ class MapViewModel: NSObject, MapViewModelType {
     // MARK: - Time Option
     
     public func setTimeTicketRange(start startDate: Date, end endDate:Date) {
-        UserData.shared.setReservableTime(start:startDate, end:endDate)
+        UserData.shared.setOnReserveTime(start:startDate, end:endDate)
         let displayText = DisplayTimeHandler().displayReservableTime(start: startDate, end: endDate)
         
         self.displayReservableTimeText.accept(displayText)
@@ -211,7 +211,7 @@ class MapViewModel: NSObject, MapViewModelType {
     
     public func setFixedTicketTime(start startDate: Date, hours:Int) {
         let endDate = startDate.adjust(.hour, offset: hours)
-        UserData.shared.setReservableTime(start:startDate, end:endDate)
+        UserData.shared.setOnReserveTime(start:startDate, end:endDate)
         let displayText = DisplayTimeHandler().diplayFixedTicketFromDate(date: startDate, hours: hours)
         
         self.displayReservableTimeText.accept(displayText)
@@ -361,7 +361,7 @@ class MapViewModel: NSObject, MapViewModelType {
         let radius = self.mapView!.rx.radius
 
         debugPrint("[RADIUS] ", radius)
-        let time = UserData.shared.getReservableTime()
+        let time = UserData.shared.getOnReserveTime()
         let today = Date().toString(format: .custom("yyyyMMdd"))
         
         if district == true {

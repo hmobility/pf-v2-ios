@@ -17,11 +17,12 @@ extension ParkinglotDetailViewController : AnalyticsType {
 
 class ParkinglotDetailViewController: UIViewController {
     @IBOutlet weak var scrollView: MXScrollView!
-    @IBOutlet var headerView:ParkinglotDetailHeaderView!
-    @IBOutlet var symbolView:ParkinglotDetailSymbolView!
-    @IBOutlet var priceView:ParkinglotDetailPriceInfoView!
-    @IBOutlet var operationTimeView:ParkinglotDetailOperationTimeView!
-    @IBOutlet var noticeView:ParkinglotDetailGuideView!
+    @IBOutlet weak var headerView:ParkinglotDetailHeaderView!
+    @IBOutlet weak var symbolView:ParkinglotDetailSymbolView!
+    @IBOutlet weak var reserveStatusView: ParkinglotDetailReserveView!
+    @IBOutlet weak var priceView:ParkinglotDetailPriceInfoView!
+    @IBOutlet weak var operationTimeView:ParkinglotDetailOperationTimeView!
+    @IBOutlet weak var noticeView:ParkinglotDetailGuideView!
     
     @IBOutlet var navigationBar:TransparentNavigationBar!
     
@@ -112,7 +113,7 @@ class ParkinglotDetailViewController: UIViewController {
                 self.operationTimeView.setOperationTimeList(operations)
             })
             .disposed(by: disposeBag)
-       }
+    }
     
     private func setupGuideView() {
         viewModel.noticeList
@@ -121,6 +122,14 @@ class ParkinglotDetailViewController: UIViewController {
                 self.noticeView.setContents(notices)
             })
             .disposed(by: disposeBag)
+    }
+    
+    // MARK: - Setup View Model
+    
+    private func setupReserveSatusViewModel() {
+        if let viewModel = reserveStatusView.getViewModel() {
+            self.viewModel.setReserveViewModel(viewModel)
+        }
     }
     
     // MARK: - Setup ScrollView
@@ -159,6 +168,8 @@ class ParkinglotDetailViewController: UIViewController {
         setupPriceView()
         setupOperationTimeView()
         setupGuideView()
+        
+        setupReserveSatusViewModel()
     }
         
     // MARK: - Life Cycle

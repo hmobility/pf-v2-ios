@@ -72,18 +72,18 @@ class UserData: NSObject, NSCoding {
     
     // MARK: - Reservable Time
     
-    public func getReservableDate() -> (start:Date, end:Date)  {
+    public func getOnReserveDate() -> DateDuration  {
         return (basis.reservableStartTime, basis.reservableEndTime)
     }
     
-    public func getReservableTime() -> (start:String, end:String) {
+    public func getOnReserveTime() -> (start:String, end:String) {
         let start = basis.reservableStartTime.toString(format: .custom(kReservableTimeFormat))
         let end = basis.reservableEndTime.toString(format: .custom(kReservableTimeFormat))
         
         return (start, end)
      }
     
-    public func setReservableTime(start startDate:Date, end endDate:Date? = nil) {
+    public func setOnReserveTime(start startDate:Date, end endDate:Date? = nil) {
         self.basis.start = startDate
         
         if let date = endDate {

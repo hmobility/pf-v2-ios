@@ -56,7 +56,7 @@ target 'ParkingFriends' do
   pod 'RangeSeekSlider'
   
   pod 'Cosmos', '~> 20.0'
-  pod 'Charts'
+  pod 'AAInfographics'
   
 end
 
