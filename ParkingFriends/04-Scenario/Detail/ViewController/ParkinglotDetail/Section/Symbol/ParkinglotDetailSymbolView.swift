@@ -16,14 +16,15 @@ class ParkinglotDetailSymbolView: UIView {
    @IBOutlet weak var collectionView: UICollectionView!
     
     private let disposeBag = DisposeBag()
-    private var symbolList:BehaviorRelay<[SymbolType]> = BehaviorRelay(value: [])
+ 
+    private lazy var viewModel: ParkinglotDetailSymbolViewModelType = ParkinglotDetailSymbolViewModel()
     
     // MARK: - Public Methods
     
-    func setSymbolList(_ symbols:[SymbolType]) {
-        symbolList.accept(symbols)
+    public func getViewModel() -> ParkinglotDetailSymbolViewModel? {
+        return (viewModel as! ParkinglotDetailSymbolViewModel)
     }
-    
+
     // MARK: - Initializers
     
     override init(frame: CGRect) {
@@ -41,7 +42,8 @@ class ParkinglotDetailSymbolView: UIView {
     // MARK: - Binding
     
     private func setupBinding() {
-        symbolList.asObservable()
+        viewModel.markSymbolList
+            .asObservable()
             .bind(to: collectionView.rx.items(cellIdentifier: "ParkinglotfDetailSymbolCollectionViewCell", cellType: ParkinglotfDetailSymbolCollectionViewCell.self)) { row, item, cell in
                 cell.setTitle(item.title, image: item.image)
             }

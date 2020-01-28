@@ -2192,10 +2192,10 @@
                                                             <constraint firstAttribute="trailing" secondItem="3hy-Sg-i22" secondAttribute="trailing" id="xVB-o4-ntS"/>
                                                         </constraints>
                                                     </stackView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="7v0-7r-pJ9" userLabel="Stack View - Guide" customClass="ParkinglotDetailGuideView" customModule="ParkingFriends" customModuleProvider="target">
+                                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="7v0-7r-pJ9" userLabel="Stack View - Notice" customClass="ParkinglotDetailNoticeView" customModule="ParkingFriends" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="1324" width="414" height="167"/>
                                                         <subviews>
-                                                            <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jA5-Nc-fTP" userLabel="View - Header" customClass="ParkinglotDetailGuideItemView" customModule="ParkingFriends" customModuleProvider="target">
+                                                            <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jA5-Nc-fTP" userLabel="View - Header" customClass="ParkinglotDetailNoticeItemView" customModule="ParkingFriends" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="78"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="안내·유의사항" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BkY-XR-wad" userLabel="Label - Title">

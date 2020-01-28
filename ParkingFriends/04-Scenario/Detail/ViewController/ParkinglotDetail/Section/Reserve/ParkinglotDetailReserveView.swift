@@ -19,7 +19,7 @@ class ParkinglotDetailReserveView: UIStackView {
     private var aaChartView:AAChartView?
     private var chartOptions:AAOptions?
     
-    lazy var viewModel: ParkinglotDetailReserveViewModelType = ParkinglotDetailReserveViewModel()
+    private lazy var viewModel: ParkinglotDetailReserveViewModelType = ParkinglotDetailReserveViewModel()
     
     private let disposeBag = DisposeBag()
     
