@@ -16,6 +16,8 @@ class ParkinglotDetailReserveView: UIStackView {
     
     @IBOutlet var chartView: UIView!
     
+    var infoGuideAction: (() -> Void)?
+    
     private var aaChartView:AAChartView?
     private var chartOptions:AAOptions?
     
@@ -59,7 +61,9 @@ class ParkinglotDetailReserveView: UIStackView {
     private func setupButtonBinding() {
         infoButton.rx.tap
             .subscribe(onNext: { [unowned self] status in
-                self.navigateToGuide()
+                if let action = self.infoGuideAction {
+                    action()
+                }
             })
             .disposed(by: disposeBag)
     }
@@ -185,19 +189,5 @@ class ParkinglotDetailReserveView: UIStackView {
     override func draw(_ rect: CGRect) {
         updateAvailableTimeChart()
         updateOnReserveTime()
-    }
-    
-    // MARK: - Navigation
-    
-    private func navigateToGuide() {
-        let target = Storyboard.detail.instantiateViewController(withIdentifier: "TimeLabelGuideViewController") as! TimeLabelGuideViewController
-        
-        var config = SwiftMessages.defaultConfig
-        config.presentationContext = .window(windowLevel: UIWindow.Level.normal)
-        config.duration = .forever
-        config.presentationStyle = .center
-        config.preferredStatusBarStyle = .lightContent
-   
-        SwiftMessages.show(config: config, view: target.view)
     }
 }

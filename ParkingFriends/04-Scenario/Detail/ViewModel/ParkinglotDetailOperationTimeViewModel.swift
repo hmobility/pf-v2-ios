@@ -15,9 +15,7 @@ protocol ParkinglotDetailOperationTimeViewModelType {
     var sundayFieldText: Driver<String> { get }
     var holidayFieldText: Driver<String> { get }
     var closedStateText: Driver<String> { get }
-    
-  //  var operationTimeList: BehaviorRelay<[ParkinglotOperationTime]> { get }
-    
+
     func setOperationTimes(_ elements:[ParkinglotOperationTime])
     func getOperationTimeList() -> Observable<(OperationTimeType, String)>
 }

@@ -20,6 +20,8 @@ class ParkinglotDetailHeaderView: UIView {
     var bookmarkAction: ((_ flag:Bool) -> Void)?
     var navigationAction: ((_ id:String) -> Void)?
     
+    private lazy var viewModel: ParkinglotDetailHeaderViewModelType = ParkinglotDetailHeaderViewModel()
+    
     private let disposeBag = DisposeBag()
     
     // MARK: - Initializers
@@ -33,13 +35,22 @@ class ParkinglotDetailHeaderView: UIView {
     }
     
     private func initialize() {
-      //  setupImageView()
+        setupImageView()
+        setupImageBinding()
+        setupFavoriteState()
+    }
+    
+    private func setupContents() {
         setupPageControl()
         setupButtonBinding()
     }
     
     // MARK: - Public Methods
     
+    public func getViewModel() -> ParkinglotDetailHeaderViewModel? {
+        return (viewModel as! ParkinglotDetailHeaderViewModel)
+    }
+
     public func setImageUrl(_ urls:[ImageElement]) {
         let sources = urls.map {
             return KingfisherSource(urlString: $0.url)
@@ -71,12 +82,30 @@ class ParkinglotDetailHeaderView: UIView {
     
     // MARK: -  Binding
     
+    private func setupImageBinding() {
+        viewModel.imageList
+            .asDriver()
+            .drive(onNext: { images in
+                if images.count > 0 {
+                    self.setImageUrl(images)
+                }
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func setupFavoriteState() {
+        viewModel.favoriteState.asDriver()
+            .drive(favoriteButton.rx.isSelected)
+            .disposed(by: disposeBag)
+    }
+    
     private func setupButtonBinding() {
         favoriteButton.rx.tap.asDriver()
-            .drive(onNext: { _ in
-                if let action = self.bookmarkAction {
-                    action(false)
-                }
+            .map {
+                return !self.favoriteButton.isSelected
+            }
+            .drive(onNext: { selected in
+                self.viewModel.changeFavorite(selected)
             })
             .disposed(by: disposeBag)
         
@@ -93,13 +122,12 @@ class ParkinglotDetailHeaderView: UIView {
       
     override func layoutSubviews() {
         super.layoutSubviews()
-        setupImageView()
-    }
-
-    override func draw(_ rect: CGRect) {
         initialize()
     }
 
+    override func draw(_ rect: CGRect) {
+        setupContents()
+    }
 }
 
 // MARK: - Parallax header delegate

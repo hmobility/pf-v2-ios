@@ -8,15 +8,18 @@
 
 import UIKit
 
-class TimeFixedLabelGuideViewController: UIViewController {
+class ParkinglotDetailTimeFixedLabelGuideViewController: UIViewController {
     @IBOutlet weak var existingTimeLabel: UILabel!
     @IBOutlet weak var availableTimeLabel: UILabel!
     @IBOutlet weak var unavailableTimeLabel: UILabel!
     @IBOutlet weak var unavailableTimeDescLabel: UILabel!
     
+    @IBOutlet weak var availableDayLabel: UILabel!
+    @IBOutlet weak var unavailableDayLabel: UILabel!
+    
     private var disposeBag = DisposeBag()
     
-    private lazy var viewModel: CommonLabelGuideViewModelType = CommonLabelGuideViewModel()
+    private lazy var viewModel: ParkinglotDetailInfoLabelGuideViewModelType = ParkinglotDetailInfoLabelGuideViewModel()
     
     // MARK: - Binding
       
@@ -35,6 +38,14 @@ class TimeFixedLabelGuideViewController: UIViewController {
         
         viewModel.unavailableTimeDescText
             .drive(unavailableTimeDescLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        viewModel.availableDayText
+            .drive(availableDayLabel.rx.text)
+            .disposed(by: disposeBag)
+               
+        viewModel.unavailableDayText
+            .drive(unavailableDayLabel.rx.text)
             .disposed(by: disposeBag)
     }
     

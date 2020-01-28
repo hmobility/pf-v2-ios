@@ -16,12 +16,10 @@ protocol ParkinglotDetailViewModelType {
     
     var detailInfo: BehaviorRelay<Parkinglot?> { get }
     
-    var imageList: BehaviorRelay<[ImageElement]> { get }
-    var markSymbolList: BehaviorRelay<[SymbolType]> { get }
-    var noticeList: BehaviorRelay<[String]> { get }
-    
     func loadDetailInfo()
+    func changeBookmark(_ state:Bool) 
     
+    func setHeaderViewModel(_ viewModel:ParkinglotDetailHeaderViewModel)
     func setSymbolViewModel(_ viewModel:ParkinglotDetailSymbolViewModel)
     func setPriceViewModel(_ viewModel:ParkinglotDetailPriceViewModel)
     func setReserveViewModel(_ viewModel:ParkinglotDetailReserveViewModel)
@@ -35,23 +33,19 @@ class ParkinglotDetailViewModel: ParkinglotDetailViewModelType {
     
     var detailInfo: BehaviorRelay<Parkinglot?> = BehaviorRelay(value: nil)
     
-    var imageList: BehaviorRelay<[ImageElement]> = BehaviorRelay(value: [])
-    var markSymbolList: BehaviorRelay<[SymbolType]> = BehaviorRelay(value: [])
-
-    var noticeList: BehaviorRelay<[String]> = BehaviorRelay(value: [])
-    
-    private var localizer:LocalizerType
-
-    private let disposeBag = DisposeBag()
-    
     private var within:WithinElement?
     private let userData:UserData?
     
+    private var headerViewModel:ParkinglotDetailHeaderViewModelType?
     private var symbolViewModel:ParkinglotDetailSymbolViewModelType?
     private var priceViewModel:ParkinglotDetailPriceViewModelType?
     private var operationTimeViewModel:ParkinglotDetailOperationTimeViewModelType?
     private var reserveViewModel:ParkinglotDetailReserveViewModelType?
     private var noticeViewModel:ParkinglotDetailNoticeViewModelType?
+    
+    private var localizer:LocalizerType
+
+    private let disposeBag = DisposeBag()
     
     // MARK: - Initialize
     
@@ -75,14 +69,16 @@ class ParkinglotDetailViewModel: ParkinglotDetailViewModelType {
             })
             .disposed(by: disposeBag)
     }
-    
-    // MARK: - Binding
-    
-    func setupParkinglotInfo() {
-        
-    }
-    
+
     // MARK: - Public Methods
+    
+    func setHeaderViewModel(_ viewModel:ParkinglotDetailHeaderViewModel) {
+        headerViewModel = viewModel
+        
+        if let viewModel = headerViewModel {
+            viewModel.setDetailModelView(self)
+        }
+    }
     
     func setSymbolViewModel(_ viewModel:ParkinglotDetailSymbolViewModel) {
         symbolViewModel = viewModel
@@ -104,11 +100,22 @@ class ParkinglotDetailViewModel: ParkinglotDetailViewModelType {
         noticeViewModel = viewModel
     }
     
-    // MARK: - Local Methods
+    // MARK: - Bookmark
     
+    func changeBookmark(_ state:Bool) {
+        if let id = within?.id {
+            self.bookmark(id: id, favorite: state)
+        }
+    }
+    
+    // MARK: - Local Methods
+
     func upateDetailInfo(_ element:Parkinglot) {
+        
+        updateFavorite(check: element.favoriteFlag)
+        
         if element.images.count > 0 {
-            updateParkinglotImage(element.images)
+            updateHeaderImage(element.images)
         }
         
         if let flags = element.flagElements {
@@ -134,8 +141,16 @@ class ParkinglotDetailViewModel: ParkinglotDetailViewModelType {
     
     // MARK: - Header
     
-    func updateParkinglotImage(_ images:[ImageElement]) {
-        imageList.accept(images)
+    func updateHeaderImage(_ images:[ImageElement]) {
+        if let viewModel = headerViewModel {
+            viewModel.setHeaderImages(images)
+        }
+    }
+    
+    func updateFavorite(check flag:Bool) {
+        if let viewModel = headerViewModel {
+            viewModel.setFavorite(flag)
+        }
     }
 
     // MARK: - Operation Time
@@ -197,7 +212,23 @@ class ParkinglotDetailViewModel: ParkinglotDetailViewModelType {
             }
     }
     
-    func bookmark(id:Int) {
-       
+    func bookmark(id:Int, favorite:Bool) {
+        if favorite {
+            ParkingLot.favorites(parkinglotId: id)
+                .asObservable()
+                .subscribe(onNext: { code in
+                    let changed:Bool = (code == .success) ? true : false
+                    self.updateFavorite(check: changed)
+                })
+                .disposed(by: disposeBag)
+        } else {
+            ParkingLot.delete_favorites(parkinglotId: id)
+                .asObservable()
+                .subscribe(onNext: { code in
+                    let changed:Bool = (code == .success) ? false : true
+                    self.updateFavorite(check: changed)
+                })
+                .disposed(by: disposeBag)
+        }
     }
 }

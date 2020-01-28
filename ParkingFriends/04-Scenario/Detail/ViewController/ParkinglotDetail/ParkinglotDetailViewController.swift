@@ -65,28 +65,16 @@ class ParkinglotDetailViewController: UIViewController {
             .disposed(by: disposeBag)
     }
     
-    // MARK: - Setup Header
+    // MARK: - Setup View Model
     
-    private func setupHeaderView() {
-        viewModel.imageList
-            .asDriver()
-            .drive(onNext: { images in
-                if images.count > 0 {
-                    self.headerView.setImageUrl(images)
-                }
-            })
-            .disposed(by: disposeBag)
-
-        headerView.bookmarkAction = { flag in
-            debugPrint("[HEADER] Tapped BOOKMARK")
-        }
-        
-        headerView.navigationAction = { id in
-            debugPrint("[HEADER] Tapped NAVIGATION")
+    private func setupHeaderViewModel() {
+        if let viewModel = headerView.getViewModel() {
+            self.viewModel.setHeaderViewModel(viewModel)
+            
+            headerView.navigationAction = { flag in
+            }
         }
     }
-
-    // MARK: - Setup View Model
     
     private func setupParkingSymbolViewModel() {
         if let viewModel = symbolView.getViewModel() {
@@ -109,6 +97,10 @@ class ParkinglotDetailViewController: UIViewController {
     private func setupReserveSatusViewModel() {
         if let viewModel = reserveStatusView.getViewModel() {
             self.viewModel.setReserveViewModel(viewModel)
+            
+            reserveStatusView.infoGuideAction = {
+                self.navigateToInfoGuide()
+            }
         }
     }
     
@@ -149,8 +141,8 @@ class ParkinglotDetailViewController: UIViewController {
         setupButtonBinding()
         
         setupScrollView()
-        setupHeaderView()
 
+        setupHeaderViewModel()
         setupParkingSymbolViewModel()
         setupPriceViewModel()
         setupOperationTimeViewModel()
@@ -188,6 +180,13 @@ class ParkinglotDetailViewController: UIViewController {
         within = element
     }
 
+     // MARK: - Navigation
+     
+     private func navigateToInfoGuide() {
+         let target = Storyboard.detail.instantiateViewController(withIdentifier: "ParkinglotDetailTimeLabelGuideViewController") as! ParkinglotDetailTimeLabelGuideViewController
+         
+        self.modal(target, transparent:true, animated: false)
+     }
     /*
     // MARK: - Navigation
 

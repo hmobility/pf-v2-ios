@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Time Fixed Label Guide View Controller-->
+        <!--Parkinglot Detail Time Fixed Label Guide View Controller-->
         <scene sceneID="XxO-z8-OTF">
             <objects>
-                <viewController storyboardIdentifier="TimeFixedLabelGuideViewController" id="OGE-5h-cMz" customClass="TimeFixedLabelGuideViewController" customModule="ParkingFriends" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ParkinglotDetailTimeFixedLabelGuideViewController" id="OGE-5h-cMz" customClass="ParkinglotDetailTimeFixedLabelGuideViewController" customModule="ParkingFriends" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="y05-uH-9UX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -332,15 +332,23 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="30n-YV-cxs"/>
                     </view>
+                    <connections>
+                        <outlet property="availableDayLabel" destination="H2K-JU-L9d" id="8gH-hB-dfJ"/>
+                        <outlet property="availableTimeLabel" destination="Q6k-gj-QoB" id="NUR-GM-PLd"/>
+                        <outlet property="existingTimeLabel" destination="8Mb-Ng-6La" id="Fc8-pD-wVl"/>
+                        <outlet property="unavailableDayLabel" destination="bJB-qv-Ij2" id="NcM-wT-aLU"/>
+                        <outlet property="unavailableTimeDescLabel" destination="bHX-KL-ZoX" id="5Da-oT-oKW"/>
+                        <outlet property="unavailableTimeLabel" destination="VST-Sc-efQ" id="Duh-La-Q0H"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2u0-UY-JAE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2679.7101449275365" y="726.5625"/>
         </scene>
-        <!--Time Label Guide View Controller-->
+        <!--Parkinglot Detail Time Label Guide View Controller-->
         <scene sceneID="o2q-Wh-s5e">
             <objects>
-                <viewController storyboardIdentifier="TimeLabelGuideViewController" id="17M-mb-Cqi" customClass="TimeLabelGuideViewController" customModule="ParkingFriends" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ParkinglotDetailTimeLabelGuideViewController" id="17M-mb-Cqi" customClass="ParkinglotDetailTimeLabelGuideViewController" customModule="ParkingFriends" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="lsJ-Jg-3OK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -404,8 +412,8 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="기존 설정 예약시간" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n2c-88-7qi" userLabel="Label - Description">
-                                                        <rect key="frame" x="216.5" y="0.0" width="119.5" height="16"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="예약 가능시간" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n2c-88-7qi" userLabel="Label - Description">
+                                                        <rect key="frame" x="248.5" y="0.0" width="87.5" height="16"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="16" id="rZ0-Re-lre"/>
                                                         </constraints>
@@ -441,8 +449,8 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="기존 설정 예약시간" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QaM-7b-Kjg" userLabel="Label - Title">
-                                                        <rect key="frame" x="216.5" y="0.0" width="119.5" height="16"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="예약 불가시간" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QaM-7b-Kjg" userLabel="Label - Title">
+                                                        <rect key="frame" x="248.5" y="0.0" width="87.5" height="16"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="16" id="8GK-Wj-MtW"/>
                                                         </constraints>
@@ -495,7 +503,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" name="DarkGrey2"/>
+                        <color key="backgroundColor" red="0.11400000005960464" green="0.11800000071525574" blue="0.125" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="MgV-sN-1Mw" firstAttribute="leading" secondItem="lsJ-Jg-3OK" secondAttribute="leading" constant="12" id="fGi-3K-yFQ"/>
                             <constraint firstItem="MgV-sN-1Mw" firstAttribute="centerY" secondItem="lsJ-Jg-3OK" secondAttribute="centerY" id="hmP-QB-VkS"/>
@@ -503,6 +511,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yqx-Pg-0DE"/>
                     </view>
+                    <connections>
+                        <outlet property="availableTimeLabel" destination="n2c-88-7qi" id="g5i-1y-H3O"/>
+                        <outlet property="existingTimeLabel" destination="H1B-cq-QBT" id="oXN-tR-9pg"/>
+                        <outlet property="unavailableTimeDescLabel" destination="u5g-hs-zTp" id="DFh-XN-ucc"/>
+                        <outlet property="unavailableTimeLabel" destination="QaM-7b-Kjg" id="0y4-vJ-Vtj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Ne-Xn-fzp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2715,9 +2729,6 @@
         </namedColor>
         <namedColor name="DarkGrey">
             <color red="0.10199999809265137" green="0.10199999809265137" blue="0.10599999874830246" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="DarkGrey2">
-            <color red="0.11400000005960464" green="0.11800000071525574" blue="0.125" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="DarkGrey3">
             <color red="0.10999999940395355" green="0.11400000005960464" blue="0.11400000005960464" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
