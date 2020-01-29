@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ParkinglotDetailGuideItemView: UIView {
+class ParkinglotDetailNoticeItemView: UIView {
     @IBOutlet weak var titleLabel: UILabel!
     
     private let disposeBag = DisposeBag()
@@ -30,12 +30,14 @@ class ParkinglotDetailGuideItemView: UIView {
     }
 }
 
-class ParkinglotDetailGuideView: UIStackView {
-    @IBOutlet weak var titleHeaderView: ParkinglotDetailGuideItemView!
+class ParkinglotDetailNoticeView: UIStackView {
+    @IBOutlet weak var titleHeaderView: ParkinglotDetailNoticeItemView!
     @IBOutlet weak var contentsView: UIStackView!
     @IBOutlet weak var footerView: UIView!
     
     private var stringItems:BehaviorRelay<[String]> = BehaviorRelay(value: [])
+    
+    private lazy var viewModel: ParkinglotDetailNoticeViewModelType = ParkinglotDetailNoticeViewModel()
     
     private let disposeBag = DisposeBag()
     
@@ -44,35 +46,47 @@ class ParkinglotDetailGuideView: UIStackView {
     // MARK: - Initialize
     
     private func initialize() {
-        setupBinding()
+        setupTitleBinding()
     }
     
     // MARK: - Binding
     
-    private func setupBinding() {
-        localizer.localized("ttl_detail_guideline")
-                .asDriver()
-                .drive(self.titleHeaderView.titleLabel.rx.text)
-                .disposed(by: disposeBag)
+    private func setupTitleBinding() {
+        viewModel.viewTitleText
+            .asDriver()
+            .drive(self.titleHeaderView.titleLabel.rx.text)
+            .disposed(by: disposeBag)
     }
     
-    private func setupContentsBinding() {
-        stringItems.asObservable()
-                .subscribe(onNext: { items in
-                    let isHidden = items.count > 0 ? false : true
-                    self.titleHeaderView.isHidden = isHidden
-                    self.footerView.isHidden = isHidden
-                
-                    for item in items {
-                        let itemView = ParkinglotDetailGuideItemView.loadFromXib() as ParkinglotDetailGuideItemView
-                        itemView.setContent(item)
-                        self.contentsView.addArrangedSubview(itemView)
-                    }
-                })
-                .disposed(by: disposeBag)
+    private func setupItemBinding() {
+        viewModel.getNoticeList()
+            .map { (hidden, items) -> [String] in
+                self.setHidden(hidden)
+                return items
+            }
+            .flatMap({
+                Observable.from($0)
+            })
+            .subscribe(onNext: { item in
+                let itemView = ParkinglotDetailNoticeItemView.loadFromXib() as ParkinglotDetailNoticeItemView
+                itemView.setContent(item)
+                self.contentsView.addArrangedSubview(itemView)
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    // MARK: - Local Methods
+    
+    func setHidden(_ flag:Bool) {
+        self.titleHeaderView.isHidden = flag
+        self.footerView.isHidden = flag
     }
     
     // MARK: - Public Methods
+    
+    public func getViewModel() -> ParkinglotDetailNoticeViewModel? {
+        return (viewModel as! ParkinglotDetailNoticeViewModel)
+    }
     
     public func setContents(_ items:[String]) {
         stringItems.accept(items)
@@ -80,7 +94,6 @@ class ParkinglotDetailGuideView: UIStackView {
     
     // MARK: - Life Cycle
     
-
     override func layoutSubviews() {
         super.layoutSubviews()
         initialize()
@@ -89,7 +102,7 @@ class ParkinglotDetailGuideView: UIStackView {
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
-        setupContentsBinding()
+        setupItemBinding()
     }
   
 

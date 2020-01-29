@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TimeLabelGuideViewController: UIViewController {
+class ParkinglotDetailTimeLabelGuideViewController: UIViewController {
     @IBOutlet weak var existingTimeLabel: UILabel!
     @IBOutlet weak var availableTimeLabel: UILabel!
     @IBOutlet weak var unavailableTimeLabel: UILabel!
@@ -16,7 +16,7 @@ class TimeLabelGuideViewController: UIViewController {
     
     private let disposeBag = DisposeBag()
 
-    private lazy var viewModel: CommonLabelGuideViewModelType = CommonLabelGuideViewModel()
+    private lazy var viewModel: ParkinglotDetailInfoLabelGuideViewModelType = ParkinglotDetailInfoLabelGuideViewModel()
 
     // MARK: - Binding
     
@@ -26,7 +26,7 @@ class TimeLabelGuideViewController: UIViewController {
             .disposed(by: disposeBag)
         
         viewModel.availableTimeText
-            .drive(existingTimeLabel.rx.text)
+            .drive(availableTimeLabel.rx.text)
             .disposed(by: disposeBag)
         
         viewModel.unavailableTimeText

@@ -28,7 +28,7 @@ class ParkinglotDetailOperationTimeView: UIStackView {
     @IBOutlet weak var sundayView: ParkinglotDetailOperationgTimeItemView!
     @IBOutlet weak var holidayView: ParkinglotDetailOperationgTimeItemView!
     
-    private var operationTimeList:BehaviorRelay<[ParkinglotOperationTime]> = BehaviorRelay(value: [])
+    private lazy var viewModel: ParkinglotDetailOperationTimeViewModelType = ParkinglotDetailOperationTimeViewModel()
   
     private let disposeBag = DisposeBag()
     
@@ -37,92 +37,87 @@ class ParkinglotDetailOperationTimeView: UIStackView {
     // MARK: - Initializer
 
     private func initialize() {
+        setupTitleBinding()
+        setupInitTimeBinding()
         setupBinding()
         setupTimeBinding()
     }
     
     // MARK: - Public Methods
     
-    public func setOperationTimeList(_ items:[ParkinglotOperationTime]) {
-        operationTimeList.accept(items)
+    public func getViewModel() -> ParkinglotDetailOperationTimeViewModel? {
+        return (viewModel as! ParkinglotDetailOperationTimeViewModel)
     }
-    
+
     // MARK: - Binding
     
-    private func setupBinding() {
-        localizer.localized("ttl_detail_operating_time")
+    private func setupTitleBinding() {
+        viewModel.viewTitleText
             .asDriver()
             .drive(self.titleLabel.rx.text)
             .disposed(by: disposeBag)
-        
-        localizer.localized("ttl_operationg_time_weekday")
-            .asDriver()
-            .drive(self.weekdayView.titleLabel.rx.text)
-            .disposed(by: disposeBag)
-        
-        localizer.localized("txt_day_closed")
+    }
+    
+    private func setupInitTimeBinding() {
+        viewModel.closedStateText
             .asDriver()
             .drive(self.weekdayView.descLabel.rx.text)
             .disposed(by: disposeBag)
         
-        localizer.localized("ttl_operationg_time_saturday")
-            .asDriver()
-            .drive(self.saturdayView.titleLabel.rx.text)
-            .disposed(by: disposeBag)
-        
-        localizer.localized("txt_day_closed")
-            .asDriver()
-            .drive(self.saturdayView.descLabel.rx.text)
-            .disposed(by: disposeBag)
-        
-        localizer.localized("ttl_operationg_time_sunday")
+        viewModel.closedStateText
               .asDriver()
-              .drive(self.sundayView.titleLabel.rx.text)
+              .drive(self.saturdayView.descLabel.rx.text)
               .disposed(by: disposeBag)
           
-        localizer.localized("txt_day_closed")
+        viewModel.closedStateText
               .asDriver()
               .drive(self.sundayView.descLabel.rx.text)
               .disposed(by: disposeBag)
         
-        localizer.localized("ttl_operationg_time_holiday")
-            .asDriver()
-            .drive(self.holidayView.titleLabel.rx.text)
-            .disposed(by: disposeBag)
-        
-        localizer.localized("txt_day_closed")
+        viewModel.closedStateText
             .asDriver()
             .drive(self.holidayView.descLabel.rx.text)
             .disposed(by: disposeBag)
     }
     
+    private func setupBinding() {
+        viewModel.weekdayFieldText
+            .asDriver()
+            .drive(self.weekdayView.titleLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        viewModel.saturdayFieldText
+            .asDriver()
+            .drive(self.saturdayView.titleLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        viewModel.sundayFieldText
+              .asDriver()
+              .drive(self.sundayView.titleLabel.rx.text)
+              .disposed(by: disposeBag)
+        
+        viewModel.holidayFieldText
+            .asDriver()
+            .drive(self.holidayView.titleLabel.rx.text)
+            .disposed(by: disposeBag)
+    }
+    
     private func setupTimeBinding() {
-        operationTimeList
-            .asObservable()
-            .flatMap {
-                Observable.from($0)
-            }
-            .filter {
-                $0.operationFlag
-            }
-            .subscribe(onNext:{ item in
-                let time = DisplayTimeHandler().displayOperationTime(start: item.from, end: item.to)
-                switch item.type {
+        viewModel.getOperationTimeList()
+            .subscribe(onNext: { (operationType, timeString) in
+                switch operationType {
                 case .holiday:
-                    self.holidayView.setOperationTime(with: time)
+                    self.holidayView.setOperationTime(with: timeString)
                 case .weekday:
-                    self.weekdayView.setOperationTime(with: time)
+                    self.weekdayView.setOperationTime(with: timeString)
                 case .sunday:
-                    self.sundayView.setOperationTime(with: time)
+                    self.sundayView.setOperationTime(with: timeString)
                 case .saturday:
-                    self.saturdayView.setOperationTime(with: time)
-                default:
-                    break
+                    self.saturdayView.setOperationTime(with: timeString)
                 }
             })
             .disposed(by: disposeBag)
     }
-    
     
     // MARK: - Life Cycle
     

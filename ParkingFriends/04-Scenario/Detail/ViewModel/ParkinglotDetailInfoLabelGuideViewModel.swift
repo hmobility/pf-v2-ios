@@ -8,29 +8,29 @@
 
 import Foundation
 
-protocol CommonLabelGuideViewModelType {
-    var rserveLabelTitle: Driver<String> { get }
+protocol ParkinglotDetailInfoLabelGuideViewModelType {
+    var timeTicketLabelTitle: Driver<String> { get }
     var existingTimeText: Driver<String> { get }
     var availableTimeText: Driver<String> { get }
     var unavailableTimeText: Driver<String> { get }
     var unavailableTimeDescText: Driver<String> { get }
     
-    var monthlyLabelTitle: Driver<String> { get }
-    var existingDayText: Driver<String> { get }
+    var fixedTicketLabelTitle: Driver<String> { get }
     var availableDayText: Driver<String> { get }
+    var unavailableDayText: Driver<String> { get }
 }
 
-class CommonLabelGuideViewModel: CommonLabelGuideViewModelType {
-    var rserveLabelTitle: Driver<String>
+class ParkinglotDetailInfoLabelGuideViewModel: ParkinglotDetailInfoLabelGuideViewModelType {
+    var timeTicketLabelTitle: Driver<String>
     var existingTimeText: Driver<String>
     var availableTimeText: Driver<String>
     var unavailableTimeText: Driver<String>
     var unavailableTimeDescText: Driver<String>
     
-    var monthlyLabelTitle: Driver<String>
-    var existingDayText: Driver<String>
+    var fixedTicketLabelTitle: Driver<String>
     var availableDayText: Driver<String>
-
+    var unavailableDayText: Driver<String>
+    
     private var localizer:LocalizerType
      
     // MARK: - Initialize
@@ -38,15 +38,15 @@ class CommonLabelGuideViewModel: CommonLabelGuideViewModelType {
     init(localizer: LocalizerType = Localizer.shared) {
         self.localizer = localizer
         
-        rserveLabelTitle = localizer.localized("ttl_reserve_label")
+        timeTicketLabelTitle = localizer.localized("ttl_reserve_label")
         existingTimeText = localizer.localized("txt_guide_existing_time")
         availableTimeText = localizer.localized("txt_guide_available_time")
         unavailableTimeText = localizer.localized("txt_guide_unavailable_time")
         unavailableTimeDescText = localizer.localized("dsc_guide_unavailable_time")
         
-        monthlyLabelTitle = localizer.localized("ttl_monthly_label")
-        existingDayText = localizer.localized("txt_guide_available_day")
-        availableDayText = localizer.localized("txt_guide_unavailable_day")
+        fixedTicketLabelTitle = localizer.localized("ttl_monthly_label")
+        availableDayText = localizer.localized("txt_guide_available_day")
+        unavailableDayText = localizer.localized("txt_guide_unavailable_day")
     }
     
 }

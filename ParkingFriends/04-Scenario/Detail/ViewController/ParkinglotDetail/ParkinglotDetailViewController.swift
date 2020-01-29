@@ -22,7 +22,7 @@ class ParkinglotDetailViewController: UIViewController {
     @IBOutlet weak var reserveStatusView: ParkinglotDetailReserveView!
     @IBOutlet weak var priceView:ParkinglotDetailPriceInfoView!
     @IBOutlet weak var operationTimeView:ParkinglotDetailOperationTimeView!
-    @IBOutlet weak var noticeView:ParkinglotDetailGuideView!
+    @IBOutlet weak var noticeView:ParkinglotDetailNoticeView!
     
     @IBOutlet var navigationBar:TransparentNavigationBar!
     
@@ -65,70 +65,48 @@ class ParkinglotDetailViewController: UIViewController {
             .disposed(by: disposeBag)
     }
     
-    // MARK: - Setup Header
-    
-    private func setupHeaderView() {
-        viewModel.imageList
-            .asDriver()
-            .drive(onNext: { images in
-                if images.count > 0 {
-                    self.headerView.setImageUrl(images)
-                }
-            })
-            .disposed(by: disposeBag)
-
-        headerView.bookmarkAction = { flag in
-            debugPrint("[HEADER] Tapped BOOKMARK")
-        }
-        
-        headerView.navigationAction = { id in
-            debugPrint("[HEADER] Tapped NAVIGATION")
-        }
-    }
-    
-    private func setupSymbolView() {
-        viewModel.markSymbolList
-            .asDriver()
-            .drive(onNext: { symbols in
-                self.symbolView.setSymbolList(symbols)
-            })
-            .disposed(by: disposeBag)
-    }
-    
-    private func setupPriceView() {
-        viewModel.detailInfo
-            .asDriver()
-            .drive(onNext: { info in
-                if let item = info {
-                    self.priceView.setSupported(item.supportItems, fee: item.baseFee)
-                }
-            })
-            .disposed(by: disposeBag)
-    }
-    
-    private func setupOperationTimeView() {
-        viewModel.operationTimeList
-            .asDriver()
-            .drive(onNext: { operations in
-                self.operationTimeView.setOperationTimeList(operations)
-            })
-            .disposed(by: disposeBag)
-    }
-    
-    private func setupGuideView() {
-        viewModel.noticeList
-            .asDriver()
-            .drive(onNext: { notices in
-                self.noticeView.setContents(notices)
-            })
-            .disposed(by: disposeBag)
-    }
-    
     // MARK: - Setup View Model
+    
+    private func setupHeaderViewModel() {
+        if let viewModel = headerView.getViewModel() {
+            self.viewModel.setHeaderViewModel(viewModel)
+            
+            headerView.navigationAction = { flag in
+            }
+        }
+    }
+    
+    private func setupParkingSymbolViewModel() {
+        if let viewModel = symbolView.getViewModel() {
+            self.viewModel.setSymbolViewModel(viewModel)
+        }
+    }
+    
+    private func setupPriceViewModel() {
+        if let viewModel = priceView.getViewModel() {
+            self.viewModel.setPriceViewModel(viewModel)
+        }
+    }
+    
+    private func setupOperationTimeViewModel() {
+        if let viewModel = operationTimeView.getViewModel() {
+            self.viewModel.setOperationTimeViewModel(viewModel)
+        }
+    }
     
     private func setupReserveSatusViewModel() {
         if let viewModel = reserveStatusView.getViewModel() {
             self.viewModel.setReserveViewModel(viewModel)
+            
+            reserveStatusView.infoGuideAction = {
+                self.navigateToInfoGuide()
+            }
+        }
+    }
+    
+    private func setupNoticeViewModel() {
+        if let viewModel = noticeView.getViewModel() {
+            self.viewModel.setNoticeViewModel(viewModel)
         }
     }
     
@@ -163,13 +141,13 @@ class ParkinglotDetailViewController: UIViewController {
         setupButtonBinding()
         
         setupScrollView()
-        setupHeaderView()
-        setupSymbolView()
-        setupPriceView()
-        setupOperationTimeView()
-        setupGuideView()
-        
+
+        setupHeaderViewModel()
+        setupParkingSymbolViewModel()
+        setupPriceViewModel()
+        setupOperationTimeViewModel()
         setupReserveSatusViewModel()
+        setupNoticeViewModel()
     }
         
     // MARK: - Life Cycle
@@ -202,6 +180,13 @@ class ParkinglotDetailViewController: UIViewController {
         within = element
     }
 
+     // MARK: - Navigation
+     
+     private func navigateToInfoGuide() {
+         let target = Storyboard.detail.instantiateViewController(withIdentifier: "ParkinglotDetailTimeLabelGuideViewController") as! ParkinglotDetailTimeLabelGuideViewController
+         
+        self.modal(target, transparent:true, animated: false)
+     }
     /*
     // MARK: - Navigation
 

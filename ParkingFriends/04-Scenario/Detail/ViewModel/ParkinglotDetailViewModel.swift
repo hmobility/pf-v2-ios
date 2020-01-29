@@ -16,14 +16,15 @@ protocol ParkinglotDetailViewModelType {
     
     var detailInfo: BehaviorRelay<Parkinglot?> { get }
     
-    var imageList: BehaviorRelay<[ImageElement]> { get }
-    var markSymbolList: BehaviorRelay<[SymbolType]> { get }
-    var operationTimeList: BehaviorRelay<[ParkinglotOperationTime]> { get }
-    var noticeList: BehaviorRelay<[String]> { get }
-    
     func loadDetailInfo()
+    func changeBookmark(_ state:Bool) 
     
+    func setHeaderViewModel(_ viewModel:ParkinglotDetailHeaderViewModel)
+    func setSymbolViewModel(_ viewModel:ParkinglotDetailSymbolViewModel)
+    func setPriceViewModel(_ viewModel:ParkinglotDetailPriceViewModel)
     func setReserveViewModel(_ viewModel:ParkinglotDetailReserveViewModel)
+    func setOperationTimeViewModel(_ viewModel:ParkinglotDetailOperationTimeViewModel)
+    func setNoticeViewModel(_ viewModel:ParkinglotDetailNoticeViewModel)
 }
 
 class ParkinglotDetailViewModel: ParkinglotDetailViewModelType {
@@ -32,21 +33,20 @@ class ParkinglotDetailViewModel: ParkinglotDetailViewModelType {
     
     var detailInfo: BehaviorRelay<Parkinglot?> = BehaviorRelay(value: nil)
     
-    var imageList: BehaviorRelay<[ImageElement]> = BehaviorRelay(value: [])
-    var markSymbolList: BehaviorRelay<[SymbolType]> = BehaviorRelay(value: [])
-    var operationTimeList: BehaviorRelay<[ParkinglotOperationTime]> = BehaviorRelay(value: [])
-    var noticeList: BehaviorRelay<[String]> = BehaviorRelay(value: [])
+    private var within:WithinElement?
+    private let userData:UserData?
+    
+    private var headerViewModel:ParkinglotDetailHeaderViewModelType?
+    private var symbolViewModel:ParkinglotDetailSymbolViewModelType?
+    private var priceViewModel:ParkinglotDetailPriceViewModelType?
+    private var operationTimeViewModel:ParkinglotDetailOperationTimeViewModelType?
+    private var reserveViewModel:ParkinglotDetailReserveViewModelType?
+    private var noticeViewModel:ParkinglotDetailNoticeViewModelType?
     
     private var localizer:LocalizerType
 
     private let disposeBag = DisposeBag()
     
-   // private var parkinglot:Parkinglot?
-    private var within:WithinElement?
-    private let userData:UserData?
-    
-    private var reserveViewModel:ParkinglotDetailReserveViewModelType?
-     
     // MARK: - Initialize
     
     init(localizer: LocalizerType = Localizer.shared, within:WithinElement, userData:UserData = UserData.shared) {
@@ -69,36 +69,69 @@ class ParkinglotDetailViewModel: ParkinglotDetailViewModelType {
             })
             .disposed(by: disposeBag)
     }
+
+    // MARK: - Public Methods
     
-    // MARK: - Binding
-    
-    func setupParkinglotInfo() {
+    func setHeaderViewModel(_ viewModel:ParkinglotDetailHeaderViewModel) {
+        headerViewModel = viewModel
         
+        if let viewModel = headerViewModel {
+            viewModel.setDetailModelView(self)
+        }
     }
     
-    // MARK: - Public Methods
+    func setSymbolViewModel(_ viewModel:ParkinglotDetailSymbolViewModel) {
+        symbolViewModel = viewModel
+    }
+    
+    func setPriceViewModel(_ viewModel:ParkinglotDetailPriceViewModel) {
+        priceViewModel = viewModel
+    }
+    
+    func setOperationTimeViewModel(_ viewModel:ParkinglotDetailOperationTimeViewModel) {
+        operationTimeViewModel = viewModel
+    }
     
     func setReserveViewModel(_ viewModel:ParkinglotDetailReserveViewModel) {
         reserveViewModel = viewModel
     }
     
-    // MARK: - Local Methods
+    func setNoticeViewModel(_ viewModel:ParkinglotDetailNoticeViewModel) {
+        noticeViewModel = viewModel
+    }
     
+    // MARK: - Bookmark
+    
+    func changeBookmark(_ state:Bool) {
+        if let id = within?.id {
+            self.bookmark(id: id, favorite: state)
+        }
+    }
+    
+    // MARK: - Local Methods
+
     func upateDetailInfo(_ element:Parkinglot) {
+        
+        updateFavorite(check: element.favoriteFlag)
+        
         if element.images.count > 0 {
-            updateParkinglotImage(element.images)
+            updateHeaderImage(element.images)
         }
         
         if let flags = element.flagElements {
-            updateParkingSymbols(flags)
+            updateParkingSymbol(flags)
+        }
+        
+        if element.supportItems.count > 0 {
+            updatePriceTable(element.supportItems, baseFee: element.baseFee)
         }
         
         if element.notices.count > 0 {
-            updateNotice(element.notices)
+            updateNoticeItems(element.notices)
         }
         
         if element.operationTimes.count > 0 {
-            udpateOperationTime(element.operationTimes)
+            updateOperationTime(element.operationTimes)
         }
         
         if element.products.count > 0, let data = userData {
@@ -108,20 +141,40 @@ class ParkinglotDetailViewModel: ParkinglotDetailViewModelType {
     
     // MARK: - Header
     
-    func updateParkinglotImage(_ images:[ImageElement]) {
-        imageList.accept(images)
+    func updateHeaderImage(_ images:[ImageElement]) {
+        if let viewModel = headerViewModel {
+            viewModel.setHeaderImages(images)
+        }
+    }
+    
+    func updateFavorite(check flag:Bool) {
+        if let viewModel = headerViewModel {
+            viewModel.setFavorite(flag)
+        }
     }
 
     // MARK: - Operation Time
     
-    func udpateOperationTime(_ items:[ParkinglotOperationTime]) {
-        operationTimeList.accept(items)
+    func updateOperationTime(_ items:[ParkinglotOperationTime]) {
+        if let viewModel = operationTimeViewModel {
+            viewModel.setOperationTimes(items)
+        }
     }
     
-    // MARK: - Notice
+    // MARK: - Price Table
     
-    func updateNotice(_ items:[String]) {
-        noticeList.accept(items)
+    func updatePriceTable(_ items:[ProductType], baseFee fee:Fee?) {
+        if let viewModel = priceViewModel {
+            viewModel.setSupported(items, fee: fee)
+        }
+    }
+    
+    // MARK: - Symbol
+    
+    func updateParkingSymbol(_ item:FlagElement) {
+        if let viewModel = symbolViewModel {
+            viewModel.setParkingSymbols(item)
+        }
     }
     
     // MARK: - Reserve
@@ -129,6 +182,14 @@ class ParkinglotDetailViewModel: ParkinglotDetailViewModelType {
     func updateReserveTime(_ items:[ProductElement], onReserve duration:DateDuration) {
         if let viewModel = reserveViewModel {
             viewModel.setProducts(items, onReserve:duration)
+        }
+    }
+    
+    // MARK: - Notice
+      
+    func updateNoticeItems(_ items:[String]) {
+        if let viewModel = noticeViewModel {
+            viewModel.setContents(items)
         }
     }
     
@@ -151,50 +212,23 @@ class ParkinglotDetailViewModel: ParkinglotDetailViewModelType {
             }
     }
     
-    func bookmark(id:Int) {
-       
-    }
-}
-
-// MARK: - Symbol
-
-extension ParkinglotDetailViewModel {
-
-func updateParkingSymbols(_ flagElements:FlagElement) {
-    let symbols = getParkinglotSymbols(flagElements)
-    
-    markSymbolList.accept(symbols)
-}
-
-func getParkinglotSymbols(_ flagElements:FlagElement) -> [SymbolType] {
-    var symbols:[(title:String, image:UIImage)] = []
-    
-    if flagElements.bleGateFlag {
-        symbols.append((self.localizer.localized("itm_symbol_ble_gate"), UIImage(named:"icParkingLotInfoType21Outdoor")!))
-    }
-    
-    if flagElements.cctvFlag {
-        symbols.append((self.localizer.localized("itm_symbol_cctv"), UIImage(named:"icParkingLotInfoType3Cctv")!))
-    }
-    
-    if flagElements.chargerFlag {
-        symbols.append((self.localizer.localized("itm_symbol_charger"), UIImage(named:"icParkingLotInfoType3Electric")!))
-    }
-    
-    if flagElements.iotSensorFlag {
-        symbols.append((self.localizer.localized("itm_symbol_iot_sensor"), UIImage(named:"icParkingLotInfoType3Sensor")!))
-    }
-    
-    if flagElements.outsideFlag {
-        symbols.append((self.localizer.localized("itm_symbol_outdoor"), UIImage(named:"icParkingLotInfoType21Outdoor")!))
-    } else {
-        symbols.append((self.localizer.localized("itm_symbol_indoor"), UIImage(named:"icParkingLotInfoType22Indoor")!))
-    }
-    
-    if flagElements.partnerFlag {
-        symbols.append((self.localizer.localized("itm_symbol_partner"), UIImage(named:"icParkingLotInfoType14AffiliateAj")!))
-    }
-    
-    return symbols
+    func bookmark(id:Int, favorite:Bool) {
+        if favorite {
+            ParkingLot.favorites(parkinglotId: id)
+                .asObservable()
+                .subscribe(onNext: { code in
+                    let changed:Bool = (code == .success) ? true : false
+                    self.updateFavorite(check: changed)
+                })
+                .disposed(by: disposeBag)
+        } else {
+            ParkingLot.delete_favorites(parkinglotId: id)
+                .asObservable()
+                .subscribe(onNext: { code in
+                    let changed:Bool = (code == .success) ? false : true
+                    self.updateFavorite(check: changed)
+                })
+                .disposed(by: disposeBag)
+        }
     }
 }
