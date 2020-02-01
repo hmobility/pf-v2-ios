@@ -17,7 +17,7 @@ class ParkinglotDetailSymbolView: UIView {
     
     private let disposeBag = DisposeBag()
  
-    private lazy var viewModel: ParkinglotDetailSymbolViewModelType = ParkinglotDetailSymbolViewModel()
+    private var viewModel: ParkinglotDetailSymbolViewModelType = ParkinglotDetailSymbolViewModel()
     
     // MARK: - Public Methods
     
@@ -36,7 +36,7 @@ class ParkinglotDetailSymbolView: UIView {
     }
     
     private func initialize() {
-        
+        setupBinding()
     }
     
     // MARK: - Binding
@@ -54,14 +54,11 @@ class ParkinglotDetailSymbolView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        setupBinding()
     }
-    /*
+
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
-        // Drawing code
+        initialize()
     }
-    */
-
 }

@@ -117,7 +117,10 @@ class GuideViewController: UIViewController {
     private func navigateGuideFinished() {
         let target = Storyboard.tutorial.instantiateViewController(withIdentifier: "GuideFinishedViewController") as! GuideFinishedViewController
         let lastPageIndex = currentPageIndex + 1
-        self.navigationController?.pushViewController(target[lastPageIndex], animated: true)
+        
+        if let controller = self.navigationController {
+            controller.pushViewController(target[lastPageIndex], animated: true)
+        }
     }
     
     // MARK: - Navigation

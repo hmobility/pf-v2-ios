@@ -10,6 +10,7 @@
 "btn_skip" = "건너뛰기";
 "btn_save" = "저장";
 "btn_to_save" = "저장하기";
+"btn_to_apply" = "적용하기";
 "btn_remove" = "삭제";
 "btn_resend" = "재전송";
 "btn_to_next" = "다음으로";
@@ -28,6 +29,8 @@
 "btn_detail" = "상세정보";
 "btn_reservation_disabled" = "예약불가";
 "btn_to_reserve" = "예약하기";
+"btn_to_pay" = "결제하기";
+"btn_to_gift" = "선물하기";
 "btn_add" = "추가";
 "txt_none" = "없음";
 "txt_today" = "오늘";
@@ -63,6 +66,9 @@
 "itm_fri" = "금";
 "itm_sat" = "토";
 "itm_sun" = "일";
+"btn_car_add" = "차량 등록";
+"btn_car_change" = "차량 변경";
+"btn_gift" = "선물";
 
 // Entry
 "txt_signup_guide" = "파킹프렌즈가 처음이세요?";
@@ -227,11 +233,36 @@
 "ttl_operationg_time_holiday" = "공휴일";
 "txt_day_closed" = "휴무";
 "ttl_detail_guideline" = "안내·유의사항";
+"txt_detail_reserve_time_change" = "예약시간 변경하기";
+"ttl_detail_reserve_time_change" = "예약시간 변경";
+"ttl_detail_start_date" = "시작날짜";
+"ttl_detail_start_time" = "시작시간";
+"ttl_detail_end_date" = "종료날짜";
+"ttl_detail_end_time" = "시작시간";
 
 // Payment
 "ttl_payment_guide" = "유의사항을 확인하세요!";
 "txt_payment_contents" = "• 허가된 주차면에 한해 파킹프렌즈에 등록된 차량만 사용한다.\n• 주차 중, 차내 귀중품 도난에 대해 본인이 책임진다.\n• 주차장 내에 인화물, 위험물의 진입이나 흡연 및 화기의 취급을 금한다.\n• 주차면 이용 중 발생한 자기 차량 및 주차면 시설물 파손 등 모든 사고(3자에 의한 모든 사고 포함)에 대해 본인이 책임을 지며, 주차면 제공자 또는 파킹프렌즈에 대해 어떠한 민·형사상의 책임과 손해 배상을 제기하지 않는다.";
 "txt_payment_guide_no_display" = "다음부터 보지 않기";
+"ttl_payment_for_parking" = "결제하기";
+"ttl_gift_for_parking" = "선물하기";
+"ttl_payment_parking_info" = "주차 정보";
+"ttl_payment_parkinglot_name" = "주차장명";
+"ttl_payment_product" = "구매상품";
+"ttl_payment_date" = "결제일자";
+"ttl_payment_date_reserve" = "예약일자";
+"ttl_payment_time_reserve" = "예약시간";
+"ttl_payment_car_info" = "차량정보";
+"txt_payment_no_car_registered" = "등록된 차량 없음";
+"ttl_payment_method" = "결제 수단";
+"txt_payment_simple_card" = "간편 카드결제";
+"txt_payment_kakao_pay" = "카카오페이";
+"txt_payment_normal_card" = "일반카드 / 계좌이체 / 핸드폰 소액결제";
+"ttl_payment_point" = "포인트";
+"ttl_payment_point_owned" = "포인트";
+"txt_payment_no_point" = "보유 포인트 없음";
+"btn_reminder" = "유의사항";
+"ttl_total_payment_price" = "을 확인했으며, 개인정보 제3자제공에동의합니다.";
 
 // BLE
 "ttl_ble_parking_guide" = "%@부터 입차 가능합니다";
@@ -269,7 +300,7 @@
 "ttl_withdraw" = "회원 탈퇴";
 "dsc_widthdraw_guide" = "정말 파킹프렌즈를 떠나시려구요?";
 "txt_withdraw_guide" = "탈퇴하신다니 너무 아쉬워요.\n탈퇴하시기 전, 아래 유의사항을 확인해주세요.";
-"txt_withdraw_contract" = "• 보유하신 포인트가 모두 소멸됩니다.\n• 이용 전 또는 사용 기한이 남은 예약권, 정액권, 정기권  결제 정보가 모두 삭제됩니다.\n• 작성하신 스토리가 모두 삭제되며, 복구 불가합니다.\n• 개인 정보, 결제 및 주차 예약 내역이 모두 삭제되며,\n복구 불가합니다.";
+"txt_withdraw_contract" = "• 보유하신 포인트가 모두 소멸됩니다.\n• 이용 전 또는 사용 기한이 남은 예약권, 정액권,정기권 결제 정보가 모두 삭제됩니다.\n• 작성하신 스토리가 모두 삭제되며, 복구 불가합니다.\n• 개인 정보, 결제 및 주차 예약 내역이 모두 삭제되며,\n복구 불가합니다.";
 "btn_withdraw_contract_confirm" = "유의사항을 확인했습니다";
 "dsc_widthdraw_survey" = "탈퇴 사유를 알려주세요.";
 "txt_widthdraw_survey" = "떠나신다니 너무 아쉬워요.\n탈퇴 사유를 알려주시면 서비스 개선에 반영할게요.";
@@ -359,7 +390,7 @@
 
 // Dialog
 "dlg_ttl_time_ticket_duration" = "몇시간동안 주차하세요?";
-"dlt_ttl_time_ticket_start" = "주차 시작 시간을 선택하세요.";
+"dlg_ttl_time_ticket_start" = "주차 시작 시간을 선택하세요.";
 "dlg_ttl_fixed_ticket" = "주차시간을 선택하세요.";
 "dlg_ttl_monthly_ticket" = "주차일자와 주차기간을 선택하세요.";
 "dlg_txt_from" = "부터";

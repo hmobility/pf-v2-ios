@@ -28,7 +28,7 @@ class ParkinglotDetailOperationTimeView: UIStackView {
     @IBOutlet weak var sundayView: ParkinglotDetailOperationgTimeItemView!
     @IBOutlet weak var holidayView: ParkinglotDetailOperationgTimeItemView!
     
-    private lazy var viewModel: ParkinglotDetailOperationTimeViewModelType = ParkinglotDetailOperationTimeViewModel()
+    private var viewModel: ParkinglotDetailOperationTimeViewModelType = ParkinglotDetailOperationTimeViewModel()
   
     private let disposeBag = DisposeBag()
     
@@ -123,15 +123,11 @@ class ParkinglotDetailOperationTimeView: UIStackView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        initialize()
     }
-
-    /*
+ 
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
-        // Drawing code
+        initialize()
     }
-    */
-
 }

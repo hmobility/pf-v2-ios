@@ -25,6 +25,7 @@ protocol ParkinglotDetailViewModelType {
     func setReserveViewModel(_ viewModel:ParkinglotDetailReserveViewModel)
     func setOperationTimeViewModel(_ viewModel:ParkinglotDetailOperationTimeViewModel)
     func setNoticeViewModel(_ viewModel:ParkinglotDetailNoticeViewModel)
+    func setButtonViewModel(_ viewModel:ParkinglotDetailButtonViewModel)
 }
 
 class ParkinglotDetailViewModel: ParkinglotDetailViewModelType {
@@ -42,6 +43,7 @@ class ParkinglotDetailViewModel: ParkinglotDetailViewModelType {
     private var operationTimeViewModel:ParkinglotDetailOperationTimeViewModelType?
     private var reserveViewModel:ParkinglotDetailReserveViewModelType?
     private var noticeViewModel:ParkinglotDetailNoticeViewModelType?
+    private var buttonViewModel:ParkinglotDetailButtonViewModelType?
     
     private var localizer:LocalizerType
 
@@ -64,7 +66,7 @@ class ParkinglotDetailViewModel: ParkinglotDetailViewModelType {
         detailInfo.asDriver()
             .drive(onNext: { element in
                 if let data = element {
-                    self.upateDetailInfo(data)
+                    self.updateDetailInfo(data)
                 }
             })
             .disposed(by: disposeBag)
@@ -100,6 +102,9 @@ class ParkinglotDetailViewModel: ParkinglotDetailViewModelType {
         noticeViewModel = viewModel
     }
     
+    func setButtonViewModel(_ viewModel:ParkinglotDetailButtonViewModel) {
+        buttonViewModel = viewModel
+    }
     // MARK: - Bookmark
     
     func changeBookmark(_ state:Bool) {
@@ -110,7 +115,7 @@ class ParkinglotDetailViewModel: ParkinglotDetailViewModelType {
     
     // MARK: - Local Methods
 
-    func upateDetailInfo(_ element:Parkinglot) {
+    func updateDetailInfo(_ element:Parkinglot) {
         
         updateFavorite(check: element.favoriteFlag)
         
@@ -135,7 +140,9 @@ class ParkinglotDetailViewModel: ParkinglotDetailViewModelType {
         }
         
         if element.products.count > 0, let data = userData {
+            let bookable:Bool = element.products.count > 0
             updateReserveTime(element.products, onReserve: data.getOnReserveDate())
+            udpateBookableState(bookable)
         }
     }
     
@@ -190,6 +197,14 @@ class ParkinglotDetailViewModel: ParkinglotDetailViewModelType {
     func updateNoticeItems(_ items:[String]) {
         if let viewModel = noticeViewModel {
             viewModel.setContents(items)
+        }
+    }
+    
+    // MARK: - Button
+    
+    func udpateBookableState(_ enabled:Bool) {
+        if let viewModel = buttonViewModel {
+            viewModel.setBookableState(enabled)
         }
     }
     

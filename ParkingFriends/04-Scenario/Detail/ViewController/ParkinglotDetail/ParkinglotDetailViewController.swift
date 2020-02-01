@@ -17,17 +17,22 @@ extension ParkinglotDetailViewController : AnalyticsType {
 
 class ParkinglotDetailViewController: UIViewController {
     @IBOutlet weak var scrollView: MXScrollView!
+    
     @IBOutlet weak var headerView:ParkinglotDetailHeaderView!
+    
     @IBOutlet weak var symbolView:ParkinglotDetailSymbolView!
     @IBOutlet weak var reserveStatusView: ParkinglotDetailReserveView!
     @IBOutlet weak var priceView:ParkinglotDetailPriceInfoView!
     @IBOutlet weak var operationTimeView:ParkinglotDetailOperationTimeView!
     @IBOutlet weak var noticeView:ParkinglotDetailNoticeView!
+    @IBOutlet weak var buttonView:ParkinglotDetailButtonView!
     
     @IBOutlet var navigationBar:TransparentNavigationBar!
     
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var moreButton: UIButton!
+    @IBOutlet weak var giftButton: UIButton!
+    @IBOutlet weak var reserveButton: UIButton!
     
     private var within:WithinElement?
     
@@ -61,6 +66,25 @@ class ParkinglotDetailViewController: UIViewController {
         backButton.rx.tap
             .subscribe(onNext: { _ in
                 self.dismissRoot()
+            })
+            .disposed(by: disposeBag)
+        
+        moreButton.rx.tap
+            .subscribe(onNext: { _ in
+                self.dismissRoot()
+            })
+            .disposed(by: disposeBag)
+        
+        giftButton.rx.tap
+            .subscribe(onNext: { _ in
+                self.navigateToPayment()
+            })
+            .disposed(by: disposeBag)
+        
+        
+        reserveButton.rx.tap
+            .subscribe(onNext: { _ in
+                 self.navigateToPayment()
             })
             .disposed(by: disposeBag)
     }
@@ -110,6 +134,11 @@ class ParkinglotDetailViewController: UIViewController {
         }
     }
     
+    private func setupButtonViewModel() {
+        if let viewModel = buttonView.getViewModel() {
+            self.viewModel.setButtonViewModel(viewModel)
+        }
+    }
     // MARK: - Setup ScrollView
     
     private func setupScrollView() {
@@ -117,8 +146,8 @@ class ParkinglotDetailViewController: UIViewController {
         let maxY = navigationBar.frame.maxY
         let height = headerView.bounds.size.height
         
-        debugPrint("[HEADER] height : ", height, " Min Y :" , minY)
-     
+        debugPrint("[HEADER] height : ", height, ", Min Y :" , minY)
+
         scrollView.parallaxHeader.view = headerView
         scrollView.parallaxHeader.height = (height + minY)
         scrollView.parallaxHeader.minimumHeight = maxY
@@ -138,16 +167,16 @@ class ParkinglotDetailViewController: UIViewController {
     
     private func initialize() {
         setupNavigationBinding()
+        setupScrollView()
         setupButtonBinding()
         
-        setupScrollView()
-
         setupHeaderViewModel()
         setupParkingSymbolViewModel()
         setupPriceViewModel()
         setupOperationTimeViewModel()
         setupReserveSatusViewModel()
         setupNoticeViewModel()
+        setupButtonViewModel()
     }
         
     // MARK: - Life Cycle
@@ -168,12 +197,7 @@ class ParkinglotDetailViewController: UIViewController {
     }
     
     // MARK: - Local Methods
-    
-    private func updateDetail(with element:Parkinglot) {
-        let images = element.images
-        headerView.setImageUrl(images)
-    }
-   
+
     // MARK: - Public Method
     
     public func setWithinElement(_ element:WithinElement) {
@@ -181,15 +205,20 @@ class ParkinglotDetailViewController: UIViewController {
     }
 
      // MARK: - Navigation
-     
-     private func navigateToInfoGuide() {
-         let target = Storyboard.detail.instantiateViewController(withIdentifier: "ParkinglotDetailTimeLabelGuideViewController") as! ParkinglotDetailTimeLabelGuideViewController
-         
+    
+    private func navigateToInfoGuide() {
+        let target = Storyboard.detail.instantiateViewController(withIdentifier: "ParkinglotDetailTimeLabelGuideViewController") as! ParkinglotDetailTimeLabelGuideViewController
+        
         self.modal(target, transparent:true, animated: false)
-     }
+    }
+    
+    private func navigateToPayment() {
+        let target = Storyboard.payment.instantiateViewController(withIdentifier: "PaymentViewController") as! PaymentViewController
+        
+        self.push(target)
+    }
+       
     /*
-    // MARK: - Navigation
-
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
