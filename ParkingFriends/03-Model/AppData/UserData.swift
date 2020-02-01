@@ -15,7 +15,7 @@ class UserData: NSObject, NSCoding {
     var login: Login?
     var filter: FilterOption = FilterOption()
     
-    var displayPaymentGuide: Bool?
+    var displayPaymentGuide: Bool = true
     
     private var basis: ProductOption = ProductOption()
     /*
@@ -141,7 +141,7 @@ class UserData: NSObject, NSCoding {
     private func reset() {
         self.login = nil
         self.filter = FilterOption()
-        self.displayPaymentGuide = nil
+        self.displayPaymentGuide = true
         self.basis = ProductOption()
         
         save()

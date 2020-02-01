@@ -8,36 +8,18 @@
 
 import UIKit
 
-class ParkinglotDetailNoticeItemView: UIView {
+class ParkinglotDetailNoticeHeaderView: UIView {
     @IBOutlet weak var titleLabel: UILabel!
-    
-    private let disposeBag = DisposeBag()
-    
-    public func setContent(_ item:String) {
-        _ = Observable.of(item)
-                .map ({ text in
-                    let paragraph = NSMutableParagraphStyle()
-                    paragraph.lineSpacing = 3
-                    paragraph.headIndent = 12
-            
-                    return  NSMutableAttributedString(string: text,
-                                attributes:[NSAttributedString.Key.foregroundColor: Color.slateGrey,
-                                            NSAttributedString.Key.font: Font.gothicNeoRegular15,
-                                                NSAttributedString.Key.paragraphStyle:paragraph])
-                })
-                .bind(to: titleLabel.rx.attributedText)
-                .disposed(by: disposeBag)
-    }
 }
 
 class ParkinglotDetailNoticeView: UIStackView {
-    @IBOutlet weak var titleHeaderView: ParkinglotDetailNoticeItemView!
+    @IBOutlet weak var titleHeaderView: ParkinglotDetailNoticeHeaderView!
     @IBOutlet weak var contentsView: UIStackView!
     @IBOutlet weak var footerView: UIView!
     
     private var stringItems:BehaviorRelay<[String]> = BehaviorRelay(value: [])
     
-    private lazy var viewModel: ParkinglotDetailNoticeViewModelType = ParkinglotDetailNoticeViewModel()
+    private var viewModel: ParkinglotDetailNoticeViewModelType = ParkinglotDetailNoticeViewModel()
     
     private let disposeBag = DisposeBag()
     
@@ -47,6 +29,7 @@ class ParkinglotDetailNoticeView: UIStackView {
     
     private func initialize() {
         setupTitleBinding()
+        setupItemBinding()
     }
     
     // MARK: - Binding
@@ -96,14 +79,11 @@ class ParkinglotDetailNoticeView: UIStackView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        initialize()
     }
  
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
-        setupItemBinding()
+        initialize()
     }
-  
-
 }

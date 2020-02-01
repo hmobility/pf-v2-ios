@@ -10,7 +10,11 @@ import UIKit
 import ImageSlideshow
 import MXParallaxHeader
 
-class ParkinglotDetailHeaderView: UIView {
+protocol ParkinglotDetailHeaderViewType {
+    func getViewModel() -> ParkinglotDetailHeaderViewModel?
+}
+
+class ParkinglotDetailHeaderView: UIView, ParkinglotDetailHeaderViewType {
     @IBOutlet weak var imageSlideView: ImageSlideshow!
     @IBOutlet weak var dimmedImageView: UIImageView!
     @IBOutlet weak var pageControl: UIPageControl!
@@ -20,7 +24,7 @@ class ParkinglotDetailHeaderView: UIView {
     var bookmarkAction: ((_ flag:Bool) -> Void)?
     var navigationAction: ((_ id:String) -> Void)?
     
-    private lazy var viewModel: ParkinglotDetailHeaderViewModelType = ParkinglotDetailHeaderViewModel()
+    private var viewModel: ParkinglotDetailHeaderViewModelType = ParkinglotDetailHeaderViewModel()
     
     private let disposeBag = DisposeBag()
     
@@ -34,13 +38,13 @@ class ParkinglotDetailHeaderView: UIView {
         super.init(coder: aDecoder)
     }
     
-    private func initialize() {
+    func initialize() {
         setupImageView()
-        setupImageBinding()
         setupFavoriteState()
     }
     
-    private func setupContents() {
+    func setupContents() {
+        setupImageBinding()
         setupPageControl()
         setupButtonBinding()
     }
@@ -50,16 +54,10 @@ class ParkinglotDetailHeaderView: UIView {
     public func getViewModel() -> ParkinglotDetailHeaderViewModel? {
         return (viewModel as! ParkinglotDetailHeaderViewModel)
     }
-
-    public func setImageUrl(_ urls:[ImageElement]) {
-        let sources = urls.map {
-            return KingfisherSource(urlString: $0.url)
-        }
-        
-        self.imageSlideView.setImageInputs(sources as! [InputSource])
-    }
     
-    public func setAlpha(_ value:CGFloat) {
+    // MARK: - Image Handling
+    
+    func setAlpha(_ value:CGFloat) {
         if dimmedImageView != nil {
             dimmedImageView.alpha = value
         }
@@ -67,11 +65,23 @@ class ParkinglotDetailHeaderView: UIView {
     
     // MARK: - Local Methods
     
-    private func setupImageView() {
+    func setImageUrl(_ urls:[ImageElement]) {
+        let sources = urls.filter {
+                !$0.url.isEmpty
+            }
+    
+        let input = sources.map {
+                return KingfisherSource(urlString:  $0.url)
+            }
+        
+        self.imageSlideView.setImageInputs(input as! [InputSource])
+    }
+    
+    func setupImageView() {
         imageSlideView.contentScaleMode = UIViewContentMode.scaleAspectFill
     }
     
-    private func setupPageControl() {
+    func setupPageControl() {
         let pageControl = UIPageControl()
         pageControl.currentPageIndicatorTintColor = UIColor.white
         pageControl.pageIndicatorTintColor = UIColor.init(white: 1.0, alpha: 0.48)
@@ -82,7 +92,7 @@ class ParkinglotDetailHeaderView: UIView {
     
     // MARK: -  Binding
     
-    private func setupImageBinding() {
+    func setupImageBinding() {
         viewModel.imageList
             .asDriver()
             .drive(onNext: { images in
@@ -93,14 +103,16 @@ class ParkinglotDetailHeaderView: UIView {
             .disposed(by: disposeBag)
     }
     
-    private func setupFavoriteState() {
-        viewModel.favoriteState.asDriver()
+    func setupFavoriteState() {
+        viewModel.favoriteState
+            .asDriver()
             .drive(favoriteButton.rx.isSelected)
             .disposed(by: disposeBag)
     }
     
-    private func setupButtonBinding() {
-        favoriteButton.rx.tap.asDriver()
+    func setupButtonBinding() {
+        favoriteButton.rx.tap
+            .asDriver()
             .map {
                 return !self.favoriteButton.isSelected
             }
@@ -109,7 +121,8 @@ class ParkinglotDetailHeaderView: UIView {
             })
             .disposed(by: disposeBag)
         
-        navigationButton.rx.tap.asDriver()
+        navigationButton.rx.tap
+            .asDriver()
             .drive(onNext: { _ in
                 if let action = self.navigationAction {
                     action("text")
@@ -122,10 +135,10 @@ class ParkinglotDetailHeaderView: UIView {
       
     override func layoutSubviews() {
         super.layoutSubviews()
-        initialize()
     }
 
     override func draw(_ rect: CGRect) {
+        initialize()
         setupContents()
     }
 }

@@ -23,13 +23,15 @@ class PaymentGuideViewController: UIViewController {
     @IBOutlet weak var noDisplayButton: UIButton!
     @IBOutlet weak var noDisplayLabel: UILabel!
     
+    private var checkMode:Bool = false
+    
     private var viewModel: PaymentGuideViewModelType
     private let disposeBag = DisposeBag()
     
     // MARK: - Button Action
     
     @IBAction func closeButtonAction(_ sender: Any) {
-        self.dismissModal()
+        self.dismissModal(animated: false)
     }
     
     // MARK: - Initialize
@@ -45,9 +47,16 @@ class PaymentGuideViewController: UIViewController {
     }
     
     private func initialize() {
-        self.modalPresentationStyle = .overCurrentContext
         setupBinding()
         buttonBinding()
+        
+        noDisplayButton.isHidden = checkMode ? false : true
+    }
+    
+    // MARK: - Public Methods
+    
+    public func showCheckMdode(_ flag:Bool) {
+        checkMode = flag
     }
     
     // MARK: - Binding
@@ -85,7 +94,6 @@ class PaymentGuideViewController: UIViewController {
     }
     
     private func buttonBinding() {
-        
         noDisplayButton.rx.tap
                 .asObservable()
                 .map { (_) -> Bool in
@@ -99,11 +107,11 @@ class PaymentGuideViewController: UIViewController {
 
         agreementButton.rx.tap.do(onNext: { [unowned self] in
                      
-                   })
-                   .subscribe(onNext: { [unowned self] status in
+                })
+                .subscribe(onNext: { [unowned self] status in
 
-                   })
-                   .disposed(by: disposeBag)
+                })
+                .disposed(by: disposeBag)
     }
     // MARK: - Life Cycle
     

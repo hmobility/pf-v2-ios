@@ -9,9 +9,9 @@
 import UIKit
 import AFDateHelper
 
-protocol TimeStepperViewType {
-    var previousButton:UIButton! { get set }
-    var nextButton:UIButton! { get set }
+protocol CustomTimeStepperViewType {
+    var decreaseButton:UIButton! { get set }
+    var increaseButton:UIButton! { get set }
     var hoursLabel:UILabel! { get set }
     var minutesLabel: UILabel! { get set }
     
@@ -19,14 +19,14 @@ protocol TimeStepperViewType {
     func getTime() -> Date 
 }
 
-class TimeStepperView: UIView, TimeStepperViewType {
-    @IBOutlet var previousButton:UIButton!
-    @IBOutlet var nextButton:UIButton!
+class CustomTimeStepperView: UIView, CustomTimeStepperViewType {
+    @IBOutlet var decreaseButton:UIButton!
+    @IBOutlet var increaseButton:UIButton!
     @IBOutlet var hoursLabel:UILabel!
     @IBOutlet var minutesLabel:UILabel!
     
-    private var start:Date?
-    private var adjust:Date?
+    private var startDate:Date?
+    private var adjustDate:Date?
  
     private let offsetMinutes = 30
     
@@ -35,16 +35,16 @@ class TimeStepperView: UIView, TimeStepperViewType {
     // MARK: - Public Methods
     
     public func setStartTime(_ date:Date) {
-        start = date
+        startDate = date
         updateTime(date)
     }
     
     func getTime() -> Date {
-        guard adjust != nil else {
-            return start!
+        guard adjustDate != nil else {
+            return startDate!
         }
         
-        return adjust!
+        return adjustDate!
     }
     
     // MARK: - Local Methods
@@ -57,21 +57,21 @@ class TimeStepperView: UIView, TimeStepperViewType {
         minutesLabel.text = minutes
     }
     
-    func chagneTime(offset:Int){
-        if let date = start, date.compare(.isLater(than: start!)) == true {
-            adjust = date.adjust(.hour, offset: offset)
-            updateTime(adjust!)
+    func changeTime(offset:Int){
+        if let date = startDate, date.compare(.isLater(than: startDate!)) == true {
+            adjustDate = date.adjust(.hour, offset: offset)
+            updateTime(adjustDate!)
         }
     }
     
     func incrementTime() {
         let offset = offsetMinutes
-        chagneTime(offset: offset)
+        changeTime(offset: offset)
     }
     
     func decrementTime() {
         let offset = -offsetMinutes
-        chagneTime(offset: offset)
+        changeTime(offset: offset)
     }
     
     // MARK: - Binding
@@ -81,13 +81,13 @@ class TimeStepperView: UIView, TimeStepperViewType {
     }
     
     func setupButtonBinding() {
-        previousButton.rx.tap
+        decreaseButton.rx.tap
             .subscribe(onNext: { [unowned self] _ in
                 self.decrementTime()
             })
             .disposed(by: disposeBag)
         
-        nextButton.rx.tap
+        increaseButton.rx.tap
             .subscribe(onNext: { [unowned self] _ in
                 self.incrementTime()
             })
@@ -101,27 +101,22 @@ class TimeStepperView: UIView, TimeStepperViewType {
     }
     
     override init(frame: CGRect) {
-          super.init(frame: frame)
+        super.init(frame: frame)
     }
 
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
     }
     
     // MARK: - Life Cycle
     
     override func layoutSubviews() {
          super.layoutSubviews()
-         initialize()
     }
 
-    
-    /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
-        // Drawing code
+            initialize()
     }
-    */
-
 }

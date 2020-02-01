@@ -21,10 +21,9 @@ class ParkinglotDetailReserveView: UIStackView {
     private var aaChartView:AAChartView?
     private var chartOptions:AAOptions?
     
-    private lazy var viewModel: ParkinglotDetailReserveViewModelType = ParkinglotDetailReserveViewModel()
+    private var viewModel:ParkinglotDetailReserveViewModelType = ParkinglotDetailReserveViewModel()
     
     private let disposeBag = DisposeBag()
-    
     private var localizer:LocalizerType = Localizer.shared
     
     // MARK: - Initializer
@@ -52,9 +51,8 @@ class ParkinglotDetailReserveView: UIStackView {
             .drive(self.titleLabel.rx.text)
             .disposed(by: disposeBag)
         
-        viewModel.availableParkinglotText
-            .asDriver()
-            .drive(self.availableParkinglotLabel.rx.text)
+        viewModel.getAvailableParkinglotNumber()
+            .bind(to: self.availableParkinglotLabel.rx.text)
             .disposed(by: disposeBag)
     }
     
@@ -90,7 +88,7 @@ class ParkinglotDetailReserveView: UIStackView {
             view.contentWidth = width - ((width / 25) - 8)
             view.contentHeight = 300
             view.scrollEnabled = false
-            
+     
             chartView.addSubview(view)
         }
     }
@@ -173,7 +171,7 @@ class ParkinglotDetailReserveView: UIStackView {
                 .subscribe(onNext:{ [unowned self] bandElement in
                     if let view = self.aaChartView, let options = self.chartOptions {
                         options.yAxis?.plotBands?.append(bandElement)
-                        view.aa_drawChartWithChartOptions(options)
+                        view.aa_refreshChartWholeContentWithChartOptions(options)
                     }
                 })
                 .disposed(by: disposeBag)
@@ -183,10 +181,11 @@ class ParkinglotDetailReserveView: UIStackView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        initialize()
     }
 
     override func draw(_ rect: CGRect) {
+        initialize()
+        
         updateAvailableTimeChart()
         updateOnReserveTime()
     }

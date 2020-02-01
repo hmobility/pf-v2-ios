@@ -18,7 +18,7 @@ class ParkinglotDetailPriceInfoView: UIStackView {
     
     private var baseFee:BehaviorRelay<Fee?> = BehaviorRelay(value: nil)
     
-    private lazy var viewModel: ParkinglotDetailPriceViewModelType = ParkinglotDetailPriceViewModel()
+    private var viewModel: ParkinglotDetailPriceViewModelType = ParkinglotDetailPriceViewModel()
     
     private let disposeBag = DisposeBag()
     
@@ -94,7 +94,6 @@ class ParkinglotDetailPriceInfoView: UIStackView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        initialize()
     }
     
     // MARK: - Drawings
@@ -102,6 +101,8 @@ class ParkinglotDetailPriceInfoView: UIStackView {
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
+        initialize()
+        
         setupPriceTable()
     }
 }
