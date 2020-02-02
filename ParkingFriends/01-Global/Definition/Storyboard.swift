@@ -20,6 +20,7 @@ struct Storyboard {
     static let payment = UIStoryboard(name: "Payment", bundle: nil)
     static let menu = UIStoryboard(name: "Menu", bundle: nil)
     static let parking = UIStoryboard(name: "Parking", bundle: nil)
+    static let search = UIStoryboard(name: "Search", bundle: nil)
 }
 
 struct Dialog {

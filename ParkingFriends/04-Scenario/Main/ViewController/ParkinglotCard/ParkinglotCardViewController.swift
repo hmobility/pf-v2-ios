@@ -30,7 +30,7 @@ class ParkinglotCardViewController: UIViewController {
     
     var disposeBag = DisposeBag()
 
-    private lazy var viewModel: ParkingCardViewModelType = ParkingCardViewModel()
+    private var viewModel: ParkingCardViewModelType = ParkingCardViewModel()
 
     // MARK: - Initialize
      
