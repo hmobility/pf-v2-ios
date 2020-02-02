@@ -1,15 +1,25 @@
 //
-//  ParkingSearchViewController.swift
+//  SearchFavoriteEmptyViewController.swift
 //  ParkingFriends
 //
-//  Created by PlankFish on 2020/01/01.
+//  Created by PlankFish on 2020/02/02.
 //  Copyright © 2020 Hancom Mobility. All rights reserved.
 //
 
 import UIKit
 
-class ParkingSearchViewController: UIViewController {
-
+class SearchFavoriteEmptyViewController: UIViewController {
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    
+    private var viewModel: SearchTextViewModelType = SearchTextViewModel()
+       
+    var disposeBag = DisposeBag()
+    
+    // MARK: - Initiailize
+    
+    // MARK: - Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

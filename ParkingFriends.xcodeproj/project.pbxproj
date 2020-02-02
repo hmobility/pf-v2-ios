@@ -79,6 +79,14 @@
 		624F53B023BB12D3005D7FD8 /* LevelGuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624F53AF23BB12D3005D7FD8 /* LevelGuideViewController.swift */; };
 		624F53B323BB2F6E005D7FD8 /* LevelGuideTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624F53B223BB2F6E005D7FD8 /* LevelGuideTableViewCell.swift */; };
 		624F53B523BB313C005D7FD8 /* LevelGuideViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624F53B423BB313C005D7FD8 /* LevelGuideViewModel.swift */; };
+		625351E123E673EB009FD27F /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625351E023E673EB009FD27F /* SearchViewModel.swift */; };
+		625351E323E67411009FD27F /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 625351E223E67411009FD27F /* Search.storyboard */; };
+		625351E723E694FD009FD27F /* SearchHistoryItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625351E623E694FD009FD27F /* SearchHistoryItemTableViewCell.swift */; };
+		625351EB23E69F04009FD27F /* SearchNoResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625351EA23E69F04009FD27F /* SearchNoResultViewController.swift */; };
+		625351ED23E69F15009FD27F /* SearchRessultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625351EC23E69F15009FD27F /* SearchRessultViewController.swift */; };
+		625351EF23E69F2A009FD27F /* SearchGuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625351EE23E69F2A009FD27F /* SearchGuideViewController.swift */; };
+		625351F123E6A25F009FD27F /* SearchTextViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625351F023E6A25F009FD27F /* SearchTextViewModel.swift */; };
+		625351F423E6A668009FD27F /* SearchFavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625351F323E6A668009FD27F /* SearchFavoriteViewController.swift */; };
 		6253924023716D870041EBF1 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6253923F23716D870041EBF1 /* UITextField+Extension.swift */; };
 		62539242237268830041EBF1 /* Import.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62539241237268830041EBF1 /* Import.swift */; };
 		625468072367BCE300198833 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625468062367BCE300198833 /* SplashViewController.swift */; };
@@ -89,7 +97,7 @@
 		62576C4123BC4655007BA1F7 /* ReserveNoticeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62576C4023BC4655007BA1F7 /* ReserveNoticeView.xib */; };
 		62576C4323BC469D007BA1F7 /* ReserveNoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62576C4223BC469D007BA1F7 /* ReserveNoticeView.swift */; };
 		62576C4623BC4B43007BA1F7 /* IconType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62576C4523BC4B43007BA1F7 /* IconType.swift */; };
-		62576C4A23BC838D007BA1F7 /* ParkingSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62576C4923BC838D007BA1F7 /* ParkingSearchViewController.swift */; };
+		62576C4A23BC838D007BA1F7 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62576C4923BC838D007BA1F7 /* SearchViewController.swift */; };
 		62576C4C23BC9C8A007BA1F7 /* PaymentCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62576C4B23BC9C8A007BA1F7 /* PaymentCompleteViewController.swift */; };
 		62576C5123BDD2C5007BA1F7 /* PaymentHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62576C5023BDD2C5007BA1F7 /* PaymentHistoryViewController.swift */; };
 		62576C5323BDD817007BA1F7 /* TimeTicketDialog.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62576C5223BDD817007BA1F7 /* TimeTicketDialog.storyboard */; };
@@ -262,6 +270,9 @@
 		629DB1A223C1C9BD00E68A94 /* MyCardHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629DB1A123C1C9BD00E68A94 /* MyCardHeaderView.swift */; };
 		629DB1A423C1CA7D00E68A94 /* BasicCardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629DB1A323C1CA7D00E68A94 /* BasicCardTableViewCell.swift */; };
 		629DB1A623C1CA8800E68A94 /* ExtraCardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629DB1A523C1CA8800E68A94 /* ExtraCardTableViewCell.swift */; };
+		629E6F9923E6A96B0090E164 /* SearchFavoriteEmptyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629E6F9823E6A96B0090E164 /* SearchFavoriteEmptyViewController.swift */; };
+		629E6F9B23E6AC9F0090E164 /* SearchResultItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629E6F9A23E6AC9F0090E164 /* SearchResultItemTableViewCell.swift */; };
+		629E6F9D23E6ACE80090E164 /* SearchFavoriteItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629E6F9C23E6ACE80090E164 /* SearchFavoriteItemTableViewCell.swift */; };
 		62AE72342379534200BE6FA3 /* Color.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62AE72332379534200BE6FA3 /* Color.xcassets */; };
 		62AE72392379578400BE6FA3 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AE72382379578400BE6FA3 /* Color.swift */; };
 		62AE723E23795AC000BE6FA3 /* MessageDialogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AE723D23795AC000BE6FA3 /* MessageDialogView.swift */; };
@@ -438,6 +449,14 @@
 		624F53AF23BB12D3005D7FD8 /* LevelGuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelGuideViewController.swift; sourceTree = "<group>"; };
 		624F53B223BB2F6E005D7FD8 /* LevelGuideTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelGuideTableViewCell.swift; sourceTree = "<group>"; };
 		624F53B423BB313C005D7FD8 /* LevelGuideViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelGuideViewModel.swift; sourceTree = "<group>"; };
+		625351E023E673EB009FD27F /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		625351E223E67411009FD27F /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
+		625351E623E694FD009FD27F /* SearchHistoryItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryItemTableViewCell.swift; sourceTree = "<group>"; };
+		625351EA23E69F04009FD27F /* SearchNoResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchNoResultViewController.swift; sourceTree = "<group>"; };
+		625351EC23E69F15009FD27F /* SearchRessultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRessultViewController.swift; sourceTree = "<group>"; };
+		625351EE23E69F2A009FD27F /* SearchGuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGuideViewController.swift; sourceTree = "<group>"; };
+		625351F023E6A25F009FD27F /* SearchTextViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextViewModel.swift; sourceTree = "<group>"; };
+		625351F323E6A668009FD27F /* SearchFavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFavoriteViewController.swift; sourceTree = "<group>"; };
 		6253923F23716D870041EBF1 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		62539241237268830041EBF1 /* Import.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Import.swift; sourceTree = "<group>"; };
 		625468062367BCE300198833 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
@@ -448,7 +467,7 @@
 		62576C4023BC4655007BA1F7 /* ReserveNoticeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReserveNoticeView.xib; sourceTree = "<group>"; };
 		62576C4223BC469D007BA1F7 /* ReserveNoticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReserveNoticeView.swift; sourceTree = "<group>"; };
 		62576C4523BC4B43007BA1F7 /* IconType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconType.swift; sourceTree = "<group>"; };
-		62576C4923BC838D007BA1F7 /* ParkingSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingSearchViewController.swift; sourceTree = "<group>"; };
+		62576C4923BC838D007BA1F7 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		62576C4B23BC9C8A007BA1F7 /* PaymentCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentCompleteViewController.swift; sourceTree = "<group>"; };
 		62576C5023BDD2C5007BA1F7 /* PaymentHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentHistoryViewController.swift; sourceTree = "<group>"; };
 		62576C5223BDD817007BA1F7 /* TimeTicketDialog.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TimeTicketDialog.storyboard; sourceTree = "<group>"; };
@@ -619,6 +638,9 @@
 		629DB1A123C1C9BD00E68A94 /* MyCardHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardHeaderView.swift; sourceTree = "<group>"; };
 		629DB1A323C1CA7D00E68A94 /* BasicCardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicCardTableViewCell.swift; sourceTree = "<group>"; };
 		629DB1A523C1CA8800E68A94 /* ExtraCardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraCardTableViewCell.swift; sourceTree = "<group>"; };
+		629E6F9823E6A96B0090E164 /* SearchFavoriteEmptyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFavoriteEmptyViewController.swift; sourceTree = "<group>"; };
+		629E6F9A23E6AC9F0090E164 /* SearchResultItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultItemTableViewCell.swift; sourceTree = "<group>"; };
+		629E6F9C23E6ACE80090E164 /* SearchFavoriteItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFavoriteItemTableViewCell.swift; sourceTree = "<group>"; };
 		62AE72332379534200BE6FA3 /* Color.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Color.xcassets; sourceTree = "<group>"; };
 		62AE72382379578400BE6FA3 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		62AE723A2379594E00BE6FA3 /* MessageDialogView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageDialogView.xib; sourceTree = "<group>"; };
@@ -1014,7 +1036,6 @@
 				629DB19623C1BB1400E68A94 /* MyCard */,
 				6261583C23D6F68F00C08CCA /* Settings */,
 				6261583B23D6F68000C08CCA /* MyInfo */,
-				6261583D23D6F6AD00C08CCA /* Search */,
 				6261583E23D7020C00C08CCA /* Withdraw */,
 			);
 			path = ViewController;
@@ -1024,7 +1045,6 @@
 			isa = PBXGroup;
 			children = (
 				6210BAC123792D33001C6065 /* MapViewController.swift */,
-				6204555023979F5B007ADF88 /* SearchOptionViewController.swift */,
 				624F53AA23BAF7C6005D7FD8 /* PanelLayout */,
 			);
 			path = MapView;
@@ -1046,6 +1066,62 @@
 				624F53B223BB2F6E005D7FD8 /* LevelGuideTableViewCell.swift */,
 			);
 			path = UserLevel;
+			sourceTree = "<group>";
+		};
+		625351DE23E673A1009FD27F /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				625351E223E67411009FD27F /* Search.storyboard */,
+				625351DF23E673D7009FD27F /* ViewModel */,
+				6261583D23D6F6AD00C08CCA /* ViewController */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		625351DF23E673D7009FD27F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				625351E023E673EB009FD27F /* SearchViewModel.swift */,
+				625351F023E6A25F009FD27F /* SearchTextViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		625351E423E694DD009FD27F /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				62576C4923BC838D007BA1F7 /* SearchViewController.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		625351E523E694E4009FD27F /* History */ = {
+			isa = PBXGroup;
+			children = (
+				625351E623E694FD009FD27F /* SearchHistoryItemTableViewCell.swift */,
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
+		625351E823E69ECD009FD27F /* Favorite */ = {
+			isa = PBXGroup;
+			children = (
+				629E6F9823E6A96B0090E164 /* SearchFavoriteEmptyViewController.swift */,
+				625351F323E6A668009FD27F /* SearchFavoriteViewController.swift */,
+				629E6F9C23E6ACE80090E164 /* SearchFavoriteItemTableViewCell.swift */,
+			);
+			path = Favorite;
+			sourceTree = "<group>";
+		};
+		625351E923E69ED5009FD27F /* Recent */ = {
+			isa = PBXGroup;
+			children = (
+				625351EA23E69F04009FD27F /* SearchNoResultViewController.swift */,
+				625351EE23E69F2A009FD27F /* SearchGuideViewController.swift */,
+				625351EC23E69F15009FD27F /* SearchRessultViewController.swift */,
+				629E6F9A23E6AC9F0090E164 /* SearchResultItemTableViewCell.swift */,
+			);
+			path = Recent;
 			sourceTree = "<group>";
 		};
 		625468032367BCBC00198833 /* Splash */ = {
@@ -1139,6 +1215,7 @@
 		62576C4D23BD77D9007BA1F7 /* SearchOption */ = {
 			isa = PBXGroup;
 			children = (
+				6204555023979F5B007ADF88 /* SearchOptionViewController.swift */,
 			);
 			path = SearchOption;
 			sourceTree = "<group>";
@@ -1692,12 +1769,15 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
-		6261583D23D6F6AD00C08CCA /* Search */ = {
+		6261583D23D6F6AD00C08CCA /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				62576C4923BC838D007BA1F7 /* ParkingSearchViewController.swift */,
+				625351E423E694DD009FD27F /* Search */,
+				625351E523E694E4009FD27F /* History */,
+				625351E923E69ED5009FD27F /* Recent */,
+				625351E823E69ECD009FD27F /* Favorite */,
 			);
-			path = Search;
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		6261583E23D7020C00C08CCA /* Withdraw */ = {
@@ -2088,6 +2168,7 @@
 				629C2859236BED8400E0E5E1 /* Entry */,
 				622BC1C8236A9AFB00A43F02 /* Registration */,
 				6210BABC23792CD6001C6065 /* Main */,
+				625351DE23E673A1009FD27F /* Search */,
 				6257DE1E23C726BB001091B0 /* Detail */,
 				624F539923B9D294005D7FD8 /* Menu */,
 				62601D982394EC0100B78033 /* Payment */,
@@ -2451,6 +2532,7 @@
 				A40ACD3A23543F8E000E4967 /* Assets.xcassets in Resources */,
 				622BC0F32369514B00A43F02 /* Localizable.strings in Resources */,
 				62601DC62397367100B78033 /* MarkerView.xib in Resources */,
+				625351E323E67411009FD27F /* Search.storyboard in Resources */,
 				62C26C16236688F800695B6F /* GoogleService-Info-Development.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2610,6 +2692,7 @@
 				62601DBA2396313500B78033 /* ParkinglotCardViewController.swift in Sources */,
 				62C26C052362B43C00695B6F /* Payments.swift in Sources */,
 				62C26BFF2362B0B300695B6F /* OrdersAPI.swift in Sources */,
+				625351F423E6A668009FD27F /* SearchFavoriteViewController.swift in Sources */,
 				62576C7123BF4760007BA1F7 /* SettingsViewModel.swift in Sources */,
 				6257DE2423C7282D001091B0 /* ParkinglotfDetailSymbolCollectionViewCell.swift in Sources */,
 				62601D9E2394F01C00B78033 /* PaymentViewController.swift in Sources */,
@@ -2636,9 +2719,10 @@
 				62601D8F23938A2700B78033 /* NavigationTitleView.swift in Sources */,
 				6257DE4D23CBEFB9001091B0 /* ExtendReserveDialog.swift in Sources */,
 				62601D762391173900B78033 /* ParkingLot.swift in Sources */,
+				629E6F9B23E6AC9F0090E164 /* SearchResultItemTableViewCell.swift in Sources */,
 				6257DE1B23C71AF8001091B0 /* NavigationAppView.swift in Sources */,
 				622BC0E42368131400A43F02 /* GuideFinishedViewController.swift in Sources */,
-				62576C4A23BC838D007BA1F7 /* ParkingSearchViewController.swift in Sources */,
+				62576C4A23BC838D007BA1F7 /* SearchViewController.swift in Sources */,
 				62576C6723BF3EA9007BA1F7 /* MyCardViewController.swift in Sources */,
 				62630B422383E4BD0029724B /* String+Extension.swift in Sources */,
 				623E122B23820EA700498C87 /* PhoneNumberModel.swift in Sources */,
@@ -2653,6 +2737,7 @@
 				629C286B236E957400E0E5E1 /* BasicInfoViewController.swift in Sources */,
 				62630B47238534FB0029724B /* CodeVerifyViewModel.swift in Sources */,
 				62254E8B238B992500AF82B9 /* Parkinglots.swift in Sources */,
+				625351ED23E69F15009FD27F /* SearchRessultViewController.swift in Sources */,
 				62601D8A2393783A00B78033 /* CarBrandTableViewCell.swift in Sources */,
 				629C2870236E9A1B00E0E5E1 /* CustomInputSection.swift in Sources */,
 				629C287A2370FCA500E0E5E1 /* UINavigationItem+Extension.swift in Sources */,
@@ -2662,6 +2747,7 @@
 				62C26BE92361921700695B6F /* Otp.swift in Sources */,
 				62601DAC2395FCCF00B78033 /* ImageElement.swift in Sources */,
 				A4225E84235D44DA004F48C4 /* Host.swift in Sources */,
+				625351EF23E69F2A009FD27F /* SearchGuideViewController.swift in Sources */,
 				62601DDD2397512000B78033 /* OverFee.swift in Sources */,
 				62601DC4239659F200B78033 /* MarkerView.swift in Sources */,
 				6253924023716D870041EBF1 /* UITextField+Extension.swift in Sources */,
@@ -2715,6 +2801,7 @@
 				624F53B023BB12D3005D7FD8 /* LevelGuideViewController.swift in Sources */,
 				62601D812392387500B78033 /* Common.swift in Sources */,
 				62630B5323865EBD0029724B /* RxTextFieldDelegateProxy.swift in Sources */,
+				625351E723E694FD009FD27F /* SearchHistoryItemTableViewCell.swift in Sources */,
 				6257DE4423CB0A7A001091B0 /* CustomTimeStepperView.swift in Sources */,
 				62630B45238506490029724B /* PhoneNumberViewModel.swift in Sources */,
 				621BCC6923D04134009FE1EC /* ParkinglotDetailNavigationController.swift in Sources */,
@@ -2728,9 +2815,12 @@
 				62601D8523923D8500B78033 /* CarModels.swift in Sources */,
 				62601DB823961CF000B78033 /* Order.swift in Sources */,
 				62576C5E23BDEC66007BA1F7 /* TimeTicketDialog.swift in Sources */,
+				625351F123E6A25F009FD27F /* SearchTextViewModel.swift in Sources */,
+				629E6F9D23E6ACE80090E164 /* SearchFavoriteItemTableViewCell.swift in Sources */,
 				620455592398F8D8007ADF88 /* EventContents.swift in Sources */,
 				6257DE4623CBEE2E001091B0 /* MonthlyTicketDialog.swift in Sources */,
 				621BCC6223CEF46E009FE1EC /* UICollectionViewCell+Extension.swift in Sources */,
+				625351EB23E69F04009FD27F /* SearchNoResultViewController.swift in Sources */,
 				624CE055238E4E990068F4F9 /* MapModel.swift in Sources */,
 				A4225EDA235D8938004F48C4 /* SceneDelegate.swift in Sources */,
 				62576C6923BF3F0F007BA1F7 /* MyCardViewModel.swift in Sources */,
@@ -2760,6 +2850,7 @@
 				624F53AC23BAF7E2005D7FD8 /* BottomFloatingPanelBehavior.swift in Sources */,
 				62C26C0B2362F0F300695B6F /* Cards.swift in Sources */,
 				62045563239E2641007ADF88 /* CarNumberModel.swift in Sources */,
+				629E6F9923E6A96B0090E164 /* SearchFavoriteEmptyViewController.swift in Sources */,
 				62C26BEF2361944C00695B6F /* CommonAPI.swift in Sources */,
 				625ACE8D23A30912002D0653 /* MapType.swift in Sources */,
 				62576C4C23BC9C8A007BA1F7 /* PaymentCompleteViewController.swift in Sources */,
@@ -2793,6 +2884,7 @@
 				62C3095F23A75E0600152A5A /* OAuth2Handler.swift in Sources */,
 				62601DB4239618F200B78033 /* Within.swift in Sources */,
 				624F53B323BB2F6E005D7FD8 /* LevelGuideTableViewCell.swift in Sources */,
+				625351E123E673EB009FD27F /* SearchViewModel.swift in Sources */,
 				629C2863236BF54C00E0E5E1 /* PhoneNumberInputViewController.swift in Sources */,
 				6257DE3D23CAF044001091B0 /* MonthlyTicketDurationViewController.swift in Sources */,
 				629C288023710B4B00E0E5E1 /* RegiCreditCardViewModel.swift in Sources */,
