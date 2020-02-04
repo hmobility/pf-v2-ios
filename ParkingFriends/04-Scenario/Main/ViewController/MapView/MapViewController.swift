@@ -130,7 +130,8 @@ class MapViewController: UIViewController {
         
         timeSettingView.tapSearchArea()
             .subscribe { _ in
-                
+                print("#### Search Area ####")  // Add by Rao
+                self.navigateToSearch()
             }
             .disposed(by: disposeBag)
             
@@ -240,6 +241,13 @@ class MapViewController: UIViewController {
                 self.viewModel.setMonthlyTicketTime(start: start, months: months)
             })
         }
+    }
+    
+    // Add by Rao
+    func navigateToSearch() {
+        let target = Storyboard.search.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
+//        self.modal(target)
+        self.push(target)
     }
     
     func showSideMenu() {
