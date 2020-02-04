@@ -13,6 +13,7 @@ class ParkinglotDetailReserveView: UIStackView {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var infoButton: UIButton!
     @IBOutlet weak var availableParkinglotLabel: UILabel!
+    @IBOutlet weak var supportedProductView: ParkinglotDetailSupportedProductView!
     
     @IBOutlet var chartView: UIView!
     
@@ -40,6 +41,7 @@ class ParkinglotDetailReserveView: UIStackView {
         setupBinding()
         setupButtonBinding()
         
+        setupSwitchTicketBinding()
         setupChartView()
     }
     
@@ -53,6 +55,21 @@ class ParkinglotDetailReserveView: UIStackView {
         
         viewModel.getAvailableParkinglotNumber()
             .bind(to: self.availableParkinglotLabel.rx.text)
+            .disposed(by: disposeBag)
+    }
+    
+    private func setupEditPanelBinding() {
+        
+    }
+    
+    private func setupSwitchTicketBinding() {
+        viewModel.getSupportedProducts()
+            .asObservable()
+            .subscribe(onNext: { items in
+                if items.count > 0 {
+                    self.supportedProductView.setTitle(with: items)
+                }
+            })
             .disposed(by: disposeBag)
     }
     

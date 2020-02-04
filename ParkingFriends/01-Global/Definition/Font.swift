@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 struct Font {
+    static let gothicNeoRegular16 = UIFont(name:"AppleSDGothicNeo-Regular", size:16)!
     static let gothicNeoRegular15 = UIFont(name:"AppleSDGothicNeo-Regular", size:15)!
     static let gothicNeoRegular14 = UIFont(name:"AppleSDGothicNeo-Regular", size:14)!
     

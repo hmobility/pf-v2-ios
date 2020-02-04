@@ -52,7 +52,6 @@ class ParkinglotCardViewController: UIViewController {
     private func setupBinding() {
         collectionView?.collectionViewLayout = columnLayout
         collectionView?.contentInsetAdjustmentBehavior = .always
-       // collectionView?.sc
     }
     
     // MARK: - Public Methods
@@ -95,7 +94,6 @@ class ParkinglotCardViewController: UIViewController {
                             let element = self.viewModel.elements.value[index]
                             self.setDetailParkinglot(element)
                         }
-                        debugPrint("[DETAIL INDEX]", indexPath)
                     })
                     .disposed(by: self.disposeBag)
                 
@@ -106,7 +104,6 @@ class ParkinglotCardViewController: UIViewController {
                             let element = self.viewModel.elements.value[index]
                             self.setReserveParkinglot(element)
                         }
-                        debugPrint("[RSERVE INDEX]", indexPath)
                     })
                     .disposed(by: self.disposeBag)
             }
