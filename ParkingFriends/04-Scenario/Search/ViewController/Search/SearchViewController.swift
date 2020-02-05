@@ -11,9 +11,11 @@ import BetterSegmentedControl
 
 class SearchViewController: UIViewController {
     @IBOutlet weak var navigationBar: UINavigationBar!
-    @IBOutlet weak var historyView: UITableView!
     @IBOutlet weak var tapSegmentedControl: BetterSegmentedControl!
     @IBOutlet weak var containerView: UIView!
+    
+    @IBOutlet weak var historyView: UITableView!
+    @IBOutlet weak var historyFooterView: SearchHistoryFooterView!
     
     @IBOutlet weak var backButton: UIBarButtonItem!
     
@@ -43,7 +45,19 @@ class SearchViewController: UIViewController {
     }
     
     private func setupSegmentedControl() {
-        tapSegmentedControl.addTarget(self, action:#selector(segmentValueChanged(_:)), for: .valueChanged)
+        tapSegmentedControl.rx.selected
+            .asDriver()
+            .distinctUntilChanged()
+            .drive(onNext: { selected in
+                debugPrint("[INDEX] ", selected)
+                if selected  == 0 {
+                    self.navigateToGuide()
+                } else {
+                    // navigateToFavorite()
+                    self.navigateToEmptyFavorite()
+                }
+            })
+            .disposed(by: disposeBag)
     }
     
     @objc func segmentValueChanged(_ sender: BetterSegmentedControl) {
