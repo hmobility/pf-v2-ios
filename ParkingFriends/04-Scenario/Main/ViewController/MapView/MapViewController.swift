@@ -79,6 +79,12 @@ class MapViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
+        navigationMenuView.mainTitleButton.rx.tap
+            .subscribe(onNext: { _ in
+                self.navigateToSearch()
+            })
+            .disposed(by: disposeBag)
+        
         searchOptionButton.rx.tap
             .subscribe(onNext: { _ in
                 self.navigateToSearchOption()
@@ -87,7 +93,7 @@ class MapViewController: UIViewController {
         
         viewModel.displayAddressText
             .asDriver()
-            .drive(navigationMenuView.mainTitleLabel.rx.text)
+            .drive(navigationMenuView.mainTitleButton.rx.title())
             .disposed(by: disposeBag)
         
         viewModel.displayReservableTimeText
@@ -130,7 +136,7 @@ class MapViewController: UIViewController {
         
         timeSettingView.tapSearchArea()
             .subscribe { _ in
-                
+                self.navigateToSearch()
             }
             .disposed(by: disposeBag)
             
@@ -222,6 +228,11 @@ class MapViewController: UIViewController {
         let target = Storyboard.payment.instantiateViewController(withIdentifier: "PaymentNavigationController") as! UINavigationController
         self.modal(target)
     }
+    
+    func navigateToSearch() {
+         let target = Storyboard.search.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
+         self.modal(target)
+     }
     
     func navigateToTimeDialog() {
         let date = UserData.shared.getOnReserveDate()

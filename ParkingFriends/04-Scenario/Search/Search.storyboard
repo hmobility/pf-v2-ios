@@ -67,10 +67,10 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="N8I-rg-qsZ" userLabel="Stack View - History">
-                                <rect key="frame" x="0.0" y="88" width="414" height="717.5"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725.5"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="48" estimatedRowHeight="-1" sectionHeaderHeight="8" sectionFooterHeight="8" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Ns-bR-8rE">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="717.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="725.5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchHistoryItemTableViewCell" id="MU1-Vq-Fgf" customClass="SearchHistoryItemTableViewCell" customModule="ParkingFriends" customModuleProvider="target">
@@ -139,11 +139,11 @@
                                 </items>
                             </navigationBar>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="YOR-Rm-Oee" firstAttribute="bottom" secondItem="Ja3-nn-PKt" secondAttribute="bottom" id="A1b-GH-sAQ"/>
                             <constraint firstAttribute="trailing" secondItem="N8I-rg-qsZ" secondAttribute="trailing" id="AzL-Es-gmF"/>
-                            <constraint firstItem="Ja3-nn-PKt" firstAttribute="top" secondItem="N8I-rg-qsZ" secondAttribute="bottom" constant="8" symbolic="YES" id="Ed8-JC-a8r"/>
+                            <constraint firstItem="Ja3-nn-PKt" firstAttribute="top" secondItem="N8I-rg-qsZ" secondAttribute="bottom" id="Ed8-JC-a8r"/>
                             <constraint firstItem="bhq-wZ-YDT" firstAttribute="trailing" secondItem="37L-Da-3vD" secondAttribute="trailing" id="G7U-sh-0fj"/>
                             <constraint firstItem="N8I-rg-qsZ" firstAttribute="top" secondItem="bhq-wZ-YDT" secondAttribute="bottom" id="Gc8-lG-QsJ"/>
                             <constraint firstItem="N8I-rg-qsZ" firstAttribute="leading" secondItem="37L-Da-3vD" secondAttribute="leading" id="Oec-ip-wnX"/>
@@ -453,6 +453,10 @@
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="dcx-tE-Aql"/>
+                    <connections>
+                        <outlet property="descriptionLabel" destination="dXy-0Q-OaL" id="9KC-As-ENg"/>
+                        <outlet property="titleLabel" destination="fic-Zs-bwC" id="N2o-7Q-dwF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dSU-zv-UOW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

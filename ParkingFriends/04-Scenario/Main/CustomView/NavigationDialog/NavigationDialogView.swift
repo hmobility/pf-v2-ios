@@ -9,7 +9,7 @@
 import UIKit
 
 class NavigationDialogView: UIView {
-    @IBOutlet var mainTitleLabel:UILabel!
+    @IBOutlet var mainTitleButton:UIButton!
     @IBOutlet var subTitleLabel:UILabel!
     @IBOutlet var menuButton:UIButton!
     @IBOutlet var searchOptionButton:UIButton!
