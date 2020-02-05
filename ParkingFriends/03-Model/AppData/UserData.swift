@@ -9,7 +9,7 @@
 import Foundation
 import ObjectMapper
 
-fileprivate let kReservableTimeFormat = "yyyyMMddHHmm"
+fileprivate let kBookingTimeFormat = "yyyyMMddHHmm"
 
 class UserData: NSObject, NSCoding {
     var login: Login?
@@ -17,35 +17,10 @@ class UserData: NSObject, NSCoding {
     
     var displayPaymentGuide: Bool = true
     
-    private var basis: ProductOption = ProductOption()
-    /*
-    var reservableStartTime: Date  {
-        get {
-            return start ?? today
-        }
-    }
+    private var basis:ProductOption = ProductOption()
     
-    var reservableEndTime: Date {
-        get {
-            return end ?? today.adjust(.hour, offset: 2)
-        }
-    }
-    
-    private var start: Date?
-    private var end: Date?
-    
-    private var today: Date {
-        get {
-            var start = Date().dateFor(.nearestMinute(minute:10))
-            
-            if Date().compare(.isLater(than: start)) == true {
-                start = start.adjust(.minute, offset: 10)
-            }
-            
-            return start
-        }
-    }
-    */
+    var seaarchHistory:SearchHistory = SearchHistory.shared
+
     // MARK: - Public Methods
     
     // MARK: - Product
@@ -77,8 +52,8 @@ class UserData: NSObject, NSCoding {
     }
     
     public func getOnReserveTime() -> (start:String, end:String) {
-        let start = basis.reservableStartTime.toString(format: .custom(kReservableTimeFormat))
-        let end = basis.reservableEndTime.toString(format: .custom(kReservableTimeFormat))
+        let start = basis.reservableStartTime.toString(format: .custom(kBookingTimeFormat))
+        let end = basis.reservableEndTime.toString(format: .custom(kBookingTimeFormat))
         
         return (start, end)
      }

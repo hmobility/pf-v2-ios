@@ -11,18 +11,23 @@ import Foundation
 protocol SearchViewModelType {
     var phSearchParkinglotText: Driver<String> { get }
     var searchHistoryDeleteText: Driver<String> { get }
-    var searchHistoryWordsText: Driver<String> { get }
-    var searchHistoryFavoriteText: Driver<String> { get }
+    var searchHistoryWordsText:String { get }
+    var searchHistoryFavoriteText:String { get }
+    
+    func getTapItems() -> Observable<[String]>
 }
 
 class SearchViewModel: SearchViewModelType {
     var phSearchParkinglotText: Driver<String>
     var searchHistoryDeleteText: Driver<String>
-    var searchHistoryWordsText: Driver<String>
-    var searchHistoryFavoriteText: Driver<String>
+    
+    var searchHistoryWordsText:String
+    var searchHistoryFavoriteText:String
     
     private var localizer:LocalizerType
      
+    private let disposeBag = DisposeBag()
+    
     // MARK: - Initialize
     
     init(localizer: LocalizerType = Localizer.shared) {
@@ -32,5 +37,21 @@ class SearchViewModel: SearchViewModelType {
         searchHistoryDeleteText = localizer.localized("btn_search_history_delete")
         searchHistoryWordsText = localizer.localized("ttl_search_words_recent")
         searchHistoryFavoriteText = localizer.localized("ttl_search_favorite")
+    }
+    
+    // MARK: - Public Methods
+    
+    public func getTapItems() -> Observable<[String]> {
+        return Observable.of([searchHistoryWordsText, searchHistoryFavoriteText])
+    }
+    
+    // MARK: - Network
+    
+    func requestSearch(with query:String ){
+        NaverMap.geocode(query: query)
+            .subscribe(onNext: { (geocode, response) in
+            
+            })
+            .disposed(by: disposeBag)
     }
 }

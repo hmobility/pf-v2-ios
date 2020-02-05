@@ -246,7 +246,7 @@
 "ttl_search_words_recent" = "최근 검색어";
 "ttl_search_favorite" = "즐겨찾기";
 "ttl_search_guide_parkinglot" = "어디에 주차하세요?";
-"dsc_search_guide_parkinglot" = "주차하실 지역의 키워드나 주소를 입력하세요./n(지역명, 번지, 도로명 주소)";
+"dsc_search_guide_parkinglot" = "주차하실 지역의 키워드나 주소를 입력하세요.\n(지역명, 번지, 도로명 주소)";
 "ttl_search_no_result" = "검색 결과가 없어요.";
 "dsc_search_no_result" = "입력한 검색어와 일치하는 결과가 없습니다.";
 
@@ -353,7 +353,7 @@
 "ttl_settings_exit" = "로그아웃 및 탈퇴";
 "ttl_settings_logout" = "로그아웃";
 "ttl_settings_withdraw" = "회원 탈퇴";
-"txt_credit" = "㈜한컴모빌리티/n사업자 등록번호 : 119-86-70032  |  대표자 : 최천우, 현재영/n주소 : 서울특별시 금천구 서부샛길 606, B동 1703-1(가산동, 대성디폴리스)  |  대표전화 : 02-522-6161";
+"txt_credit" = "㈜한컴모빌리티\n사업자 등록번호 : 119-86-70032  |  대표자 : 최천우, 현재영\n주소 : 서울특별시 금천구 서부샛길 606, B동 1703-1(가산동, 대성디폴리스)  |  대표전화 : 02-522-6161";
 
 // Parkinglot Label Guide
 "ttl_reserve_label" = "예약권 라벨";

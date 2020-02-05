@@ -20,7 +20,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U5l-kl-N5M">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725.5"/>
                                 <connections>
-                                    <segue destination="OdC-v9-3QX" kind="embed" id="uh0-VB-nkw"/>
+                                    <segue destination="OdC-v9-3QX" kind="embed" identifier="SearchNavigation" id="uh0-VB-nkw"/>
                                 </connections>
                             </containerView>
                             <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Ja3-nn-PKt" userLabel="Stack View - Tap">
@@ -33,45 +33,22 @@
                                             <constraint firstAttribute="height" constant="0.40000000000000002" id="yzt-Li-nW2"/>
                                         </constraints>
                                     </view>
-                                    <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="yXv-Mz-hoJ">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GY1-ea-i9G" userLabel="View - Tap Menu" customClass="BetterSegmentedControl" customModule="BetterSegmentedControl">
                                         <rect key="frame" x="0.0" y="0.5" width="414" height="48"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GJv-4X-2jP" userLabel="Button - Recent Words">
-                                                <rect key="frame" x="0.0" y="0.0" width="207" height="48"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="48" id="RUV-aW-ufz"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="18"/>
-                                                <state key="normal" title="최근 검색어">
-                                                    <color key="titleColor" name="CoolGrey"/>
-                                                </state>
-                                                <state key="selected">
-                                                    <color key="titleColor" name="DarkGrey3"/>
-                                                </state>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fzf-ib-ZYL" userLabel="Button - Favorites">
-                                                <rect key="frame" x="207" y="0.0" width="207" height="48"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="48" id="qqN-BF-i72"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="18"/>
-                                                <state key="normal" title="즐겨찾기">
-                                                    <color key="titleColor" name="CoolGrey"/>
-                                                </state>
-                                                <state key="selected">
-                                                    <color key="titleColor" name="DarkGrey3"/>
-                                                </state>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="NAo-NZ-Hp0"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="N8I-rg-qsZ" userLabel="Stack View - History">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725.5"/>
                                 <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="48" estimatedRowHeight="-1" sectionHeaderHeight="8" sectionFooterHeight="8" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Ns-bR-8rE">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="48" estimatedRowHeight="-1" sectionHeaderHeight="8" sectionFooterHeight="8" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Ns-bR-8rE" userLabel="TableView - History">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="725.5"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="sectionIndexBackgroundColor" name="IceBlue"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchHistoryItemTableViewCell" id="MU1-Vq-Fgf" customClass="SearchHistoryItemTableViewCell" customModule="ParkingFriends" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="414" height="48"/>
@@ -81,7 +58,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icMarkerGrey" translatesAutoresizingMaskIntoConstraints="NO" id="TPu-sL-JoY" userLabel="ImageView - Marker">
-                                                            <rect key="frame" x="16" y="0.0" width="48" height="48"/>
+                                                            <rect key="frame" x="16" y="12" width="24" height="24"/>
                                                         </imageView>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Ei-XA-9Lr" userLabel="Button - Remove">
                                                             <rect key="frame" x="374" y="12" width="24" height="24"/>
@@ -92,7 +69,7 @@
                                                             <state key="normal" image="icCancelDarkgrey"/>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="성미산로" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uOV-jf-XXo" userLabel="Label - Title">
-                                                            <rect key="frame" x="72" y="14.5" width="55.5" height="19.5"/>
+                                                            <rect key="frame" x="48" y="14.5" width="55.5" height="19.5"/>
                                                             <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="16"/>
                                                             <color key="textColor" name="DarkGrey"/>
                                                             <nil key="highlightedColor"/>
@@ -127,13 +104,9 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
-                                    <navigationItem title="Title" id="xIe-j2-S9A">
-                                        <barButtonItem key="leftBarButtonItem" style="plain" id="z96-VM-7Rj">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Acl-gl-TIi" userLabel="Button - Back">
-                                                <rect key="frame" x="20" y="0.0" width="78" height="44"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" image="icBackBlack"/>
-                                            </button>
+                                    <navigationItem title="Title" id="gAu-58-iQO">
+                                        <barButtonItem key="leftBarButtonItem" image="icBackBlack" width="20" style="plain" id="5Yc-KW-ib2" userLabel="Item - Back">
+                                            <color key="tintColor" name="DarkGrey"/>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
@@ -143,13 +116,13 @@
                         <constraints>
                             <constraint firstItem="YOR-Rm-Oee" firstAttribute="bottom" secondItem="Ja3-nn-PKt" secondAttribute="bottom" id="A1b-GH-sAQ"/>
                             <constraint firstAttribute="trailing" secondItem="N8I-rg-qsZ" secondAttribute="trailing" id="AzL-Es-gmF"/>
-                            <constraint firstItem="Ja3-nn-PKt" firstAttribute="top" secondItem="N8I-rg-qsZ" secondAttribute="bottom" id="Ed8-JC-a8r"/>
                             <constraint firstItem="bhq-wZ-YDT" firstAttribute="trailing" secondItem="37L-Da-3vD" secondAttribute="trailing" id="G7U-sh-0fj"/>
                             <constraint firstItem="N8I-rg-qsZ" firstAttribute="top" secondItem="bhq-wZ-YDT" secondAttribute="bottom" id="Gc8-lG-QsJ"/>
                             <constraint firstItem="N8I-rg-qsZ" firstAttribute="leading" secondItem="37L-Da-3vD" secondAttribute="leading" id="Oec-ip-wnX"/>
                             <constraint firstItem="bhq-wZ-YDT" firstAttribute="top" secondItem="YOR-Rm-Oee" secondAttribute="top" id="Q59-xi-sIA"/>
                             <constraint firstItem="U5l-kl-N5M" firstAttribute="trailing" secondItem="37L-Da-3vD" secondAttribute="trailing" id="R4n-RE-Y2i"/>
                             <constraint firstItem="U5l-kl-N5M" firstAttribute="top" secondItem="bhq-wZ-YDT" secondAttribute="bottom" symbolic="YES" id="Skm-uo-l7L"/>
+                            <constraint firstItem="Ja3-nn-PKt" firstAttribute="top" secondItem="N8I-rg-qsZ" secondAttribute="bottom" id="UTZ-0y-XDm"/>
                             <constraint firstItem="U5l-kl-N5M" firstAttribute="leading" secondItem="37L-Da-3vD" secondAttribute="leading" id="aRf-ob-nCf"/>
                             <constraint firstItem="Ja3-nn-PKt" firstAttribute="top" secondItem="U5l-kl-N5M" secondAttribute="bottom" id="hXg-GC-MuG"/>
                             <constraint firstItem="Ja3-nn-PKt" firstAttribute="leading" secondItem="YOR-Rm-Oee" secondAttribute="leading" id="kHh-dK-3fT"/>
@@ -158,9 +131,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YOR-Rm-Oee"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Sv3-5N-eFZ"/>
                     <connections>
+                        <outlet property="backButton" destination="5Yc-KW-ib2" id="64J-mM-MHh"/>
+                        <outlet property="containerView" destination="U5l-kl-N5M" id="gM5-wj-REh"/>
+                        <outlet property="historyView" destination="8Ns-bR-8rE" id="fhF-1E-OIg"/>
                         <outlet property="navigationBar" destination="bhq-wZ-YDT" id="N0r-IW-sEf"/>
+                        <outlet property="tapSegmentedControl" destination="GY1-ea-i9G" id="Jp5-t8-m3o"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7lv-pA-nTY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -170,7 +146,7 @@
         <!--Search Favorite View Controller-->
         <scene sceneID="Uv4-fR-0Nh">
             <objects>
-                <viewController id="MPg-HK-TX5" customClass="SearchFavoriteViewController" customModule="ParkingFriends" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchFavoriteViewController" id="MPg-HK-TX5" customClass="SearchFavoriteViewController" customModule="ParkingFriends" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nhU-eJ-1HE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -316,16 +292,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imgSearchNoResult" translatesAutoresizingMaskIntoConstraints="NO" id="qyn-Hj-A5e" userLabel="ImageView - Icon">
-                                <rect key="frame" x="87" y="180" width="240" height="240"/>
+                                <rect key="frame" x="147" y="136" width="120" height="120"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="검색 결과가 없어요." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="na8-pD-Vcj" userLabel="Label - Title">
-                                <rect key="frame" x="10" y="460" width="394" height="22"/>
+                                <rect key="frame" x="10" y="296" width="394" height="22"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="18"/>
                                 <color key="textColor" name="DarkGrey"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="입력한 검색어와 일치하는 결과가 없습니다." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="brk-ho-V6k" userLabel="Label - Description">
-                                <rect key="frame" x="10" y="492" width="394" height="18"/>
+                                <rect key="frame" x="10" y="328" width="394" height="18"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="15"/>
                                 <color key="textColor" name="Steel"/>
                                 <nil key="highlightedColor"/>
@@ -333,7 +309,7 @@
                         </subviews>
                         <color key="backgroundColor" name="IceBlue"/>
                         <constraints>
-                            <constraint firstItem="qyn-Hj-A5e" firstAttribute="top" secondItem="ucl-eH-1Fr" secondAttribute="top" constant="136" id="8rm-yT-p42"/>
+                            <constraint firstItem="qyn-Hj-A5e" firstAttribute="top" secondItem="oxB-7R-0h8" secondAttribute="top" constant="136" id="8rm-yT-p42"/>
                             <constraint firstItem="ucl-eH-1Fr" firstAttribute="trailing" secondItem="brk-ho-V6k" secondAttribute="trailing" constant="10" id="BL4-6E-xO0"/>
                             <constraint firstItem="ucl-eH-1Fr" firstAttribute="trailing" secondItem="na8-pD-Vcj" secondAttribute="trailing" constant="10" id="Jr8-x8-fXd"/>
                             <constraint firstItem="na8-pD-Vcj" firstAttribute="leading" secondItem="ucl-eH-1Fr" secondAttribute="leading" constant="10" id="ZUG-as-zAs"/>
@@ -366,7 +342,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6KJ-Re-IH4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1454" y="-234"/>
+            <point key="canvasLocation" x="1455" y="-234"/>
         </scene>
         <!--Search Favorite Empty View Controller-->
         <scene sceneID="A7o-nU-eUd">
@@ -376,14 +352,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" text="등록된 주차장이 없어요" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vGA-a8-YzP" userLabel="Label - Title">
-                                <rect key="frame" x="10" y="499" width="394" height="22"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="등록된 주차장이 없어요" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vGA-a8-YzP" userLabel="Label - Title">
+                                <rect key="frame" x="10" y="296" width="394" height="22"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="18"/>
                                 <color key="textColor" name="DarkGrey"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D9o-Eu-qU3" userLabel="Label - Description">
-                                <rect key="frame" x="10" y="531" width="394" height="36"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D9o-Eu-qU3" userLabel="Label - Description">
+                                <rect key="frame" x="10" y="328" width="394" height="36"/>
                                 <string key="text">자주 이용하는 주차장은 주차장 상세정보에서
 버튼을 눌러 즐겨찾기에 등록해보세요.</string>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="15"/>
@@ -391,14 +367,18 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imgSearchTab1Empty" translatesAutoresizingMaskIntoConstraints="NO" id="OZH-QZ-d9k" userLabel="ImageView - Icon">
-                                <rect key="frame" x="87" y="219" width="240" height="240"/>
+                                <rect key="frame" x="147" y="136" width="120" height="120"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="OZH-QZ-d9k" firstAttribute="top" secondItem="Wfs-Dd-euR" secondAttribute="top" constant="175" id="Mc9-0u-ru5"/>
+                            <constraint firstItem="D9o-Eu-qU3" firstAttribute="leading" secondItem="Wfs-Dd-euR" secondAttribute="leading" constant="10" id="08S-hA-K3P"/>
+                            <constraint firstItem="vGA-a8-YzP" firstAttribute="leading" secondItem="Wfs-Dd-euR" secondAttribute="leading" constant="10" id="H7X-MD-OJd"/>
+                            <constraint firstItem="Wfs-Dd-euR" firstAttribute="trailing" secondItem="D9o-Eu-qU3" secondAttribute="trailing" constant="10" id="LRv-Ak-7VQ"/>
+                            <constraint firstItem="OZH-QZ-d9k" firstAttribute="top" secondItem="FYr-cq-ByF" secondAttribute="top" constant="136" id="Mc9-0u-ru5"/>
                             <constraint firstItem="OZH-QZ-d9k" firstAttribute="centerX" secondItem="FYr-cq-ByF" secondAttribute="centerX" id="cgZ-WD-mSf"/>
                             <constraint firstItem="vGA-a8-YzP" firstAttribute="top" secondItem="OZH-QZ-d9k" secondAttribute="bottom" constant="40" id="o17-sb-T3F"/>
+                            <constraint firstItem="Wfs-Dd-euR" firstAttribute="trailing" secondItem="vGA-a8-YzP" secondAttribute="trailing" constant="10" id="rkm-LR-miY"/>
                             <constraint firstItem="D9o-Eu-qU3" firstAttribute="top" secondItem="vGA-a8-YzP" secondAttribute="bottom" constant="10" id="vuK-1K-fAq"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Wfs-Dd-euR"/>
@@ -421,16 +401,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imgSearchTab1Empty" translatesAutoresizingMaskIntoConstraints="NO" id="iLc-Vo-VKc" userLabel="ImageView - Icon">
-                                <rect key="frame" x="87" y="136" width="240" height="240"/>
+                                <rect key="frame" x="147" y="136" width="120" height="120"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="어디에 주차하세요?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fic-Zs-bwC" userLabel="Label - Title">
-                                <rect key="frame" x="10" y="416" width="394" height="22"/>
+                                <rect key="frame" x="10" y="296" width="394" height="22"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="18"/>
                                 <color key="textColor" name="DarkGrey"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dXy-0Q-OaL" userLabel="Label - Description">
-                                <rect key="frame" x="10" y="448" width="394" height="36"/>
+                                <rect key="frame" x="10" y="328" width="394" height="36"/>
                                 <string key="text">주차하실 지역의 키워드나 주소를 입력하세요.
 (지역명, 번지, 도로명 주소)</string>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="15"/>
@@ -474,14 +454,8 @@
         <namedColor name="Black16">
             <color red="0.0" green="0.0" blue="0.0" alpha="0.15999999642372131" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="CoolGrey">
-            <color red="0.6589999794960022" green="0.67500001192092896" blue="0.68599998950958252" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="DarkGrey">
             <color red="0.10199999809265137" green="0.10199999809265137" blue="0.10599999874830246" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="DarkGrey3">
-            <color red="0.10999999940395355" green="0.11400000005960464" blue="0.11400000005960464" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="IceBlue">
             <color red="0.93699997663497925" green="0.94900000095367432" blue="0.96100002527236938" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
