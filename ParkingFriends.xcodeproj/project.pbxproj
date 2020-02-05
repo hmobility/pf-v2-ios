@@ -277,6 +277,8 @@
 		629E6FCA23E8E9490090E164 /* BetterSegmentedControl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 629E6FC923E8E9490090E164 /* BetterSegmentedControl.framework */; };
 		629E6FCB23E8E9490090E164 /* BetterSegmentedControl.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 629E6FC923E8E9490090E164 /* BetterSegmentedControl.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		629E6FD823E8EECB0090E164 /* ParkinglotDetailSupportedProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629E6FD723E8EECA0090E164 /* ParkinglotDetailSupportedProductView.swift */; };
+		629E6FDA23EA49780090E164 /* UISearchBar+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629E6FD923EA49780090E164 /* UISearchBar+Rx.swift */; };
+		629E6FDC23EA56730090E164 /* SearchHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629E6FDB23EA56730090E164 /* SearchHistory.swift */; };
 		62AE72342379534200BE6FA3 /* Color.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62AE72332379534200BE6FA3 /* Color.xcassets */; };
 		62AE72392379578400BE6FA3 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AE72382379578400BE6FA3 /* Color.swift */; };
 		62AE723E23795AC000BE6FA3 /* MessageDialogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AE723D23795AC000BE6FA3 /* MessageDialogView.swift */; };
@@ -649,6 +651,8 @@
 		629E6F9E23E7D3690090E164 /* Geocode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Geocode.swift; sourceTree = "<group>"; };
 		629E6FC923E8E9490090E164 /* BetterSegmentedControl.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BetterSegmentedControl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		629E6FD723E8EECA0090E164 /* ParkinglotDetailSupportedProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkinglotDetailSupportedProductView.swift; sourceTree = "<group>"; };
+		629E6FD923EA49780090E164 /* UISearchBar+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISearchBar+Rx.swift"; sourceTree = "<group>"; };
+		629E6FDB23EA56730090E164 /* SearchHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistory.swift; sourceTree = "<group>"; };
 		62AE72332379534200BE6FA3 /* Color.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Color.xcassets; sourceTree = "<group>"; };
 		62AE72382379578400BE6FA3 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		62AE723A2379594E00BE6FA3 /* MessageDialogView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageDialogView.xib; sourceTree = "<group>"; };
@@ -1960,6 +1964,7 @@
 			isa = PBXGroup;
 			children = (
 				6210BAB72377CFD0001C6065 /* UITextField+Rx.swift */,
+				629E6FD923EA49780090E164 /* UISearchBar+Rx.swift */,
 				624CE056238E57620068F4F9 /* MapView+Rx.swift */,
 			);
 			path = Extension;
@@ -2275,6 +2280,7 @@
 			isa = PBXGroup;
 			children = (
 				A4225E99235D7463004F48C4 /* UserData.swift */,
+				629E6FDB23EA56730090E164 /* SearchHistory.swift */,
 				6210BAC7237931DA001C6065 /* AppConfig.swift */,
 				625ACE6F239F97C3002D0653 /* FilterOption.swift */,
 				62269BC623A8B5F400BFACC1 /* ProductOption.swift */,
@@ -2884,6 +2890,7 @@
 				624CE051238CBB1F0068F4F9 /* CodeVerifyModel.swift in Sources */,
 				62601D8C2393784700B78033 /* CarModelTableViewCell.swift in Sources */,
 				624B51AD23E54EF900AC6133 /* ParkinglotDetailButtonView.swift in Sources */,
+				629E6FDA23EA49780090E164 /* UISearchBar+Rx.swift in Sources */,
 				622BC1D0236A9DC500A43F02 /* UIButton+Extension.swift in Sources */,
 				629DB1A423C1CA7D00E68A94 /* BasicCardTableViewCell.swift in Sources */,
 				625951A523E2A9A70015A868 /* PaymentProductInfoView.swift in Sources */,
@@ -2941,6 +2948,7 @@
 				629C287C2371093700E0E5E1 /* RegiCarViewController.swift in Sources */,
 				6257DE2923C9940E001091B0 /* DisplayTimeHandler.swift in Sources */,
 				620455532397A2A9007ADF88 /* SearchOptionViewModel.swift in Sources */,
+				629E6FDC23EA56730090E164 /* SearchHistory.swift in Sources */,
 				A4225E9A235D7463004F48C4 /* UserData.swift in Sources */,
 				622BC0E02368011F00A43F02 /* GuideViewController.swift in Sources */,
 				6259519F23E2A0A70015A868 /* PaymentParkingInfoViewModel.swift in Sources */,

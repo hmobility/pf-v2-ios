@@ -16,13 +16,7 @@ extension Reactive where Base: UITextField {
         }
     }
 }
-/*
-extension UITextField {
-    public func createRxDelegateProxy() -> RxTextFieldDelegateProxy {
-        return RxTextFieldDelegateProxy(textField: self)
-    }
-}
-*/
+
 extension Reactive where Base: UITextField {
 
     public var delegate: DelegateProxy<UITextField, UITextFieldDelegate> {
