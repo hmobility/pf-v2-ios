@@ -16,13 +16,25 @@ enum MapOrders:String {
     case roadaddr = "roadaddr"              // 도로명주소
 }
 
-enum CoordSystemType: String {
+enum CoordSystemType:String {
     case epsg_4326 = "epsg:4326"
     case nhn_2048 = "nhn:2048"
     case nhn_128 = "nhn:128"
     case epsg_3857 = "epsg:3857"
 }
 
+enum GeoAddressType:String {
+    case none = ""
+    case sido = "SIDO"                               // 시도
+    case sigugun = "SIGUGUN"                         // 시구군
+    case dongmyun = "DONGMYUN"                       // 동면
+    case ri = "RI"                                   // 리
+    case road_name = "ROAD_NAME"                     // 도로명
+    case building_number = "BUILDING_NUMBER"         // 건물 번호
+    case building_name = "BUILDING_NAME"             // 건물 명
+    case land_number = "LAND_NUMBER"                 // 지번
+    case postal_code = "POSTAL_CODE"                 // 우편 번호
+}
 enum OutputType: String {
     case json = "json"
     case xml = "xml"

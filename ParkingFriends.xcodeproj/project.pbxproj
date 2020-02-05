@@ -273,6 +273,10 @@
 		629E6F9923E6A96B0090E164 /* SearchFavoriteEmptyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629E6F9823E6A96B0090E164 /* SearchFavoriteEmptyViewController.swift */; };
 		629E6F9B23E6AC9F0090E164 /* SearchResultItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629E6F9A23E6AC9F0090E164 /* SearchResultItemTableViewCell.swift */; };
 		629E6F9D23E6ACE80090E164 /* SearchFavoriteItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629E6F9C23E6ACE80090E164 /* SearchFavoriteItemTableViewCell.swift */; };
+		629E6F9F23E7D3690090E164 /* Geocode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629E6F9E23E7D3690090E164 /* Geocode.swift */; };
+		629E6FCA23E8E9490090E164 /* BetterSegmentedControl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 629E6FC923E8E9490090E164 /* BetterSegmentedControl.framework */; };
+		629E6FCB23E8E9490090E164 /* BetterSegmentedControl.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 629E6FC923E8E9490090E164 /* BetterSegmentedControl.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		629E6FD823E8EECB0090E164 /* ParkinglotDetailSupportedProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629E6FD723E8EECA0090E164 /* ParkinglotDetailSupportedProductView.swift */; };
 		62AE72342379534200BE6FA3 /* Color.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62AE72332379534200BE6FA3 /* Color.xcassets */; };
 		62AE72392379578400BE6FA3 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AE72382379578400BE6FA3 /* Color.swift */; };
 		62AE723E23795AC000BE6FA3 /* MessageDialogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AE723D23795AC000BE6FA3 /* MessageDialogView.swift */; };
@@ -367,6 +371,7 @@
 			files = (
 				62CCBAC223E3FADD00F57AF6 /* Pods_ParkingFriends.framework in Embed Frameworks */,
 				A4225E97235D4E12004F48C4 /* Ti2RPlayer.framework in Embed Frameworks */,
+				629E6FCB23E8E9490090E164 /* BetterSegmentedControl.framework in Embed Frameworks */,
 				62601DA723950DF400B78033 /* CloudCCTVSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -641,6 +646,9 @@
 		629E6F9823E6A96B0090E164 /* SearchFavoriteEmptyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFavoriteEmptyViewController.swift; sourceTree = "<group>"; };
 		629E6F9A23E6AC9F0090E164 /* SearchResultItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultItemTableViewCell.swift; sourceTree = "<group>"; };
 		629E6F9C23E6ACE80090E164 /* SearchFavoriteItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFavoriteItemTableViewCell.swift; sourceTree = "<group>"; };
+		629E6F9E23E7D3690090E164 /* Geocode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Geocode.swift; sourceTree = "<group>"; };
+		629E6FC923E8E9490090E164 /* BetterSegmentedControl.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BetterSegmentedControl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		629E6FD723E8EECA0090E164 /* ParkinglotDetailSupportedProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkinglotDetailSupportedProductView.swift; sourceTree = "<group>"; };
 		62AE72332379534200BE6FA3 /* Color.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Color.xcassets; sourceTree = "<group>"; };
 		62AE72382379578400BE6FA3 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		62AE723A2379594E00BE6FA3 /* MessageDialogView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageDialogView.xib; sourceTree = "<group>"; };
@@ -731,6 +739,7 @@
 				62C26BDC23612B5500695B6F /* ExternalAccessory.framework in Frameworks */,
 				62601D6A238FA54B00B78033 /* CoreLocation.framework in Frameworks */,
 				A4225E9C235D8567004F48C4 /* WebKit.framework in Frameworks */,
+				629E6FCA23E8E9490090E164 /* BetterSegmentedControl.framework in Frameworks */,
 				A4225E96235D4E12004F48C4 /* Ti2RPlayer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -762,6 +771,7 @@
 				62C26BDB23612B5500695B6F /* ExternalAccessory.framework */,
 				A4225E9B235D8567004F48C4 /* WebKit.framework */,
 				A4225E92235D4E12004F48C4 /* CloudCCTVSDK.framework */,
+				629E6FC923E8E9490090E164 /* BetterSegmentedControl.framework */,
 				A4225E93235D4E12004F48C4 /* Ti2RPlayer.framework */,
 				2629E4950DB3E8EFEE080B6A /* Pods_ParkingFriends.framework */,
 				4565A27F32856AD49004181B /* Pods_ParkingFriendsTests.framework */,
@@ -1586,6 +1596,7 @@
 		625ACE9223A30A9A002D0653 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				629E6F9E23E7D3690090E164 /* Geocode.swift */,
 				625ACE8623A239C9002D0653 /* ReverseGeocode.swift */,
 				625ACE8A23A23C39002D0653 /* MapResult.swift */,
 			);
@@ -1731,6 +1742,7 @@
 			isa = PBXGroup;
 			children = (
 				6261583623D6C8ED00C08CCA /* ParkinglotDetailReserveView.swift */,
+				629E6FD723E8EECA0090E164 /* ParkinglotDetailSupportedProductView.swift */,
 			);
 			path = Reserve;
 			sourceTree = "<group>";
@@ -2795,6 +2807,7 @@
 				625ACE7E23A0DB18002D0653 /* ParkingPriceTableViewCell.swift in Sources */,
 				62269BE823B1A61C00BFACC1 /* ParkingCardViewModel.swift in Sources */,
 				A4BA4BDB235EFC7600D30DFE /* AppTokenAdapter.swift in Sources */,
+				629E6FD823E8EECB0090E164 /* ParkinglotDetailSupportedProductView.swift in Sources */,
 				624CE057238E57620068F4F9 /* MapView+Rx.swift in Sources */,
 				629DB19323C1A1A500E68A94 /* MenuCarSectionView.swift in Sources */,
 				625ACE8423A2113F002D0653 /* NavigationDialogView.swift in Sources */,
@@ -2913,6 +2926,7 @@
 				A4225E682355B352004F48C4 /* BoolTransform.swift in Sources */,
 				62630B4D23862F3A0029724B /* RegistrationModel.swift in Sources */,
 				62AE724C237B8F6700BE6FA3 /* EventViewController.swift in Sources */,
+				629E6F9F23E7D3690090E164 /* Geocode.swift in Sources */,
 				629C2865236BF6B600E0E5E1 /* LoginViewController.swift in Sources */,
 				625BD91F23B732AA00C3D4E9 /* EmptyParkingTicketViewController.swift in Sources */,
 				6257DE3223CAD6E1001091B0 /* FixedTicketDurationViewController.swift in Sources */,
@@ -3150,6 +3164,7 @@
 				MARKETING_VERSION = 1.83;
 				PRODUCT_BUNDLE_IDENTIFIER = com.misconct.ParkingFriends;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -3178,6 +3193,7 @@
 				MARKETING_VERSION = 1.83;
 				PRODUCT_BUNDLE_IDENTIFIER = com.misconct.ParkingFriends;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

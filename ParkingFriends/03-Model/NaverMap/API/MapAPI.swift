@@ -9,6 +9,15 @@
 import Foundation
 
 struct MapAPI:BaseAPI {
+    
+    // Geocode
+    static func geocode(query:String) -> RequestURL {
+        let query:Params = ["query": query]
+        let url = build(host:map_host, endpoint:"/map-reversegeocode/v2/geocode", params: query)
+        
+        return (url, nil)
+    }
+    
     // Reverse Geocode
     static func reverse(request:String = "coordsToaddr", sourcesrs:CoordSystemType = .epsg_4326, coords:CoordType, output:OutputType = .json, orders:[MapOrders]) -> RequestURL {
         let mapOrders = orders.map{ $0.rawValue }.joined(separator: ",")

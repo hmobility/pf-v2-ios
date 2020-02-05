@@ -159,3 +159,37 @@ class Addition: BaseModelType {
         value <- map["value"]
     }
 }
+
+class ReverseStatus: BaseModelType {
+    var code:Int = 0
+    var name:String = ""
+    var message:String = ""
+    
+    override init() {
+        super.init()
+    }
+
+    required init?(map: Map) {
+        super.init(map: map)
+    }
+    
+    override func mapping(map: Map) {
+        code <- map["code"]
+        name <- map["name"]
+        message <- map["message"]
+    }
+}
+
+class ReverseStatusError: BaseModelType {
+    var errorCode:Int = 0
+    var message:String = ""
+
+    required init?(map: Map) {
+        super.init(map: map)
+    }
+    
+    override func mapping(map: Map) {
+        errorCode <- map["code"]
+        message <- map["message"]
+    }
+}

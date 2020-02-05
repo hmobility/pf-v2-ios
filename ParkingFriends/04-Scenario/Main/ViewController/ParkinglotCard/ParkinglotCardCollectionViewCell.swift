@@ -62,7 +62,7 @@ class ParkinglotCardCollectionViewCell: UICollectionViewCell {
     // MARK: - Binding
     
     private func setupBinding() {
-        self.localizer.localized("btn_reservation_diabled")
+        self.localizer.localized("btn_reservation_disabled")
                 .asDriver()
                 .drive(self.reservationButton.rx.title(for: .disabled))
                 .disposed(by: disposeBag)

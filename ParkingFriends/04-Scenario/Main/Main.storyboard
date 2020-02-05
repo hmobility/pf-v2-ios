@@ -104,17 +104,8 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="대왕판교로634번길" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wvo-PG-QTt" userLabel="Label - Title">
-                                        <rect key="frame" x="61" y="14" width="123.5" height="17"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="17" id="oH9-n9-TRS"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="16"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘 11:00 - 14:00 (3시간)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dRf-Mm-6kM" userLabel="Label - Time">
-                                        <rect key="frame" x="63" y="35" width="130" height="14"/>
+                                        <rect key="frame" x="63" y="34" width="130" height="14"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="14" id="5aj-iL-Ikd"/>
                                         </constraints>
@@ -122,23 +113,33 @@
                                         <color key="textColor" name="Steel"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kmo-bf-exT" userLabel="Button - Title">
+                                        <rect key="frame" x="61" y="14" width="124" height="16"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="16" id="Obq-c5-ZVN"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="16"/>
+                                        <state key="normal" title="대왕판교로634번길">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstItem="Wvo-PG-QTt" firstAttribute="top" secondItem="eaE-XJ-DLD" secondAttribute="top" constant="14" id="1lR-HK-jbL"/>
+                                    <constraint firstItem="D95-bY-Efh" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="kmo-bf-exT" secondAttribute="trailing" constant="12" id="26J-ux-GfG"/>
                                     <constraint firstItem="ezi-kn-iXM" firstAttribute="centerY" secondItem="eaE-XJ-DLD" secondAttribute="centerY" id="6SX-dU-jRz"/>
                                     <constraint firstItem="D95-bY-Efh" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="dRf-Mm-6kM" secondAttribute="trailing" constant="14" id="B4R-Eu-BTf"/>
                                     <constraint firstItem="ezi-kn-iXM" firstAttribute="leading" secondItem="eaE-XJ-DLD" secondAttribute="leading" constant="4" id="Gq0-ww-uQv"/>
                                     <constraint firstItem="D95-bY-Efh" firstAttribute="centerY" secondItem="eaE-XJ-DLD" secondAttribute="centerY" id="RCu-4Q-H8L"/>
+                                    <constraint firstItem="dRf-Mm-6kM" firstAttribute="top" secondItem="kmo-bf-exT" secondAttribute="bottom" constant="4" id="SBS-qe-U4g"/>
                                     <constraint firstItem="ftz-xp-L7j" firstAttribute="top" secondItem="eaE-XJ-DLD" secondAttribute="top" constant="14" id="VYD-9c-8yf"/>
-                                    <constraint firstItem="Wvo-PG-QTt" firstAttribute="leading" secondItem="ftz-xp-L7j" secondAttribute="trailing" constant="12" id="f1a-st-fpX"/>
+                                    <constraint firstItem="kmo-bf-exT" firstAttribute="top" secondItem="eaE-XJ-DLD" secondAttribute="top" constant="14" id="Vbb-js-DC0"/>
                                     <constraint firstItem="dRf-Mm-6kM" firstAttribute="leading" secondItem="ftz-xp-L7j" secondAttribute="trailing" constant="14" id="nPb-T8-fer"/>
-                                    <constraint firstItem="D95-bY-Efh" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Wvo-PG-QTt" secondAttribute="trailing" constant="12" id="oq5-Np-O6h"/>
                                     <constraint firstAttribute="height" constant="59" id="qdv-jn-sXW"/>
-                                    <constraint firstItem="dRf-Mm-6kM" firstAttribute="top" secondItem="Wvo-PG-QTt" secondAttribute="bottom" constant="4" id="qzu-9Y-ywt"/>
                                     <constraint firstAttribute="trailing" secondItem="D95-bY-Efh" secondAttribute="trailing" constant="16" id="x6D-mb-x15"/>
                                     <constraint firstItem="ftz-xp-L7j" firstAttribute="leading" secondItem="ezi-kn-iXM" secondAttribute="trailing" constant="4" id="xjk-kx-oW4"/>
                                     <constraint firstAttribute="bottom" secondItem="ftz-xp-L7j" secondAttribute="bottom" constant="13" id="xkB-8o-3I0"/>
+                                    <constraint firstItem="kmo-bf-exT" firstAttribute="leading" secondItem="ftz-xp-L7j" secondAttribute="trailing" constant="12" id="yrh-vz-vlp"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
@@ -161,7 +162,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <outlet property="mainTitleLabel" destination="Wvo-PG-QTt" id="9C5-QD-6Hd"/>
+                                    <outlet property="mainTitleButton" destination="kmo-bf-exT" id="IC9-YR-RzJ"/>
                                     <outlet property="menuButton" destination="ezi-kn-iXM" id="Iy9-5K-sCa"/>
                                     <outlet property="searchOptionButton" destination="D95-bY-Efh" id="DXG-oC-ird"/>
                                     <outlet property="subTitleLabel" destination="dRf-Mm-6kM" id="k6u-Ty-cpa"/>
@@ -1633,7 +1634,7 @@
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="H5z-UM-I3b" customClass="ParkinglotCardViewController" customModule="ParkingFriends" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="6hS-72-vZj">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="172"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Pne-oF-qgQ">

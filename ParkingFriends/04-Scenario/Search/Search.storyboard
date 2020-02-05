@@ -67,10 +67,10 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="N8I-rg-qsZ" userLabel="Stack View - History">
-                                <rect key="frame" x="0.0" y="88" width="414" height="717.5"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725.5"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="48" estimatedRowHeight="-1" sectionHeaderHeight="8" sectionFooterHeight="8" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Ns-bR-8rE">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="717.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="725.5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchHistoryItemTableViewCell" id="MU1-Vq-Fgf" customClass="SearchHistoryItemTableViewCell" customModule="ParkingFriends" customModuleProvider="target">
@@ -81,7 +81,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icMarkerGrey" translatesAutoresizingMaskIntoConstraints="NO" id="TPu-sL-JoY" userLabel="ImageView - Marker">
-                                                            <rect key="frame" x="16" y="12" width="24" height="24"/>
+                                                            <rect key="frame" x="16" y="0.0" width="48" height="48"/>
                                                         </imageView>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Ei-XA-9Lr" userLabel="Button - Remove">
                                                             <rect key="frame" x="374" y="12" width="24" height="24"/>
@@ -92,7 +92,7 @@
                                                             <state key="normal" image="icCancelDarkgrey"/>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="성미산로" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uOV-jf-XXo" userLabel="Label - Title">
-                                                            <rect key="frame" x="48" y="14.5" width="55.5" height="19.5"/>
+                                                            <rect key="frame" x="72" y="14.5" width="55.5" height="19.5"/>
                                                             <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="16"/>
                                                             <color key="textColor" name="DarkGrey"/>
                                                             <nil key="highlightedColor"/>
@@ -139,11 +139,11 @@
                                 </items>
                             </navigationBar>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="YOR-Rm-Oee" firstAttribute="bottom" secondItem="Ja3-nn-PKt" secondAttribute="bottom" id="A1b-GH-sAQ"/>
                             <constraint firstAttribute="trailing" secondItem="N8I-rg-qsZ" secondAttribute="trailing" id="AzL-Es-gmF"/>
-                            <constraint firstItem="Ja3-nn-PKt" firstAttribute="top" secondItem="N8I-rg-qsZ" secondAttribute="bottom" constant="8" symbolic="YES" id="Ed8-JC-a8r"/>
+                            <constraint firstItem="Ja3-nn-PKt" firstAttribute="top" secondItem="N8I-rg-qsZ" secondAttribute="bottom" id="Ed8-JC-a8r"/>
                             <constraint firstItem="bhq-wZ-YDT" firstAttribute="trailing" secondItem="37L-Da-3vD" secondAttribute="trailing" id="G7U-sh-0fj"/>
                             <constraint firstItem="N8I-rg-qsZ" firstAttribute="top" secondItem="bhq-wZ-YDT" secondAttribute="bottom" id="Gc8-lG-QsJ"/>
                             <constraint firstItem="N8I-rg-qsZ" firstAttribute="leading" secondItem="37L-Da-3vD" secondAttribute="leading" id="Oec-ip-wnX"/>
@@ -316,16 +316,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imgSearchNoResult" translatesAutoresizingMaskIntoConstraints="NO" id="qyn-Hj-A5e" userLabel="ImageView - Icon">
-                                <rect key="frame" x="147" y="180" width="120" height="120"/>
+                                <rect key="frame" x="87" y="180" width="240" height="240"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="검색 결과가 없어요." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="na8-pD-Vcj" userLabel="Label - Title">
-                                <rect key="frame" x="10" y="340" width="394" height="22"/>
+                                <rect key="frame" x="10" y="460" width="394" height="22"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="18"/>
                                 <color key="textColor" name="DarkGrey"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="입력한 검색어와 일치하는 결과가 없습니다." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="brk-ho-V6k" userLabel="Label - Description">
-                                <rect key="frame" x="10" y="372" width="394" height="18"/>
+                                <rect key="frame" x="10" y="492" width="394" height="18"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="15"/>
                                 <color key="textColor" name="Steel"/>
                                 <nil key="highlightedColor"/>
@@ -377,13 +377,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" text="등록된 주차장이 없어요" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vGA-a8-YzP" userLabel="Label - Title">
-                                <rect key="frame" x="10" y="379" width="394" height="22"/>
+                                <rect key="frame" x="10" y="499" width="394" height="22"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="18"/>
                                 <color key="textColor" name="DarkGrey"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D9o-Eu-qU3" userLabel="Label - Description">
-                                <rect key="frame" x="10" y="411" width="394" height="36"/>
+                                <rect key="frame" x="10" y="531" width="394" height="36"/>
                                 <string key="text">자주 이용하는 주차장은 주차장 상세정보에서
 버튼을 눌러 즐겨찾기에 등록해보세요.</string>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="15"/>
@@ -391,7 +391,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imgSearchTab1Empty" translatesAutoresizingMaskIntoConstraints="NO" id="OZH-QZ-d9k" userLabel="ImageView - Icon">
-                                <rect key="frame" x="147" y="219" width="120" height="120"/>
+                                <rect key="frame" x="87" y="219" width="240" height="240"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -421,16 +421,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imgSearchTab1Empty" translatesAutoresizingMaskIntoConstraints="NO" id="iLc-Vo-VKc" userLabel="ImageView - Icon">
-                                <rect key="frame" x="147" y="136" width="120" height="120"/>
+                                <rect key="frame" x="87" y="136" width="240" height="240"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="어디에 주차하세요?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fic-Zs-bwC" userLabel="Label - Title">
-                                <rect key="frame" x="10" y="296" width="394" height="22"/>
+                                <rect key="frame" x="10" y="416" width="394" height="22"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="18"/>
                                 <color key="textColor" name="DarkGrey"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dXy-0Q-OaL" userLabel="Label - Description">
-                                <rect key="frame" x="10" y="328" width="394" height="36"/>
+                                <rect key="frame" x="10" y="448" width="394" height="36"/>
                                 <string key="text">주차하실 지역의 키워드나 주소를 입력하세요.
 (지역명, 번지, 도로명 주소)</string>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="15"/>
@@ -454,8 +454,8 @@
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="dcx-tE-Aql"/>
                     <connections>
-                        <outlet property="descriptionLabel" destination="dXy-0Q-OaL" id="aJn-Sk-bCJ"/>
-                        <outlet property="titleLabel" destination="fic-Zs-bwC" id="m4I-bu-cVj"/>
+                        <outlet property="descriptionLabel" destination="dXy-0Q-OaL" id="9KC-As-ENg"/>
+                        <outlet property="titleLabel" destination="fic-Zs-bwC" id="N2o-7Q-dwF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dSU-zv-UOW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -105,6 +105,7 @@ class ParkinglotDetailViewModel: ParkinglotDetailViewModelType {
     func setButtonViewModel(_ viewModel:ParkinglotDetailButtonViewModel) {
         buttonViewModel = viewModel
     }
+    
     // MARK: - Bookmark
     
     func changeBookmark(_ state:Bool) {
@@ -141,7 +142,7 @@ class ParkinglotDetailViewModel: ParkinglotDetailViewModelType {
         
         if element.products.count > 0, let data = userData {
             let bookable:Bool = element.products.count > 0
-            updateReserveTime(element.products, onReserve: data.getOnReserveDate())
+            updateReserveTime(supported:element.supportItems, items: element.products, onReserve: data.getOnReserveDate())
             udpateBookableState(bookable)
         }
     }
@@ -186,9 +187,9 @@ class ParkinglotDetailViewModel: ParkinglotDetailViewModelType {
     
     // MARK: - Reserve
     
-    func updateReserveTime(_ items:[ProductElement], onReserve duration:DateDuration) {
+    func updateReserveTime(supported products:[ProductType], items:[ProductElement], onReserve duration:DateDuration) {
         if let viewModel = reserveViewModel {
-            viewModel.setProducts(items, onReserve:duration)
+            viewModel.setProducts(supported: products, elements: items, onReserve: duration)
         }
     }
     
