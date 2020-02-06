@@ -3170,7 +3170,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.83;
-				PRODUCT_BUNDLE_IDENTIFIER = com.misconct.ParkingFriends;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hancom.mobility.ParkingFriends;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
 				SWIFT_VERSION = 5.0;
@@ -3199,7 +3199,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.83;
-				PRODUCT_BUNDLE_IDENTIFIER = com.misconct.ParkingFriends;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hancom.mobility.ParkingFriends;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
 				SWIFT_VERSION = 5.0;

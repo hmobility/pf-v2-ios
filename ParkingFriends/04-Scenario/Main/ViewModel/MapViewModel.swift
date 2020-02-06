@@ -274,7 +274,7 @@ class MapViewModel: NSObject, MapViewModelType {
         
         if let elements = lots {
             for item in elements {
-                debugPrint("[LOT] ", item.address)
+//                debugPrint("[LOT] ", item.address)    // Delete by Rao
                 if let marker = generateMarker(within: item) {
                     lotList.append(marker)
                 }

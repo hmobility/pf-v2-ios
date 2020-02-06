@@ -41,7 +41,7 @@ extension Reactive where Base:  NMFMapView {
             let width = UIScreen.main.nativeBounds.width / 2
             let metersPerPixel = self.base.projection.metersPerPixel()
             
-            return (metersPerPixel * Double(width)) / 1000
+            return (metersPerPixel * Double(width)) / 1000.0        //     Test by Rao
         }
     }
     // MRAK: - Delegate
