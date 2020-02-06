@@ -134,12 +134,65 @@
                     <connections>
                         <outlet property="backButton" destination="5Yc-KW-ib2" id="64J-mM-MHh"/>
                         <outlet property="containerView" destination="U5l-kl-N5M" id="gM5-wj-REh"/>
+                        <outlet property="historyFooterView" destination="CLg-m0-w8W" id="xSy-VY-hhN"/>
                         <outlet property="historyView" destination="8Ns-bR-8rE" id="fhF-1E-OIg"/>
                         <outlet property="navigationBar" destination="bhq-wZ-YDT" id="N0r-IW-sEf"/>
                         <outlet property="tapSegmentedControl" destination="GY1-ea-i9G" id="Jp5-t8-m3o"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7lv-pA-nTY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="CLg-m0-w8W" userLabel="View - History Footer" customClass="SearchHistoryFooterView" customModule="ParkingFriends" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="415" height="48"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hk5-hD-EOa" userLabel="View - Top Border">
+                            <rect key="frame" x="0.0" y="0.0" width="415" height="8"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="8" id="8Mm-LM-Nyf"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                    <color key="value" name="LightBlueGrey"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                    <size key="value" width="0.0" height="-0.59999999999999998"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                    <real key="value" value="1"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                        <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ysd-am-2ac" userLabel="Button - Remove">
+                            <rect key="frame" x="309" y="24" width="86" height="15"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="15" id="Obp-5P-6Wv"/>
+                            </constraints>
+                            <state key="normal">
+                                <attributedString key="attributedTitle">
+                                    <fragment content="검색 내역 삭제">
+                                        <attributes>
+                                            <color key="NSColor" name="SlateGrey"/>
+                                            <font key="NSFont" size="15" name="AppleSDGothicNeo-Regular"/>
+                                            <integer key="NSUnderline" value="1"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                            </state>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" name="IceBlue"/>
+                    <constraints>
+                        <constraint firstItem="Hk5-hD-EOa" firstAttribute="leading" secondItem="CLg-m0-w8W" secondAttribute="leading" id="7le-wb-m9k"/>
+                        <constraint firstAttribute="trailing" secondItem="Hk5-hD-EOa" secondAttribute="trailing" id="Jtw-Xk-4So"/>
+                        <constraint firstItem="Hk5-hD-EOa" firstAttribute="top" secondItem="CLg-m0-w8W" secondAttribute="top" id="XIJ-UW-qfP"/>
+                        <constraint firstAttribute="trailing" secondItem="Ysd-am-2ac" secondAttribute="trailing" constant="20" id="eYS-3X-nSS"/>
+                        <constraint firstItem="Ysd-am-2ac" firstAttribute="top" secondItem="Hk5-hD-EOa" secondAttribute="bottom" constant="16" id="lFs-pP-auC"/>
+                    </constraints>
+                    <connections>
+                        <outlet property="removeButton" destination="Ysd-am-2ac" id="2gN-G9-XQg"/>
+                    </connections>
+                </view>
             </objects>
             <point key="canvasLocation" x="434.78260869565219" y="-40.178571428571423"/>
         </scene>
@@ -459,6 +512,12 @@
         </namedColor>
         <namedColor name="IceBlue">
             <color red="0.93699997663497925" green="0.94900000095367432" blue="0.96100002527236938" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="LightBlueGrey">
+            <color red="0.80800002813339233" green="0.81999999284744263" blue="0.83099997043609619" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SlateGrey">
+            <color red="0.34099999070167542" green="0.3880000114440918" blue="0.43500000238418579" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Steel">
             <color red="0.44699999690055847" green="0.50199997425079346" blue="0.55699998140335083" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
