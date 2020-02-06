@@ -108,7 +108,7 @@ class MapViewModel: NSObject, MapViewModelType {
                 .drive(onNext: { (zoomLevel:Double, animated: Bool, reason: Int) in
                     self.currentCenterInCamera(zoomLevel: zoomLevel)
                         .subscribe(onNext: { (zoomLevel, coord) in
-                            self.trackCameraMovement(coord: coord, zoomLevel: zoomLevel)
+//                            self.trackCameraMovement(coord: coord, zoomLevel: zoomLevel)      // Delete by Rao
                         })
                         .disposed(by: self.disposeBag)
               
@@ -359,7 +359,7 @@ class MapViewModel: NSObject, MapViewModelType {
     private func updateParkinglot(coord:CoordType, district:Bool = false, search:Bool = false) {
         let option:FilterOption = UserData.shared.filter
         let radius = self.mapView!.rx.radius
-
+        
         debugPrint("[RADIUS] ", radius)
         let time = UserData.shared.getOnReserveTime()
         let today = Date().toString(format: .custom("yyyyMMdd"))
