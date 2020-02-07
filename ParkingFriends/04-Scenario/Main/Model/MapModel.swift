@@ -11,7 +11,8 @@ import NMapsMap
 
 
 fileprivate let kBasicZoomLevel = 14.0
-fileprivate let kMinZoomLevel = 10.0
+//fileprivate let kMinZoomLevel = 10.0
+fileprivate let kMinZoomLevel = 10.5    // Add by Rao
 fileprivate let kMaxZoomLevel = 16.0
 
 fileprivate let kDisctrictZoomLevel = 12.5
@@ -38,6 +39,8 @@ protocol MapModelType {
 
 class MapModel: NSObject, MapModelType {
     var zoomLevel: BehaviorRelay<Double> = BehaviorRelay(value: kBasicZoomLevel)
+//    var minZoomLevel: BehaviorRelay<Double> = BehaviorRelay(value: kMinZoomLevel)   // Edit by Rao
+//    var maxZoomLevel: BehaviorRelay<Double> = BehaviorRelay(value: kMaxZoomLevel)   // Edit by Rao
     var maxZoomLevel: BehaviorRelay<Double> = BehaviorRelay(value: kMinZoomLevel)
     var minZoomLevel: BehaviorRelay<Double> = BehaviorRelay(value: kMaxZoomLevel)
     
