@@ -40,7 +40,8 @@ class MarkerWindow:NMFInfoWindow {
     
     private func getMarkerType(available:Bool) -> MarkerType {
         if available {
-            return .green
+//            return .green
+            return .normal
         }
         
         return .disabled
