@@ -75,6 +75,8 @@ extension UIViewController {
     public func dismissRoot(animated: Bool = true, completion: (() -> Void)? = nil) {
         if let navigationController = navigationController {
             navigationController.dismiss(animated: true, completion: completion)
+        } else {
+            dismissModal()  // Add by Rao
         }
     }
 }

@@ -70,12 +70,16 @@ class SearchViewController: UIViewController {
     }
     
     // MARK: - Setup View
-    
+//    @available(iOS 13, *)   // Add by Rao
     private func setupNavigation() {
         if let topItem = navigationBar.topItem {
-            searchBar.searchTextField.borderStyle = .none
-            searchBar.searchTextField.textAlignment = .left
+            
+//            searchBar.searchTextField.borderStyle = .none
+//            searchBar.searchTextField.textAlignment = .left
+            searchBar.textField?.borderStyle = .none       // Add by Rao
+            searchBar.textField?.textAlignment = .left     // Add by Rao
             searchBar.setImage(UIImage(), for: .search, state: .normal)
+            
             topItem.titleView = searchBar
         }
     }
@@ -161,3 +165,22 @@ class SearchViewController: UIViewController {
         }
     }
 }
+
+
+// Add by Rao
+extension UISearchBar {
+    var textField : UITextField? {
+        if #available(iOS 13.0, *) {
+            return self.searchTextField
+        } else {
+            // Fallback on earlier versions
+            for view : UIView in (self.subviews[0]).subviews {
+                if let textField = view as? UITextField {
+                    return textField
+                }
+            }
+        }
+        return nil
+    }
+}
+
