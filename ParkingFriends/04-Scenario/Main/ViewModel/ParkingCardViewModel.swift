@@ -73,11 +73,14 @@ class ParkingCardViewModel: ParkingCardViewModelType {
     func setWithinElements(_ elements:[WithinElement]?){
         if let items = elements {
             // Add by Rao
+            //*
             let availItems = items.filter { (item) -> Bool in
                 return ( item.available == true )
             }
             /////////////////////////////////////////////////////////////////////////////////////////////////////////
             self.elements.accept(availItems)
+            //*/
+//            self.elements.accept(items)
         } else {
             self.elements.accept([])
         }
