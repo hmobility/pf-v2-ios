@@ -8,6 +8,12 @@
 
 import UIKit
 
+extension SearchFavoriteEmptyViewController : AnalyticsType {
+    var screenName: String {
+        return "[SCREEN] Search Favorite Empty"
+    }
+}
+
 class SearchFavoriteEmptyViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
@@ -26,9 +32,9 @@ class SearchFavoriteEmptyViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
-    /*
     // MARK: - Navigation
+    
+    /*
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

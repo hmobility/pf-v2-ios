@@ -11,6 +11,12 @@ import UIKit
 class SearchFavoriteItemTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     
+    // MARK: - Public Methods
+    
+    public func setTitle(with title:String) {
+        titleLabel.text = title
+    }
+    
     // MARKL: - Life Cycle
     
     override func awakeFromNib() {

@@ -65,6 +65,7 @@
 		622BC1D2236AA3C300A43F02 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622BC1D1236AA3C300A43F02 /* UIView+Extension.swift */; };
 		6239D5E923EABB2E004FD5FD /* SearchHistoryFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6239D5E823EABB2E004FD5FD /* SearchHistoryFooterView.swift */; };
 		6239D5EB23EAC617004FD5FD /* BetterSegmentedControl+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6239D5EA23EAC617004FD5FD /* BetterSegmentedControl+Rx.swift */; };
+		6239D5ED23EC1FA1004FD5FD /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6239D5EC23EC1FA1004FD5FD /* Place.swift */; };
 		623E122B23820EA700498C87 /* PhoneNumberModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623E122A23820EA700498C87 /* PhoneNumberModel.swift */; };
 		624B51AD23E54EF900AC6133 /* ParkinglotDetailButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624B51AC23E54EF900AC6133 /* ParkinglotDetailButtonView.swift */; };
 		624B51AF23E5507600AC6133 /* ParkinglotDetailButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624B51AE23E5507600AC6133 /* ParkinglotDetailButtonViewModel.swift */; };
@@ -85,7 +86,7 @@
 		625351E323E67411009FD27F /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 625351E223E67411009FD27F /* Search.storyboard */; };
 		625351E723E694FD009FD27F /* SearchHistoryItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625351E623E694FD009FD27F /* SearchHistoryItemTableViewCell.swift */; };
 		625351EB23E69F04009FD27F /* SearchNoResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625351EA23E69F04009FD27F /* SearchNoResultViewController.swift */; };
-		625351ED23E69F15009FD27F /* SearchRessultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625351EC23E69F15009FD27F /* SearchRessultViewController.swift */; };
+		625351ED23E69F15009FD27F /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625351EC23E69F15009FD27F /* SearchResultViewController.swift */; };
 		625351EF23E69F2A009FD27F /* SearchGuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625351EE23E69F2A009FD27F /* SearchGuideViewController.swift */; };
 		625351F123E6A25F009FD27F /* SearchTextViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625351F023E6A25F009FD27F /* SearchTextViewModel.swift */; };
 		625351F423E6A668009FD27F /* SearchFavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625351F323E6A668009FD27F /* SearchFavoriteViewController.swift */; };
@@ -444,6 +445,7 @@
 		622BC1D1236AA3C300A43F02 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		6239D5E823EABB2E004FD5FD /* SearchHistoryFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryFooterView.swift; sourceTree = "<group>"; };
 		6239D5EA23EAC617004FD5FD /* BetterSegmentedControl+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BetterSegmentedControl+Rx.swift"; sourceTree = "<group>"; };
+		6239D5EC23EC1FA1004FD5FD /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		623E122A23820EA700498C87 /* PhoneNumberModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberModel.swift; sourceTree = "<group>"; };
 		624B51AC23E54EF900AC6133 /* ParkinglotDetailButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkinglotDetailButtonView.swift; sourceTree = "<group>"; };
 		624B51AE23E5507600AC6133 /* ParkinglotDetailButtonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkinglotDetailButtonViewModel.swift; sourceTree = "<group>"; };
@@ -464,7 +466,7 @@
 		625351E223E67411009FD27F /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
 		625351E623E694FD009FD27F /* SearchHistoryItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryItemTableViewCell.swift; sourceTree = "<group>"; };
 		625351EA23E69F04009FD27F /* SearchNoResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchNoResultViewController.swift; sourceTree = "<group>"; };
-		625351EC23E69F15009FD27F /* SearchRessultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRessultViewController.swift; sourceTree = "<group>"; };
+		625351EC23E69F15009FD27F /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
 		625351EE23E69F2A009FD27F /* SearchGuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGuideViewController.swift; sourceTree = "<group>"; };
 		625351F023E6A25F009FD27F /* SearchTextViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextViewModel.swift; sourceTree = "<group>"; };
 		625351F323E6A668009FD27F /* SearchFavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFavoriteViewController.swift; sourceTree = "<group>"; };
@@ -1135,9 +1137,9 @@
 		625351E923E69ED5009FD27F /* Recent */ = {
 			isa = PBXGroup;
 			children = (
-				625351EA23E69F04009FD27F /* SearchNoResultViewController.swift */,
 				625351EE23E69F2A009FD27F /* SearchGuideViewController.swift */,
-				625351EC23E69F15009FD27F /* SearchRessultViewController.swift */,
+				625351EA23E69F04009FD27F /* SearchNoResultViewController.swift */,
+				625351EC23E69F15009FD27F /* SearchResultViewController.swift */,
 				629E6F9A23E6AC9F0090E164 /* SearchResultItemTableViewCell.swift */,
 			);
 			path = Recent;
@@ -1608,6 +1610,7 @@
 				629E6F9E23E7D3690090E164 /* Geocode.swift */,
 				625ACE8623A239C9002D0653 /* ReverseGeocode.swift */,
 				625ACE8A23A23C39002D0653 /* MapResult.swift */,
+				6239D5EC23EC1FA1004FD5FD /* Place.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2761,7 +2764,7 @@
 				629C286B236E957400E0E5E1 /* BasicInfoViewController.swift in Sources */,
 				62630B47238534FB0029724B /* CodeVerifyViewModel.swift in Sources */,
 				62254E8B238B992500AF82B9 /* Parkinglots.swift in Sources */,
-				625351ED23E69F15009FD27F /* SearchRessultViewController.swift in Sources */,
+				625351ED23E69F15009FD27F /* SearchResultViewController.swift in Sources */,
 				62601D8A2393783A00B78033 /* CarBrandTableViewCell.swift in Sources */,
 				629C2870236E9A1B00E0E5E1 /* CustomInputSection.swift in Sources */,
 				629C287A2370FCA500E0E5E1 /* UINavigationItem+Extension.swift in Sources */,
@@ -2939,6 +2942,7 @@
 				629C2872236FADE000E0E5E1 /* BasicInfoViewModel.swift in Sources */,
 				6204555123979F5B007ADF88 /* SearchOptionViewController.swift in Sources */,
 				A4225E682355B352004F48C4 /* BoolTransform.swift in Sources */,
+				6239D5ED23EC1FA1004FD5FD /* Place.swift in Sources */,
 				62630B4D23862F3A0029724B /* RegistrationModel.swift in Sources */,
 				62AE724C237B8F6700BE6FA3 /* EventViewController.swift in Sources */,
 				629E6F9F23E7D3690090E164 /* Geocode.swift in Sources */,

@@ -9,8 +9,25 @@
 import Foundation
 
 class NaverMap: HttpSession {
+    // Search
+    static public func search(query:String, coordinate:CoordType) -> Observable<(places:[Place]?, MapResultCode)> {
+        let data = MapAPI.search(query: query, coordinate: coordinate)
+        
+        return self.shared.dataTask(path: data.url, parameters: data.params)
+            .map ({  result in
+                //debugPrint("[SEARCH] ", result.data)
+                let items:[Place] = result.data.map { (data) in
+                    Place(JSON: data)!
+                }
+                
+                let status:MapResultCode = MapResultCode(rawValue:result.status["status"] as! String) ?? .none
+                
+                return (places:items, status)
+            })
+    }
+    
     // Reverse Geocoding
-    static public func geocode(query:String) -> Observable<(geocode:[Geocode]?, String)> {
+    static public func geocode(query:String) -> Observable<(geocode:[Geocode]?, MapResultCode)> {
         let data = MapAPI.geocode(query: query)
         
         return self.shared.dataTask(path: data.url, parameters: data.params)
@@ -20,7 +37,7 @@ class NaverMap: HttpSession {
                     Geocode(JSON: data)!
                 }
                 
-                let status:String = result.status["status"] as! String
+                let status:MapResultCode = MapResultCode(rawValue:result.status["status"] as! String) ?? .none
                 
                 return (geocode:geocoode, status)
             })

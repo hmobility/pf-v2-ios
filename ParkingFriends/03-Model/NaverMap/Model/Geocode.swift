@@ -16,11 +16,24 @@ class Geocode: BaseModelType {
     var jibunAddress:String = ""
     var englishAddress:String = ""
     var addressElements:[GeoAdddressElement] = []
-    var x:String = ""
-    var y:String = ""
-    var distance:String = ""
+    var x:Double = 0
+    var y:Double = 0
+    var distance:Double = 0
+    
+    required init?(map: Map) {
+         super.init(map: map)
+     }
+     
+     override func mapping(map: Map) {
+        roadAddress <- map["roadAddress"]
+        jibunAddress <- map["jibunAddress"]
+        englishAddress <- map["englishAddress"]
+        addressElements <- map["addressElements"]
+        x <- map["x"]
+        y <- map["y"]
+        distance <- map["distance"]
+     }
 }
-
 
 class GeoAdddressElement: BaseModelType {
     var types:[GeoAddressType] = []
