@@ -19,7 +19,7 @@ class UserData: NSObject, NSCoding {
     
     private var basis:ProductOption = ProductOption()
     
-    var seaarchHistory:SearchHistory = SearchHistory.shared
+    var searchHistory:SearchHistory = SearchHistory.shared
 
     // MARK: - Public Methods
     

@@ -23,6 +23,7 @@ protocol MapViewModelType {
     func zoomIn()
     func zoomOut()
     func placeCenter(search:Bool)
+    func userLocation() -> Observable<CoordType>
     
     func setTimeTicketRange(start startDate: Date, end endDate:Date)
     func setFixedTicketTime(start startDate: Date, hours:Int)
@@ -88,7 +89,6 @@ class MapViewModel: NSObject, MapViewModelType {
         setupLocationBinding()
         setupLocationOverlay()
         setupMapBinding()
-        //mapView?.delegate = self
     }
     
     // MARK: - Binding
@@ -100,8 +100,6 @@ class MapViewModel: NSObject, MapViewModelType {
      NMFMapChangedByDeveloper = 0
     */
     private func setupMapBinding() {
-       // mapView?.delegate = self
-
         if let map = self.mapView {
             map.rx.regionDidChange
                 .asDriver()
@@ -171,6 +169,17 @@ class MapViewModel: NSObject, MapViewModelType {
             overlay.subIcon = nil
             overlay.circleColor = Color.algaeGreen2
         }
+    }
+    
+    // MARK: - Public Methdos
+    
+    // To get user location for searching place
+    func userLocation() -> Observable<CoordType> {
+        return currentLocation()
+            .asObservable()
+            .map { location in
+                return CoordType(latitude: location.latitude, longitude: location.longitude)
+            }
     }
     
     // MARK: - Local Methods
@@ -445,33 +454,3 @@ class MapViewModel: NSObject, MapViewModelType {
             }).disposed(by: disposeBag)
     }
 }
-
-// MARK:- MapView Delegate
-// Deprecated
-/*
-extension MapViewModel: NMFMapViewDelegate {
-    func didTapMapView(_ point: CGPoint, latLng latlng: NMGLatLng) {
-
-    }
-    
-    func mapViewRegionIsChanging(_ mapView: NMFMapView, byReason reason: Int) {
-        print("[mapViewRegionIsChanging] ", mapView.latitude, ", ", mapView.longitude, " , [R]",  reason)
-    }
-    
-    func mapViewIdle(_ mapView: NMFMapView) {
-        print("[mapViewIdle] zoomLevel: ", mapView.zoomLevel, "(\(mapView.latitude),\(mapView.longitude))" )
-    }
-    
-    func mapView(_ mapView: NMFMapView, regionDidChangeAnimated animated: Bool, byReason reason: Int) {
-        print("[regionDidChangeAnimated] zoomLevel: ", mapView.zoomLevel, "(\(mapView.latitude),\(mapView.longitude)) , reason: ", reason)
-    }
-    
-    func mapView(_ mapView: NMFMapView, regionWillChangeAnimated animated: Bool, byReason reason: Int) {
-        print("[regionWillChangeAnimated] zoomLevel: ", mapView.zoomLevel, "(\(mapView.latitude),\(mapView.longitude)), reason: ", reason)
-    }
-    
-    func mapView(_ mapView: NMFMapView, didTap symbol: NMFSymbol) -> Bool {
-        return false
-    }
-}
-*/

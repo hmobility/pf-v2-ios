@@ -48,9 +48,7 @@ target 'ParkingFriends' do
   
   pod 'ImageSlideshow', '~> 1.8.1'
   pod "ImageSlideshow/Kingfisher"
-  
-  pod 'LGSegmentedControl'
-  
+
   pod 'TagListView', '~> 1.3.2'
   
   pod 'RangeSeekSlider'

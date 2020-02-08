@@ -12,6 +12,15 @@ class SearchResultItemTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     
+    var disposeBag = DisposeBag()
+    
+    // MARK: - Public Methods
+    
+    public func setTitle(with title:String, description:String) {
+        titleLabel.text = title
+        descriptionLabel.text = description
+    }
+    
     // MARK: - Life Cycle
     
     override func awakeFromNib() {

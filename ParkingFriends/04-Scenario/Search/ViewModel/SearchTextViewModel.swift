@@ -30,7 +30,7 @@ class SearchTextViewModel: SearchTextViewModelType {
     init(localizer: LocalizerType = Localizer.shared) {
         self.localizer = localizer
 
-        searchGuideText = localizer.localized("ttl_search_words_recent")
+        searchGuideText = localizer.localized("ttl_search_guide_parkinglot")
         searchGuideDescText = localizer.localized("dsc_search_guide_parkinglot")
         searchNoResultText = localizer.localized("ttl_search_no_result")
         searchNoResultDescText = localizer.localized("dsc_search_no_result")

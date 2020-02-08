@@ -28,7 +28,13 @@ class Favorites: BaseModelType {
 
 class FavoriteElement: BaseModelType {
     var id:Int = 0
-    var parkinglot:[FavoriteParkinglotElement] = [FavoriteParkinglotElement]()
+    var parkinglot:FavoriteParkinglotElement?
+    
+    var name:String {
+        get {
+            return parkinglot?.name ?? ""
+        }
+    }
     
     required init?(map: Map) {
         super.init(map: map)

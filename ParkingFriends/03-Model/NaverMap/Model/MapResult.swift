@@ -18,7 +18,11 @@ class MapResult: BaseModelType {
     }
     
     override func mapping(map: Map) {
-        status <- map["status"]
+        if let response = map.JSON["status"], response is String {
+            status = ["status" : response]
+        } else {
+            status <- map["status"]
+        }
         
         if map["results"].isKeyPresent {
             data <- map["results"]                  // Reverse Geocode
@@ -26,6 +30,10 @@ class MapResult: BaseModelType {
         
         if map["addresses"].isKeyPresent {
             data <- map["addresses"]                // Geocode
+        }
+        
+        if map["places"].isKeyPresent {
+            data <- map["places"]                   // Place
         }
     }
 }

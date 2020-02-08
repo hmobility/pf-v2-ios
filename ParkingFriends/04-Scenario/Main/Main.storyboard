@@ -1053,7 +1053,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yEr-5N-W5W" userLabel="View - Top Rounded Header">
                                         <rect key="frame" x="0.0" y="63" width="414" height="26"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aZg-gi-ycE" userLabel="View - Rounded View">
+                                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aZg-gi-ycE" userLabel="View - Rounded View">
                                                 <rect key="frame" x="188" y="10" width="38" height="3"/>
                                                 <color key="backgroundColor" name="LightPeriwinkle"/>
                                                 <constraints>
@@ -1634,7 +1634,7 @@
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="H5z-UM-I3b" customClass="ParkinglotCardViewController" customModule="ParkingFriends" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="6hS-72-vZj">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="172"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Pne-oF-qgQ">

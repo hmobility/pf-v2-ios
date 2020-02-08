@@ -35,6 +35,14 @@ enum GeoAddressType:String {
     case land_number = "LAND_NUMBER"                 // 지번
     case postal_code = "POSTAL_CODE"                 // 우편 번호
 }
+
+enum MapResultCode: String {
+    case none = ""                             
+    case okay = "OK"                             // 200
+    case invalid_request = "INVALID_REQUEST"     // 400
+    case system_error = "SYSTEM_ERROR"           // 500
+}
+
 enum OutputType: String {
     case json = "json"
     case xml = "xml"

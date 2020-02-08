@@ -79,12 +79,6 @@ class MapViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        navigationMenuView.mainTitleButton.rx.tap
-            .subscribe(onNext: { _ in
-                self.navigateToSearch()
-            })
-            .disposed(by: disposeBag)
-        
         searchOptionButton.rx.tap
             .subscribe(onNext: { _ in
                 self.navigateToSearchOption()
@@ -105,13 +99,33 @@ class MapViewController: UIViewController {
             .disposed(by: disposeBag)
     }
     
+    private func setupSearchBinding() {
+        Observable.combineLatest(navigationMenuView.mainTitleButton.rx.tap,
+                                 self.viewModel.userLocation())
+                        .map { return $1 }
+                        .subscribe(onNext: { [unowned self] coordinate in
+                           print("[Search] text: \(coordinate)")
+                            self.navigateToSearch(with: coordinate)
+                           
+                       })
+                       .disposed(by: self.disposeBag)
+        
+        Observable.combineLatest(timeSettingView.tapSearchArea(),
+                                 self.viewModel.userLocation())
+                        .map { return $1 }
+                        .subscribe(onNext: { [unowned self] coordinate in
+                            self.navigateToSearch(with: coordinate)
+                        })
+                        .disposed(by: self.disposeBag)
+    }
+    
     private func setupButtonBinding() {
         zoomInButton.rx.tap
             .subscribe(onNext: { _ in
                 self.viewModel.zoomIn()
             })
             .disposed(by: disposeBag)
-                
+        
         zoomOutButton.rx.tap
             .subscribe(onNext: { _ in
                 self.viewModel.zoomOut()
@@ -132,12 +146,6 @@ class MapViewController: UIViewController {
                 self.cardContainerView.isHidden = list ? false : true
                 self.searchSectionView.isHidden = search ? false : true
             })
-            .disposed(by: disposeBag)
-        
-        timeSettingView.tapSearchArea()
-            .subscribe { _ in
-                self.navigateToSearch()
-            }
             .disposed(by: disposeBag)
             
         timeSettingView.tapSelectTime()
@@ -180,6 +188,7 @@ class MapViewController: UIViewController {
         setupNavigation()
         setupNavigationBinding()
         setupButtonBinding()
+        setupSearchBinding()
         
         handleCardEvents()
     }
@@ -229,10 +238,11 @@ class MapViewController: UIViewController {
         self.modal(target)
     }
     
-    func navigateToSearch() {
-         let target = Storyboard.search.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
-         self.modal(target)
-     }
+    func navigateToSearch(with coordinate:CoordType) {
+        let target = Storyboard.search.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
+        target.setLocation(coordinate)
+        self.modal(target)
+    }
     
     func navigateToTimeDialog() {
         let date = UserData.shared.getOnReserveDate()
