@@ -53,6 +53,14 @@ class SearchViewController: UIViewController {
             .asDriver()
             .drive(searchBar.rx.placeholder)
             .disposed(by: disposeBag)
+        
+        containerView.rx
+            .tapGesture()
+            .when(.recognized)
+            .subscribe { _ in
+                self.view.endEditing(true)
+            }
+            .disposed(by: disposeBag)
     }
     
     private func setupButtonBinding() {
@@ -105,6 +113,16 @@ class SearchViewController: UIViewController {
             }
             .disposed(by: disposeBag)
         
+        historyTableView.rx.itemSelected
+            .map { [unowned self] indexPath in
+                return self.viewModel.historyItems.value[indexPath.row]
+            }
+            .subscribe(onNext:{ [unowned self] text in
+                self.searchBar.text = text
+                debugPrint("[HISTORY]", text)
+            })
+            .disposed(by: disposeBag)
+        
         historyTableView.tableFooterView = historyFooterView
         
         historyFooterView.removeAllAction = { [unowned self] finished in
@@ -150,6 +168,20 @@ class SearchViewController: UIViewController {
         
        // let editing = Observable.combineLatest(searchBar.rx.text,
        //                          searchBar.rx.textDidEndEditing.startWith(()))
+        
+        searchBar.rx.textDidBeginEditing.startWith(())
+            .withLatestFrom(searchBar.rx.text.orEmpty)
+            .filter { !$0.isEmpty }
+            .distinctUntilChanged()
+            .subscribe(onNext: { [unowned self] text in
+                debugPrint("[STRT] text: \(text)")
+                if text.isEmpty {
+                    self.setHistoryViewVisiblity(hiding: true)
+                } else {
+                    self.setHistoryViewVisiblity(hiding: false)
+                }
+            })
+            .disposed(by: disposeBag)
         
         searchBar.rx.textDidEndEditing.startWith(())
             .withLatestFrom(searchBar.rx.text.orEmpty)

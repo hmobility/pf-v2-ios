@@ -267,6 +267,7 @@
                             <constraint firstAttribute="bottom" secondItem="gED-DU-f4A" secondAttribute="bottom" id="vgl-QG-6iF"/>
                             <constraint firstItem="gED-DU-f4A" firstAttribute="trailing" secondItem="nhU-eJ-1HE" secondAttribute="trailing" id="wg2-Ft-1En"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="rYD-dr-NVB"/>
                     </view>
                     <connections>
                         <outlet property="footerView" destination="gPr-X6-UVt" id="ac9-Wy-nrz"/>
@@ -369,6 +370,7 @@
                             <constraint firstAttribute="trailing" secondItem="kcK-D8-8JQ" secondAttribute="trailing" id="h2n-XC-naU"/>
                             <constraint firstAttribute="bottom" secondItem="kcK-D8-8JQ" secondAttribute="bottom" id="oh6-bA-LGq"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="IeQ-fl-m62"/>
                     </view>
                     <navigationItem key="navigationItem" id="ald-gP-Czq"/>
                     <connections>
@@ -525,6 +527,7 @@
                             <constraint firstAttribute="trailing" secondItem="fic-Zs-bwC" secondAttribute="trailing" constant="10" id="hbg-iu-o6W"/>
                             <constraint firstAttribute="trailing" secondItem="dXy-0Q-OaL" secondAttribute="trailing" constant="10" id="qzq-BF-cr1"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="YEZ-Ej-egO"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="dcx-tE-Aql"/>
