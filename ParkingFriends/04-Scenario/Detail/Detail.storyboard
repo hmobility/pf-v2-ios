@@ -543,7 +543,7 @@
             <objects>
                 <viewController storyboardIdentifier="ParkinglotDetailViewController" id="oD5-jI-trf" customClass="ParkinglotDetailViewController" customModule="ParkingFriends" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="VQy-tx-fJt">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="2200"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gzY-Ut-W8R" userLabel="Scroll View - Contents" customClass="MXScrollView" customModule="ParkingFriends" customModuleProvider="target">

@@ -434,6 +434,10 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
+                            <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fBb-Y9-pXt" userLabel="View - Safe Area">
+                                <rect key="frame" x="0.0" y="774" width="414" height="34"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -443,10 +447,14 @@
                             <constraint firstItem="pXR-5r-ca4" firstAttribute="leading" secondItem="cKK-EK-fIQ" secondAttribute="leading" id="8w9-sY-i2v"/>
                             <constraint firstItem="pXR-5r-ca4" firstAttribute="top" secondItem="kfy-hY-tBW" secondAttribute="top" id="Aou-u7-tHO"/>
                             <constraint firstItem="cKK-EK-fIQ" firstAttribute="trailing" secondItem="1nR-Nk-QLc" secondAttribute="trailing" constant="8" id="J6n-IF-CbM"/>
+                            <constraint firstItem="fBb-Y9-pXt" firstAttribute="top" secondItem="cKK-EK-fIQ" secondAttribute="bottom" id="KVV-EM-gwp"/>
                             <constraint firstItem="cKK-EK-fIQ" firstAttribute="bottom" secondItem="OGm-my-WLn" secondAttribute="bottom" constant="76" id="Kdn-W6-VJD"/>
                             <constraint firstItem="cKK-EK-fIQ" firstAttribute="trailing" secondItem="eaE-XJ-DLD" secondAttribute="trailing" constant="12" id="MDL-ge-so8"/>
                             <constraint firstItem="OGm-my-WLn" firstAttribute="leading" secondItem="cKK-EK-fIQ" secondAttribute="leading" id="RV5-Wz-bP6"/>
+                            <constraint firstItem="fBb-Y9-pXt" firstAttribute="leading" secondItem="kfy-hY-tBW" secondAttribute="leading" id="RoI-jI-aa2"/>
                             <constraint firstItem="eaE-XJ-DLD" firstAttribute="leading" secondItem="cKK-EK-fIQ" secondAttribute="leading" constant="12" id="Twg-mX-fzu"/>
+                            <constraint firstAttribute="trailing" secondItem="fBb-Y9-pXt" secondAttribute="trailing" id="aOH-cg-ACK"/>
+                            <constraint firstAttribute="bottom" secondItem="fBb-Y9-pXt" secondAttribute="bottom" id="k92-06-oOn"/>
                             <constraint firstItem="Njj-dP-feQ" firstAttribute="top" secondItem="1nR-Nk-QLc" secondAttribute="bottom" constant="120" id="mEU-xd-Dwo"/>
                             <constraint firstItem="cKK-EK-fIQ" firstAttribute="trailing" secondItem="Njj-dP-feQ" secondAttribute="trailing" constant="8" id="pqo-M1-5RF"/>
                             <constraint firstItem="cKK-EK-fIQ" firstAttribute="bottom" secondItem="pXR-5r-ca4" secondAttribute="bottom" id="rp0-ky-gtX"/>
@@ -510,6 +518,7 @@
                         <outlet property="parkingInfoView" destination="OGm-my-WLn" id="YSY-vV-6iS"/>
                         <outlet property="placeCenterButton" destination="Njj-dP-feQ" id="OPz-uf-q1S"/>
                         <outlet property="rootView" destination="kfy-hY-tBW" id="3Yj-gy-xCB"/>
+                        <outlet property="safeAreaView" destination="fBb-Y9-pXt" id="Za6-x4-O1G"/>
                         <outlet property="searchOptionButton" destination="PQD-Jb-4cy" id="Qmd-ai-FWg"/>
                         <outlet property="searchSectionView" destination="yab-zr-Bf5" id="zoT-gX-MXh"/>
                         <outlet property="timeSettingView" destination="qGv-Cp-ys8" id="2WQ-I6-KQL"/>
@@ -519,7 +528,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kRJ-JW-iWo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="354" y="-218"/>
+            <point key="canvasLocation" x="353.62318840579712" y="-218.30357142857142"/>
         </scene>
         <!--Parking Tap View Controller-->
         <scene sceneID="5Mr-uT-n5C">
@@ -540,7 +549,7 @@
                                                 <subviews>
                                                     <view clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FyD-Y2-MPW" userLabel="View - Rounded Tip View">
                                                         <rect key="frame" x="188" y="8" width="38" height="3"/>
-                                                        <color key="backgroundColor" name="LightPeriwinkle"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="38" id="7wb-Im-K47"/>
                                                             <constraint firstAttribute="height" constant="3" id="Qwo-t7-RTb"/>
@@ -1053,7 +1062,7 @@
                                     <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yEr-5N-W5W" userLabel="View - Top Rounded Header">
                                         <rect key="frame" x="0.0" y="63" width="414" height="26"/>
                                         <subviews>
-                                            <view clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aZg-gi-ycE" userLabel="View - Rounded View">
+                                            <view opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aZg-gi-ycE" userLabel="View - Rounded View">
                                                 <rect key="frame" x="188" y="10" width="38" height="3"/>
                                                 <color key="backgroundColor" name="LightPeriwinkle"/>
                                                 <constraints>
@@ -1634,7 +1643,7 @@
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="H5z-UM-I3b" customClass="ParkinglotCardViewController" customModule="ParkingFriends" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="6hS-72-vZj">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="172"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Pne-oF-qgQ">

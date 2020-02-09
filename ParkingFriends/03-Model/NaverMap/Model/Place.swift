@@ -14,8 +14,8 @@ class Place: BaseModelType {
     var road_address:String = ""
     var jibun_address:String = ""
     var phone_number:String = ""
-    var x:Double = 0
-    var y:Double = 0
+    var x:String = ""
+    var y:String = ""
     var distance:Double = 0
     var sessionId:String = ""
     

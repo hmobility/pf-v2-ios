@@ -821,9 +821,9 @@
 		6210BABE23792CED001C6065 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				624F53A423BAF554005D7FD8 /* MapView */,
 				625ACE7A23A0CBAB002D0653 /* ParkinglotList */,
 				62601DBD239647A800B78033 /* ParkinglotCard */,
-				624F53A423BAF554005D7FD8 /* MapView */,
 				62576C4D23BD77D9007BA1F7 /* SearchOption */,
 			);
 			path = ViewController;
