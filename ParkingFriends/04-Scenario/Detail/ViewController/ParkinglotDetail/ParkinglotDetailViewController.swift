@@ -189,7 +189,7 @@ class ParkinglotDetailViewController: UIViewController {
         super.viewDidLoad()
         initialize()
         
-        viewModel.loadDetailInfo()
+        viewModel.loadInfo()
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {

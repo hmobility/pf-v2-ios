@@ -33,6 +33,8 @@ class SearchViewController: UIViewController {
     
     private var searchBar = UISearchBar()
     
+    public var resultAction: ((_ coord:CoordType) -> Void)?   // Pass Search Results
+    
     var disposeBag = DisposeBag()
     
     // MARK: - Setup Navigation
@@ -62,6 +64,20 @@ class SearchViewController: UIViewController {
                 self.view.endEditing(true)
             }
             .disposed(by: disposeBag)
+
+        historyTableView.backgroundView = UIView()
+        
+        if let backgroundView = historyTableView.backgroundView {
+            backgroundView.rx
+                .tapGesture()
+                .when(.recognized)
+                .subscribe { _ in
+                    self.searchBar.text = ""
+                    self.view.endEditing(true)
+                    self.setHistoryViewVisiblity(hiding: true)
+                }
+                .disposed(by: disposeBag)
+        }
     }
     
     private func setupButtonBinding() {
@@ -101,7 +117,7 @@ class SearchViewController: UIViewController {
            .disposed(by: disposeBag)
     }
     
-    // MARK: - History Binding
+    // MARK: History Binding
     
     private func setupHistoryBinding() {
         viewModel.historyItems
@@ -120,6 +136,7 @@ class SearchViewController: UIViewController {
             }
             .subscribe(onNext:{ [unowned self] text in
                 self.searchBar.text = text
+                self.requestSearch(with: text)
                 debugPrint("[HISTORY]", text)
             })
             .disposed(by: disposeBag)
@@ -133,7 +150,7 @@ class SearchViewController: UIViewController {
         setHistoryViewVisiblity(hiding: true)
     }
     
-    // MARK: - Search Binding
+    // MARK: Search Binding
     
     private func setupSearchBarBinding() {
         searchBar.rx.cancelButtonClicked
@@ -141,61 +158,41 @@ class SearchViewController: UIViewController {
                 debugPrint("[CANCEL] Query")
             })
             .disposed(by: disposeBag)
-        
-        searchBar.rx.textDidBeginEditing
-            .withLatestFrom(searchBar.rx.text.orEmpty)
-            .filter { !$0.isEmpty }
-            .distinctUntilChanged()
-            .subscribe({ [unowned self] text in
-                self.setHistoryViewVisiblity(hiding: false)
-            })
-            .disposed(by: disposeBag)
 
-    //    let search = Observable.combineLatest(searchBar.rx.text.orEmpty,
-    //                             searchBar.rx.searchButtonClicked)
-            
         searchBar.rx.searchButtonClicked
             .withLatestFrom(searchBar.rx.text.orEmpty)
+            .map { _ in return self.searchBar.text ?? "" }
             .filter { !$0.isEmpty }
             .distinctUntilChanged()
             .subscribe(onNext: { [unowned self] text in
                 debugPrint("[RETURN] text: \(text)")
                 
-                if let coordinate = self.location {
-                    self.viewModel.requestSearch(with: text, coordinate: coordinate)
-                }
+                self.requestSearch(with: text)
             })
             .disposed(by: disposeBag)
         
-       // let editing = Observable.combineLatest(searchBar.rx.text,
-       //                          searchBar.rx.textDidEndEditing.startWith(()))
-        
-        searchBar.rx.textDidBeginEditing.startWith(())
+        searchBar.rx.textDidEndEditing.startWith()
+        //.map { _ in   return self.searchBar.text ?? "" }
             .withLatestFrom(searchBar.rx.text.orEmpty)
-            .filter { !$0.isEmpty }
             .distinctUntilChanged()
             .subscribe(onNext: { [unowned self] text in
                 debugPrint("[STRT] text: \(text)")
                 if text.isEmpty {
-                    self.setHistoryViewVisiblity(hiding: true)
-                } else {
-                    self.setHistoryViewVisiblity(hiding: false)
+                    self.viewModel.resetSearch()
                 }
+                
+                self.setHistoryViewVisiblity(hiding: true)
             })
             .disposed(by: disposeBag)
         
-        searchBar.rx.textDidEndEditing.startWith(())
+        searchBar.rx.textDidBeginEditing.startWith()
             .withLatestFrom(searchBar.rx.text.orEmpty)
-            .filter { !$0.isEmpty }
+         //   .filter { !$0 }
             .distinctUntilChanged()
             .subscribe(onNext: { [unowned self] text in
                 debugPrint("[END] text: \(text)")
-                if text.isEmpty {
-                    self.viewModel.resetSearch()
-                    self.setHistoryViewVisiblity(hiding: true)
-                } else {
-                    self.setHistoryViewVisiblity(hiding: false)
-                }
+                
+                self.setHistoryViewVisiblity(hiding: false)
             })
             .disposed(by: disposeBag)
     }
@@ -207,6 +204,7 @@ class SearchViewController: UIViewController {
             .map { return $0.1 }
             .asObservable()
             .subscribe(onNext:{ [unowned self] items in
+                self.setHistoryViewVisiblity(hiding: true)
                 if let results = items {
                     if results.count > 0 {
                         self.navigateToSearchResults(with: results)
@@ -220,7 +218,7 @@ class SearchViewController: UIViewController {
             .disposed(by: disposeBag)
     }
     
-    // MARK: - Favorite Binding
+    // MARK: Favorite Binding
     
     private func setupFavoriteItemsView() {
         viewModel.getFavoriteItems()
@@ -243,11 +241,37 @@ class SearchViewController: UIViewController {
     
     // MARK: - Local Methods
     
+    private func updateSegmentedControl(_ items:[String]) {
+        tapSegmentedControl.options = [.backgroundColor(UIColor.white),
+                                    .indicatorViewBackgroundColor(UIColor.white),
+                                    .cornerRadius(0.0),
+                                    .animationSpringDamping(1.0),
+                                    .panningDisabled(true)]
+        
+        tapSegmentedControl.segments = LabelSegment.segments(withTitles: items,
+                                    normalFont: Font.gothicNeoMedium18,
+                                    normalTextColor: Color.coolGrey,
+                                    selectedFont: Font.gothicNeoMedium18,
+                                    selectedTextColor: Color.darkGrey3)
+    }
+    
     private func setEmbedView(_ target:UIViewController) {
-        if let navigation = embedNavigationController {
-            navigation.viewControllers = [target]
+        if let navigationController = embedNavigationController {
+            self.addChild(target)
+            navigationController.viewControllers = [target]
+            target.didMove(toParent: self)
         }
     }
+    
+    // MARK: Search
+    
+    private func requestSearch(with text:String) {
+        if let coordinate = self.location {
+            self.viewModel.requestSearch(with: text, coordinate: coordinate)
+        }
+    }
+    
+    // MARK:  History
     
     private func setHistoryViewVisiblity(hiding flag:Bool) {
         viewModel.historyItems
@@ -262,23 +286,10 @@ class SearchViewController: UIViewController {
             .drive(onNext:{ hide in
                 if self.historyStackView.isHidden != hide {
                     self.historyStackView.isHidden = hide
+                  //  self.historyTableView.isHidden = hide
                 }
             })
             .disposed(by: disposeBag)
-    }
-    
-    private func updateSegmentedControl(_ items:[String]) {
-        tapSegmentedControl.options = [.backgroundColor(UIColor.white),
-                                    .indicatorViewBackgroundColor(UIColor.white),
-                                    .cornerRadius(0.0),
-                                    .animationSpringDamping(1.0),
-                                    .panningDisabled(true)]
-        
-        tapSegmentedControl.segments = LabelSegment.segments(withTitles: items,
-                                    normalFont: Font.gothicNeoMedium18,
-                                    normalTextColor: Color.coolGrey,
-                                    selectedFont: Font.gothicNeoMedium18,
-                                    selectedTextColor: Color.darkGrey3)
     }
     
     // MARK: - Initialize
@@ -326,9 +337,12 @@ class SearchViewController: UIViewController {
         
         if let target = searchResultViewController {
             setEmbedView(target)
-            
-            target.selectAction = { coordinate in
-                // TO DO
+        
+            target.selectAction = { [unowned self] coordinate in
+                debugPrint("[SEARCH] SELECT, ", coordinate)
+                if let action = self.resultAction {
+                    action(coordinate)
+                }
             }
         }
     }
@@ -353,10 +367,17 @@ class SearchViewController: UIViewController {
             target.setFavoriteItems(items)
             
             target.selectAction = { parkinglotId in
+                debugPrint("[FAVOPRITE] SELECT, ", parkinglotId)
                 // TO DO
             }
         }
      }
+    
+    func navigateToDetail(with element:WithinElement) {
+        let target = Storyboard.detail.instantiateViewController(withIdentifier: "ParkinglotDetailNavigationController") as! ParkinglotDetailNavigationController
+        target.setWithinElement(element)
+        self.modal(target)
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {

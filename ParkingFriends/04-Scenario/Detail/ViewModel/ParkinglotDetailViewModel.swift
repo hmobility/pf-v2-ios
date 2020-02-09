@@ -16,7 +16,7 @@ protocol ParkinglotDetailViewModelType {
     
     var detailInfo: BehaviorRelay<Parkinglot?> { get }
     
-    func loadDetailInfo()
+    func loadInfo()
     func changeBookmark(_ state:Bool) 
     
     func setHeaderViewModel(_ viewModel:ParkinglotDetailHeaderViewModel)
@@ -211,7 +211,7 @@ class ParkinglotDetailViewModel: ParkinglotDetailViewModelType {
     
     // MARK: - Network
     
-    func loadDetailInfo() {
+    func loadInfo() {
         if let element = self.within {
             parkinglot(id: element.id)
                 .asObservable()

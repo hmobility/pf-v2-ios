@@ -30,13 +30,14 @@ class MapViewController: UIViewController {
     @IBOutlet weak var parkingInfoBottomConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var cardContainerView: UIView!
-    @IBOutlet weak var cardSectionView: UIView!
+  //  @IBOutlet weak var cardSectionView: UIView!
     @IBOutlet weak var searchSectionView: UIView!
     
     @IBOutlet weak var timeSettingView: CustomTimeSettingView!
     
     @IBOutlet weak var mapView:NMFMapView!
     @IBOutlet private weak var rootView: UIView!
+    @IBOutlet private weak var safeAreaView: UIView!
     
     let location = CLLocationManager()
     
@@ -171,6 +172,13 @@ class MapViewController: UIViewController {
         }
     }
     
+    // MARK: - Search Result
+
+    private func updateSearchResult(with coord:CoordType) {
+        debugPrint("[SEARCH][RESULT] - ", coord)
+        self.viewModel.updateSearchResult(with: coord)
+    }
+    
     // MARK: - Initialize
     
     init() {
@@ -242,6 +250,12 @@ class MapViewController: UIViewController {
         let target = Storyboard.search.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
         target.setLocation(coordinate)
         self.modal(target)
+        
+        target.resultAction = { [unowned self] coordinate in
+            target.dismissModal(animated: true, completion: {
+                self.updateSearchResult(with: coordinate)
+            })
+        }
     }
     
     func navigateToTimeDialog() {
@@ -302,12 +316,13 @@ extension MapViewController: FloatingPanelControllerDelegate {
         floatingPanelController = FloatingPanelController()
         floatingPanelController.delegate = self
         floatingPanelController.surfaceView.backgroundColor = .clear
-
+        
         let target = Storyboard.main.instantiateViewController(withIdentifier: "ParkingTapViewController") as! ParkingTapViewController
         
         self.viewModel.parkingTapViewModel = target.getViewModel()
-       
+        
         floatingPanelController.set(contentViewController: target)
+        floatingPanelController.addPanel(toParent: self, belowView: safeAreaView, animated: false)
     }
     
     //MARK: - FloatingPanelControllerDelegate
@@ -321,12 +336,19 @@ extension MapViewController: FloatingPanelControllerDelegate {
     }
     
     func floatingPanelDidMove(_ vc: FloatingPanelController) {
+        let y = vc.surfaceView.frame.origin.y
+        let tipY = vc.originYOfSurface(for: .tip)
+        
+        debugPrint("[PANEL] Did Move :", y,", tip Y :", tipY)
     }
     
     func floatingPanelWillBeginDragging(_ vc: FloatingPanelController) {
+        debugPrint("[PANEL] Begin Dragging")
     }
     
     func floatingPanelDidEndDragging(_ vc: FloatingPanelController, withVelocity velocity: CGPoint, targetPosition: FloatingPanelPosition) {
+        
+        debugPrint("[PANEL] , target : ", targetPosition)
     }
 }
 

@@ -25,10 +25,6 @@ class SearchResultViewController: UIViewController {
     
     // MARK: - Binding
     
-    private func setupBinding() {
-
-    }
-    
     private func setupTableViewBinding() {
         if let viewModel = self.viewModel {
             viewModel.searchResults.asObservable()
@@ -38,19 +34,31 @@ class SearchResultViewController: UIViewController {
                     cell.setTitle(with: item.name, description: item.road_address)
                 }
                 .disposed(by: disposeBag)
-
+            
+            tableView.rx.modelSelected(Place.self)
+                .subscribe(onNext: { place in
+                    debugPrint("[MODEL][COORD]", place)
+                    if let action = self.selectAction {
+                        let coord = CoordType(latitude:place.y.doubleValue, longitude:place.x.doubleValue)
+                        action(coord)
+                    }
+                })
+                .disposed(by: disposeBag)
+            
+            /*
             tableView.rx.itemSelected
                 .map { indexPath in
                     return viewModel.searchResults.value![indexPath.row]
                 }
                 .subscribe(onNext:{ [unowned self] item in
                     if let action = self.selectAction {
-                        let coord = CoordType(latitude:item.x, longitude:item.y)
+                        let coord = CoordType(latitude:item.y.doubleValue, longitude:item.x.doubleValue)
                         debugPrint("[COORD]", coord)
                         action(coord)
                     }
                 })
                 .disposed(by: disposeBag)
+ */
         }
     }
     
@@ -65,7 +73,6 @@ class SearchResultViewController: UIViewController {
     }
     
     private func initialize() {
-        setupBinding()
         setupTableViewBinding()
     }
     
