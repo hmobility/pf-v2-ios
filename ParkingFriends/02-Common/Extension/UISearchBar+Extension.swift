@@ -10,16 +10,17 @@ import Foundation
 import UIKit
 
 extension UISearchBar {
+    var searchField : UITextField {
+        if #available(iOS 13.0, *) {
+            return self.searchTextField
+        } else {
+            return value(forKey: "searchField") as! UITextField
+        }
+    }
     /*
-    @available(iOS, obsoleted: 13)
+    @available(iOS, obsoleted:13.0)
     var searchTextField: UITextField {
-        let field = self.value(forKey: "searchField") as! UITextField
-        return field
+        return self.value(forKey: "searchField") as! UITextField
     }
-    
-    var textField: UITextField? {
-        let subViews = subviews.flatMap { $0.subviews }
-        return (subViews.filter { $0 is UITextField }).first as? UITextField
-    }
- */
+    */
 }

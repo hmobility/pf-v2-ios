@@ -169,7 +169,7 @@
                                 </connections>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="OGm-my-WLn" userLabel="Stack View - Info Section">
-                                <rect key="frame" x="0.0" y="431.5" width="414" height="280.5"/>
+                                <rect key="frame" x="0.0" y="417.5" width="414" height="280.5"/>
                                 <subviews>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fuB-2A-gB7" userLabel="Container View - Card">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="172"/>
@@ -181,7 +181,7 @@
                                             <segue destination="H5z-UM-I3b" kind="embed" identifier="ParkingCardView" id="9k8-7w-9NL"/>
                                         </connections>
                                     </containerView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yab-zr-Bf5" userLabel="Stack View - Search">
+                                    <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yab-zr-Bf5" userLabel="Stack View - Search">
                                         <rect key="frame" x="0.0" y="172" width="414" height="96.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZQ6-rI-Smf" userLabel="View - Left Space">
@@ -443,7 +443,7 @@
                             <constraint firstItem="pXR-5r-ca4" firstAttribute="leading" secondItem="cKK-EK-fIQ" secondAttribute="leading" id="8w9-sY-i2v"/>
                             <constraint firstItem="pXR-5r-ca4" firstAttribute="top" secondItem="kfy-hY-tBW" secondAttribute="top" id="Aou-u7-tHO"/>
                             <constraint firstItem="cKK-EK-fIQ" firstAttribute="trailing" secondItem="1nR-Nk-QLc" secondAttribute="trailing" constant="8" id="J6n-IF-CbM"/>
-                            <constraint firstItem="cKK-EK-fIQ" firstAttribute="bottom" secondItem="OGm-my-WLn" secondAttribute="bottom" constant="64" id="Kdn-W6-VJD"/>
+                            <constraint firstItem="cKK-EK-fIQ" firstAttribute="bottom" secondItem="OGm-my-WLn" secondAttribute="bottom" constant="76" id="Kdn-W6-VJD"/>
                             <constraint firstItem="cKK-EK-fIQ" firstAttribute="trailing" secondItem="eaE-XJ-DLD" secondAttribute="trailing" constant="12" id="MDL-ge-so8"/>
                             <constraint firstItem="OGm-my-WLn" firstAttribute="leading" secondItem="cKK-EK-fIQ" secondAttribute="leading" id="RV5-Wz-bP6"/>
                             <constraint firstItem="eaE-XJ-DLD" firstAttribute="leading" secondItem="cKK-EK-fIQ" secondAttribute="leading" constant="12" id="Twg-mX-fzu"/>
@@ -1047,7 +1047,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I0n-0C-HFK" userLabel="View - Header">
+                            <view opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I0n-0C-HFK" userLabel="View - Header">
                                 <rect key="frame" x="0.0" y="44" width="414" height="76"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yEr-5N-W5W" userLabel="View - Top Rounded Header">
@@ -1062,7 +1062,7 @@
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                        <real key="value" value="0.20000000000000001"/>
+                                                        <real key="value" value="0.0"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                         <real key="value" value="1.5"/>
