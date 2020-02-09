@@ -39,8 +39,9 @@ class SearchViewController: UIViewController {
     
     private func setupNavigation() {
         if let topItem = navigationBar.topItem {
-            searchBar.searchTextField.borderStyle = .none
-            searchBar.searchTextField.textAlignment = .left
+            searchBar.searchField.borderStyle = .none
+            searchBar.searchField.textAlignment = .left
+            searchBar.tintColor =  Color.algaeGreen
             searchBar.setImage(UIImage(), for: .search, state: .normal)
             topItem.titleView = searchBar
         }

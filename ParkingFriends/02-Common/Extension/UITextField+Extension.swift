@@ -15,7 +15,7 @@ extension UITextField {
             return leftView?.frame.size.width ?? 0
         }
         set {
-            let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: newValue, height: frame.size.height))
+            let paddingView = UIImageView(frame: CGRect(x: 0, y: 0, width: newValue, height: frame.size.height))
             leftView = paddingView
             leftViewMode = .always
         }
@@ -26,7 +26,7 @@ extension UITextField {
             return rightView?.frame.size.width ?? 0
         }
         set {
-            let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: newValue, height: frame.size.height))
+            let paddingView = UIImageView(frame: CGRect(x: 0, y: 0, width: newValue, height: frame.size.height))
             rightView = paddingView
             rightViewMode = .always
         }
