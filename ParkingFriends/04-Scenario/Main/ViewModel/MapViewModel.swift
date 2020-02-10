@@ -29,6 +29,7 @@ protocol MapViewModelType {
     func placeCenter(search:Bool)
     func userLocation() -> Observable<CoordType>
     func updateSearchResult(with coord:CoordType)
+    func removeSearchResultMark()
     
     func setTimeTicketRange(start startDate: Date, end endDate:Date)
     func setFixedTicketTime(start startDate: Date, hours:Int)
@@ -226,6 +227,15 @@ class MapViewModel: NSObject, MapViewModelType {
         return nil
     }
     
+    private func removeCenterMark(_ centerType:CenterMarkType) {
+        switch centerType {
+            case .center:
+                destMarker?.mapView = nil
+            case .search:
+                searchMarker?.mapView = nil
+        }
+    }
+    
     // 지도 이동시 중심 마크 표시
     private func showDestinationMarker(coord:CoordType, centerType:CenterMarkType = .center) {
         if let map = self.mapView {
@@ -243,6 +253,7 @@ class MapViewModel: NSObject, MapViewModelType {
             }
     
             if let mark = targetMark {
+                mark.isForceShowIcon = true
                 mark.position = NMGLatLng(lat: coord.latitude, lng: coord.longitude)
                 mark.mapView = (destination.distance(from: center) > 10) ? map : nil
             }
@@ -450,6 +461,10 @@ class MapViewModel: NSObject, MapViewModelType {
     
     public func updateSearchResult(with coord:CoordType) {
         self.updateCamera(with: coord, centerType: .search)
+    }
+    
+    public func removeSearchResultMark() {
+        self.removeCenterMark(.search)
     }
     
     // MARK: Time Option

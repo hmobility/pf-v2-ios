@@ -18,12 +18,12 @@ extension MapViewController : AnalyticsType {
 }
 
 class MapViewController: UIViewController {
-    @IBOutlet weak var menuButton: UIButton!
-    @IBOutlet weak var searchOptionButton: UIButton!
     @IBOutlet weak var zoomInButton: UIButton!
     @IBOutlet weak var zoomOutButton: UIButton!
     @IBOutlet weak var placeCenterButton: UIButton!
     
+    @IBOutlet weak var searchResultNavigationView: MapSearchResultNavigationView!
+ 
     @IBOutlet weak var navigationMenuView: NavigationDialogView!
     
     @IBOutlet weak var parkingInfoView: UIView!
@@ -36,68 +36,68 @@ class MapViewController: UIViewController {
     @IBOutlet weak var timeSettingView: CustomTimeSettingView!
     
     @IBOutlet weak var mapView:NMFMapView!
+    
     @IBOutlet private weak var rootView: UIView!
     @IBOutlet private weak var safeAreaView: UIView!
     
     let location = CLLocationManager()
     
-    var disposeBag = DisposeBag()
-    
     private lazy var viewModel: MapViewModelType = MapViewModel(view: mapView)
     private var cardViewModel:ParkingCardViewModelType?
     
-    private lazy var titleView = NavigationTitleView()
-    
     fileprivate var floatingPanelController: FloatingPanelController!
-    
     fileprivate var cardViewController: ParkinglotCardViewController?
+    
+    var disposeBag = DisposeBag()
     
     // MARK: - Bindings
     
-    private func setupNavigation() {
-        navigationItem.titleView = titleView
-        
-        titleView.titleColor = Color.darkGrey
-        titleView.titleFont = Font.gothicNeoMedium26
-        titleView.subtitleColor = Color.darkGrey
-        titleView.subtitleFont = Font.helvetica12
-        
-        if let navigationBar = self.navigationController?.navigationBar {
-            navigationBar.isHidden = true
-        }
-    }
-    
     private func setupNavigationBinding() {
+        searchResultNavigationView.backButton.rx.tap
+            .subscribe(onNext: { [unowned self] _ in
+                self.showNavigationBar(false)
+                self.viewModel.removeSearchResultMark()
+            })
+            .disposed(by: disposeBag)
+        
+        searchResultNavigationView.optionButton.rx.tap
+            .subscribe(onNext: { [unowned self] _ in
+                self.navigateToSearchOption()
+            })
+            .disposed(by: disposeBag)
+        
         navigationMenuView.searchOptionButton.rx.tap
-            .subscribe(onNext: { _ in
+            .subscribe(onNext: { [unowned self] _ in
                 self.navigateToSearchOption()
             })
             .disposed(by: disposeBag)
         
         navigationMenuView.menuButton.rx.tap
-            .subscribe(onNext: { _ in
+            .subscribe(onNext: { [unowned self] _ in
                 self.showSideMenu()
-            })
-            .disposed(by: disposeBag)
-        
-        searchOptionButton.rx.tap
-            .subscribe(onNext: { _ in
-                self.navigateToSearchOption()
             })
             .disposed(by: disposeBag)
         
         viewModel.displayAddressText
             .asDriver()
-            .drive(navigationMenuView.mainTitleButton.rx.title())
+            .drive(onNext:{ [unowned self] text in
+                self.searchResultNavigationView.setTitle(text)
+                self.navigationMenuView.mainTitleButton.setTitle(text, for: .normal)
+            })
             .disposed(by: disposeBag)
         
         viewModel.displayReservableTimeText
             .asDriver()
-            .drive(onNext:{ text in
+            .drive(onNext:{ [unowned self] text in
+                self.searchResultNavigationView.setSubtitle(text)
                 self.navigationMenuView.setReservable(time: text)
                 self.timeSettingView.setReservable(time: text)
             })
             .disposed(by: disposeBag)
+    }
+    
+    private func setupSearchResultavigation() {
+        showNavigationBar(false)
     }
     
     private func setupSearchBinding() {
@@ -105,7 +105,7 @@ class MapViewController: UIViewController {
                                  self.viewModel.userLocation())
                         .map { return $1 }
                         .subscribe(onNext: { [unowned self] coordinate in
-                           print("[Search] text: \(coordinate)")
+                            debugPrint("[Search] text: \(coordinate)")
                             self.navigateToSearch(with: coordinate)
                            
                        })
@@ -172,6 +172,33 @@ class MapViewController: UIViewController {
         }
     }
     
+    // MARK: - Navigation Bar
+    
+    private func showNavigationBar(_ flag:Bool = false) {
+        navigationMenuView.isHidden = flag ? true : false
+        
+        updateSearchResultOrder()
+       
+        if flag {
+            searchResultNavigationView.show()
+        } else {
+            searchResultNavigationView.hide()
+        }
+ 
+        searchResultNavigationView.isHidden = flag ? false : true
+    }
+    
+    private func updateSearchResultOrder() {
+        if let viewModel = self.viewModel.parkingTapViewModel {
+            viewModel.sortOrderText
+                .asDriver()
+                .drive(onNext: { [unowned self] text in
+                    self.searchResultNavigationView.setSearchOrder(text)
+                })
+                .disposed(by: disposeBag)
+        }
+    }
+    
     // MARK: - Search Result
 
     private func updateSearchResult(with coord:CoordType) {
@@ -193,7 +220,7 @@ class MapViewController: UIViewController {
         prepareFloatingPanel()
         
         timeSettingAreaBinding()
-        setupNavigation()
+        setupSearchResultavigation()
         setupNavigationBinding()
         setupButtonBinding()
         setupSearchBinding()
@@ -252,6 +279,7 @@ class MapViewController: UIViewController {
         self.modal(target)
         
         target.resultAction = { [unowned self] coordinate in
+            self.showNavigationBar(true)
             target.dismissModal(animated: true, completion: {
                 self.updateSearchResult(with: coordinate)
             })

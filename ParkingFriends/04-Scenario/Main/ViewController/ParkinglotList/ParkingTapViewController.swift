@@ -101,6 +101,12 @@ class ParkingTapViewController: UIViewController {
         }
     }
     
+    // MARK: - Public Methods
+    
+    public func getViewModel() -> ParkingTapViewModelType {
+        return self.viewModel
+    }
+    
     // MARK: - Initialize
     
     init() {
@@ -156,13 +162,7 @@ class ParkingTapViewController: UIViewController {
             }
             .disposed(by: disposeBag)
     }
-    
-    // MARK: - Public Methods
-    
-    public func getViewModel() -> ParkingTapViewModelType {
-        return self.viewModel
-    }
-    
+
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
