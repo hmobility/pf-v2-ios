@@ -35,6 +35,7 @@ class SearchResultViewController: UIViewController {
                 }
                 .disposed(by: disposeBag)
             
+            /*
             tableView.rx.modelSelected(Place.self)
                 .subscribe(onNext: { place in
                     debugPrint("[MODEL][COORD]", place)
@@ -44,8 +45,9 @@ class SearchResultViewController: UIViewController {
                     }
                 })
                 .disposed(by: disposeBag)
+ */
             
-            /*
+            //*
             tableView.rx.itemSelected
                 .map { indexPath in
                     return viewModel.searchResults.value![indexPath.row]
@@ -58,7 +60,7 @@ class SearchResultViewController: UIViewController {
                     }
                 })
                 .disposed(by: disposeBag)
- */
+ //*//
         }
     }
     

@@ -221,6 +221,11 @@ class MapViewController: UIViewController {
         super.viewDidAppear(animated)
         
         floatingPanelController.addPanel(toParent: self, animated: false)
+        
+        
+        // Test by Rao
+        mapView.logoAlign = NMFLogoAlign.leftTop
+        mapView.logoMargin = UIEdgeInsets(top: 100, left: 0, bottom: 0, right: 0)
     }
     
     // MARK: - Navigation
