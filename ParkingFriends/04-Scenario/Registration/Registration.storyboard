@@ -2223,9 +2223,6 @@
                     <navigationItem key="navigationItem" title="기본 정보 입력" id="HVU-x4-Jt8" userLabel="Navigation Item">
                         <barButtonItem key="leftBarButtonItem" image="icBackBlack" style="plain" id="B4K-jT-eio" userLabel="Item - Back">
                             <color key="tintColor" red="0.1019607843" green="0.1019607843" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <action selector="backButtonAction:" destination="lFE-0G-PfV" id="tsn-Do-qkn"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>

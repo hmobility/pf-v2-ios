@@ -183,6 +183,7 @@
 		625ACE9923A49A29002D0653 /* MapInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625ACE9823A49A29002D0653 /* MapInfo.swift */; };
 		625ACE9B23A49D31002D0653 /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625ACE9A23A49D31002D0653 /* Double+Extension.swift */; };
 		625B271D23F147A400134E2D /* MapSearchResultNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625B271C23F147A400134E2D /* MapSearchResultNavigationView.swift */; };
+		625B271F23F17C4E00134E2D /* UINavigationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625B271E23F17C4E00134E2D /* UINavigationController+Extension.swift */; };
 		625B4F8223C475D400005830 /* ParkinglotDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625B4F8123C475D400005830 /* ParkinglotDetailHeaderView.swift */; };
 		625B4F8423C47B1700005830 /* ParkinglotDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625B4F8323C47B1700005830 /* ParkinglotDetailViewModel.swift */; };
 		625BD91F23B732AA00C3D4E9 /* EmptyParkingTicketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625BD91E23B732AA00C3D4E9 /* EmptyParkingTicketViewController.swift */; };
@@ -564,6 +565,7 @@
 		625ACE9823A49A29002D0653 /* MapInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapInfo.swift; sourceTree = "<group>"; };
 		625ACE9A23A49D31002D0653 /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
 		625B271C23F147A400134E2D /* MapSearchResultNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSearchResultNavigationView.swift; sourceTree = "<group>"; };
+		625B271E23F17C4E00134E2D /* UINavigationController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extension.swift"; sourceTree = "<group>"; };
 		625B4F8123C475D400005830 /* ParkinglotDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkinglotDetailHeaderView.swift; sourceTree = "<group>"; };
 		625B4F8323C47B1700005830 /* ParkinglotDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkinglotDetailViewModel.swift; sourceTree = "<group>"; };
 		625BD91E23B732AA00C3D4E9 /* EmptyParkingTicketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyParkingTicketViewController.swift; sourceTree = "<group>"; };
@@ -2305,6 +2307,7 @@
 			children = (
 				622BC0E523681FE300A43F02 /* UIStoryboard+Extension.swift */,
 				622BC0E9236835B800A43F02 /* UIViewController+Extension.swift */,
+				625B271E23F17C4E00134E2D /* UINavigationController+Extension.swift */,
 				622BC1CF236A9DC500A43F02 /* UIButton+Extension.swift */,
 				622BC1D1236AA3C300A43F02 /* UIView+Extension.swift */,
 				621BCC5F23CEF31C009FE1EC /* UITableViewCell+Extension.swift */,
@@ -2950,6 +2953,7 @@
 				62630B4D23862F3A0029724B /* RegistrationModel.swift in Sources */,
 				62AE724C237B8F6700BE6FA3 /* EventViewController.swift in Sources */,
 				629E6F9F23E7D3690090E164 /* Geocode.swift in Sources */,
+				625B271F23F17C4E00134E2D /* UINavigationController+Extension.swift in Sources */,
 				629C2865236BF6B600E0E5E1 /* LoginViewController.swift in Sources */,
 				625BD91F23B732AA00C3D4E9 /* EmptyParkingTicketViewController.swift in Sources */,
 				6257DE3223CAD6E1001091B0 /* FixedTicketDurationViewController.swift in Sources */,
