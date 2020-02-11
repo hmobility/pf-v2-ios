@@ -543,7 +543,7 @@
             <objects>
                 <viewController storyboardIdentifier="ParkinglotDetailViewController" id="oD5-jI-trf" customClass="ParkinglotDetailViewController" customModule="ParkingFriends" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="VQy-tx-fJt">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="2200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gzY-Ut-W8R" userLabel="Scroll View - Contents" customClass="MXScrollView" customModule="ParkingFriends" customModuleProvider="target">
@@ -582,7 +582,7 @@
                                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                                     <subviews>
                                                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" image="icParkingLotInfoType11Public" translatesAutoresizingMaskIntoConstraints="NO" id="nOy-sb-b8C" userLabel="Image View - Icon">
-                                                                                            <rect key="frame" x="2" y="-23.5" width="72" height="72"/>
+                                                                                            <rect key="frame" x="20" y="12.5" width="36" height="36"/>
                                                                                         </imageView>
                                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="민간주차장" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vNU-FH-ieH" userLabel="Label - Title">
                                                                                             <rect key="frame" x="5" y="58.5" width="66" height="14.5"/>
@@ -897,7 +897,7 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aka-fi-aNn" userLabel="Button - Info">
-                                                                        <rect key="frame" x="125.5" y="18" width="48" height="48"/>
+                                                                        <rect key="frame" x="125.5" y="30" width="24" height="24"/>
                                                                         <state key="normal" image="icHelpOutlineGrey"/>
                                                                     </button>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="2대 주차 가능" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RyL-re-XIL" userLabel="Label - Available Lots">

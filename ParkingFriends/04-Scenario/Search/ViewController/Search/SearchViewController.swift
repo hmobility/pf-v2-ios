@@ -48,7 +48,6 @@ class SearchViewController: UIViewController {
             topItem.titleView = searchBar
         }
     }
-    
     // MARK: - Binding
     
     private func setupBinding() {

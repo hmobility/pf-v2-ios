@@ -32,16 +32,6 @@ class BasicInfoViewController: UIViewController {
     private lazy var viewModel: BasicInfoViewModelType = BasicInfoViewModel(phoneNumber: registrationModel.phoneNumber ?? "01043525929", registration:registrationModel)
     private let disposeBag = DisposeBag()
     
-    // MARK: - Button Action
-     
-    @IBAction func backButtonAction(_ sender: Any) {
-        self.backToPrevious()
-    }
-    
-    @IBAction func nextButtonAction(_ sender: Any) {
-    //    navigateToAgreement()
-    }
-    
     // MARK: - Initialize
     
     init() {
@@ -121,9 +111,7 @@ class BasicInfoViewController: UIViewController {
         viewModel.passwordInputTitle
             .drive(passwordField.fieldTitleLabel.rx.text)
             .disposed(by: disposeBag)
-        
-        //passwordField.inputTextField.delegate = viewModel.passwordModel
-
+    
         passwordField.inputTextField.rx.text
             .orEmpty
             .asDriver()
@@ -206,11 +194,16 @@ class BasicInfoViewController: UIViewController {
     
     private func setupButtonBinding() {
         nextButton.rx.tap
-            .subscribe(onNext: { _ in
+            .subscribe(onNext: {[unowned self] _ in
                 self.viewModel.nextProcess()
             })
             .disposed(by: disposeBag)
         
+        backButton.rx.tap
+            .subscribe(onNext: {[unowned self] _ in
+                self.navigateToPhoneNumberInput()
+            })
+            .disposed(by: disposeBag)
         
         viewModel.proceed.asDriver()
             .drive(onNext: { [unowned self] (type, message) in
@@ -245,6 +238,14 @@ class BasicInfoViewController: UIViewController {
     }
     
     // MARK: - Navigation
+    
+    private func navigateToPhoneNumberInput() {
+        guard let navigationController = self.navigationController else {
+            return
+        }
+        
+        navigationController.popToViewController(ofClass: PhoneNumberInputViewController.self, animated: true)
+    }
       
     private func navigateToAgreement() {
         let target = Storyboard.registration.instantiateViewController(withIdentifier: "AgreementViewController") as! AgreementViewController

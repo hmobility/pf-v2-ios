@@ -13,9 +13,8 @@
         <!--Main Navigation Controller-->
         <scene sceneID="dCl-Lo-zwN">
             <objects>
-                <navigationController id="vO0-wJ-fcp" customClass="MainNavigationController" sceneMemberID="viewController">
+                <navigationController navigationBarHidden="YES" id="vO0-wJ-fcp" customClass="MainNavigationController" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="cg4-hG-SiS">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -36,7 +35,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pXR-5r-ca4" userLabel="View - Naver Map " customClass="NMFMapView">
+                            <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pXR-5r-ca4" userLabel="View - Naver Map " customClass="NMFMapView">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <userDefinedRuntimeAttributes>
@@ -50,6 +49,93 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="XOP-OH-4zO" userLabel="Stack View - Search Result Navigation Bar" customClass="MapSearchResultNavigationView" customModule="ParkingFriends" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="-92" width="414" height="134"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tfi-Qc-TcO" userLabel="View - Safe Area">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    </view>
+                                    <navigationBar contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gi8-B7-SNB">
+                                        <rect key="frame" x="0.0" y="50" width="414" height="44"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <items>
+                                            <navigationItem title="Title" id="QMg-aU-aeg">
+                                                <barButtonItem key="leftBarButtonItem" style="plain" id="HMI-KN-ThY">
+                                                    <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="rXQ-DT-S78" userLabel="Button - Back">
+                                                        <rect key="frame" x="20" y="2" width="40" height="40"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="tintColor" name="DarkGrey"/>
+                                                        <state key="normal" image="icBackBlack"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                <real key="value" value="0.0"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" name="Black24"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="0.0"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                                                <size key="value" width="0.0" height="0.0"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </button>
+                                                </barButtonItem>
+                                                <barButtonItem key="rightBarButtonItem" style="plain" id="p3P-uk-rsB">
+                                                    <button key="customView" opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="7a4-1K-bhd" userLabel="Button - Search Option">
+                                                        <rect key="frame" x="302" y="7" width="92" height="30"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="15"/>
+                                                        <state key="normal" title="검색옵션">
+                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                                                <size key="value" width="0.0" height="0.0"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                                <real key="value" value="0.0"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </button>
+                                                </barButtonItem>
+                                            </navigationItem>
+                                        </items>
+                                    </navigationBar>
+                                    <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KoR-yS-xt4" userLabel="View - Search Result Order">
+                                        <rect key="frame" x="0.0" y="94" width="414" height="40"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="낮은 가격순" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IBL-xL-EAR" userLabel="Label - Sort Order">
+                                                <rect key="frame" x="172.5" y="11" width="69" height="18"/>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="15"/>
+                                                <color key="textColor" name="LightBlueGrey"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" name="CharcoalGrey"/>
+                                        <constraints>
+                                            <constraint firstItem="IBL-xL-EAR" firstAttribute="centerX" secondItem="KoR-yS-xt4" secondAttribute="centerX" id="Gq6-0H-28m"/>
+                                            <constraint firstItem="IBL-xL-EAR" firstAttribute="centerY" secondItem="KoR-yS-xt4" secondAttribute="centerY" id="bKs-94-Oje"/>
+                                            <constraint firstAttribute="height" constant="40" id="ifv-em-ZGW"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="KoR-yS-xt4" firstAttribute="leading" secondItem="XOP-OH-4zO" secondAttribute="leading" id="2hv-Pw-P4T"/>
+                                    <constraint firstAttribute="trailing" secondItem="KoR-yS-xt4" secondAttribute="trailing" id="NrI-8H-W0K"/>
+                                    <constraint firstAttribute="bottom" secondItem="KoR-yS-xt4" secondAttribute="bottom" id="ZzQ-2V-K2l"/>
+                                    <constraint firstItem="KoR-yS-xt4" firstAttribute="top" secondItem="gi8-B7-SNB" secondAttribute="bottom" id="bze-vd-lMP"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="backButton" destination="rXQ-DT-S78" id="8zd-At-Pos"/>
+                                    <outlet property="navigationBar" destination="gi8-B7-SNB" id="GRp-oo-o02"/>
+                                    <outlet property="optionButton" destination="7a4-1K-bhd" id="D1o-GV-tZk"/>
+                                    <outlet property="searchOrderLabel" destination="IBL-xL-EAR" id="Oqf-Xc-gQC"/>
+                                </connections>
+                            </stackView>
                             <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eaE-XJ-DLD" userLabel="View - Navigation Menu" customClass="NavigationDialogView" customModule="ParkingFriends" customModuleProvider="target">
                                 <rect key="frame" x="12" y="2" width="390" height="59"/>
                                 <subviews>
@@ -454,32 +540,36 @@
                             <constraint firstItem="fBb-Y9-pXt" firstAttribute="leading" secondItem="kfy-hY-tBW" secondAttribute="leading" id="RoI-jI-aa2"/>
                             <constraint firstItem="eaE-XJ-DLD" firstAttribute="leading" secondItem="cKK-EK-fIQ" secondAttribute="leading" constant="12" id="Twg-mX-fzu"/>
                             <constraint firstAttribute="trailing" secondItem="fBb-Y9-pXt" secondAttribute="trailing" id="aOH-cg-ACK"/>
+                            <constraint firstItem="XOP-OH-4zO" firstAttribute="trailing" secondItem="kfy-hY-tBW" secondAttribute="trailing" id="cH0-bK-Tzy"/>
+                            <constraint firstItem="Tfi-Qc-TcO" firstAttribute="height" secondItem="cKK-EK-fIQ" secondAttribute="height" multiplier="0.0645995" id="h4Y-ho-TJw"/>
                             <constraint firstAttribute="bottom" secondItem="fBb-Y9-pXt" secondAttribute="bottom" id="k92-06-oOn"/>
                             <constraint firstItem="Njj-dP-feQ" firstAttribute="top" secondItem="1nR-Nk-QLc" secondAttribute="bottom" constant="120" id="mEU-xd-Dwo"/>
+                            <constraint firstItem="XOP-OH-4zO" firstAttribute="leading" secondItem="kfy-hY-tBW" secondAttribute="leading" id="pYR-TI-UAl"/>
                             <constraint firstItem="cKK-EK-fIQ" firstAttribute="trailing" secondItem="Njj-dP-feQ" secondAttribute="trailing" constant="8" id="pqo-M1-5RF"/>
                             <constraint firstItem="cKK-EK-fIQ" firstAttribute="bottom" secondItem="pXR-5r-ca4" secondAttribute="bottom" id="rp0-ky-gtX"/>
                             <constraint firstItem="1nR-Nk-QLc" firstAttribute="centerY" secondItem="cKK-EK-fIQ" secondAttribute="centerY" multiplier="0.6" id="sGb-N5-wYl"/>
+                            <constraint firstItem="XOP-OH-4zO" firstAttribute="top" secondItem="kfy-hY-tBW" secondAttribute="top" id="wNV-mH-v1o"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cKK-EK-fIQ"/>
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="dHd-Xq-pj5">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="NZG-3z-8Wr">
                             <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="4"/>
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="CKz-Kp-wOu" userLabel="Button - Menu">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="CKz-Kp-wOu" userLabel="Button - Back">
                                 <rect key="frame" x="20" y="2" width="40" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" name="DarkGrey"/>
-                                <state key="normal" image="icMenu"/>
+                                <state key="normal" image="icBackBlack"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="0.40000000000000002"/>
+                                        <real key="value" value="0.0"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                         <color key="value" name="Black24"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="4"/>
+                                        <real key="value" value="0.0"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
                                         <size key="value" width="0.0" height="0.0"/>
@@ -488,7 +578,7 @@
                             </button>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="WrM-6O-jaI">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="PQD-Jb-4cy" userLabel="Button - Search Option">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="PQD-Jb-4cy" userLabel="Button - Search Option">
                                 <rect key="frame" x="302" y="7" width="92" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="15"/>
@@ -497,29 +587,26 @@
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
-                                        <size key="value" width="0.0" height="1"/>
+                                        <size key="value" width="0.0" height="0.0"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
-                                        <color key="value" name="Black16"/>
+                                        <real key="value" value="0.0"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
                         </barButtonItem>
                     </navigationItem>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="cardContainerView" destination="fuB-2A-gB7" id="fYZ-0g-H4t"/>
                         <outlet property="mapView" destination="pXR-5r-ca4" id="yrv-H9-h3p"/>
-                        <outlet property="menuButton" destination="CKz-Kp-wOu" id="FaH-ya-VQZ"/>
                         <outlet property="navigationMenuView" destination="eaE-XJ-DLD" id="vGb-KG-Xat"/>
                         <outlet property="parkingInfoBottomConstraint" destination="Kdn-W6-VJD" id="Gki-2y-tjq"/>
                         <outlet property="parkingInfoView" destination="OGm-my-WLn" id="YSY-vV-6iS"/>
                         <outlet property="placeCenterButton" destination="Njj-dP-feQ" id="OPz-uf-q1S"/>
                         <outlet property="rootView" destination="kfy-hY-tBW" id="3Yj-gy-xCB"/>
                         <outlet property="safeAreaView" destination="fBb-Y9-pXt" id="Za6-x4-O1G"/>
-                        <outlet property="searchOptionButton" destination="PQD-Jb-4cy" id="Qmd-ai-FWg"/>
+                        <outlet property="searchResultNavigationView" destination="XOP-OH-4zO" id="7tx-cl-Kpb"/>
                         <outlet property="searchSectionView" destination="yab-zr-Bf5" id="zoT-gX-MXh"/>
                         <outlet property="timeSettingView" destination="qGv-Cp-ys8" id="2WQ-I6-KQL"/>
                         <outlet property="zoomInButton" destination="Uab-O4-z2c" id="V4p-HX-CYO"/>
@@ -1134,9 +1221,9 @@
                                 <rect key="frame" x="0.0" y="189" width="414" height="618"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tcK-iE-TuA" userLabel="View - Content">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="688"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="691"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="824-N9-xIS" userLabel="Stack View - Price">
+                                            <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="824-N9-xIS" userLabel="Stack View - Price">
                                                 <rect key="frame" x="20" y="0.0" width="374" height="142"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KQ3-by-yqn" userLabel="View - Price Title">
@@ -1298,8 +1385,8 @@
                                                     </label>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="zDz-zg-LEg" userLabel="Stack View - Sort Type">
-                                                <rect key="frame" x="20" y="178" width="374" height="75"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="zDz-zg-LEg" userLabel="Stack View - Sort Type">
+                                                <rect key="frame" x="20" y="178" width="374" height="76"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="정렬 순서" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ET0-oa-mar" userLabel="Label - Title">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="17"/>
@@ -1310,23 +1397,64 @@
                                                         <color key="textColor" name="DarkGrey"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="XHX-B5-7Nu" userLabel="Segmented Control - Sort">
+                                                    <view clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lO9-gH-MzH" userLabel="View - Segmented Control Background">
                                                         <rect key="frame" x="0.0" y="31" width="374" height="45"/>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <subviews>
+                                                            <view clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BeW-8N-GVE" userLabel="View - Segmented Control" customClass="BetterSegmentedControl" customModule="BetterSegmentedControl">
+                                                                <rect key="frame" x="0.0" y="0.0" width="374" height="45"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="45" id="yWb-6S-H21"/>
+                                                                </constraints>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="indicatorViewBackgroundColor">
+                                                                        <color key="value" name="ShamrockGreen"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="backgroundBorderColor">
+                                                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="indicatorViewBorderWidth">
+                                                                        <real key="value" value="0.0"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="indicatorViewInset">
+                                                                        <real key="value" value="0.0"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                        <real key="value" value="0.0"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="backgroundBorderWidth">
+                                                                        <real key="value" value="0.59999999999999998"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                        <real key="value" value="0.0"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </view>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="44" id="EKg-kS-Npg"/>
+                                                            <constraint firstAttribute="height" constant="45" id="4zQ-KE-sjf"/>
+                                                            <constraint firstItem="BeW-8N-GVE" firstAttribute="leading" secondItem="lO9-gH-MzH" secondAttribute="leading" id="cCh-eV-wao"/>
+                                                            <constraint firstAttribute="bottom" secondItem="BeW-8N-GVE" secondAttribute="bottom" id="e9A-cu-pDa"/>
+                                                            <constraint firstAttribute="trailing" secondItem="BeW-8N-GVE" secondAttribute="trailing" id="gaf-mf-KKz"/>
+                                                            <constraint firstItem="BeW-8N-GVE" firstAttribute="top" secondItem="lO9-gH-MzH" secondAttribute="top" id="r9J-aD-rgQ"/>
                                                         </constraints>
-                                                        <segments>
-                                                            <segment title="낮은가격순"/>
-                                                            <segment title="가까운순"/>
-                                                        </segments>
-                                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <color key="selectedSegmentTintColor" name="ShamrockGreen"/>
-                                                    </segmentedControl>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                <real key="value" value="0.59999999999999998"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" name="LightBlueGrey"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="8"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="hys-0q-n5C" userLabel="Stack View - Parkinglot Type">
-                                                <rect key="frame" x="20" y="295" width="374" height="75"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="hys-0q-n5C" userLabel="Stack View - Parkinglot Type">
+                                                <rect key="frame" x="20" y="296" width="374" height="76"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="민·공영 구분" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E8p-Vb-j8h" userLabel="Label - Title">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="17"/>
@@ -1337,22 +1465,64 @@
                                                         <color key="textColor" name="DarkGrey"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Ach-n5-mRW" userLabel="Segmented Control - Parking Lot">
+                                                    <view clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aze-dw-89l" userLabel="View - Segmented Control Background">
                                                         <rect key="frame" x="0.0" y="31" width="374" height="45"/>
+                                                        <subviews>
+                                                            <view clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bgi-Hp-dxC" userLabel="View - Segmented Control" customClass="BetterSegmentedControl" customModule="BetterSegmentedControl">
+                                                                <rect key="frame" x="0.0" y="0.0" width="374" height="45"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="45" id="KPg-FV-8Ab"/>
+                                                                </constraints>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="indicatorViewBackgroundColor">
+                                                                        <color key="value" name="ShamrockGreen"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="backgroundBorderColor">
+                                                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="indicatorViewBorderWidth">
+                                                                        <real key="value" value="0.0"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="indicatorViewInset">
+                                                                        <real key="value" value="0.0"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                        <real key="value" value="0.0"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="backgroundBorderWidth">
+                                                                        <real key="value" value="0.59999999999999998"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                        <real key="value" value="0.0"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </view>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="44" id="LJe-49-LdW"/>
+                                                            <constraint firstAttribute="height" constant="45" id="8pO-HN-0pB"/>
+                                                            <constraint firstItem="bgi-Hp-dxC" firstAttribute="top" secondItem="Aze-dw-89l" secondAttribute="top" id="H2c-GV-1S7"/>
+                                                            <constraint firstAttribute="bottom" secondItem="bgi-Hp-dxC" secondAttribute="bottom" id="a5a-qF-KmZ"/>
+                                                            <constraint firstItem="bgi-Hp-dxC" firstAttribute="leading" secondItem="Aze-dw-89l" secondAttribute="leading" id="fgp-xW-4QQ"/>
+                                                            <constraint firstAttribute="trailing" secondItem="bgi-Hp-dxC" secondAttribute="trailing" id="ggw-OX-a5o"/>
                                                         </constraints>
-                                                        <segments>
-                                                            <segment title="무관"/>
-                                                            <segment title="공영"/>
-                                                            <segment title="민영"/>
-                                                        </segments>
-                                                        <color key="selectedSegmentTintColor" name="ShamrockGreen"/>
-                                                    </segmentedControl>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                <real key="value" value="0.59999999999999998"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" name="LightBlueGrey"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="8"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="PG1-I5-NR8" userLabel="Stack View - Area Type">
-                                                <rect key="frame" x="20" y="412" width="374" height="75"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="PG1-I5-NR8" userLabel="Stack View - Area Type">
+                                                <rect key="frame" x="20" y="414" width="374" height="76"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="실내·외 구분" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oJN-64-yyW" userLabel="Label - Title">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="17"/>
@@ -1363,22 +1533,64 @@
                                                         <color key="textColor" name="DarkGrey"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="UhG-dF-TyJ" userLabel="Segmented Control - Area">
+                                                    <view clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="upk-uT-cOj" userLabel="View - Segmented Control Background">
                                                         <rect key="frame" x="0.0" y="31" width="374" height="45"/>
+                                                        <subviews>
+                                                            <view clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="604-hC-Grh" userLabel="View - Segmented Control" customClass="BetterSegmentedControl" customModule="BetterSegmentedControl">
+                                                                <rect key="frame" x="0.0" y="0.0" width="374" height="45"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="45" id="mLg-Tz-GvT"/>
+                                                                </constraints>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="indicatorViewBackgroundColor">
+                                                                        <color key="value" name="ShamrockGreen"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="backgroundBorderColor">
+                                                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="indicatorViewBorderWidth">
+                                                                        <real key="value" value="0.0"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="indicatorViewInset">
+                                                                        <real key="value" value="0.0"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                        <real key="value" value="0.0"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="backgroundBorderWidth">
+                                                                        <real key="value" value="0.59999999999999998"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                        <real key="value" value="0.0"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </view>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="44" id="zbL-SR-eAH"/>
+                                                            <constraint firstItem="604-hC-Grh" firstAttribute="top" secondItem="upk-uT-cOj" secondAttribute="top" id="4NU-hS-Hot"/>
+                                                            <constraint firstAttribute="trailing" secondItem="604-hC-Grh" secondAttribute="trailing" id="CF9-bN-gnd"/>
+                                                            <constraint firstAttribute="bottom" secondItem="604-hC-Grh" secondAttribute="bottom" id="EeF-V5-3ty"/>
+                                                            <constraint firstAttribute="height" constant="45" id="OqT-Hx-xeg"/>
+                                                            <constraint firstItem="604-hC-Grh" firstAttribute="leading" secondItem="upk-uT-cOj" secondAttribute="leading" id="vT1-q6-7Hy"/>
                                                         </constraints>
-                                                        <segments>
-                                                            <segment title="무관"/>
-                                                            <segment title="실외"/>
-                                                            <segment title="실내"/>
-                                                        </segments>
-                                                        <color key="selectedSegmentTintColor" name="ShamrockGreen"/>
-                                                    </segmentedControl>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                <real key="value" value="0.59999999999999998"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" name="LightBlueGrey"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="8"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="INc-zz-nO1" userLabel="Stack View - Extra Option">
-                                                <rect key="frame" x="20" y="529" width="374" height="129"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="INc-zz-nO1" userLabel="Stack View - Extra Option">
+                                                <rect key="frame" x="20" y="532" width="374" height="129"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="그 외 옵션" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ce1-lU-ik0" userLabel="Label - Title">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="17"/>
@@ -1592,14 +1804,14 @@
                     </view>
                     <connections>
                         <outlet property="allDayButton" destination="Sne-Gw-Dlv" id="gpb-fi-i0j"/>
-                        <outlet property="areaInOutSegmentedControl" destination="UhG-dF-TyJ" id="npg-dT-MT2"/>
+                        <outlet property="areaInOutSegmentedControl" destination="604-hC-Grh" id="RYx-lQ-hSY"/>
                         <outlet property="areaTypeLabel" destination="oJN-64-yyW" id="Gh0-mU-faf"/>
                         <outlet property="cctvButton" destination="62V-xf-NIp" id="TWH-Uz-nK2"/>
                         <outlet property="extraOptionLabel" destination="ce1-lU-ik0" id="O6j-IW-gaB"/>
                         <outlet property="headearView" destination="I0n-0C-HFK" id="8iT-8F-cye"/>
                         <outlet property="iotSensorButton" destination="xK8-LF-ljx" id="Zzj-89-ANt"/>
                         <outlet property="noMechanicalButton" destination="oco-em-bby" id="yfm-zn-lNB"/>
-                        <outlet property="operationSegmentedControl" destination="Ach-n5-mRW" id="01E-xa-3CL"/>
+                        <outlet property="operationSegmentedControl" destination="bgi-Hp-dxC" id="Qeb-gs-N18"/>
                         <outlet property="operationTypeLabel" destination="E8p-Vb-j8h" id="UTp-JK-ucK"/>
                         <outlet property="parkinglotTypeLabel" destination="E8p-Vb-j8h" id="2Zh-13-Zrd"/>
                         <outlet property="priceEndLabel" destination="V3j-Zl-pr6" id="fVC-oC-w4T"/>
@@ -1614,7 +1826,7 @@
                         <outlet property="resetButton" destination="JVr-z7-yYC" id="Edj-HM-FIN"/>
                         <outlet property="saveButton" destination="5Ql-oK-gex" id="6ab-8L-KsG"/>
                         <outlet property="sortTypeLabel" destination="ET0-oa-mar" id="Exl-zf-R0b"/>
-                        <outlet property="sortingSegmentedControl" destination="XHX-B5-7Nu" id="5Jo-fh-mo4"/>
+                        <outlet property="sortingSegmentedControl" destination="BeW-8N-GVE" id="50T-eA-L7t"/>
                         <outlet property="titleLabel" destination="SjB-YL-6c0" id="XXQ-Am-Ip7"/>
                         <outlet property="topRoundedTipView" destination="aZg-gi-ycE" id="vgD-5d-4c1"/>
                     </connections>
@@ -2106,6 +2318,7 @@ kDuUO5s7oDutO7A7vTvCO8o7zTvSO9o73TvvO/I79wAAAAAAAAIBAAAAAAAAAG0AAAAAAAAAAAAAAAAA
 ADv5A
 </mutableData>
         </image>
+        <image name="icBackBlack" width="24" height="24"/>
         <image name="icDropdownWhite" width="16" height="16"/>
         <image name="icMarkerFitGreen" width="12" height="12"/>
         <image name="icMenu" width="20" height="20"/>

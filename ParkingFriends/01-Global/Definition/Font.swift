@@ -17,9 +17,12 @@ struct Font {
     static let gothicNeoMedium26 = UIFont(name:"AppleSDGothicNeo-Medium", size:26)!
     static let gothicNeoMedium19 = UIFont(name:"AppleSDGothicNeo-Medium", size:19)!
     static let gothicNeoMedium18 = UIFont(name:"AppleSDGothicNeo-Medium", size:18)!
+    static let gothicNeoMedium16 = UIFont(name:"AppleSDGothicNeo-Medium", size:16)!
     static let gothicNeoMedium15 = UIFont(name:"AppleSDGothicNeo-Medium", size:15)!
     
     static let gothicNeoSemiBold19 = UIFont(name:"AppleSDGothicNeo-SemiBold", size:19)!
+    
+    static let gothicNeoBold16 = UIFont(name:"AppleSDGothicNeo-Bold", size:16)!
     
     static let helvetica12 = UIFont(name:"Helvetica", size:12)!
 }
