@@ -55,7 +55,7 @@ class SearchFavoriteViewController: UIViewController {
             })
             .disposed(by: disposeBag)
                
-      /*
+      //*
         tableView.rx.itemSelected
             .subscribe(onNext:{ [unowned self] indexPath in
                 if let items = self.favoriteItems {
@@ -69,7 +69,7 @@ class SearchFavoriteViewController: UIViewController {
                 debugPrint("[SELECT]", indexPath)
             })
             .disposed(by: disposeBag)
-        */
+        //*/
         tableView.tableFooterView = footerView
     }
 

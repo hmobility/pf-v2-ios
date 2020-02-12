@@ -56,7 +56,7 @@ class SearchViewController: UIViewController {
             .drive(searchBar.rx.placeholder)
             .disposed(by: disposeBag)
         
-        //*
+        /* Delete by Rao
         containerView.rx
             .tapGesture()
             .when(.recognized)
@@ -64,7 +64,7 @@ class SearchViewController: UIViewController {
                 self.view.endEditing(true)
             }
             .disposed(by: disposeBag)
- //*/
+ */
 
     
         historyTableView.backgroundView = UIView()
@@ -259,11 +259,11 @@ class SearchViewController: UIViewController {
     
     private func setEmbedView(_ target:UIViewController) {
         if let navigationController = embedNavigationController {
-            /*
+            //*
             self.addChild(target)
             navigationController.viewControllers = [target]
             target.didMove(toParent: self)
-            */
+            //*/
             
             /*
             navigationController.topViewController?.willMove(toParent: nil)
@@ -272,6 +272,7 @@ class SearchViewController: UIViewController {
             */
             
             // Edit by Rao
+            /*
             self.addChild(target)
 //            view.addSubview(target.view)
             navigationController.viewControllers = [target]
@@ -279,6 +280,7 @@ class SearchViewController: UIViewController {
 //            navigationController.topViewController?.view.addSubview(target.view)
             let subView = navigationController.topViewController?.view.subviews
             target.didMove(toParent: self)
+ */
         }
     }
     
