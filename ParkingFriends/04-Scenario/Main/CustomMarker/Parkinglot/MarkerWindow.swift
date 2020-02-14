@@ -15,18 +15,37 @@ class MarkerWindow:NMFInfoWindow {
     private var element:WithinElement?
     private var markerSource:MarkerDataSource?
     
+    public var parkinglotId:Int {
+        get {
+            guard let elementId = element?.id else {
+                return -1
+            }
+            
+            return elementId
+        }
+    }
+    
+    public var selected:Bool {
+        get {
+            if let source = self.markerSource {
+                return source.getSelectedStatus()
+            }
+            
+            return false
+        }
+        set {
+            if let source = self.markerSource {
+                source.setSelected(newValue)
+            }
+        }
+    }
+    
     // MARK: - Initiailize
     
     init(within element:WithinElement, map:NMFMapView) {
         super.init()
         setWithinElement(element)
         self.mapView = map
-        
-        // Add by Rao
-        self.touchHandler = { (overlay: NMFOverlay) -> Bool in
-            print("Touch ~~ \(element.name)")
-            return true
-        }
     }
     
     // MARK: - Public Methods
@@ -46,11 +65,10 @@ class MarkerWindow:NMFInfoWindow {
     
     private func getMarkerType(available:Bool) -> MarkerType {
         if available {
-//            return .green
-            return .normal
+            return .normal(selected: false)
         }
         
-        return .disabled
+        return .disabled(selected: false)
     }
     
     private func setWithinElement(_ element:WithinElement) {
@@ -66,13 +84,21 @@ class MarkerWindow:NMFInfoWindow {
 
 class MarkerDataSource: NSObject {
     fileprivate var rootView: MarkerView!
-    fileprivate var markerType: MarkerType = .normal
+    fileprivate var markerType: MarkerType = .normal(selected: false)
     fileprivate var price:Int?
     
-    init(price:Int, type:MarkerType) {
+    init(price:Int, type:MarkerType = .normal(selected: false)) {
         super.init()
         self.price = price
         self.markerType = type
+    }
+    
+    func setSelected(_ flag:Bool) {
+        rootView.setSelected(flag)
+    }
+    
+    func getSelectedStatus() -> Bool {
+        return rootView.selected
     }
 }
 
@@ -82,8 +108,8 @@ extension MarkerDataSource: NMFOverlayImageDataSource {
             rootView = MarkerView.loadFromXib()
         }
         
-        if let _ = price {
-            rootView.price(price!, type: markerType)
+        if let value = price {
+            rootView.info(price: value, type: markerType)
         }
         
         return rootView

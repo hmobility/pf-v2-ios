@@ -35,7 +35,7 @@ class SearchViewController: UIViewController {
     
     public var resultAction: ((_ coord:CoordType) -> Void)?   // Pass Search Results
     
-    var disposeBag = DisposeBag()
+    let disposeBag = DisposeBag()
     
     // MARK: - Setup Navigation
     
@@ -55,8 +55,7 @@ class SearchViewController: UIViewController {
             .asDriver()
             .drive(searchBar.rx.placeholder)
             .disposed(by: disposeBag)
-        
-        /* Delete by Rao
+        /*
         containerView.rx
             .tapGesture()
             .when(.recognized)
@@ -64,9 +63,7 @@ class SearchViewController: UIViewController {
                 self.view.endEditing(true)
             }
             .disposed(by: disposeBag)
- */
-
-    
+        */
         historyTableView.backgroundView = UIView()
         
         if let backgroundView = historyTableView.backgroundView {
@@ -259,28 +256,9 @@ class SearchViewController: UIViewController {
     
     private func setEmbedView(_ target:UIViewController) {
         if let navigationController = embedNavigationController {
-            //*
             self.addChild(target)
             navigationController.viewControllers = [target]
             target.didMove(toParent: self)
-            //*/
-            
-            /*
-            navigationController.topViewController?.willMove(toParent: nil)
-            navigationController.topViewController?.view.removeFromSuperview()
-            navigationController.topViewController?.removeFromParent()
-            */
-            
-            // Edit by Rao
-            /*
-            self.addChild(target)
-//            view.addSubview(target.view)
-            navigationController.viewControllers = [target]
-//            navigationController.viewControllers[0].view.addSubview(target.view)
-//            navigationController.topViewController?.view.addSubview(target.view)
-            let subView = navigationController.topViewController?.view.subviews
-            target.didMove(toParent: self)
- */
         }
     }
     
@@ -307,7 +285,6 @@ class SearchViewController: UIViewController {
             .drive(onNext:{ hide in
                 if self.historyStackView.isHidden != hide {
                     self.historyStackView.isHidden = hide
-                  //  self.historyTableView.isHidden = hide
                 }
             })
             .disposed(by: disposeBag)
@@ -387,16 +364,16 @@ class SearchViewController: UIViewController {
             setEmbedView(target)
             target.setFavoriteItems(items)
             
-            target.selectAction = { parkinglotId in
-                debugPrint("[FAVOPRITE] SELECT, ", parkinglotId)
-                // TO DO
+            target.selectAction = { [unowned self] item in
+                debugPrint("[FAVORITE] SELECT, ", item.name)
+                self.navigateToDetail(with: item)
             }
         }
      }
     
-    func navigateToDetail(with element:WithinElement) {
+    func navigateToDetail(with element:FavoriteElement) {
         let target = Storyboard.detail.instantiateViewController(withIdentifier: "ParkinglotDetailNavigationController") as! ParkinglotDetailNavigationController
-        target.setWithinElement(element)
+        target.setFavoriteElement(element)
         self.modal(target)
     }
     

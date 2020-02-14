@@ -10,6 +10,7 @@ import UIKit
 
 class ParkinglotDetailNavigationController: UINavigationController {
     var within:WithinElement?
+    var favorite:FavoriteElement?
     
     // MARK: - Public Method
     
@@ -17,11 +18,19 @@ class ParkinglotDetailNavigationController: UINavigationController {
         within = element
     }
     
+    public func setFavoriteElement(_ element:FavoriteElement?) {
+        favorite = element
+    }
+    
     // MARK: - Local Methods
     
     private func initialize() {
         if let target = self.topViewController as? ParkinglotDetailViewController, let element = within {
             target.setWithinElement(element)
+        }
+        
+        if let target = self.topViewController as? ParkinglotDetailViewController, let element = favorite {
+            target.setFavoriteElement(element)
         }
     }
     

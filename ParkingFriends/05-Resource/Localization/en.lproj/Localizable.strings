@@ -267,7 +267,7 @@
 "ttl_payment_method" = "결제 수단";
 "txt_payment_simple_card" = "간편 카드결제";
 "txt_payment_kakao_pay" = "카카오페이";
-"txt_payment_normal_card" = "일반카드 / 계좌이체 / 핸드폰 소액결제";
+"txt_payment_etc_payment" = "일반카드 / 계좌이체 / 핸드폰 소액결제";
 "ttl_payment_point" = "포인트";
 "ttl_payment_point_owned" = "포인트";
 "txt_payment_no_point" = "보유 포인트 없음";

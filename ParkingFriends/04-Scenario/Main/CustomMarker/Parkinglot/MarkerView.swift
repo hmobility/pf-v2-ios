@@ -8,40 +8,90 @@
 
 import UIKit
 
-enum MarkerType {
-    case normal
-    case disabled
-    case green
-    case partner
+enum MarkerType: Equatable {
+    case normal(selected:Bool)
+    case disabled(selected:Bool)
+    case partner(selected:Bool)
+    
+    mutating func selected(_ flag:Bool) -> MarkerType {
+        switch self {
+        case .normal(selected: _):
+            self = .normal(selected: flag)
+            return self
+        case .disabled(selected: _):
+            self = .disabled(selected: flag)
+            return self
+        case .partner(selected: _):
+            self = .partner(selected: flag)
+            return self
+        }
+    }
+    
+    static func ==(lhs: MarkerType, rhs: MarkerType) -> Bool {
+        switch (lhs, rhs) {
+        case (let .normal(a1), let .normal(a2)):
+            return a1 == a2
+        case (let .disabled(a1), let .disabled(a2)):
+            return a1 == a2
+        case (let .partner(a1), let .partner(a2)):
+            return a1 == a2
+        default:
+            return false
+        }
+    }
 }
 
 class MarkerView: UIView {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var backgroundImageView: UIImageView!
     
+    public var selected: Bool = false
+    
+    private var markerValue: MarkerType?
+    
     // MARK - Public Methods
     
-    public func price(_ price: Int, type: MarkerType) {
+    public func info(price: Int, type: MarkerType, selected:Bool = false) {
         priceLabel.text = price.withComma
-        
-        switch type {
-        case .normal:
-            backgroundImageView.image = UIImage(named:"imgMarkerNormal")!
-        case .disabled:
-            backgroundImageView.image = UIImage(named:"imgMarkerDisabled")!
-        case .green:
-            backgroundImageView.image = UIImage(named:"imgMarkerGreen")!
-        case .partner:
-            backgroundImageView.image = UIImage(named:"imgMarkerPartner")!
+        self.selected = selected
+        setMarkerType(type)
+    }
+    
+    public func setSelected(_ flag:Bool) {
+        if var value = markerValue {
+            debugPrint("[MARKER][SEL]", value, ", [M] ", flag, " , CONVERTED :", value.selected(flag))
+            setMarkerType(value.selected(flag))
         }
     }
     
-    /*
+    // MARK: - Local Methods
+    
+    private func setMarkerType(_ type:MarkerType) {
+        if let value = self.markerValue, value == type {
+            return
+        }
+        
+        self.markerValue = type
+        
+        debugPrint("[MARKER] >>> ", type)
+        
+        switch type {
+        case .normal(let selected):
+            backgroundImageView.image = selected ? UIImage(named:"imgMarkerGreen")! : UIImage(named:"imgMarkerNormal")!
+        case .disabled(let selected):
+            backgroundImageView.image = selected ? UIImage(named:"imgMarkerGreySelected")! : UIImage(named:"imgMarkerDisabled")!
+        case .partner(let selected):
+            backgroundImageView.image = selected ? UIImage(named:"imgMarkerGreySelected")! : UIImage(named:"imgMarkerPartner")!
+        }
+        
+        backgroundImageView.setNeedsLayout()
+    }
+    
+    // MARK: - Life Cycle
+    
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
         // Drawing code
     }
-    */
-
 }

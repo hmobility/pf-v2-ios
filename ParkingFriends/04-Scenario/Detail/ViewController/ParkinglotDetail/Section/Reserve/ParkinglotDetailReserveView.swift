@@ -41,7 +41,7 @@ class ParkinglotDetailReserveView: UIStackView {
         setupBinding()
         setupButtonBinding()
         
-        setupSwitchTicketBinding()
+        setupSupportedTicketBinding()
         setupChartView()
     }
     
@@ -58,17 +58,26 @@ class ParkinglotDetailReserveView: UIStackView {
             .disposed(by: disposeBag)
     }
     
-    private func setupEditPanelBinding() {
-        
-    }
-    
-    private func setupSwitchTicketBinding() {
+    private func setupSupportedTicketBinding() {
         viewModel.getSupportedProducts()
             .asObservable()
-            .subscribe(onNext: { items in
-                if items.count > 0 {
+            .subscribe(onNext: { [unowned self] items in
+                if items.count < 2 {
+                    self.supportedProductView.setHidden(true)
+                } else {
+                    self.supportedProductView.setHidden(false)
                     self.supportedProductView.setTitle(with: items)
                 }
+            })
+            .disposed(by: disposeBag)
+        
+        self.supportedProductView
+            .getSelectedSegments()
+            .asObservable()
+            .filter { $0 != nil }
+            .map { $0! }
+            .subscribe(onNext:{ [unowned self] selectedType in
+                self.updateEditPanel(with: selectedType)
             })
             .disposed(by: disposeBag)
     }
@@ -91,6 +100,10 @@ class ParkinglotDetailReserveView: UIStackView {
     
     // MARK: - Local Methods
     
+    private func updateEditPanel(with productType:ProductType) {
+        self.viewModel.updateSelectedProductType(productType)
+    }
+
     // MARK: - Chart Update
     
     private func setupChartView() {
@@ -179,7 +192,7 @@ class ParkinglotDetailReserveView: UIStackView {
     private func updateOnReserveTime() {
         let onReserveColor = Color.algaeGreen.hexString
         
-        viewModel.onReserveTime
+        viewModel.bookingTime
                 .compactMap { $0 }
                 .asObservable()
                 .map({ duration in

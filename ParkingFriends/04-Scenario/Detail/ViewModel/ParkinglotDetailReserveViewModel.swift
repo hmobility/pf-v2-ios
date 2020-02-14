@@ -12,22 +12,27 @@ protocol ParkinglotDetailReserveViewModelType {
     var viewTitleText: Driver<String> { get }
     
     var availableTimeList: BehaviorRelay<[OperationTime]> { get }
-    var onReserveTime: BehaviorRelay<DateDuration?> { get }
+    var bookingTime: BehaviorRelay<DateDuration?> { get }
     var supportedItems: BehaviorRelay<[ProductType]> { get }
     var availableCarNumber: BehaviorRelay<Int> { get }
     
-    func getSupportedProducts() -> Observable<[String]>
+    func getSupportedProducts() -> Observable<[(ProductType, String)]>
     func setProducts(supported products:[ProductType], elements:[ProductElement], onReserve time:DateDuration)
-    func getAvailableParkinglotNumber() -> Observable<String> 
+    func getAvailableParkinglotNumber() -> Observable<String>
+    
+    func updateSelectedProductType(_ productType:ProductType)
+    func getSelectedProductType() -> Observable<ProductType>
 }
 
 class ParkinglotDetailReserveViewModel: ParkinglotDetailReserveViewModelType {
     var viewTitleText: Driver<String>
     
     var availableTimeList: BehaviorRelay<[OperationTime]> = BehaviorRelay(value: [])
-    var onReserveTime: BehaviorRelay<DateDuration?> = BehaviorRelay(value: nil)
+    var bookingTime: BehaviorRelay<DateDuration?> = BehaviorRelay(value: nil)
     var supportedItems: BehaviorRelay<[ProductType]> = BehaviorRelay(value: [])
     var availableCarNumber: BehaviorRelay<Int> = BehaviorRelay(value: 0)
+    
+    var selectedProductType: BehaviorRelay<ProductType?> = BehaviorRelay(value:nil)
     
     private var localizer:LocalizerType
 
@@ -43,20 +48,30 @@ class ParkinglotDetailReserveViewModel: ParkinglotDetailReserveViewModelType {
     
     // MARK: - Local Methods
     
-    func getTicketTitle(with type: ProductType) -> String {
+    func getTicketTitle(with type: ProductType) -> SupportedProductType {
         switch type {
         case .time:
-            return self.localizer.localized("ttl_ticket_time")
+            return (type, self.localizer.localized("ttl_ticket_time"))
         case .fixed:
-            return self.localizer.localized("ttl_ticket_fixed")
+            return (type, self.localizer.localized("ttl_ticket_fixed"))
         case .monthly:
-            return self.localizer.localized("ttl_ticket_monthly")
+            return (type, self.localizer.localized("ttl_ticket_monthly"))
         }
     }
     
     // MARK: - Public Methdos
     
-    public func getSupportedProducts() -> Observable<[String]> {
+    public func updateSelectedProductType(_ productType:ProductType) {
+         selectedProductType.accept(productType)
+    }
+    
+    public func getSelectedProductType() -> Observable<ProductType> {
+        return selectedProductType.asObservable()
+            .filter { $0 != nil }
+            .map { $0! }
+    }
+    
+    public func getSupportedProducts() -> Observable<[(ProductType, String)]> {
         return supportedItems
             .map { items in
                 return items.map {
@@ -78,7 +93,7 @@ class ParkinglotDetailReserveViewModel: ParkinglotDetailReserveViewModelType {
         let timeList = elements.flatMap{ $0.availableTimes }
         availableCarNumber.accept(elements.count)
         availableTimeList.accept(timeList)
-        onReserveTime.accept(time)
+        bookingTime.accept(time)
         
         if products.count > 0 {
             let sortedSupportedProducts = products.sorted(by: { $0.hashValue < $1.hashValue })

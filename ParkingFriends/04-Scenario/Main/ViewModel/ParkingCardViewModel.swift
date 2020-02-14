@@ -17,6 +17,7 @@ protocol ParkingCardViewModelType {
     var ableElements: BehaviorRelay<[WithinElement]> { get }    // Add by Rao
     
     func setWithinElements(_ elements:[WithinElement]?)
+    func getWithinElement(with itemIndex:Int) -> WithinElement?
     func getTags(_ element:WithinElement) -> [String]
 }
 
@@ -88,5 +89,13 @@ class ParkingCardViewModel: ParkingCardViewModelType {
         } else {
             self.elements.accept([])
         }
+    }
+    
+    func getWithinElement(with itemIndex:Int) -> WithinElement? {
+        if itemIndex < self.elements.value.count {
+            return self.elements.value[itemIndex]
+        }
+        
+        return nil
     }
 }

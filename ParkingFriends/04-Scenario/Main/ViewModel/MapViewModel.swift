@@ -31,6 +31,8 @@ protocol MapViewModelType {
     func updateSearchResult(with coord:CoordType)
     func removeSearchResultMark()
     
+    func setFocusedMarker(with parkinglotId:Int)
+
     func setTimeTicketRange(start startDate: Date, end endDate:Date)
     func setFixedTicketTime(start startDate: Date, hours:Int)
     func setMonthlyTicketTime(start startDate: Date, months:Int)
@@ -61,7 +63,7 @@ class MapViewModel: NSObject, MapViewModelType {
     var cardViewModel:ParkingCardViewModelType?
     var parkingTapViewModel:ParkingTapViewModelType?
     
-    private var lotList:[MarkerWindow] = []
+    private var parkinglotList:[MarkerWindow] = []
     private var districtList:[DistrictMarkerWindow] = []
     
     private var destMarker:NMFMarker?
@@ -86,8 +88,7 @@ class MapViewModel: NSObject, MapViewModelType {
         
         displayReservableTimeText = BehaviorRelay(value: displayTime)
         
-        destMarker = NMFMarker.init(position: NMGLatLng(lat: defaultCoordinate.latitude, lng: defaultCoordinate.longitude), iconImage: NMFOverlayImage(name: "icMarkerDestination"))
-        
+        destMarker = NMFMarker.init(position: NMGLatLng(lat: defaultCoordinate.latitude, lng: defaultCoordinate.longitude), iconImage: NMFOverlayImage(name: "icMapCenter"))
         searchMarker = NMFMarker.init(position: NMGLatLng(lat: defaultCoordinate.latitude, lng: defaultCoordinate.longitude), iconImage: NMFOverlayImage(name: "icMarkerDestination"))
     
         super.init()
@@ -211,7 +212,7 @@ class MapViewModel: NSObject, MapViewModelType {
     // MARK: - Marker
 
     // 개별 주차면 표시
-    private func generateMarker(within element:WithinElement) -> MarkerWindow? {
+    func generateMarker(within element:WithinElement) -> MarkerWindow? {
         if let map = mapView {
             return MarkerWindow(within:element, map:map)
         }
@@ -220,7 +221,7 @@ class MapViewModel: NSObject, MapViewModelType {
     }
     
     // 구별 주차면 표시
-    private func generateDistrict(district element:WithinDistrictElement) -> DistrictMarkerWindow? {
+    func generateDistrict(district element:WithinDistrictElement) -> DistrictMarkerWindow? {
         if let map = mapView {
             return DistrictMarkerWindow(district:element, map:map)
         }
@@ -261,13 +262,13 @@ class MapViewModel: NSObject, MapViewModelType {
         }
     }
     
-    private func updateMarker(lots:[WithinElement]? = nil, districts:[WithinDistrictElement]? = nil) {
-        if lotList.count > 0 {
-            for item in lotList {
+    func updateMarker(lots:[WithinElement]? = nil, districts:[WithinDistrictElement]? = nil) {
+        if parkinglotList.count > 0 {
+            for item in parkinglotList {
                 item.remove()
             }
       
-            lotList = []
+            parkinglotList = []
         }
         
         if districtList.count > 0 {
@@ -282,7 +283,7 @@ class MapViewModel: NSObject, MapViewModelType {
             for item in elements {
 //                debugPrint("[LOT] ", item.address)    // Delete by Rao
                 if let marker = generateMarker(within: item) {
-                    lotList.append(marker)
+                    parkinglotList.append(marker)
                 }
             }
         }
@@ -296,10 +297,27 @@ class MapViewModel: NSObject, MapViewModelType {
             }
         }
     }
+    
+    func updateMarkerStatus(focused flag:Bool, parkinglotId:Int) {
+        if parkinglotList.count > 0 {
+            
+            if let item = parkinglotList.filter({ $0.selected }).first {
+                item.selected = false
+            }
+            
+            if let item = parkinglotList.filter({ $0.parkinglotId == parkinglotId }).first {
+                item.selected = true
+            }
+            
+            parkinglotList.forEach { item in
+                print("[\(item.parkinglotId) = \(item.selected)")
+            }
+        }
+    }
 
     // MARK: - Camera Moving
     
-    private func trackCameraMovement(coord:CoordType, zoomLevel:Double) {
+    func trackCameraMovement(coord:CoordType, zoomLevel:Double) {
         self.requestReverseGeocoding(coord)
         self.showDestinationMarker(coord: coord)
         
@@ -466,6 +484,10 @@ class MapViewModel: NSObject, MapViewModelType {
     
     public func removeSearchResultMark() {
         self.removeCenterMark(.search)
+    }
+    
+    public func setFocusedMarker(with parkinglotId:Int) {
+        updateMarkerStatus(focused: true, parkinglotId: parkinglotId)
     }
     
     // MARK: Time Option

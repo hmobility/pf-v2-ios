@@ -69,7 +69,7 @@ class SearchHistory: NSObject, NSCoding {
         UserDefaults.standard.synchronize()
     }
     
-    // MARK: - Encoding
+    // MARK: - Encoding/Decoding
     
     required init(coder aDecoder: NSCoder) {
         historyItems = aDecoder.decodeObject(forKey: "historyItems") as? [String] ?? []

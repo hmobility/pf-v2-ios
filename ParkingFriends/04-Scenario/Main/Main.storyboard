@@ -32,11 +32,11 @@
             <objects>
                 <viewController storyboardIdentifier="MainViewController" id="0Pz-gY-zQE" userLabel="MapViewController" customClass="MapViewController" customModule="ParkingFriends" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kfy-hY-tBW">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pXR-5r-ca4" userLabel="View - Naver Map " customClass="NMFMapView">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="showZoomControls" value="NO"/>
@@ -50,14 +50,14 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="XOP-OH-4zO" userLabel="Stack View - Search Result Navigation Bar" customClass="MapSearchResultNavigationView" customModule="ParkingFriends" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="-92" width="414" height="134"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="137"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tfi-Qc-TcO" userLabel="View - Safe Area">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="53"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     </view>
                                     <navigationBar contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gi8-B7-SNB">
-                                        <rect key="frame" x="0.0" y="50" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="53" width="414" height="44"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <items>
                                             <navigationItem title="Title" id="QMg-aU-aeg">
@@ -106,7 +106,7 @@
                                         </items>
                                     </navigationBar>
                                     <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KoR-yS-xt4" userLabel="View - Search Result Order">
-                                        <rect key="frame" x="0.0" y="94" width="414" height="40"/>
+                                        <rect key="frame" x="0.0" y="97" width="414" height="40"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="낮은 가격순" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IBL-xL-EAR" userLabel="Label - Sort Order">
                                                 <rect key="frame" x="172.5" y="11" width="69" height="18"/>
@@ -137,7 +137,7 @@
                                 </connections>
                             </stackView>
                             <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eaE-XJ-DLD" userLabel="View - Navigation Menu" customClass="NavigationDialogView" customModule="ParkingFriends" customModuleProvider="target">
-                                <rect key="frame" x="12" y="2" width="390" height="59"/>
+                                <rect key="frame" x="12" y="46" width="390" height="59"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ezi-kn-iXM" userLabel="Button - Menu">
                                         <rect key="frame" x="4" y="9.5" width="40" height="40"/>
@@ -255,7 +255,7 @@
                                 </connections>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="OGm-my-WLn" userLabel="Stack View - Info Section">
-                                <rect key="frame" x="0.0" y="417.5" width="414" height="280.5"/>
+                                <rect key="frame" x="0.0" y="505.5" width="414" height="280.5"/>
                                 <subviews>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fuB-2A-gB7" userLabel="Container View - Card">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="172"/>
@@ -388,7 +388,7 @@
                                 </subviews>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1nR-Nk-QLc" userLabel="View - Zoom Action">
-                                <rect key="frame" x="366" y="191.5" width="40" height="81"/>
+                                <rect key="frame" x="366" y="231.5" width="40" height="81"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="81F-bb-XKo">
                                         <rect key="frame" x="0.0" y="0.0" width="40" height="81"/>
@@ -488,7 +488,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Njj-dP-feQ" userLabel="Button - Center">
-                                <rect key="frame" x="362" y="392.5" width="44" height="44"/>
+                                <rect key="frame" x="362" y="432.5" width="44" height="44"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="LxC-Ga-4WV"/>
@@ -521,7 +521,7 @@
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fBb-Y9-pXt" userLabel="View - Safe Area">
-                                <rect key="frame" x="0.0" y="774" width="414" height="34"/>
+                                <rect key="frame" x="0.0" y="862" width="414" height="34"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
@@ -1855,7 +1855,7 @@
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="H5z-UM-I3b" customClass="ParkinglotCardViewController" customModule="ParkingFriends" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="6hS-72-vZj">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="172"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Pne-oF-qgQ">
