@@ -24,6 +24,7 @@ class ParkinglotDetailViewController: UIViewController {
     @IBOutlet weak var reserveStatusView: ParkinglotDetailReserveView!
     @IBOutlet weak var priceView:ParkinglotDetailPriceInfoView!
     @IBOutlet weak var operationTimeView:ParkinglotDetailOperationTimeView!
+    @IBOutlet weak var editTimeView:ParkinglotDetailEditTimeView!
     @IBOutlet weak var noticeView:ParkinglotDetailNoticeView!
     @IBOutlet weak var buttonView:ParkinglotDetailButtonView!
     
@@ -35,8 +36,9 @@ class ParkinglotDetailViewController: UIViewController {
     @IBOutlet weak var reserveButton: UIButton!
     
     private var within:WithinElement?
+    private var favorite:FavoriteElement?
     
-    private lazy var viewModel: ParkinglotDetailViewModelType = ParkinglotDetailViewModel(within: within!)
+    private lazy var viewModel: ParkinglotDetailViewModelType = ParkinglotDetailViewModel(within: within, favorite: favorite)
     private lazy var titleView:NavigationTitleView = NavigationTitleView()
     
     private let disposeBag = DisposeBag()
@@ -53,13 +55,15 @@ class ParkinglotDetailViewController: UIViewController {
         titleView.titleFont = Font.gothicNeoSemiBold19
         titleView.subtitleFont = Font.helvetica12
       
-        viewModel.viewTitleText
-            .drive(self.titleView.titleLabel.rx.text)
+        if let viewTitle = viewModel.viewTitleText {
+            viewTitle.drive(self.titleView.titleLabel.rx.text)
             .disposed(by: disposeBag)
+        }
         
-        viewModel.viewSubtitleText
-            .drive(titleView.subtitleLabel.rx.text)
+        if let viewSubTitle =  viewModel.viewSubtitleText {
+            viewSubTitle.drive(titleView.subtitleLabel.rx.text)
             .disposed(by: disposeBag)
+        }
     }
     
     private func setupButtonBinding() {
@@ -118,7 +122,7 @@ class ParkinglotDetailViewController: UIViewController {
         }
     }
     
-    private func setupReserveSatusViewModel() {
+    private func setupReserveStatusViewModel() {
         if let viewModel = reserveStatusView.getViewModel() {
             self.viewModel.setReserveViewModel(viewModel)
             
@@ -126,6 +130,14 @@ class ParkinglotDetailViewController: UIViewController {
                 self.navigateToInfoGuide()
             }
         }
+    }
+    
+    private func setupEditTimeViewModel() {
+        if let viewModel = editTimeView.getViewModel() {
+            self.viewModel.setEditTimeViewModel(viewModel)
+        }
+        
+        editTimeView.setDetailViewModel(viewModel)
     }
     
     private func setupNoticeViewModel() {
@@ -165,18 +177,23 @@ class ParkinglotDetailViewController: UIViewController {
         super.init(coder: aDecoder)
     }
     
+    private func setupSubViewModel() {
+        setupHeaderViewModel()
+        setupParkingSymbolViewModel()
+        setupPriceViewModel()
+        setupOperationTimeViewModel()
+        setupReserveStatusViewModel()
+        setupEditTimeViewModel()
+        setupNoticeViewModel()
+        setupButtonViewModel()
+    }
+    
     private func initialize() {
         setupNavigationBinding()
         setupScrollView()
         setupButtonBinding()
         
-        setupHeaderViewModel()
-        setupParkingSymbolViewModel()
-        setupPriceViewModel()
-        setupOperationTimeViewModel()
-        setupReserveSatusViewModel()
-        setupNoticeViewModel()
-        setupButtonViewModel()
+        setupSubViewModel()
     }
         
     // MARK: - Life Cycle
@@ -202,6 +219,10 @@ class ParkinglotDetailViewController: UIViewController {
     
     public func setWithinElement(_ element:WithinElement) {
         within = element
+    }
+    
+    public func setFavoriteElement(_ element:FavoriteElement) {
+        favorite = element
     }
 
      // MARK: - Navigation

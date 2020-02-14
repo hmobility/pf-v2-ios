@@ -35,7 +35,7 @@ class SearchViewController: UIViewController {
     
     public var resultAction: ((_ coord:CoordType) -> Void)?   // Pass Search Results
     
-    var disposeBag = DisposeBag()
+    let disposeBag = DisposeBag()
     
     // MARK: - Setup Navigation
     
@@ -55,7 +55,7 @@ class SearchViewController: UIViewController {
             .asDriver()
             .drive(searchBar.rx.placeholder)
             .disposed(by: disposeBag)
-        
+        /*
         containerView.rx
             .tapGesture()
             .when(.recognized)
@@ -63,7 +63,7 @@ class SearchViewController: UIViewController {
                 self.view.endEditing(true)
             }
             .disposed(by: disposeBag)
-
+        */
         historyTableView.backgroundView = UIView()
         
         if let backgroundView = historyTableView.backgroundView {
@@ -285,7 +285,6 @@ class SearchViewController: UIViewController {
             .drive(onNext:{ hide in
                 if self.historyStackView.isHidden != hide {
                     self.historyStackView.isHidden = hide
-                  //  self.historyTableView.isHidden = hide
                 }
             })
             .disposed(by: disposeBag)
@@ -365,16 +364,16 @@ class SearchViewController: UIViewController {
             setEmbedView(target)
             target.setFavoriteItems(items)
             
-            target.selectAction = { parkinglotId in
-                debugPrint("[FAVOPRITE] SELECT, ", parkinglotId)
-                // TO DO
+            target.selectAction = { [unowned self] item in
+                debugPrint("[FAVORITE] SELECT, ", item.name)
+                self.navigateToDetail(with: item)
             }
         }
      }
     
-    func navigateToDetail(with element:WithinElement) {
+    func navigateToDetail(with element:FavoriteElement) {
         let target = Storyboard.detail.instantiateViewController(withIdentifier: "ParkinglotDetailNavigationController") as! ParkinglotDetailNavigationController
-        target.setWithinElement(element)
+        target.setFavoriteElement(element)
         self.modal(target)
     }
     

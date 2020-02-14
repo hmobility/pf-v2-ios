@@ -18,10 +18,11 @@ extension PaymentGuideViewController : AnalyticsType {
 class PaymentGuideViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var guideTextView: UITextView!
+    @IBOutlet weak var noDisplayLabel: UILabel!
+    
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var agreementButton: UIButton!
     @IBOutlet weak var noDisplayButton: UIButton!
-    @IBOutlet weak var noDisplayLabel: UILabel!
     
     private var checkMode:Bool = false
     
@@ -104,7 +105,14 @@ class PaymentGuideViewController: UIViewController {
                 })
                 .bind(to: self.viewModel.displayState)
                 .disposed(by: disposeBag)
-
+        
+        closeButton.rx.tap
+            .asDriver()
+            .drive(onNext: { _ in
+                
+            })
+            .disposed(by: disposeBag)
+        
         agreementButton.rx.tap.do(onNext: { [unowned self] in
                      
                 })

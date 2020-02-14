@@ -21,7 +21,7 @@ class SearchFavoriteViewController: UIViewController {
     private var viewModel: SearchViewModelType?
     private var favoriteItems:[FavoriteElement]?
     
-    var selectAction: ((_ id:Int) -> Void)?
+    var selectAction: ((_ element:FavoriteElement) -> Void)?
     
     var disposeBag = DisposeBag()
     
@@ -50,7 +50,7 @@ class SearchFavoriteViewController: UIViewController {
             .subscribe(onNext: { item in
                 debugPrint("[MODEL][COORD]", item)
                 if let action = self.selectAction{
-                    action(item.id)
+                    action(item)
                 }
             })
             .disposed(by: disposeBag)

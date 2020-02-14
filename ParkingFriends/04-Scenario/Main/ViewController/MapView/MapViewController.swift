@@ -160,14 +160,19 @@ class MapViewController: UIViewController {
     
     private func handleCardEvents() {
         if let card = cardViewController {
-            card.detailButtonAction = { element  in
+            card.detailButtonAction = { [unowned self] element  in
                 debugPrint("[CARD] - Detail, Handle events from cards")
                 self.navigateToDetail(with: element)
             }
             
-            card.reserveButtonAction = { element  in
+            card.reserveButtonAction = { [unowned self] element  in
                 debugPrint("[CARD] - Rerverve, Handle events from cards")
                 self.navigateToReserveTicket()
+            }
+            
+            card.focusedItemAction = { [unowned self] (index, itemId) in
+                debugPrint("[CARD] - Focused #", index, " #Id ", itemId)
+                self.viewModel.setFocusedMarker(with: itemId)
             }
         }
     }
@@ -235,13 +240,6 @@ class MapViewController: UIViewController {
         initialize()
       //  setupParkingLot()
         viewModel.placeCenter(search: true)
-        
-      //  print("[START]", Date().dateFor(.nearestHour(hour:1)).toString(format: .custom("HHmm")))
-      //  print("[START]", Date().dateFor(.nearestMinute(minute:60)).toString(format: .custom("HHmm")))
-       // print("[END]", Date().dateFor(.nearestMinute(minute:60)).adjust(.hour, offset: 2).toString(format: .custom("HHmm")))
-       // titleView.set(title: "TTT", subTitle: "SSSs")
-
-        // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -305,6 +303,8 @@ class MapViewController: UIViewController {
         }
     }
     
+    // MARK: Side Menu
+    
     func showSideMenu() {
         let target = Storyboard.menu.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
     
@@ -326,6 +326,8 @@ class MapViewController: UIViewController {
         
         present(menu, animated: true, completion: nil)
     }
+    
+    // MARK: Prepare
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ParkingCardView" {
@@ -375,7 +377,6 @@ extension MapViewController: FloatingPanelControllerDelegate {
     }
     
     func floatingPanelDidEndDragging(_ vc: FloatingPanelController, withVelocity velocity: CGPoint, targetPosition: FloatingPanelPosition) {
-        
         debugPrint("[PANEL] , target : ", targetPosition)
     }
 }

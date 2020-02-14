@@ -36,6 +36,12 @@ class FavoriteElement: BaseModelType {
         }
     }
     
+    var address:String {
+        get {
+            return parkinglot?.address ?? ""
+        }
+    }
+    
     required init?(map: Map) {
         super.init(map: map)
     }
@@ -49,6 +55,7 @@ class FavoriteElement: BaseModelType {
 class FavoriteParkinglotElement: BaseModelType {
     var id:Int = 0
     var name:String = ""
+    var address:String = ""
     
     required init?(map: Map) {
         super.init(map: map)
@@ -57,5 +64,6 @@ class FavoriteParkinglotElement: BaseModelType {
     override func mapping(map: Map) {
         id <- map["id"]
         name <- map["name"]
+        address <- map["address"]
     }
 }

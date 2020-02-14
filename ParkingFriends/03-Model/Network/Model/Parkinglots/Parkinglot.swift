@@ -116,6 +116,7 @@ class ProductElement: BaseModelType {
     
     override func mapping(map: Map) {
         id <- map["id"]
+        type <- map["type"]
         name <- map["name"]
         descript <- map["description"]
         price <- map["price"]

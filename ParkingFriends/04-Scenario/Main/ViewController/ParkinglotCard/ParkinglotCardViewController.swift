@@ -15,11 +15,11 @@ extension ParkinglotCardViewController : AnalyticsType {
 }
 
 class ParkinglotCardViewController: UIViewController {
+    @IBOutlet weak var collectionView: UICollectionView!
     
     var detailButtonAction: ((_ element:WithinElement) -> Void)?
     var reserveButtonAction: ((_ element:WithinElement) -> Void)?
-    
-    @IBOutlet weak var collectionView: UICollectionView!
+    var focusedItemAction: ((_ itemIndex:Int, _ itemId:Int) -> Void)?
     
     let columnLayout = ColumnFlowLayout(
            cellsPerRow: 1,
@@ -107,6 +107,20 @@ class ParkinglotCardViewController: UIViewController {
                     })
                     .disposed(by: self.disposeBag)
             }
+            .disposed(by: disposeBag)
+        
+        collectionView.rx.indexPathsForVisibleItems
+            .asObservable()
+            .filter { $0.count == 1 }
+            .flatMap { return Observable.from($0) }
+            .subscribe(onNext: { [unowned self] itemPath in
+                debugPrint("[CARD][VISIBLE] ", itemPath)
+                let item = self.viewModel.getWithinElement(with: itemPath.row)
+                
+                if let action = self.focusedItemAction, let itemId = item?.id {
+                    action(itemPath.row, itemId)
+                }
+            })
             .disposed(by: disposeBag)
     }
     

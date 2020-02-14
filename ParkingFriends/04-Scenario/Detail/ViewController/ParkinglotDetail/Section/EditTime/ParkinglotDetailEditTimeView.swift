@@ -8,24 +8,15 @@
 
 import UIKit
 
-class TimeButtonView: UIView {
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var descLabel: UILabel!
-    
-    public func setTitle(_ title:String) {
-        titleLabel.text = title
-    }
-    
-    public func setScheduledTime(_ text:String) {
-        descLabel.text = text
-    }
-}
-
 class ParkinglotDetailEditTimeView: UIStackView {
-    @IBOutlet weak var changeButtonView: TimeButtonView!
-    @IBOutlet weak var timeEditingContolView: UIStackView!
     
     @IBOutlet weak var changeTimeView: UIView!
+    @IBOutlet weak var changeButtonView: ParkinglotDetailTimeButtonView!
+    
+    @IBOutlet weak var editControlPanelView: UIStackView!
+    @IBOutlet weak var timeEditPanelView: ParkinglotDetailTimeControlView!
+    @IBOutlet weak var fixedEditPanelView: ParkinglotDetailFixedControlView!
+    @IBOutlet weak var monthlyEditPanelView: ParkinglotDetailMonthlyControlView!
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var closeButton: UIButton!
@@ -36,24 +27,8 @@ class ParkinglotDetailEditTimeView: UIStackView {
     private var localizer:LocalizerType = Localizer.shared
     
     private var viewModel: ParkinglotDetailEditTimeViewModelType = ParkinglotDetailEditTimeViewModel()
+    private var detailViewModel: ParkinglotDetailViewModelType?
     
-    // MARK: - Initializer
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-    }
-    
-    required init(coder: NSCoder) {
-        super.init(coder: coder)
-    }
-    
-    private func initialize() {
-        setEditingMode(false, animated: false)
-        setupTitleBinding()
-       // setupBinding()
-        setupButtonBinding()
-    }
-      
     // MARK: - Binding
     
     private func setupTitleBinding() {
@@ -68,11 +43,14 @@ class ParkinglotDetailEditTimeView: UIStackView {
             .disposed(by: disposeBag)
     }
     
-    private func setupBinding() {
-        viewModel.changeButtonTitleText
-            .asDriver()
-            .drive(changeButtonView.titleLabel.rx.text)
-            .disposed(by: disposeBag)
+    private func setupEditPanelBinding() {
+        if let viewModel = detailViewModel, let selectedProductType = viewModel.getSelectedProductType() {
+            selectedProductType
+                .subscribe(onNext: { [unowned self] productType in
+                    self.setSwitchEditPanel(with: productType)
+                })
+                .disposed(by: disposeBag)
+        }
     }
     
     private func setupButtonBinding() {
@@ -99,18 +77,67 @@ class ParkinglotDetailEditTimeView: UIStackView {
             .disposed(by: disposeBag)
     }
     
-    // MARK: - Local Methods
+    // MARK: - Panel Show/Hide
     
     private func setEditingMode(_ editing:Bool, animated:Bool = true) {
        self.changeTimeView.isHidden = editing ? true : false
         
         if animated {
             UIView.transition(with: self, duration: 0.2, options: .curveEaseInOut, animations: {
-                self.timeEditingContolView.isHidden = editing ? false : true
+                self.editControlPanelView.isHidden = editing ? false : true
             })
         } else {
-            self.timeEditingContolView.isHidden = editing ? false : true
+            self.editControlPanelView.isHidden = editing ? false : true
         }
+    }
+    
+    private func setSwitchEditPanel(with productType:ProductType) {
+        timeEditPanelView.isHidden = (productType == .time) ? false : true
+        fixedEditPanelView.isHidden = (productType == .fixed) ? false : true
+        monthlyEditPanelView.isHidden = (productType == .monthly) ? false : true
+    }
+    
+    // MARK: - Local Methods
+    
+    // MARK: - Public Methods
+    
+    // MARK: - Setup View Model
+    
+    private func setupFixedItems() {
+        viewModel.getProduct(with: .fixed)
+            .flatMap({
+                Observable.from($0)
+            })
+            .subscribe(onNext: { [unowned self] item in
+                self.fixedEditPanelView.updateTimeCheckItemView(with: item.name)
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    public func getViewModel() -> ParkinglotDetailEditTimeViewModel? {
+        return (viewModel as! ParkinglotDetailEditTimeViewModel)
+    }
+    
+    public func setDetailViewModel(_ viewModel:ParkinglotDetailViewModelType) {
+        detailViewModel = viewModel
+    }
+    
+    // MARK: - Initializer
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+    
+    required init(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
+    private func initialize() {
+        setupTitleBinding()
+        setupEditPanelBinding()
+        setupButtonBinding()
+        setEditingMode(false, animated: false)
+        setupFixedItems()
     }
     
     // MARK: - Life Cycle

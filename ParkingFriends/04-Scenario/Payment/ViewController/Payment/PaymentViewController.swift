@@ -10,7 +10,15 @@ import UIKit
 
 class PaymentViewController: UIViewController {
     @IBOutlet weak var navigationBar: UINavigationBar!
+    @IBOutlet weak var giftButton:UIButton!
     @IBOutlet weak var backButton:UIButton!
+    @IBOutlet weak var paymentButton:UIButton!
+    
+    @IBOutlet weak var productInfoView:PaymentProductInfoView!
+    @IBOutlet weak var paymentMehodView: PaymentMethodView!
+    @IBOutlet weak var paymentPointView: PaymentPointView!
+    
+    @IBOutlet weak var paymentGiftView: PaymentGiftView!
     
     private lazy var viewModel:PaymentViewModelType = PaymentViewModel()
     
@@ -31,6 +39,30 @@ class PaymentViewController: UIViewController {
             .disposed(by: disposeBag)
     }
     
+    private func setupPaymentBinding() {
+        viewModel.paymentText
+            .asDriver()
+            .drive(paymentButton.rx.title())
+            .disposed(by: disposeBag)
+    }
+    
+    private func setupGiftBinding() {
+        giftButton.rx.tap
+            .asObservable()
+            .map { return !self.giftButton.isSelected }
+            .subscribe(onNext: { [unowned self] selected in
+                self.giftButton.isSelected = selected
+                self.showGiftView(selected ? true : false)
+             })
+            .disposed(by: disposeBag)
+    }
+    
+    // MARK: - Local Methods
+    
+    private func showGiftView(_ flag:Bool) {
+        paymentGiftView.isHidden = flag ? false : true
+    }
+    
     // MARK: - Initialize
 
     init() {
@@ -43,6 +75,8 @@ class PaymentViewController: UIViewController {
     
     private func initialize() {
         setupNavigationBinding()
+        setupGiftBinding()
+        setupPaymentBinding()
     }
     
     // MARK: - Local Methods

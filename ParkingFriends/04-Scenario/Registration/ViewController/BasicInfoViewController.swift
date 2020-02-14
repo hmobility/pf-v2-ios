@@ -29,7 +29,7 @@ class BasicInfoViewController: UIViewController {
     
     private var registrationModel: RegistrationModel = RegistrationModel.shared
     
-    private lazy var viewModel: BasicInfoViewModelType = BasicInfoViewModel(phoneNumber: registrationModel.phoneNumber ?? "01043525929", registration:registrationModel)
+    private lazy var viewModel: BasicInfoViewModelType = BasicInfoViewModel(phoneNumber: registrationModel.phoneNumber!, registration:registrationModel)
     private let disposeBag = DisposeBag()
     
     // MARK: - Initialize
