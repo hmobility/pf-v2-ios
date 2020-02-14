@@ -14,6 +14,8 @@ protocol ParkingCardViewModelType {
     
     var elements:BehaviorRelay<[WithinElement]> { get }
     
+    var ableElements: BehaviorRelay<[WithinElement]> { get }    // Add by Rao
+    
     func setWithinElements(_ elements:[WithinElement]?)
     func getTags(_ element:WithinElement) -> [String]
 }
@@ -22,6 +24,7 @@ class ParkingCardViewModel: ParkingCardViewModelType {
     var priceUnitText: Driver<String>
     
     var elements: BehaviorRelay<[WithinElement]> = BehaviorRelay(value: [])
+    var ableElements: BehaviorRelay<[WithinElement]> = BehaviorRelay(value: [])     // Add by Rao
     
     private var localizer:LocalizerType
     
@@ -78,9 +81,10 @@ class ParkingCardViewModel: ParkingCardViewModelType {
                 return ( item.available == true )
             }
             /////////////////////////////////////////////////////////////////////////////////////////////////////////
-            self.elements.accept(availItems)
+            self.ableElements.accept(availItems)
             //*/
 //            self.elements.accept(items)
+            self.elements.accept(items)
         } else {
             self.elements.accept([])
         }

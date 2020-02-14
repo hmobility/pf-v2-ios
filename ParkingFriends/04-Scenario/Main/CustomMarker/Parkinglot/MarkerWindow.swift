@@ -21,6 +21,12 @@ class MarkerWindow:NMFInfoWindow {
         super.init()
         setWithinElement(element)
         self.mapView = map
+        
+        // Add by Rao
+        self.touchHandler = { (overlay: NMFOverlay) -> Bool in
+            print("Touch ~~ \(element.name)")
+            return true
+        }
     }
     
     // MARK: - Public Methods
