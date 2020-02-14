@@ -45,8 +45,8 @@ extension MapViewModelType {
 }
 
 #if DEBUG
-//let defaultCoordinate = CoordType(37.400634765624986, 127.11203073310433)           // 판교 한컴 본사
-let defaultCoordinate = CoordType(37.51888371942195,126.9157924925587)              // 영등포 신길역
+let defaultCoordinate = CoordType(37.400634765624986, 127.11203073310433)           // 판교 한컴 본사
+//let defaultCoordinate = CoordType(37.51888371942195,126.9157924925587)              // 영등포 신길역
 #else
 let defaultCoordinate = CoordType(37.400634765624986, 127.11203073310433)           // 판교 한컴 본사
 #endif
@@ -307,7 +307,12 @@ class MapViewModel: NSObject, MapViewModelType {
             
             if let item = parkinglotList.filter({ $0.parkinglotId == parkinglotId }).first {
                 item.selected = true
+                
+                print(item)
             }
+            
+            // Test by Rao
+//            print("\(parkinglotList.filter({ $0.parkinglotId == parkinglotId }).first)")
             
             parkinglotList.forEach { item in
                 print("[\(item.parkinglotId) = \(item.selected)")
