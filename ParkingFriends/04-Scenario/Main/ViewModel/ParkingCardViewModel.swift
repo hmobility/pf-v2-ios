@@ -84,8 +84,8 @@ class ParkingCardViewModel: ParkingCardViewModelType {
             /////////////////////////////////////////////////////////////////////////////////////////////////////////
             self.ableElements.accept(availItems)
             //*/
+            self.elements.accept(availItems)    // Edit by Rao
 //            self.elements.accept(items)
-            self.elements.accept(items)
         } else {
             self.elements.accept([])
         }
