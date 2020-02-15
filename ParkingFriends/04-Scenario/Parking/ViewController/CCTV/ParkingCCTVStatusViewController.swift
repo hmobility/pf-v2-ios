@@ -8,13 +8,13 @@
 
 import UIKit
 
-extension CctvParkingViewController : AnalyticsType {
+extension ParkingCCTVStatusViewController : AnalyticsType {
     var screenName: String {
         return "[SCREEN] CCTV Parkinglot"
     }
 }
 
-class CctvParkingViewController: UIViewController {
+class ParkingCCTVStatusViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

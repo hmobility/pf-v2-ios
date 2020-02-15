@@ -1,15 +1,20 @@
 //
-//  PaymentCompleteViewController.swift
+//  PaymentHistoryViewController.swift
 //  ParkingFriends
 //
-//  Created by PlankFish on 2020/01/01.
+//  Created by PlankFish on 2020/02/15.
 //  Copyright © 2020 Hancom Mobility. All rights reserved.
 //
 
 import UIKit
 
-class PaymentCompleteViewController: UIViewController {
+class PaymentHistoryViewController: UIViewController {
+
+    @IBOutlet weak var segmentedControlView: UIView!
+
+    private var viewModel:PaymentHistoryViewModelType = PaymentHistoryViewModel()
     
+    private let disposeBag = DisposeBag()
     
     // MARK: - Life Cycle
     

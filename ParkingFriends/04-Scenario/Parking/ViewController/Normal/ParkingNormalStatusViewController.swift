@@ -1,18 +1,15 @@
 //
-//  PaymentCompleteViewController.swift
+//  ParkingNormalStatusViewController.swift
 //  ParkingFriends
 //
-//  Created by PlankFish on 2020/01/01.
+//  Created by PlankFish on 2020/02/15.
 //  Copyright © 2020 Hancom Mobility. All rights reserved.
 //
 
 import UIKit
 
-class PaymentCompleteViewController: UIViewController {
-    
-    
-    // MARK: - Life Cycle
-    
+class ParkingNormalStatusViewController: UIViewController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
