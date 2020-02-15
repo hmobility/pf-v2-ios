@@ -133,7 +133,6 @@ class ParkinglotDetailViewModel: ParkinglotDetailViewModelType {
     // MARK: - Local Methods
 
     func updateDetailInfo(_ element:Parkinglot) {
-        
         updateFavorite(check: element.favoriteFlag)
         
         if element.images.count > 0 {
@@ -158,7 +157,7 @@ class ParkinglotDetailViewModel: ParkinglotDetailViewModelType {
         
         if element.products.count > 0, let data = productSetting {
             let bookable:Bool = element.products.count > 0
-            updateBookingTime(supported:element.supportItems, items: element.products, onReserve: data.getBookingDate())
+            updateBookingTime(supported: element.supportItems, items: element.products, onReserve: data.getBookingDate())
             updateBookableState(bookable)
         }
     }

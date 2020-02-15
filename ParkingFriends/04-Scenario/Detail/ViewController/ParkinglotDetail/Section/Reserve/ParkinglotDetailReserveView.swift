@@ -44,15 +44,17 @@ class ParkinglotDetailReserveView: UIStackView {
         viewModel.getSupportedProducts()
             .asObservable()
             .subscribe(onNext: { [unowned self] items in
-                if items.count > 0 {
+                if items.count == 0 {
+                    self.setHidden(true)
+                } else if items.count > 0 {
                     self.updateEditPanel(with: items[0].type)
-                }
-                
-                if items.count < 2 {
-                    self.supportedProductView.setHidden(true)
-                } else {
-                    self.supportedProductView.setHidden(false)
-                    self.supportedProductView.setTitle(with: items)
+                    
+                    if items.count == 1 {
+                        self.supportedProductView.setHidden(true)
+                    } else if items.count > 1 {
+                        self.supportedProductView.setHidden(false)
+                        self.supportedProductView.setTitle(with: items)
+                    }
                 }
             })
             .disposed(by: disposeBag)
@@ -86,13 +88,17 @@ class ParkinglotDetailReserveView: UIStackView {
     
     // MARK: - Local Methods
     
-    private func updateEditPanel(with productType:ProductType) {
+    func setHidden(_ flag:Bool) {
+        self.isHidden = flag
+    }
+    
+    func updateEditPanel(with productType:ProductType) {
         self.viewModel.updateSelectedProductType(productType)
     }
 
     // MARK: - Chart Update
     
-    private func setupChartView() {
+    func setupChartView() {
         aaChartView = AAChartView()
         let width = chartView.frame.size.width
         let height:CGFloat =  chartView.frame.size.height
@@ -109,7 +115,7 @@ class ParkinglotDetailReserveView: UIStackView {
         }
     }
     
-    private func getChartOption() -> AAOptions {
+    func getChartOption() -> AAOptions {
         let aaChartModel = AAChartModel()
             .title("")
             .chartType(.columnrange)
@@ -160,7 +166,7 @@ class ParkinglotDetailReserveView: UIStackView {
         return item
     }
     
-    private func updateAvailableTimeChart() {
+    func updateAvailableTimeChart() {
         viewModel.availableTimeList
             .asObservable()
             .map({ times in
@@ -175,7 +181,7 @@ class ParkinglotDetailReserveView: UIStackView {
             .disposed(by: disposeBag)
     }
     
-    private func updateOnReserveTime() {
+    func updateOnReserveTime() {
         let onReserveColor = Color.algaeGreen.hexString
         
         viewModel.bookingTime

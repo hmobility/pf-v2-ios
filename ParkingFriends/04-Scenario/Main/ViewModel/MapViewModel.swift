@@ -45,7 +45,8 @@ extension MapViewModelType {
 }
 
 #if DEBUG
-let defaultCoordinate = CoordType(37.51888371942195,126.9157924925587)              // 영등포 신길역
+//let defaultCoordinate = CoordType(37.51888371942195,126.9157924925587)              // 영등포 신길역
+let defaultCoordinate = CoordType(37.400634765624986, 127.11203073310433)
 #else
 let defaultCoordinate = CoordType(37.400634765624986, 127.11203073310433)           // 판교 한컴 본사
 #endif
@@ -100,6 +101,7 @@ class MapViewModel: NSObject, MapViewModelType {
         setupLocationBinding()
         setupLocationOverlay()
         setupMapBinding()
+     //   locateInit()
     }
     
     // MARK: - Binding
@@ -112,9 +114,11 @@ class MapViewModel: NSObject, MapViewModelType {
     */
     func setupMapBinding() {
         if let map = self.mapView {
+            /*
             map.rx.regionDidChange
                 .asDriver()
                 .drive(onNext: { (zoomLevel:Double, animated: Bool, reason: Int) in
+                    print("[IDLE] didChange completed")
                     self.currentCenterInCamera(zoomLevel: zoomLevel)
                         .subscribe(onNext: { (zoomLevel, coord) in
                             self.trackCameraMovement(coord: coord, zoomLevel: zoomLevel)
@@ -126,7 +130,7 @@ class MapViewModel: NSObject, MapViewModelType {
                 print("[REGION] location completed")
             })
             .disposed(by: disposeBag)
-            
+            */
             map.rx.idle
                 .asDriver()
                 .drive(onNext: { zoomLevel in
@@ -340,8 +344,8 @@ class MapViewModel: NSObject, MapViewModelType {
         
         mapModel.isDistrictZoomLevel(zoomLevel)
             .asObservable()
-            .subscribe(onNext: { (district) in
-                self.updateParkinglot(coord:coord, district:district)
+            .subscribe(onNext: { (isDistrict) in
+                self.updateParkinglot(coord: coord, district: isDistrict)
             })
             .disposed(by: disposeBag)
     }
@@ -359,6 +363,14 @@ class MapViewModel: NSObject, MapViewModelType {
     }
     
     // MARK: - Handle Location
+    
+    func locateInit() {
+        self.currentCenterInCamera()
+            .subscribe(onNext: { (zoomLevel, coord) in
+                self.trackCameraMovement(coord: coord, zoomLevel: zoomLevel)
+            })
+            .disposed(by: self.disposeBag)
+    }
     
     fileprivate func updateCamera(with coordinate:CoordType, centerType:CenterMarkType) {
         let location = CLLocationCoordinate2DMake(coordinate.latitude, coordinate.longitude)
@@ -393,8 +405,9 @@ class MapViewModel: NSObject, MapViewModelType {
                 if let available = location, available.verticalAccuracy < 0  || available.horizontalAccuracy < 0 {
                     return CLLocationCoordinate2DMake(defaultCoordinate.latitude, defaultCoordinate.longitude)
                 }
-                
-            return location?.coordinate ?? CLLocationCoordinate2DMake(defaultCoordinate.latitude, defaultCoordinate.longitude)
+               
+            return CLLocationCoordinate2DMake(defaultCoordinate.latitude, defaultCoordinate.longitude)
+           // return location?.coordinate ?? CLLocationCoordinate2DMake(defaultCoordinate.latitude, defaultCoordinate.longitude)
         }
     }
     

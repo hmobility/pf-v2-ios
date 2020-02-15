@@ -43,12 +43,9 @@ class ParkinglotDetailEditScheduleView: UIStackView {
     }
     
     private func setupEditPanelBinding() {
-        debugPrint("[EDIT][SCHEUDLE] PANEL SETUP - ENTER")
         if let viewModel = detailViewModel {
-            debugPrint("[EDIT][SCHEUDLE] PANEL SETUP - ENTERED : ")
             viewModel.getSelectedProductType()
                 .subscribe(onNext: { [unowned self] productType in
-                    debugPrint("[EDIT][SCHEDULE][TYPE]", productType)
                     self.setSwitchEditPanel(with: productType)
                 })
                 .disposed(by: disposeBag)
@@ -82,7 +79,7 @@ class ParkinglotDetailEditScheduleView: UIStackView {
     // MARK: - Panel Show/Hide
     
     private func setEditingMode(_ editing:Bool, animated:Bool = true) {
-        self.changeScheduleView.isHidden = editing ? true : false
+        changeScheduleView.isHidden = editing ? true : false
         
         if animated {
             UIView.transition(with: self, duration: 0.2, options: .curveEaseInOut, animations: {
@@ -95,16 +92,21 @@ class ParkinglotDetailEditScheduleView: UIStackView {
     
     private func setSwitchEditPanel(with productType:ProductType?) {
         guard let type = productType else {
+            setHidden(true)
             return
         }
         
-        debugPrint("[EDIT][SWITCH] - ", type)
         timeEditPanelView.isHidden = (type == .time) ? false : true
         fixedEditPanelView.isHidden = (type == .fixed) ? false : true
         monthlyEditPanelView.isHidden = (type == .monthly) ? false : true
     }
     
     // MARK: - Local Methods
+    
+    func setHidden(_ flag:Bool) {
+        self.isHidden = flag
+        self.changeScheduleView.isHidden  = flag
+     }
     
     // MARK: - Public Methods
     

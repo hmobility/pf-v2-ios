@@ -210,6 +210,9 @@ class MapViewController: UIViewController {
         let topPadding = navigationMenuView.frame.maxY
         let bottomPadding = parkingInfoView.frame.maxY - parkingInfoView.frame.minY
      
+        mapView.logoAlign = .leftBottom
+        mapView.logoMargin = UIEdgeInsets(top: 0, left: 0, bottom: 100, right: 0)
+        
         mapView.contentInset = UIEdgeInsets(top: topPadding, left: 0, bottom: bottomPadding, right: 0)
     }
     
@@ -239,7 +242,8 @@ class MapViewController: UIViewController {
         setupButtonBinding()
         setupSearchBinding()
         
-        setupMapViewPadding()
+       // setupMapViewPadding()
+
         handleCardEvents()
     }
     

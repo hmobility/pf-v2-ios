@@ -1660,10 +1660,10 @@
                                                             <outlet property="titleLabel" destination="nmY-gJ-E98" id="MLP-re-KgA"/>
                                                         </connections>
                                                     </stackView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="BkW-t5-4d3" userLabel="Stack View - Edit Time" customClass="ParkinglotDetailEditScheduleView" customModule="ParkingFriends" customModuleProvider="target">
+                                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="BkW-t5-4d3" userLabel="Stack View - Edit Schedule" customClass="ParkinglotDetailEditScheduleView" customModule="ParkingFriends" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="783" width="414" height="1128"/>
                                                         <subviews>
-                                                            <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jYt-3x-OiV" userLabel="View - Change Time Button Area">
+                                                            <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jYt-3x-OiV" userLabel="View - Change Schedule Button Area">
                                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                                                                 <subviews>
                                                                     <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QCI-VV-D1t" userLabel="View - Button" customClass="ParkinglotDetailScheduleButtonView" customModule="ParkingFriends" customModuleProvider="target">
