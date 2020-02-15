@@ -51,9 +51,7 @@ class ParkinglotAPI: BaseAPI {
     
     // 주차장 반경 목록 조회
     static func within(lat:String, lon:String, radius:String, start:String, end:String, productType:ProductType, monthlyFrom:String, monthlyCount:Int, filter:FilterType, httpMethod:HttpMethod = .post, auth:APIAuthType = .OAuth2) -> RestURL  {
-        //let filterParams:Params = ["fee":["from": filter.fee.from, "to": filter.fee.to], "lotType": filter.lotType.rawValue, "sort":  filter.sortType.rawValue, "option":["cctv": filter.option.cctv, "iotSensor": filter.option.iotSensor, "mechanical": filter.option.mechanical, "allDayOperation": filter.option.allDay, "outsideFlag": filter.inOutType.rawValue, "bleGateFlag": filter.option.bleGateFlag]]
-        
-        let filterParams:Params = ["fee":["from": filter.fee.from, "to": filter.fee.to], "sort":  filter.sortType.rawValue, "option":["cctv": filter.option.cctv, "iotSensor": filter.option.iotSensor, "mechanical": filter.option.mechanical, "allDayOperation": filter.option.allDay, "outsideFlag": filter.inOutType.rawValue, "bleGateFlag": filter.option.bleGateFlag]]
+        let filterParams:Params = ["fee":["from": filter.fee.from, "to": filter.fee.to], "lotType": filter.lotType.rawValue, "sort":  filter.sortType.rawValue, "option":["cctv": filter.option.cctv, "iotSensor": filter.option.iotSensor, "mechanical": filter.option.mechanical, "allDayOperation": filter.option.allDay, "outsideFlag": filter.option.outsideFlag.rawValue, "bleGateFlag": filter.option.bleGateFlag]]
         
         let params:Params = ["lat": lat, "lon":lon, "radius":radius, "start":start , "end":end, "productType":productType.rawValue, "monthlyFrom":monthlyFrom, "monthlyCount":monthlyCount, "filter":filterParams]
         

@@ -8,6 +8,7 @@
 
 import UIKit
 import RangeSeekSlider
+import BetterSegmentedControl
 
 extension SearchOptionViewController : AnalyticsType {
     var screenName: String {
@@ -32,12 +33,12 @@ class SearchOptionViewController: UIViewController {
     @IBOutlet weak var priceMaxLabel: UILabel!
     
     @IBOutlet weak var sortTypeLabel: UILabel!
-    @IBOutlet weak var sortingSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var sortingSegmentedControl: BetterSegmentedControl!
     @IBOutlet weak var operationTypeLabel: UILabel!
-    @IBOutlet weak var operationSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var operationSegmentedControl: BetterSegmentedControl!
     @IBOutlet weak var parkinglotTypeLabel: UILabel!
     @IBOutlet weak var areaTypeLabel: UILabel!
-    @IBOutlet weak var areaInOutSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var areaInOutSegmentedControl: BetterSegmentedControl!
     @IBOutlet weak var extraOptionLabel: UILabel!
     @IBOutlet weak var cctvButton: UIButton!
     @IBOutlet weak var iotSensorButton: UIButton!
@@ -49,6 +50,7 @@ class SearchOptionViewController: UIViewController {
     
     private var viewModel: SearchOptionViewModelType
     private let disposeBag = DisposeBag()
+    
     
     // MARK: - Binding
     
@@ -111,57 +113,57 @@ class SearchOptionViewController: UIViewController {
                 .drive(sortTypeLabel.rx.text)
                 .disposed(by: disposeBag)
         
-        _ = Observable.from(self.viewModel.sortSegmentedItems)
-             .enumerated()
-             .subscribe(onNext: { (index, element) in
-                 self.sortingSegmentedControl.setTitle(element.title, forSegmentAt: index)
-             })
-             .disposed(by: disposeBag)
-
-        sortingSegmentedControl.rx.selectedSegmentIndex
+        _ = Observable.from(optional: self.viewModel.sortSegmentedItems)
+                .map { $0.map { return $0.title }}
+                .subscribe(onNext: { items in
+                    self.updateSegmentedControl(items, segmentedControl:self.sortingSegmentedControl)
+                })
+                .disposed(by: disposeBag)
+        
+        sortingSegmentedControl.rx.selected
             .asDriver()
             .map { index in
                 return self.viewModel.sortSegmentedItems[index].type
             }
             .drive(self.viewModel.selectedSortType)
             .disposed(by: disposeBag)
+
     }
     
     private func operationTypeSectionBinding() {
         viewModel.operationTypeText
             .drive(parkinglotTypeLabel.rx.text)
             .disposed(by: disposeBag)
-        
-        _ = Observable.from(self.viewModel.operationSegmentedItems)
-            .enumerated()
-            .subscribe(onNext: { (index, element) in
-                self.operationSegmentedControl.setTitle(element.title, forSegmentAt: index)
-            })
-            .disposed(by: disposeBag)
-        
-        operationSegmentedControl.rx.selectedSegmentIndex
-            .asDriver()
-            .map { index in
-                return self.viewModel.operationSegmentedItems[index].type
-            }
-            .drive(self.viewModel.selectedOperationType)
-            .disposed(by: disposeBag)
+
+        _ = Observable.from(optional: self.viewModel.operationSegmentedItems)
+                  .map { $0.map { return $0.title }}
+                  .subscribe(onNext: { items in
+                      self.updateSegmentedControl(items, segmentedControl:self.operationSegmentedControl)
+                  })
+                  .disposed(by: disposeBag)
+          
+          operationSegmentedControl.rx.selected
+              .asDriver()
+              .map { index in
+                  return self.viewModel.operationSegmentedItems[index].type
+              }
+              .drive(self.viewModel.selectedOperationType)
+              .disposed(by: disposeBag)
     }
     
     private func areaTypeSectionBinding() {
-        viewModel.operationTypeText
+        viewModel.areaTypeText
             .drive(areaTypeLabel.rx.text)
             .disposed(by: disposeBag)
         
-        _ = Observable.from(self.viewModel.areaInOutSegmentedItems)
-             .enumerated()
-             .subscribe(onNext: { (index, element) in
-              //   _ = self.operationSegmentedControl.rx.titleForSegment(at: index)
-                 self.areaInOutSegmentedControl.setTitle(element.title, forSegmentAt: index)
-             })
-             .disposed(by: disposeBag)
-
-        areaInOutSegmentedControl.rx.selectedSegmentIndex
+        _ = Observable.from(optional: self.viewModel.areaInOutSegmentedItems)
+                .map { $0.map { return $0.title }}
+                .subscribe(onNext: { items in
+                    self.updateSegmentedControl(items, segmentedControl:self.areaInOutSegmentedControl)
+                })
+                .disposed(by: disposeBag)
+        
+        areaInOutSegmentedControl.rx.selected
             .asDriver()
             .map { index in
                 return self.viewModel.areaInOutSegmentedItems[index].type
@@ -261,6 +263,26 @@ class SearchOptionViewController: UIViewController {
             .disposed(by: disposeBag)
     }
     
+    // MARK: - Setup SegmentedControl
+    
+    private func updateSegmentedControl(_ items:[String], segmentedControl:BetterSegmentedControl) {
+        _ = segmentedControl.options = [.backgroundColor(UIColor.white),
+                                        .cornerRadius(0.0),
+                                        .indicatorViewBackgroundColor(Color.shamrockGreen),
+                                        .indicatorViewBorderColor(Color.shamrockGreen),
+                                        .indicatorViewBorderWidth(0.6),
+                                        .indicatorViewInset(0.0),
+                                        .animationSpringDamping(1.0),
+                                        .panningDisabled(true)]
+        
+        _ = segmentedControl.segments = LabelSegment.segments(withTitles: items,
+                                    normalFont: Font.gothicNeoMedium16,
+                                    normalTextColor: Color.slateGrey,
+                                    selectedFont: Font.gothicNeoBold16,
+                                    selectedTextColor: UIColor.white)
+    }
+    
+    
     // MARK: - Local Methods
     
     // MARK: - Initialize
@@ -280,6 +302,7 @@ class SearchOptionViewController: UIViewController {
         priceSectionBinding()
         sortingSectionBinding()
         operationTypeSectionBinding()
+        areaTypeSectionBinding()
         optionTypeBinding()
         buttonBinding()
         
@@ -291,9 +314,9 @@ class SearchOptionViewController: UIViewController {
         if let property = viewModel.getStoredValue() {
             self.priceRangeSeekSlider.selectedMinValue = property.from.toCGFloat
             self.priceRangeSeekSlider.selectedMaxValue = property.to.toCGFloat
-            self.sortingSegmentedControl.selectedSegmentIndex = viewModel.sortSegmentedItems.firstIndex(where: { $0.type == property.sortType })!
-            self.operationSegmentedControl.selectedSegmentIndex = viewModel.operationSegmentedItems.firstIndex(where: { $0.type == property.lotType })!
-            self.areaInOutSegmentedControl.selectedSegmentIndex =  viewModel.areaInOutSegmentedItems.firstIndex(where: { $0.type == property.inOutType })!
+            self.sortingSegmentedControl.setIndex(viewModel.sortSegmentedItems.firstIndex(where: { $0.type == property.sortType })!)
+            self.operationSegmentedControl.setIndex(viewModel.operationSegmentedItems.firstIndex(where: { $0.type == property.lotType })!)
+            self.areaInOutSegmentedControl.setIndex(viewModel.areaInOutSegmentedItems.firstIndex(where: { $0.type == property.inOutType })!)
             self.cctvButton.isSelected = property.isCCTV
             self.iotSensorButton.isSelected = property.isIotSensor
             self.noMechanicalButton.isSelected = property.isNoMechanical

@@ -114,5 +114,4 @@ class CustomDateStepperView: UIView, CustomDateStepperViewType {
      override func draw(_ rect: CGRect) {
         initialize()
      }
-
 }

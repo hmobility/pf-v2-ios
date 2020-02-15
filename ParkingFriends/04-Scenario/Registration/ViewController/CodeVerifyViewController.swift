@@ -192,16 +192,8 @@ class CodeVerifyViewController: UIViewController {
     }
     
     // MARK: - Navigation
-      
-    private func navigateToBasicInfoInput() {
-        guard let navigationController = self.navigationController else {
-            return
-        }
-        
-   //     navigationController.viewControllers.removeLast()
-        
-  //      navigationController.popViewController(animated: false)
 
+    private func navigateToBasicInfoInput() {    
         let basicInfoInput = Storyboard.registration.instantiateViewController(withIdentifier: "BasicInfoViewController") as! BasicInfoViewController
             
         self.push(basicInfoInput)

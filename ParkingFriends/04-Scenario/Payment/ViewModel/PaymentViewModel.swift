@@ -10,25 +10,14 @@ import Foundation
 
 protocol PaymentViewModelType {
     var viewTitleText: Driver<String> { get }
-    /*
-    var paymentParkingInfoText: Driver<String> { get }
-    var paymentMethodText: Driver<String> { get }
-    var paymentSimpleCardText: Driver<String> { get }
-    var paymentKakaoPayText: Driver<String> { get }
-    var paymentNormalCardText: Driver<String> { get }
-    var paymentPointText: Driver<String> { get }
-    var paymentPointOwnedText: Driver<String> { get }
-    var paymentNoPointText: Driver<String> { get }
+    var paymentText: BehaviorRelay<String> { get }
     
-    var paymentReminderText: Driver<String> { get }
-    var paymentTotalPriceText: Driver<String> { get }
- */
+    func setGiftMode(_ flag:Bool)
 }
 
 class PaymentViewModel: PaymentViewModelType {
     var viewTitleText: Driver<String>
-    var paymentParkingInfoText: Driver<String>
-    var paymentMethodText: Driver<String>
+    var paymentText: BehaviorRelay<String>
     
     var localizer:LocalizerType
     
@@ -36,9 +25,18 @@ class PaymentViewModel: PaymentViewModelType {
     
     init(localizer: LocalizerType = Localizer.shared) {
         self.localizer = localizer
-        
+     
         viewTitleText = localizer.localized("ttl_payment_for_parking")
-        paymentParkingInfoText = localizer.localized("ttl_payment_parking_info")
-        paymentMethodText = localizer.localized("ttl_payment_method")
+        paymentText = BehaviorRelay(value: localizer.localized("btn_to_pay"))
+    }
+    
+    // MARK: - Public Methods
+    
+    public func setGiftMode(_ flag:Bool) {
+        if flag {
+            paymentText.accept(localizer.localized("btn_to_pay"))
+        } else {
+            paymentText.accept(localizer.localized("btn_to_pay"))
+        }
     }
 }

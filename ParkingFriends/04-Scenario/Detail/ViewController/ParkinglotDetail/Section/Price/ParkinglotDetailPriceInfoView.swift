@@ -31,10 +31,15 @@ class ParkinglotDetailPriceInfoView: UIStackView {
     }
     
     // MARK: Local Methods
+    
+    func setHidden(_ flag:Bool) {
+        self.isHidden = flag
+    }
   
     // MARK: - Initializer
 
     private func initialize() {
+        setupTableBinding()
         setupTitleBinding()
     }
     
@@ -50,6 +55,14 @@ class ParkinglotDetailPriceInfoView: UIStackView {
         viewModel.viewTitleText
             .asDriver()
             .drive(self.titleLabel.rx.text)
+            .disposed(by: disposeBag)
+    }
+    
+    private func setupTableBinding() {
+        viewModel.isAvailable().asObservable()
+            .subscribe(onNext: { [unowned self] available in
+                self.setHidden(available ? false : true)
+            })
             .disposed(by: disposeBag)
     }
     

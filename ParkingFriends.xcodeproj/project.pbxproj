@@ -39,7 +39,6 @@
 		621BCC9823D68AE3009FE1EC /* ParkinglotDetailMonthlyTicketPriceItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 621BCC9723D68AE3009FE1EC /* ParkinglotDetailMonthlyTicketPriceItemView.xib */; };
 		62254E8B238B992500AF82B9 /* Parkinglots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62254E8A238B992500AF82B9 /* Parkinglots.swift */; };
 		62254E8D238B995A00AF82B9 /* ParkinglotAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62254E8C238B995A00AF82B9 /* ParkinglotAPI.swift */; };
-		62269BC723A8B5F400BFACC1 /* ProductOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62269BC623A8B5F400BFACC1 /* ProductOption.swift */; };
 		62269BCB23A9EEB500BFACC1 /* MarkerWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62269BCA23A9EEB500BFACC1 /* MarkerWindow.swift */; };
 		62269BD423AA1D2F00BFACC1 /* ParkingTapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62269BD323AA1D2F00BFACC1 /* ParkingTapViewModel.swift */; };
 		62269BDE23B085C100BFACC1 /* GroupMarkerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62269BDD23B085C100BFACC1 /* GroupMarkerView.xib */; };
@@ -65,6 +64,8 @@
 		622BC1D2236AA3C300A43F02 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622BC1D1236AA3C300A43F02 /* UIView+Extension.swift */; };
 		6239D5E923EABB2E004FD5FD /* SearchHistoryFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6239D5E823EABB2E004FD5FD /* SearchHistoryFooterView.swift */; };
 		6239D5EB23EAC617004FD5FD /* BetterSegmentedControl+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6239D5EA23EAC617004FD5FD /* BetterSegmentedControl+Rx.swift */; };
+		6239D5ED23EC1FA1004FD5FD /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6239D5EC23EC1FA1004FD5FD /* Place.swift */; };
+		6239D5F323EED945004FD5FD /* UISearchBar+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6239D5F223EED944004FD5FD /* UISearchBar+Extension.swift */; };
 		623E122B23820EA700498C87 /* PhoneNumberModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623E122A23820EA700498C87 /* PhoneNumberModel.swift */; };
 		624B51AD23E54EF900AC6133 /* ParkinglotDetailButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624B51AC23E54EF900AC6133 /* ParkinglotDetailButtonView.swift */; };
 		624B51AF23E5507600AC6133 /* ParkinglotDetailButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624B51AE23E5507600AC6133 /* ParkinglotDetailButtonViewModel.swift */; };
@@ -85,7 +86,7 @@
 		625351E323E67411009FD27F /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 625351E223E67411009FD27F /* Search.storyboard */; };
 		625351E723E694FD009FD27F /* SearchHistoryItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625351E623E694FD009FD27F /* SearchHistoryItemTableViewCell.swift */; };
 		625351EB23E69F04009FD27F /* SearchNoResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625351EA23E69F04009FD27F /* SearchNoResultViewController.swift */; };
-		625351ED23E69F15009FD27F /* SearchRessultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625351EC23E69F15009FD27F /* SearchRessultViewController.swift */; };
+		625351ED23E69F15009FD27F /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625351EC23E69F15009FD27F /* SearchResultViewController.swift */; };
 		625351EF23E69F2A009FD27F /* SearchGuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625351EE23E69F2A009FD27F /* SearchGuideViewController.swift */; };
 		625351F123E6A25F009FD27F /* SearchTextViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625351F023E6A25F009FD27F /* SearchTextViewModel.swift */; };
 		625351F423E6A668009FD27F /* SearchFavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625351F323E6A668009FD27F /* SearchFavoriteViewController.swift */; };
@@ -180,6 +181,21 @@
 		625ACE9723A498E3002D0653 /* NaverMapAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625ACE9623A498E3002D0653 /* NaverMapAdapter.swift */; };
 		625ACE9923A49A29002D0653 /* MapInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625ACE9823A49A29002D0653 /* MapInfo.swift */; };
 		625ACE9B23A49D31002D0653 /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625ACE9A23A49D31002D0653 /* Double+Extension.swift */; };
+		625B271D23F147A400134E2D /* MapSearchResultNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625B271C23F147A400134E2D /* MapSearchResultNavigationView.swift */; };
+		625B271F23F17C4E00134E2D /* UINavigationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625B271E23F17C4E00134E2D /* UINavigationController+Extension.swift */; };
+		625B272123F2780000134E2D /* UICollectionView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625B272023F2780000134E2D /* UICollectionView+Rx.swift */; };
+		625B272723F29A4800134E2D /* ProductSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625B272623F29A4800134E2D /* ProductSetting.swift */; };
+		625B272923F2D94800134E2D /* ParkinglotDetailScheduleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625B272823F2D94800134E2D /* ParkinglotDetailScheduleButtonView.swift */; };
+		625B272B23F2D9C500134E2D /* ParkinglotDetailFixedTimeCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625B272A23F2D9C500134E2D /* ParkinglotDetailFixedTimeCheckView.swift */; };
+		625B272D23F3D04500134E2D /* ParkinglotDetailFixedControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625B272C23F3D04500134E2D /* ParkinglotDetailFixedControlView.swift */; };
+		625B272F23F3D05F00134E2D /* ParkinglotDetailMonthlyControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625B272E23F3D05F00134E2D /* ParkinglotDetailMonthlyControlView.swift */; };
+		625B273123F3E75200134E2D /* PaymentProductInfoTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625B273023F3E75200134E2D /* PaymentProductInfoTimeView.swift */; };
+		625B273323F3E76F00134E2D /* PaymentProductInfoFixedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625B273223F3E76F00134E2D /* PaymentProductInfoFixedView.swift */; };
+		625B273523F3E78A00134E2D /* PaymentProductInfoMonthlyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625B273423F3E78A00134E2D /* PaymentProductInfoMonthlyView.swift */; };
+		625B273723F3F37900134E2D /* PaymentProductInfoCarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625B273623F3F37900134E2D /* PaymentProductInfoCarView.swift */; };
+		625B273B23F4081800134E2D /* PaymentProductBasicInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625B273A23F4081800134E2D /* PaymentProductBasicInfoView.swift */; };
+		625B273D23F411FA00134E2D /* PaymentMethodViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625B273C23F411FA00134E2D /* PaymentMethodViewModel.swift */; };
+		625B274323F55B0D00134E2D /* ParkinglotDetailFixedTimeCheckView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 625B274223F55B0D00134E2D /* ParkinglotDetailFixedTimeCheckView.xib */; };
 		625B4F8223C475D400005830 /* ParkinglotDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625B4F8123C475D400005830 /* ParkinglotDetailHeaderView.swift */; };
 		625B4F8423C47B1700005830 /* ParkinglotDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625B4F8323C47B1700005830 /* ParkinglotDetailViewModel.swift */; };
 		625BD91F23B732AA00C3D4E9 /* EmptyParkingTicketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625BD91E23B732AA00C3D4E9 /* EmptyParkingTicketViewController.swift */; };
@@ -236,7 +252,7 @@
 		62601DDF2397521B00B78033 /* Recommend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62601DDE2397521B00B78033 /* Recommend.swift */; };
 		62601DE12397545100B78033 /* Receipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62601DE02397545100B78033 /* Receipt.swift */; };
 		6261583723D6C8ED00C08CCA /* ParkinglotDetailReserveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6261583623D6C8ED00C08CCA /* ParkinglotDetailReserveView.swift */; };
-		6261583923D6C90400C08CCA /* ParkinglotDetailEditTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6261583823D6C90400C08CCA /* ParkinglotDetailEditTimeView.swift */; };
+		6261583923D6C90400C08CCA /* ParkinglotDetailEditScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6261583823D6C90400C08CCA /* ParkinglotDetailEditScheduleView.swift */; };
 		62630B422383E4BD0029724B /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62630B412383E4BD0029724B /* String+Extension.swift */; };
 		62630B45238506490029724B /* PhoneNumberViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62630B44238506490029724B /* PhoneNumberViewModel.swift */; };
 		62630B47238534FB0029724B /* CodeVerifyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62630B46238534FB0029724B /* CodeVerifyViewModel.swift */; };
@@ -256,7 +272,6 @@
 		629C287423700FF500E0E5E1 /* AgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629C287323700FF500E0E5E1 /* AgreementViewController.swift */; };
 		629C28762370103C00E0E5E1 /* AgreementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629C28752370103C00E0E5E1 /* AgreementViewModel.swift */; };
 		629C28782370F45500E0E5E1 /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629C28772370F45500E0E5E1 /* TermsViewController.swift */; };
-		629C287A2370FCA500E0E5E1 /* UINavigationItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629C28792370FCA500E0E5E1 /* UINavigationItem+Extension.swift */; };
 		629C287C2371093700E0E5E1 /* RegiCarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629C287B2371093700E0E5E1 /* RegiCarViewController.swift */; };
 		629C287E237109B500E0E5E1 /* RegiCreditCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629C287D237109B500E0E5E1 /* RegiCreditCardViewController.swift */; };
 		629C288023710B4B00E0E5E1 /* RegiCreditCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629C287F23710B4B00E0E5E1 /* RegiCreditCardViewModel.swift */; };
@@ -323,7 +338,6 @@
 		62CCBAC223E3FADD00F57AF6 /* Pods_ParkingFriends.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2629E4950DB3E8EFEE080B6A /* Pods_ParkingFriends.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9B7A0737B981493E2344840F /* Pods_ParkingFriendsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4565A27F32856AD49004181B /* Pods_ParkingFriendsTests.framework */; };
 		A40ACD3123543F8D000E4967 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40ACD3023543F8D000E4967 /* AppDelegate.swift */; };
-		A40ACD3523543F8D000E4967 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40ACD3423543F8D000E4967 /* ViewController.swift */; };
 		A40ACD3A23543F8E000E4967 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A40ACD3923543F8E000E4967 /* Assets.xcassets */; };
 		A40ACD4823543F8E000E4967 /* ParkingFriendsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40ACD4723543F8E000E4967 /* ParkingFriendsTests.swift */; };
 		A40ACD5323543F8E000E4967 /* ParkingFriendsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40ACD5223543F8E000E4967 /* ParkingFriendsUITests.swift */; };
@@ -417,7 +431,6 @@
 		621BCC9723D68AE3009FE1EC /* ParkinglotDetailMonthlyTicketPriceItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ParkinglotDetailMonthlyTicketPriceItemView.xib; sourceTree = "<group>"; };
 		62254E8A238B992500AF82B9 /* Parkinglots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parkinglots.swift; sourceTree = "<group>"; };
 		62254E8C238B995A00AF82B9 /* ParkinglotAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkinglotAPI.swift; sourceTree = "<group>"; };
-		62269BC623A8B5F400BFACC1 /* ProductOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductOption.swift; sourceTree = "<group>"; };
 		62269BCA23A9EEB500BFACC1 /* MarkerWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkerWindow.swift; sourceTree = "<group>"; };
 		62269BD323AA1D2F00BFACC1 /* ParkingTapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingTapViewModel.swift; sourceTree = "<group>"; };
 		62269BDD23B085C100BFACC1 /* GroupMarkerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupMarkerView.xib; sourceTree = "<group>"; };
@@ -444,6 +457,8 @@
 		622BC1D1236AA3C300A43F02 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		6239D5E823EABB2E004FD5FD /* SearchHistoryFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryFooterView.swift; sourceTree = "<group>"; };
 		6239D5EA23EAC617004FD5FD /* BetterSegmentedControl+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BetterSegmentedControl+Rx.swift"; sourceTree = "<group>"; };
+		6239D5EC23EC1FA1004FD5FD /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
+		6239D5F223EED944004FD5FD /* UISearchBar+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UISearchBar+Extension.swift"; sourceTree = "<group>"; };
 		623E122A23820EA700498C87 /* PhoneNumberModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberModel.swift; sourceTree = "<group>"; };
 		624B51AC23E54EF900AC6133 /* ParkinglotDetailButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkinglotDetailButtonView.swift; sourceTree = "<group>"; };
 		624B51AE23E5507600AC6133 /* ParkinglotDetailButtonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkinglotDetailButtonViewModel.swift; sourceTree = "<group>"; };
@@ -464,7 +479,7 @@
 		625351E223E67411009FD27F /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
 		625351E623E694FD009FD27F /* SearchHistoryItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryItemTableViewCell.swift; sourceTree = "<group>"; };
 		625351EA23E69F04009FD27F /* SearchNoResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchNoResultViewController.swift; sourceTree = "<group>"; };
-		625351EC23E69F15009FD27F /* SearchRessultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRessultViewController.swift; sourceTree = "<group>"; };
+		625351EC23E69F15009FD27F /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
 		625351EE23E69F2A009FD27F /* SearchGuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGuideViewController.swift; sourceTree = "<group>"; };
 		625351F023E6A25F009FD27F /* SearchTextViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextViewModel.swift; sourceTree = "<group>"; };
 		625351F323E6A668009FD27F /* SearchFavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFavoriteViewController.swift; sourceTree = "<group>"; };
@@ -559,6 +574,21 @@
 		625ACE9623A498E3002D0653 /* NaverMapAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NaverMapAdapter.swift; sourceTree = "<group>"; };
 		625ACE9823A49A29002D0653 /* MapInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapInfo.swift; sourceTree = "<group>"; };
 		625ACE9A23A49D31002D0653 /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
+		625B271C23F147A400134E2D /* MapSearchResultNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSearchResultNavigationView.swift; sourceTree = "<group>"; };
+		625B271E23F17C4E00134E2D /* UINavigationController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extension.swift"; sourceTree = "<group>"; };
+		625B272023F2780000134E2D /* UICollectionView+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Rx.swift"; sourceTree = "<group>"; };
+		625B272623F29A4800134E2D /* ProductSetting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductSetting.swift; sourceTree = "<group>"; };
+		625B272823F2D94800134E2D /* ParkinglotDetailScheduleButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkinglotDetailScheduleButtonView.swift; sourceTree = "<group>"; };
+		625B272A23F2D9C500134E2D /* ParkinglotDetailFixedTimeCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkinglotDetailFixedTimeCheckView.swift; sourceTree = "<group>"; };
+		625B272C23F3D04500134E2D /* ParkinglotDetailFixedControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkinglotDetailFixedControlView.swift; sourceTree = "<group>"; };
+		625B272E23F3D05F00134E2D /* ParkinglotDetailMonthlyControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkinglotDetailMonthlyControlView.swift; sourceTree = "<group>"; };
+		625B273023F3E75200134E2D /* PaymentProductInfoTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentProductInfoTimeView.swift; sourceTree = "<group>"; };
+		625B273223F3E76F00134E2D /* PaymentProductInfoFixedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentProductInfoFixedView.swift; sourceTree = "<group>"; };
+		625B273423F3E78A00134E2D /* PaymentProductInfoMonthlyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentProductInfoMonthlyView.swift; sourceTree = "<group>"; };
+		625B273623F3F37900134E2D /* PaymentProductInfoCarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentProductInfoCarView.swift; sourceTree = "<group>"; };
+		625B273A23F4081800134E2D /* PaymentProductBasicInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentProductBasicInfoView.swift; sourceTree = "<group>"; };
+		625B273C23F411FA00134E2D /* PaymentMethodViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethodViewModel.swift; sourceTree = "<group>"; };
+		625B274223F55B0D00134E2D /* ParkinglotDetailFixedTimeCheckView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ParkinglotDetailFixedTimeCheckView.xib; sourceTree = "<group>"; };
 		625B4F8123C475D400005830 /* ParkinglotDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkinglotDetailHeaderView.swift; sourceTree = "<group>"; };
 		625B4F8323C47B1700005830 /* ParkinglotDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkinglotDetailViewModel.swift; sourceTree = "<group>"; };
 		625BD91E23B732AA00C3D4E9 /* EmptyParkingTicketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyParkingTicketViewController.swift; sourceTree = "<group>"; };
@@ -613,7 +643,7 @@
 		62601DDE2397521B00B78033 /* Recommend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recommend.swift; sourceTree = "<group>"; };
 		62601DE02397545100B78033 /* Receipt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Receipt.swift; sourceTree = "<group>"; };
 		6261583623D6C8ED00C08CCA /* ParkinglotDetailReserveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkinglotDetailReserveView.swift; sourceTree = "<group>"; };
-		6261583823D6C90400C08CCA /* ParkinglotDetailEditTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkinglotDetailEditTimeView.swift; sourceTree = "<group>"; };
+		6261583823D6C90400C08CCA /* ParkinglotDetailEditScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkinglotDetailEditScheduleView.swift; sourceTree = "<group>"; };
 		62630B412383E4BD0029724B /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		62630B44238506490029724B /* PhoneNumberViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberViewModel.swift; sourceTree = "<group>"; };
 		62630B46238534FB0029724B /* CodeVerifyViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodeVerifyViewModel.swift; sourceTree = "<group>"; };
@@ -633,7 +663,6 @@
 		629C287323700FF500E0E5E1 /* AgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementViewController.swift; sourceTree = "<group>"; };
 		629C28752370103C00E0E5E1 /* AgreementViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementViewModel.swift; sourceTree = "<group>"; };
 		629C28772370F45500E0E5E1 /* TermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
-		629C28792370FCA500E0E5E1 /* UINavigationItem+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationItem+Extension.swift"; sourceTree = "<group>"; };
 		629C287B2371093700E0E5E1 /* RegiCarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegiCarViewController.swift; sourceTree = "<group>"; };
 		629C287D237109B500E0E5E1 /* RegiCreditCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegiCreditCardViewController.swift; sourceTree = "<group>"; };
 		629C287F23710B4B00E0E5E1 /* RegiCreditCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegiCreditCardViewModel.swift; sourceTree = "<group>"; };
@@ -701,7 +730,6 @@
 		98E7D7283CEED9B0851267C2 /* Pods-ParkingFriendsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ParkingFriendsUITests.debug.xcconfig"; path = "Target Support Files/Pods-ParkingFriendsUITests/Pods-ParkingFriendsUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		A40ACD2D23543F8D000E4967 /* ParkingFriends.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ParkingFriends.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A40ACD3023543F8D000E4967 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A40ACD3423543F8D000E4967 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A40ACD3923543F8E000E4967 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A40ACD3E23543F8E000E4967 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A40ACD4323543F8E000E4967 /* ParkingFriendsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ParkingFriendsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -817,9 +845,9 @@
 		6210BABE23792CED001C6065 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				624F53A423BAF554005D7FD8 /* MapView */,
 				625ACE7A23A0CBAB002D0653 /* ParkinglotList */,
 				62601DBD239647A800B78033 /* ParkinglotCard */,
-				624F53A423BAF554005D7FD8 /* MapView */,
 				62576C4D23BD77D9007BA1F7 /* SearchOption */,
 			);
 			path = ViewController;
@@ -832,7 +860,7 @@
 				621BCC7A23D2B932009FE1EC /* Symbol */,
 				621BCC7C23D2B94B009FE1EC /* Price */,
 				6261583423D6C8B700C08CCA /* Reserve */,
-				6261583523D6C8CB00C08CCA /* EditTime */,
+				6261583523D6C8CB00C08CCA /* EditSchedule */,
 				621BCC8523D432C9009FE1EC /* OperationTime */,
 				621BCC8023D4127B009FE1EC /* Notice */,
 				624B51AB23E54ECB00AC6133 /* Confirm */,
@@ -1063,6 +1091,7 @@
 			isa = PBXGroup;
 			children = (
 				6210BAC123792D33001C6065 /* MapViewController.swift */,
+				625B271C23F147A400134E2D /* MapSearchResultNavigationView.swift */,
 				624F53AA23BAF7C6005D7FD8 /* PanelLayout */,
 			);
 			path = MapView;
@@ -1135,9 +1164,9 @@
 		625351E923E69ED5009FD27F /* Recent */ = {
 			isa = PBXGroup;
 			children = (
-				625351EA23E69F04009FD27F /* SearchNoResultViewController.swift */,
 				625351EE23E69F2A009FD27F /* SearchGuideViewController.swift */,
-				625351EC23E69F15009FD27F /* SearchRessultViewController.swift */,
+				625351EA23E69F04009FD27F /* SearchNoResultViewController.swift */,
+				625351EC23E69F15009FD27F /* SearchResultViewController.swift */,
 				629E6F9A23E6AC9F0090E164 /* SearchResultItemTableViewCell.swift */,
 			);
 			path = Recent;
@@ -1336,8 +1365,8 @@
 				6259518523DE9D540015A868 /* ParkinglotDetailSymbolViewModel.swift */,
 				6259518D23DFE6360015A868 /* ParkinglotDetailPriceViewModel.swift */,
 				6259518B23DECD460015A868 /* ParkinglotDetailOperationTimeViewModel.swift */,
-				6259519323E117680015A868 /* ParkinglotDetailEditTimeViewModel.swift */,
 				6259518323DD6F1E0015A868 /* ParkinglotDetailReserveViewModel.swift */,
+				6259519323E117680015A868 /* ParkinglotDetailEditTimeViewModel.swift */,
 				6259518F23DFF6BB0015A868 /* ParkinglotDetailNoticeViewModel.swift */,
 				6257DE1423C6F8FB001091B0 /* ParkinglotDetailInfoLabelGuideViewModel.swift */,
 				624B51AE23E5507600AC6133 /* ParkinglotDetailButtonViewModel.swift */,
@@ -1492,6 +1521,11 @@
 			isa = PBXGroup;
 			children = (
 				625951A423E2A9A70015A868 /* PaymentProductInfoView.swift */,
+				625B273A23F4081800134E2D /* PaymentProductBasicInfoView.swift */,
+				625B273023F3E75200134E2D /* PaymentProductInfoTimeView.swift */,
+				625B273223F3E76F00134E2D /* PaymentProductInfoFixedView.swift */,
+				625B273423F3E78A00134E2D /* PaymentProductInfoMonthlyView.swift */,
+				625B273623F3F37900134E2D /* PaymentProductInfoCarView.swift */,
 			);
 			path = ProductInfo;
 			sourceTree = "<group>";
@@ -1608,6 +1642,7 @@
 				629E6F9E23E7D3690090E164 /* Geocode.swift */,
 				625ACE8623A239C9002D0653 /* ReverseGeocode.swift */,
 				625ACE8A23A23C39002D0653 /* MapResult.swift */,
+				6239D5EC23EC1FA1004FD5FD /* Place.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1618,6 +1653,32 @@
 				625ACE9423A3826D002D0653 /* NaverMap.swift */,
 			);
 			path = Session;
+			sourceTree = "<group>";
+		};
+		625B273E23F54BD300134E2D /* FixedTicket */ = {
+			isa = PBXGroup;
+			children = (
+				625B272C23F3D04500134E2D /* ParkinglotDetailFixedControlView.swift */,
+				625B272A23F2D9C500134E2D /* ParkinglotDetailFixedTimeCheckView.swift */,
+				625B274223F55B0D00134E2D /* ParkinglotDetailFixedTimeCheckView.xib */,
+			);
+			path = FixedTicket;
+			sourceTree = "<group>";
+		};
+		625B273F23F54BE200134E2D /* TimeTicket */ = {
+			isa = PBXGroup;
+			children = (
+				6259519523E141E30015A868 /* ParkinglotDetailTimeControlView.swift */,
+			);
+			path = TimeTicket;
+			sourceTree = "<group>";
+		};
+		625B274023F54BF600134E2D /* Monthly Ticket */ = {
+			isa = PBXGroup;
+			children = (
+				625B272E23F3D05F00134E2D /* ParkinglotDetailMonthlyControlView.swift */,
+			);
+			path = "Monthly Ticket";
 			sourceTree = "<group>";
 		};
 		625BD92223B8702600C3D4E9 /* SortSettingDialog */ = {
@@ -1692,8 +1753,9 @@
 		62601D9B2394EFEE00B78033 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				62601DA42394FF8700B78033 /* PaymentGuideViewModel.swift */,
 				6259519C23E194FF0015A868 /* PaymentViewModel.swift */,
+				62601DA42394FF8700B78033 /* PaymentGuideViewModel.swift */,
+				625B273C23F411FA00134E2D /* PaymentMethodViewModel.swift */,
 				6259519E23E2A0A70015A868 /* PaymentParkingInfoViewModel.swift */,
 			);
 			path = ViewModel;
@@ -1756,13 +1818,16 @@
 			path = Reserve;
 			sourceTree = "<group>";
 		};
-		6261583523D6C8CB00C08CCA /* EditTime */ = {
+		6261583523D6C8CB00C08CCA /* EditSchedule */ = {
 			isa = PBXGroup;
 			children = (
-				6261583823D6C90400C08CCA /* ParkinglotDetailEditTimeView.swift */,
-				6259519523E141E30015A868 /* ParkinglotDetailTimeControlView.swift */,
+				6261583823D6C90400C08CCA /* ParkinglotDetailEditScheduleView.swift */,
+				625B272823F2D94800134E2D /* ParkinglotDetailScheduleButtonView.swift */,
+				625B273F23F54BE200134E2D /* TimeTicket */,
+				625B273E23F54BD300134E2D /* FixedTicket */,
+				625B274023F54BF600134E2D /* Monthly Ticket */,
 			);
-			path = EditTime;
+			path = EditSchedule;
 			sourceTree = "<group>";
 		};
 		6261583A23D6DB4800C08CCA /* InfoLabelGuide */ = {
@@ -1972,6 +2037,7 @@
 				629E6FD923EA49780090E164 /* UISearchBar+Rx.swift */,
 				624CE056238E57620068F4F9 /* MapView+Rx.swift */,
 				6239D5EA23EAC617004FD5FD /* BetterSegmentedControl+Rx.swift */,
+				625B272023F2780000134E2D /* UICollectionView+Rx.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -2121,7 +2187,6 @@
 				A4225E5523554879004F48C4 /* 05-Resource */,
 				A40ACD3023543F8D000E4967 /* AppDelegate.swift */,
 				A4225ED9235D8938004F48C4 /* SceneDelegate.swift */,
-				A40ACD3423543F8D000E4967 /* ViewController.swift */,
 				A40ACD3E23543F8E000E4967 /* Info.plist */,
 				62C26BF4236286B100695B6F /* ParkingFriends.entitlements */,
 			);
@@ -2289,7 +2354,7 @@
 				629E6FDB23EA56730090E164 /* SearchHistory.swift */,
 				6210BAC7237931DA001C6065 /* AppConfig.swift */,
 				625ACE6F239F97C3002D0653 /* FilterOption.swift */,
-				62269BC623A8B5F400BFACC1 /* ProductOption.swift */,
+				625B272623F29A4800134E2D /* ProductSetting.swift */,
 			);
 			path = AppData;
 			sourceTree = "<group>";
@@ -2299,6 +2364,7 @@
 			children = (
 				622BC0E523681FE300A43F02 /* UIStoryboard+Extension.swift */,
 				622BC0E9236835B800A43F02 /* UIViewController+Extension.swift */,
+				625B271E23F17C4E00134E2D /* UINavigationController+Extension.swift */,
 				622BC1CF236A9DC500A43F02 /* UIButton+Extension.swift */,
 				622BC1D1236AA3C300A43F02 /* UIView+Extension.swift */,
 				621BCC5F23CEF31C009FE1EC /* UITableViewCell+Extension.swift */,
@@ -2306,7 +2372,7 @@
 				62576C3923BB77ED007BA1F7 /* UIProgressView+Extension.swift */,
 				62576C5923BDE9A7007BA1F7 /* UIPickerView+Extension.swift */,
 				62576C5B23BDEA9C007BA1F7 /* UIDatePicker+Extension.swift */,
-				629C28792370FCA500E0E5E1 /* UINavigationItem+Extension.swift */,
+				6239D5F223EED944004FD5FD /* UISearchBar+Extension.swift */,
 				6253923F23716D870041EBF1 /* UITextField+Extension.swift */,
 				6259518723DEAA1E0015A868 /* UIColor+Extension.swift */,
 				6259518923DEB79A0015A868 /* Date+Extension.swift */,
@@ -2551,6 +2617,7 @@
 				6257DE4B23CBEF97001091B0 /* ExtendReserveDialog.storyboard in Resources */,
 				621BCC9023D68649009FE1EC /* ParkinglotDetailPriceItemView.xib in Resources */,
 				621BCC9823D68AE3009FE1EC /* ParkinglotDetailMonthlyTicketPriceItemView.xib in Resources */,
+				625B274323F55B0D00134E2D /* ParkinglotDetailFixedTimeCheckView.xib in Resources */,
 				621BCC8423D415A2009FE1EC /* ParkinglotDetailNoticeItemView.xib in Resources */,
 				62269BDE23B085C100BFACC1 /* GroupMarkerView.xib in Resources */,
 				A40ACD3A23543F8E000E4967 /* Assets.xcassets in Resources */,
@@ -2709,7 +2776,7 @@
 				629C2861236BF2A300E0E5E1 /* EntryViewModel.swift in Sources */,
 				62576C4623BC4B43007BA1F7 /* IconType.swift in Sources */,
 				62601D702390A59200B78033 /* Member.swift in Sources */,
-				6261583923D6C90400C08CCA /* ParkinglotDetailEditTimeView.swift in Sources */,
+				6261583923D6C90400C08CCA /* ParkinglotDetailEditScheduleView.swift in Sources */,
 				622BC0E22368012A00A43F02 /* GuideContentViewController.swift in Sources */,
 				6257DE0623C6A702001091B0 /* DepartureConfirmViewController.swift in Sources */,
 				62601DBF239647D900B78033 /* ParkinglotCardCollectionViewCell.swift in Sources */,
@@ -2722,6 +2789,7 @@
 				62601D9E2394F01C00B78033 /* PaymentViewController.swift in Sources */,
 				A4225E6C2355BA00004F48C4 /* AnalyticsType.swift in Sources */,
 				62576C4323BC469D007BA1F7 /* ReserveNoticeView.swift in Sources */,
+				625B272F23F3D05F00134E2D /* ParkinglotDetailMonthlyControlView.swift in Sources */,
 				62C26BF82362970700695B6F /* Notices.swift in Sources */,
 				62269BCB23A9EEB500BFACC1 /* MarkerWindow.swift in Sources */,
 				6257DE2623C81832001091B0 /* CctvParkingViewController.swift in Sources */,
@@ -2738,6 +2806,7 @@
 				625BD92723B8762800C3D4E9 /* SortOrderDialog.swift in Sources */,
 				625ACE9B23A49D31002D0653 /* Double+Extension.swift in Sources */,
 				6257DE1123C6AEE7001091B0 /* ParkingConfirmViewController.swift in Sources */,
+				625B273123F3E75200134E2D /* PaymentProductInfoTimeView.swift in Sources */,
 				A4225E712357F7F9004F48C4 /* HttpSession.swift in Sources */,
 				62601DDF2397521B00B78033 /* Recommend.swift in Sources */,
 				62601D8F23938A2700B78033 /* NavigationTitleView.swift in Sources */,
@@ -2752,7 +2821,6 @@
 				623E122B23820EA700498C87 /* PhoneNumberModel.swift in Sources */,
 				62AE723E23795AC000BE6FA3 /* MessageDialogView.swift in Sources */,
 				624F539F23B9F372005D7FD8 /* MenuViewController.swift in Sources */,
-				A40ACD3523543F8D000E4967 /* ViewController.swift in Sources */,
 				62576C5823BDE2AF007BA1F7 /* TimeTicketDurationViewController.swift in Sources */,
 				62576C6D23BF42D2007BA1F7 /* MyInfoViewModel.swift in Sources */,
 				62269BE223B085F900BFACC1 /* DistrictMarkerWindow.swift in Sources */,
@@ -2761,23 +2829,25 @@
 				629C286B236E957400E0E5E1 /* BasicInfoViewController.swift in Sources */,
 				62630B47238534FB0029724B /* CodeVerifyViewModel.swift in Sources */,
 				62254E8B238B992500AF82B9 /* Parkinglots.swift in Sources */,
-				625351ED23E69F15009FD27F /* SearchRessultViewController.swift in Sources */,
+				625351ED23E69F15009FD27F /* SearchResultViewController.swift in Sources */,
 				62601D8A2393783A00B78033 /* CarBrandTableViewCell.swift in Sources */,
 				629C2870236E9A1B00E0E5E1 /* CustomInputSection.swift in Sources */,
-				629C287A2370FCA500E0E5E1 /* UINavigationItem+Extension.swift in Sources */,
 				62601DA92395F91B00B78033 /* Parkinglot.swift in Sources */,
 				6257DE3423CAE777001091B0 /* FixedTicketNavigationController.swift in Sources */,
 				62576C6F23BF4722007BA1F7 /* SettingsViewController.swift in Sources */,
 				62C26BE92361921700695B6F /* Otp.swift in Sources */,
 				62601DAC2395FCCF00B78033 /* ImageElement.swift in Sources */,
 				A4225E84235D44DA004F48C4 /* Host.swift in Sources */,
+				6239D5F323EED945004FD5FD /* UISearchBar+Extension.swift in Sources */,
 				625351EF23E69F2A009FD27F /* SearchGuideViewController.swift in Sources */,
+				625B273323F3E76F00134E2D /* PaymentProductInfoFixedView.swift in Sources */,
 				62601DDD2397512000B78033 /* OverFee.swift in Sources */,
 				62601DC4239659F200B78033 /* MarkerView.swift in Sources */,
 				6253924023716D870041EBF1 /* UITextField+Extension.swift in Sources */,
 				62269BE423B0A45B00BFACC1 /* WithinDistrict.swift in Sources */,
 				624CE059238E5A390068F4F9 /* RxMapViewDelegateProxy.swift in Sources */,
 				62AE7250237B93B500BE6FA3 /* ColorDialog.swift in Sources */,
+				625B273B23F4081800134E2D /* PaymentProductBasicInfoView.swift in Sources */,
 				A4225E7523584AE9004F48C4 /* BaseModelType.swift in Sources */,
 				6257DE0223C6A67A001091B0 /* ReserveCancelViewController.swift in Sources */,
 				62576C6023BDED1A007BA1F7 /* TimeTicketNavigationController.swift in Sources */,
@@ -2811,6 +2881,7 @@
 				621BCC8E23D5AAC4009FE1EC /* TransparentNavigationBar.swift in Sources */,
 				629C28782370F45500E0E5E1 /* TermsViewController.swift in Sources */,
 				62601DD523974BED00B78033 /* OrderProduct.swift in Sources */,
+				625B272923F2D94800134E2D /* ParkinglotDetailScheduleButtonView.swift in Sources */,
 				6204555B2398FA09007ADF88 /* FAQsContents.swift in Sources */,
 				6259F27323729431004297E9 /* CarBrandViewModel.swift in Sources */,
 				629DB1A623C1CA8800E68A94 /* ExtraCardTableViewCell.swift in Sources */,
@@ -2839,6 +2910,7 @@
 				625951B123E2B2A20015A868 /* PaymentTotalPriceView.swift in Sources */,
 				6259519023DFF6BB0015A868 /* ParkinglotDetailNoticeViewModel.swift in Sources */,
 				62601D8523923D8500B78033 /* CarModels.swift in Sources */,
+				625B272B23F2D9C500134E2D /* ParkinglotDetailFixedTimeCheckView.swift in Sources */,
 				62601DB823961CF000B78033 /* Order.swift in Sources */,
 				62576C5E23BDEC66007BA1F7 /* TimeTicketDialog.swift in Sources */,
 				625351F123E6A25F009FD27F /* SearchTextViewModel.swift in Sources */,
@@ -2846,6 +2918,7 @@
 				620455592398F8D8007ADF88 /* EventContents.swift in Sources */,
 				6257DE4623CBEE2E001091B0 /* MonthlyTicketDialog.swift in Sources */,
 				621BCC6223CEF46E009FE1EC /* UICollectionViewCell+Extension.swift in Sources */,
+				625B272123F2780000134E2D /* UICollectionView+Rx.swift in Sources */,
 				625351EB23E69F04009FD27F /* SearchNoResultViewController.swift in Sources */,
 				624CE055238E4E990068F4F9 /* MapModel.swift in Sources */,
 				A4225EDA235D8938004F48C4 /* SceneDelegate.swift in Sources */,
@@ -2855,6 +2928,7 @@
 				629C287E237109B500E0E5E1 /* RegiCreditCardViewController.swift in Sources */,
 				62C26BF32362834800695B6F /* Contents.swift in Sources */,
 				6259519623E141E30015A868 /* ParkinglotDetailTimeControlView.swift in Sources */,
+				625B273D23F411FA00134E2D /* PaymentMethodViewModel.swift in Sources */,
 				62576C3F23BC45B6007BA1F7 /* RserveNoticeDialog.swift in Sources */,
 				62576C6B23BF42BE007BA1F7 /* MyInfoViewController.swift in Sources */,
 				62601D7C23922D4000B78033 /* CreditCardModel.swift in Sources */,
@@ -2883,6 +2957,7 @@
 				62576C4C23BC9C8A007BA1F7 /* PaymentCompleteViewController.swift in Sources */,
 				A4225E5C235559C4004F48C4 /* UIViewController+UIAlertController.swift in Sources */,
 				62C26BF123627FE200695B6F /* Type.swift in Sources */,
+				625B272723F29A4800134E2D /* ProductSetting.swift in Sources */,
 				62539242237268830041EBF1 /* Import.swift in Sources */,
 				62C26BD92360195000695B6F /* MembersAPI.swift in Sources */,
 				625ACE70239F97C3002D0653 /* FilterOption.swift in Sources */,
@@ -2901,6 +2976,7 @@
 				629E6FDA23EA49780090E164 /* UISearchBar+Rx.swift in Sources */,
 				622BC1D0236A9DC500A43F02 /* UIButton+Extension.swift in Sources */,
 				629DB1A423C1CA7D00E68A94 /* BasicCardTableViewCell.swift in Sources */,
+				625B271D23F147A400134E2D /* MapSearchResultNavigationView.swift in Sources */,
 				625951A523E2A9A70015A868 /* PaymentProductInfoView.swift in Sources */,
 				621BCC8223D412B9009FE1EC /* ParkinglotDetailNoticeView.swift in Sources */,
 				A4225E5B235559C4004F48C4 /* AlertAction.swift in Sources */,
@@ -2915,9 +2991,9 @@
 				625351E123E673EB009FD27F /* SearchViewModel.swift in Sources */,
 				629C2863236BF54C00E0E5E1 /* PhoneNumberInputViewController.swift in Sources */,
 				6257DE3D23CAF044001091B0 /* MonthlyTicketDurationViewController.swift in Sources */,
+				625B272D23F3D04500134E2D /* ParkinglotDetailFixedControlView.swift in Sources */,
 				629C288023710B4B00E0E5E1 /* RegiCreditCardViewModel.swift in Sources */,
 				62C26C032362B23B00695B6F /* Orders.swift in Sources */,
-				62269BC723A8B5F400BFACC1 /* ProductOption.swift in Sources */,
 				62601DB2239602A400B78033 /* Favorites.swift in Sources */,
 				62C26BFC2362AE1A00695B6F /* FAQs.swift in Sources */,
 				6257DE5123CBF446001091B0 /* ExtendDurationNavigationController.swift in Sources */,
@@ -2939,9 +3015,11 @@
 				629C2872236FADE000E0E5E1 /* BasicInfoViewModel.swift in Sources */,
 				6204555123979F5B007ADF88 /* SearchOptionViewController.swift in Sources */,
 				A4225E682355B352004F48C4 /* BoolTransform.swift in Sources */,
+				6239D5ED23EC1FA1004FD5FD /* Place.swift in Sources */,
 				62630B4D23862F3A0029724B /* RegistrationModel.swift in Sources */,
 				62AE724C237B8F6700BE6FA3 /* EventViewController.swift in Sources */,
 				629E6F9F23E7D3690090E164 /* Geocode.swift in Sources */,
+				625B271F23F17C4E00134E2D /* UINavigationController+Extension.swift in Sources */,
 				629C2865236BF6B600E0E5E1 /* LoginViewController.swift in Sources */,
 				625BD91F23B732AA00C3D4E9 /* EmptyParkingTicketViewController.swift in Sources */,
 				6257DE3223CAD6E1001091B0 /* FixedTicketDurationViewController.swift in Sources */,
@@ -2954,6 +3032,7 @@
 				62269BE623B1904100BFACC1 /* UserInfoModel.swift in Sources */,
 				622BC0E623681FE300A43F02 /* UIStoryboard+Extension.swift in Sources */,
 				629C287C2371093700E0E5E1 /* RegiCarViewController.swift in Sources */,
+				625B273723F3F37900134E2D /* PaymentProductInfoCarView.swift in Sources */,
 				6257DE2923C9940E001091B0 /* DisplayTimeHandler.swift in Sources */,
 				620455532397A2A9007ADF88 /* SearchOptionViewModel.swift in Sources */,
 				629E6FDC23EA56730090E164 /* SearchHistory.swift in Sources */,
@@ -2975,6 +3054,7 @@
 				62601D7823921C6000B78033 /* EmailModel.swift in Sources */,
 				A4225E7D23597CA3004F48C4 /* Login.swift in Sources */,
 				6257DE4F23CBEFD6001091B0 /* ExtendDurationViewController.swift in Sources */,
+				625B273523F3E78A00134E2D /* PaymentProductInfoMonthlyView.swift in Sources */,
 				621BCC6023CEF31C009FE1EC /* UITableViewCell+Extension.swift in Sources */,
 				62C26C092362F0BE00695B6F /* Point.swift in Sources */,
 				629C2869236E8D9F00E0E5E1 /* CodeVerifyViewController.swift in Sources */,

@@ -9,6 +9,13 @@
 import Foundation
 
 struct MapAPI:BaseAPI {
+    // Place
+    static func search(query:String, coordinate:CoordType) -> RequestURL {
+        let query:Params = ["query": query, "coordinate":"\(coordinate.longitude.toString),\(coordinate.latitude.toString)"]
+        let url = build(host:map_host, endpoint:"/map-place/v1/search", params: query)
+        
+        return (url, nil)
+    }
     
     // Geocode
     static func geocode(query:String) -> RequestURL {

@@ -14,7 +14,6 @@ extension SearchGuideViewController : AnalyticsType {
     }
 }
 
-
 class SearchGuideViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!

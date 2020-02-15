@@ -9,6 +9,10 @@
 import Foundation
 import NMapsMap
 
+private enum CenterMarkType {
+    case center, search
+}
+
 protocol MapViewModelType {
     var mapView: NMFMapView? { get set }
     
@@ -23,7 +27,12 @@ protocol MapViewModelType {
     func zoomIn()
     func zoomOut()
     func placeCenter(search:Bool)
+    func userLocation() -> Observable<CoordType>
+    func updateSearchResult(with coord:CoordType)
+    func removeSearchResultMark()
     
+    func setFocusedMarker(with parkinglotId:Int)
+
     func setTimeTicketRange(start startDate: Date, end endDate:Date)
     func setFixedTicketTime(start startDate: Date, hours:Int)
     func setMonthlyTicketTime(start startDate: Date, months:Int)
@@ -36,8 +45,8 @@ extension MapViewModelType {
 }
 
 #if DEBUG
-let defaultCoordinate = CoordType(37.400634765624986, 127.11203073310433)           // 판교 한컴 본사
 //let defaultCoordinate = CoordType(37.51888371942195,126.9157924925587)              // 영등포 신길역
+let defaultCoordinate = CoordType(37.400634765624986, 127.11203073310433)
 #else
 let defaultCoordinate = CoordType(37.400634765624986, 127.11203073310433)           // 판교 한컴 본사
 #endif
@@ -45,6 +54,7 @@ let defaultCoordinate = CoordType(37.400634765624986, 127.11203073310433)       
 class MapViewModel: NSObject, MapViewModelType {
     var mapView: NMFMapView?
     var locationOverlay: NMFLocationOverlay?
+    var circleOverlay: NMFCircleOverlay?
     
     var displayAddressText: BehaviorRelay<String> = BehaviorRelay(value: "")
     var displayReservableTimeText: BehaviorRelay<String>
@@ -54,10 +64,11 @@ class MapViewModel: NSObject, MapViewModelType {
     var cardViewModel:ParkingCardViewModelType?
     var parkingTapViewModel:ParkingTapViewModelType?
     
-    private var lotList:[MarkerWindow] = []
+    private var parkinglotList:[MarkerWindow] = []
     private var districtList:[DistrictMarkerWindow] = []
     
     private var destMarker:NMFMarker?
+    private var searchMarker:NMFMarker?
     
     private let locationManager = CLLocationManager()
     private let mapModel = MapModel()
@@ -78,18 +89,19 @@ class MapViewModel: NSObject, MapViewModelType {
         
         displayReservableTimeText = BehaviorRelay(value: displayTime)
         
-        destMarker = NMFMarker.init(position: NMGLatLng(lat: defaultCoordinate.latitude, lng: defaultCoordinate.longitude), iconImage: NMFOverlayImage(name: "icMarkerDestination"))
+        destMarker = NMFMarker.init(position: NMGLatLng(lat: defaultCoordinate.latitude, lng: defaultCoordinate.longitude), iconImage: NMFOverlayImage(name: "icMapCenter"))
+        searchMarker = NMFMarker.init(position: NMGLatLng(lat: defaultCoordinate.latitude, lng: defaultCoordinate.longitude), iconImage: NMFOverlayImage(name: "icMarkerDestination"))
     
         super.init()
         
         initialize()
     }
     
-    private func initialize() {
+    func initialize() {
         setupLocationBinding()
         setupLocationOverlay()
         setupMapBinding()
-        //mapView?.delegate = self
+     //   locateInit()
     }
     
     // MARK: - Binding
@@ -100,16 +112,16 @@ class MapViewModel: NSObject, MapViewModelType {
      NMFMapChangedByGesture = -1
      NMFMapChangedByDeveloper = 0
     */
-    private func setupMapBinding() {
-       // mapView?.delegate = self
-
+    func setupMapBinding() {
         if let map = self.mapView {
+            /*
             map.rx.regionDidChange
                 .asDriver()
                 .drive(onNext: { (zoomLevel:Double, animated: Bool, reason: Int) in
+                    print("[IDLE] didChange completed")
                     self.currentCenterInCamera(zoomLevel: zoomLevel)
                         .subscribe(onNext: { (zoomLevel, coord) in
-//                            self.trackCameraMovement(coord: coord, zoomLevel: zoomLevel)      // Delete by Rao
+                            self.trackCameraMovement(coord: coord, zoomLevel: zoomLevel)
                         })
                         .disposed(by: self.disposeBag)
               
@@ -118,7 +130,7 @@ class MapViewModel: NSObject, MapViewModelType {
                 print("[REGION] location completed")
             })
             .disposed(by: disposeBag)
-            
+            */
             map.rx.idle
                 .asDriver()
                 .drive(onNext: { zoomLevel in
@@ -154,17 +166,32 @@ class MapViewModel: NSObject, MapViewModelType {
                 .asDriver()
                 .drive(map.rx.minZoomLevel)
                 .disposed(by: disposeBag)
-             */
+            */
         }
     }
     
-    private func setupLocationBinding() {
+    func setupLocationBinding() {
         _ = currentLocation().subscribe(onNext: { coordinate in
             self.setCenterPosition(with: coordinate, zoomLevel: self.mapModel.defaultZoomLevel)
         }).disposed(by: disposeBag)
     }
     
-    private func setupLocationOverlay() {
+    func setCircleOveraly(coord:CLLocationCoordinate2D, mapView:NMFMapView?) {
+        let radius = self.mapView!.rx.radius
+        
+        if circleOverlay == nil {
+            circleOverlay = NMFCircleOverlay(NMGLatLng(from:coord), radius: radius * 1000)
+        }
+        
+        if let overlay = circleOverlay, let map = mapView, overlay.mapView == nil {
+            overlay.fillColor = Color.algaeGreen2.withAlphaComponent(31/255)
+            overlay.outlineColor = Color.algaeGreen2
+            overlay.outlineWidth = 3
+            overlay.mapView = map
+        }
+    }
+    
+    func setupLocationOverlay() {
         if let overlay = self.locationOverlay {
             overlay.circleOutlineWidth = 0
             overlay.hidden = false
@@ -173,10 +200,10 @@ class MapViewModel: NSObject, MapViewModelType {
             overlay.circleColor = Color.algaeGreen2
         }
     }
-    
+
     // MARK: - Local Methods
     
-    private func updateSubModel(district:Bool, within elements:[WithinElement]?, section:(list:Bool, search:Bool)? = nil) {
+    func updateSubModel(district:Bool, within elements:[WithinElement]?, section:(list:Bool, search:Bool)? = nil) {
         if district {
             self.updateTapElements(nil)
             self.updateCardElements(nil)
@@ -189,43 +216,22 @@ class MapViewModel: NSObject, MapViewModelType {
         }
     }
     
-    private func updateCardElements(_ elements:[WithinElement]?) {
+    func updateCardElements(_ elements:[WithinElement]?) {
         if let viewModel = cardViewModel {
             viewModel.setWithinElements(elements)
         }
     }
     
-    private func updateTapElements(_ elements:[WithinElement]?) {
+    func updateTapElements(_ elements:[WithinElement]?) {
         if let viewModel = parkingTapViewModel {
             viewModel.setWithinElements(elements)
         }
     }
     
-    // MARK: - Time Option
-    
-    public func setTimeTicketRange(start startDate: Date, end endDate:Date) {
-        UserData.shared.setOnReserveTime(start:startDate, end:endDate)
-        let displayText = DisplayTimeHandler().displayReservableTime(start: startDate, end: endDate)
-        
-        self.displayReservableTimeText.accept(displayText)
-    }
-    
-    public func setFixedTicketTime(start startDate: Date, hours:Int) {
-        let endDate = startDate.adjust(.hour, offset: hours)
-        UserData.shared.setOnReserveTime(start:startDate, end:endDate)
-        let displayText = DisplayTimeHandler().diplayFixedTicketFromDate(date: startDate, hours: hours)
-        
-        self.displayReservableTimeText.accept(displayText)
-    }
-    
-    public func setMonthlyTicketTime(start startDate: Date, months:Int) {
-        
-    }
-    
     // MARK: - Marker
 
     // 개별 주차면 표시
-    private func generateMarker(within element:WithinElement) -> MarkerWindow? {
+    func generateMarker(within element:WithinElement) -> MarkerWindow? {
         if let map = mapView {
             return MarkerWindow(within:element, map:map)
         }
@@ -234,7 +240,7 @@ class MapViewModel: NSObject, MapViewModelType {
     }
     
     // 구별 주차면 표시
-    private func generateDistrict(district element:WithinDistrictElement) -> DistrictMarkerWindow? {
+    func generateDistrict(district element:WithinDistrictElement) -> DistrictMarkerWindow? {
         if let map = mapView {
             return DistrictMarkerWindow(district:element, map:map)
         }
@@ -242,27 +248,46 @@ class MapViewModel: NSObject, MapViewModelType {
         return nil
     }
     
+    private func removeCenterMark(_ centerType:CenterMarkType) {
+        switch centerType {
+            case .center:
+                destMarker?.mapView = nil
+            case .search:
+                searchMarker?.mapView = nil
+        }
+    }
+    
     // 지도 이동시 중심 마크 표시
-    private func showDestinationMarker(coord:CoordType) {
+    private func showDestinationMarker(coord:CoordType, centerType:CenterMarkType = .center) {
         if let map = self.mapView {
             let location = map.locationOverlay.location
             let center = CLLocation(latitude:location.lat, longitude: location.lng)
             let destination = CLLocation(latitude: coord.latitude, longitude: coord.longitude)
             
-            if let marker = destMarker {
-                marker.position = NMGLatLng(lat: coord.latitude, lng: coord.longitude)
-                marker.mapView = (destination.distance(from: center) > 10) ? map : nil
+            var targetMark:NMFMarker?
+            
+            switch centerType {
+            case .center:
+                targetMark = destMarker
+            case .search:
+                targetMark = searchMarker
+            }
+    
+            if let mark = targetMark {
+                mark.isForceShowIcon = true
+                mark.position = NMGLatLng(lat: coord.latitude, lng: coord.longitude)
+                mark.mapView = (destination.distance(from: center) > 10) ? map : nil
             }
         }
     }
     
-    private func updateMarker(lots:[WithinElement]? = nil, districts:[WithinDistrictElement]? = nil) {
-        if lotList.count > 0 {
-            for item in lotList {
+    func updateMarker(lots:[WithinElement]? = nil, districts:[WithinDistrictElement]? = nil) {
+        if parkinglotList.count > 0 {
+            for item in parkinglotList {
                 item.remove()
             }
       
-            lotList = []
+            parkinglotList = []
         }
         
         if districtList.count > 0 {
@@ -275,26 +300,43 @@ class MapViewModel: NSObject, MapViewModelType {
         
         if let elements = lots {
             for item in elements {
-//                debugPrint("[LOT] ", item.address)    // Delete by Rao
+                debugPrint("[LOT] ", item.address)
                 if let marker = generateMarker(within: item) {
-                    lotList.append(marker)
+                    parkinglotList.append(marker)
                 }
             }
         }
         
         if let elements = districts {
             for item in elements {
-//                debugPrint("[DISTRICT] ", item.name)
+                debugPrint("[DISTRICT] ", item.name)
                 if let marker = generateDistrict(district: item) {
                     districtList.append(marker)
-                }                                                      
+                }
+            }
+        }
+    }
+    
+    func updateMarkerStatus(focused flag:Bool, parkinglotId:Int) {
+        if parkinglotList.count > 0 {
+            
+            if let item = parkinglotList.filter({ $0.selected }).first {
+                item.selected = false
+            }
+            
+            if let item = parkinglotList.filter({ $0.parkinglotId == parkinglotId }).first {
+                item.selected = true
+            }
+            
+            parkinglotList.forEach { item in
+                print("[\(item.parkinglotId) = \(item.selected)")
             }
         }
     }
 
     // MARK: - Camera Moving
     
-    private func trackCameraMovement(coord:CoordType, zoomLevel:Double) {
+    func trackCameraMovement(coord:CoordType, zoomLevel:Double) {
         self.requestReverseGeocoding(coord)
         self.showDestinationMarker(coord: coord)
         
@@ -302,13 +344,13 @@ class MapViewModel: NSObject, MapViewModelType {
         
         mapModel.isDistrictZoomLevel(zoomLevel)
             .asObservable()
-            .subscribe(onNext: { (district) in
-                self.updateParkinglot(coord:coord, district:district)
+            .subscribe(onNext: { (isDistrict) in
+                self.updateParkinglot(coord: coord, district: isDistrict)
             })
             .disposed(by: disposeBag)
     }
     
-    private func currentCenterInCamera(zoomLevel:Double = 16) -> Observable<(Double, CoordType)> {
+    func currentCenterInCamera(zoomLevel:Double = 16) -> Observable<(Double, CoordType)> {
         let coordinate:NMGLatLng = (self.mapView?.cameraPosition.target)!
         
         return Observable.just((zoomLevel, CoordType(coordinate.lat, coordinate.lng)))
@@ -316,27 +358,38 @@ class MapViewModel: NSObject, MapViewModelType {
     
     // MARK: - Address (Reverse Geocoding)
     
-    private func updateAddress(_ addr:String) {
+    func updateAddress(_ addr:String) {
         displayAddressText.accept(addr)
     }
     
     // MARK: - Handle Location
     
-    private func updateCamera(_ coordinate:CLLocationCoordinate2D) {
-        let position = NMGLatLng(from:coordinate)
+    func locateInit() {
+        self.currentCenterInCamera()
+            .subscribe(onNext: { (zoomLevel, coord) in
+                self.trackCameraMovement(coord: coord, zoomLevel: zoomLevel)
+            })
+            .disposed(by: self.disposeBag)
+    }
+    
+    fileprivate func updateCamera(with coordinate:CoordType, centerType:CenterMarkType) {
+        let location = CLLocationCoordinate2DMake(coordinate.latitude, coordinate.longitude)
+        let position = NMGLatLng(from: location)
         
         let params = NMFCameraUpdateParams()
- //       params.zoom(to: zoomLevel)
         params.scroll(to: position)
  
         if let map = self.mapView {
-            self.locationOverlay?.location = position
+            self.showDestinationMarker(coord: coordinate, centerType: centerType)
             map.moveCamera(NMFCameraUpdate(params: params))
         }
     }
     
-    private func setCenterPosition(with coordinate:CLLocationCoordinate2D, zoomLevel:Double) {
+    func setCenterPosition(with coordinate:CLLocationCoordinate2D, zoomLevel:Double) {
         let position = NMFCameraPosition(NMGLatLng(from:coordinate), zoom: zoomLevel, tilt: 0, heading: 0)
+       
+        // For checking map radius
+        // self.setCircleOveraly(coord: coordinate, mapView: self.mapView)
         
         if let map = self.mapView {
             self.locationOverlay?.location = position.target
@@ -344,7 +397,7 @@ class MapViewModel: NSObject, MapViewModelType {
         }
     }
     
-    private func currentLocation() -> Observable<CLLocationCoordinate2D> {
+    func currentLocation() -> Observable<CLLocationCoordinate2D> {
         locationManager.requestWhenInUseAuthorization()
         
         return locationManager.rx.location
@@ -352,15 +405,16 @@ class MapViewModel: NSObject, MapViewModelType {
                 if let available = location, available.verticalAccuracy < 0  || available.horizontalAccuracy < 0 {
                     return CLLocationCoordinate2DMake(defaultCoordinate.latitude, defaultCoordinate.longitude)
                 }
-                
-            return location?.coordinate ?? CLLocationCoordinate2DMake(defaultCoordinate.latitude, defaultCoordinate.longitude)
+               
+            return CLLocationCoordinate2DMake(defaultCoordinate.latitude, defaultCoordinate.longitude)
+           // return location?.coordinate ?? CLLocationCoordinate2DMake(defaultCoordinate.latitude, defaultCoordinate.longitude)
         }
     }
     
-    private func updateParkinglot(coord:CoordType, district:Bool = false, search:Bool = false) {
+    func updateParkinglot(coord:CoordType, district:Bool = false, search:Bool = false) {
         let option:FilterOption = UserData.shared.filter
         let radius = self.mapView!.rx.radius
-        
+
         debugPrint("[RADIUS] ", radius)
         let time = UserData.shared.getOnReserveTime()
         let today = Date().toString(format: .custom("yyyyMMdd"))
@@ -384,7 +438,7 @@ class MapViewModel: NSObject, MapViewModelType {
     
     // MARK: - Network
     
-    private func requestReverseGeocoding(_ location:CoordType) {
+    func requestReverseGeocoding(_ location:CoordType) {
         NaverMap.reverse(orders: [.roadaddr, .addr], coords: location)
             .subscribe(onNext: { (reverse, status) in
                 if let reverseGeocode = reverse, reverseGeocode.count > 0 {
@@ -400,7 +454,7 @@ class MapViewModel: NSObject, MapViewModelType {
             .disposed(by: disposeBag)
     }
     
-    private func within(coordinate:CoordType, radius:Double, filter:FilterType, month:(from:String, count:Int), time:(start:String, end:String)) -> Observable<[WithinElement]> {
+    func within(coordinate:CoordType, radius:Double, filter:FilterType, month:(from:String, count:Int), time:(start:String, end:String)) -> Observable<[WithinElement]> {
         return ParkingLot.within(lat: coordinate.latitude.toString, lon: coordinate.longitude.toString, radius:radius.toString, start:time.start, end:time.end, productType:.time, monthlyFrom:month.from, monthlyCount:month.count, filter: filter)
             .asObservable()
             .map { (within, response) in
@@ -408,7 +462,7 @@ class MapViewModel: NSObject, MapViewModelType {
             }
     }
     
-    private func withinDistrict(coordinate:CoordType, radius:Double) -> Observable<[WithinDistrictElement]> {
+    func withinDistrict(coordinate:CoordType, radius:Double) -> Observable<[WithinDistrictElement]> {
         return ParkingLot.within_district(lat: coordinate.latitude.toString, lon: coordinate.longitude.toString, radius: radius.toString)
             .asObservable()
             .map { (district, response) in
@@ -418,7 +472,7 @@ class MapViewModel: NSObject, MapViewModelType {
     
     // MARK: - Public Methdos
     
-    func zoomIn() {
+    public func zoomIn() {
         if let map = self.mapView {
             mapModel.zoomIn()
                 .asObservable()
@@ -427,7 +481,7 @@ class MapViewModel: NSObject, MapViewModelType {
         }
     }
     
-    func zoomOut() {
+    public func zoomOut() {
         if let map = self.mapView {
             mapModel.zoomIn()
                 .asObservable()
@@ -437,7 +491,7 @@ class MapViewModel: NSObject, MapViewModelType {
     }
     
     // Move the camera to the current position
-    func placeCenter(search:Bool) {
+    public func placeCenter(search:Bool) {
         self.currentLocation()
             .subscribe(onNext: { location in
                 self.setCenterPosition(with: location, zoomLevel:self.mapModel.defaultZoomLevel)
@@ -445,34 +499,47 @@ class MapViewModel: NSObject, MapViewModelType {
                 self.updateParkinglot(coord: CoordType(location.latitude, location.longitude), search: search)
             }).disposed(by: disposeBag)
     }
+    
+    // To get user location for searching place
+    public func userLocation() -> Observable<CoordType> {
+        return currentLocation()
+            .asObservable()
+            .map { location in
+                return CoordType(latitude: location.latitude, longitude: location.longitude)
+            }
+    }
+    
+    public func updateSearchResult(with coord:CoordType) {
+        self.updateCamera(with: coord, centerType: .search)
+    }
+    
+    public func removeSearchResultMark() {
+        self.removeCenterMark(.search)
+    }
+    
+    public func setFocusedMarker(with parkinglotId:Int) {
+        updateMarkerStatus(focused: true, parkinglotId: parkinglotId)
+    }
+    
+    // MARK: Time Option
+    
+    public func setTimeTicketRange(start startDate: Date, end endDate:Date) {
+        UserData.shared.setOnReserveTime(start:startDate, end:endDate)
+        let displayText = DisplayTimeHandler().displayReservableTime(start: startDate, end: endDate)
+        
+        self.displayReservableTimeText.accept(displayText)
+    }
+    
+    public func setFixedTicketTime(start startDate: Date, hours:Int) {
+        let endDate = startDate.adjust(.hour, offset: hours)
+        UserData.shared.setOnReserveTime(start:startDate, end:endDate)
+        let displayText = DisplayTimeHandler().diplayFixedTicketFromDate(date: startDate, hours: hours)
+        
+        self.displayReservableTimeText.accept(displayText)
+    }
+    
+    public func setMonthlyTicketTime(start startDate: Date, months:Int) {
+        
+    }
+    
 }
-
-// MARK:- MapView Delegate
-// Deprecated
-/*
-extension MapViewModel: NMFMapViewDelegate {
-    func didTapMapView(_ point: CGPoint, latLng latlng: NMGLatLng) {
-
-    }
-    
-    func mapViewRegionIsChanging(_ mapView: NMFMapView, byReason reason: Int) {
-        print("[mapViewRegionIsChanging] ", mapView.latitude, ", ", mapView.longitude, " , [R]",  reason)
-    }
-    
-    func mapViewIdle(_ mapView: NMFMapView) {
-        print("[mapViewIdle] zoomLevel: ", mapView.zoomLevel, "(\(mapView.latitude),\(mapView.longitude))" )
-    }
-    
-    func mapView(_ mapView: NMFMapView, regionDidChangeAnimated animated: Bool, byReason reason: Int) {
-        print("[regionDidChangeAnimated] zoomLevel: ", mapView.zoomLevel, "(\(mapView.latitude),\(mapView.longitude)) , reason: ", reason)
-    }
-    
-    func mapView(_ mapView: NMFMapView, regionWillChangeAnimated animated: Bool, byReason reason: Int) {
-        print("[regionWillChangeAnimated] zoomLevel: ", mapView.zoomLevel, "(\(mapView.latitude),\(mapView.longitude)), reason: ", reason)
-    }
-    
-    func mapView(_ mapView: NMFMapView, didTap symbol: NMFSymbol) -> Bool {
-        return false
-    }
-}
-*/

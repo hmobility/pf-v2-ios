@@ -16,6 +16,8 @@ protocol ParkinglotDetailPriceViewModelType {
     
     func setSupported(_ items:[ProductType], fee:Fee?)
     
+    func isAvailable() -> Observable<Bool>
+    
     func getTimeTicketList() -> Observable<(title:String, result:String)>
     func getExtraFee() -> Observable<String>
     
@@ -28,6 +30,7 @@ class ParkinglotDetailPriceViewModel: ParkinglotDetailPriceViewModelType {
     
     var supportedItems:BehaviorRelay<[ProductType]> = BehaviorRelay(value: [])
     var products:BehaviorRelay<[ProductElement]> = BehaviorRelay(value: [])             // 별개의 가격정보 리스트로 제공 되지 않아 ProductElement 를 사용
+    
     private var baseFee:BehaviorRelay<Fee?> = BehaviorRelay(value: nil)
     
     private var localizer:LocalizerType
@@ -47,6 +50,14 @@ class ParkinglotDetailPriceViewModel: ParkinglotDetailPriceViewModelType {
     func setSupported(_ items:[ProductType], fee:Fee?) {
         supportedItems.accept(items)
         baseFee.accept(fee)
+    }
+    
+    func isAvailable() -> Observable<Bool> {
+        return supportedItems
+            .asObservable()
+            .map { items -> Bool in
+                return items.count > 0
+            }
     }
     
     func getTimeTicketList() -> Observable<(title:String, result:String)> {

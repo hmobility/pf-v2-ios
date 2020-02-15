@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PaymentSendView: UIStackView {
+class PaymentGiftView: UIStackView {
 
     /*
     // Only override draw() if you perform custom drawing.

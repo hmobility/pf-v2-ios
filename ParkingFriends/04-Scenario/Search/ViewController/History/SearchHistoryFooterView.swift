@@ -13,11 +13,42 @@ class SearchHistoryFooterView: UIView {
     
     private var titleString:String?
     
+    var disposeBag = DisposeBag()
+    
+    var removeAllAction: ((_ flag:Bool) -> Void)?
+    
     // MARK: - Public Methods
     
     public func setTitle(_ title:String) {
         titleString = title
     }
+    
+    // MARK: - Binding
+    
+    private func setupBinding() {
+        removeButton.rx.tap
+            .subscribe(onNext: { _ in
+                if let action = self.removeAllAction {
+                    action(true)
+                }
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    // MARK: - Initialize
+    
+    private func initialize() {
+        setupBinding()
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+
 
     // MARK: - Local Methods
 
@@ -30,9 +61,14 @@ class SearchHistoryFooterView: UIView {
             removeButton.setAttributedTitle(attributedString, for: .normal)
         }
     }
+    
+    // MARK: - Layout
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        initialize()
+    }
 
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
         updateLayout()
     }

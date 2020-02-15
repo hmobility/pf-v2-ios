@@ -18,91 +18,106 @@ extension MapViewController : AnalyticsType {
 }
 
 class MapViewController: UIViewController {
-    @IBOutlet weak var menuButton: UIButton!
-    @IBOutlet weak var searchOptionButton: UIButton!
     @IBOutlet weak var zoomInButton: UIButton!
     @IBOutlet weak var zoomOutButton: UIButton!
     @IBOutlet weak var placeCenterButton: UIButton!
     
+    @IBOutlet weak var searchResultNavigationView: MapSearchResultNavigationView!
+ 
     @IBOutlet weak var navigationMenuView: NavigationDialogView!
     
     @IBOutlet weak var parkingInfoView: UIView!
     @IBOutlet weak var parkingInfoBottomConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var cardContainerView: UIView!
-    @IBOutlet weak var cardSectionView: UIView!
+  //  @IBOutlet weak var cardSectionView: UIView!
     @IBOutlet weak var searchSectionView: UIView!
     
     @IBOutlet weak var timeSettingView: CustomTimeSettingView!
     
     @IBOutlet weak var mapView:NMFMapView!
+    
     @IBOutlet private weak var rootView: UIView!
+    @IBOutlet private weak var safeAreaView: UIView!
     
     let location = CLLocationManager()
-    
-    var disposeBag = DisposeBag()
     
     private lazy var viewModel: MapViewModelType = MapViewModel(view: mapView)
     private var cardViewModel:ParkingCardViewModelType?
     
-    private lazy var titleView = NavigationTitleView()
-    
     fileprivate var floatingPanelController: FloatingPanelController!
-    
     fileprivate var cardViewController: ParkinglotCardViewController?
+    
+    var disposeBag = DisposeBag()
     
     // MARK: - Bindings
     
-    private func setupNavigation() {
-        navigationItem.titleView = titleView
-        
-        titleView.titleColor = Color.darkGrey
-        titleView.titleFont = Font.gothicNeoMedium26
-        titleView.subtitleColor = Color.darkGrey
-        titleView.subtitleFont = Font.helvetica12
-        
-        if let navigationBar = self.navigationController?.navigationBar {
-            navigationBar.isHidden = true
-        }
-    }
-    
     private func setupNavigationBinding() {
+        searchResultNavigationView.backButton.rx.tap
+            .subscribe(onNext: { [unowned self] _ in
+                self.showNavigationBar(false)
+                self.viewModel.removeSearchResultMark()
+            })
+            .disposed(by: disposeBag)
+        
+        searchResultNavigationView.optionButton.rx.tap
+            .subscribe(onNext: { [unowned self] _ in
+                self.navigateToSearchOption()
+            })
+            .disposed(by: disposeBag)
+        
         navigationMenuView.searchOptionButton.rx.tap
-            .subscribe(onNext: { _ in
+            .subscribe(onNext: { [unowned self] _ in
                 self.navigateToSearchOption()
             })
             .disposed(by: disposeBag)
         
         navigationMenuView.menuButton.rx.tap
-            .subscribe(onNext: { _ in
+            .subscribe(onNext: { [unowned self] _ in
                 self.showSideMenu()
-            })
-            .disposed(by: disposeBag)
-        
-        navigationMenuView.mainTitleButton.rx.tap
-            .subscribe(onNext: { _ in
-                self.navigateToSearch()
-            })
-            .disposed(by: disposeBag)
-        
-        searchOptionButton.rx.tap
-            .subscribe(onNext: { _ in
-                self.navigateToSearchOption()
             })
             .disposed(by: disposeBag)
         
         viewModel.displayAddressText
             .asDriver()
-            .drive(navigationMenuView.mainTitleButton.rx.title())
+            .drive(onNext:{ [unowned self] text in
+                self.searchResultNavigationView.setTitle(text)
+                self.navigationMenuView.mainTitleButton.setTitle(text, for: .normal)
+            })
             .disposed(by: disposeBag)
         
         viewModel.displayReservableTimeText
             .asDriver()
-            .drive(onNext:{ text in
+            .drive(onNext:{ [unowned self] text in
+                self.searchResultNavigationView.setSubtitle(text)
                 self.navigationMenuView.setReservable(time: text)
                 self.timeSettingView.setReservable(time: text)
             })
             .disposed(by: disposeBag)
+    }
+    
+    private func setupSearchResultavigation() {
+        showNavigationBar(false)
+    }
+    
+    private func setupSearchBinding() {
+        Observable.combineLatest(navigationMenuView.mainTitleButton.rx.tap,
+                                 self.viewModel.userLocation())
+                        .map { return $1 }
+                        .subscribe(onNext: { [unowned self] coordinate in
+                            debugPrint("[Search] text: \(coordinate)")
+                            self.navigateToSearch(with: coordinate)
+                           
+                       })
+                       .disposed(by: self.disposeBag)
+        
+        Observable.combineLatest(timeSettingView.tapSearchArea(),
+                                 self.viewModel.userLocation())
+                        .map { return $1 }
+                        .subscribe(onNext: { [unowned self] coordinate in
+                            self.navigateToSearch(with: coordinate)
+                        })
+                        .disposed(by: self.disposeBag)
     }
     
     private func setupButtonBinding() {
@@ -111,7 +126,7 @@ class MapViewController: UIViewController {
                 self.viewModel.zoomIn()
             })
             .disposed(by: disposeBag)
-                
+        
         zoomOutButton.rx.tap
             .subscribe(onNext: { _ in
                 self.viewModel.zoomOut()
@@ -133,12 +148,6 @@ class MapViewController: UIViewController {
                 self.searchSectionView.isHidden = search ? false : true
             })
             .disposed(by: disposeBag)
-        
-        timeSettingView.tapSearchArea()
-            .subscribe { _ in
-                self.navigateToSearch()
-            }
-            .disposed(by: disposeBag)
             
         timeSettingView.tapSelectTime()
             .subscribe { _ in
@@ -151,16 +160,67 @@ class MapViewController: UIViewController {
     
     private func handleCardEvents() {
         if let card = cardViewController {
-            card.detailButtonAction = { element  in
+            card.detailButtonAction = { [unowned self] element  in
                 debugPrint("[CARD] - Detail, Handle events from cards")
                 self.navigateToDetail(with: element)
             }
             
-            card.reserveButtonAction = { element  in
+            card.reserveButtonAction = { [unowned self] element  in
                 debugPrint("[CARD] - Rerverve, Handle events from cards")
                 self.navigateToReserveTicket()
             }
+            
+            card.focusedItemAction = { [unowned self] (index, itemId) in
+                debugPrint("[CARD] - Focused #", index, " #Id ", itemId)
+                self.viewModel.setFocusedMarker(with: itemId)
+            }
         }
+    }
+    
+    // MARK: - Navigation Bar
+    
+    private func showNavigationBar(_ flag:Bool = false) {
+        navigationMenuView.isHidden = flag ? true : false
+        
+        updateSearchResultOrder()
+       
+        if flag {
+            searchResultNavigationView.show()
+        } else {
+            searchResultNavigationView.hide()
+        }
+ 
+        searchResultNavigationView.isHidden = flag ? false : true
+    }
+    
+    private func updateSearchResultOrder() {
+        if let viewModel = self.viewModel.parkingTapViewModel {
+            viewModel.sortOrderText
+                .asDriver()
+                .drive(onNext: { [unowned self] text in
+                    self.searchResultNavigationView.setSearchOrder(text)
+                })
+                .disposed(by: disposeBag)
+        }
+    }
+    
+    // MARK: - Map
+    
+    private func setupMapViewPadding() {
+        let topPadding = navigationMenuView.frame.maxY
+        let bottomPadding = parkingInfoView.frame.maxY - parkingInfoView.frame.minY
+     
+        mapView.logoAlign = .leftBottom
+        mapView.logoMargin = UIEdgeInsets(top: 0, left: 0, bottom: 100, right: 0)
+        
+        mapView.contentInset = UIEdgeInsets(top: topPadding, left: 0, bottom: bottomPadding, right: 0)
+    }
+    
+    // MARK: - Search Result
+
+    private func updateSearchResult(with coord:CoordType) {
+        debugPrint("[SEARCH][RESULT] - ", coord)
+        self.viewModel.updateSearchResult(with: coord)
     }
     
     // MARK: - Initialize
@@ -175,12 +235,15 @@ class MapViewController: UIViewController {
     
     private func initialize() {
         prepareFloatingPanel()
-        
+    
         timeSettingAreaBinding()
-        setupNavigation()
+        setupSearchResultavigation()
         setupNavigationBinding()
         setupButtonBinding()
+        setupSearchBinding()
         
+       // setupMapViewPadding()
+
         handleCardEvents()
     }
     
@@ -191,13 +254,6 @@ class MapViewController: UIViewController {
         initialize()
       //  setupParkingLot()
         viewModel.placeCenter(search: true)
-        
-      //  print("[START]", Date().dateFor(.nearestHour(hour:1)).toString(format: .custom("HHmm")))
-      //  print("[START]", Date().dateFor(.nearestMinute(minute:60)).toString(format: .custom("HHmm")))
-       // print("[END]", Date().dateFor(.nearestMinute(minute:60)).adjust(.hour, offset: 2).toString(format: .custom("HHmm")))
-       // titleView.set(title: "TTT", subTitle: "SSSs")
-
-        // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -229,10 +285,18 @@ class MapViewController: UIViewController {
         self.modal(target)
     }
     
-    func navigateToSearch() {
-         let target = Storyboard.search.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
-         self.modal(target)
-     }
+    func navigateToSearch(with coordinate:CoordType) {
+        let target = Storyboard.search.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
+        target.setLocation(coordinate)
+        self.modal(target)
+        
+        target.resultAction = { [unowned self] coordinate in
+            self.showNavigationBar(true)
+            target.dismissModal(animated: true, completion: {
+                self.updateSearchResult(with: coordinate)
+            })
+        }
+    }
     
     func navigateToTimeDialog() {
         let date = UserData.shared.getOnReserveDate()
@@ -252,6 +316,8 @@ class MapViewController: UIViewController {
             })
         }
     }
+    
+    // MARK: Side Menu
     
     func showSideMenu() {
         let target = Storyboard.menu.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
@@ -274,6 +340,8 @@ class MapViewController: UIViewController {
         
         present(menu, animated: true, completion: nil)
     }
+    
+    // MARK: Prepare
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ParkingCardView" {
@@ -292,12 +360,13 @@ extension MapViewController: FloatingPanelControllerDelegate {
         floatingPanelController = FloatingPanelController()
         floatingPanelController.delegate = self
         floatingPanelController.surfaceView.backgroundColor = .clear
-
+        
         let target = Storyboard.main.instantiateViewController(withIdentifier: "ParkingTapViewController") as! ParkingTapViewController
         
         self.viewModel.parkingTapViewModel = target.getViewModel()
-       
+        
         floatingPanelController.set(contentViewController: target)
+        floatingPanelController.addPanel(toParent: self, belowView: safeAreaView, animated: false)
     }
     
     //MARK: - FloatingPanelControllerDelegate
@@ -311,12 +380,18 @@ extension MapViewController: FloatingPanelControllerDelegate {
     }
     
     func floatingPanelDidMove(_ vc: FloatingPanelController) {
+        let y = vc.surfaceView.frame.origin.y
+        let tipY = vc.originYOfSurface(for: .tip)
+        
+        debugPrint("[PANEL] Did Move :", y,", tip Y :", tipY)
     }
     
     func floatingPanelWillBeginDragging(_ vc: FloatingPanelController) {
+        debugPrint("[PANEL] Begin Dragging")
     }
     
     func floatingPanelDidEndDragging(_ vc: FloatingPanelController, withVelocity velocity: CGPoint, targetPosition: FloatingPanelPosition) {
+        debugPrint("[PANEL] , target : ", targetPosition)
     }
 }
 

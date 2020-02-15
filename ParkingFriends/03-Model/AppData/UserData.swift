@@ -9,7 +9,7 @@
 import Foundation
 import ObjectMapper
 
-fileprivate let kBookingTimeFormat = "yyyyMMddHHmm"
+let kBookingTimeFormat = "yyyyMMddHHmm"
 
 class UserData: NSObject, NSCoding {
     var login: Login?
@@ -17,20 +17,20 @@ class UserData: NSObject, NSCoding {
     
     var displayPaymentGuide: Bool = true
     
-    private var basis:ProductOption = ProductOption()
+    var productSettings:ProductSetting = ProductSetting.shared
     
-    var seaarchHistory:SearchHistory = SearchHistory.shared
+    var searchHistory:SearchHistory = SearchHistory.shared
 
     // MARK: - Public Methods
     
     // MARK: - Product
-    
+    // Deprecated
     public func getProductType() -> ProductType {
-        return basis.selectedProductType
+        return productSettings.selectedProductType
     }
-    
+    // Deprecated
     public func setProduct(type:ProductType) -> UserData {
-         basis.selectedProductType = type
+         productSettings.selectedProductType = type
          return self
     }
     
@@ -48,22 +48,18 @@ class UserData: NSObject, NSCoding {
     // MARK: - Reservable Time
     
     public func getOnReserveDate() -> DateDuration  {
-        return (basis.reservableStartTime, basis.reservableEndTime)
+        return (productSettings.bookingStartTime, productSettings.bookingEndTime)
     }
     
     public func getOnReserveTime() -> (start:String, end:String) {
-        let start = basis.reservableStartTime.toString(format: .custom(kBookingTimeFormat))
-        let end = basis.reservableEndTime.toString(format: .custom(kBookingTimeFormat))
+        let start = productSettings.bookingStartTime.toString(format: .custom(kBookingTimeFormat))
+        let end = productSettings.bookingEndTime.toString(format: .custom(kBookingTimeFormat))
         
         return (start, end)
      }
     
     public func setOnReserveTime(start startDate:Date, end endDate:Date? = nil) {
-        self.basis.start = startDate
-        
-        if let date = endDate {
-            self.basis.end = date
-        }
+        productSettings.setBookingTime(start: startDate, end: endDate)
     }
     
     // MARK: - Auth
@@ -117,7 +113,7 @@ class UserData: NSObject, NSCoding {
         self.login = nil
         self.filter = FilterOption()
         self.displayPaymentGuide = true
-        self.basis = ProductOption()
+        self.productSettings = ProductSetting()
         
         save()
     }
@@ -143,7 +139,7 @@ class UserData: NSObject, NSCoding {
     required init?(coder aDecoder: NSCoder) {
         self.login = aDecoder.decodeObject(forKey: "login") as? Login
         self.filter = aDecoder.decodeObject(forKey: "filter") as! FilterOption
-        self.basis = aDecoder.decodeObject(forKey: "productOption") as? ProductOption ?? ProductOption()
+     //   self.basis = aDecoder.decodeObject(forKey: "productOption") as? ProductOption ?? ProductOption()
         
         self.displayPaymentGuide = aDecoder.decodeObject(forKey: "displayPaymentGuide") as? Bool ?? true
     }
@@ -151,7 +147,7 @@ class UserData: NSObject, NSCoding {
     func encode(with aCoder: NSCoder) {
         aCoder.encode(login, forKey:"login")
         aCoder.encode(filter, forKey: "filter")
-        aCoder.encode(basis, forKey: "productOption")
+       // aCoder.encode(basis, forKey: "productOption")
         
         aCoder.encode(displayPaymentGuide, forKey: "displayPaymentGuide")
     }

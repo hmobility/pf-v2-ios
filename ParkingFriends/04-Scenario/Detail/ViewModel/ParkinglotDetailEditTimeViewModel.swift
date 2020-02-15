@@ -17,6 +17,11 @@ protocol ParkinglotDetailEditTimeViewModelType {
     var endTimeFieldText: Driver<String> { get }
     var closeText: Driver<String> { get }
     var applyText: Driver<String> { get }
+    
+    var supportedProductType: BehaviorRelay<[ProductType]> { get }
+
+    func setProducts(supported products:[ProductType], items:[ProductElement])
+    func getProduct(with productType:ProductType) -> Observable<[ProductElement]>
 }
 
 class ParkinglotDetailEditTimeViewModel: ParkinglotDetailEditTimeViewModelType {
@@ -28,6 +33,11 @@ class ParkinglotDetailEditTimeViewModel: ParkinglotDetailEditTimeViewModelType {
     var endTimeFieldText: Driver<String>
     var closeText: Driver<String>
     var applyText: Driver<String>
+    
+    var supportedProductType: BehaviorRelay<[ProductType]> = BehaviorRelay(value:[])
+    var supportedProductItems: BehaviorRelay<[ProductElement]> = BehaviorRelay(value:[])
+    
+    var DetailViewModel:ParkinglotDetailHeaderViewModelType?
     
     private var localizer:LocalizerType
     
@@ -46,5 +56,26 @@ class ParkinglotDetailEditTimeViewModel: ParkinglotDetailEditTimeViewModelType {
         endTimeFieldText = localizer.localized("ttl_detail_end_time")
         closeText = localizer.localized("btn_close")
         applyText = localizer.localized("btn_to_apply")
+    }
+    
+    // MARK: - Public Methods
+    
+    public func setProducts(supported products:[ProductType], items:[ProductElement]) {
+        if products.count > 0 {
+            supportedProductType.accept(products)
+        }
+        
+        // For displaying items in edit panel
+        if items.count > 0 {
+            supportedProductItems.accept(items)
+        }
+    }
+    
+    public func getProduct(with productType:ProductType) -> Observable<[ProductElement]> {
+        return supportedProductItems
+            .asObservable()
+            .map { items in
+                return items.filter { $0.type == productType }
+            }
     }
 }

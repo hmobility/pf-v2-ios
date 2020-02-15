@@ -9,19 +9,31 @@
 import UIKit
 import BetterSegmentedControl
 
+typealias SupportedProductType = (type:ProductType, title:String)
+
 protocol SupportedProductViewType {
-    func setTitle(with titles:[String])
+    func setTitle(with items:[SupportedProductType])
+    func setSelectedSegments(_ index:Int)
+    func getSelectedSegments() -> Observable<ProductType?>
 }
 
 class ParkinglotDetailSupportedProductView: UIView, SupportedProductViewType {
     @IBOutlet weak var segmentedControl: BetterSegmentedControl!
     
     private var labelSegments:[BetterSegmentedControlSegment]?
+    private var productItems:[SupportedProductType]?
     
     // MARK: - Public Methods
     
-    public func setTitle(with titles:[String]) {
-       labelSegments = LabelSegment.segments(withTitles: titles,
+    public func setHidden(_ flag: Bool) {
+        self.isHidden = flag
+    }
+    
+    public func setTitle(with items:[SupportedProductType]) {
+        productItems = items
+        let titles = items.map { return $0.title }
+        
+        labelSegments = LabelSegment.segments(withTitles: titles,
                                              normalFont: Font.gothicNeoRegular16,
                                              normalTextColor: Color.coolGrey,
                                              selectedFont: Font.gothicNeoRegular16,
@@ -32,6 +44,16 @@ class ParkinglotDetailSupportedProductView: UIView, SupportedProductViewType {
     
     public func setSelectedSegments(_ index:Int) {
         segmentedControl.setIndex(index)
+    }
+    
+    public func getSelectedSegments() -> Observable<ProductType?> {
+        return segmentedControl.rx.selected.map { [unowned self] index in
+                if let items = self.productItems, index < items.count  {
+                    return items[index].type
+                }
+    
+               return nil
+        }
     }
     
     // MARK: - Local Methods

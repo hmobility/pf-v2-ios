@@ -8,7 +8,7 @@
 
 import Foundation
 
-typealias FilterType = (fee:(from:Int, to:Int), sortType:SortType, lotType:ParkingLotType, inOutType:InOutDoorType, option:(cctv:Bool, iotSensor:Bool, mechanical:Bool, allDay:Bool, outsideFlag:InOutDoorType, bleGateFlag:Bool))
+typealias FilterType = (fee:(from:Int, to:Int), sortType:SortType, lotType:ParkingLotType, option:(cctv:Bool, iotSensor:Bool, mechanical:Bool, allDay:Bool, outsideFlag:InOutDoorType, bleGateFlag:Bool))
 
 class FilterOption: NSObject, NSCoding {
     var from:Int = 0
@@ -20,12 +20,12 @@ class FilterOption: NSObject, NSCoding {
     var isIotSensor:Bool = false
     var isNoMechanical:Bool = false
     var isAllDay:Bool = false
-    var isOutsideFlag:InOutDoorType = .none
+//    var isOutsideFlag:InOutDoorType = .none
     var isBleGateFlag:Bool = false
     
     var filter:FilterType {
         get {
-            return FilterType (fee:(from:from, to:to), sortType:sortType, lotType:lotType, inOutType:inOutType, option:(cctv:isCCTV, iotSensor:isIotSensor, mechanical:isNoMechanical, allDay:isAllDay,  outsideFlag:isOutsideFlag, bleGateFlag:isBleGateFlag))
+            return FilterType (fee:(from:from, to:to), sortType:sortType, lotType:lotType, option:(cctv:isCCTV, iotSensor:isIotSensor, mechanical:isNoMechanical, allDay:isAllDay,  outsideFlag:inOutType, bleGateFlag:isBleGateFlag))
         }
     }
     
@@ -42,7 +42,7 @@ class FilterOption: NSObject, NSCoding {
         isIotSensor = aDecoder.decodeObject(forKey: "isIotSensor") as? Bool ?? true
         isNoMechanical = aDecoder.decodeObject(forKey: "isNoMechanical") as? Bool ?? false
         isAllDay = aDecoder.decodeObject(forKey: "isAllDay") as? Bool ?? false
-        isOutsideFlag = aDecoder.decodeObject(forKey: "isOutsideFlag") as? InOutDoorType ?? .none
+      //  isOutsideFlag = aDecoder.decodeObject(forKey: "isOutsideFlag") as? InOutDoorType ?? .none
         isBleGateFlag = aDecoder.decodeObject(forKey: "isBleGateFlag") as? Bool ?? false
     }
 

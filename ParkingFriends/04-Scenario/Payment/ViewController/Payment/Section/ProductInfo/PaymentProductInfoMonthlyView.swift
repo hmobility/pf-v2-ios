@@ -1,20 +1,18 @@
 //
-//  ParkinglotDetailTimeControlView.swift
+//  PaymentMonthlyView.swift
 //  ParkingFriends
 //
-//  Created by PlankFish on 2020/01/29.
+//  Created by PlankFish on 2020/02/12.
 //  Copyright © 2020 Hancom Mobility. All rights reserved.
 //
 
 import UIKit
 
-class ParkinglotDetailTimeControlView: UIStackView {
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var startDateFieldLabel: UILabel!
-    @IBOutlet weak var startTimeFieldLabel: UILabel!
+class PaymentProductInfoMonthlyView: UIView {
+    @IBOutlet weak var startDateTitleLabel: UILabel!
+    @IBOutlet weak var startDatFieldLabel: UILabel!
+    @IBOutlet weak var endDateTitleLabel: UILabel!
     @IBOutlet weak var endDateFieldLabel: UILabel!
-    @IBOutlet weak var endTimeFieldLabel: UILabel!
-    
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.

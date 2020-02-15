@@ -16,16 +16,22 @@ class SearchHistory: NSObject, NSCoding {
     
     // MARK: - Public Methods
     
-    public func getItems() -> [String] {
+    public func getItems() -> [String]? {
         return historyItems.reversed()
     }
     
-    public func resetAll() {
+    public func resetAll() -> [String]? {
         historyItems = []
         save()
+        
+        return historyItems
     }
     
     public func addItem(_ item:String) -> [String]? {
+        guard historyItems.contains(item) == false else {
+            return historyItems
+        }
+        
         historyItems.append(item)
         
         if historyItems.count > limitedOfNumber {
@@ -63,7 +69,7 @@ class SearchHistory: NSObject, NSCoding {
         UserDefaults.standard.synchronize()
     }
     
-    // MARK: - Encoding
+    // MARK: - Encoding/Decoding
     
     required init(coder aDecoder: NSCoder) {
         historyItems = aDecoder.decodeObject(forKey: "historyItems") as? [String] ?? []
