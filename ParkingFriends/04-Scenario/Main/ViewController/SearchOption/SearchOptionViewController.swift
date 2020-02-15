@@ -152,7 +152,7 @@ class SearchOptionViewController: UIViewController {
     }
     
     private func areaTypeSectionBinding() {
-        viewModel.operationTypeText
+        viewModel.areaTypeText
             .drive(areaTypeLabel.rx.text)
             .disposed(by: disposeBag)
         
@@ -170,23 +170,6 @@ class SearchOptionViewController: UIViewController {
             }
             .drive(self.viewModel.selectedInOutType)
             .disposed(by: disposeBag)
-       /*
-        _ = Observable.from(self.viewModel.areaInOutSegmentedItems)
-             .enumerated()
-             .subscribe(onNext: { (index, element) in
-              //   _ = self.operationSegmentedControl.rx.titleForSegment(at: index)
-                 self.areaInOutSegmentedControl.setTitle(element.title, forSegmentAt: index)
-             })
-             .disposed(by: disposeBag)
-
-        areaInOutSegmentedControl.rx.selectedSegmentIndex
-            .asDriver()
-            .map { index in
-                return self.viewModel.areaInOutSegmentedItems[index].type
-            }
-            .drive(self.viewModel.selectedInOutType)
-            .disposed(by: disposeBag)
- */
     }
     
     private func optionTypeBinding() {

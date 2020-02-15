@@ -8,8 +8,7 @@
 
 import UIKit
 
-class ParkinglotDetailTimeButtonView: UIView {
-
+class ParkinglotDetailScheduleButtonView: UIView {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descLabel: UILabel!
     
@@ -20,5 +19,4 @@ class ParkinglotDetailTimeButtonView: UIView {
     public func setScheduledTime(_ text:String) {
         descLabel.text = text
     }
-
 }

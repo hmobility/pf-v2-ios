@@ -24,7 +24,7 @@ class ParkinglotDetailViewController: UIViewController {
     @IBOutlet weak var reserveStatusView: ParkinglotDetailReserveView!
     @IBOutlet weak var priceView:ParkinglotDetailPriceInfoView!
     @IBOutlet weak var operationTimeView:ParkinglotDetailOperationTimeView!
-    @IBOutlet weak var editTimeView:ParkinglotDetailEditTimeView!
+    @IBOutlet weak var editScheduleView:ParkinglotDetailEditScheduleView!
     @IBOutlet weak var noticeView:ParkinglotDetailNoticeView!
     @IBOutlet weak var buttonView:ParkinglotDetailButtonView!
     
@@ -85,7 +85,6 @@ class ParkinglotDetailViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        
         reserveButton.rx.tap
             .subscribe(onNext: { _ in
                  self.navigateToPayment()
@@ -132,12 +131,12 @@ class ParkinglotDetailViewController: UIViewController {
         }
     }
     
-    private func setupEditTimeViewModel() {
-        if let viewModel = editTimeView.getViewModel() {
-            self.viewModel.setEditTimeViewModel(viewModel)
+    private func setupEditScheduleViewModel() {
+        if let viewModel = editScheduleView.getViewModel() {
+            self.viewModel.setEditScheduleViewModel(viewModel)
         }
         
-        editTimeView.setDetailViewModel(viewModel)
+        editScheduleView.setDetailViewModel(viewModel)
     }
     
     private func setupNoticeViewModel() {
@@ -150,21 +149,6 @@ class ParkinglotDetailViewController: UIViewController {
         if let viewModel = buttonView.getViewModel() {
             self.viewModel.setButtonViewModel(viewModel)
         }
-    }
-    // MARK: - Setup ScrollView
-    
-    private func setupScrollView() {
-        let minY = navigationBar.frame.minY
-        let maxY = navigationBar.frame.maxY
-        let height = headerView.bounds.size.height
-        
-        debugPrint("[HEADER] height : ", height, ", Min Y :" , minY)
-
-        scrollView.parallaxHeader.view = headerView
-        scrollView.parallaxHeader.height = (height + minY)
-        scrollView.parallaxHeader.minimumHeight = maxY
-        scrollView.parallaxHeader.mode = .topFill
-        scrollView.parallaxHeader.delegate = headerView
     }
     
     // MARK: - Initialize
@@ -183,17 +167,17 @@ class ParkinglotDetailViewController: UIViewController {
         setupPriceViewModel()
         setupOperationTimeViewModel()
         setupReserveStatusViewModel()
-        setupEditTimeViewModel()
+        setupEditScheduleViewModel()
         setupNoticeViewModel()
         setupButtonViewModel()
     }
     
     private func initialize() {
+        setupSubViewModel()
+        
         setupNavigationBinding()
         setupScrollView()
         setupButtonBinding()
-        
-        setupSubViewModel()
     }
         
     // MARK: - Life Cycle
@@ -211,6 +195,22 @@ class ParkinglotDetailViewController: UIViewController {
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
+    }
+    
+    // MARK: - Setup ScrollView
+    
+    private func setupScrollView() {
+        let minY = navigationBar.frame.minY
+        let maxY = navigationBar.frame.maxY
+        let height = headerView.bounds.size.height
+        
+        debugPrint("[HEADER] height : ", height, ", Min Y :" , minY, " , Max Y :", maxY)
+
+        scrollView.parallaxHeader.view = headerView
+        scrollView.parallaxHeader.height = (height + minY)
+        scrollView.parallaxHeader.minimumHeight = maxY
+        scrollView.parallaxHeader.mode = .topFill
+        scrollView.parallaxHeader.delegate = headerView
     }
     
     // MARK: - Local Methods

@@ -21,13 +21,35 @@ class ParkinglotDetailFixedControlView: UIStackView {
     
     // MARK: - Binding
 
+    private func setupButtonBinding() {
+        let selectedButton = Observable.from(checkButtonArray.map { button in
+                                button.rx.tap.map { button }
+                            })
+                           .merge()
+               
+        checkButtonArray.reduce(Disposables.create()) { disposable, button in
+                    let subscription = selectedButton.map { $0 == button }
+                        .bind(to: button.rx.isSelected)
+                    return Disposables.create(disposable, subscription)
+                }
+                .disposed(by: disposeBag)
+        
+        selectedButton.asObservable().map { button in
+            debugPrint("[FIXED] SELECTED - ", button.tag)
+        }
+    }
     
     // MARK: - Public Methods
 
-    public func updateTimeCheckItemView(with title:String)  {
+    public func updateTimeCheckItemView(with title:String, index:Int)  {
         let itemView = ParkinglotDetailFixedTimeCheckView.loadFromXib() as ParkinglotDetailFixedTimeCheckView
         itemView.setTitle(title)
         contentsView.addArrangedSubview(itemView)
+        itemView.checkButton.tag = index
+        
+        if !checkButtonArray.contains(itemView.checkButton) {
+            checkButtonArray.append(itemView.checkButton)
+        }
     }
 
     // MARK: - Local Methods
@@ -44,7 +66,7 @@ class ParkinglotDetailFixedControlView: UIStackView {
     }
     
     private func initialize() {
-     //   setupItemBinding()
+        setupButtonBinding()
     }
     
     // MARK: - Layout

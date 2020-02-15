@@ -185,7 +185,7 @@
 		625B271F23F17C4E00134E2D /* UINavigationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625B271E23F17C4E00134E2D /* UINavigationController+Extension.swift */; };
 		625B272123F2780000134E2D /* UICollectionView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625B272023F2780000134E2D /* UICollectionView+Rx.swift */; };
 		625B272723F29A4800134E2D /* ProductSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625B272623F29A4800134E2D /* ProductSetting.swift */; };
-		625B272923F2D94800134E2D /* ParkinglotDetailTimeButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625B272823F2D94800134E2D /* ParkinglotDetailTimeButtonView.swift */; };
+		625B272923F2D94800134E2D /* ParkinglotDetailScheduleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625B272823F2D94800134E2D /* ParkinglotDetailScheduleButtonView.swift */; };
 		625B272B23F2D9C500134E2D /* ParkinglotDetailFixedTimeCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625B272A23F2D9C500134E2D /* ParkinglotDetailFixedTimeCheckView.swift */; };
 		625B272D23F3D04500134E2D /* ParkinglotDetailFixedControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625B272C23F3D04500134E2D /* ParkinglotDetailFixedControlView.swift */; };
 		625B272F23F3D05F00134E2D /* ParkinglotDetailMonthlyControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625B272E23F3D05F00134E2D /* ParkinglotDetailMonthlyControlView.swift */; };
@@ -252,7 +252,7 @@
 		62601DDF2397521B00B78033 /* Recommend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62601DDE2397521B00B78033 /* Recommend.swift */; };
 		62601DE12397545100B78033 /* Receipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62601DE02397545100B78033 /* Receipt.swift */; };
 		6261583723D6C8ED00C08CCA /* ParkinglotDetailReserveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6261583623D6C8ED00C08CCA /* ParkinglotDetailReserveView.swift */; };
-		6261583923D6C90400C08CCA /* ParkinglotDetailEditTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6261583823D6C90400C08CCA /* ParkinglotDetailEditTimeView.swift */; };
+		6261583923D6C90400C08CCA /* ParkinglotDetailEditScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6261583823D6C90400C08CCA /* ParkinglotDetailEditScheduleView.swift */; };
 		62630B422383E4BD0029724B /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62630B412383E4BD0029724B /* String+Extension.swift */; };
 		62630B45238506490029724B /* PhoneNumberViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62630B44238506490029724B /* PhoneNumberViewModel.swift */; };
 		62630B47238534FB0029724B /* CodeVerifyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62630B46238534FB0029724B /* CodeVerifyViewModel.swift */; };
@@ -578,7 +578,7 @@
 		625B271E23F17C4E00134E2D /* UINavigationController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extension.swift"; sourceTree = "<group>"; };
 		625B272023F2780000134E2D /* UICollectionView+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Rx.swift"; sourceTree = "<group>"; };
 		625B272623F29A4800134E2D /* ProductSetting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductSetting.swift; sourceTree = "<group>"; };
-		625B272823F2D94800134E2D /* ParkinglotDetailTimeButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkinglotDetailTimeButtonView.swift; sourceTree = "<group>"; };
+		625B272823F2D94800134E2D /* ParkinglotDetailScheduleButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkinglotDetailScheduleButtonView.swift; sourceTree = "<group>"; };
 		625B272A23F2D9C500134E2D /* ParkinglotDetailFixedTimeCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkinglotDetailFixedTimeCheckView.swift; sourceTree = "<group>"; };
 		625B272C23F3D04500134E2D /* ParkinglotDetailFixedControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkinglotDetailFixedControlView.swift; sourceTree = "<group>"; };
 		625B272E23F3D05F00134E2D /* ParkinglotDetailMonthlyControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkinglotDetailMonthlyControlView.swift; sourceTree = "<group>"; };
@@ -643,7 +643,7 @@
 		62601DDE2397521B00B78033 /* Recommend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recommend.swift; sourceTree = "<group>"; };
 		62601DE02397545100B78033 /* Receipt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Receipt.swift; sourceTree = "<group>"; };
 		6261583623D6C8ED00C08CCA /* ParkinglotDetailReserveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkinglotDetailReserveView.swift; sourceTree = "<group>"; };
-		6261583823D6C90400C08CCA /* ParkinglotDetailEditTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkinglotDetailEditTimeView.swift; sourceTree = "<group>"; };
+		6261583823D6C90400C08CCA /* ParkinglotDetailEditScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkinglotDetailEditScheduleView.swift; sourceTree = "<group>"; };
 		62630B412383E4BD0029724B /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		62630B44238506490029724B /* PhoneNumberViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberViewModel.swift; sourceTree = "<group>"; };
 		62630B46238534FB0029724B /* CodeVerifyViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodeVerifyViewModel.swift; sourceTree = "<group>"; };
@@ -860,7 +860,7 @@
 				621BCC7A23D2B932009FE1EC /* Symbol */,
 				621BCC7C23D2B94B009FE1EC /* Price */,
 				6261583423D6C8B700C08CCA /* Reserve */,
-				6261583523D6C8CB00C08CCA /* EditTime */,
+				6261583523D6C8CB00C08CCA /* EditSchedule */,
 				621BCC8523D432C9009FE1EC /* OperationTime */,
 				621BCC8023D4127B009FE1EC /* Notice */,
 				624B51AB23E54ECB00AC6133 /* Confirm */,
@@ -1365,8 +1365,8 @@
 				6259518523DE9D540015A868 /* ParkinglotDetailSymbolViewModel.swift */,
 				6259518D23DFE6360015A868 /* ParkinglotDetailPriceViewModel.swift */,
 				6259518B23DECD460015A868 /* ParkinglotDetailOperationTimeViewModel.swift */,
-				6259519323E117680015A868 /* ParkinglotDetailEditTimeViewModel.swift */,
 				6259518323DD6F1E0015A868 /* ParkinglotDetailReserveViewModel.swift */,
+				6259519323E117680015A868 /* ParkinglotDetailEditTimeViewModel.swift */,
 				6259518F23DFF6BB0015A868 /* ParkinglotDetailNoticeViewModel.swift */,
 				6257DE1423C6F8FB001091B0 /* ParkinglotDetailInfoLabelGuideViewModel.swift */,
 				624B51AE23E5507600AC6133 /* ParkinglotDetailButtonViewModel.swift */,
@@ -1818,16 +1818,16 @@
 			path = Reserve;
 			sourceTree = "<group>";
 		};
-		6261583523D6C8CB00C08CCA /* EditTime */ = {
+		6261583523D6C8CB00C08CCA /* EditSchedule */ = {
 			isa = PBXGroup;
 			children = (
-				6261583823D6C90400C08CCA /* ParkinglotDetailEditTimeView.swift */,
-				625B272823F2D94800134E2D /* ParkinglotDetailTimeButtonView.swift */,
+				6261583823D6C90400C08CCA /* ParkinglotDetailEditScheduleView.swift */,
+				625B272823F2D94800134E2D /* ParkinglotDetailScheduleButtonView.swift */,
 				625B273F23F54BE200134E2D /* TimeTicket */,
 				625B273E23F54BD300134E2D /* FixedTicket */,
 				625B274023F54BF600134E2D /* Monthly Ticket */,
 			);
-			path = EditTime;
+			path = EditSchedule;
 			sourceTree = "<group>";
 		};
 		6261583A23D6DB4800C08CCA /* InfoLabelGuide */ = {
@@ -2776,7 +2776,7 @@
 				629C2861236BF2A300E0E5E1 /* EntryViewModel.swift in Sources */,
 				62576C4623BC4B43007BA1F7 /* IconType.swift in Sources */,
 				62601D702390A59200B78033 /* Member.swift in Sources */,
-				6261583923D6C90400C08CCA /* ParkinglotDetailEditTimeView.swift in Sources */,
+				6261583923D6C90400C08CCA /* ParkinglotDetailEditScheduleView.swift in Sources */,
 				622BC0E22368012A00A43F02 /* GuideContentViewController.swift in Sources */,
 				6257DE0623C6A702001091B0 /* DepartureConfirmViewController.swift in Sources */,
 				62601DBF239647D900B78033 /* ParkinglotCardCollectionViewCell.swift in Sources */,
@@ -2881,7 +2881,7 @@
 				621BCC8E23D5AAC4009FE1EC /* TransparentNavigationBar.swift in Sources */,
 				629C28782370F45500E0E5E1 /* TermsViewController.swift in Sources */,
 				62601DD523974BED00B78033 /* OrderProduct.swift in Sources */,
-				625B272923F2D94800134E2D /* ParkinglotDetailTimeButtonView.swift in Sources */,
+				625B272923F2D94800134E2D /* ParkinglotDetailScheduleButtonView.swift in Sources */,
 				6204555B2398FA09007ADF88 /* FAQsContents.swift in Sources */,
 				6259F27323729431004297E9 /* CarBrandViewModel.swift in Sources */,
 				629DB1A623C1CA8800E68A94 /* ExtraCardTableViewCell.swift in Sources */,

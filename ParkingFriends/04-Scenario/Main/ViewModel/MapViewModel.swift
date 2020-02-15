@@ -53,6 +53,7 @@ let defaultCoordinate = CoordType(37.400634765624986, 127.11203073310433)       
 class MapViewModel: NSObject, MapViewModelType {
     var mapView: NMFMapView?
     var locationOverlay: NMFLocationOverlay?
+    var circleOverlay: NMFCircleOverlay?
     
     var displayAddressText: BehaviorRelay<String> = BehaviorRelay(value: "")
     var displayReservableTimeText: BehaviorRelay<String>
@@ -161,7 +162,7 @@ class MapViewModel: NSObject, MapViewModelType {
                 .asDriver()
                 .drive(map.rx.minZoomLevel)
                 .disposed(by: disposeBag)
-             */
+            */
         }
     }
     
@@ -169,6 +170,21 @@ class MapViewModel: NSObject, MapViewModelType {
         _ = currentLocation().subscribe(onNext: { coordinate in
             self.setCenterPosition(with: coordinate, zoomLevel: self.mapModel.defaultZoomLevel)
         }).disposed(by: disposeBag)
+    }
+    
+    func setCircleOveraly(coord:CLLocationCoordinate2D, mapView:NMFMapView?) {
+        let radius = self.mapView!.rx.radius
+        
+        if circleOverlay == nil {
+            circleOverlay = NMFCircleOverlay(NMGLatLng(from:coord), radius: radius * 1000)
+        }
+        
+        if let overlay = circleOverlay, let map = mapView, overlay.mapView == nil {
+            overlay.fillColor = Color.algaeGreen2.withAlphaComponent(31/255)
+            overlay.outlineColor = Color.algaeGreen2
+            overlay.outlineWidth = 3
+            overlay.mapView = map
+        }
     }
     
     func setupLocationOverlay() {
@@ -359,6 +375,9 @@ class MapViewModel: NSObject, MapViewModelType {
     
     func setCenterPosition(with coordinate:CLLocationCoordinate2D, zoomLevel:Double) {
         let position = NMFCameraPosition(NMGLatLng(from:coordinate), zoom: zoomLevel, tilt: 0, heading: 0)
+       
+        // For checking map radius
+        // self.setCircleOveraly(coord: coordinate, mapView: self.mapView)
         
         if let map = self.mapView {
             self.locationOverlay?.location = position.target

@@ -8,10 +8,9 @@
 
 import UIKit
 
-class ParkinglotDetailEditTimeView: UIStackView {
-    
-    @IBOutlet weak var changeTimeView: UIView!
-    @IBOutlet weak var changeButtonView: ParkinglotDetailTimeButtonView!
+class ParkinglotDetailEditScheduleView: UIStackView {
+    @IBOutlet weak var changeScheduleView: UIView!
+    @IBOutlet weak var scheduleChangeButtonView: ParkinglotDetailScheduleButtonView!
     
     @IBOutlet weak var editControlPanelView: UIStackView!
     @IBOutlet weak var timeEditPanelView: ParkinglotDetailTimeControlView!
@@ -34,7 +33,7 @@ class ParkinglotDetailEditTimeView: UIStackView {
     private func setupTitleBinding() {
         viewModel.changeButtonTitleText
             .asDriver()
-            .drive(changeButtonView.titleLabel.rx.text)
+            .drive(scheduleChangeButtonView.titleLabel.rx.text)
             .disposed(by: disposeBag)
         
         viewModel.viewTitleText
@@ -44,9 +43,12 @@ class ParkinglotDetailEditTimeView: UIStackView {
     }
     
     private func setupEditPanelBinding() {
-        if let viewModel = detailViewModel, let selectedProductType = viewModel.getSelectedProductType() {
-            selectedProductType
+        debugPrint("[EDIT][SCHEUDLE] PANEL SETUP - ENTER")
+        if let viewModel = detailViewModel {
+            debugPrint("[EDIT][SCHEUDLE] PANEL SETUP - ENTERED : ")
+            viewModel.getSelectedProductType()
                 .subscribe(onNext: { [unowned self] productType in
+                    debugPrint("[EDIT][SCHEDULE][TYPE]", productType)
                     self.setSwitchEditPanel(with: productType)
                 })
                 .disposed(by: disposeBag)
@@ -54,13 +56,13 @@ class ParkinglotDetailEditTimeView: UIStackView {
     }
     
     private func setupButtonBinding() {
-        changeButtonView.rx
-                .tapGesture()
-                .when(.recognized)
-                .subscribe { _ in
-                    self.setEditingMode(true)
-                }
-                .disposed(by: disposeBag)
+        scheduleChangeButtonView.rx
+            .tapGesture()
+            .when(.recognized)
+            .subscribe { _ in
+                self.setEditingMode(true)
+            }
+            .disposed(by: disposeBag)
     
         closeButton.rx.tap
             .asDriver()
@@ -80,7 +82,7 @@ class ParkinglotDetailEditTimeView: UIStackView {
     // MARK: - Panel Show/Hide
     
     private func setEditingMode(_ editing:Bool, animated:Bool = true) {
-       self.changeTimeView.isHidden = editing ? true : false
+        self.changeScheduleView.isHidden = editing ? true : false
         
         if animated {
             UIView.transition(with: self, duration: 0.2, options: .curveEaseInOut, animations: {
@@ -91,10 +93,15 @@ class ParkinglotDetailEditTimeView: UIStackView {
         }
     }
     
-    private func setSwitchEditPanel(with productType:ProductType) {
-        timeEditPanelView.isHidden = (productType == .time) ? false : true
-        fixedEditPanelView.isHidden = (productType == .fixed) ? false : true
-        monthlyEditPanelView.isHidden = (productType == .monthly) ? false : true
+    private func setSwitchEditPanel(with productType:ProductType?) {
+        guard let type = productType else {
+            return
+        }
+        
+        debugPrint("[EDIT][SWITCH] - ", type)
+        timeEditPanelView.isHidden = (type == .time) ? false : true
+        fixedEditPanelView.isHidden = (type == .fixed) ? false : true
+        monthlyEditPanelView.isHidden = (type == .monthly) ? false : true
     }
     
     // MARK: - Local Methods
@@ -103,13 +110,14 @@ class ParkinglotDetailEditTimeView: UIStackView {
     
     // MARK: - Setup View Model
     
-    private func setupFixedItems() {
+    private func setupFixedProductItems() {
         viewModel.getProduct(with: .fixed)
+            .asObservable()
             .flatMap({
-                Observable.from($0)
+                Observable.from($0).enumerated()
             })
-            .subscribe(onNext: { [unowned self] item in
-                self.fixedEditPanelView.updateTimeCheckItemView(with: item.name)
+            .subscribe(onNext: { [unowned self] (index, item) in
+                self.fixedEditPanelView.updateTimeCheckItemView(with: item.name, index: index)
             })
             .disposed(by: disposeBag)
     }
@@ -137,7 +145,7 @@ class ParkinglotDetailEditTimeView: UIStackView {
         setupEditPanelBinding()
         setupButtonBinding()
         setEditingMode(false, animated: false)
-        setupFixedItems()
+        setupFixedProductItems()
     }
     
     // MARK: - Life Cycle

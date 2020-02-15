@@ -16,12 +16,12 @@ protocol ParkinglotDetailReserveViewModelType {
     var supportedItems: BehaviorRelay<[ProductType]> { get }
     var availableCarNumber: BehaviorRelay<Int> { get }
     
-    func getSupportedProducts() -> Observable<[(ProductType, String)]>
+    func getSupportedProducts() -> Observable<[(type:ProductType, title:String)]>
     func setProducts(supported products:[ProductType], elements:[ProductElement], onReserve time:DateDuration)
     func getAvailableParkinglotNumber() -> Observable<String>
     
     func updateSelectedProductType(_ productType:ProductType)
-    func getSelectedProductType() -> Observable<ProductType>
+    func getSelectedProductType() -> Observable<ProductType?>
 }
 
 class ParkinglotDetailReserveViewModel: ParkinglotDetailReserveViewModelType {
@@ -65,13 +65,11 @@ class ParkinglotDetailReserveViewModel: ParkinglotDetailReserveViewModelType {
          selectedProductType.accept(productType)
     }
     
-    public func getSelectedProductType() -> Observable<ProductType> {
+    public func getSelectedProductType() -> Observable<ProductType?> {
         return selectedProductType.asObservable()
-            .filter { $0 != nil }
-            .map { $0! }
     }
     
-    public func getSupportedProducts() -> Observable<[(ProductType, String)]> {
+    public func getSupportedProducts() -> Observable<[(type:ProductType, title:String)]> {
         return supportedItems
             .map { items in
                 return items.map {

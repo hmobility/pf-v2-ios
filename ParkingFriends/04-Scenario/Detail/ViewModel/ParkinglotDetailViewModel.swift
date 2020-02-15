@@ -18,13 +18,13 @@ protocol ParkinglotDetailViewModelType {
     
     func loadInfo()
     func changeBookmark(_ state:Bool) 
-    func getSelectedProductType() -> Observable<ProductType>?
+    func getSelectedProductType() -> Observable<ProductType?>
     
     func setHeaderViewModel(_ viewModel:ParkinglotDetailHeaderViewModel)
     func setSymbolViewModel(_ viewModel:ParkinglotDetailSymbolViewModel)
     func setPriceViewModel(_ viewModel:ParkinglotDetailPriceViewModel)
     func setReserveViewModel(_ viewModel:ParkinglotDetailReserveViewModel)
-    func setEditTimeViewModel(_ viewModel:ParkinglotDetailEditTimeViewModel)
+    func setEditScheduleViewModel(_ viewModel:ParkinglotDetailEditTimeViewModel)
     func setOperationTimeViewModel(_ viewModel:ParkinglotDetailOperationTimeViewModel)
     func setNoticeViewModel(_ viewModel:ParkinglotDetailNoticeViewModel)
     func setButtonViewModel(_ viewModel:ParkinglotDetailButtonViewModel)
@@ -43,7 +43,7 @@ class ParkinglotDetailViewModel: ParkinglotDetailViewModelType {
     var priceViewModel:ParkinglotDetailPriceViewModelType?
     var operationTimeViewModel:ParkinglotDetailOperationTimeViewModelType?
     var reserveViewModel:ParkinglotDetailReserveViewModelType?
-    var editTimeViewModel: ParkinglotDetailEditTimeViewModelType?
+    var editScheduleViewModel: ParkinglotDetailEditTimeViewModelType?
     var noticeViewModel:ParkinglotDetailNoticeViewModelType?
     var buttonViewModel:ParkinglotDetailButtonViewModelType?
     
@@ -110,8 +110,8 @@ class ParkinglotDetailViewModel: ParkinglotDetailViewModelType {
         reserveViewModel = viewModel
     }
     
-    public func setEditTimeViewModel(_ viewModel:ParkinglotDetailEditTimeViewModel) {
-        editTimeViewModel = viewModel
+    public func setEditScheduleViewModel(_ viewModel:ParkinglotDetailEditTimeViewModel) {
+        editScheduleViewModel = viewModel
     }
     
     public func setNoticeViewModel(_ viewModel:ParkinglotDetailNoticeViewModel) {
@@ -159,7 +159,7 @@ class ParkinglotDetailViewModel: ParkinglotDetailViewModelType {
         if element.products.count > 0, let data = productSetting {
             let bookable:Bool = element.products.count > 0
             updateBookingTime(supported:element.supportItems, items: element.products, onReserve: data.getBookingDate())
-            udpateBookableState(bookable)
+            updateBookableState(bookable)
         }
     }
     
@@ -208,17 +208,18 @@ class ParkinglotDetailViewModel: ParkinglotDetailViewModelType {
             viewModel.setProducts(supported: products, elements: items, onReserve: duration)
         }
         
-        if let viewModel = editTimeViewModel {
+        if let viewModel = editScheduleViewModel {
             viewModel.setProducts(supported: products, items: items)
         }
     }
     
-    func getSelectedProductType() -> Observable<ProductType>? {
+    func getSelectedProductType() -> Observable<ProductType?> {
+        debugPrint("[SELECTED][PRODUCT] ->>>>> ")
         if let viewModel = reserveViewModel {
             return viewModel.getSelectedProductType()
         }
-        
-        return nil
+        debugPrint("[SELECTED][PRODUCT] ->>>>> NIL")
+        return Observable.just(nil)
     }
     
     // MARK: - Notice
@@ -231,7 +232,7 @@ class ParkinglotDetailViewModel: ParkinglotDetailViewModelType {
     
     // MARK: - Button
     
-    func udpateBookableState(_ enabled:Bool) {
+    func updateBookableState(_ enabled:Bool) {
         if let viewModel = buttonViewModel {
             viewModel.setBookableState(enabled)
         }

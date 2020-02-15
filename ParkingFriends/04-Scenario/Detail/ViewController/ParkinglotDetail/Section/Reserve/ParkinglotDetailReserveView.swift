@@ -27,24 +27,6 @@ class ParkinglotDetailReserveView: UIStackView {
     private let disposeBag = DisposeBag()
     private var localizer:LocalizerType = Localizer.shared
     
-    // MARK: - Initializer
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-    }
-    
-    required init(coder: NSCoder) {
-        super.init(coder: coder)
-    }
-    
-    private func initialize() {
-        setupBinding()
-        setupButtonBinding()
-        
-        setupSupportedTicketBinding()
-        setupChartView()
-    }
-    
     // MARK: - Binding
     
     private func setupBinding() {
@@ -62,6 +44,10 @@ class ParkinglotDetailReserveView: UIStackView {
         viewModel.getSupportedProducts()
             .asObservable()
             .subscribe(onNext: { [unowned self] items in
+                if items.count > 0 {
+                    self.updateEditPanel(with: items[0].type)
+                }
+                
                 if items.count < 2 {
                     self.supportedProductView.setHidden(true)
                 } else {
@@ -205,6 +191,24 @@ class ParkinglotDetailReserveView: UIStackView {
                     }
                 })
                 .disposed(by: disposeBag)
+    }
+    
+    // MARK: - Initializer
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+    
+    required init(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
+    private func initialize() {
+        setupBinding()
+        setupButtonBinding()
+        
+        setupSupportedTicketBinding()
+        setupChartView()
     }
     
     // MARK: - Life Cycle
