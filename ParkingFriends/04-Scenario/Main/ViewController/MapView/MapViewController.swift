@@ -204,6 +204,15 @@ class MapViewController: UIViewController {
         }
     }
     
+    // MARK: - Map
+    
+    private func setupMapViewPadding() {
+        let topPadding = navigationMenuView.frame.maxY
+        let bottomPadding = parkingInfoView.frame.maxY - parkingInfoView.frame.minY
+     
+        mapView.contentInset = UIEdgeInsets(top: topPadding, left: 0, bottom: bottomPadding, right: 0)
+    }
+    
     // MARK: - Search Result
 
     private func updateSearchResult(with coord:CoordType) {
@@ -223,13 +232,14 @@ class MapViewController: UIViewController {
     
     private func initialize() {
         prepareFloatingPanel()
-        
+    
         timeSettingAreaBinding()
         setupSearchResultavigation()
         setupNavigationBinding()
         setupButtonBinding()
         setupSearchBinding()
         
+        setupMapViewPadding()
         handleCardEvents()
     }
     
