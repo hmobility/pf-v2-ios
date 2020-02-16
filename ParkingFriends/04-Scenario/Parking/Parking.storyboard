@@ -1070,13 +1070,13 @@
                                 </subviews>
                             </stackView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dSN-sG-Sn5">
-                                <rect key="frame" x="0.0" y="446" width="414" height="394"/>
+                                <rect key="frame" x="0.0" y="446" width="414" height="372"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m78-7G-iql" userLabel="View - Background">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="394"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="372"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="e2V-oW-JG7">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="374"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="352"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uEl-8s-T62" userLabel="View - Contents">
                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="132"/>
@@ -1294,7 +1294,7 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0W9-0O-ghu" userLabel="View - Change Car">
-                                                        <rect key="frame" x="0.0" y="312" width="414" height="62"/>
+                                                        <rect key="frame" x="0.0" y="312" width="414" height="40"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="차량정보" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6tr-s7-5ce" userLabel="Label - Name(Car)">
                                                                 <rect key="frame" x="20" y="0.0" width="55.5" height="16"/>
@@ -1350,7 +1350,7 @@
                                 <viewLayoutGuide key="frameLayoutGuide" id="4MD-i0-cEZ"/>
                             </scrollView>
                             <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="t1X-Ay-gJ3" userLabel="Stack View - Button Area">
-                                <rect key="frame" x="0.0" y="840" width="414" height="56"/>
+                                <rect key="frame" x="0.0" y="818" width="414" height="56"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="alx-v7-ZuI" userLabel="Button - Main">
                                         <rect key="frame" x="0.0" y="0.0" width="207" height="56"/>
@@ -1422,6 +1422,7 @@
                             <constraint firstItem="sGO-yg-aTB" firstAttribute="top" secondItem="6ow-S8-8V4" secondAttribute="bottom" symbolic="YES" id="t3a-EI-dcs"/>
                             <constraint firstItem="sGO-yg-aTB" firstAttribute="leading" secondItem="eAu-ud-G7m" secondAttribute="leading" id="xiC-Zw-nI5"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="D1U-sk-lWS"/>
                     </view>
                     <size key="freeformSize" width="414" height="896"/>
                 </viewController>

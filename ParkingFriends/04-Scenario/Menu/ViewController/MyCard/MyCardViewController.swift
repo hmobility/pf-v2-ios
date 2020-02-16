@@ -27,7 +27,7 @@ class MyCardViewController: UIViewController {
     
     @IBOutlet weak var backButton: UIButton!
     
-    private lazy var viewModel: MyCardViewModelType = MyCardViewModel()
+    private var viewModel: MyCardViewModelType = MyCardViewModel()
     
     private let disposeBag = DisposeBag()
     

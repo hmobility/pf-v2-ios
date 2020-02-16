@@ -249,6 +249,8 @@
 "dsc_search_guide_parkinglot" = "주차하실 지역의 키워드나 주소를 입력하세요.\n(지역명, 번지, 도로명 주소)";
 "ttl_search_no_result" = "검색 결과가 없어요.";
 "dsc_search_no_result" = "입력한 검색어와 일치하는 결과가 없습니다.";
+"ttl_favorite_no_result" = "등록된 주차장이 없어요";
+"dsc_favorite_no_result" = "자주 이용하는 주차장은 주차장 상세정보에서\n버튼을 눌러 즐겨찾기에 등록해보세요.";
 
 // Payment
 "ttl_payment_guide" = "유의사항을 확인하세요!";

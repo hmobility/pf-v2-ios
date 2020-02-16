@@ -149,6 +149,11 @@
 		6257DE4D23CBEFB9001091B0 /* ExtendReserveDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6257DE4C23CBEFB9001091B0 /* ExtendReserveDialog.swift */; };
 		6257DE4F23CBEFD6001091B0 /* ExtendDurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6257DE4E23CBEFD6001091B0 /* ExtendDurationViewController.swift */; };
 		6257DE5123CBF446001091B0 /* ExtendDurationNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6257DE5023CBF446001091B0 /* ExtendDurationNavigationController.swift */; };
+		6258336A23F9193B0078F4CE /* PaymentHistoryEmptyReservationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258336923F9193B0078F4CE /* PaymentHistoryEmptyReservationViewController.swift */; };
+		6258336C23F919800078F4CE /* PaymentHistoryEmptyHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258336B23F919800078F4CE /* PaymentHistoryEmptyHistoryViewController.swift */; };
+		6258336E23F91C040078F4CE /* PaymentHistoryEmptyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258336D23F91C040078F4CE /* PaymentHistoryEmptyViewModel.swift */; };
+		6258337223F921A10078F4CE /* PaymentHistoryReservationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258337123F921A10078F4CE /* PaymentHistoryReservationViewController.swift */; };
+		6258337423F921BC0078F4CE /* PaymentHistoryUsedTicketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258337323F921BC0078F4CE /* PaymentHistoryUsedTicketViewController.swift */; };
 		6259518423DD6F1E0015A868 /* ParkinglotDetailReserveViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6259518323DD6F1E0015A868 /* ParkinglotDetailReserveViewModel.swift */; };
 		6259518623DE9D540015A868 /* ParkinglotDetailSymbolViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6259518523DE9D540015A868 /* ParkinglotDetailSymbolViewModel.swift */; };
 		6259518823DEAA1E0015A868 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6259518723DEAA1E0015A868 /* UIColor+Extension.swift */; };
@@ -543,6 +548,11 @@
 		6257DE4C23CBEFB9001091B0 /* ExtendReserveDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtendReserveDialog.swift; sourceTree = "<group>"; };
 		6257DE4E23CBEFD6001091B0 /* ExtendDurationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtendDurationViewController.swift; sourceTree = "<group>"; };
 		6257DE5023CBF446001091B0 /* ExtendDurationNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtendDurationNavigationController.swift; sourceTree = "<group>"; };
+		6258336923F9193B0078F4CE /* PaymentHistoryEmptyReservationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentHistoryEmptyReservationViewController.swift; sourceTree = "<group>"; };
+		6258336B23F919800078F4CE /* PaymentHistoryEmptyHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentHistoryEmptyHistoryViewController.swift; sourceTree = "<group>"; };
+		6258336D23F91C040078F4CE /* PaymentHistoryEmptyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentHistoryEmptyViewModel.swift; sourceTree = "<group>"; };
+		6258337123F921A10078F4CE /* PaymentHistoryReservationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentHistoryReservationViewController.swift; sourceTree = "<group>"; };
+		6258337323F921BC0078F4CE /* PaymentHistoryUsedTicketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentHistoryUsedTicketViewController.swift; sourceTree = "<group>"; };
 		6259518323DD6F1E0015A868 /* ParkinglotDetailReserveViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkinglotDetailReserveViewModel.swift; sourceTree = "<group>"; };
 		6259518523DE9D540015A868 /* ParkinglotDetailSymbolViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkinglotDetailSymbolViewModel.swift; sourceTree = "<group>"; };
 		6259518723DEAA1E0015A868 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
@@ -1488,6 +1498,24 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
+		6258336F23F9214E0078F4CE /* ReservationHistory */ = {
+			isa = PBXGroup;
+			children = (
+				6258337123F921A10078F4CE /* PaymentHistoryReservationViewController.swift */,
+				6258336923F9193B0078F4CE /* PaymentHistoryEmptyReservationViewController.swift */,
+			);
+			path = ReservationHistory;
+			sourceTree = "<group>";
+		};
+		6258337023F9216C0078F4CE /* UsedHistory */ = {
+			isa = PBXGroup;
+			children = (
+				6258337323F921BC0078F4CE /* PaymentHistoryUsedTicketViewController.swift */,
+				6258336B23F919800078F4CE /* PaymentHistoryEmptyHistoryViewController.swift */,
+			);
+			path = UsedHistory;
+			sourceTree = "<group>";
+		};
 		625951A023E2A92D0015A868 /* Guide */ = {
 			isa = PBXGroup;
 			children = (
@@ -1757,6 +1785,7 @@
 				625B273C23F411FA00134E2D /* PaymentMethodViewModel.swift */,
 				6259519E23E2A0A70015A868 /* PaymentParkingInfoViewModel.swift */,
 				6260E35823F7EB720066086F /* PaymentHistoryViewModel.swift */,
+				6258336D23F91C040078F4CE /* PaymentHistoryEmptyViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1840,6 +1869,8 @@
 			isa = PBXGroup;
 			children = (
 				6260E35623F7EA280066086F /* PaymentHistoryViewController.swift */,
+				6258336F23F9214E0078F4CE /* ReservationHistory */,
+				6258337023F9216C0078F4CE /* UsedHistory */,
 			);
 			path = PaymentHistory;
 			sourceTree = "<group>";
@@ -2808,6 +2839,7 @@
 				629C287423700FF500E0E5E1 /* AgreementViewController.swift in Sources */,
 				6210BAC8237931DA001C6065 /* AppConfig.swift in Sources */,
 				6257DE0D23C6ADF2001091B0 /* DepartureNoChargeViewController.swift in Sources */,
+				6258337423F921BC0078F4CE /* PaymentHistoryUsedTicketViewController.swift in Sources */,
 				629C2861236BF2A300E0E5E1 /* EntryViewModel.swift in Sources */,
 				62576C4623BC4B43007BA1F7 /* IconType.swift in Sources */,
 				62601D702390A59200B78033 /* Member.swift in Sources */,
@@ -2834,6 +2866,7 @@
 				62601DA32394FD7A00B78033 /* PaymentGuideViewController.swift in Sources */,
 				62601DD22397435F00B78033 /* Transaction.swift in Sources */,
 				621BCC9423D68724009FE1EC /* ParkinglotDetailMonthlyTicketPriceItemView.swift in Sources */,
+				6258336E23F91C040078F4CE /* PaymentHistoryEmptyViewModel.swift in Sources */,
 				62601DA52394FF8700B78033 /* PaymentGuideViewModel.swift in Sources */,
 				62601D972394E13C00B78033 /* Address.swift in Sources */,
 				629C285F236BF25F00E0E5E1 /* EntryViewController.swift in Sources */,
@@ -2898,6 +2931,7 @@
 				A4225E7323584A16004F48C4 /* ServerResult.swift in Sources */,
 				62AE7241237A77DD00BE6FA3 /* MessageDialog.swift in Sources */,
 				62576C5523BDDE91007BA1F7 /* TimeTicketDateViewController.swift in Sources */,
+				6258337223F921A10078F4CE /* PaymentHistoryReservationViewController.swift in Sources */,
 				622BC0E82368262000A43F02 /* Storyboard.swift in Sources */,
 				620455552398F0E3007ADF88 /* Agreements.swift in Sources */,
 				6259518423DD6F1E0015A868 /* ParkinglotDetailReserveViewModel.swift in Sources */,
@@ -2944,6 +2978,7 @@
 				625ACE9523A3826D002D0653 /* NaverMap.swift in Sources */,
 				625951B123E2B2A20015A868 /* PaymentTotalPriceView.swift in Sources */,
 				6259519023DFF6BB0015A868 /* ParkinglotDetailNoticeViewModel.swift in Sources */,
+				6258336A23F9193B0078F4CE /* PaymentHistoryEmptyReservationViewController.swift in Sources */,
 				62601D8523923D8500B78033 /* CarModels.swift in Sources */,
 				625B272B23F2D9C500134E2D /* ParkinglotDetailFixedTimeCheckView.swift in Sources */,
 				62601DB823961CF000B78033 /* Order.swift in Sources */,
@@ -3004,6 +3039,7 @@
 				62601DD0239740AA00B78033 /* PointsAPI.swift in Sources */,
 				625ACE9723A498E3002D0653 /* NaverMapAdapter.swift in Sources */,
 				625ED5B5238298A50088860C /* FindPasswordViewModel.swift in Sources */,
+				6258336C23F919800078F4CE /* PaymentHistoryEmptyHistoryViewController.swift in Sources */,
 				622BC0EA236835B800A43F02 /* UIViewController+Extension.swift in Sources */,
 				625ACE8F23A30A02002D0653 /* MapAPI.swift in Sources */,
 				624CE051238CBB1F0068F4F9 /* CodeVerifyModel.swift in Sources */,

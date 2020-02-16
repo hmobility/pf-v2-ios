@@ -1,61 +1,49 @@
 //
-//  NoCardViewController.swift
+//  PaymentHistoryEmptyReservationViewController.swift
 //  ParkingFriends
 //
-//  Created by PlankFish on 2020/01/05.
+//  Created by PlankFish on 2020/02/16.
 //  Copyright © 2020 Hancom Mobility. All rights reserved.
 //
 
 import UIKit
 
-extension EmptyCardViewController: AnalyticsType {
-    var screenName: String {
-        return "[SCREEN] No Card View"
-    }
-}
-
-class EmptyCardViewController: UIViewController {
+class PaymentHistoryEmptyReservationViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     
+    private var viewModel: PaymentHistoryEmptyViewModelType = PaymentHistoryEmptyViewModel()
+    
     private let disposeBag = DisposeBag()
-    
-    private var viewModel: EmptyCardViewModelType = EmptyCardViewModel()
-    
     
     // MARK: - Binding
     
     private func setupBinding() {
-        viewModel.noDataTitle
+        viewModel.emptyReservationTitleText
             .drive(titleLabel.rx.text)
             .disposed(by: disposeBag)
         
-        viewModel.noDataDescription
+        viewModel.emptyReservationDescText
             .drive(descriptionLabel.rx.text)
             .disposed(by: disposeBag)
     }
     
-    // MARK: - Initialize
-    
-    init() {
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
+    // MARK: - Initiailize
     
     private func initialize() {
         setupBinding()
     }
+    
+    // MARK: - Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         initialize()
     }
-    
-    // MARK: - Navigation
+
     /*
+    // MARK: - Navigation
+
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.

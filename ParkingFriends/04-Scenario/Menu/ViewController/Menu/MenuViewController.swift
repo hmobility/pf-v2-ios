@@ -129,6 +129,13 @@ class MenuViewController: UIViewController {
             .drive(paymentHistoryButton.rx.title())
             .disposed(by: disposeBag)
         
+        paymentHistoryButton.rx.tap
+            .asDriver()
+            .drive(onNext: { _ in
+                self.navigateToHistory()
+            })
+            .disposed(by: disposeBag)
+        
         viewModel.myInfoText
             .drive(myInfoButton.rx.title())
             .disposed(by: disposeBag)
@@ -199,6 +206,11 @@ class MenuViewController: UIViewController {
 
     func navigateToLevelGuide() {
         let target = Storyboard.menu.instantiateViewController(withIdentifier: "LevelGuideViewController") as! LevelGuideViewController
+        self.modal(target, animated: true)
+    }
+    
+    func navigateToHistory() {
+        let target = Storyboard.payment.instantiateViewController(withIdentifier: "PaymentHistoryNavigationController") as! UINavigationController
         self.modal(target, animated: true)
     }
     
