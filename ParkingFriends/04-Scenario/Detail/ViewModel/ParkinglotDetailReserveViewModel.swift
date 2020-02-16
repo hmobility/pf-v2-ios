@@ -48,7 +48,7 @@ class ParkinglotDetailReserveViewModel: ParkinglotDetailReserveViewModelType {
     
     // MARK: - Local Methods
     
-    func getTicketTitle(with type: ProductType) -> SupportedProductType {
+    func getTicketTitle(with type: ProductType) -> ProductItemType {
         switch type {
         case .time:
             return (type, self.localizer.localized("ttl_ticket_time"))

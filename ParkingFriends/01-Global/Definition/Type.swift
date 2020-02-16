@@ -14,7 +14,10 @@ typealias CoordType = (latitude:Double, longitude:Double)
 
 typealias CardInfoType = (cardNo:String, yearExpired:String, monthExpired:String, password:String, birthDate:String)
 
- typealias DateDuration = (start:Date, end:Date)
+typealias DateDuration = (start:Date, end:Date)
+
+typealias ProductItemType = (type:ProductType, title:String)
+
 
 enum Language:String {
     case korean = "ko"

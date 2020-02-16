@@ -9,10 +9,11 @@
 import Foundation
 
 protocol PaymentHistoryViewModelType {
+     var viewTitleText: Driver<String> { get }
 }
 
 class PaymentHistoryViewModel: PaymentHistoryViewModelType {
-  //  var viewTitleText: Driver<String>
+    var viewTitleText: Driver<String>
 
     var localizer:LocalizerType
     
@@ -20,6 +21,8 @@ class PaymentHistoryViewModel: PaymentHistoryViewModelType {
     
     init(localizer: LocalizerType = Localizer.shared) {
         self.localizer = localizer
+    
+        viewTitleText = localizer.localized("ttl_payment_for_parking")
         
     }
 }

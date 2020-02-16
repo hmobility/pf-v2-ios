@@ -202,7 +202,6 @@
 		625BD92523B8705C00C3D4E9 /* SortOrderDialogView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 625BD92423B8705C00C3D4E9 /* SortOrderDialogView.xib */; };
 		625BD92723B8762800C3D4E9 /* SortOrderDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625BD92623B8762800C3D4E9 /* SortOrderDialog.swift */; };
 		625BD92923B8767D00C3D4E9 /* SortOrderDialogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625BD92823B8767D00C3D4E9 /* SortOrderDialogView.swift */; };
-		625DD54923CD518100363DC6 /* ParkingTicketTapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625DD54823CD518100363DC6 /* ParkingTicketTapView.swift */; };
 		625ED5B3238298330088860C /* ChangePhoneNumberViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625ED5B2238298330088860C /* ChangePhoneNumberViewModel.swift */; };
 		625ED5B5238298A50088860C /* FindPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625ED5B4238298A50088860C /* FindPasswordViewModel.swift */; };
 		62601D6A238FA54B00B78033 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62601D69238FA54B00B78033 /* CoreLocation.framework */; };
@@ -597,7 +596,6 @@
 		625BD92423B8705C00C3D4E9 /* SortOrderDialogView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SortOrderDialogView.xib; sourceTree = "<group>"; };
 		625BD92623B8762800C3D4E9 /* SortOrderDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortOrderDialog.swift; sourceTree = "<group>"; };
 		625BD92823B8767D00C3D4E9 /* SortOrderDialogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortOrderDialogView.swift; sourceTree = "<group>"; };
-		625DD54823CD518100363DC6 /* ParkingTicketTapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingTicketTapView.swift; sourceTree = "<group>"; };
 		625ED5B2238298330088860C /* ChangePhoneNumberViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePhoneNumberViewModel.swift; sourceTree = "<group>"; };
 		625ED5B4238298A50088860C /* FindPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPasswordViewModel.swift; sourceTree = "<group>"; };
 		62601D69238FA54B00B78033 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -1594,7 +1592,6 @@
 		625ACE7A23A0CBAB002D0653 /* ParkinglotList */ = {
 			isa = PBXGroup;
 			children = (
-				625DD54823CD518100363DC6 /* ParkingTicketTapView.swift */,
 				625ACE7B23A0CBBB002D0653 /* ParkingTapViewController.swift */,
 				625ACE7D23A0DB18002D0653 /* ParkingPriceTableViewCell.swift */,
 				625ACE7F23A0DB25002D0653 /* ParkingDistanceTableViewCell.swift */,
@@ -2863,7 +2860,6 @@
 				62576C6D23BF42D2007BA1F7 /* MyInfoViewModel.swift in Sources */,
 				62269BE223B085F900BFACC1 /* DistrictMarkerWindow.swift in Sources */,
 				6210BABB237901BF001C6065 /* PasswordModel.swift in Sources */,
-				625DD54923CD518100363DC6 /* ParkingTicketTapView.swift in Sources */,
 				629C286B236E957400E0E5E1 /* BasicInfoViewController.swift in Sources */,
 				62630B47238534FB0029724B /* CodeVerifyViewModel.swift in Sources */,
 				62254E8B238B992500AF82B9 /* Parkinglots.swift in Sources */,
