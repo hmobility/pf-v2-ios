@@ -22,14 +22,29 @@ class SearchFavoriteEmptyViewController: UIViewController {
        
     var disposeBag = DisposeBag()
     
+    // MARK: - Binding
+    
+    private func setupBinding() {
+        viewModel.favoriteNoResultText
+            .drive(titleLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        viewModel.favoriteNoResultDescText
+            .drive(descriptionLabel.rx.text)
+            .disposed(by: disposeBag)
+    }
+    
     // MARK: - Initiailize
+    
+    private func initialize() {
+        setupBinding()
+    }
     
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        initialize()
     }
     
     // MARK: - Navigation

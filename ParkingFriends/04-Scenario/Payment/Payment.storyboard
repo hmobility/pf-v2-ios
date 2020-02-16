@@ -990,9 +990,11 @@
         <scene sceneID="gDx-3B-WXn">
             <objects>
                 <navigationController storyboardIdentifier="PaymentHistoryNavigationController" id="8QZ-Tw-woK" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="AE9-pL-ciA">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" shadowImage="imgPixel" id="AE9-pL-ciA">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>
                     <connections>
                         <segue destination="wei-Q7-ZXr" kind="relationship" relationship="rootViewController" id="20n-M7-5UR"/>
@@ -1007,33 +1009,65 @@
             <objects>
                 <viewController id="wei-Q7-ZXr" customClass="PaymentHistoryViewController" customModule="ParkingFriends" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qyi-0z-GID">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mcN-wO-kyc" userLabel="View - Segmented Control">
-                                <rect key="frame" x="0.0" y="88" width="414" height="48"/>
+                            <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mcN-wO-kyc" userLabel="View - Segmented Control" customClass="BetterSegmentedControl" customModule="BetterSegmentedControl">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="48"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hcj-2W-6gx">
+                                        <rect key="frame" x="0.0" y="47.5" width="414" height="0.5"/>
+                                        <color key="backgroundColor" name="Black24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="0.5" id="kx5-dk-nyl"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="JbQ-8T-0Io"/>
+                                    <constraint firstAttribute="bottom" secondItem="hcj-2W-6gx" secondAttribute="bottom" id="gGz-eT-RHr"/>
+                                    <constraint firstAttribute="trailing" secondItem="hcj-2W-6gx" secondAttribute="trailing" id="jO8-vG-Kse"/>
+                                    <constraint firstItem="hcj-2W-6gx" firstAttribute="leading" secondItem="mcN-wO-kyc" secondAttribute="leading" id="pR5-9P-INj"/>
                                 </constraints>
                             </view>
+                            <containerView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ba-zl-K9I">
+                                <rect key="frame" x="0.0" y="48" width="414" height="726"/>
+                                <connections>
+                                    <segue destination="cAj-ym-oA4" kind="embed" identifier="PaymentHistoryNavigation" id="HHO-cu-UQ1"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="lkf-i3-bce" firstAttribute="bottom" secondItem="0ba-zl-K9I" secondAttribute="bottom" id="88z-GO-ptl"/>
                             <constraint firstItem="mcN-wO-kyc" firstAttribute="top" secondItem="lkf-i3-bce" secondAttribute="top" id="8gs-RO-45H"/>
                             <constraint firstItem="lkf-i3-bce" firstAttribute="trailing" secondItem="mcN-wO-kyc" secondAttribute="trailing" id="Mmt-lk-aNX"/>
+                            <constraint firstAttribute="trailing" secondItem="0ba-zl-K9I" secondAttribute="trailing" id="Yy6-eV-3iT"/>
                             <constraint firstItem="mcN-wO-kyc" firstAttribute="leading" secondItem="lkf-i3-bce" secondAttribute="leading" id="haf-CW-K84"/>
+                            <constraint firstItem="0ba-zl-K9I" firstAttribute="leading" secondItem="qyi-0z-GID" secondAttribute="leading" id="qOJ-jf-dgw"/>
+                            <constraint firstItem="0ba-zl-K9I" firstAttribute="top" secondItem="mcN-wO-kyc" secondAttribute="bottom" id="taH-4u-DSB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="lkf-i3-bce"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Oeg-NG-qjd"/>
+                    <navigationItem key="navigationItem" id="Oeg-NG-qjd">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="ylQ-Ke-17P">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="aWp-Lx-h4I" userLabel="Button - Back">
+                                <rect key="frame" x="20" y="0.0" width="48" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="icBackBlack"/>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <outlet property="segmentedControlView" destination="mcN-wO-kyc" id="ef6-by-bho"/>
+                        <outlet property="backButton" destination="aWp-Lx-h4I" id="ccL-xq-uom"/>
+                        <outlet property="containerView" destination="0ba-zl-K9I" id="zCm-0s-qBX"/>
+                        <outlet property="tapSegmentedControl" destination="mcN-wO-kyc" id="Wb3-nm-7m5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oNq-s6-eel" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2772" y="-596"/>
+            <point key="canvasLocation" x="2771.0144927536235" y="-596.65178571428567"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="3wy-N8-bhD">
@@ -1623,6 +1657,263 @@
             </objects>
             <point key="canvasLocation" x="767" y="565"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="mKp-4g-DCf">
+            <objects>
+                <navigationController storyboardIdentifier="PaymentHistoryNavigation" navigationBarHidden="YES" id="cAj-ym-oA4" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="2bS-PX-Dua"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="K2o-k1-eJK">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tig-VP-z2a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3649" y="-595"/>
+        </scene>
+        <!--Payment History Empty Reservation View Controller-->
+        <scene sceneID="n7f-33-Yam">
+            <objects>
+                <viewController storyboardIdentifier="PaymentHistoryEmptyReservationViewController" id="vTp-Jx-BFO" customClass="PaymentHistoryEmptyReservationViewController" customModule="ParkingFriends" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GrH-02-soa">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imgSearchNoResult" translatesAutoresizingMaskIntoConstraints="NO" id="Z1F-89-hwd" userLabel="ImageView - Icon">
+                                <rect key="frame" x="87" y="136" width="240" height="240"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="주차장 예약 내역이 없어요." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="raK-nE-R5G" userLabel="Label - Title">
+                                <rect key="frame" x="10" y="416" width="394" height="22"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="18"/>
+                                <color key="textColor" name="DarkGrey"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zNT-bD-Vq9" userLabel="Label - Description">
+                                <rect key="frame" x="10" y="448" width="394" height="36"/>
+                                <string key="text">주차장을 예약하시면
+여기에 예약 내역이 나타납니다.</string>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="15"/>
+                                <color key="textColor" name="Steel"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" name="IceBlue"/>
+                        <constraints>
+                            <constraint firstItem="zNT-bD-Vq9" firstAttribute="top" secondItem="raK-nE-R5G" secondAttribute="bottom" constant="10" id="3Er-C7-JHW"/>
+                            <constraint firstItem="HFk-O0-o72" firstAttribute="trailing" secondItem="raK-nE-R5G" secondAttribute="trailing" constant="10" id="6ae-8M-qQ7"/>
+                            <constraint firstItem="raK-nE-R5G" firstAttribute="top" secondItem="Z1F-89-hwd" secondAttribute="bottom" constant="40" id="HSh-6J-gvr"/>
+                            <constraint firstItem="Z1F-89-hwd" firstAttribute="top" secondItem="GrH-02-soa" secondAttribute="top" constant="136" id="Kv4-yw-bYn"/>
+                            <constraint firstItem="zNT-bD-Vq9" firstAttribute="leading" secondItem="HFk-O0-o72" secondAttribute="leading" constant="10" id="LuV-iq-eag"/>
+                            <constraint firstItem="Z1F-89-hwd" firstAttribute="centerX" secondItem="GrH-02-soa" secondAttribute="centerX" id="Rn3-J4-jCq"/>
+                            <constraint firstItem="HFk-O0-o72" firstAttribute="trailing" secondItem="zNT-bD-Vq9" secondAttribute="trailing" constant="10" id="TOe-5i-cKD"/>
+                            <constraint firstItem="raK-nE-R5G" firstAttribute="leading" secondItem="HFk-O0-o72" secondAttribute="leading" constant="10" id="hWm-X0-5yf"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="HFk-O0-o72"/>
+                    </view>
+                    <connections>
+                        <outlet property="descriptionLabel" destination="zNT-bD-Vq9" id="kXs-Fu-bgh"/>
+                        <outlet property="titleLabel" destination="raK-nE-R5G" id="ce1-Dq-l0G"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="APU-4E-wgo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4683" y="-538"/>
+        </scene>
+        <!--Payment History Empty History View Controller-->
+        <scene sceneID="3Oc-pP-8em">
+            <objects>
+                <viewController storyboardIdentifier="PaymentHistoryEmptyHistoryViewController" id="hfJ-Z3-4st" customClass="PaymentHistoryEmptyHistoryViewController" customModule="ParkingFriends" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9lO-LS-tv2">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imgSearchNoResult" translatesAutoresizingMaskIntoConstraints="NO" id="tu4-Km-Mrl" userLabel="ImageView - Icon">
+                                <rect key="frame" x="87" y="136" width="240" height="240"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="지난 예약 내역이 없어요." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bh4-n8-uCN" userLabel="Label - Title">
+                                <rect key="frame" x="10" y="416" width="394" height="22"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="18"/>
+                                <color key="textColor" name="DarkGrey"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nUY-kz-w8b" userLabel="Label - Description">
+                                <rect key="frame" x="10" y="448" width="394" height="36"/>
+                                <string key="text">이용하거나 기간이 만료된 주차장 예약건이
+여기에 나타납니다.</string>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="15"/>
+                                <color key="textColor" name="Steel"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" name="IceBlue"/>
+                        <constraints>
+                            <constraint firstItem="nUY-kz-w8b" firstAttribute="leading" secondItem="R4j-RL-k4s" secondAttribute="leading" constant="10" id="KWd-J8-sSu"/>
+                            <constraint firstItem="tu4-Km-Mrl" firstAttribute="top" secondItem="9lO-LS-tv2" secondAttribute="top" constant="136" id="csN-oh-rOJ"/>
+                            <constraint firstItem="nUY-kz-w8b" firstAttribute="top" secondItem="bh4-n8-uCN" secondAttribute="bottom" constant="10" id="kT4-aF-Xd3"/>
+                            <constraint firstItem="R4j-RL-k4s" firstAttribute="trailing" secondItem="nUY-kz-w8b" secondAttribute="trailing" constant="10" id="m9Z-zI-oVG"/>
+                            <constraint firstItem="R4j-RL-k4s" firstAttribute="trailing" secondItem="bh4-n8-uCN" secondAttribute="trailing" constant="10" id="r9D-H4-nvm"/>
+                            <constraint firstItem="bh4-n8-uCN" firstAttribute="top" secondItem="tu4-Km-Mrl" secondAttribute="bottom" constant="40" id="slf-Q6-Ahb"/>
+                            <constraint firstItem="tu4-Km-Mrl" firstAttribute="centerX" secondItem="9lO-LS-tv2" secondAttribute="centerX" id="wB7-G6-yMM"/>
+                            <constraint firstItem="bh4-n8-uCN" firstAttribute="leading" secondItem="R4j-RL-k4s" secondAttribute="leading" constant="10" id="wjj-LV-pwp"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="R4j-RL-k4s"/>
+                    </view>
+                    <connections>
+                        <outlet property="descriptionLabel" destination="nUY-kz-w8b" id="rZV-b5-ghC"/>
+                        <outlet property="titleLabel" destination="bh4-n8-uCN" id="qzn-3y-7k2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Sd2-qg-meh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4683" y="148"/>
+        </scene>
+        <!--Payment History Reservation View Controller-->
+        <scene sceneID="LTQ-ge-yyg">
+            <objects>
+                <viewController storyboardIdentifier="PaymentHistoryReservationViewController" id="aIL-D8-rnL" customClass="PaymentHistoryReservationViewController" customModule="ParkingFriends" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ew5-jX-E0A">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" delaysContentTouches="NO" bouncesZoom="NO" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelectionDuringEditing="YES" rowHeight="58" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pFP-oj-aXN">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" indentationWidth="10" reuseIdentifier="SearchResultItemTableViewCell" rowHeight="58" id="kot-6I-nvr" customClass="SearchResultItemTableViewCell" customModule="ParkingFriends" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="58"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kot-6I-nvr" id="wbh-DN-PgW">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="58"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="홍익대학교 서울캠퍼스" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gcT-a5-OsG" userLabel="Label - Title">
+                                                    <rect key="frame" x="20" y="14" width="374" height="14"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="14" id="e9d-mx-GG0"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="15"/>
+                                                    <color key="textColor" name="DarkGrey"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="서울특별시 마포구 서강동 와우산로" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wEd-bH-vDf" userLabel="Label - Description">
+                                                    <rect key="frame" x="20" y="32" width="374" height="12"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="12" id="qJS-wd-J4r"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="12"/>
+                                                    <color key="textColor" name="Steel"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="wEd-bH-vDf" firstAttribute="leading" secondItem="wbh-DN-PgW" secondAttribute="leading" constant="20" id="4gk-XL-nDd"/>
+                                                <constraint firstAttribute="trailing" secondItem="wEd-bH-vDf" secondAttribute="trailing" constant="20" id="7o9-1f-pgM"/>
+                                                <constraint firstItem="wEd-bH-vDf" firstAttribute="top" secondItem="gcT-a5-OsG" secondAttribute="bottom" constant="4" id="Bcq-SQ-4Jw"/>
+                                                <constraint firstAttribute="trailing" secondItem="gcT-a5-OsG" secondAttribute="trailing" constant="20" id="CJe-z7-VTk"/>
+                                                <constraint firstItem="gcT-a5-OsG" firstAttribute="leading" secondItem="wbh-DN-PgW" secondAttribute="leading" constant="20" id="c8z-nD-1RL"/>
+                                                <constraint firstItem="gcT-a5-OsG" firstAttribute="top" secondItem="wbh-DN-PgW" secondAttribute="top" constant="14" id="cRe-nr-1jU"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="descriptionLabel" destination="wEd-bH-vDf" id="Q3r-lK-B51"/>
+                                            <outlet property="titleLabel" destination="gcT-a5-OsG" id="myV-Qs-Jza"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="pFP-oj-aXN" secondAttribute="bottom" id="6uK-uv-S75"/>
+                            <constraint firstAttribute="trailing" secondItem="pFP-oj-aXN" secondAttribute="trailing" id="Trf-qm-ZT3"/>
+                            <constraint firstItem="pFP-oj-aXN" firstAttribute="leading" secondItem="ew5-jX-E0A" secondAttribute="leading" id="uNt-jH-NHT"/>
+                            <constraint firstItem="pFP-oj-aXN" firstAttribute="top" secondItem="ew5-jX-E0A" secondAttribute="top" id="y1w-wH-Jx9"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="hSn-Oc-xU9"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="gel-Ko-ilT"/>
+                    <connections>
+                        <outlet property="tableView" destination="pFP-oj-aXN" id="b1S-JF-cPg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FsB-iv-bcf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5454" y="-538"/>
+        </scene>
+        <!--Payment History Used Ticket View Controller-->
+        <scene sceneID="bSv-2S-wnl">
+            <objects>
+                <viewController storyboardIdentifier="PaymentHistoryUsedTicketViewController" id="KgJ-Bx-0Wd" customClass="PaymentHistoryUsedTicketViewController" customModule="ParkingFriends" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="oyd-G2-fex">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" delaysContentTouches="NO" bouncesZoom="NO" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelectionDuringEditing="YES" rowHeight="58" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bf7-oU-UWU">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" indentationWidth="10" reuseIdentifier="SearchResultItemTableViewCell" rowHeight="58" id="y9H-3q-Hd0" customClass="SearchResultItemTableViewCell" customModule="ParkingFriends" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="58"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="y9H-3q-Hd0" id="BWV-EE-Mvd">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="58"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="홍익대학교 서울캠퍼스" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EJY-GP-8yu" userLabel="Label - Title">
+                                                    <rect key="frame" x="20" y="14" width="374" height="14"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="14" id="hB7-Im-VWx"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="15"/>
+                                                    <color key="textColor" name="DarkGrey"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="서울특별시 마포구 서강동 와우산로" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BSB-kU-AdK" userLabel="Label - Description">
+                                                    <rect key="frame" x="20" y="32" width="374" height="12"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="12" id="xE4-1X-tsk"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="12"/>
+                                                    <color key="textColor" name="Steel"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="EJY-GP-8yu" firstAttribute="top" secondItem="BWV-EE-Mvd" secondAttribute="top" constant="14" id="JPQ-Gg-ihx"/>
+                                                <constraint firstItem="EJY-GP-8yu" firstAttribute="leading" secondItem="BWV-EE-Mvd" secondAttribute="leading" constant="20" id="LlV-NM-cbB"/>
+                                                <constraint firstItem="BSB-kU-AdK" firstAttribute="leading" secondItem="BWV-EE-Mvd" secondAttribute="leading" constant="20" id="nhk-H4-x3s"/>
+                                                <constraint firstAttribute="trailing" secondItem="EJY-GP-8yu" secondAttribute="trailing" constant="20" id="qUa-Tv-gcT"/>
+                                                <constraint firstItem="BSB-kU-AdK" firstAttribute="top" secondItem="EJY-GP-8yu" secondAttribute="bottom" constant="4" id="u9W-Gr-cUG"/>
+                                                <constraint firstAttribute="trailing" secondItem="BSB-kU-AdK" secondAttribute="trailing" constant="20" id="zBd-qC-zZ5"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="descriptionLabel" destination="BSB-kU-AdK" id="nlg-JS-6EV"/>
+                                            <outlet property="titleLabel" destination="EJY-GP-8yu" id="yeC-Fn-4i1"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Bf7-oU-UWU" secondAttribute="trailing" id="0dN-D0-ceS"/>
+                            <constraint firstAttribute="bottom" secondItem="Bf7-oU-UWU" secondAttribute="bottom" id="CSw-WK-wIj"/>
+                            <constraint firstItem="Bf7-oU-UWU" firstAttribute="leading" secondItem="oyd-G2-fex" secondAttribute="leading" id="Hb7-aG-is6"/>
+                            <constraint firstItem="Bf7-oU-UWU" firstAttribute="top" secondItem="oyd-G2-fex" secondAttribute="top" id="yeg-4Y-szs"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="5hZ-v6-kNP"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="daB-ce-3JS"/>
+                    <connections>
+                        <outlet property="tableView" destination="Bf7-oU-UWU" id="MS7-hM-hEU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fvw-Oc-m3i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5438" y="148"/>
+        </scene>
     </scenes>
     <resources>
         <image name="icBackBlack" width="24" height="24"/>
@@ -1636,8 +1927,13 @@
         <image name="icGiftNormal" width="28" height="28"/>
         <image name="icGiftSelected" width="28" height="28"/>
         <image name="icWarningFillTriBlack" width="28" height="28"/>
+        <image name="imgPixel" width="1" height="1"/>
+        <image name="imgSearchNoResult" width="120" height="120"/>
         <namedColor name="AlgaeGreen">
             <color red="0.14499999582767487" green="0.83899998664855957" blue="0.3880000114440918" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Black24">
+            <color red="0.0" green="0.0" blue="0.0" alpha="0.23999999463558197" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Black36">
             <color red="0.0" green="0.0" blue="0.0" alpha="0.36000001430511475" colorSpace="custom" customColorSpace="sRGB"/>
