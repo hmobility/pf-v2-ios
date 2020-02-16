@@ -274,6 +274,21 @@
 "btn_reminder" = "유의사항";
 "ttl_total_payment_price" = "을 확인했으며, 개인정보 제3자제공에동의합니다.";
 
+// Payment History
+"ttl_payment_history" = "결제 내역";
+"ttl_payment_history_not_used" = "이용 대기중";
+"ttl_payment_history_used" = "이용 완료·만료";
+"ttl_payment_history_detail" = "결제 내역 상세";
+"ttl_payment_history_payment" = "결제 정보";
+"ttl_payment_history_price" = "결제금액";
+"ttl_payment_history_point_used" = "사용 포인트";
+"ttl_payment_history_method" = "결제수단";
+"btn_receipt_confirm" = "영수증 확인";
+"ttl_payment_history_no_reserveration" = "주차장 예약 내역이 없어요.";
+"dsc_payment_history_no_reserveration" = "주차장을 예약하시면\n여기에 예약 내역이 나타납니다.";
+"ttl_payment_history_no_history" = "지난 예약 내역이 없어요.";
+"dsc_payment_history_no_history" = "이용하거나 기간이 만료된 주차장 예약건이\n여기에 나타납니다.";
+
 // BLE
 "ttl_ble_parking_guide" = "%@부터 입차 가능합니다";
 "dsc_ble_parking_guide" = "예약시간에 맞춰 블루투스 기능을 켜고\n주차장 입구에서 파프앱키로 차단기를 열어주세요.";

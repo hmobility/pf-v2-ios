@@ -48,7 +48,7 @@ class MapViewController: UIViewController {
     fileprivate var floatingPanelController: FloatingPanelController!
     fileprivate var cardViewController: ParkinglotCardViewController?
     
-    var disposeBag = DisposeBag()
+    let disposeBag = DisposeBag()
     
     // MARK: - Bindings
     

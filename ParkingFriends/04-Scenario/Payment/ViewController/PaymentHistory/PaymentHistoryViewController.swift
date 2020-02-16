@@ -16,6 +16,29 @@ class PaymentHistoryViewController: UIViewController {
     
     private let disposeBag = DisposeBag()
     
+    // MARK: - Binding
+    
+     private func setupNavigationBinding() {
+           viewModel.viewTitleText
+               .drive(self.navigationBar.topItem!.rx.title)
+               .disposed(by: disposeBag)
+           
+           backButton.rx.tap
+               .asDriver()
+               .drive(onNext: { _ in
+                   self.pop()
+               })
+               .disposed(by: disposeBag)
+       }
+       
+       private func setupPaymentBinding() {
+           viewModel.paymentText
+               .asDriver()
+               .drive(paymentButton.rx.title())
+               .disposed(by: disposeBag)
+       }
+       
+    
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
