@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PaymentHistoryReservationViewController: UIViewController {
+class PaymentHistoryReserveViewController: UIViewController {
    
     private let disposeBag = DisposeBag()
        

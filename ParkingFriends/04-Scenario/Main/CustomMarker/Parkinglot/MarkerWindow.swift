@@ -54,10 +54,14 @@ class MarkerWindow:NMFInfoWindow {
         self.mapView = nil
     }
     
-    public func handler(_ touch:@escaping(_ element:WithinElement?) -> Void) {
+    public func handler(_ touch:@escaping(_ element:WithinElement) -> Void) {
         self.touchHandler = { (overlay: NMFOverlay) -> Bool in
-            touch(self.element)
-            return true
+            if let item = self.element {
+                touch(item)
+                return true
+            } else {
+                return false
+            }
         }
     }
     

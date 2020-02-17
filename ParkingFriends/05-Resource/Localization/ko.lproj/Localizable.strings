@@ -290,6 +290,8 @@
 "dsc_payment_history_no_reserveration" = "주차장을 예약하시면\n여기에 예약 내역이 나타납니다.";
 "ttl_payment_history_no_history" = "지난 예약 내역이 없어요.";
 "dsc_payment_history_no_history" = "이용하거나 기간이 만료된 주차장 예약건이\n여기에 나타납니다.";
+"ttl_payment_history_place" = "장소";
+"ttl_payment_history_car" = "차량";
 
 // BLE
 "ttl_ble_parking_guide" = "%@부터 입차 가능합니다";

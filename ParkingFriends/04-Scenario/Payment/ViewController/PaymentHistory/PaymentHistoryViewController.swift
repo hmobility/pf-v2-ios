@@ -25,7 +25,7 @@ class PaymentHistoryViewController: UIViewController {
     @IBOutlet weak var containerView: UIView!
     
     private var embedNavigationController: UINavigationController?
-    private var reservationViewController: PaymentHistoryReservationViewController?
+    private var reservationViewController: PaymentHistoryReserveViewController?
     private var usedTicketViewController: PaymentHistoryUsedTicketViewController?
     
     private var viewModel:PaymentHistoryViewModelType = PaymentHistoryViewModel()
@@ -161,7 +161,7 @@ class PaymentHistoryViewController: UIViewController {
         }
         
         if reservationViewController == nil {
-            reservationViewController = Storyboard.payment.instantiateViewController(withIdentifier: "PaymentHistoryReservationViewController") as? PaymentHistoryReservationViewController
+            reservationViewController = Storyboard.payment.instantiateViewController(withIdentifier: "PaymentHistoryReserveViewController") as? PaymentHistoryReserveViewController
             //reservationViewController?.setViewModel(viewModel as! SearchViewModel)
         }
         

@@ -582,7 +582,7 @@
                                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                                     <subviews>
                                                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" image="icParkingLotInfoType11Public" translatesAutoresizingMaskIntoConstraints="NO" id="nOy-sb-b8C" userLabel="Image View - Icon">
-                                                                                            <rect key="frame" x="20" y="12.5" width="36" height="36"/>
+                                                                                            <rect key="frame" x="2" y="-23.5" width="72" height="72"/>
                                                                                         </imageView>
                                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="민간주차장" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vNU-FH-ieH" userLabel="Label - Title">
                                                                                             <rect key="frame" x="5" y="58.5" width="66" height="14.5"/>
@@ -897,7 +897,7 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aka-fi-aNn" userLabel="Button - Info">
-                                                                        <rect key="frame" x="125.5" y="30" width="24" height="24"/>
+                                                                        <rect key="frame" x="125.5" y="18" width="48" height="48"/>
                                                                         <state key="normal" image="icHelpOutlineGrey"/>
                                                                     </button>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="2대 주차 가능" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RyL-re-XIL" userLabel="Label - Available Lots">
@@ -2306,8 +2306,8 @@
                                                                                     <constraint firstItem="mi4-Hq-gR0" firstAttribute="top" secondItem="ulW-Gl-Rsl" secondAttribute="top" constant="32" id="xXx-SZ-vpx"/>
                                                                                 </constraints>
                                                                             </view>
-                                                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" distribution="equalSpacing" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="1uM-HW-LXv" userLabel="Stack View - Time">
-                                                                                <rect key="frame" x="0.0" y="78" width="414" height="0.0"/>
+                                                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="1uM-HW-LXv" userLabel="Stack View - Fixed Product">
+                                                                                <rect key="frame" x="0.0" y="78" width="414" height="50"/>
                                                                             </stackView>
                                                                             <view contentMode="scaleToFill" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="40J-Wj-AoQ" userLabel="View - Footer">
                                                                                 <rect key="frame" x="0.0" y="128" width="414" height="120"/>
@@ -2353,12 +2353,16 @@
                                                                                 <color key="backgroundColor" name="IceBlue"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="height" constant="120" id="DiA-ey-GSW"/>
-                                                                                    <constraint firstItem="HgS-xz-zOj" firstAttribute="top" secondItem="40J-Wj-AoQ" secondAttribute="top" constant="36" id="Ie6-Ue-EJc"/>
+                                                                                    <constraint firstAttribute="bottom" secondItem="HgS-xz-zOj" secondAttribute="bottom" constant="36" id="OdE-PF-b5o"/>
                                                                                     <constraint firstAttribute="trailing" secondItem="HgS-xz-zOj" secondAttribute="trailing" constant="20" id="hkd-lc-FxZ"/>
+                                                                                    <constraint firstItem="HgS-xz-zOj" firstAttribute="top" secondItem="40J-Wj-AoQ" secondAttribute="top" constant="36" id="nIp-x6-1TT"/>
                                                                                     <constraint firstItem="HgS-xz-zOj" firstAttribute="leading" secondItem="40J-Wj-AoQ" secondAttribute="leading" constant="20" id="xC9-pa-vVA"/>
                                                                                 </constraints>
                                                                             </view>
                                                                         </subviews>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="bottom" secondItem="40J-Wj-AoQ" secondAttribute="bottom" id="9Mk-x6-Got"/>
+                                                                        </constraints>
                                                                         <connections>
                                                                             <outlet property="contentsView" destination="1uM-HW-LXv" id="pEy-Rd-gAM"/>
                                                                             <outlet property="titleLabel" destination="mi4-Hq-gR0" id="zbC-yU-w3b"/>
@@ -2710,8 +2714,8 @@
                                                                     <outlet property="titleLabel" destination="BkY-XR-wad" id="hSE-vw-Pzs"/>
                                                                 </connections>
                                                             </view>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="1ee-tU-Ud5" userLabel="Stack View - Contents">
-                                                                <rect key="frame" x="0.0" y="78" width="414" height="0.0"/>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="1ee-tU-Ud5" userLabel="Stack View - Contents">
+                                                                <rect key="frame" x="0.0" y="78" width="414" height="50"/>
                                                             </stackView>
                                                             <view contentMode="scaleToFill" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tmq-5R-hi3" userLabel="View - Footer">
                                                                 <rect key="frame" x="0.0" y="128" width="414" height="39"/>

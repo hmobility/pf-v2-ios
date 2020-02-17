@@ -25,6 +25,8 @@ target 'ParkingFriends' do
   pod 'ObjectMapper', '~> 3.4'
   pod 'Kingfisher', '~> 5.13'
   
+  pod 'SwiftyJSON', '~> 4.0.0'    # For CCTV
+  
 #  pod 'SwiftDate', '~> 5.0'
   pod 'AFDateHelper', '~> 4.3.0'
   
@@ -32,9 +34,7 @@ target 'ParkingFriends' do
   pod 'Fabric', '~> 1.10.2'
   pod 'Crashlytics', '~> 3.14.0'
   pod 'Firebase/Analytics'
-  
-  pod 'SwiftyJSON', '~> 5.0.0'
-  
+
   pod 'NMapsMap'                  # Naver Map
   
   pod 'SwiftMessages'             # Message View

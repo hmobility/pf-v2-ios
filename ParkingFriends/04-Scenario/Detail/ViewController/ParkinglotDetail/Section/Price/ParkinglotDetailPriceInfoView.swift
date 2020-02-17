@@ -33,7 +33,9 @@ class ParkinglotDetailPriceInfoView: UIStackView {
     // MARK: Local Methods
     
     func setHidden(_ flag:Bool) {
-        self.isHidden = flag
+        if self.isHidden != flag {
+            self.isHidden = flag
+        }
     }
   
     // MARK: - Initializer

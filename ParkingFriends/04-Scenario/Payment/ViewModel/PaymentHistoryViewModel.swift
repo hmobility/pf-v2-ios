@@ -14,6 +14,7 @@ protocol PaymentHistoryViewModelType {
     var ticketNotUsedTitleText: String { get }
     
     func getTapItems() -> Observable<[String]>
+    func loadInfo() 
 }
 
 class PaymentHistoryViewModel: PaymentHistoryViewModelType {
@@ -22,6 +23,8 @@ class PaymentHistoryViewModel: PaymentHistoryViewModelType {
     var ticketNotUsedTitleText: String
     
     var localizer:LocalizerType
+    
+    let disposeBag = DisposeBag()
     
     // MARK: - Initiailize
     
@@ -37,5 +40,38 @@ class PaymentHistoryViewModel: PaymentHistoryViewModelType {
     
     public func getTapItems() -> Observable<[String]> {
         return Observable.of([ticketUsedTitleText, ticketNotUsedTitleText])
+    }
+    
+    public func loadInfo() {
+        
+    }
+    
+    // MARK: - Local Methods
+    
+    public func updateOrders(_ orders:[OrdersElement]) {
+        
+    }
+    
+    // MARK: - Network
+       
+    public func requestOrders() {
+        Order.orders(page: 0, size: 0, from: "", to: "")
+            .asObservable()
+            .subscribe(onNext: { (orders, status) in
+                if let data = orders, status == .success {
+                    self.updateOrders(data.elements)
+                }
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    public func requestFavorites() -> Observable<[FavoriteElement]> {
+        return ParkingLot.favorites().asObservable().map { (favorite, status) in
+            if status == .success {
+                return favorite?.elements ?? []
+            } else {
+                return []
+            }
+        }
     }
 }
