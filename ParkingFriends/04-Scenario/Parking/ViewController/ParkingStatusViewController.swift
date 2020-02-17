@@ -1,18 +1,21 @@
 //
-//  PaymentCompleteViewController.swift
+//  ParkingStatusViewController.swift
 //  ParkingFriends
 //
-//  Created by PlankFish on 2020/01/01.
+//  Created by PlankFish on 2020/02/16.
 //  Copyright © 2020 Hancom Mobility. All rights reserved.
 //
 
 import UIKit
 
-class PaymentCompleteViewController: UIViewController {
-    
-    
-    // MARK: - Life Cycle
-    
+extension ParkingStatusViewController : AnalyticsType {
+    var screenName: String {
+        return "[SCREEN] Parking Status"
+    }
+}
+
+class ParkingStatusViewController: UIViewController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
 

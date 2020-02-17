@@ -48,7 +48,7 @@ class MapViewController: UIViewController {
     fileprivate var floatingPanelController: FloatingPanelController!
     fileprivate var cardViewController: ParkinglotCardViewController?
     
-    var disposeBag = DisposeBag()
+    let disposeBag = DisposeBag()
     
     // MARK: - Bindings
     
@@ -204,6 +204,18 @@ class MapViewController: UIViewController {
         }
     }
     
+    // MARK: - Map
+    
+    private func setupMapViewPadding() {
+        let topPadding = navigationMenuView.frame.maxY
+        let bottomPadding = parkingInfoView.frame.maxY - parkingInfoView.frame.minY
+     
+        mapView.logoAlign = .leftBottom
+        mapView.logoMargin = UIEdgeInsets(top: 0, left: 0, bottom: 100, right: 0)
+        
+        mapView.contentInset = UIEdgeInsets(top: topPadding, left: 0, bottom: bottomPadding, right: 0)
+    }
+    
     // MARK: - Search Result
 
     private func updateSearchResult(with coord:CoordType) {
@@ -223,13 +235,15 @@ class MapViewController: UIViewController {
     
     private func initialize() {
         prepareFloatingPanel()
-        
+    
         timeSettingAreaBinding()
         setupSearchResultavigation()
         setupNavigationBinding()
         setupButtonBinding()
         setupSearchBinding()
         
+       // setupMapViewPadding()
+
         handleCardEvents()
     }
     

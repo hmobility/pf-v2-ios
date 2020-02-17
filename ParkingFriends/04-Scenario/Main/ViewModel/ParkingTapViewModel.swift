@@ -12,6 +12,7 @@ protocol ParkingTapViewModelType {
     var timeTicketText: Driver<String> { get }
     var fixedTicketText: Driver<String> { get }
     var monthlyTicketText: Driver<String> { get }
+    var tapMenuItems: Driver<[ProductItemType]> { get }
     var sortOrderText: BehaviorRelay<String> { get }
     
     var selectedProductType : BehaviorRelay<ProductType> { get set }
@@ -20,12 +21,16 @@ protocol ParkingTapViewModelType {
     var elements:BehaviorRelay<[WithinElement]> { get }
     
     func setProductType(_ type:ProductType)
+    func setSelectedProductItem(with index:Int)
+    func getSelectedProductItem() -> Observable<(index:Int, type:ProductType, title:String)>
+    
     func setSortType(_ type: SortType)
     func setWithinElements(_ elements:[WithinElement]?)
     func getTags(_ element:WithinElement) -> [String]
 }
 
 class ParkingTapViewModel: ParkingTapViewModelType {
+    var tapMenuItems: Driver<[ProductItemType]>
     var timeTicketText: Driver<String>
     var fixedTicketText: Driver<String>
     var monthlyTicketText: Driver<String>
@@ -41,11 +46,17 @@ class ParkingTapViewModel: ParkingTapViewModelType {
       
     private var defaultFilterOption:FilterOption = FilterOption()
     
+    let disposeBag = DisposeBag()
+    
     // MARK: - Initialize
       
     init(localizer: LocalizerType = Localizer.shared, userData: UserData = UserData.shared) {
         self.localizer = localizer
         self.userData = userData
+        
+        tapMenuItems = Driver.just([(type: .time, title: localizer.localized("ttl_ticket_time") as String),
+                        (type: .fixed, title: localizer.localized("ttl_ticket_fixed") as String),
+                         (type: .monthly, title: localizer.localized("ttl_ticket_monthly") as String)])
         
         timeTicketText = localizer.localized("ttl_ticket_time")
         fixedTicketText = localizer.localized("ttl_ticket_fixed")
@@ -74,6 +85,30 @@ class ParkingTapViewModel: ParkingTapViewModelType {
     func setProductType(_ type: ProductType) {
         selectedProductType.accept(type)
         userData.setProduct(type: type).save()
+    }
+    
+    func setSelectedProductItem(with index:Int) {
+        tapMenuItems.asObservable()
+            .map { return $0[index] }
+            .asObservable()
+            .subscribe(onNext: { [unowned self] item in
+                self.setProductType(item.type)
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    func getSelectedProductItem() -> Observable<(index:Int, type:ProductType, title:String)> {
+        return tapMenuItems.asObservable()
+            .map { items in
+                return items.enumerated().compactMap { item -> (Int, ProductType, String)? in
+                    if item.element.type == self.selectedProductType.value {
+                        return (index: item.offset, type: item.element.type, title: item.element.title)
+                    }
+                    
+                    return nil
+                }
+                .first ?? (index: 0, type: items[0].type, title: items[0].title)
+            }
     }
     
     func setSortType(_ type: SortType) {
@@ -116,11 +151,11 @@ class ParkingTapViewModel: ParkingTapViewModelType {
         return tags
     }
     
-      func setWithinElements(_ elements:[WithinElement]?){
-          if let items = elements {
-              self.elements.accept(items)
-          } else {
-              self.elements.accept([])
-          }
-      }
+    func setWithinElements(_ elements:[WithinElement]?){
+        if let items = elements {
+            self.elements.accept(items)
+        } else {
+            self.elements.accept([])
+        }
+    }
 }

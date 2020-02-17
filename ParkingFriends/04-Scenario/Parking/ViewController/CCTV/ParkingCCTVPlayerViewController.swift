@@ -1,18 +1,21 @@
 //
-//  PaymentCompleteViewController.swift
+//  ParkingCCTVPlayerViewController.swift
 //  ParkingFriends
 //
-//  Created by PlankFish on 2020/01/01.
+//  Created by PlankFish on 2020/02/16.
 //  Copyright © 2020 Hancom Mobility. All rights reserved.
 //
 
 import UIKit
 
-class PaymentCompleteViewController: UIViewController {
-    
-    
-    // MARK: - Life Cycle
-    
+extension ParkingCCTVPlayerViewController : AnalyticsType {
+    var screenName: String {
+        return "[SCREEN] CCTV Parkinglot Player"
+    }
+}
+
+class ParkingCCTVPlayerViewController: UIViewController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
 

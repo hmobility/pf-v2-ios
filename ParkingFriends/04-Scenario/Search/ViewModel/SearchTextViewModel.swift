@@ -15,6 +15,8 @@ protocol SearchTextViewModelType {
     var searchGuideDescText: Driver<String> { get }
     var searchNoResultText: Driver<String> { get }
     var searchNoResultDescText: Driver<String> { get }
+    var favoriteNoResultText: Driver<String> { get }
+    var favoriteNoResultDescText: Driver<String> { get }
 }
 
 class SearchTextViewModel: SearchTextViewModelType {
@@ -22,6 +24,8 @@ class SearchTextViewModel: SearchTextViewModelType {
     var searchGuideDescText: Driver<String>
     var searchNoResultText: Driver<String>
     var searchNoResultDescText: Driver<String>
+    var favoriteNoResultText: Driver<String>
+    var favoriteNoResultDescText: Driver<String>
     
     private var localizer:LocalizerType
     
@@ -34,5 +38,7 @@ class SearchTextViewModel: SearchTextViewModelType {
         searchGuideDescText = localizer.localized("dsc_search_guide_parkinglot")
         searchNoResultText = localizer.localized("ttl_search_no_result")
         searchNoResultDescText = localizer.localized("dsc_search_no_result")
+        favoriteNoResultText = localizer.localized("ttl_favorite_no_result")
+        favoriteNoResultDescText = localizer.localized("dsc_favorite_no_result")
     }
 }

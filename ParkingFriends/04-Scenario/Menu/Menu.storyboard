@@ -649,7 +649,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eSm-9j-aDX" userLabel="Button - Add My Car">
-                                                                <rect key="frame" x="232" y="11" width="24" height="22"/>
+                                                                <rect key="frame" x="208" y="4" width="48" height="36"/>
                                                                 <state key="normal" image="icAddCar"/>
                                                             </button>
                                                         </subviews>
@@ -844,7 +844,7 @@
                                                                 <rect key="frame" x="25" y="23" width="50" height="50"/>
                                                                 <subviews>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icPointBlack" translatesAutoresizingMaskIntoConstraints="NO" id="KgO-o2-75l" userLabel="Image View - Icon">
-                                                                        <rect key="frame" x="13" y="13" width="24" height="24"/>
+                                                                        <rect key="frame" x="1" y="1" width="48" height="48"/>
                                                                     </imageView>
                                                                 </subviews>
                                                                 <color key="backgroundColor" name="IceBlue"/>
@@ -883,7 +883,7 @@
                                                                 <rect key="frame" x="25" y="23" width="50" height="50"/>
                                                                 <subviews>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icCouponBlack" translatesAutoresizingMaskIntoConstraints="NO" id="oWo-gq-Z61" userLabel="Image View - Icon">
-                                                                        <rect key="frame" x="13" y="13" width="24" height="24"/>
+                                                                        <rect key="frame" x="1" y="1" width="48" height="48"/>
                                                                     </imageView>
                                                                 </subviews>
                                                                 <color key="backgroundColor" name="IceBlue"/>
@@ -1785,34 +1785,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Orz-6H-vZe">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            </navigationBar>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dH8-hZ-J7j">
-                                <rect key="frame" x="0.0" y="88" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <items>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="3IU-YH-aRI"/>
-                                    <barButtonItem title="최근검색어" id="hwh-46-is2" userLabel="Item - Recent">
-                                        <color key="tintColor" name="DarkGrey3"/>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="A1V-zE-zQK"/>
-                                    <barButtonItem title="즐겨찾기" id="U4X-oU-bxX" userLabel="Item - Favorite">
-                                        <color key="tintColor" name="DarkGrey3"/>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="xNn-JC-IRp"/>
-                                </items>
-                            </toolbar>
+                            <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YeW-ZW-scQ" userLabel="View - Segmented Control">
+                                <rect key="frame" x="0.0" y="44" width="414" height="48"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="oyU-TM-OnF"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="YeW-ZW-scQ" firstAttribute="top" secondItem="afJ-vh-BCV" secondAttribute="top" id="a9Y-XW-mvN"/>
+                            <constraint firstItem="YeW-ZW-scQ" firstAttribute="trailing" secondItem="kLe-La-w5Q" secondAttribute="trailing" id="kYy-Jl-6Ff"/>
+                            <constraint firstItem="YeW-ZW-scQ" firstAttribute="leading" secondItem="kLe-La-w5Q" secondAttribute="leading" id="zWh-Fo-07t"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="afJ-vh-BCV"/>
                     </view>
                     <navigationItem key="navigationItem" id="Vn4-cJ-D45"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="elo-ST-RIA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2142" y="-822"/>
+            <point key="canvasLocation" x="2139.130434782609" y="-822.32142857142856"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="w5m-JA-auw">
@@ -2416,9 +2409,6 @@
         </namedColor>
         <namedColor name="DarkGrey">
             <color red="0.10199999809265137" green="0.10199999809265137" blue="0.10599999874830246" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="DarkGrey3">
-            <color red="0.10999999940395355" green="0.11400000005960464" blue="0.11400000005960464" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Emerald">
             <color red="0.0" green="0.57999998331069946" blue="0.32199999690055847" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -65,12 +65,17 @@ class ParkinglotDetailEditTimeViewModel: ParkinglotDetailEditTimeViewModelType {
             supportedProductType.accept(products)
         }
         
+        // For displaying items in edit panel
         if items.count > 0 {
             supportedProductItems.accept(items)
         }
     }
     
     public func getProduct(with productType:ProductType) -> Observable<[ProductElement]> {
-        return Observable.of(supportedProductItems.value.filter{ $0.type == productType })
+        return supportedProductItems
+            .asObservable()
+            .map { items in
+                return items.filter { $0.type == productType }
+            }
     }
 }

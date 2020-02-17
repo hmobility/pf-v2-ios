@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import BetterSegmentedControl
 
 extension ParkingTapViewController: AnalyticsType {
     var screenName: String {
@@ -23,6 +24,8 @@ class ParkingTapViewController: UIViewController {
             tableView.tableFooterView = UIView(frame: .zero)
         }
     }
+    
+    @IBOutlet weak var tapSegmentedControl: BetterSegmentedControl!
     
     @IBOutlet weak var timeTicketButton: UIButton!
     @IBOutlet weak var fixedTicketButton: UIButton!
@@ -54,9 +57,39 @@ class ParkingTapViewController: UIViewController {
             .disposed(by: disposeBag)
     }
     
-    private func setupTapButtonBinding() {
-        viewModel.selectedProductType
+    private func setupTapMenuSegmentedItems() {
+        tapSegmentedControl.options = [.backgroundColor(UIColor.white),
+                                       .animationDuration(0),
+                                       .panningDisabled(true)]
+
+        viewModel.tapMenuItems
             .asDriver()
+            .map { items in
+                return items.map { $0.title }
+            }
+            .drive(onNext: { [unowned self] titles in
+                self.updateSegmentItems(with: titles)
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.getSelectedProductItem()
+            .asObservable()
+            .subscribe(onNext: { [unowned self] (index, type, title) in
+                self.tapSegmentedControl.setIndex(index)
+            })
+            .disposed(by: disposeBag)
+        
+        tapSegmentedControl.rx.selected
+            .asDriver()
+            .drive(onNext: { selectedIndex in
+                self.viewModel.setSelectedProductItem(with: selectedIndex)
+            })
+            .disposed(by: disposeBag)
+    }
+    private func setupTapButtonBinding() {
+
+        viewModel.selectedProductType
+        .asDriver()
             .drive(onNext: { type in
                 self.timeTicketButton.isSelected = (type == .time) ? true : false
                 self.fixedTicketButton.isSelected = (type == .fixed) ? true : false
@@ -90,6 +123,16 @@ class ParkingTapViewController: UIViewController {
             })
             .disposed(by: disposeBag)
     }
+    
+    // MARK: - Tap Segmented Control
+    
+    private func updateSegmentItems(with titles:[String]) {
+        tapSegmentedControl.segments = LabelSegment.segments(withTitles: titles,
+                                                             normalFont: Font.gothicNeoMedium18,
+                                                             normalTextColor: Color.coolGrey,
+                                                             selectedFont: Font.gothicNeoMedium18,
+                                                             selectedTextColor: Color.darkGrey3)
+    }
 
     // MARK: - Local Methdos
     
@@ -119,7 +162,8 @@ class ParkingTapViewController: UIViewController {
     
     private func initialize() {
         setupBindings()
-        setupTapButtonBinding()
+        setupTapMenuSegmentedItems()
+      //  setupTapButtonBinding()
         setupSortOrderButtonBinding()
         fetchWithinElements()
     }
@@ -143,7 +187,6 @@ class ParkingTapViewController: UIViewController {
             .disposed(by: disposeBag)
         
         viewModel.elements
-    
             .bind(to: tableView.rx.items) { (tableView, row, item) -> UITableViewCell in
                 let indexPath = IndexPath(item: row, section: 0)
                 let sort = self.viewModel.selectedSortType.value

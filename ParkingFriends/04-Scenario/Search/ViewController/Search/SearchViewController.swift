@@ -9,7 +9,13 @@
 import UIKit
 import BetterSegmentedControl
 
-private enum TapIndex:Int {
+extension SearchViewController : AnalyticsType {
+    var screenName: String {
+        return "[SCREEN] Search Main"
+    }
+}
+
+private enum SearchTapIndex:Int {
     case recent_search, favorite_search
 }
 
@@ -95,7 +101,7 @@ class SearchViewController: UIViewController {
                 self.view.endEditing(true)
             }
             .map {
-                return TapIndex(rawValue: $0)
+                return SearchTapIndex(rawValue: $0)
             }
             .drive(onNext: { [unowned self] tapIndex in
                 if tapIndex == .recent_search {
@@ -199,7 +205,7 @@ class SearchViewController: UIViewController {
     private func setupSearchResultView() {
         Observable.combineLatest(tapSegmentedControl.rx.selected,
                                         viewModel.searchResults)
-            .filter { TapIndex(rawValue: $0.0) == .recent_search }
+            .filter { SearchTapIndex(rawValue: $0.0) == .recent_search }
             .map { return $0.1 }
             .asObservable()
             .subscribe(onNext:{ [unowned self] items in
