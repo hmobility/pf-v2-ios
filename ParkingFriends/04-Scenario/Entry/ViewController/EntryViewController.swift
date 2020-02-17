@@ -50,7 +50,8 @@ class EntryViewController: UIViewController {
     }
     
     @IBAction func signupButtonAction(_ sender: Any) {
-        navigateToSignup()
+//        navigateToSignup()
+        navigateToTutorial()    // Test by Rao 
     }
     
     @IBAction func migrationButtonAction(_ sender: Any) {
@@ -138,6 +139,11 @@ class EntryViewController: UIViewController {
         self.push(target)
     }
     
+    // Test by Rao
+    private func navigateToTutorial() {
+        let target = Storyboard.tutorial.instantiateInitialViewController() as! UINavigationController
+        self.modal(target)
+    }
     
     /*
 

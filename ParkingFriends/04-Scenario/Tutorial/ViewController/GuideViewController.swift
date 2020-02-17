@@ -54,6 +54,14 @@ class GuideViewController: UIViewController {
         }
         
         self.pageViewController?.setViewControllers([guideList[0]], direction: .forward, animated: false, completion:nil)
+        
+        // Test by Rao
+        /*
+        if let pageVC = self.pageViewController {
+            self.addChild(pageVC)
+            self.view.addSubview(pageVC.view)
+        }
+ */
     }
     
     private func initialize() {
