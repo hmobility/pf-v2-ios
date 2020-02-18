@@ -15,6 +15,7 @@
 @_exported import RxBiBinding
 @_exported import RxCoreLocation
 @_exported import RxGesture
+@_exported import RxDataSources
 
 @_exported import SwiftMessages
 

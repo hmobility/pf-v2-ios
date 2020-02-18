@@ -14,13 +14,16 @@ protocol PaymentHistoryViewModelType {
     var ticketNotUsedTitleText: String { get }
     
     func getTapItems() -> Observable<[String]>
-    func loadInfo() 
+    func getOrderItems(_ tapIndex:PaymentHistoryTapIndex) -> Observable<[OrderElement]>
+    func loadOrderItems()
 }
 
 class PaymentHistoryViewModel: PaymentHistoryViewModelType {
     var viewTitleText: Driver<String>
     var ticketUsedTitleText: String
     var ticketNotUsedTitleText: String
+    
+    var historyInfoItems: BehaviorRelay<[OrderElement]?> = BehaviorRelay(value: nil)
     
     var localizer:LocalizerType
     
@@ -42,36 +45,33 @@ class PaymentHistoryViewModel: PaymentHistoryViewModelType {
         return Observable.of([ticketUsedTitleText, ticketNotUsedTitleText])
     }
     
-    public func loadInfo() {
+    public func getOrderItems(_ tapIndex:PaymentHistoryTapIndex) -> Observable<[OrderElement]> {
+        let productSatus:OrderStatusType = (tapIndex == .reserved_history) ? .paid : .used
         
+        return historyInfoItems
+            .filter { $0 != nil }
+            .map { $0! }
+            .asObservable()
+            .map { items in
+                return items.filter { $0.status == productSatus }
+            }
     }
     
     // MARK: - Local Methods
     
-    public func updateOrders(_ orders:[OrdersElement]) {
-        
-    }
     
     // MARK: - Network
        
-    public func requestOrders() {
-        Order.orders(page: 0, size: 0, from: "", to: "")
+    public func loadOrderItems() {
+        Order.orders(page: 0, from: "", to: "")
             .asObservable()
-            .subscribe(onNext: { (orders, status) in
-                if let data = orders, status == .success {
-                    self.updateOrders(data.elements)
-                }
-            })
-            .disposed(by: disposeBag)
-    }
-    
-    public func requestFavorites() -> Observable<[FavoriteElement]> {
-        return ParkingLot.favorites().asObservable().map { (favorite, status) in
-            if status == .success {
-                return favorite?.elements ?? []
-            } else {
-                return []
+            .filter { (orders, status) in
+                orders != nil
             }
-        }
+            .map { (orders, status) in
+                return orders!.elements
+            }
+            .bind(to: historyInfoItems)
+            .disposed(by: disposeBag)
     }
 }

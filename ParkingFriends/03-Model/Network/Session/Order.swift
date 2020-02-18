@@ -27,7 +27,7 @@ class Order : HttpSession {
             })
     }
     
-    static public func orders(page:Int, size:Int, from:String, to:String) -> Observable<(Orders?, ResponseCodeType)>  {
+    static public func orders(page:Int, size:Int = 100, from:String, to:String) -> Observable<(Orders?, ResponseCodeType)>  {
         let data = OrdersAPI.orders(page: page, size: size, from: from, to: to)
         
         return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params!)

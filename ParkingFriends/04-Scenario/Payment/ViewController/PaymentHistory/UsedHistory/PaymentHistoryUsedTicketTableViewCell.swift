@@ -1,5 +1,5 @@
 //
-//  PaymentHistoryReserveTableViewCell.swift
+//  PaymentHistoryUsedTicketTableViewCell.swift
 //  ParkingFriends
 //
 //  Created by PlankFish on 2020/02/17.
@@ -8,25 +8,25 @@
 
 import UIKit
 
-class PaymentHistoryReserveTableViewCell: UITableViewCell {
-    @IBOutlet weak var productTitleLabel: UILabel!
-    @IBOutlet weak var priceLabel: UILabel!
-    @IBOutlet weak var placeTitleButton: UIButton!
-    @IBOutlet weak var placeLabel: UILabel!
-    @IBOutlet weak var carTitleButton: UIButton!
-    @IBOutlet weak var carNumberLabel: UILabel!
-    @IBOutlet weak var productTypeButton: UIButton!
-    
-    // MARK: - Initialize
-    
-    private var priceUnitString:String?
-    
-    private var localizer:LocalizerType = Localizer.shared
-    
-    private let disposeBag = DisposeBag()
+class PaymentHistoryUsedTicketTableViewCell: UITableViewCell {
+     @IBOutlet weak var productTitleLabel: UILabel!
+     @IBOutlet weak var priceLabel: UILabel!
+     @IBOutlet weak var placeTitleButton: UIButton!
+     @IBOutlet weak var placeLabel: UILabel!
+     @IBOutlet weak var carTitleButton: UIButton!
+     @IBOutlet weak var carNumberLabel: UILabel!
+     @IBOutlet weak var productTypeButton: UIButton!
      
-    // MARK: - Initiailize
+     // MARK: - Initialize
      
+     private var priceUnitString:String?
+     
+     private var localizer:LocalizerType = Localizer.shared
+     
+     private let disposeBag = DisposeBag()
+      
+     // MARK: - Initiailize
+      
     func initialize(localizer: LocalizerType = Localizer.shared) {
         priceUnitString = localizer.localized("txt_money_unit")
         
@@ -61,16 +61,12 @@ class PaymentHistoryReserveTableViewCell: UITableViewCell {
              return localizer.localized("ttl_ticket_monthly")
         }
     }
-
+    
     // MARK: - Life Cycle
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        initialize()
-    }
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
+        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -78,4 +74,5 @@ class PaymentHistoryReserveTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+
 }

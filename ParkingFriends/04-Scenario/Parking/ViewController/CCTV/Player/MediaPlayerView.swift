@@ -14,7 +14,7 @@ import CloudCCTVSDK
 protocol MediaPlayerViewType {
     
 }
-/*
+
 class MediaPlayer: Ti2RPlayer {
     static let shared: MediaPlayer = {
         let temp = MediaPlayer()
@@ -35,10 +35,10 @@ class MediaPlayerView: UIView, MediaPlayerViewType {
         MediaPlayer.shared.player_setListener(MediaPlayer.shared.handlerPointer, listener: bridge(obj: self), user: bridge(obj: self))
         screenLayer = MediaPlayer.shared.player_getDisplayLayer(with: MediaPlayer.shared.handlerPointer)
         
-        screenLayer!.frame = mediaView.frame
+        screenLayer!.frame = self.frame
         
         if let layer = screenLayer {
-            mediaView.layer.addSublayer(layer)
+            self.layer.addSublayer(layer)
         }
     }
     
@@ -48,7 +48,6 @@ class MediaPlayerView: UIView, MediaPlayerViewType {
             MediaPlayer.shared.player_prepareAsync(MediaPlayer.shared.handlerPointer)
         }
     }
-    
     
     func destroyPlayer() {
         if MediaPlayer.shared.handlerPointer != nil {
@@ -138,5 +137,3 @@ extension MediaPlayerView: PlayerListener {
         return 0
     }
 }
-
-*/

@@ -17,6 +17,7 @@ target 'ParkingFriends' do
   pod 'RxKeyboard'
   pod 'RxCoreLocation', '~> 1.4'
   pod "RxGesture"
+  pod 'RxDataSources', '~> 4.0'
   
   pod 'SnapKit', '~> 5.0.0'
   
@@ -42,9 +43,9 @@ target 'ParkingFriends' do
   pod 'AnyFormatKit'              # String Formatter
   pod 'CryptoSwift'               # SHA256 password to string
   
-  pod 'FloatingPanel'
+  pod 'FloatingPanel'             # Bottom Tap List View Contoller in Main 
   pod 'SideMenu', '~> 6.0'
-  pod "MXParallaxHeader"
+  pod "MXParallaxHeader"          # For Parkinglot Detail
   
   pod 'ImageSlideshow', '~> 1.8.1'
   pod "ImageSlideshow/Kingfisher"
