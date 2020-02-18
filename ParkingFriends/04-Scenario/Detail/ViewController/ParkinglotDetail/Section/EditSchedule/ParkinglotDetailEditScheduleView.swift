@@ -91,21 +91,24 @@ class ParkinglotDetailEditScheduleView: UIStackView {
     }
     
     private func setSwitchEditPanel(with productType:ProductType?) {
-        guard let type = productType else {
-            setHidden(true)
-            return
+        if let type =  productType {
+            timeEditPanelView.isHidden = (type == .time) ? false : true
+            fixedEditPanelView.isHidden = (type == .fixed) ? false : true
+            monthlyEditPanelView.isHidden = (type == .monthly) ? false : true
+            
+            setHidden(false)
+        } else {
+            setHidden(false)
         }
-        
-        timeEditPanelView.isHidden = (type == .time) ? false : true
-        fixedEditPanelView.isHidden = (type == .fixed) ? false : true
-        monthlyEditPanelView.isHidden = (type == .monthly) ? false : true
     }
     
     // MARK: - Local Methods
     
     func setHidden(_ flag:Bool) {
-        self.isHidden = flag
-        self.changeScheduleView.isHidden  = flag
+        if self.isHidden != flag {
+            self.isHidden = flag
+            self.changeScheduleView.isHidden  = flag
+        }
      }
     
     // MARK: - Public Methods

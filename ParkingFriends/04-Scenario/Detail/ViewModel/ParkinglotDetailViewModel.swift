@@ -14,11 +14,13 @@ protocol ParkinglotDetailViewModelType {
     var viewTitleText: Driver<String>? { get }
     var viewSubtitleText: Driver<String>? { get }
     
-    var detailInfo: BehaviorRelay<Parkinglot?> { get }
+    var parkinglotInfo: BehaviorRelay<Parkinglot?> { get }
     
     func loadInfo()
     func changeBookmark(_ state:Bool) 
     func getSelectedProductType() -> Observable<ProductType?>
+    
+    func getParkinglotInfo() -> Parkinglot?
     
     func setHeaderViewModel(_ viewModel:ParkinglotDetailHeaderViewModel)
     func setSymbolViewModel(_ viewModel:ParkinglotDetailSymbolViewModel)
@@ -34,7 +36,7 @@ class ParkinglotDetailViewModel: ParkinglotDetailViewModelType {
     var viewTitleText: Driver<String>?
     var viewSubtitleText: Driver<String>?
     
-    var detailInfo: BehaviorRelay<Parkinglot?> = BehaviorRelay(value: nil)
+    var parkinglotInfo: BehaviorRelay<Parkinglot?> = BehaviorRelay(value: nil)
     
     let productSetting:ProductSetting?
     
@@ -75,7 +77,7 @@ class ParkinglotDetailViewModel: ParkinglotDetailViewModelType {
     }
     
     func initialize() {
-        detailInfo.asDriver()
+        parkinglotInfo.asDriver()
             .drive(onNext: { element in
                 if let data = element {
                     self.updateDetailInfo(data)
@@ -120,6 +122,12 @@ class ParkinglotDetailViewModel: ParkinglotDetailViewModelType {
     
     public func setButtonViewModel(_ viewModel:ParkinglotDetailButtonViewModel) {
         buttonViewModel = viewModel
+    }
+    
+    // MARK: - Model Getter
+    
+    public func getParkinglotInfo() -> Parkinglot? {
+        return self.parkinglotInfo.value
     }
     
     // MARK: - Bookmark
@@ -247,7 +255,7 @@ class ParkinglotDetailViewModel: ParkinglotDetailViewModelType {
       
             parkinglot(id: elementId, from: time.start, to: time.end, type:productType, monthly:(from: monthly.from, count: monthly.count))
                 .asObservable()
-                .bind(to: detailInfo)
+                .bind(to: parkinglotInfo)
                 .disposed(by: disposeBag)
         }
     }

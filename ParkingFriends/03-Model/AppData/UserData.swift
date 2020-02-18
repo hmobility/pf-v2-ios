@@ -29,9 +29,9 @@ class UserData: NSObject, NSCoding {
         return productSettings.selectedProductType
     }
     // Deprecated
-    public func setProduct(type:ProductType) -> UserData {
+    public func setProduct(type:ProductType) -> ProductSetting {
          productSettings.selectedProductType = type
-         return self
+         return productSettings
     }
     
     // MARK: - Order Type

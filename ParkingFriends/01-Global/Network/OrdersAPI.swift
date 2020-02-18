@@ -32,9 +32,9 @@ class OrdersAPI: BaseAPI {
     
     // 주문 목록
     static func orders(page:Int, size:Int, from:String, to:String, httpMethod:HttpMethod = .get, auth:APIAuthType = .OAuth2) -> RestURL  {
-        let query:Params = ["page": page, "size":size, "from": from, "to":to]
-        let url = build(host:host, endpoint:"/orders/preview", params: query)
-        return (httpMethod, url, auth, nil)
+        let params:Params = ["page": page, "size":size, "from": from, "to":to]
+        let url = build(host:host, endpoint:"/orders", params: nil)
+        return (httpMethod, url, auth, params)
     }
     
     // 주문 상세(단일) 조회

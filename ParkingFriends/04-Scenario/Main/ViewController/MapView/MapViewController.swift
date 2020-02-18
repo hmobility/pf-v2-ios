@@ -86,7 +86,7 @@ class MapViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        viewModel.displayReservableTimeText
+        viewModel.displayBookingTimeText
             .asDriver()
             .drive(onNext:{ [unowned self] text in
                 self.searchResultNavigationView.setSubtitle(text)
@@ -139,6 +139,20 @@ class MapViewController: UIViewController {
             }
             .disposed(by: disposeBag)
     }
+    
+    private func setupMapMarkerBinding() {
+        viewModel.tappedMapMarker
+            .asDriver()
+            .filter { $0 != nil }
+            .map { $0!}
+            .distinctUntilChanged()
+            .drive(onNext: { [unowned self] element in
+                self.navigateToDetail(with: element)
+            })
+        
+    }
+    
+    // MARK: - Bottom Menu
     
     private func timeSettingAreaBinding() {
         viewModel.displaySettingSection
@@ -243,6 +257,8 @@ class MapViewController: UIViewController {
         setupSearchBinding()
         
        // setupMapViewPadding()
+        
+        setupMapMarkerBinding()
 
         handleCardEvents()
     }

@@ -11,7 +11,7 @@ import ObjectMapper
 
 public class OrderProduct: BaseModelType {
     var id:Int = 0
-    var status:String = ""
+    var name:String = ""
     
     required init?(map: Map) {
         super.init(map: map)
@@ -19,6 +19,6 @@ public class OrderProduct: BaseModelType {
        
     override public func mapping(map: Map) {
         id <- map["id"]
-        status <- map["status"]
+        name <- map["name"]
     }
 }

@@ -17,7 +17,9 @@ protocol MapViewModelType {
     var mapView: NMFMapView? { get set }
     
     var displayAddressText: BehaviorRelay<String> { get }
-    var displayReservableTimeText: BehaviorRelay<String> { get }
+    var displayBookingTimeText: BehaviorRelay<String> { get }
+    
+    var tappedMapMarker: BehaviorRelay<WithinElement?> { get }
     
     var cardViewModel:ParkingCardViewModelType? { get set }
     var parkingTapViewModel:ParkingTapViewModelType? { get set }
@@ -45,7 +47,7 @@ extension MapViewModelType {
 }
 
 #if DEBUG
-//let defaultCoordinate = CoordType(37.51888371942195,126.9157924925587)              // 영등포 신길역
+//let defaultCoordinate = CoordType(37.51888371942195,126.9157924925587)            // 영등포 신길역
 let defaultCoordinate = CoordType(37.400634765624986, 127.11203073310433)
 #else
 let defaultCoordinate = CoordType(37.400634765624986, 127.11203073310433)           // 판교 한컴 본사
@@ -57,7 +59,9 @@ class MapViewModel: NSObject, MapViewModelType {
     var circleOverlay: NMFCircleOverlay?
     
     var displayAddressText: BehaviorRelay<String> = BehaviorRelay(value: "")
-    var displayReservableTimeText: BehaviorRelay<String>
+    var displayBookingTimeText: BehaviorRelay<String>
+    
+    var tappedMapMarker: BehaviorRelay<WithinElement?> 
     
     var displaySettingSection: BehaviorRelay<(list:Bool, search:Bool)> = BehaviorRelay(value:(list:false, search:true))
     
@@ -87,7 +91,8 @@ class MapViewModel: NSObject, MapViewModelType {
         let date = userData.getOnReserveDate()
         let displayTime = DisplayTimeHandler().displayReservableTime(start: date.start, end: date.end)
         
-        displayReservableTimeText = BehaviorRelay(value: displayTime)
+        displayBookingTimeText = BehaviorRelay(value: displayTime)
+        tappedMapMarker = BehaviorRelay(value: nil)
         
         destMarker = NMFMarker.init(position: NMGLatLng(lat: defaultCoordinate.latitude, lng: defaultCoordinate.longitude), iconImage: NMFOverlayImage(name: "icMapCenter"))
         searchMarker = NMFMarker.init(position: NMGLatLng(lat: defaultCoordinate.latitude, lng: defaultCoordinate.longitude), iconImage: NMFOverlayImage(name: "icMarkerDestination"))
@@ -302,6 +307,10 @@ class MapViewModel: NSObject, MapViewModelType {
             for item in elements {
                 debugPrint("[LOT] ", item.address)
                 if let marker = generateMarker(within: item) {
+                    marker.handler { [unowned self] element in
+                        debugPrint("[MARK] - Tap => ", element.id)
+                        self.tappedMapMarker.accept(element)
+                    }
                     parkinglotList.append(marker)
                 }
             }
@@ -406,8 +415,8 @@ class MapViewModel: NSObject, MapViewModelType {
                     return CLLocationCoordinate2DMake(defaultCoordinate.latitude, defaultCoordinate.longitude)
                 }
                
-            return CLLocationCoordinate2DMake(defaultCoordinate.latitude, defaultCoordinate.longitude)
-           // return location?.coordinate ?? CLLocationCoordinate2DMake(defaultCoordinate.latitude, defaultCoordinate.longitude)
+           // return CLLocationCoordinate2DMake(defaultCoordinate.latitude, defaultCoordinate.longitude)
+            return location?.coordinate ?? CLLocationCoordinate2DMake(defaultCoordinate.latitude, defaultCoordinate.longitude)
         }
     }
     
@@ -418,6 +427,7 @@ class MapViewModel: NSObject, MapViewModelType {
         debugPrint("[RADIUS] ", radius)
         let time = UserData.shared.getOnReserveTime()
         let today = Date().toString(format: .custom("yyyyMMdd"))
+        let productType = UserData.shared.productSettings.getProductType()
         
         if district == true {
             self.withinDistrict(coordinate: coord, radius: radius)
@@ -427,7 +437,7 @@ class MapViewModel: NSObject, MapViewModelType {
                 })
                 .disposed(by: disposeBag)
         } else {
-            self.within(coordinate:coord, radius: radius, filter:option.filter, month:(today, 1), time:(time.start, time.end))
+            self.within(coordinate:coord, radius: radius, type: productType, filter:option.filter, month:(today, 1), time:(time.start, time.end))
                 .subscribe(onNext: { elements in
                     self.updateMarker(lots: elements)
                     self.updateSubModel(district: false, within: elements, section: search ? (list:false, search:true) : nil)
@@ -454,8 +464,8 @@ class MapViewModel: NSObject, MapViewModelType {
             .disposed(by: disposeBag)
     }
     
-    func within(coordinate:CoordType, radius:Double, filter:FilterType, month:(from:String, count:Int), time:(start:String, end:String)) -> Observable<[WithinElement]> {
-        return ParkingLot.within(lat: coordinate.latitude.toString, lon: coordinate.longitude.toString, radius:radius.toString, start:time.start, end:time.end, productType:.time, monthlyFrom:month.from, monthlyCount:month.count, filter: filter)
+    func within(coordinate:CoordType, radius:Double, type:ProductType, filter:FilterType, month:(from:String, count:Int), time:(start:String, end:String)) -> Observable<[WithinElement]> {
+        return ParkingLot.within(lat: coordinate.latitude.toString, lon: coordinate.longitude.toString, radius:radius.toString, start:time.start, end:time.end, productType:type, monthlyFrom:month.from, monthlyCount:month.count, filter: filter)
             .asObservable()
             .map { (within, response) in
                 return within?.elements ?? []
@@ -527,7 +537,7 @@ class MapViewModel: NSObject, MapViewModelType {
         UserData.shared.setOnReserveTime(start:startDate, end:endDate)
         let displayText = DisplayTimeHandler().displayReservableTime(start: startDate, end: endDate)
         
-        self.displayReservableTimeText.accept(displayText)
+        self.displayBookingTimeText.accept(displayText)
     }
     
     public func setFixedTicketTime(start startDate: Date, hours:Int) {
@@ -535,11 +545,10 @@ class MapViewModel: NSObject, MapViewModelType {
         UserData.shared.setOnReserveTime(start:startDate, end:endDate)
         let displayText = DisplayTimeHandler().diplayFixedTicketFromDate(date: startDate, hours: hours)
         
-        self.displayReservableTimeText.accept(displayText)
+        self.displayBookingTimeText.accept(displayText)
     }
     
     public func setMonthlyTicketTime(start startDate: Date, months:Int) {
         
     }
-    
 }

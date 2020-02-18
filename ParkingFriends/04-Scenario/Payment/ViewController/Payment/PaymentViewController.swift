@@ -20,7 +20,8 @@ class PaymentViewController: UIViewController {
     
     @IBOutlet weak var paymentGiftView: PaymentGiftView!
     
-    private lazy var viewModel:PaymentViewModelType = PaymentViewModel()
+    private var viewModel:PaymentViewModelType = PaymentViewModel()
+    private var parkinglot:Parkinglot?
     
     private let disposeBag = DisposeBag()
     
@@ -57,7 +58,19 @@ class PaymentViewController: UIViewController {
             .disposed(by: disposeBag)
     }
     
+    // MARK: - Publid Methods
+    
+    public func setData(parkinglot:Parkinglot) {
+        self.parkinglot = parkinglot
+    }
+    
     // MARK: - Local Methods
+    
+    private func showPaymentGuideView() {
+        if UserData.shared.displayPaymentGuide == true {
+            navigateToPaymentGuide()
+        }
+    }
     
     private func showGiftView(_ flag:Bool) {
         paymentGiftView.isHidden = flag ? false : true
@@ -77,14 +90,6 @@ class PaymentViewController: UIViewController {
         setupNavigationBinding()
         setupGiftBinding()
         setupPaymentBinding()
-    }
-    
-    // MARK: - Local Methods
-    
-    private func showPaymentGuideView() {
-        if UserData.shared.displayPaymentGuide == true {
-            navigateToPaymentGuide()
-        }
     }
     
     // MARK: - Life Cycle

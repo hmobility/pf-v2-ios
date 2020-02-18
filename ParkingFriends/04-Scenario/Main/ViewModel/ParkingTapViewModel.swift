@@ -36,7 +36,7 @@ class ParkingTapViewModel: ParkingTapViewModelType {
     var monthlyTicketText: Driver<String>
     var sortOrderText: BehaviorRelay<String>
     
-    var selectedProductType: BehaviorRelay<ProductType> = BehaviorRelay(value: .fixed)
+    var selectedProductType: BehaviorRelay<ProductType> = BehaviorRelay(value: .time)
     var selectedSortType : BehaviorRelay<SortType> = BehaviorRelay(value: .price)
     
     var elements: BehaviorRelay<[WithinElement]> = BehaviorRelay(value: [])

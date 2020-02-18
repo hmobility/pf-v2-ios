@@ -59,8 +59,8 @@ class MarkerView: UIView {
     
     public func setSelected(_ flag:Bool) {
         if var value = markerValue {
-            debugPrint("[MARKER][SEL]", value, ", [M] ", flag, " , CONVERTED :", value.selected(flag))
             setMarkerType(value.selected(flag))
+            debugPrint("[MARKER][SEL]", value, ", [M] ", flag, " , CONVERTED :", value.selected(flag))
         }
     }
     
@@ -77,14 +77,14 @@ class MarkerView: UIView {
         
         switch type {
         case .normal(let selected):
-            backgroundImageView.image = selected ? UIImage(named:"imgMarkerGreen")! : UIImage(named:"imgMarkerNormal")!
+            self.backgroundImageView.image = selected ? UIImage(named:"imgMarkerGreen")! : UIImage(named:"imgMarkerNormal")!
         case .disabled(let selected):
-            backgroundImageView.image = selected ? UIImage(named:"imgMarkerGreySelected")! : UIImage(named:"imgMarkerDisabled")!
+            self.backgroundImageView.image = selected ? UIImage(named:"imgMarkerGreySelected")! : UIImage(named:"imgMarkerDisabled")!
         case .partner(let selected):
-            backgroundImageView.image = selected ? UIImage(named:"imgMarkerGreySelected")! : UIImage(named:"imgMarkerPartner")!
+            self.backgroundImageView.image = selected ? UIImage(named:"imgMarkerGreySelected")! : UIImage(named:"imgMarkerPartner")!
         }
-        
-        backgroundImageView.setNeedsLayout()
+
+        backgroundImageView.setNeedsDisplay()
     }
     
     // MARK: - Life Cycle

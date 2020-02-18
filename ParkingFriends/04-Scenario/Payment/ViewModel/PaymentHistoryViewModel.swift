@@ -14,6 +14,8 @@ protocol PaymentHistoryViewModelType {
     var ticketNotUsedTitleText: String { get }
     
     func getTapItems() -> Observable<[String]>
+    func getOrderItems(_ tapIndex:PaymentHistoryTapIndex) -> Observable<[OrderElement]>
+    func loadOrderItems()
 }
 
 class PaymentHistoryViewModel: PaymentHistoryViewModelType {
@@ -21,7 +23,11 @@ class PaymentHistoryViewModel: PaymentHistoryViewModelType {
     var ticketUsedTitleText: String
     var ticketNotUsedTitleText: String
     
+    var historyInfoItems: BehaviorRelay<[OrderElement]?> = BehaviorRelay(value: nil)
+    
     var localizer:LocalizerType
+    
+    let disposeBag = DisposeBag()
     
     // MARK: - Initiailize
     
@@ -37,5 +43,35 @@ class PaymentHistoryViewModel: PaymentHistoryViewModelType {
     
     public func getTapItems() -> Observable<[String]> {
         return Observable.of([ticketUsedTitleText, ticketNotUsedTitleText])
+    }
+    
+    public func getOrderItems(_ tapIndex:PaymentHistoryTapIndex) -> Observable<[OrderElement]> {
+        let productSatus:OrderStatusType = (tapIndex == .reserved_history) ? .paid : .used
+        
+        return historyInfoItems
+            .filter { $0 != nil }
+            .map { $0! }
+            .asObservable()
+            .map { items in
+                return items.filter { $0.status == productSatus }
+            }
+    }
+    
+    // MARK: - Local Methods
+    
+    
+    // MARK: - Network
+       
+    public func loadOrderItems() {
+        Order.orders(page: 0, from: "", to: "")
+            .asObservable()
+            .filter { (orders, status) in
+                orders != nil
+            }
+            .map { (orders, status) in
+                return orders!.elements
+            }
+            .bind(to: historyInfoItems)
+            .disposed(by: disposeBag)
     }
 }
