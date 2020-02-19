@@ -63,7 +63,7 @@ class ParkinglotDetailOperationTimeViewModel: ParkinglotDetailOperationTimeViewM
                 $0.operationFlag
             }
             .map {
-                let time = DisplayTimeHandler().displayOperationTime(start: $0.from, end: $0.to)
+                let time = DisplayDateTimeHandler().displayOperationTime(start: $0.from, end: $0.to)
                 return ($0.type!, time)
             }
     }

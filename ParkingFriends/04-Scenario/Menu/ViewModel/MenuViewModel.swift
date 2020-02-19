@@ -49,11 +49,12 @@ class MenuViewModel: MenuViewModelType {
     var shareMyParkinglotText: Driver<String>
     
     var localizer:LocalizerType
-    
+    var userData:UserData
     // MARK: - Initiailize
     
-    init(localizer: LocalizerType = Localizer.shared) {
+    init(localizer: LocalizerType = Localizer.shared, userData: UserData = UserData.shared) {
         self.localizer = localizer
+        self.userData = userData
         
         addNewCarText = localizer.localized("ttl_my_car_add")
         addCarText = localizer.localized("btn_add")
@@ -72,4 +73,10 @@ class MenuViewModel: MenuViewModelType {
         reportNewParkinglotText = localizer.localized("btn_parkinglot_report")
         shareMyParkinglotText = localizer.localized("btn_my_parkinglot_sharing")
     }
+    /*
+    func getUserName() -> Observable<String> {
+        let userName = userData.login.
+        return Observable.just
+    }
+ */
 }

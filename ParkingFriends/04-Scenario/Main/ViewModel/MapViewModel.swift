@@ -89,7 +89,7 @@ class MapViewModel: NSObject, MapViewModelType {
         self.locationOverlay = mapView?.locationOverlay
         
         let date = userData.getOnReserveDate()
-        let displayTime = DisplayTimeHandler().displayReservableTime(start: date.start, end: date.end)
+        let displayTime = DisplayDateTimeHandler().displayReservableTime(start: date.start, end: date.end)
         
         displayBookingTimeText = BehaviorRelay(value: displayTime)
         tappedMapMarker = BehaviorRelay(value: nil)
@@ -535,7 +535,7 @@ class MapViewModel: NSObject, MapViewModelType {
     
     public func setTimeTicketRange(start startDate: Date, end endDate:Date) {
         UserData.shared.setOnReserveTime(start:startDate, end:endDate)
-        let displayText = DisplayTimeHandler().displayReservableTime(start: startDate, end: endDate)
+        let displayText = DisplayDateTimeHandler().displayReservableTime(start: startDate, end: endDate)
         
         self.displayBookingTimeText.accept(displayText)
     }
@@ -543,7 +543,7 @@ class MapViewModel: NSObject, MapViewModelType {
     public func setFixedTicketTime(start startDate: Date, hours:Int) {
         let endDate = startDate.adjust(.hour, offset: hours)
         UserData.shared.setOnReserveTime(start:startDate, end:endDate)
-        let displayText = DisplayTimeHandler().diplayFixedTicketFromDate(date: startDate, hours: hours)
+        let displayText = DisplayDateTimeHandler().diplayFixedTicketFromDate(date: startDate, hours: hours)
         
         self.displayBookingTimeText.accept(displayText)
     }

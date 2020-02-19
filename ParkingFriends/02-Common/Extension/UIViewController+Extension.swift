@@ -77,4 +77,10 @@ extension UIViewController {
             navigationController.dismiss(animated: true, completion: completion)
         }
     }
+    
+    public func makeWindowRoot() {
+        if let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) {
+            window.rootViewController = self
+        }
+    }
 }

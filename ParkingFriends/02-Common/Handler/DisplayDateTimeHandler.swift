@@ -9,7 +9,7 @@
 import UIKit
 import AFDateHelper
 
-struct DisplayTimeHandler {
+struct DisplayDateTimeHandler {
     private var localizer:LocalizerType
     
     init(localizer: LocalizerType = Localizer.shared) {
@@ -20,6 +20,27 @@ struct DisplayTimeHandler {
     
     private func getAmPmString(_ date:Date) -> String {
         return (date.toString(format:(.custom("a"))) == "AM") ? localizer.localized("txt_am") : localizer.localized("txt_pm")
+    }
+    
+    private func getDayOfTheWeek(_ name:String) -> String {
+        switch name {
+        case "Monday":
+            return localizer.localized("itm_mon")
+        case "Tuesday":
+            return localizer.localized("itm_tue")
+        case "Wednesday":
+            return localizer.localized("itm_wed")
+        case "Thursday":
+            return localizer.localized("itm_thu")
+        case "Friday":
+            return localizer.localized("itm_fri")
+        case "Saturday":
+            return localizer.localized("itm_sat")
+        case "Sunday":
+            return localizer.localized("itm_sun")
+        default:
+            return ""
+        }
     }
     
     // MARK: - Public Method
@@ -67,5 +88,12 @@ struct DisplayTimeHandler {
         let endTime = "\(endAmPm) " + ((endHours < 12 ) ? "\(endHours)" : "\(endHours % 12)") + " \(localizer.localized("txt_hour_unit"))" + ((endMinutes > 0) ? "\(endMinutes)\(localizer.localized("txt_minute_unit"))" : "")
         
         return "\(startTime) ~ \(endTime)"
+    }
+    
+    func displayDateYYmD(with date:Date) -> String {
+        let dayName = getDayOfTheWeek(date.toString(format:(.custom("EEEE"))))
+        let result:String = date.compare(.isToday) ? localizer.localized("txt_today") : "\(date.toString(format:(.custom("YY")))).\(date.toString(format:(.custom("M")))).\(date.toString(format:(.custom("d")))) \(dayName)"
+        
+        return result
     }
 }

@@ -1670,10 +1670,10 @@
             </objects>
             <point key="canvasLocation" x="3649" y="-595"/>
         </scene>
-        <!--Payment History Empty Reservation View Controller-->
+        <!--Payment History Empty Reserve View Controller-->
         <scene sceneID="n7f-33-Yam">
             <objects>
-                <viewController storyboardIdentifier="PaymentHistoryEmptyReservationViewController" id="vTp-Jx-BFO" customClass="PaymentHistoryEmptyReservationViewController" customModule="ParkingFriends" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PaymentHistoryEmptyReservationViewController" id="vTp-Jx-BFO" customClass="PaymentHistoryEmptyReserveViewController" customModule="ParkingFriends" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GrH-02-soa">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1774,11 +1774,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" delaysContentTouches="NO" bouncesZoom="NO" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelectionDuringEditing="YES" rowHeight="104" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pFP-oj-aXN">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" delaysContentTouches="NO" bouncesZoom="NO" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" allowsSelectionDuringEditing="YES" rowHeight="104" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pFP-oj-aXN">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="separatorColor" name="LightPeriwinkle2"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" indentationWidth="10" reuseIdentifier="PaymentHistoryReserveTableViewCell" rowHeight="104" id="kot-6I-nvr" customClass="PaymentHistoryReserveTableViewCell" customModule="ParkingFriends" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" indentationWidth="0.0" reuseIdentifier="PaymentHistoryReserveTableViewCell" rowHeight="104" id="kot-6I-nvr" customClass="PaymentHistoryReserveTableViewCell" customModule="ParkingFriends" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="104"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kot-6I-nvr" id="wbh-DN-PgW">
@@ -1786,7 +1788,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="10:00~15:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gcT-a5-OsG" userLabel="Label - Product Name">
-                                                    <rect key="frame" x="16" y="16" width="297" height="14"/>
+                                                    <rect key="frame" x="16" y="16" width="242" height="14"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="14" id="e9d-mx-GG0"/>
                                                     </constraints>
@@ -1794,11 +1796,11 @@
                                                     <color key="textColor" name="DarkGrey"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="15,000원" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mgh-2a-LUW" userLabel="Label - Price">
-                                                    <rect key="frame" x="333" y="16" width="65" height="14"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="15,000원" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mgh-2a-LUW" userLabel="Label - Price">
+                                                    <rect key="frame" x="278" y="16" width="120" height="14"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="14" id="WnE-Yf-Fzk"/>
-                                                        <constraint firstAttribute="width" constant="65" id="lmo-hV-2hD"/>
+                                                        <constraint firstAttribute="width" constant="120" id="lmo-hV-2hD"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                                     <color key="textColor" name="DarkGrey"/>
@@ -1921,23 +1923,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FsB-iv-bcf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="d4a-Jm-XYK">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="46"/>
-                    <autoresizingMask key="autoresizingMask"/>
-                    <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="내일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KDS-yM-FLy" userLabel="Label - Title">
-                            <rect key="frame" x="16" y="21" width="24.5" height="17"/>
-                            <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="14"/>
-                            <color key="textColor" name="DarkGrey"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                    </subviews>
-                    <color key="backgroundColor" name="IceBlue"/>
-                    <constraints>
-                        <constraint firstItem="KDS-yM-FLy" firstAttribute="leading" secondItem="d4a-Jm-XYK" secondAttribute="leading" constant="16" id="7w8-WI-v1d"/>
-                        <constraint firstAttribute="bottom" secondItem="KDS-yM-FLy" secondAttribute="bottom" constant="8" id="a8D-jf-X0s"/>
-                    </constraints>
-                </view>
             </objects>
             <point key="canvasLocation" x="5453.6231884057979" y="-538.39285714285711"/>
         </scene>
@@ -1949,9 +1934,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" delaysContentTouches="NO" bouncesZoom="NO" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelectionDuringEditing="YES" rowHeight="58" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bf7-oU-UWU">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" delaysContentTouches="NO" bouncesZoom="NO" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" allowsSelectionDuringEditing="YES" rowHeight="58" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bf7-oU-UWU">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="separatorColor" name="LightPeriwinkle2"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" indentationWidth="10" reuseIdentifier="PaymentHistoryUsedTicketTableViewCell" rowHeight="104" id="CGA-72-lse" customClass="PaymentHistoryReserveTableViewCell" customModule="ParkingFriends" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="104"/>
@@ -1961,7 +1948,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="10:00~15:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ixb-XT-Wzi" userLabel="Label - Product Name">
-                                                    <rect key="frame" x="16" y="16" width="297" height="14"/>
+                                                    <rect key="frame" x="16" y="16" width="242" height="14"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="14" id="AB5-D4-ndN"/>
                                                     </constraints>
@@ -1969,10 +1956,10 @@
                                                     <color key="textColor" name="DarkGrey"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="15,000원" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y3o-aj-yng" userLabel="Label - Price">
-                                                    <rect key="frame" x="333" y="16" width="65" height="14"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="15,000원" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y3o-aj-yng" userLabel="Label - Price">
+                                                    <rect key="frame" x="278" y="16" width="120" height="14"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="65" id="EeD-6J-zx0"/>
+                                                        <constraint firstAttribute="width" constant="120" id="EeD-6J-zx0"/>
                                                         <constraint firstAttribute="height" constant="14" id="kcH-cF-Eaq"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
@@ -2144,6 +2131,9 @@
         </namedColor>
         <namedColor name="LightBlueGrey">
             <color red="0.80800002813339233" green="0.81999999284744263" blue="0.83099997043609619" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="LightPeriwinkle2">
+            <color red="0.86699998378753662" green="0.87800002098083496" blue="0.88999998569488525" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="LightSeafoam">
             <color red="0.6589999794960022" green="0.93699997663497925" blue="0.75700002908706665" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -19,4 +19,13 @@ extension Date {
             return Double(hours + (minutes / 60))
         }
     }
+    
+    var withoutTimeStamp:Date {
+        get {
+            guard let date = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month, .day], from: self)) else {
+                fatalError("Failed to strip time from Date object")
+            }
+            return date
+        }
+    }
 }

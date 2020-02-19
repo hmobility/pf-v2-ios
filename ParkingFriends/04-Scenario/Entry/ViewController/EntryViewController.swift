@@ -138,7 +138,6 @@ class EntryViewController: UIViewController {
         self.push(target)
     }
     
-    
     /*
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

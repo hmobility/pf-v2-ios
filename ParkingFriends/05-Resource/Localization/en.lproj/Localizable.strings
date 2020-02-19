@@ -356,6 +356,7 @@
 "btn_save_to_changed" = "변경사항 저장";
 "ttl_no_my_card" = "등록된 결제 수단이 없습니다.";
 "dsc_no_my_card" = "아래 버튼을 눌러, 자주 쓰는 카드를 등록해보세요.";
+"txt_basic_card" = "기본";
 
 // Settings
 "ttl_settings" = "설정";
@@ -459,7 +460,7 @@
 "msg_car_number_invalid" = "올바르지 않은 차량 번호 형식입니다.";
 "msg_credit_card_invalid" = "유효하지 않은 카드 정보입니다.\n소지하신 카드 확인 후 다시 입력해주세요.";
 "msg_credit_card_field_invalid" = "올바르지 않은 내용입니다.";
-"msg_payment_registered" = "새 결제 수단이 정상적으로 등록되었습니다.";
+"msg_payment_method_registered" = "새 결제 수단이 정상적으로 등록되었습니다.";
 "msg_nickname_invalid" = "사용할수 없는 문자가 들어가있습니다.";
 "msg_nickname_disaprove" = "이미 사용중인 닉네임입니다.";
 "msg_point_charged" = "포인트가 정상적으로 충전되었습니다.\n현재 보유 포인트는 %@ P 입니다.";

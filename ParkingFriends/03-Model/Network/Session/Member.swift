@@ -13,7 +13,7 @@ class Member : HttpSession {
     static public func members(username:String, password:String, email:String, nickname:String, oldMemberId:Int, agreeMarketing:Bool) -> Observable<(Login?, ResponseCodeType)>  {
         let data = MembersAPI.members(username: username, password: password, email: email, nickname: nickname, oldMemberId: oldMemberId, agreeMarketing: agreeMarketing)
      
-        return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params!)
+        return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params)
             .map ({  result in
                 return (Login(JSON: result.data), result.codeType)
             })
@@ -23,7 +23,7 @@ class Member : HttpSession {
     static public func members() -> Observable<(Members?, ResponseCodeType)>  {
         let data = MembersAPI.members()
       
-        return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params!)
+        return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params)
             .map ({  result in
                 return (Members(JSON: result.data), result.codeType)
             })
@@ -33,7 +33,7 @@ class Member : HttpSession {
     static public func password(password:String, newPassword:String) -> Observable<ResponseCodeType>  {
         let data = MembersAPI.password(password:password, newPassword:newPassword)
         
-        return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params!)
+        return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params)
             .map ({  result in
                 return result.codeType
             })
@@ -43,7 +43,7 @@ class Member : HttpSession {
     static public func phone_number(otp:String, otpId:String, phoneNumber:String) -> Observable<ResponseCodeType>  {
         let data = MembersAPI.phone_number(otp: otp, otpId: otpId, phoneNumber: phoneNumber)
         
-        return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params!)
+        return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params)
             .map ({  result in
                 return result.codeType
             })
@@ -53,7 +53,7 @@ class Member : HttpSession {
     static public func members(id:Int, nickname:String, email:String) -> Observable<ResponseCodeType>  {
         let data = MembersAPI.members(id: id, nickname: nickname, email: email)
         
-        return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params!)
+        return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params)
             .map ({  result in
                 return result.codeType
             })
@@ -63,7 +63,7 @@ class Member : HttpSession {
     static public func update_fcm_token(fcmToken:String) -> Observable<ResponseCodeType>  {
         let data = MembersAPI.update_fcm_token(fcmToken: fcmToken)
         
-        return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params!)
+        return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params)
             .map ({  result in
                 return result.codeType
             })
@@ -73,7 +73,7 @@ class Member : HttpSession {
     static public func point() -> Observable<(Point?, ResponseCodeType)>  {
         let data = MembersAPI.point()
         
-        return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params!)
+        return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params)
             .map ({  result in
                 return (Point(JSON: result.data), result.codeType)
             })
@@ -83,7 +83,7 @@ class Member : HttpSession {
     static public func withdraw(responseType:String, reason:String) -> Observable<ResponseCodeType>  {
         let data = MembersAPI.withdraw(responseType: responseType, reason: reason)
         
-        return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params!)
+        return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params)
             .map ({  result in
                 return result.codeType
             })
@@ -93,7 +93,7 @@ class Member : HttpSession {
     static public func cards(cardNo:String, yearExpired:String, monthExpired:String, password:String, birthDate:String, realName:String) -> Observable<ResponseCodeType>  {
         let data = MembersAPI.cards(cardNo: cardNo, yearExpired: yearExpired, monthExpired: monthExpired, password: password, birthDate: birthDate, realName: realName)
     
-        return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params!)
+        return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params)
             .map ({  result in
                 return result.codeType
             })
@@ -103,7 +103,7 @@ class Member : HttpSession {
     static public func cards() -> Observable<(Cards?, ResponseCodeType)>  {
         let data = MembersAPI.cards()
         
-        return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params!)
+        return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params)
             .map ({  result in
                 return (Cards(JSON: result.data), result.codeType)
             })
@@ -113,7 +113,7 @@ class Member : HttpSession {
     static public func cards(id:Int) -> Observable<ResponseCodeType>  {
         let data = MembersAPI.cards(id: id)
         
-        return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params!)
+        return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params)
             .map ({  result in
                 return result.codeType
             })
@@ -123,7 +123,7 @@ class Member : HttpSession {
     static public func delete_cards(id:Int) -> Observable<ResponseCodeType>  {
         let data = MembersAPI.delete_cards(id: id)
         
-        return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params!)
+        return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params)
             .map ({  result in
                 return result.codeType
             })
@@ -133,7 +133,7 @@ class Member : HttpSession {
     static public func coupons() -> Observable<(Coupons?, ResponseCodeType)>  {
         let data = MembersAPI.coupons()
         
-        return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params!)
+        return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params)
             .map ({  result in
                 return (Coupons(JSON: result.data), result.codeType)
             })
@@ -143,7 +143,7 @@ class Member : HttpSession {
     static public func cars(modelId:Int, carNo:String, color:String, defaultFlag: Bool) -> Observable<ResponseCodeType>  {
         let data = MembersAPI.cars(modelId: modelId, carNo: carNo, color: color, defaultFlag: defaultFlag)
         
-        return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params!)
+        return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params)
             .map ({  result in
                 return result.codeType
             })
@@ -153,7 +153,7 @@ class Member : HttpSession {
     static public func cars() -> Observable<(Cars?, ResponseCodeType)>  {
         let data = MembersAPI.cars()
         
-        return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params!)
+        return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params)
             .map ({  result in
                 return (Cars(JSON: result.data), result.codeType)
             })
@@ -163,7 +163,7 @@ class Member : HttpSession {
     static public func cars(id:Int) -> Observable<ResponseCodeType>  {
         let data = MembersAPI.cards(id: id)
         
-        return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params!)
+        return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params)
             .map ({  result in
                 return result.codeType
             })
@@ -173,7 +173,7 @@ class Member : HttpSession {
     static public func delete_cars(id:Int) -> Observable<ResponseCodeType>  {
         let data = MembersAPI.delete_cars(id: id)
         
-        return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params!)
+        return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params)
             .map ({  result in
                 return result.codeType
             })
@@ -183,7 +183,7 @@ class Member : HttpSession {
     static public func address(address:String, detail:String, latitude:String, longitude:String, type:AddressType) -> Observable<ResponseCodeType>  {
         let data = MembersAPI.address(address: address, detail: detail, latitude:latitude, longitude:longitude, type: type)
         
-        return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params!)
+        return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params)
             .map ({  result in
                 return result.codeType
             })
@@ -193,7 +193,7 @@ class Member : HttpSession {
     static public func address() -> Observable<(Address?, ResponseCodeType)>  {
         let data = MembersAPI.address()
         
-        return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params!)
+        return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params)
             .map ({  result in
                 return (Address(JSON: result.data), result.codeType)
             })
@@ -202,7 +202,7 @@ class Member : HttpSession {
     static public func delete_address(id:Int) -> Observable<ResponseCodeType>  {
         let data = MembersAPI.delete_address(id: id)
         
-        return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params!)
+        return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params)
             .map ({  result in
                 return result.codeType
             })

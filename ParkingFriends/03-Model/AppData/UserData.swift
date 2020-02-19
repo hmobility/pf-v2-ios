@@ -96,10 +96,8 @@ class UserData: NSObject, NSCoding {
     public func logout() {
         self.reset()
         
-        if let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) {
-            let target = Storyboard.splash.instantiateInitialViewController() as! SplashViewController
-            window.rootViewController = target
-        }
+        let target = Storyboard.splash.instantiateInitialViewController() as! SplashViewController
+        target.makeWindowRoot()
     }
     
     // Usually call this method in AppDelegate

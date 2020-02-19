@@ -12,8 +12,8 @@ import ObjectMapper
 class OrdersDetail: BaseModelType {
     var id:Int = 0
     var status:OrderStatusType?
-    var product:OrderProduct?
-    var parkinglot:OrderParkinglot?
+    var product:OrderDetailProduct?
+    var parkinglot:OrderDetailParkinglot?
     var from:String = ""
     var to:String = ""
     var dateCreated:String = ""
@@ -52,6 +52,35 @@ class OrdersDetail: BaseModelType {
         car <- map["car"]
     }
 }
+
+public class OrderDetailProduct: BaseModelType {
+    var id:Int = 0
+    var name:String = ""
+    
+    required init?(map: Map) {
+        super.init(map: map)
+     }
+       
+    override public func mapping(map: Map) {
+        id <- map["id"]
+        name <- map["name"]
+    }
+}
+
+public class OrderDetailParkinglot: BaseModelType {
+    var id:Int = 0
+    var name:String = ""
+    
+    required init?(map: Map) {
+        super.init(map: map)
+     }
+       
+    override public func mapping(map: Map) {
+        id <- map["id"]
+        name <- map["name"]
+    }
+}
+
 
 class OrdersCarElement: BaseModelType {
     var number:String = ""
