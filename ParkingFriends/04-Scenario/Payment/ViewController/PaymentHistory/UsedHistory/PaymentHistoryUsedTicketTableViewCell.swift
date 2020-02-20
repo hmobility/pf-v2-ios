@@ -63,10 +63,14 @@ class PaymentHistoryUsedTicketTableViewCell: UITableViewCell {
     }
     
     // MARK: - Life Cycle
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        initialize()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -139,12 +139,14 @@ class SearchViewModel: SearchViewModelType {
     }
     
     public func requestFavorites() -> Observable<[FavoriteElement]> {
-        return ParkingLot.favorites().asObservable().map { (favorite, status) in
-            if status == .success {
-                return favorite?.elements ?? []
-            } else {
-                return []
+        return ParkingLot.favorites()
+            .asObservable()
+            .map { (favorite, status) in
+                if status == .success {
+                    return favorite?.elements ?? []
+                } else {
+                    return []
+                }
             }
-        }
     }
 }

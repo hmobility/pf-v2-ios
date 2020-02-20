@@ -11,7 +11,7 @@ import CloudCCTVSDK
 //import Alamofire
 //import SwiftyJSON
 
-protocol MediaPlayerViewType {
+protocol ParkingCCTVMediaPlayerViewType {
     
 }
 
@@ -24,7 +24,7 @@ class MediaPlayer: Ti2RPlayer {
     var handlerPointer: UnsafeMutableRawPointer?
 }
 
-class MediaPlayerView: UIView, MediaPlayerViewType {
+class ParkingCCTVMediaPlayerView: UIView, ParkingCCTVMediaPlayerViewType {
     
     private var screenLayer: CALayer?
     
@@ -100,7 +100,7 @@ class MediaPlayerView: UIView, MediaPlayerViewType {
 }
 
 //MARK: - MyPlayerDelegate
-extension MediaPlayerView: PlayerListener {
+extension ParkingCCTVMediaPlayerView: PlayerListener {
     func onPrepared(_: UnsafeMutableRawPointer, user: UnsafeMutableRawPointer) {
         print("OnPrepared------------------")
         let ret = MediaPlayer.shared.player_start(MediaPlayer.shared.handlerPointer)

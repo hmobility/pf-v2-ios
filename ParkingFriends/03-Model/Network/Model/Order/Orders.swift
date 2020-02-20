@@ -63,7 +63,7 @@ class OrderElement: BaseModelType {
         refundAmount <- map["refundAmount"]
         refundPoint <- map["refundPoint"]
         car <- map["car"]
-        gift <- (map["gift"] , BoolTransform())
+        gift <- (map["gift"], BoolTransform())
     }
 }
 

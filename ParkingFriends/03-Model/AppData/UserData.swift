@@ -12,17 +12,21 @@ import ObjectMapper
 let kBookingTimeFormat = "yyyyMMddHHmm"
 
 class UserData: NSObject, NSCoding {
-    var login: Login?
-    var filter: FilterOption = FilterOption()
+    var login: Login? {
+        didSet {
+            memberInfo.load()
+        }
+    }
     
+    var filter: FilterOption = FilterOption()
     var displayPaymentGuide: Bool = true
     
     var productSettings:ProductSetting = ProductSetting.shared
-    
     var searchHistory:SearchHistory = SearchHistory.shared
+    var memberInfo:MemberInfo = MemberInfo.shared
 
     // MARK: - Public Methods
-    
+    /*
     // MARK: - Product
     // Deprecated
     public func getProductType() -> ProductType {
@@ -33,7 +37,7 @@ class UserData: NSObject, NSCoding {
          productSettings.selectedProductType = type
          return productSettings
     }
-    
+    */
     // MARK: - Order Type
     
     public func getSortType() -> SortType {

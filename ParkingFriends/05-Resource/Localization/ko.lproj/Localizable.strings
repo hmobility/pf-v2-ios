@@ -407,6 +407,9 @@
 "txt_level_5_benefit" = "포인트 10% 추가적립";
 
 // Parking - CCTV / Non-CCTV
+"ttl_parking_status" = "주차 이용 현황";
+"ttl_parking_time_remaining" = "주차 시작시간이 30분 남았어요!";
+"dsc_parking_time_remaining" = "예약시간에 맞춰 주차장에 입차해주세요.";
 "ttl_reservation_cancel" = "예약을 취소할까요?";
 "txt_payment_price" = "• 결제 금액";
 "txt_cancellation_price" = "• 취소 수수료";

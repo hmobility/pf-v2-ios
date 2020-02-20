@@ -21,27 +21,16 @@ class PaymentHistoryUsedTicketViewController: UIViewController {
     
     fileprivate var dataSource:HistoryUsedDataSource?
     
+    var selectAction: ((_ element:OrderElement) -> Void)?
+    
     private let disposeBag = DisposeBag()
 
     // MARK: - Binding
     
     private func setupTableViewBinding() {
-        historyUsedItems
-            .asObservable()
-            .bind(to: tableView.rx.items(cellIdentifier: "PaymentHistoryUsedTicketTableViewCell", cellType: PaymentHistoryUsedTicketTableViewCell.self)) { row , item, cell in
-                cell.configure(title: item.product?.name ?? "", price: item.totalAmount, place: item.parkingLot?.name ?? "", carNumber: item.car?.number ?? "", productType: item.type!)
-            }
-            .disposed(by: disposeBag)
-        
-        tableView.rx.modelSelected(OrderElement.self)
-            .subscribe(onNext: { item in
-                
-            })
-            .disposed(by: disposeBag)
-        
         tableView.rx.setDelegate(self)
             .disposed(by: disposeBag)
-  
+
         historyUsedItems.asObservable()
             .map { items in
                 return items.map { return $0.dateCreated.toDate!.withoutTimeStamp }.uniqued()
@@ -63,6 +52,14 @@ class PaymentHistoryUsedTicketViewController: UIViewController {
                 }
             }
             .bind(to: tableView.rx.items(dataSource: getHistoryUsedItemDataSource()))
+            .disposed(by: disposeBag)
+        
+        tableView.rx.modelSelected(OrderElement.self)
+            .subscribe(onNext: { item in
+                if let action = self.selectAction {
+                    action(item)
+                }
+            })
             .disposed(by: disposeBag)
     }
     

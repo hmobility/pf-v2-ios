@@ -316,7 +316,7 @@ class MapViewController: UIViewController {
     
     func navigateToTimeDialog() {
         let date = UserData.shared.getOnReserveDate()
-        let productType = UserData.shared.getProductType()
+        let productType = UserData.shared.productSettings.getProductType()
         
         if productType == .time {
             TimeTicketDialog.show(source: self, start: date.start, handler:{ (start, end) in

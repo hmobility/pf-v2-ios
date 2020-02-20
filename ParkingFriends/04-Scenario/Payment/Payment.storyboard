@@ -1670,10 +1670,10 @@
             </objects>
             <point key="canvasLocation" x="3649" y="-595"/>
         </scene>
-        <!--Payment History Empty Reserve View Controller-->
+        <!--Payment History Empty Paid Ticket View Controller-->
         <scene sceneID="n7f-33-Yam">
             <objects>
-                <viewController storyboardIdentifier="PaymentHistoryEmptyReservationViewController" id="vTp-Jx-BFO" customClass="PaymentHistoryEmptyReserveViewController" customModule="ParkingFriends" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PaymentHistoryEmptyReservationViewController" id="vTp-Jx-BFO" customClass="PaymentHistoryEmptyPaidTicketViewController" customModule="ParkingFriends" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GrH-02-soa">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1718,10 +1718,10 @@
             </objects>
             <point key="canvasLocation" x="4683" y="-538"/>
         </scene>
-        <!--Payment History Empty History View Controller-->
+        <!--Payment History Empty Used Ticket View Controller-->
         <scene sceneID="3Oc-pP-8em">
             <objects>
-                <viewController storyboardIdentifier="PaymentHistoryEmptyHistoryViewController" id="hfJ-Z3-4st" customClass="PaymentHistoryEmptyHistoryViewController" customModule="ParkingFriends" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PaymentHistoryEmptyUsedTicketViewController" id="hfJ-Z3-4st" customClass="PaymentHistoryEmptyUsedTicketViewController" customModule="ParkingFriends" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9lO-LS-tv2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1766,10 +1766,10 @@
             </objects>
             <point key="canvasLocation" x="4683" y="148"/>
         </scene>
-        <!--Payment History Reserve View Controller-->
+        <!--Payment History Paid Ticket View Controller-->
         <scene sceneID="LTQ-ge-yyg">
             <objects>
-                <viewController storyboardIdentifier="PaymentHistoryReserveViewController" id="aIL-D8-rnL" customClass="PaymentHistoryReserveViewController" customModule="ParkingFriends" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PaymentHistoryPaidTicketViewController" id="aIL-D8-rnL" customClass="PaymentHistoryPaidTicketViewController" customModule="ParkingFriends" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ew5-jX-E0A">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1780,7 +1780,7 @@
                                 <color key="separatorColor" name="LightPeriwinkle2"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" indentationWidth="0.0" reuseIdentifier="PaymentHistoryReserveTableViewCell" rowHeight="104" id="kot-6I-nvr" customClass="PaymentHistoryReserveTableViewCell" customModule="ParkingFriends" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" indentationWidth="0.0" reuseIdentifier="PaymentHistoryPaidTicketTableViewCell" rowHeight="104" id="kot-6I-nvr" customClass="PaymentHistoryPaidTicketTableViewCell" customModule="ParkingFriends" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="104"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kot-6I-nvr" id="wbh-DN-PgW">
@@ -1934,13 +1934,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" delaysContentTouches="NO" bouncesZoom="NO" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" allowsSelectionDuringEditing="YES" rowHeight="58" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bf7-oU-UWU">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" delaysContentTouches="NO" bouncesZoom="NO" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" allowsSelectionDuringEditing="YES" rowHeight="104" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bf7-oU-UWU">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" name="LightPeriwinkle2"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" indentationWidth="10" reuseIdentifier="PaymentHistoryUsedTicketTableViewCell" rowHeight="104" id="CGA-72-lse" customClass="PaymentHistoryReserveTableViewCell" customModule="ParkingFriends" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" indentationWidth="10" reuseIdentifier="PaymentHistoryUsedTicketTableViewCell" rowHeight="104" id="CGA-72-lse" customClass="PaymentHistoryUsedTicketTableViewCell" customModule="ParkingFriends" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="104"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CGA-72-lse" id="wTG-7B-pjq">

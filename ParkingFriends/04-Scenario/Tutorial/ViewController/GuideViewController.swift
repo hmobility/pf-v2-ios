@@ -24,12 +24,12 @@ class GuideViewController: UIViewController {
     
     private var pageViewController: UIPageViewController?
     fileprivate var guideList: Array<GuideContentViewController> = []
-    
-    private let disposeBag = DisposeBag()
+
+    private var currentPageIndex: Int = 0
     
     private var viewModel: GuideViewModelType
     
-    private var currentPageIndex: Int = 0
+    private let disposeBag = DisposeBag()
     
     // MARK: - Button Action
     

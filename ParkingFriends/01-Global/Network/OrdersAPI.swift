@@ -31,8 +31,9 @@ class OrdersAPI: BaseAPI {
     }
     
     // 주문 목록
-    static func orders(page:Int, size:Int, from:String, to:String, httpMethod:HttpMethod = .get, auth:APIAuthType = .OAuth2) -> RestURL  {
-        let query:Params = ["page": page, "size": size, "from": from, "to": to]
+    static func orders(page:Int, size:Int, from:String, to:String, status:[OrderStatusType], httpMethod:HttpMethod = .get, auth:APIAuthType = .OAuth2) -> RestURL  {
+        let statusQuery = status.map{ $0.rawValue }.joined(separator:",")
+        let query:Params = ["page": page, "size": size, "from": from, "to": to, "status": statusQuery]
         let url = build(host:host, endpoint:"/orders", query: query)
         return (httpMethod, url, auth, nil)
     }
@@ -79,6 +80,18 @@ class OrdersAPI: BaseAPI {
         let params:Params = ["minutes": minutes]
         let url = build(host:host, endpoint:"/orders/\(id)/expend", query: nil)
         return (httpMethod, url, auth, params)
+    }
+    
+    // BLE 차단기 오픈 권한 조회
+    static func parkinglots_ble(bleId:String, httpMethod:HttpMethod = .get, auth:APIAuthType = .OAuth2) -> RestURL  {
+        let url = build(host:host, endpoint:"/parkinglots/ble/\(bleId)", query: nil)
+        return (httpMethod, url, auth, nil)
+    }
+    
+    // 주차이용 현황 조회
+    static func mypage_usages(id:Int, httpMethod:HttpMethod = .get, auth:APIAuthType = .OAuth2) -> RestURL  {
+        let url = build(host:host, endpoint:"/mypage/usages/\(id)", query: nil)
+        return (httpMethod, url, auth, nil)
     }
     
     // 대체 주차장 조회
