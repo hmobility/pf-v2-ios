@@ -73,6 +73,10 @@ class PaymentHistoryViewController: UIViewController {
             .disposed(by: disposeBag)
     }
     
+    private func setupOrderItemBinding() {
+        viewModel.loadOrderItems()
+    }
+    
     private func setupReservedTicketHistoryView() {
         viewModel.getOrderItems(.reserved_history)
             .asObservable()
@@ -106,7 +110,7 @@ class PaymentHistoryViewController: UIViewController {
         setupTapMenu()
         setupTapSwitchBinding()
         
-        viewModel.loadOrderItems()
+        setupOrderItemBinding()
     }
     
     // MARK: - Life Cycle
@@ -146,7 +150,7 @@ class PaymentHistoryViewController: UIViewController {
     // MARK: - Navigation
     
     private func navigateToEmptyReservation() {
-        let target = Storyboard.payment.instantiateViewController(withIdentifier: "PaymentHistoryEmptyReservationViewController") as! PaymentHistoryEmptyReservationViewController
+        let target = Storyboard.payment.instantiateViewController(withIdentifier: "PaymentHistoryEmptyReservationViewController") as! PaymentHistoryEmptyReserveViewController
         setEmbedView(target)
     }
     
@@ -156,10 +160,6 @@ class PaymentHistoryViewController: UIViewController {
     }
     
     private func navigateToReservation(with elements:[OrderElement]) {
-        guard let navigationController = embedNavigationController, reservationViewController != navigationController.viewControllers[0] else {
-            return
-        }
-        
         if reservationViewController == nil {
             reservationViewController = Storyboard.payment.instantiateViewController(withIdentifier: "PaymentHistoryReserveViewController") as? PaymentHistoryReserveViewController
         }
@@ -171,10 +171,6 @@ class PaymentHistoryViewController: UIViewController {
     }
     
     private func navigateToUsedTicket(with elements:[OrderElement]) {
-        guard let navigationController = embedNavigationController, usedTicketViewController != navigationController.viewControllers[0] else {
-            return
-        }
-        
         if usedTicketViewController == nil {
             usedTicketViewController = Storyboard.payment.instantiateViewController(withIdentifier: "PaymentHistoryUsedTicketViewController") as? PaymentHistoryUsedTicketViewController
         }

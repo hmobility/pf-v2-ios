@@ -8,40 +8,92 @@
 
 import UIKit
 
+fileprivate typealias HistoryUsedSectionModel = SectionModel<String, OrderElement>
+fileprivate typealias HistoryUsedDataSource = RxTableViewSectionedReloadDataSource<HistoryUsedSectionModel>
+
 class PaymentHistoryUsedTicketViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
-    private var historyItems: BehaviorRelay<[OrderElement]> = BehaviorRelay(value: [])
+    private var historyUsedItems: BehaviorRelay<[OrderElement]> = BehaviorRelay(value: [])
+    private var historyUsedCategoryItems: BehaviorRelay<[Date]> = BehaviorRelay(value: [])
+      
+    private var historyUsedSectionItems: BehaviorRelay<[(title:String, items:[OrderElement])]> = BehaviorRelay(value: [])
+    
+    fileprivate var dataSource:HistoryUsedDataSource?
     
     private let disposeBag = DisposeBag()
-    
-    // MARK: - Public Methos
-    
-    public func setOrderElement(_ elements:[OrderElement]) {
-        historyItems.accept(elements)
-    }
-    
+
     // MARK: - Binding
     
-    private func setupOrderHistoryBinding() {
-        historyItems
+    private func setupTableViewBinding() {
+        historyUsedItems
             .asObservable()
             .bind(to: tableView.rx.items(cellIdentifier: "PaymentHistoryUsedTicketTableViewCell", cellType: PaymentHistoryUsedTicketTableViewCell.self)) { row , item, cell in
-                cell.configure(title: item.product!.name, price: item.totalAmount, place: item.parkinglot!.name, carNumber: item.car!.number, productType: item.type!)
+                cell.configure(title: item.product?.name ?? "", price: item.totalAmount, place: item.parkingLot?.name ?? "", carNumber: item.car?.number ?? "", productType: item.type!)
             }
             .disposed(by: disposeBag)
         
         tableView.rx.modelSelected(OrderElement.self)
             .subscribe(onNext: { item in
-     
+                
             })
             .disposed(by: disposeBag)
+        
+        tableView.rx.setDelegate(self)
+            .disposed(by: disposeBag)
+  
+        historyUsedItems.asObservable()
+            .map { items in
+                return items.map { return $0.dateCreated.toDate!.withoutTimeStamp }.uniqued()
+            }
+            .bind(to: historyUsedCategoryItems)
+            .disposed(by: disposeBag)
+
+        
+        historyUsedCategoryItems
+            .asObservable()
+            .map { items in
+                return items.map { [unowned self] date -> HistoryUsedSectionModel in
+                    let elements:[OrderElement] = self.historyUsedItems.value.filter {
+                        return date.compare(.isSameDay(as: $0.dateCreated.toDate!))
+                    }
+                    
+                    let dateName = DisplayDateTimeHandler().displayDateYYmD(with: date)
+                    return HistoryUsedSectionModel(model: dateName, items: elements)
+                }
+            }
+            .bind(to: tableView.rx.items(dataSource: getHistoryUsedItemDataSource()))
+            .disposed(by: disposeBag)
+    }
+    
+    private func getHistoryUsedItemDataSource() -> HistoryUsedDataSource {
+        guard dataSource == nil else {
+            return dataSource!
+        }
+        
+        let configureCell: (TableViewSectionedDataSource<HistoryUsedSectionModel>, UITableView,IndexPath, OrderElement) -> UITableViewCell = { (dataSource, tableView, indexPath,  element) in
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "PaymentHistoryUsedTicketTableViewCell", for: indexPath) as? PaymentHistoryUsedTicketTableViewCell else { return UITableViewCell() }
+            
+            cell.configure(title: element.product?.name ?? "", price: element.totalAmount, place: element.parkingLot?.name ?? "", carNumber: element.car?.number ?? "", productType: element.type!)
+            
+            return cell
+        }
+        
+        dataSource = HistoryUsedDataSource.init(configureCell: configureCell)
+            
+        return dataSource!
+    }
+    
+    // MARK: - Public Methos
+    
+    public func setOrderElement(_ elements:[OrderElement]) {
+        historyUsedItems.accept(elements)
     }
     
     // MARK: - Initialize
     
     private func initialize() {
-        setupOrderHistoryBinding()
+        setupTableViewBinding()
     }
     
     // MARK: - Life Cycle
@@ -61,4 +113,22 @@ class PaymentHistoryUsedTicketViewController: UIViewController {
     }
     */
 
+}
+
+
+extension PaymentHistoryUsedTicketViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = PaymentHistoryTableViewHeader.loadFromXib() as! PaymentHistoryTableViewHeader
+        
+        if let source = dataSource {
+            let titleString = source.sectionModels[section].model
+            header.setTitle(titleString)
+        }
+        
+        return header
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 48
+    }
 }

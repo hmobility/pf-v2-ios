@@ -115,10 +115,8 @@ class GuideFinishedViewController: UIViewController {
     // MARK: - Navigation
     
     private func navigateToMain() {
-        if let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) {
-            let target = Storyboard.main.instantiateInitialViewController() as! UINavigationController
-            window.rootViewController = target
-        }
+        let target = Storyboard.main.instantiateInitialViewController() as! UINavigationController
+        target.makeWindowRoot()
     }
     
     /*

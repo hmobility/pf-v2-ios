@@ -79,4 +79,10 @@ extension UIViewController {
             dismissModal()  // Add by Rao
         }
     }
+    
+    public func makeWindowRoot() {
+        if let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) {
+            window.rootViewController = self
+        }
+    }
 }

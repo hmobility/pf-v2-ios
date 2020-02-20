@@ -48,7 +48,8 @@ class MenuViewController: UIViewController {
     // MARK: - Binding
 
     private func setupUserInfoBinding() {
-        userLevelButton.rx.tap.asDriver()
+        userLevelButton.rx.tap
+            .asDriver()
             .drive(onNext: { _ in
                 self.navigateToLevelGuide()
             })

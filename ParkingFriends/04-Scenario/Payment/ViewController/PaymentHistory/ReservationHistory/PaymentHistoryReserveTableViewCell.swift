@@ -66,11 +66,12 @@ class PaymentHistoryReserveTableViewCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        initialize()
+       // initialize()
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        initialize()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

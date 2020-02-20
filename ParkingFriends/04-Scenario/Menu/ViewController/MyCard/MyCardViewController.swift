@@ -10,22 +10,27 @@ import UIKit
 
 extension MyCardViewController: AnalyticsType {
     var screenName: String {
-        return "[SCREEN] My Card"
+        return "[SCREEN] My Card List"
     }
 }
 
 class MyCardViewController: UIViewController {
-    
     @IBOutlet weak var noCardView: UIView!
+    @IBOutlet weak var addCardButton: UIButton!
     
-    @IBOutlet var myCardHeaderView: MyCardHeaderView!
+    @IBOutlet weak var containerView: UIView!
+    
+    @IBOutlet weak var backButton: UIButton!
+    
     @IBOutlet weak var tableView: UITableView! {
            didSet {
                tableView.tableFooterView = UIView(frame: .zero)
            }
        }
     
-    @IBOutlet weak var backButton: UIButton!
+    private var embedNavigationController: UINavigationController?
+    private var myCardListViewController: MyCardListViewController?
+    private var myCardEmptyViewController: MyCardEmptyViewController?
     
     private var viewModel: MyCardViewModelType = MyCardViewModel()
     
@@ -47,33 +52,32 @@ class MyCardViewController: UIViewController {
          .disposed(by: disposeBag)
     }
     
-    // MARK: - Fetch Table View
-    
-    private func fetchCards() {
-        viewModel.elements
-            .map { element in
-                return element.count == 0
-            }
-            .subscribe(onNext: { isEmpty in
-                self.tableView.isHidden = isEmpty ? true : false
+    private func setupCardListBinding() {
+        viewModel.getCardItems()
+            .asObservable()
+            .subscribe(onNext: { [unowned self] items in
+                if items.count > 0 {
+                    self.navigateToCardList(with: items)
+                } else {
+                    self.navigateToEmptyCard()
+                }
             })
             .disposed(by: disposeBag)
-        
-       /*
-        viewModel.elements
-            .map { $0.count > 0 }
-            .bind(to: tableView.rx.items) { (tableView, row, item) -> UITableViewCell in
-                
-                let cell = self.tableView.dequeueReusableCell(withIdentifier:
-                    "BasicCardTableViewCell", for: IndexPath(item: row, section: 0)) as! BasicCardTableViewCell
-                cell.configure(item, tags: self.viewModel.getTags(item))
-                
-                return cell
-        }
-        .disposed(by: disposeBag)
- */
     }
     
+    private func loadCreditCadInfo() {
+        viewModel.loadCreditCard()
+    }
+    
+    // MARK: - Local Methods
+    
+    private func setEmbedView(_ target:UIViewController) {
+        if let navigationController = embedNavigationController {
+            self.addChild(target)
+            navigationController.viewControllers = [target]
+            target.didMove(toParent: self)
+        }
+    }
     
     // MARK: - Initialize
     
@@ -86,9 +90,10 @@ class MyCardViewController: UIViewController {
     }
     
     private func initialize() {
+        loadCreditCadInfo()
         setupNavigationBinding()
         setupButtonBinding()
-        fetchCards()
+        setupCardListBinding()
     }
     
     // MARK: - Life Cycle
@@ -99,14 +104,35 @@ class MyCardViewController: UIViewController {
     }
     
 
-    /*
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    private func navigateToEmptyCard() {
+        let target = Storyboard.menu.instantiateViewController(withIdentifier: "MyCardEmptyViewController") as! MyCardEmptyViewController
+        setEmbedView(target)
     }
-    */
+    
+    private func navigateToCardList(with elements:[CardElement]) {
+        if myCardListViewController == nil {
+            myCardListViewController = Storyboard.menu.instantiateViewController(withIdentifier: "MyCardListViewController") as? MyCardListViewController
+        }
+        
+        if let target = myCardListViewController {
+            setEmbedView(target)
+            target.setCardItems(elements)
+        }
+    }
+    
+    // MARK: Prepare
+     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case "CreditCardListNavigation":
+            guard let navigationController = segue.destination as? UINavigationController else {
+                print("NavigationViewController is not generated."); return }
+            self.embedNavigationController = navigationController
+        default:
+            break
+        }
+    }
 
 }

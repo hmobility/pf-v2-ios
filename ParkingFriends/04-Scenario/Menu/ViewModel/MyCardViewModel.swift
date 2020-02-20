@@ -12,16 +12,19 @@ protocol MyCardViewModelType {
     var viewTitle: Driver<String> { get }
     var cardCountText: Driver<String> { get }
     
-    var elements:BehaviorRelay<[CardElement]> { get }
+    func loadCreditCard()
+    func getCardItems() -> Observable<[CardElement]>
 }
 
 class MyCardViewModel: MyCardViewModelType {
     var viewTitle: Driver<String>
     var cardCountText: Driver<String>
     
-    var elements:BehaviorRelay<[CardElement]> = BehaviorRelay(value:[])
+    var cardItems:BehaviorRelay<[CardElement]?> = BehaviorRelay(value:nil)
     
     var localizer:LocalizerType
+    
+    let disposeBag = DisposeBag()
     
     // MARK: - Initiailize
     
@@ -29,5 +32,28 @@ class MyCardViewModel: MyCardViewModelType {
         self.localizer = localizer
         viewTitle = localizer.localized("ttl_my_card")
         cardCountText = localizer.localized("ttl_my_card_count")
+    }
+    
+    // MARK: - Public Methods
+    
+    public func getCardItems() -> Observable<[CardElement]> {
+        return cardItems
+            .filter { $0 != nil }
+            .map { $0! }
+    }
+    
+    // MARK: - Network
+    
+    public func loadCreditCard() {
+        Member.cards()
+            .asObservable()
+            .filter { (cards, status) in
+                cards != nil
+            }
+            .map { (cards, status) in
+                return cards!.elements
+            }
+            .bind(to: cardItems)
+            .disposed(by: disposeBag)
     }
 }

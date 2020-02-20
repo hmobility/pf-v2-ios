@@ -69,7 +69,10 @@ class PaymentHistoryViewModel: PaymentHistoryViewModelType {
                 orders != nil
             }
             .map { (orders, status) in
-                return orders!.elements
+                return orders!
+            }
+            .map { orders in
+                return orders.elements
             }
             .bind(to: historyInfoItems)
             .disposed(by: disposeBag)

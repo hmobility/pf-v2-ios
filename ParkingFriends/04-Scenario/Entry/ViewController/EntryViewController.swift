@@ -50,8 +50,7 @@ class EntryViewController: UIViewController {
     }
     
     @IBAction func signupButtonAction(_ sender: Any) {
-//        navigateToSignup()
-        navigateToTutorial()    // Test by Rao 
+        navigateToSignup()
     }
     
     @IBAction func migrationButtonAction(_ sender: Any) {
@@ -137,12 +136,6 @@ class EntryViewController: UIViewController {
     private func navigateToCreditCard() {
         let target = Storyboard.registration.instantiateViewController(withIdentifier: "RegiCreditCardViewController") as! RegiCreditCardViewController
         self.push(target)
-    }
-    
-    // Test by Rao
-    private func navigateToTutorial() {
-        let target = Storyboard.tutorial.instantiateInitialViewController() as! UINavigationController
-        self.modal(target)
     }
     
     /*

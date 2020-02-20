@@ -28,7 +28,8 @@ class Cards: BaseModelType {
 
 public class CardElement: BaseModelType {
     var id:Int = 0
-    var name:String = ""
+    var cardNo:String = ""
+    var cardName:String = ""
     var defaultFlag:Bool = false
     
     required init?(map: Map) {
@@ -37,7 +38,8 @@ public class CardElement: BaseModelType {
       
     override public func mapping(map: Map) {
         id <- map["id"]
-        name <- map["name"]
+        cardNo <- map["cardNo"]
+        cardName <- map["cardName"]
         defaultFlag <- (map["defaultFlag"], BoolTransform())
     }
 }

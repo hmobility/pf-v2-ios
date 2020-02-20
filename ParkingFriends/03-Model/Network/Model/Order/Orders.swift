@@ -28,7 +28,7 @@ class OrderElement: BaseModelType {
     var status:OrderStatusType?
     var type:ProductType?
     var product:OrderProduct?
-    var parkinglot:OrderParkinglot?
+    var parkingLot:OrderParkinglot?
     var from:String = ""
     var to:String = ""
     var dateCreated:String = ""
@@ -51,7 +51,7 @@ class OrderElement: BaseModelType {
         status <- (map["status"], EnumTransform<OrderStatusType>())
         type <- (map["type"], EnumTransform<ProductType>())
         product <- map["product"]
-        parkinglot <- map["parkinglot"]
+        parkingLot <- map["parkingLot"]
         from <- map["from"]
         to <- map["to"]
         dateCreated <- map["dateCreated"]
@@ -64,6 +64,34 @@ class OrderElement: BaseModelType {
         refundPoint <- map["refundPoint"]
         car <- map["car"]
         gift <- (map["gift"] , BoolTransform())
+    }
+}
+
+public class OrderProduct: BaseModelType {
+    var id:Int = 0
+    var name:String = ""
+    
+    required init?(map: Map) {
+        super.init(map: map)
+     }
+       
+    override public func mapping(map: Map) {
+        id <- map["id"]
+        name <- map["name"]
+    }
+}
+
+public class OrderParkinglot: BaseModelType {
+    var id:Int = 0
+    var name:String = ""
+    
+    required init?(map: Map) {
+        super.init(map: map)
+     }
+       
+    override public func mapping(map: Map) {
+        id <- map["id"]
+        name <- map["name"]
     }
 }
 

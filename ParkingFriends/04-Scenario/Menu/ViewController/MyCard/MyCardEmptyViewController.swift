@@ -8,20 +8,19 @@
 
 import UIKit
 
-extension EmptyCardViewController: AnalyticsType {
+extension MyCardEmptyViewController: AnalyticsType {
     var screenName: String {
         return "[SCREEN] No Card View"
     }
 }
 
-class EmptyCardViewController: UIViewController {
+class MyCardEmptyViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     
     private let disposeBag = DisposeBag()
     
     private var viewModel: EmptyCardViewModelType = EmptyCardViewModel()
-    
     
     // MARK: - Binding
     
