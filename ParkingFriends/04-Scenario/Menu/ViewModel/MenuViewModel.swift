@@ -27,6 +27,9 @@ protocol MenuViewModelType {
     
     var reportNewParkinglotText:Driver<String>  { get }
     var shareMyParkinglotText:Driver<String>  { get }
+    
+    func getUserName() -> Observable<String>
+    func getUserPoints() -> Observable<String>
 }
 
 class MenuViewModel: MenuViewModelType {
@@ -73,10 +76,17 @@ class MenuViewModel: MenuViewModelType {
         reportNewParkinglotText = localizer.localized("btn_parkinglot_report")
         shareMyParkinglotText = localizer.localized("btn_my_parkinglot_sharing")
     }
-    /*
+
     func getUserName() -> Observable<String> {
-        let userName = userData.login.
-        return Observable.just
+        return userData.memberInfo
+            .getUsername()
     }
- */
+    
+    func getUserPoints() -> Observable<String> {
+        return userData.memberInfo
+            .getUserPoints()
+            .map {
+                return $0.withComma
+            }
+    }
 }

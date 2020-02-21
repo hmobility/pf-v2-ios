@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PaymentHistoryReserveTableViewCell: UITableViewCell {
+class PaymentHistoryPaidTicketTableViewCell: UITableViewCell {
     @IBOutlet weak var productTitleLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var placeTitleButton: UIButton!
@@ -66,7 +66,7 @@ class PaymentHistoryReserveTableViewCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-       // initialize()
+
     }
     
     override func awakeFromNib() {

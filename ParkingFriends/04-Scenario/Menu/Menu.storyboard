@@ -746,7 +746,7 @@
                                                     <outlet property="myCarLabel" destination="Obn-eA-1vd" id="7Vw-dL-Mm5"/>
                                                 </connections>
                                             </stackView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="꼬마곰젤리 이사님" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bdy-Zk-8GU" userLabel="Label - User Name">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="꼬마곰젤리 이사님" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bdy-Zk-8GU" userLabel="Label - User Name">
                                                 <rect key="frame" x="22" y="79" width="115" height="19.5"/>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="16"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -771,8 +771,14 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="789,000 P" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pTb-L9-DJT" userLabel="Label - Point">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="789,000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pTb-L9-DJT" userLabel="Label - Point">
                                                 <rect key="frame" x="22" y="106.5" width="135" height="33.5"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="28"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="P" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h35-h5-rWO" userLabel="Label - Point Unit">
+                                                <rect key="frame" x="157" y="104" width="17" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="28"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -780,7 +786,9 @@
                                         </subviews>
                                         <color key="backgroundColor" name="AlgaeGreen"/>
                                         <constraints>
+                                            <constraint firstItem="h35-h5-rWO" firstAttribute="centerY" secondItem="pTb-L9-DJT" secondAttribute="centerY" id="G8c-NH-lew"/>
                                             <constraint firstAttribute="bottom" secondItem="pTb-L9-DJT" secondAttribute="bottom" constant="20" id="GfV-WQ-W2c"/>
+                                            <constraint firstItem="h35-h5-rWO" firstAttribute="leading" secondItem="pTb-L9-DJT" secondAttribute="trailing" constant="5" id="L5b-xM-cRe"/>
                                             <constraint firstItem="4lc-Zk-3gD" firstAttribute="leading" secondItem="1o0-Ni-bSX" secondAttribute="leading" constant="16" id="WRU-rM-dFi"/>
                                             <constraint firstItem="bdy-Zk-8GU" firstAttribute="leading" secondItem="1o0-Ni-bSX" secondAttribute="leading" constant="22" id="WV2-aq-v0Y"/>
                                             <constraint firstItem="4lc-Zk-3gD" firstAttribute="top" secondItem="kGk-pp-hBG" secondAttribute="top" constant="8" id="YBA-qx-giQ"/>
@@ -1199,12 +1207,13 @@
                         <outlet property="shareMyParkinglotButton" destination="f8S-TU-TEe" id="QHX-lZ-psQ"/>
                         <outlet property="sideMenuView" destination="suy-nY-Q1C" id="1hG-Qh-8ZY"/>
                         <outlet property="userLevelButton" destination="PDY-Nf-mDp" id="ClC-wN-JaW"/>
+                        <outlet property="userPointsLabel" destination="pTb-L9-DJT" id="ERu-9I-mXM"/>
                         <outlet property="usernameLabel" destination="bdy-Zk-8GU" id="m6e-iD-ZRb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sxM-vf-mVl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-68" y="-32"/>
+            <point key="canvasLocation" x="-68.115942028985515" y="-32.142857142857139"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="N6Q-SY-rzW">

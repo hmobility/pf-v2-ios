@@ -9,6 +9,8 @@
 import UIKit
 
 extension UIViewController {
+    // MARK: - Transition
+    
     public func modal(_ viewControllerToPresent: UIViewController, transparent:Bool = false, dimColor:UIColor = #colorLiteral(red: 0.1137254902, green: 0.1176470588, blue: 0.1254901961, alpha: 0.6), animated flag:Bool = true, completion: (() -> Void)? = nil) {
         viewControllerToPresent.modalPresentationStyle = transparent ? .overCurrentContext : .fullScreen
     
@@ -80,9 +82,19 @@ extension UIViewController {
         }
     }
     
+    // MARK: - Window Root
+    
     public func makeWindowRoot() {
         if let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) {
             window.rootViewController = self
+        }
+    }
+    
+    // MARK: - Navigation Bar
+    
+    public func setNavigationBar(hidden: Bool) {
+        if let navigation = navigationController?.navigationBar {
+            navigation.isHidden = hidden
         }
     }
 }

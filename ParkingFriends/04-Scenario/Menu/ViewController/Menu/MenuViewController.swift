@@ -20,6 +20,7 @@ class MenuViewController: UIViewController {
 
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var userLevelButton: UIButton!
+    @IBOutlet weak var userPointsLabel: UILabel!
     
     @IBOutlet weak var cardManagementView: UIView!
     @IBOutlet weak var cardManagementLabel: UILabel!
@@ -41,7 +42,7 @@ class MenuViewController: UIViewController {
     
     @IBOutlet weak var sideMenuView: UIView!
     
-    private lazy var viewModel: MenuViewModelType = MenuViewModel()
+    private var viewModel: MenuViewModelType = MenuViewModel()
     
     private let disposeBag = DisposeBag()
     
@@ -53,6 +54,16 @@ class MenuViewController: UIViewController {
             .drive(onNext: { _ in
                 self.navigateToLevelGuide()
             })
+            .disposed(by: disposeBag)
+        
+        viewModel.getUserName()
+            .asObservable()
+            .bind(to: usernameLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        viewModel.getUserPoints()
+            .asObservable()
+            .bind(to: userPointsLabel.rx.text)
             .disposed(by: disposeBag)
     }
     

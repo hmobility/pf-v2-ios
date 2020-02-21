@@ -11,7 +11,7 @@ import UIKit
 fileprivate typealias HistorySectionModel = SectionModel<String, OrderElement>
 fileprivate typealias HistoryDataSource = RxTableViewSectionedReloadDataSource<HistorySectionModel>
 
-class PaymentHistoryReserveViewController: UIViewController {
+class PaymentHistoryPaidTicketViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
 
     private var historyItems: BehaviorRelay<[OrderElement]> = BehaviorRelay(value: [])
@@ -23,13 +23,16 @@ class PaymentHistoryReserveViewController: UIViewController {
     
     fileprivate var dataSource:HistoryDataSource?
     
+    var selectAction: ((_ element:OrderElement) -> Void)?
+    
     // MARK: - Binding
     
     private func setupTableViewBinding() {
         tableView.rx.setDelegate(self)
             .disposed(by: disposeBag)
         
-        historyItems.asObservable()
+        historyItems
+            .asObservable()
             .map { items in
                 return items.map { return $0.dateCreated.toDate!.withoutTimeStamp }.uniqued()
             }
@@ -51,9 +54,12 @@ class PaymentHistoryReserveViewController: UIViewController {
             .bind(to: tableView.rx.items(dataSource: getHistoryItemDataSource()))
             .disposed(by: disposeBag)
         
-        tableView.rx.modelSelected(OrderElement.self)
-            .subscribe(onNext: { item in
-                
+        tableView.rx
+            .modelSelected(OrderElement.self)
+            .subscribe(onNext: { [unowned self] item in
+                if let action = self.selectAction {
+                    action(item)
+                }
             })
             .disposed(by: disposeBag)
     }
@@ -64,7 +70,7 @@ class PaymentHistoryReserveViewController: UIViewController {
         }
         
         let configureCell: (TableViewSectionedDataSource<HistorySectionModel>, UITableView,IndexPath, OrderElement) -> UITableViewCell = { (dataSource, tableView, indexPath,  element) in
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "PaymentHistoryReserveTableViewCell", for: indexPath) as? PaymentHistoryReserveTableViewCell else { return UITableViewCell() }
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "PaymentHistoryPaidTicketTableViewCell", for: indexPath) as? PaymentHistoryPaidTicketTableViewCell else { return UITableViewCell() }
             
             cell.configure(title: element.product?.name ?? "", price: element.totalAmount, place: element.parkingLot?.name ?? "", carNumber: element.car?.number ?? "", productType: element.type!)
             return cell
@@ -95,9 +101,14 @@ class PaymentHistoryReserveViewController: UIViewController {
         super.viewDidLoad()
         initialize()
     }
-    
 
     // MARK: - Navigation
+    
+    private func navigateToParkingStatus(with element:OrderElement) {
+        let target = Storyboard.parking.instantiateViewController(withIdentifier: "ParkingStatusViewController") as! ParkingStatusViewController
+        target.setOrderElement(with: element)
+        self.push(target)
+    }
     
     /*
 
@@ -110,7 +121,7 @@ class PaymentHistoryReserveViewController: UIViewController {
 
 }
 
-extension PaymentHistoryReserveViewController: UITableViewDelegate {
+extension PaymentHistoryPaidTicketViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = PaymentHistoryTableViewHeader.loadFromXib() as! PaymentHistoryTableViewHeader
         

@@ -18,7 +18,7 @@ class Order : HttpSession {
             })
     }
 
-    static public func orders(productId: String, from: String, to: String, quantity: Int, paymentMethod: PaymentType, usePoint: Int, totalAmount: Int, paymentAmount: Int, couponId: Int, car:(number: String, phoneNumber: String)) -> Observable<(Transaction?, ResponseCodeType)>  {
+    static public func orders(productId: String, from: String, to: String, quantity: Int, paymentMethod: PaymentMethodType, usePoint: Int, totalAmount: Int, paymentAmount: Int, couponId: Int, car:(number: String, phoneNumber: String)) -> Observable<(Transaction?, ResponseCodeType)>  {
         let data = OrdersAPI.orders(productId: productId, from: from, to: to, quantity: quantity, paymentMethod: paymentMethod.rawValue, usePoint: usePoint, totalAmount: totalAmount, paymentAmount: paymentAmount, couponId: couponId, car:(car.number, car.phoneNumber))
         
         return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params)
@@ -27,8 +27,8 @@ class Order : HttpSession {
             })
     }
     
-    static public func orders(page:Int, size:Int = 100, from:String, to:String) -> Observable<(Orders?, ResponseCodeType)>  {
-        let data = OrdersAPI.orders(page: page, size: size, from: from, to: to)
+    static public func orders(page:Int, size:Int = 100, from:String, to:String, status:[OrderStatusType]) -> Observable<(Orders?, ResponseCodeType)>  {
+        let data = OrdersAPI.orders(page: page, size: size, from: from, to: to, status: status)
         
         return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params)
             .map ({  result in
@@ -99,12 +99,30 @@ class Order : HttpSession {
             })
     }
     
+    static public func parkinglots_ble(bleId:String) -> Observable<ResponseCodeType>  {
+        let data = OrdersAPI.parkinglots_ble(bleId: bleId)
+        
+        return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params)
+            .map ({  result in
+                return result.codeType
+            })
+    }
+    
+    static public func mypage_usages(id:Int) -> Observable<(Usages?, ResponseCodeType)>  {
+        let data = OrdersAPI.mypage_usages(id: id)
+        
+        return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params)
+            .map ({  result in
+                return (Usages(JSON: result.data), result.codeType)
+            })
+    }
+    
     static public func recommend(id:Int) -> Observable<(Recommend?, ResponseCodeType)>  {
         let data = OrdersAPI.recommend(id: id)
         
         return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params)
             .map ({  result in
-                return (Recommend(JSON: result.data),result.codeType)
+                return (Recommend(JSON: result.data), result.codeType)
             })
     }
     

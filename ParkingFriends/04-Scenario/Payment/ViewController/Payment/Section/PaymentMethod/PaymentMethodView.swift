@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum PaymentMethodType {
+enum PaymentMethodButtonType {
     case simple_card, kakopay, etc_payment
 }
 

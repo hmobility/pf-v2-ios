@@ -626,10 +626,10 @@
             </objects>
             <point key="canvasLocation" x="707" y="-648"/>
         </scene>
-        <!--Payment Complete View Controller-->
+        <!--Parking Status View Controller-->
         <scene sceneID="j2K-BL-Ti6">
             <objects>
-                <viewController storyboardIdentifier="ParkingNormalStatusViewController" id="sc4-eJ-hJb" userLabel="Payment Complete View Controller" customClass="ParkingNormalStatusViewController" customModule="ParkingFriends" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ParkingStatusViewController" id="sc4-eJ-hJb" userLabel="Parking Status View Controller" customClass="ParkingStatusViewController" customModule="ParkingFriends" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="WzK-w9-lX8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -640,7 +640,7 @@
                                     <constraint firstAttribute="height" constant="420" id="u3D-xu-SKu"/>
                                 </constraints>
                                 <connections>
-                                    <segue destination="qfH-DX-Cqi" kind="embed" id="hlg-eA-aPX"/>
+                                    <segue destination="qfH-DX-Cqi" kind="embed" identifier="ParkingStatusNavigation" id="hlg-eA-aPX"/>
                                 </connections>
                             </containerView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c1q-7a-NNC">
@@ -1411,10 +1411,25 @@
             </objects>
             <point key="canvasLocation" x="-3190" y="-916"/>
         </scene>
-        <!--Parking Normal Status View Controller-->
+        <!--Parking Status Navigation Controller-->
+        <scene sceneID="gI5-RN-qyG">
+            <objects>
+                <navigationController storyboardIdentifier="ParkingStatusNavigationController" navigationBarHidden="YES" id="dpJ-Lg-na2" customClass="ParkingStatusNavigationController" customModule="ParkingFriends" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="vNn-hi-0eG">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="sc4-eJ-hJb" kind="relationship" relationship="rootViewController" id="ktP-B5-btU"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zcu-lL-yal" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2287" y="-1564"/>
+        </scene>
+        <!--Parking Normal View Controller-->
         <scene sceneID="hym-Sa-I92">
             <objects>
-                <viewController id="ZeY-9E-EOn" customClass="ParkingNormalStatusViewController" customModule="ParkingFriends" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ParkingNormalViewController" id="ZeY-9E-EOn" customClass="ParkingNormalViewController" customModule="ParkingFriends" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="emh-he-RGI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="420"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1458,7 +1473,7 @@
                                 <items>
                                     <navigationItem title="Title" id="3nj-gb-JeG">
                                         <barButtonItem key="leftBarButtonItem" style="plain" id="lER-Lf-oG5">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gZl-pp-brw" userLabel="Button - Bacl">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gZl-pp-brw" userLabel="Button - Back">
                                                 <rect key="frame" x="20" y="0.0" width="48" height="44"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1503,37 +1518,16 @@
         <!--ParkingCCTV Player View Controller-->
         <scene sceneID="xOk-lD-RmB">
             <objects>
-                <viewController id="0pJ-IP-mXg" customClass="ParkingCCTVPlayerViewController" customModule="ParkingFriends" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ParkingCCTVPlayerViewController" id="0pJ-IP-mXg" customClass="ParkingCCTVPlayerViewController" customModule="ParkingFriends" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="n2t-jF-n1S">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="420"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" shadowImage="imgPixel" translatesAutoresizingMaskIntoConstraints="NO" id="5cj-v0-mrz">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                                <color key="backgroundColor" name="AlgaeGreen"/>
-                                <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <items>
-                                    <navigationItem title="Title" id="oEp-4D-X4n">
-                                        <barButtonItem key="leftBarButtonItem" style="plain" id="wmp-iX-118">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Jal-1E-cIc" userLabel="Button - Bacl">
-                                                <rect key="frame" x="20" y="0.0" width="48" height="44"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" image="icBackBlack"/>
-                                            </button>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" style="plain" id="kua-UG-HYN">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="94M-gV-PbR" userLabel="Button - Info">
-                                                <rect key="frame" x="346" y="0.0" width="48" height="44"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" image="icHelpOutlineGrey"/>
-                                            </button>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
-                            <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Gx2-FG-fvw">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dbP-rI-rUM" userLabel="View - Player Screen" customClass="ParkingCCTVMediaPlayerView" customModule="ParkingFriends" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="128" width="414" height="292"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Gx2-FG-fvw" customClass="ParkingCCTVPlayerNavigationView" customModule="ParkingFriends" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="88" width="414" height="40"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wfV-BE-ABz">
@@ -1585,22 +1579,63 @@
                                         </constraints>
                                     </view>
                                 </subviews>
+                                <connections>
+                                    <outlet property="nextButton" destination="7SL-Qb-SGp" id="Q0E-Hc-4DF"/>
+                                    <outlet property="previousButton" destination="8bj-36-h4s" id="3H9-uX-k0b"/>
+                                    <outlet property="titleLabel" destination="JUw-k4-pau" id="zgX-pW-KRr"/>
+                                </connections>
                             </stackView>
+                            <navigationBar contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" shadowImage="imgPixel" translatesAutoresizingMaskIntoConstraints="NO" id="5cj-v0-mrz">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <color key="backgroundColor" name="AlgaeGreen"/>
+                                <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <items>
+                                    <navigationItem title="Title" id="oEp-4D-X4n">
+                                        <barButtonItem key="leftBarButtonItem" style="plain" id="wmp-iX-118">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Jal-1E-cIc" userLabel="Button - Back">
+                                                <rect key="frame" x="20" y="0.0" width="48" height="44"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" image="icBackBlack"/>
+                                            </button>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" style="plain" id="kua-UG-HYN">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="94M-gV-PbR" userLabel="Button - Info">
+                                                <rect key="frame" x="346" y="0.0" width="48" height="44"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" image="icHelpOutlineGrey"/>
+                                            </button>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="5cj-v0-mrz" secondAttribute="trailing" id="4OL-sn-gi5"/>
+                            <constraint firstItem="Nmz-tW-Tfp" firstAttribute="bottom" secondItem="dbP-rI-rUM" secondAttribute="bottom" id="Ato-qo-gnR"/>
                             <constraint firstItem="5cj-v0-mrz" firstAttribute="leading" secondItem="n2t-jF-n1S" secondAttribute="leading" symbolic="YES" id="B9V-Dh-qGZ"/>
                             <constraint firstAttribute="trailing" secondItem="Gx2-FG-fvw" secondAttribute="trailing" id="HZY-rI-InG"/>
                             <constraint firstItem="Gx2-FG-fvw" firstAttribute="leading" secondItem="n2t-jF-n1S" secondAttribute="leading" id="MBd-rJ-pJL"/>
                             <constraint firstItem="Gx2-FG-fvw" firstAttribute="top" secondItem="5cj-v0-mrz" secondAttribute="bottom" id="VE5-Oc-prs"/>
+                            <constraint firstItem="Nmz-tW-Tfp" firstAttribute="trailing" secondItem="dbP-rI-rUM" secondAttribute="trailing" id="gCD-63-j5W"/>
                             <constraint firstItem="5cj-v0-mrz" firstAttribute="top" secondItem="Nmz-tW-Tfp" secondAttribute="top" id="gNH-a7-6xZ"/>
+                            <constraint firstItem="dbP-rI-rUM" firstAttribute="top" secondItem="Gx2-FG-fvw" secondAttribute="bottom" id="j4B-Mb-fwk"/>
+                            <constraint firstItem="dbP-rI-rUM" firstAttribute="leading" secondItem="Nmz-tW-Tfp" secondAttribute="leading" id="ujL-yV-ilf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Nmz-tW-Tfp"/>
                     </view>
                     <value key="contentSizeForViewInPopover" type="size" width="414" height="420"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="414" height="420"/>
+                    <connections>
+                        <outlet property="backButton" destination="Jal-1E-cIc" id="ZKp-6G-o4O"/>
+                        <outlet property="cctvNavigationView" destination="Gx2-FG-fvw" id="42v-rW-12f"/>
+                        <outlet property="infoButton" destination="94M-gV-PbR" id="cVC-Xq-i4y"/>
+                        <outlet property="navigationBar" destination="5cj-v0-mrz" id="6bQ-3o-CF5"/>
+                        <outlet property="playerView" destination="dbP-rI-rUM" id="hl3-u4-MA3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VlS-id-vFx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

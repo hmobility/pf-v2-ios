@@ -106,14 +106,14 @@ class ProductSetting: NSObject, NSCoding, ProductSettingType {
     // MARK: - Local Methods
     
     private func load(_ lang:Language = .korean) -> ProductSetting? {
-          if let data = UserDefaults.standard.object(forKey: "ProductSetting") {
-              let archive = NSKeyedUnarchiver.unarchiveObject(with: data as! Data) as! ProductSetting
-             
-              return archive
-          }
-
-          return nil
-      }
+        if let data = UserDefaults.standard.object(forKey: "ProductSetting") {
+            let archive = NSKeyedUnarchiver.unarchiveObject(with: data as! Data) as! ProductSetting
+            
+            return archive
+        }
+        
+        return nil
+    }
     
     public func save() {
         let data = NSKeyedArchiver.archivedData(withRootObject: self)
