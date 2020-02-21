@@ -1673,7 +1673,7 @@
         <!--Payment History Empty Paid Ticket View Controller-->
         <scene sceneID="n7f-33-Yam">
             <objects>
-                <viewController storyboardIdentifier="PaymentHistoryEmptyReservationViewController" id="vTp-Jx-BFO" customClass="PaymentHistoryEmptyPaidTicketViewController" customModule="ParkingFriends" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PaymentHistoryEmptyPaidTicketViewController" id="vTp-Jx-BFO" customClass="PaymentHistoryEmptyPaidTicketViewController" customModule="ParkingFriends" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GrH-02-soa">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

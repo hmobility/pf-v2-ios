@@ -42,9 +42,11 @@ class MemberInfo: NSObject, MemberInfoType {
     }
     
     public func load()  {
+        /*
         getMemberInfo()
-            .bind(to: memberInfo)
+            .bind(to: memberInfo)   // Check by Rao ( 2020.02.21 )
             .disposed(by: disposeBag)
+ */
     }
     
     // MARK: - Network
@@ -53,8 +55,13 @@ class MemberInfo: NSObject, MemberInfoType {
         if memberInfo.value != nil {
             return self.memberInfo
                 .asObservable()
-                .filter { $0 != nil }
-                .map { $0! }
+//                .filter { $0 != nil }
+//                .map { $0! }
+                .filter { (element: Members?) -> Bool in
+                        return element != nil
+                }.map { (element: Members?) -> Members in
+                    return element!
+                }
         } else {
             return self.requestMembers()
                 .asObservable()
@@ -63,6 +70,31 @@ class MemberInfo: NSObject, MemberInfoType {
                     return item
                 }
                 .map { $0! }
+        }
+    }
+    
+    // Test by Rao ( 2020.02.21 )
+    private func getMemberInfoRao() -> Observable<Members> {
+        if memberInfo.value != nil {
+            return self.memberInfo
+                .asObservable()
+//                .takeWhile { $0 != self.memberInfo.value}
+                .takeWhile({ (element) -> Bool in
+                    return (self.memberInfo.value != element)
+                })
+                .filter { (element: Members?) -> Bool in
+                    return element != nil
+            }.map { (element: Members?) -> Members in
+                return element!
+            }
+        } else {
+            return self.requestMembers()
+                .asObservable()
+                .map { item in
+                    self.updateMembers(item)
+                    return item
+            }
+            .map { $0! }
         }
     }
     

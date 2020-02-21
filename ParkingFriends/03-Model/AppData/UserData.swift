@@ -14,7 +14,9 @@ let kBookingTimeFormat = "yyyyMMddHHmm"
 class UserData: NSObject, NSCoding {
     var login: Login? {
         didSet {
-            memberInfo.load()
+            if login != nil {       // // Add by Rao ( 2020.02.21 )
+                memberInfo.load()
+            }
         }
     }
     

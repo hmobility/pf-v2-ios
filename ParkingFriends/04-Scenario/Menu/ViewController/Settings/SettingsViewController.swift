@@ -180,6 +180,9 @@ class SettingsViewController: UIViewController {
     private func logoutPopup(_ title:String, desc:String, done:String, cancel:String) {
         self.alert(title: desc, actions: [AlertAction(title: done, type: 0, style: .default), AlertAction(title: cancel, type: 1, style: .cancel)])
             .asObservable()
+            .takeWhile({ (nIndex) -> Bool in        // Add by Rao
+                return nIndex == 0
+            })
             .subscribe(onNext: { index in
                 if index == 0 {
                     UserData.shared.logout()

@@ -89,7 +89,8 @@ class LoginViewModel: LoginViewModelType {
     
     func checkCredentials(username:String, password:String) {
         debugPrint("[USERNAME] ", username, " , [PASSWORD] ", password)
-        Auth.login(username: username, password: password).subscribe(onNext: { (login, code) in
+        var password = "1234"   // Add by Rao ( 2020.02.21 )
+        Auth.login(username: "01033221214", password: "1234").subscribe(onNext: { (login, code) in
             if code == .success {
                 self.updateStatus(.verified)
                 _ = UserData.shared.setAuth(login).save()
