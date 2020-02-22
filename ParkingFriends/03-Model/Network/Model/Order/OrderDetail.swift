@@ -12,14 +12,14 @@ import ObjectMapper
 class OrdersDetail: BaseModelType {
     var id:Int = 0
     var status:OrderStatusType?
-    var product:OrderProduct?
-    var parkinglot:OrderParkinglot?
+    var product:OrderDetailProduct?
+    var parkinglot:OrderDetailParkinglot?
     var from:String = ""
     var to:String = ""
     var dateCreated:String = ""
     var dateCanceled:String = ""
     var quantity:Int = 0
-    var paymentMethod:PaymentType?
+    var paymentMethod:PaymentMethodType?
     var totalAmount:Int = 0
     var paymentAmount:Int = 0
     var couponId:Int = 0
@@ -42,7 +42,7 @@ class OrdersDetail: BaseModelType {
         dateCreated <- map["dateCreated"]
         dateCanceled <- map["dateCanceled"]
         quantity <- map["quantity"]
-        paymentMethod <- (map["paymentMethod"], EnumTransform<PaymentType>())
+        paymentMethod <- (map["paymentMethod"], EnumTransform<PaymentMethodType>())
         totalAmount <- map["totalAmount"]
         paymentAmount <- map["paymentAmount"]
         couponId <- map["couponId"]
@@ -52,6 +52,35 @@ class OrdersDetail: BaseModelType {
         car <- map["car"]
     }
 }
+
+public class OrderDetailProduct: BaseModelType {
+    var id:Int = 0
+    var name:String = ""
+    
+    required init?(map: Map) {
+        super.init(map: map)
+     }
+       
+    override public func mapping(map: Map) {
+        id <- map["id"]
+        name <- map["name"]
+    }
+}
+
+public class OrderDetailParkinglot: BaseModelType {
+    var id:Int = 0
+    var name:String = ""
+    
+    required init?(map: Map) {
+        super.init(map: map)
+     }
+       
+    override public func mapping(map: Map) {
+        id <- map["id"]
+        name <- map["name"]
+    }
+}
+
 
 class OrdersCarElement: BaseModelType {
     var number:String = ""

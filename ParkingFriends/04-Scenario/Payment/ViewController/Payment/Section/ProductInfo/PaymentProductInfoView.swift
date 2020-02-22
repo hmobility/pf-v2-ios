@@ -32,5 +32,4 @@ class PaymentProductInfoView: UIStackView {
     override func draw(_ rect: CGRect) {
         // Drawing code
     }
-
 }

@@ -12,20 +12,20 @@ import Alamofire
 class PointsAPI: BaseAPI {
     // 포인트 상품 조회
     static func item(httpMethod:HttpMethod = .get, auth:APIAuthType = .OAuth2) -> RestURL  {
-        let url = build(host:host, endpoint:"/items/point", params: nil)
+        let url = build(host:host, endpoint:"/items/point", query: nil)
         return (httpMethod, url, auth, nil)
     }
     
     // 포인트 상품 조회
-    static func points(id:Int, paymentMethod:PaymentType, httpMethod:HttpMethod = .post, auth:APIAuthType = .OAuth2) -> RestURL  {
+    static func points(id:Int, paymentMethod:PaymentMethodType, httpMethod:HttpMethod = .post, auth:APIAuthType = .OAuth2) -> RestURL  {
         let params:Params = ["id": id, "paymentMethod": paymentMethod.rawValue]
-        let url = build(host:host, endpoint:"/points", params: nil)
+        let url = build(host:host, endpoint:"/points", query: nil)
         return (httpMethod, url, auth, params)
     }
     
     // 포인트 충전 내역
     static func points(httpMethod:HttpMethod = .get, auth:APIAuthType = .OAuth2) -> RestURL  {
-        let url = build(host:host, endpoint:"/points", params: nil)
+        let url = build(host:host, endpoint:"/points", query: nil)
         return (httpMethod, url, auth, nil)
     }
 }

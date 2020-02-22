@@ -15,8 +15,13 @@ typealias CoordType = (latitude:Double, longitude:Double)
 typealias CardInfoType = (cardNo:String, yearExpired:String, monthExpired:String, password:String, birthDate:String)
 
 typealias DateDuration = (start:Date, end:Date)
+typealias MonthlyDuration = (from:Date, count:Int)
+
+typealias ProductAllSet = (time:DateDuration, monthly:MonthlyDuration)
 
 typealias ProductItemType = (type:ProductType, title:String)
+
+typealias AlertTextType = (title:String, message:String, done:String, cancel:String)
 
 
 enum Language:String {
@@ -96,9 +101,9 @@ enum ReceiptSendType:String {
 }
 
 // 포인트 충전
-enum PaymentType: String {
-    case card = "CARD"
-    case mobile = "MOBILE"
+enum PaymentMethodType: String {
+    case credit_card = "CREDIT_CARD"
+    case kakao_pay = "KAKAO_PAY"
 }
 
 // API 응답 코드
@@ -127,8 +132,11 @@ public enum ResponseCodeType: String {
 // 주문 상태 (주문 단일 조회)
 enum OrderStatusType: String {
     case paid = "PAID"
-    case canceled = "CANCELED"
-    case used = "USED"
+    case parking = "PARKING"
+    case request_discount = "REQUEST_DISCOUNT"
+    case refunded = "REFUNDED"
+    case cancel_request = "CANCEL_REQUEST"
+    case finished = "FINISHED"
 }
 
 // 대체 주차장 조회

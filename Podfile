@@ -17,6 +17,7 @@ target 'ParkingFriends' do
   pod 'RxKeyboard'
   pod 'RxCoreLocation', '~> 1.4'
   pod "RxGesture"
+  pod 'RxDataSources', '~> 4.0'
   
   pod 'SnapKit', '~> 5.0.0'
   
@@ -25,6 +26,8 @@ target 'ParkingFriends' do
   pod 'ObjectMapper', '~> 3.4'
   pod 'Kingfisher', '~> 5.13'
   
+  pod 'SwiftyJSON', '~> 4.0.0'    # For CCTV
+  
 #  pod 'SwiftDate', '~> 5.0'
   pod 'AFDateHelper', '~> 4.3.0'
   
@@ -32,9 +35,7 @@ target 'ParkingFriends' do
   pod 'Fabric', '~> 1.10.2'
   pod 'Crashlytics', '~> 3.14.0'
   pod 'Firebase/Analytics'
-  
-  pod 'SwiftyJSON', '~> 5.0.0'
-  
+
   pod 'NMapsMap'                  # Naver Map
   
   pod 'SwiftMessages'             # Message View
@@ -42,9 +43,9 @@ target 'ParkingFriends' do
   pod 'AnyFormatKit'              # String Formatter
   pod 'CryptoSwift'               # SHA256 password to string
   
-  pod 'FloatingPanel'
+  pod 'FloatingPanel'             # Bottom Tap List View Contoller in Main 
   pod 'SideMenu', '~> 6.0'
-  pod "MXParallaxHeader"
+  pod "MXParallaxHeader"          # For Parkinglot Detail
   
   pod 'ImageSlideshow', '~> 1.8.1'
   pod "ImageSlideshow/Kingfisher"

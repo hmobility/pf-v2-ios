@@ -229,12 +229,15 @@ class ParkinglotDetailViewController: UIViewController {
     
     private func navigateToInfoGuide() {
         let target = Storyboard.detail.instantiateViewController(withIdentifier: "ParkinglotDetailTimeLabelGuideViewController") as! ParkinglotDetailTimeLabelGuideViewController
-        
         self.modal(target, transparent:true, animated: false)
     }
     
     private func navigateToPayment() {
         let target = Storyboard.payment.instantiateViewController(withIdentifier: "PaymentViewController") as! PaymentViewController
+        
+        if let data = viewModel.getParkinglotInfo() {
+            target.setData(parkinglot: data)
+        }
         
         self.push(target)
     }
@@ -246,5 +249,4 @@ class ParkinglotDetailViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
 }

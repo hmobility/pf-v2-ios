@@ -47,6 +47,7 @@ class ParkinglotDetailReserveView: UIStackView {
                 if items.count == 0 {
                     self.setHidden(true)
                 } else if items.count > 0 {
+                    self.setHidden(false)
                     self.updateEditPanel(with: items[0].type)
                     
                     if items.count == 1 {
@@ -89,7 +90,9 @@ class ParkinglotDetailReserveView: UIStackView {
     // MARK: - Local Methods
     
     func setHidden(_ flag:Bool) {
-        self.isHidden = flag
+        if self.isHidden != flag {
+            self.isHidden = flag
+        }
     }
     
     func updateEditPanel(with productType:ProductType) {

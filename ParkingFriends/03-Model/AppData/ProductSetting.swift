@@ -22,7 +22,7 @@ protocol ProductSettingType {
 class ProductSetting: NSObject, NSCoding, ProductSettingType {
     var selectedProductType:ProductType = .fixed
     
-    var bookingMonthly:(from: Date, count: Int) {
+    var bookingMonthly:MonthlyDuration {
         get {
             return (monthlyFrom ?? today, monthlyCount)
         }
@@ -61,16 +61,21 @@ class ProductSetting: NSObject, NSCoding, ProductSettingType {
     // MARK: - Public Methods
     
     public func getProductType() -> ProductType {
-         return self.selectedProductType
-     }
-     
-     public func setProduct(type:ProductType) -> ProductSetting {
-          self.selectedProductType = type
-          return self
-     }
+        return self.selectedProductType
+    }
+    
+    public func setProduct(type:ProductType) -> ProductSetting {
+        self.selectedProductType = type
+        return self
+    }
     
     public func getBookingDate() -> DateDuration  {
         return (self.bookingStartTime, self.bookingEndTime)
+    }
+    
+    public func getProductAllSet() -> ProductAllSet {
+        let bookingTime = getBookingDate()
+        return (time:bookingTime, monthly:bookingMonthly)
     }
     
     // MARK: - Monthly Ticket
@@ -106,14 +111,14 @@ class ProductSetting: NSObject, NSCoding, ProductSettingType {
     // MARK: - Local Methods
     
     private func load(_ lang:Language = .korean) -> ProductSetting? {
-          if let data = UserDefaults.standard.object(forKey: "ProductSetting") {
-              let archive = NSKeyedUnarchiver.unarchiveObject(with: data as! Data) as! ProductSetting
-             
-              return archive
-          }
-
-          return nil
-      }
+        if let data = UserDefaults.standard.object(forKey: "ProductSetting") {
+            let archive = NSKeyedUnarchiver.unarchiveObject(with: data as! Data) as! ProductSetting
+            
+            return archive
+        }
+        
+        return nil
+    }
     
     public func save() {
         let data = NSKeyedArchiver.archivedData(withRootObject: self)

@@ -33,7 +33,7 @@ class CustomDateStepperView: UIView, CustomDateStepperViewType {
     // MARK: - Public Methods
     
     public func setStartDate(_ date:Date) {
-        startDate = date
+        startDate = date.adjust(hour: 0, minute: 0, second: 0)
         updateDate(date)
     }
     
@@ -59,12 +59,12 @@ class CustomDateStepperView: UIView, CustomDateStepperViewType {
         }
     }
     
-    func incrementDay() {
+    func increaseDay() {
         let offset = offsetDay
         changeDate(offset: offset)
     }
     
-    func decrementDay() {
+    func decreaseDay() {
         let offset = -offsetDay
         changeDate(offset: offset)
     }
@@ -78,13 +78,13 @@ class CustomDateStepperView: UIView, CustomDateStepperViewType {
     func setupButtonBinding() {
         decreaseButton.rx.tap
             .subscribe(onNext: { [unowned self] _ in
-                self.decrementDay()
+                self.decreaseDay()
             })
             .disposed(by: disposeBag)
         
         increaseButton.rx.tap
             .subscribe(onNext: { [unowned self] _ in
-                self.incrementDay()
+                self.increaseDay()
             })
             .disposed(by: disposeBag)
     }

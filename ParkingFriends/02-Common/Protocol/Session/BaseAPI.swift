@@ -21,7 +21,7 @@ protocol BaseAPI {
 }
 
 extension BaseAPI {
-    static func build(host:HostType, endpoint:String, params:Params?) -> URL {
+    static func build(host:HostType, endpoint:String, query:Params?) -> URL {
         var components = URLComponents()
         components.scheme = host.scheme
         components.host = host.domain
@@ -31,7 +31,7 @@ extension BaseAPI {
             components.port = host.port
         }
 
-        if let params = params {
+        if let params = query {
             components.queryItems = params.map {
                 URLQueryItem(name: $0, value: String(describing: $1))
             }

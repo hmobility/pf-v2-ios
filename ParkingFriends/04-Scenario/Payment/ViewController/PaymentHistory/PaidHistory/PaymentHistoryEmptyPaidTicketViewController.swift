@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PaymentHistoryEmptyReservationViewController: UIViewController {
+class PaymentHistoryEmptyPaidTicketViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     

@@ -15,8 +15,8 @@ extension PaymentHistoryViewController : AnalyticsType {
     }
 }
 
-private enum PaymentHistoryTapIndex:Int {
-    case reservation_history, used_history
+enum PaymentHistoryTapIndex:Int {
+    case reserved_history, used_history
 }
 
 class PaymentHistoryViewController: UIViewController {
@@ -25,7 +25,7 @@ class PaymentHistoryViewController: UIViewController {
     @IBOutlet weak var containerView: UIView!
     
     private var embedNavigationController: UINavigationController?
-    private var reservationViewController: PaymentHistoryReservationViewController?
+    private var paidTicketViewController: PaymentHistoryPaidTicketViewController?
     private var usedTicketViewController: PaymentHistoryUsedTicketViewController?
     
     private var viewModel:PaymentHistoryViewModelType = PaymentHistoryViewModel()
@@ -64,8 +64,8 @@ class PaymentHistoryViewController: UIViewController {
                 return PaymentHistoryTapIndex(rawValue: $0)
             }
             .drive(onNext: { [unowned self] tapIndex in
-                if tapIndex == .reservation_history {
-                    self.setupReservationHistoryView()
+                if tapIndex == .reserved_history {
+                    self.setupPaidTicketHistoryView()
                 } else {
                     self.setupUsedTicketHistoryView()
                 }
@@ -73,32 +73,30 @@ class PaymentHistoryViewController: UIViewController {
             .disposed(by: disposeBag)
     }
     
-    private func setupReservationHistoryView() {
-        navigateToEmptyReservation()
-        /*
-         Observable.combineLatest(tapSegmentedControl.rx.selected,
-                                         viewModel.searchResults)
-             .filter { PaymentHistoryTapIndex(rawValue: $0.0) == .reservation_history }
-             .map { return $0.1 }
-             .asObservable()
-             .subscribe(onNext:{ [unowned self] items in
-                 self.setHistoryViewVisiblity(hiding: true)
-                 if let results = items {
-                     if results.count > 0 {
-                         self.navigateToSearchResults(with: results)
-                     } else {
-                         self.navigateToNoResult()
-                     }
-                 } else {
-                     self.navigateToGuide()
-                 }
-             })
-             .disposed(by: disposeBag)
- */
+    private func setupPaidTicketHistoryView() {
+        viewModel.getPaidItems()
+            .asObservable()
+            .subscribe(onNext: { [unowned self] items in
+                if items.count > 0 {
+                    self.navigateToPaid(with: items)
+                } else {
+                    self.navigateToEmptyPaid()
+                }
+            })
+            .disposed(by: disposeBag)
     }
      
     private func setupUsedTicketHistoryView() {
-        navigateToEmptyUsedHistory()
+        viewModel.getUsedItems()
+            .asObservable()
+            .subscribe(onNext: { [unowned self] items in
+                if items.count > 0 {
+                    self.navigateToUsedTicket(with: items)
+                } else {
+                    self.navigateToEmptyUsedHistory()
+                }
+            })
+            .disposed(by: disposeBag)
     }
     
     // MARK: - Initialize
@@ -145,59 +143,59 @@ class PaymentHistoryViewController: UIViewController {
        
     // MARK: - Navigation
     
-    private func navigateToEmptyReservation() {
-        let target = Storyboard.payment.instantiateViewController(withIdentifier: "PaymentHistoryEmptyReservationViewController") as! PaymentHistoryEmptyReservationViewController
+    private func navigateToParkingStatus(with element:OrderElement) {
+        let target = Storyboard.parking.instantiateViewController(withIdentifier: "ParkingStatusNavigationController") as! ParkingStatusNavigationController
+        target.setOrderElement(with: element)
+        self.modal(target)
+    }
+    
+    private func navigateToEmptyPaid() {
+        let target = Storyboard.payment.instantiateViewController(withIdentifier: "PaymentHistoryEmptyPaidTicketViewController") as! PaymentHistoryEmptyPaidTicketViewController
         setEmbedView(target)
     }
     
     private func navigateToEmptyUsedHistory() {
-        let target = Storyboard.payment.instantiateViewController(withIdentifier: "PaymentHistoryEmptyHistoryViewController") as! PaymentHistoryEmptyHistoryViewController
+        let target = Storyboard.payment.instantiateViewController(withIdentifier: "PaymentHistoryEmptyUsedTicketViewController") as! PaymentHistoryEmptyUsedTicketViewController
         setEmbedView(target)
     }
     
-    private func navigateToReservation() {
-        guard let navigationController = embedNavigationController, reservationViewController != navigationController.viewControllers[0] else {
-            return
+    private func navigateToPaid(with elements:[OrderElement]) {
+        if paidTicketViewController == nil {
+            paidTicketViewController = Storyboard.payment.instantiateViewController(withIdentifier: "PaymentHistoryPaidTicketViewController") as? PaymentHistoryPaidTicketViewController
         }
         
-        if reservationViewController == nil {
-            reservationViewController = Storyboard.payment.instantiateViewController(withIdentifier: "PaymentHistoryReservationViewController") as? PaymentHistoryReservationViewController
-            //reservationViewController?.setViewModel(viewModel as! SearchViewModel)
-        }
-        
-        if let target = reservationViewController {
+        if let target = paidTicketViewController {
             setEmbedView(target)
-          //  target.setFavoriteItems(items)
-           /*
-            target.selectAction = { [unowned self] item in
-                debugPrint("[FAVORITE] SELECT, ", item.name)
-                self.navigateToDetail(with: item)
+            target.setOrderElement(elements)
+            
+            target.selectAction = { [unowned self] element in
+                self.navigateToParkingStatus(with: element)
             }
- */
         }
     }
     
-    private func navigateToUsedTicket() {
-        guard let navigationController = embedNavigationController, usedTicketViewController != navigationController.viewControllers[0] else {
-            return
-        }
-        
+    private func navigateToUsedTicket(with elements:[OrderElement]) {
         if usedTicketViewController == nil {
             usedTicketViewController = Storyboard.payment.instantiateViewController(withIdentifier: "PaymentHistoryUsedTicketViewController") as? PaymentHistoryUsedTicketViewController
-            //reservationViewController?.setViewModel(viewModel as! SearchViewModel)
         }
         
         if let target = usedTicketViewController {
             setEmbedView(target)
-            //  target.setFavoriteItems(items)
-            /*
-             target.selectAction = { [unowned self] item in
-             debugPrint("[FAVORITE] SELECT, ", item.name)
-             self.navigateToDetail(with: item)
-             }
-             */
+            target.setOrderElement(elements)
+            
+            target.selectAction = { [unowned self] element in
+                self.navigateToReceipt(with: element)
+            }
         }
     }
+    
+    private func navigateToReceipt(with element:OrderElement) {
+        let target = Storyboard.payment.instantiateViewController(withIdentifier: "PaymentReceiptViewController") as! PaymentReceiptViewController
+        target.setOrderElement(with: element)
+        self.modal(target)
+    }
+    
+    // MARK: Prepare
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {

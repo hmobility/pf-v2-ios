@@ -49,12 +49,6 @@ class GuideFinishedViewController: UIViewController {
         }
     }
     
-    // MARK: - Initialize
-    
-    private func initialize() {
-         setupBindings()
-     }
-    
     // MARK: - Binding
 
     private func setupBindings() {
@@ -79,7 +73,16 @@ class GuideFinishedViewController: UIViewController {
             .disposed(by: disposeBag)
     }
     
-    // MARK: - Life Cycle
+    private func setupButtonBinding() {
+        beginButton.rx.tap
+            .subscribe(onNext: { [unowned self] _ in
+                self.navigateToMain()
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    
+    // MARK: - Initialize
     
     init(index:Int) {
         self.viewModel = GuideFinishedViewModel()
@@ -90,6 +93,13 @@ class GuideFinishedViewController: UIViewController {
         viewModel = GuideFinishedViewModel()
         super.init(coder: aDecoder)
     }
+    
+    private func initialize() {
+        setupBindings()
+        setupButtonBinding()
+    }
+    
+    // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -102,8 +112,14 @@ class GuideFinishedViewController: UIViewController {
          trackScreen()
      }
      
-    /*
     // MARK: - Navigation
+    
+    private func navigateToMain() {
+        let target = Storyboard.main.instantiateInitialViewController() as! UINavigationController
+        target.makeWindowRoot()
+    }
+    
+    /*
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

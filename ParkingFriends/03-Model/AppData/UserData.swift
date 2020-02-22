@@ -12,28 +12,23 @@ import ObjectMapper
 let kBookingTimeFormat = "yyyyMMddHHmm"
 
 class UserData: NSObject, NSCoding {
-    var login: Login?
-    var filter: FilterOption = FilterOption()
+    var login: Login? {
+        didSet {
+            if login != nil {
+                memberInfo.load()
+            }
+        }
+    }
     
+    var filter: FilterOption = FilterOption()
     var displayPaymentGuide: Bool = true
     
     var productSettings:ProductSetting = ProductSetting.shared
-    
     var searchHistory:SearchHistory = SearchHistory.shared
+    var memberInfo:MemberInfo = MemberInfo.shared
 
     // MARK: - Public Methods
-    
-    // MARK: - Product
-    // Deprecated
-    public func getProductType() -> ProductType {
-        return productSettings.selectedProductType
-    }
-    // Deprecated
-    public func setProduct(type:ProductType) -> UserData {
-         productSettings.selectedProductType = type
-         return self
-    }
-    
+
     // MARK: - Order Type
     
     public func getSortType() -> SortType {
@@ -96,10 +91,8 @@ class UserData: NSObject, NSCoding {
     public func logout() {
         self.reset()
         
-        if let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) {
-            let target = Storyboard.splash.instantiateInitialViewController() as! SplashViewController
-            window.rootViewController = target
-        }
+        let target = Storyboard.splash.instantiateInitialViewController() as! SplashViewController
+        target.makeWindowRoot()
     }
     
     // Usually call this method in AppDelegate

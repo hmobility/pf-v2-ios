@@ -133,8 +133,7 @@
 		6257DE1D23C72079001091B0 /* NavigationAppDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6257DE1C23C72079001091B0 /* NavigationAppDialog.swift */; };
 		6257DE2223C726F9001091B0 /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6257DE2123C726F9001091B0 /* Detail.storyboard */; };
 		6257DE2423C7282D001091B0 /* ParkinglotfDetailSymbolCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6257DE2323C7282D001091B0 /* ParkinglotfDetailSymbolCollectionViewCell.swift */; };
-		6257DE2623C81832001091B0 /* ParkingCCTVStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6257DE2523C81832001091B0 /* ParkingCCTVStatusViewController.swift */; };
-		6257DE2923C9940E001091B0 /* DisplayTimeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6257DE2823C9940E001091B0 /* DisplayTimeHandler.swift */; };
+		6257DE2923C9940E001091B0 /* DisplayDateTimeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6257DE2823C9940E001091B0 /* DisplayDateTimeHandler.swift */; };
 		6257DE2E23CAD5F5001091B0 /* FixedTicketDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6257DE2D23CAD5F5001091B0 /* FixedTicketDialog.swift */; };
 		6257DE3023CAD632001091B0 /* FixedTicketDialog.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6257DE2F23CAD632001091B0 /* FixedTicketDialog.storyboard */; };
 		6257DE3223CAD6E1001091B0 /* FixedTicketDurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6257DE3123CAD6E1001091B0 /* FixedTicketDurationViewController.swift */; };
@@ -149,13 +148,13 @@
 		6257DE4D23CBEFB9001091B0 /* ExtendReserveDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6257DE4C23CBEFB9001091B0 /* ExtendReserveDialog.swift */; };
 		6257DE4F23CBEFD6001091B0 /* ExtendDurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6257DE4E23CBEFD6001091B0 /* ExtendDurationViewController.swift */; };
 		6257DE5123CBF446001091B0 /* ExtendDurationNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6257DE5023CBF446001091B0 /* ExtendDurationNavigationController.swift */; };
-		6258336A23F9193B0078F4CE /* PaymentHistoryEmptyReservationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258336923F9193B0078F4CE /* PaymentHistoryEmptyReservationViewController.swift */; };
-		6258336C23F919800078F4CE /* PaymentHistoryEmptyHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258336B23F919800078F4CE /* PaymentHistoryEmptyHistoryViewController.swift */; };
+		6258336A23F9193B0078F4CE /* PaymentHistoryEmptyPaidTicketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258336923F9193B0078F4CE /* PaymentHistoryEmptyPaidTicketViewController.swift */; };
+		6258336C23F919800078F4CE /* PaymentHistoryEmptyUsedTicketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258336B23F919800078F4CE /* PaymentHistoryEmptyUsedTicketViewController.swift */; };
 		6258336E23F91C040078F4CE /* PaymentHistoryEmptyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258336D23F91C040078F4CE /* PaymentHistoryEmptyViewModel.swift */; };
-		6258337223F921A10078F4CE /* PaymentHistoryReservationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258337123F921A10078F4CE /* PaymentHistoryReservationViewController.swift */; };
 		6258337423F921BC0078F4CE /* PaymentHistoryUsedTicketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258337323F921BC0078F4CE /* PaymentHistoryUsedTicketViewController.swift */; };
 		6258337623F93F590078F4CE /* ParkingCCTVPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258337523F93F590078F4CE /* ParkingCCTVPlayerViewController.swift */; };
 		6258337823F93F850078F4CE /* ParkingStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258337723F93F850078F4CE /* ParkingStatusViewController.swift */; };
+		6258337E23FA5BF00078F4CE /* ParkingCCTVMediaPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258337D23FA5BF00078F4CE /* ParkingCCTVMediaPlayerView.swift */; };
 		6259518423DD6F1E0015A868 /* ParkinglotDetailReserveViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6259518323DD6F1E0015A868 /* ParkinglotDetailReserveViewModel.swift */; };
 		6259518623DE9D540015A868 /* ParkinglotDetailSymbolViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6259518523DE9D540015A868 /* ParkinglotDetailSymbolViewModel.swift */; };
 		6259518823DEAA1E0015A868 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6259518723DEAA1E0015A868 /* UIColor+Extension.swift */; };
@@ -209,6 +208,18 @@
 		625BD92523B8705C00C3D4E9 /* SortOrderDialogView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 625BD92423B8705C00C3D4E9 /* SortOrderDialogView.xib */; };
 		625BD92723B8762800C3D4E9 /* SortOrderDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625BD92623B8762800C3D4E9 /* SortOrderDialog.swift */; };
 		625BD92923B8767D00C3D4E9 /* SortOrderDialogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625BD92823B8767D00C3D4E9 /* SortOrderDialogView.swift */; };
+		625D5CFE23FFDBEB0041575F /* ParkingInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 625D5CFD23FFDBEA0041575F /* ParkingInfoView.xib */; };
+		625D5D0023FFDBFE0041575F /* ParkingInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625D5CFF23FFDBFE0041575F /* ParkingInfoView.swift */; };
+		625D5D0223FFDC200041575F /* ParkingInfoDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625D5D0123FFDC200041575F /* ParkingInfoDialog.swift */; };
+		625D5D0423FFDFC30041575F /* ParkingInfoItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625D5D0323FFDFC30041575F /* ParkingInfoItemView.swift */; };
+		625D5D06240008030041575F /* ParkingTicketInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625D5D05240008030041575F /* ParkingTicketInfoView.swift */; };
+		625D5D092400D6710041575F /* PaymentReceiptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625D5D082400D6710041575F /* PaymentReceiptViewController.swift */; };
+		625D5D0B2400DDE40041575F /* PaymentReceiptViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625D5D0A2400DDE40041575F /* PaymentReceiptViewModel.swift */; };
+		625D5D102400F4180041575F /* ParkingTicketTimeInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625D5D0F2400F4180041575F /* ParkingTicketTimeInfoView.swift */; };
+		625D5D122400FCF70041575F /* ParkingTicketBasicInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625D5D112400FCF70041575F /* ParkingTicketBasicInfoView.swift */; };
+		625D5D142400FFA40041575F /* ParkingTicketFixedInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625D5D132400FFA40041575F /* ParkingTicketFixedInfoView.swift */; };
+		625D5D162400FFB20041575F /* ParkingTicketMonthlyInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625D5D152400FFB20041575F /* ParkingTicketMonthlyInfoView.swift */; };
+		625D5D182401010C0041575F /* ParkingCarInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625D5D172401010C0041575F /* ParkingCarInfoView.swift */; };
 		625ED5B3238298330088860C /* ChangePhoneNumberViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625ED5B2238298330088860C /* ChangePhoneNumberViewModel.swift */; };
 		625ED5B5238298A50088860C /* FindPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625ED5B4238298A50088860C /* FindPasswordViewModel.swift */; };
 		62601D6A238FA54B00B78033 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62601D69238FA54B00B78033 /* CoreLocation.framework */; };
@@ -249,14 +260,12 @@
 		62601DCE23973A1C00B78033 /* Int+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62601DCD23973A1C00B78033 /* Int+Extension.swift */; };
 		62601DD0239740AA00B78033 /* PointsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62601DCF239740AA00B78033 /* PointsAPI.swift */; };
 		62601DD22397435F00B78033 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62601DD12397435F00B78033 /* Transaction.swift */; };
-		62601DD523974BED00B78033 /* OrderProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62601DD423974BED00B78033 /* OrderProduct.swift */; };
-		62601DD723974C3E00B78033 /* OrderParkinglot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62601DD623974C3D00B78033 /* OrderParkinglot.swift */; };
 		62601DD923974CB700B78033 /* OrderDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62601DD823974CB700B78033 /* OrderDetail.swift */; };
 		62601DDB23974EFB00B78033 /* CancelFee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62601DDA23974EFB00B78033 /* CancelFee.swift */; };
 		62601DDD2397512000B78033 /* OverFee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62601DDC2397512000B78033 /* OverFee.swift */; };
 		62601DDF2397521B00B78033 /* Recommend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62601DDE2397521B00B78033 /* Recommend.swift */; };
 		62601DE12397545100B78033 /* Receipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62601DE02397545100B78033 /* Receipt.swift */; };
-		6260E35023F7E0920066086F /* ParkingNormalStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6260E34F23F7E0920066086F /* ParkingNormalStatusViewController.swift */; };
+		6260E35023F7E0920066086F /* ParkingNormalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6260E34F23F7E0920066086F /* ParkingNormalViewController.swift */; };
 		6260E35723F7EA280066086F /* PaymentHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6260E35623F7EA280066086F /* PaymentHistoryViewController.swift */; };
 		6260E35923F7EB720066086F /* PaymentHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6260E35823F7EB720066086F /* PaymentHistoryViewModel.swift */; };
 		6261583723D6C8ED00C08CCA /* ParkinglotDetailReserveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6261583623D6C8ED00C08CCA /* ParkinglotDetailReserveView.swift */; };
@@ -266,6 +275,20 @@
 		62630B47238534FB0029724B /* CodeVerifyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62630B46238534FB0029724B /* CodeVerifyViewModel.swift */; };
 		62630B4D23862F3A0029724B /* RegistrationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62630B4C23862F3A0029724B /* RegistrationModel.swift */; };
 		62630B5323865EBD0029724B /* RxTextFieldDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62630B5223865EBD0029724B /* RxTextFieldDelegateProxy.swift */; };
+		62705E2623FA692D00B1E894 /* PaymentHistoryPaidTicketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62705E2523FA692D00B1E894 /* PaymentHistoryPaidTicketTableViewCell.swift */; };
+		62705E2923FA7E9D00B1E894 /* CamHttpSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62705E2823FA7E9D00B1E894 /* CamHttpSession.swift */; };
+		62705E2B23FABE7300B1E894 /* PaymentHistoryUsedTicketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62705E2A23FABE7300B1E894 /* PaymentHistoryUsedTicketTableViewCell.swift */; };
+		62705E3223FBC6D000B1E894 /* MyCardListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62705E3123FBC6D000B1E894 /* MyCardListViewController.swift */; };
+		62705E3423FBD4A800B1E894 /* MyCardAddingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62705E3323FBD4A800B1E894 /* MyCardAddingViewController.swift */; };
+		62705E3623FCB5BC00B1E894 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62705E3523FCB5BC00B1E894 /* Array+Extension.swift */; };
+		62705E3923FD0D3500B1E894 /* PaymentHistoryTableViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62705E3823FD0D3500B1E894 /* PaymentHistoryTableViewHeader.xib */; };
+		62705E3C23FD0D5F00B1E894 /* PaymentHistoryTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62705E3B23FD0D5F00B1E894 /* PaymentHistoryTableViewHeader.swift */; };
+		62705E4023FD52FC00B1E894 /* ParkingStatusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62705E3F23FD52FC00B1E894 /* ParkingStatusViewModel.swift */; };
+		62705E4223FD69B000B1E894 /* ParkingCCTVPlayerNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62705E4123FD69B000B1E894 /* ParkingCCTVPlayerNavigationView.swift */; };
+		62705E4423FE139E00B1E894 /* MemberInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62705E4323FE139E00B1E894 /* MemberInfo.swift */; };
+		62705E4623FE216F00B1E894 /* ParkingStatusNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62705E4523FE216F00B1E894 /* ParkingStatusNavigationController.swift */; };
+		62705E4823FE514700B1E894 /* Usage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62705E4723FE514700B1E894 /* Usage.swift */; };
+		62705E4C23FEB42B00B1E894 /* PaymentHistoryPaidTicketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62705E4B23FEB42B00B1E894 /* PaymentHistoryPaidTicketViewController.swift */; };
 		6294536B23B206470048FEA8 /* ColumnFlowLayoutFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6294536A23B206470048FEA8 /* ColumnFlowLayoutFlowLayout.swift */; };
 		629C285B236BED9900E0E5E1 /* Entry.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 629C285A236BED9900E0E5E1 /* Entry.storyboard */; };
 		629C285F236BF25F00E0E5E1 /* EntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629C285E236BF25F00E0E5E1 /* EntryViewController.swift */; };
@@ -290,11 +313,11 @@
 		629C288A237149FA00E0E5E1 /* FindPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629C2889237149FA00E0E5E1 /* FindPasswordViewController.swift */; };
 		629DB19323C1A1A500E68A94 /* MenuCarSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629DB19223C1A1A500E68A94 /* MenuCarSectionView.swift */; };
 		629DB19523C1BB0D00E68A94 /* EmptyCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629DB19423C1BB0D00E68A94 /* EmptyCardViewModel.swift */; };
-		629DB19A23C1BCB400E68A94 /* EmptyCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629DB19923C1BCB400E68A94 /* EmptyCardViewController.swift */; };
+		629DB19A23C1BCB400E68A94 /* MyCardEmptyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629DB19923C1BCB400E68A94 /* MyCardEmptyViewController.swift */; };
 		629DB1A023C1C20D00E68A94 /* EmptyParkingTicketViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629DB19F23C1C20D00E68A94 /* EmptyParkingTicketViewModel.swift */; };
 		629DB1A223C1C9BD00E68A94 /* MyCardHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629DB1A123C1C9BD00E68A94 /* MyCardHeaderView.swift */; };
-		629DB1A423C1CA7D00E68A94 /* BasicCardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629DB1A323C1CA7D00E68A94 /* BasicCardTableViewCell.swift */; };
-		629DB1A623C1CA8800E68A94 /* ExtraCardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629DB1A523C1CA8800E68A94 /* ExtraCardTableViewCell.swift */; };
+		629DB1A423C1CA7D00E68A94 /* MyCardDefaultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629DB1A323C1CA7D00E68A94 /* MyCardDefaultTableViewCell.swift */; };
+		629DB1A623C1CA8800E68A94 /* MyCardNormalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629DB1A523C1CA8800E68A94 /* MyCardNormalTableViewCell.swift */; };
 		629E6F9923E6A96B0090E164 /* SearchFavoriteEmptyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629E6F9823E6A96B0090E164 /* SearchFavoriteEmptyViewController.swift */; };
 		629E6F9B23E6AC9F0090E164 /* SearchResultItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629E6F9A23E6AC9F0090E164 /* SearchResultItemTableViewCell.swift */; };
 		629E6F9D23E6ACE80090E164 /* SearchFavoriteItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629E6F9C23E6ACE80090E164 /* SearchFavoriteItemTableViewCell.swift */; };
@@ -534,8 +557,7 @@
 		6257DE1C23C72079001091B0 /* NavigationAppDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationAppDialog.swift; sourceTree = "<group>"; };
 		6257DE2123C726F9001091B0 /* Detail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
 		6257DE2323C7282D001091B0 /* ParkinglotfDetailSymbolCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkinglotfDetailSymbolCollectionViewCell.swift; sourceTree = "<group>"; };
-		6257DE2523C81832001091B0 /* ParkingCCTVStatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingCCTVStatusViewController.swift; sourceTree = "<group>"; };
-		6257DE2823C9940E001091B0 /* DisplayTimeHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayTimeHandler.swift; sourceTree = "<group>"; };
+		6257DE2823C9940E001091B0 /* DisplayDateTimeHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayDateTimeHandler.swift; sourceTree = "<group>"; };
 		6257DE2D23CAD5F5001091B0 /* FixedTicketDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixedTicketDialog.swift; sourceTree = "<group>"; };
 		6257DE2F23CAD632001091B0 /* FixedTicketDialog.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FixedTicketDialog.storyboard; sourceTree = "<group>"; };
 		6257DE3123CAD6E1001091B0 /* FixedTicketDurationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixedTicketDurationViewController.swift; sourceTree = "<group>"; };
@@ -550,13 +572,13 @@
 		6257DE4C23CBEFB9001091B0 /* ExtendReserveDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtendReserveDialog.swift; sourceTree = "<group>"; };
 		6257DE4E23CBEFD6001091B0 /* ExtendDurationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtendDurationViewController.swift; sourceTree = "<group>"; };
 		6257DE5023CBF446001091B0 /* ExtendDurationNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtendDurationNavigationController.swift; sourceTree = "<group>"; };
-		6258336923F9193B0078F4CE /* PaymentHistoryEmptyReservationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentHistoryEmptyReservationViewController.swift; sourceTree = "<group>"; };
-		6258336B23F919800078F4CE /* PaymentHistoryEmptyHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentHistoryEmptyHistoryViewController.swift; sourceTree = "<group>"; };
+		6258336923F9193B0078F4CE /* PaymentHistoryEmptyPaidTicketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentHistoryEmptyPaidTicketViewController.swift; sourceTree = "<group>"; };
+		6258336B23F919800078F4CE /* PaymentHistoryEmptyUsedTicketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentHistoryEmptyUsedTicketViewController.swift; sourceTree = "<group>"; };
 		6258336D23F91C040078F4CE /* PaymentHistoryEmptyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentHistoryEmptyViewModel.swift; sourceTree = "<group>"; };
-		6258337123F921A10078F4CE /* PaymentHistoryReservationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentHistoryReservationViewController.swift; sourceTree = "<group>"; };
 		6258337323F921BC0078F4CE /* PaymentHistoryUsedTicketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentHistoryUsedTicketViewController.swift; sourceTree = "<group>"; };
 		6258337523F93F590078F4CE /* ParkingCCTVPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingCCTVPlayerViewController.swift; sourceTree = "<group>"; };
 		6258337723F93F850078F4CE /* ParkingStatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingStatusViewController.swift; sourceTree = "<group>"; };
+		6258337D23FA5BF00078F4CE /* ParkingCCTVMediaPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingCCTVMediaPlayerView.swift; sourceTree = "<group>"; };
 		6259518323DD6F1E0015A868 /* ParkinglotDetailReserveViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkinglotDetailReserveViewModel.swift; sourceTree = "<group>"; };
 		6259518523DE9D540015A868 /* ParkinglotDetailSymbolViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkinglotDetailSymbolViewModel.swift; sourceTree = "<group>"; };
 		6259518723DEAA1E0015A868 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
@@ -610,6 +632,18 @@
 		625BD92423B8705C00C3D4E9 /* SortOrderDialogView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SortOrderDialogView.xib; sourceTree = "<group>"; };
 		625BD92623B8762800C3D4E9 /* SortOrderDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortOrderDialog.swift; sourceTree = "<group>"; };
 		625BD92823B8767D00C3D4E9 /* SortOrderDialogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortOrderDialogView.swift; sourceTree = "<group>"; };
+		625D5CFD23FFDBEA0041575F /* ParkingInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ParkingInfoView.xib; sourceTree = "<group>"; };
+		625D5CFF23FFDBFE0041575F /* ParkingInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingInfoView.swift; sourceTree = "<group>"; };
+		625D5D0123FFDC200041575F /* ParkingInfoDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingInfoDialog.swift; sourceTree = "<group>"; };
+		625D5D0323FFDFC30041575F /* ParkingInfoItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingInfoItemView.swift; sourceTree = "<group>"; };
+		625D5D05240008030041575F /* ParkingTicketInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingTicketInfoView.swift; sourceTree = "<group>"; };
+		625D5D082400D6710041575F /* PaymentReceiptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentReceiptViewController.swift; sourceTree = "<group>"; };
+		625D5D0A2400DDE40041575F /* PaymentReceiptViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentReceiptViewModel.swift; sourceTree = "<group>"; };
+		625D5D0F2400F4180041575F /* ParkingTicketTimeInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingTicketTimeInfoView.swift; sourceTree = "<group>"; };
+		625D5D112400FCF70041575F /* ParkingTicketBasicInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingTicketBasicInfoView.swift; sourceTree = "<group>"; };
+		625D5D132400FFA40041575F /* ParkingTicketFixedInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkingTicketFixedInfoView.swift; sourceTree = "<group>"; };
+		625D5D152400FFB20041575F /* ParkingTicketMonthlyInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkingTicketMonthlyInfoView.swift; sourceTree = "<group>"; };
+		625D5D172401010C0041575F /* ParkingCarInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingCarInfoView.swift; sourceTree = "<group>"; };
 		625ED5B2238298330088860C /* ChangePhoneNumberViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePhoneNumberViewModel.swift; sourceTree = "<group>"; };
 		625ED5B4238298A50088860C /* FindPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPasswordViewModel.swift; sourceTree = "<group>"; };
 		62601D69238FA54B00B78033 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -648,14 +682,12 @@
 		62601DCD23973A1C00B78033 /* Int+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extension.swift"; sourceTree = "<group>"; };
 		62601DCF239740AA00B78033 /* PointsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsAPI.swift; sourceTree = "<group>"; };
 		62601DD12397435F00B78033 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
-		62601DD423974BED00B78033 /* OrderProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderProduct.swift; sourceTree = "<group>"; };
-		62601DD623974C3D00B78033 /* OrderParkinglot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderParkinglot.swift; sourceTree = "<group>"; };
 		62601DD823974CB700B78033 /* OrderDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetail.swift; sourceTree = "<group>"; };
 		62601DDA23974EFB00B78033 /* CancelFee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelFee.swift; sourceTree = "<group>"; };
 		62601DDC2397512000B78033 /* OverFee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverFee.swift; sourceTree = "<group>"; };
 		62601DDE2397521B00B78033 /* Recommend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recommend.swift; sourceTree = "<group>"; };
 		62601DE02397545100B78033 /* Receipt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Receipt.swift; sourceTree = "<group>"; };
-		6260E34F23F7E0920066086F /* ParkingNormalStatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingNormalStatusViewController.swift; sourceTree = "<group>"; };
+		6260E34F23F7E0920066086F /* ParkingNormalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingNormalViewController.swift; sourceTree = "<group>"; };
 		6260E35623F7EA280066086F /* PaymentHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentHistoryViewController.swift; sourceTree = "<group>"; };
 		6260E35823F7EB720066086F /* PaymentHistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentHistoryViewModel.swift; sourceTree = "<group>"; };
 		6261583623D6C8ED00C08CCA /* ParkinglotDetailReserveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkinglotDetailReserveView.swift; sourceTree = "<group>"; };
@@ -665,6 +697,21 @@
 		62630B46238534FB0029724B /* CodeVerifyViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodeVerifyViewModel.swift; sourceTree = "<group>"; };
 		62630B4C23862F3A0029724B /* RegistrationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationModel.swift; sourceTree = "<group>"; };
 		62630B5223865EBD0029724B /* RxTextFieldDelegateProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxTextFieldDelegateProxy.swift; sourceTree = "<group>"; };
+		62705E2523FA692D00B1E894 /* PaymentHistoryPaidTicketTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentHistoryPaidTicketTableViewCell.swift; sourceTree = "<group>"; };
+		62705E2823FA7E9D00B1E894 /* CamHttpSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CamHttpSession.swift; sourceTree = "<group>"; };
+		62705E2A23FABE7300B1E894 /* PaymentHistoryUsedTicketTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentHistoryUsedTicketTableViewCell.swift; sourceTree = "<group>"; };
+		62705E2C23FB720600B1E894 /* ParkingFriends-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ParkingFriends-Bridging-Header.h"; sourceTree = "<group>"; };
+		62705E3123FBC6D000B1E894 /* MyCardListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardListViewController.swift; sourceTree = "<group>"; };
+		62705E3323FBD4A800B1E894 /* MyCardAddingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardAddingViewController.swift; sourceTree = "<group>"; };
+		62705E3523FCB5BC00B1E894 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
+		62705E3823FD0D3500B1E894 /* PaymentHistoryTableViewHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaymentHistoryTableViewHeader.xib; sourceTree = "<group>"; };
+		62705E3B23FD0D5F00B1E894 /* PaymentHistoryTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentHistoryTableViewHeader.swift; sourceTree = "<group>"; };
+		62705E3F23FD52FC00B1E894 /* ParkingStatusViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingStatusViewModel.swift; sourceTree = "<group>"; };
+		62705E4123FD69B000B1E894 /* ParkingCCTVPlayerNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingCCTVPlayerNavigationView.swift; sourceTree = "<group>"; };
+		62705E4323FE139E00B1E894 /* MemberInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberInfo.swift; sourceTree = "<group>"; };
+		62705E4523FE216F00B1E894 /* ParkingStatusNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingStatusNavigationController.swift; sourceTree = "<group>"; };
+		62705E4723FE514700B1E894 /* Usage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Usage.swift; sourceTree = "<group>"; };
+		62705E4B23FEB42B00B1E894 /* PaymentHistoryPaidTicketViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentHistoryPaidTicketViewController.swift; sourceTree = "<group>"; };
 		6294536A23B206470048FEA8 /* ColumnFlowLayoutFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColumnFlowLayoutFlowLayout.swift; sourceTree = "<group>"; };
 		629C285A236BED9900E0E5E1 /* Entry.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Entry.storyboard; sourceTree = "<group>"; };
 		629C285E236BF25F00E0E5E1 /* EntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewController.swift; sourceTree = "<group>"; };
@@ -689,11 +736,11 @@
 		629C2889237149FA00E0E5E1 /* FindPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPasswordViewController.swift; sourceTree = "<group>"; };
 		629DB19223C1A1A500E68A94 /* MenuCarSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCarSectionView.swift; sourceTree = "<group>"; };
 		629DB19423C1BB0D00E68A94 /* EmptyCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyCardViewModel.swift; sourceTree = "<group>"; };
-		629DB19923C1BCB400E68A94 /* EmptyCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyCardViewController.swift; sourceTree = "<group>"; };
+		629DB19923C1BCB400E68A94 /* MyCardEmptyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCardEmptyViewController.swift; sourceTree = "<group>"; };
 		629DB19F23C1C20D00E68A94 /* EmptyParkingTicketViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyParkingTicketViewModel.swift; sourceTree = "<group>"; };
 		629DB1A123C1C9BD00E68A94 /* MyCardHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardHeaderView.swift; sourceTree = "<group>"; };
-		629DB1A323C1CA7D00E68A94 /* BasicCardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicCardTableViewCell.swift; sourceTree = "<group>"; };
-		629DB1A523C1CA8800E68A94 /* ExtraCardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraCardTableViewCell.swift; sourceTree = "<group>"; };
+		629DB1A323C1CA7D00E68A94 /* MyCardDefaultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardDefaultTableViewCell.swift; sourceTree = "<group>"; };
+		629DB1A523C1CA8800E68A94 /* MyCardNormalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardNormalTableViewCell.swift; sourceTree = "<group>"; };
 		629E6F9823E6A96B0090E164 /* SearchFavoriteEmptyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFavoriteEmptyViewController.swift; sourceTree = "<group>"; };
 		629E6F9A23E6AC9F0090E164 /* SearchResultItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultItemTableViewCell.swift; sourceTree = "<group>"; };
 		629E6F9C23E6ACE80090E164 /* SearchFavoriteItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFavoriteItemTableViewCell.swift; sourceTree = "<group>"; };
@@ -1246,6 +1293,7 @@
 				62AE724D237B939100BE6FA3 /* ColorDialog */,
 				62AE72352379540E00BE6FA3 /* MessageDialog */,
 				6257DE1623C71A9C001091B0 /* NavigationAppDialog */,
+				625D5CFB23FFDB5C0041575F /* ParkingInfoDialog */,
 			);
 			path = Dialog;
 			sourceTree = "<group>";
@@ -1319,6 +1367,7 @@
 				6257DE0A23C6A759001091B0 /* DepartureConfirmViewModel.swift */,
 				6257DE0E23C6AE1B001091B0 /* DepartureNoExtraViewModel.swift */,
 				6257DE1223C6AEFB001091B0 /* ParkingConfirmViewModel.swift */,
+				62705E3F23FD52FC00B1E894 /* ParkingStatusViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1326,7 +1375,9 @@
 		6257DDF223C48F2D001091B0 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				62705E4523FE216F00B1E894 /* ParkingStatusNavigationController.swift */,
 				6258337723F93F850078F4CE /* ParkingStatusViewController.swift */,
+				625D5D0C2400F2BA0041575F /* Common */,
 				6260E35123F7E1670066086F /* CCTV */,
 				6260E35323F7E1750066086F /* Normal */,
 				6260E35423F7E1820066086F /* Popup */,
@@ -1392,7 +1443,7 @@
 		6257DE2723C993EB001091B0 /* Handler */ = {
 			isa = PBXGroup;
 			children = (
-				6257DE2823C9940E001091B0 /* DisplayTimeHandler.swift */,
+				6257DE2823C9940E001091B0 /* DisplayDateTimeHandler.swift */,
 			);
 			path = Handler;
 			sourceTree = "<group>";
@@ -1503,20 +1554,22 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
-		6258336F23F9214E0078F4CE /* ReservationHistory */ = {
+		6258336F23F9214E0078F4CE /* PaidHistory */ = {
 			isa = PBXGroup;
 			children = (
-				6258337123F921A10078F4CE /* PaymentHistoryReservationViewController.swift */,
-				6258336923F9193B0078F4CE /* PaymentHistoryEmptyReservationViewController.swift */,
+				62705E4B23FEB42B00B1E894 /* PaymentHistoryPaidTicketViewController.swift */,
+				62705E2523FA692D00B1E894 /* PaymentHistoryPaidTicketTableViewCell.swift */,
+				6258336923F9193B0078F4CE /* PaymentHistoryEmptyPaidTicketViewController.swift */,
 			);
-			path = ReservationHistory;
+			path = PaidHistory;
 			sourceTree = "<group>";
 		};
 		6258337023F9216C0078F4CE /* UsedHistory */ = {
 			isa = PBXGroup;
 			children = (
 				6258337323F921BC0078F4CE /* PaymentHistoryUsedTicketViewController.swift */,
-				6258336B23F919800078F4CE /* PaymentHistoryEmptyHistoryViewController.swift */,
+				62705E2A23FABE7300B1E894 /* PaymentHistoryUsedTicketTableViewCell.swift */,
+				6258336B23F919800078F4CE /* PaymentHistoryEmptyUsedTicketViewController.swift */,
 			);
 			path = UsedHistory;
 			sourceTree = "<group>";
@@ -1732,6 +1785,46 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		625D5CFB23FFDB5C0041575F /* ParkingInfoDialog */ = {
+			isa = PBXGroup;
+			children = (
+				625D5D0123FFDC200041575F /* ParkingInfoDialog.swift */,
+				625D5CFC23FFDBCA0041575F /* View */,
+			);
+			path = ParkingInfoDialog;
+			sourceTree = "<group>";
+		};
+		625D5CFC23FFDBCA0041575F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				625D5CFD23FFDBEA0041575F /* ParkingInfoView.xib */,
+				625D5CFF23FFDBFE0041575F /* ParkingInfoView.swift */,
+				625D5D0323FFDFC30041575F /* ParkingInfoItemView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		625D5D072400D6150041575F /* Receipt */ = {
+			isa = PBXGroup;
+			children = (
+				625D5D082400D6710041575F /* PaymentReceiptViewController.swift */,
+			);
+			path = Receipt;
+			sourceTree = "<group>";
+		};
+		625D5D0C2400F2BA0041575F /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				625D5D05240008030041575F /* ParkingTicketInfoView.swift */,
+				625D5D112400FCF70041575F /* ParkingTicketBasicInfoView.swift */,
+				625D5D0F2400F4180041575F /* ParkingTicketTimeInfoView.swift */,
+				625D5D132400FFA40041575F /* ParkingTicketFixedInfoView.swift */,
+				625D5D152400FFB20041575F /* ParkingTicketMonthlyInfoView.swift */,
+				625D5D172401010C0041575F /* ParkingCarInfoView.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		62601D722390FCF900B78033 /* TimeSettingView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1791,6 +1884,7 @@
 				6259519E23E2A0A70015A868 /* PaymentParkingInfoViewModel.swift */,
 				6260E35823F7EB720066086F /* PaymentHistoryViewModel.swift */,
 				6258336D23F91C040078F4CE /* PaymentHistoryEmptyViewModel.swift */,
+				625D5D0A2400DDE40041575F /* PaymentReceiptViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1801,6 +1895,7 @@
 				625951A023E2A92D0015A868 /* Guide */,
 				625951A123E2A9520015A868 /* Payment */,
 				6260E35523F7EA020066086F /* PaymentHistory */,
+				625D5D072400D6150041575F /* Receipt */,
 				62576C4B23BC9C8A007BA1F7 /* PaymentCompleteViewController.swift */,
 			);
 			path = ViewController;
@@ -1834,20 +1929,12 @@
 			path = CustomMarker;
 			sourceTree = "<group>";
 		};
-		62601DD323974BD600B78033 /* Common */ = {
-			isa = PBXGroup;
-			children = (
-				62601DD423974BED00B78033 /* OrderProduct.swift */,
-				62601DD623974C3D00B78033 /* OrderParkinglot.swift */,
-			);
-			path = Common;
-			sourceTree = "<group>";
-		};
 		6260E35123F7E1670066086F /* CCTV */ = {
 			isa = PBXGroup;
 			children = (
-				6257DE2523C81832001091B0 /* ParkingCCTVStatusViewController.swift */,
 				6258337523F93F590078F4CE /* ParkingCCTVPlayerViewController.swift */,
+				6258337D23FA5BF00078F4CE /* ParkingCCTVMediaPlayerView.swift */,
+				62705E4123FD69B000B1E894 /* ParkingCCTVPlayerNavigationView.swift */,
 			);
 			path = CCTV;
 			sourceTree = "<group>";
@@ -1855,7 +1942,7 @@
 		6260E35323F7E1750066086F /* Normal */ = {
 			isa = PBXGroup;
 			children = (
-				6260E34F23F7E0920066086F /* ParkingNormalStatusViewController.swift */,
+				6260E34F23F7E0920066086F /* ParkingNormalViewController.swift */,
 			);
 			path = Normal;
 			sourceTree = "<group>";
@@ -1875,7 +1962,8 @@
 			isa = PBXGroup;
 			children = (
 				6260E35623F7EA280066086F /* PaymentHistoryViewController.swift */,
-				6258336F23F9214E0078F4CE /* ReservationHistory */,
+				62705E3A23FD0D3D00B1E894 /* Common */,
+				6258336F23F9214E0078F4CE /* PaidHistory */,
 				6258337023F9216C0078F4CE /* UsedHistory */,
 			);
 			path = PaymentHistory;
@@ -1964,6 +2052,23 @@
 			path = RxSupport;
 			sourceTree = "<group>";
 		};
+		62705E2723FA7E2A00B1E894 /* CCTV */ = {
+			isa = PBXGroup;
+			children = (
+				62705E2823FA7E9D00B1E894 /* CamHttpSession.swift */,
+			);
+			path = CCTV;
+			sourceTree = "<group>";
+		};
+		62705E3A23FD0D3D00B1E894 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				62705E3823FD0D3500B1E894 /* PaymentHistoryTableViewHeader.xib */,
+				62705E3B23FD0D5F00B1E894 /* PaymentHistoryTableViewHeader.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		6294536723B1F66B0048FEA8 /* CollectionViewLayout */ = {
 			isa = PBXGroup;
 			children = (
@@ -2025,10 +2130,12 @@
 			isa = PBXGroup;
 			children = (
 				62576C6623BF3EA8007BA1F7 /* MyCardViewController.swift */,
-				629DB19923C1BCB400E68A94 /* EmptyCardViewController.swift */,
+				62705E3123FBC6D000B1E894 /* MyCardListViewController.swift */,
+				62705E3323FBD4A800B1E894 /* MyCardAddingViewController.swift */,
+				629DB19923C1BCB400E68A94 /* MyCardEmptyViewController.swift */,
 				629DB1A123C1C9BD00E68A94 /* MyCardHeaderView.swift */,
-				629DB1A323C1CA7D00E68A94 /* BasicCardTableViewCell.swift */,
-				629DB1A523C1CA8800E68A94 /* ExtraCardTableViewCell.swift */,
+				629DB1A323C1CA7D00E68A94 /* MyCardDefaultTableViewCell.swift */,
+				629DB1A523C1CA8800E68A94 /* MyCardNormalTableViewCell.swift */,
 			);
 			path = MyCard;
 			sourceTree = "<group>";
@@ -2156,7 +2263,6 @@
 		62C26BFD2362B02C00695B6F /* Order */ = {
 			isa = PBXGroup;
 			children = (
-				62601DD323974BD600B78033 /* Common */,
 				62C26C002362B1D300695B6F /* OrderPreview.swift */,
 				62601DD12397435F00B78033 /* Transaction.swift */,
 				62C26C022362B23B00695B6F /* Orders.swift */,
@@ -2164,6 +2270,7 @@
 				62601DD823974CB700B78033 /* OrderDetail.swift */,
 				62601DDA23974EFB00B78033 /* CancelFee.swift */,
 				62601DDC2397512000B78033 /* OverFee.swift */,
+				62705E4723FE514700B1E894 /* Usage.swift */,
 				62601DDE2397521B00B78033 /* Recommend.swift */,
 				62601DE02397545100B78033 /* Receipt.swift */,
 			);
@@ -2259,6 +2366,7 @@
 				A4225E5523554879004F48C4 /* 05-Resource */,
 				A40ACD3023543F8D000E4967 /* AppDelegate.swift */,
 				A4225ED9235D8938004F48C4 /* SceneDelegate.swift */,
+				62705E2C23FB720600B1E894 /* ParkingFriends-Bridging-Header.h */,
 				A40ACD3E23543F8E000E4967 /* Info.plist */,
 				62C26BF4236286B100695B6F /* ParkingFriends.entitlements */,
 			);
@@ -2312,6 +2420,7 @@
 			children = (
 				A4225E6E2356F84F004F48C4 /* AppData */,
 				62601D7D23922F1700B78033 /* BasicInfo */,
+				62705E2723FA7E2A00B1E894 /* CCTV */,
 				625ACE8523A23989002D0653 /* NaverMap */,
 				A4225E6D2356F843004F48C4 /* Network */,
 			);
@@ -2427,6 +2536,7 @@
 				6210BAC7237931DA001C6065 /* AppConfig.swift */,
 				625ACE6F239F97C3002D0653 /* FilterOption.swift */,
 				625B272623F29A4800134E2D /* ProductSetting.swift */,
+				62705E4323FE139E00B1E894 /* MemberInfo.swift */,
 			);
 			path = AppData;
 			sourceTree = "<group>";
@@ -2447,6 +2557,7 @@
 				6239D5F223EED944004FD5FD /* UISearchBar+Extension.swift */,
 				6253923F23716D870041EBF1 /* UITextField+Extension.swift */,
 				6259518723DEAA1E0015A868 /* UIColor+Extension.swift */,
+				62705E3523FCB5BC00B1E894 /* Array+Extension.swift */,
 				6259518923DEB79A0015A868 /* Date+Extension.swift */,
 				62630B412383E4BD0029724B /* String+Extension.swift */,
 				62601D7E239232D000B78033 /* Bool+Extension.swift */,
@@ -2627,6 +2738,7 @@
 				TargetAttributes = {
 					A40ACD2C23543F8D000E4967 = {
 						CreatedOnToolsVersion = 11.1;
+						LastSwiftMigration = 1130;
 					};
 					A40ACD4223543F8E000E4967 = {
 						CreatedOnToolsVersion = 11.1;
@@ -2666,6 +2778,7 @@
 			files = (
 				62AE723F237A769100BE6FA3 /* MessageDialogView.xib in Resources */,
 				629C285B236BED9900E0E5E1 /* Entry.storyboard in Resources */,
+				625D5CFE23FFDBEB0041575F /* ParkingInfoView.xib in Resources */,
 				62576C4123BC4655007BA1F7 /* ReserveNoticeView.xib in Resources */,
 				6257DE2223C726F9001091B0 /* Detail.storyboard in Resources */,
 				6255FDEB2372BE1B0072960C /* Terms.storyboard in Resources */,
@@ -2676,6 +2789,7 @@
 				62C26C15236688F800695B6F /* GoogleService-Info-Release.plist in Resources */,
 				62601D9A2394EC1C00B78033 /* Payment.storyboard in Resources */,
 				62AE72342379534200BE6FA3 /* Color.xcassets in Resources */,
+				62705E3923FD0D3500B1E894 /* PaymentHistoryTableViewHeader.xib in Resources */,
 				624F539B23B9D2B5005D7FD8 /* Menu.storyboard in Resources */,
 				625BD92523B8705C00C3D4E9 /* SortOrderDialogView.xib in Resources */,
 				6210BAC023792D24001C6065 /* Main.storyboard in Resources */,
@@ -2851,11 +2965,13 @@
 				62601D702390A59200B78033 /* Member.swift in Sources */,
 				6261583923D6C90400C08CCA /* ParkinglotDetailEditScheduleView.swift in Sources */,
 				622BC0E22368012A00A43F02 /* GuideContentViewController.swift in Sources */,
+				6258337E23FA5BF00078F4CE /* ParkingCCTVMediaPlayerView.swift in Sources */,
 				6257DE0623C6A702001091B0 /* DepartureConfirmViewController.swift in Sources */,
 				62601DBF239647D900B78033 /* ParkinglotCardCollectionViewCell.swift in Sources */,
 				62601DBA2396313500B78033 /* ParkinglotCardViewController.swift in Sources */,
 				62C26C052362B43C00695B6F /* Payments.swift in Sources */,
 				62C26BFF2362B0B300695B6F /* OrdersAPI.swift in Sources */,
+				625D5D182401010C0041575F /* ParkingCarInfoView.swift in Sources */,
 				625351F423E6A668009FD27F /* SearchFavoriteViewController.swift in Sources */,
 				62576C7123BF4760007BA1F7 /* SettingsViewModel.swift in Sources */,
 				6257DE2423C7282D001091B0 /* ParkinglotfDetailSymbolCollectionViewCell.swift in Sources */,
@@ -2864,8 +2980,8 @@
 				62576C4323BC469D007BA1F7 /* ReserveNoticeView.swift in Sources */,
 				625B272F23F3D05F00134E2D /* ParkinglotDetailMonthlyControlView.swift in Sources */,
 				62C26BF82362970700695B6F /* Notices.swift in Sources */,
+				62705E3223FBC6D000B1E894 /* MyCardListViewController.swift in Sources */,
 				62269BCB23A9EEB500BFACC1 /* MarkerWindow.swift in Sources */,
-				6257DE2623C81832001091B0 /* ParkingCCTVStatusViewController.swift in Sources */,
 				6257DE0423C6A693001091B0 /* ReserveCancelViewModel.swift in Sources */,
 				629C2886237137C400E0E5E1 /* CarBrandViewController.swift in Sources */,
 				621BCC6723CFF340009FE1EC /* ParkingTicketModel.swift in Sources */,
@@ -2884,6 +3000,7 @@
 				A4225E712357F7F9004F48C4 /* HttpSession.swift in Sources */,
 				62601DDF2397521B00B78033 /* Recommend.swift in Sources */,
 				62601D8F23938A2700B78033 /* NavigationTitleView.swift in Sources */,
+				625D5D142400FFA40041575F /* ParkingTicketFixedInfoView.swift in Sources */,
 				6257DE4D23CBEFB9001091B0 /* ExtendReserveDialog.swift in Sources */,
 				62601D762391173900B78033 /* ParkingLot.swift in Sources */,
 				629E6F9B23E6AC9F0090E164 /* SearchResultItemTableViewCell.swift in Sources */,
@@ -2896,11 +3013,14 @@
 				62AE723E23795AC000BE6FA3 /* MessageDialogView.swift in Sources */,
 				624F539F23B9F372005D7FD8 /* MenuViewController.swift in Sources */,
 				62576C5823BDE2AF007BA1F7 /* TimeTicketDurationViewController.swift in Sources */,
+				62705E3623FCB5BC00B1E894 /* Array+Extension.swift in Sources */,
+				62705E2923FA7E9D00B1E894 /* CamHttpSession.swift in Sources */,
 				62576C6D23BF42D2007BA1F7 /* MyInfoViewModel.swift in Sources */,
 				62269BE223B085F900BFACC1 /* DistrictMarkerWindow.swift in Sources */,
 				6210BABB237901BF001C6065 /* PasswordModel.swift in Sources */,
 				629C286B236E957400E0E5E1 /* BasicInfoViewController.swift in Sources */,
 				62630B47238534FB0029724B /* CodeVerifyViewModel.swift in Sources */,
+				625D5D0023FFDBFE0041575F /* ParkingInfoView.swift in Sources */,
 				62254E8B238B992500AF82B9 /* Parkinglots.swift in Sources */,
 				625351ED23E69F15009FD27F /* SearchResultViewController.swift in Sources */,
 				62601D8A2393783A00B78033 /* CarBrandTableViewCell.swift in Sources */,
@@ -2938,14 +3058,13 @@
 				62AE7241237A77DD00BE6FA3 /* MessageDialog.swift in Sources */,
 				62576C5523BDDE91007BA1F7 /* TimeTicketDateViewController.swift in Sources */,
 				6258337623F93F590078F4CE /* ParkingCCTVPlayerViewController.swift in Sources */,
-				6258337223F921A10078F4CE /* PaymentHistoryReservationViewController.swift in Sources */,
 				622BC0E82368262000A43F02 /* Storyboard.swift in Sources */,
 				620455552398F0E3007ADF88 /* Agreements.swift in Sources */,
+				62705E3C23FD0D5F00B1E894 /* PaymentHistoryTableViewHeader.swift in Sources */,
 				6259518423DD6F1E0015A868 /* ParkinglotDetailReserveViewModel.swift in Sources */,
 				6260E35923F7EB720066086F /* PaymentHistoryViewModel.swift in Sources */,
 				624F53B523BB313C005D7FD8 /* LevelGuideViewModel.swift in Sources */,
 				6257DE2E23CAD5F5001091B0 /* FixedTicketDialog.swift in Sources */,
-				62601DD723974C3E00B78033 /* OrderParkinglot.swift in Sources */,
 				624F53AE23BAF82F005D7FD8 /* BottomFloatingPanelLayout.swift in Sources */,
 				62601D742390FE5300B78033 /* CustomTimeSelectionView.swift in Sources */,
 				6210BAC223792D33001C6065 /* MapViewController.swift in Sources */,
@@ -2955,15 +3074,16 @@
 				625951AF23E2B2800015A868 /* PaymentGiftView.swift in Sources */,
 				6259518E23DFE6360015A868 /* ParkinglotDetailPriceViewModel.swift in Sources */,
 				621BCC8E23D5AAC4009FE1EC /* TransparentNavigationBar.swift in Sources */,
+				62705E4223FD69B000B1E894 /* ParkingCCTVPlayerNavigationView.swift in Sources */,
 				629C28782370F45500E0E5E1 /* TermsViewController.swift in Sources */,
-				62601DD523974BED00B78033 /* OrderProduct.swift in Sources */,
 				625B272923F2D94800134E2D /* ParkinglotDetailScheduleButtonView.swift in Sources */,
 				6204555B2398FA09007ADF88 /* FAQsContents.swift in Sources */,
 				6259F27323729431004297E9 /* CarBrandViewModel.swift in Sources */,
-				629DB1A623C1CA8800E68A94 /* ExtraCardTableViewCell.swift in Sources */,
+				629DB1A623C1CA8800E68A94 /* MyCardNormalTableViewCell.swift in Sources */,
 				62AE72392379578400BE6FA3 /* Color.swift in Sources */,
 				629C2867236BF6F000E0E5E1 /* LoginViewModel.swift in Sources */,
 				62C26C1923668C0900695B6F /* Analytics.swift in Sources */,
+				625D5D092400D6710041575F /* PaymentReceiptViewController.swift in Sources */,
 				625ACE7E23A0DB18002D0653 /* ParkingPriceTableViewCell.swift in Sources */,
 				62269BE823B1A61C00BFACC1 /* ParkingCardViewModel.swift in Sources */,
 				A4BA4BDB235EFC7600D30DFE /* AppTokenAdapter.swift in Sources */,
@@ -2972,12 +3092,14 @@
 				629DB19323C1A1A500E68A94 /* MenuCarSectionView.swift in Sources */,
 				625ACE8423A2113F002D0653 /* NavigationDialogView.swift in Sources */,
 				624F53B023BB12D3005D7FD8 /* LevelGuideViewController.swift in Sources */,
+				625D5D0B2400DDE40041575F /* PaymentReceiptViewModel.swift in Sources */,
 				6258337823F93F850078F4CE /* ParkingStatusViewController.swift in Sources */,
 				62601D812392387500B78033 /* Common.swift in Sources */,
 				62630B5323865EBD0029724B /* RxTextFieldDelegateProxy.swift in Sources */,
 				625351E723E694FD009FD27F /* SearchHistoryItemTableViewCell.swift in Sources */,
 				6257DE4423CB0A7A001091B0 /* CustomTimeStepperView.swift in Sources */,
 				62630B45238506490029724B /* PhoneNumberViewModel.swift in Sources */,
+				625D5D162400FFB20041575F /* ParkingTicketMonthlyInfoView.swift in Sources */,
 				621BCC6923D04134009FE1EC /* ParkinglotDetailNavigationController.swift in Sources */,
 				62601DDB23974EFB00B78033 /* CancelFee.swift in Sources */,
 				625BD92923B8767D00C3D4E9 /* SortOrderDialogView.swift in Sources */,
@@ -2986,7 +3108,7 @@
 				625ACE9523A3826D002D0653 /* NaverMap.swift in Sources */,
 				625951B123E2B2A20015A868 /* PaymentTotalPriceView.swift in Sources */,
 				6259519023DFF6BB0015A868 /* ParkinglotDetailNoticeViewModel.swift in Sources */,
-				6258336A23F9193B0078F4CE /* PaymentHistoryEmptyReservationViewController.swift in Sources */,
+				6258336A23F9193B0078F4CE /* PaymentHistoryEmptyPaidTicketViewController.swift in Sources */,
 				62601D8523923D8500B78033 /* CarModels.swift in Sources */,
 				625B272B23F2D9C500134E2D /* ParkinglotDetailFixedTimeCheckView.swift in Sources */,
 				62601DB823961CF000B78033 /* Order.swift in Sources */,
@@ -3005,6 +3127,7 @@
 				62601DB02395FD1200B78033 /* Fee.swift in Sources */,
 				629C287E237109B500E0E5E1 /* RegiCreditCardViewController.swift in Sources */,
 				62C26BF32362834800695B6F /* Contents.swift in Sources */,
+				625D5D06240008030041575F /* ParkingTicketInfoView.swift in Sources */,
 				6259519623E141E30015A868 /* ParkinglotDetailTimeControlView.swift in Sources */,
 				625B273D23F411FA00134E2D /* PaymentMethodViewModel.swift in Sources */,
 				62576C3F23BC45B6007BA1F7 /* RserveNoticeDialog.swift in Sources */,
@@ -3016,7 +3139,7 @@
 				62576C3A23BB77ED007BA1F7 /* UIProgressView+Extension.swift in Sources */,
 				6257DE1D23C72079001091B0 /* NavigationAppDialog.swift in Sources */,
 				6259518A23DEB79A0015A868 /* Date+Extension.swift in Sources */,
-				6260E35023F7E0920066086F /* ParkingNormalStatusViewController.swift in Sources */,
+				6260E35023F7E0920066086F /* ParkingNormalViewController.swift in Sources */,
 				624F539723B9B5FA005D7FD8 /* CustomSortItemView.swift in Sources */,
 				625B4F8423C47B1700005830 /* ParkinglotDetailViewModel.swift in Sources */,
 				622BC1D2236AA3C300A43F02 /* UIView+Extension.swift in Sources */,
@@ -3024,6 +3147,7 @@
 				62601D952394DDD100B78033 /* Cars.swift in Sources */,
 				6239D5E923EABB2E004FD5FD /* SearchHistoryFooterView.swift in Sources */,
 				A4225E82235D30FB004F48C4 /* AppInfo.swift in Sources */,
+				625D5D0223FFDC200041575F /* ParkingInfoDialog.swift in Sources */,
 				62AE7264237E1F8C00BE6FA3 /* Font.swift in Sources */,
 				625951AD23E2B2650015A868 /* PaymentPointView.swift in Sources */,
 				62AE7266237E214400BE6FA3 /* ColorPickerViewAdapter.swift in Sources */,
@@ -3036,18 +3160,22 @@
 				62576C4C23BC9C8A007BA1F7 /* PaymentCompleteViewController.swift in Sources */,
 				A4225E5C235559C4004F48C4 /* UIViewController+UIAlertController.swift in Sources */,
 				62C26BF123627FE200695B6F /* Type.swift in Sources */,
+				62705E3423FBD4A800B1E894 /* MyCardAddingViewController.swift in Sources */,
 				625B272723F29A4800134E2D /* ProductSetting.swift in Sources */,
 				62539242237268830041EBF1 /* Import.swift in Sources */,
+				625D5D0423FFDFC30041575F /* ParkingInfoItemView.swift in Sources */,
 				62C26BD92360195000695B6F /* MembersAPI.swift in Sources */,
 				625ACE70239F97C3002D0653 /* FilterOption.swift in Sources */,
 				622BC0EE23691DC900A43F02 /* GuideContentViewModel.swift in Sources */,
 				625ACE8723A239C9002D0653 /* ReverseGeocode.swift in Sources */,
+				62705E4623FE216F00B1E894 /* ParkingStatusNavigationController.swift in Sources */,
 				A4BA4BD8235EFAFE00D30DFE /* AccessTokenAdapter.swift in Sources */,
 				62CCBAC123E3E4E600F57AF6 /* ParkinglotDetailNoticeItemView.swift in Sources */,
 				62601DD0239740AA00B78033 /* PointsAPI.swift in Sources */,
 				625ACE9723A498E3002D0653 /* NaverMapAdapter.swift in Sources */,
 				625ED5B5238298A50088860C /* FindPasswordViewModel.swift in Sources */,
-				6258336C23F919800078F4CE /* PaymentHistoryEmptyHistoryViewController.swift in Sources */,
+				6258336C23F919800078F4CE /* PaymentHistoryEmptyUsedTicketViewController.swift in Sources */,
+				62705E4C23FEB42B00B1E894 /* PaymentHistoryPaidTicketViewController.swift in Sources */,
 				622BC0EA236835B800A43F02 /* UIViewController+Extension.swift in Sources */,
 				625ACE8F23A30A02002D0653 /* MapAPI.swift in Sources */,
 				624CE051238CBB1F0068F4F9 /* CodeVerifyModel.swift in Sources */,
@@ -3056,19 +3184,21 @@
 				6260E35723F7EA280066086F /* PaymentHistoryViewController.swift in Sources */,
 				629E6FDA23EA49780090E164 /* UISearchBar+Rx.swift in Sources */,
 				622BC1D0236A9DC500A43F02 /* UIButton+Extension.swift in Sources */,
-				629DB1A423C1CA7D00E68A94 /* BasicCardTableViewCell.swift in Sources */,
+				62705E4823FE514700B1E894 /* Usage.swift in Sources */,
+				629DB1A423C1CA7D00E68A94 /* MyCardDefaultTableViewCell.swift in Sources */,
 				625B271D23F147A400134E2D /* MapSearchResultNavigationView.swift in Sources */,
 				625951A523E2A9A70015A868 /* PaymentProductInfoView.swift in Sources */,
 				621BCC8223D412B9009FE1EC /* ParkinglotDetailNoticeView.swift in Sources */,
 				A4225E5B235559C4004F48C4 /* AlertAction.swift in Sources */,
 				6259518623DE9D540015A868 /* ParkinglotDetailSymbolViewModel.swift in Sources */,
 				6210BAB82377CFD0001C6065 /* UITextField+Rx.swift in Sources */,
-				629DB19A23C1BCB400E68A94 /* EmptyCardViewController.swift in Sources */,
+				629DB19A23C1BCB400E68A94 /* MyCardEmptyViewController.swift in Sources */,
 				6294536B23B206470048FEA8 /* ColumnFlowLayoutFlowLayout.swift in Sources */,
 				62576C6523BED896007BA1F7 /* BorderButton.swift in Sources */,
 				62C3095F23A75E0600152A5A /* OAuth2Handler.swift in Sources */,
 				62601DB4239618F200B78033 /* Within.swift in Sources */,
 				624F53B323BB2F6E005D7FD8 /* LevelGuideTableViewCell.swift in Sources */,
+				62705E2B23FABE7300B1E894 /* PaymentHistoryUsedTicketTableViewCell.swift in Sources */,
 				625351E123E673EB009FD27F /* SearchViewModel.swift in Sources */,
 				629C2863236BF54C00E0E5E1 /* PhoneNumberInputViewController.swift in Sources */,
 				6257DE3D23CAF044001091B0 /* MonthlyTicketDurationViewController.swift in Sources */,
@@ -3078,6 +3208,7 @@
 				62601DB2239602A400B78033 /* Favorites.swift in Sources */,
 				62C26BFC2362AE1A00695B6F /* FAQs.swift in Sources */,
 				6257DE5123CBF446001091B0 /* ExtendDurationNavigationController.swift in Sources */,
+				625D5D102400F4180041575F /* ParkingTicketTimeInfoView.swift in Sources */,
 				6257DE1523C6F8FB001091B0 /* ParkinglotDetailInfoLabelGuideViewModel.swift in Sources */,
 				62C26C072362EF6100695B6F /* Members.swift in Sources */,
 				629C288A237149FA00E0E5E1 /* FindPasswordViewController.swift in Sources */,
@@ -3111,9 +3242,11 @@
 				621BCC9623D68836009FE1EC /* ParkinglotDetailExtraFeeItemView.swift in Sources */,
 				62269BE623B1904100BFACC1 /* UserInfoModel.swift in Sources */,
 				622BC0E623681FE300A43F02 /* UIStoryboard+Extension.swift in Sources */,
+				62705E4023FD52FC00B1E894 /* ParkingStatusViewModel.swift in Sources */,
 				629C287C2371093700E0E5E1 /* RegiCarViewController.swift in Sources */,
 				625B273723F3F37900134E2D /* PaymentProductInfoCarView.swift in Sources */,
-				6257DE2923C9940E001091B0 /* DisplayTimeHandler.swift in Sources */,
+				62705E4423FE139E00B1E894 /* MemberInfo.swift in Sources */,
+				6257DE2923C9940E001091B0 /* DisplayDateTimeHandler.swift in Sources */,
 				620455532397A2A9007ADF88 /* SearchOptionViewModel.swift in Sources */,
 				629E6FDC23EA56730090E164 /* SearchHistory.swift in Sources */,
 				A4225E9A235D7463004F48C4 /* UserData.swift in Sources */,
@@ -3123,6 +3256,7 @@
 				6210BAC423792D3D001C6065 /* MapViewModel.swift in Sources */,
 				625BD92123B7331A00C3D4E9 /* ParkingTicketViewModel.swift in Sources */,
 				6257DDFE23C59A6C001091B0 /* ParkinglotDetailTimeLabelGuideViewController.swift in Sources */,
+				62705E2623FA692D00B1E894 /* PaymentHistoryPaidTicketTableViewCell.swift in Sources */,
 				62601DD923974CB700B78033 /* OrderDetail.swift in Sources */,
 				62269BD423AA1D2F00BFACC1 /* ParkingTapViewModel.swift in Sources */,
 				62601DAE2395FCF500B78033 /* OperationTime.swift in Sources */,
@@ -3146,6 +3280,7 @@
 				62269BE023B085E500BFACC1 /* GroupMarkerView.swift in Sources */,
 				624B51AF23E5507600AC6133 /* ParkinglotDetailButtonViewModel.swift in Sources */,
 				A4225E6223559DB2004F48C4 /* BaseAPI.swift in Sources */,
+				625D5D122400FCF70041575F /* ParkingTicketBasicInfoView.swift in Sources */,
 				A4BA4BD1235EC91A00D30DFE /* Auth.swift in Sources */,
 				625ACE7C23A0CBBB002D0653 /* ParkingTapViewController.swift in Sources */,
 				625468072367BCE300198833 /* SplashViewController.swift in Sources */,
@@ -3322,6 +3457,7 @@
 			baseConfigurationReference = 2DB38ABE553038D306D885CB /* Pods-ParkingFriends.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = ParkingFriends/ParkingFriends.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 62;
@@ -3341,6 +3477,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.hancom.mobility.ParkingFriends;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "ParkingFriends/ParkingFriends-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -3351,6 +3489,7 @@
 			baseConfigurationReference = AC33E83086E74621B91AC12A /* Pods-ParkingFriends.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = ParkingFriends/ParkingFriends.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 62;
@@ -3370,6 +3509,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.hancom.mobility.ParkingFriends;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "ParkingFriends/ParkingFriends-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

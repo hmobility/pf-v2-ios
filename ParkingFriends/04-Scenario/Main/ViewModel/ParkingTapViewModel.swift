@@ -36,7 +36,7 @@ class ParkingTapViewModel: ParkingTapViewModelType {
     var monthlyTicketText: Driver<String>
     var sortOrderText: BehaviorRelay<String>
     
-    var selectedProductType: BehaviorRelay<ProductType> = BehaviorRelay(value: .fixed)
+    var selectedProductType: BehaviorRelay<ProductType> = BehaviorRelay(value: .time)
     var selectedSortType : BehaviorRelay<SortType> = BehaviorRelay(value: .price)
     
     var elements: BehaviorRelay<[WithinElement]> = BehaviorRelay(value: [])
@@ -76,7 +76,7 @@ class ParkingTapViewModel: ParkingTapViewModelType {
     // MARK: - Binding
     
     private func setupProductBinding() {
-        let productType = userData.getProductType()
+        let productType = userData.productSettings.getProductType()
         selectedProductType.accept(productType)
     }
     
@@ -84,7 +84,7 @@ class ParkingTapViewModel: ParkingTapViewModelType {
     
     func setProductType(_ type: ProductType) {
         selectedProductType.accept(type)
-        userData.setProduct(type: type).save()
+        userData.productSettings.setProduct(type: type).save()
     }
     
     func setSelectedProductItem(with index:Int) {

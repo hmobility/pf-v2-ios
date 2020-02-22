@@ -12,7 +12,7 @@ struct MapAPI:BaseAPI {
     // Place
     static func search(query:String, coordinate:CoordType) -> RequestURL {
         let query:Params = ["query": query, "coordinate":"\(coordinate.longitude.toString),\(coordinate.latitude.toString)"]
-        let url = build(host:map_host, endpoint:"/map-place/v1/search", params: query)
+        let url = build(host:map_host, endpoint:"/map-place/v1/search", query: query)
         
         return (url, nil)
     }
@@ -20,7 +20,7 @@ struct MapAPI:BaseAPI {
     // Geocode
     static func geocode(query:String) -> RequestURL {
         let query:Params = ["query": query]
-        let url = build(host:map_host, endpoint:"/map-reversegeocode/v2/geocode", params: query)
+        let url = build(host:map_host, endpoint:"/map-reversegeocode/v2/geocode", query: query)
         
         return (url, nil)
     }
@@ -30,7 +30,7 @@ struct MapAPI:BaseAPI {
         let mapOrders = orders.map{ $0.rawValue }.joined(separator: ",")
         let query:Params = ["request":request, "coords":"\(coords.longitude.toString),\(coords.latitude.toString)", "sourcecrs":sourcesrs.rawValue, "output":output.rawValue, "orders":mapOrders]
         
-        let url = build(host:map_host, endpoint:"/map-reversegeocode/v2/gc", params: query)
+        let url = build(host:map_host, endpoint:"/map-reversegeocode/v2/gc", query: query)
         
         return (url, nil)
     }

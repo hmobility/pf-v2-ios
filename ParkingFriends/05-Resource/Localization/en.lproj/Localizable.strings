@@ -9,8 +9,10 @@
 "btn_select" = "선택";
 "btn_skip" = "건너뛰기";
 "btn_save" = "저장";
+"btn_apply" = "적용";
 "btn_to_save" = "저장하기";
 "btn_to_apply" = "적용하기";
+"btn_to_share" = "공유하기";
 "btn_remove" = "삭제";
 "btn_resend" = "재전송";
 "btn_to_next" = "다음으로";
@@ -66,6 +68,16 @@
 "itm_fri" = "금";
 "itm_sat" = "토";
 "itm_sun" = "일";
+"txt_monday" = "월요일";
+"txt_tuesday" = "화요일";
+"txt_wendseday" = "수요일";
+"txt_thursday" = "목요일";
+"txt_friday" = "금요일";
+"txt_saturday" = "토요일";
+"txt_sunday" = "일요일";
+"itm_ticket_time" = "예약권";
+"itm_ticket_fixed" = "정액권";
+"itm_ticket_monthly" = "정기권";
 "btn_car_add" = "차량 등록";
 "btn_car_change" = "차량 변경";
 "btn_gift" = "선물";
@@ -169,7 +181,7 @@
 "ttl_guide_5" = "소중한 당신에게, 더 큰 혜택";
 "dsc_guide_5" = "이용 실적에 따른 차별화된 혜택으로\n한 단계 업그레이드 된 주차 생활을 즐기세요!";
 
-// Ticket
+// Main Tap List
 "ttl_ticket_time" = "예약권";
 "ttl_ticket_fixed" = "정액권";
 "ttl_ticket_monthly" = "정기권";
@@ -252,19 +264,23 @@
 "ttl_favorite_no_result" = "등록된 주차장이 없어요";
 "dsc_favorite_no_result" = "자주 이용하는 주차장은 주차장 상세정보에서\n버튼을 눌러 즐겨찾기에 등록해보세요.";
 
+// Ticket Info
+"ttl_parking_info" = "주차 정보";
+"ttl_parkinglot_name" = "주차장명";
+"ttl_product_purchased" = "구매상품";
+"ttl_payment_date" = "결제일자";
+"ttl_reservation_date" = "예약일자";
+"ttl_reservation_time" = "예약시간";
+"ttl_reservation_date_start" = "시간일자";
+"ttl_reservation_date_end" = "종료일자";
+"ttl_car_info" = "차량정보";
+
 // Payment
 "ttl_payment_guide" = "유의사항을 확인하세요!";
 "txt_payment_contents" = "• 허가된 주차면에 한해 파킹프렌즈에 등록된 차량만 사용한다.\n• 주차 중, 차내 귀중품 도난에 대해 본인이 책임진다.\n• 주차장 내에 인화물, 위험물의 진입이나 흡연 및 화기의 취급을 금한다.\n• 주차면 이용 중 발생한 자기 차량 및 주차면 시설물 파손 등 모든 사고(3자에 의한 모든 사고 포함)에 대해 본인이 책임을 지며, 주차면 제공자 또는 파킹프렌즈에 대해 어떠한 민·형사상의 책임과 손해 배상을 제기하지 않는다.";
 "txt_payment_guide_no_display" = "다음부터 보지 않기";
 "ttl_payment_for_parking" = "결제하기";
 "ttl_gift_for_parking" = "선물하기";
-"ttl_payment_parking_info" = "주차 정보";
-"ttl_payment_parkinglot_name" = "주차장명";
-"ttl_payment_product" = "구매상품";
-"ttl_payment_date" = "결제일자";
-"ttl_payment_date_reserve" = "예약일자";
-"ttl_payment_time_reserve" = "예약시간";
-"ttl_payment_car_info" = "차량정보";
 "txt_payment_no_car_registered" = "등록된 차량 없음";
 "ttl_payment_method" = "결제 수단";
 "txt_payment_simple_card" = "간편 카드결제";
@@ -290,6 +306,8 @@
 "dsc_payment_history_no_reserveration" = "주차장을 예약하시면\n여기에 예약 내역이 나타납니다.";
 "ttl_payment_history_no_history" = "지난 예약 내역이 없어요.";
 "dsc_payment_history_no_history" = "이용하거나 기간이 만료된 주차장 예약건이\n여기에 나타납니다.";
+"ttl_payment_history_place" = "장소";
+"ttl_payment_history_car" = "차량";
 
 //  BLE
 "ttl_ble_parking_guide" = "%@부터 입차 가능합니다";
@@ -354,6 +372,7 @@
 "btn_save_to_changed" = "변경사항 저장";
 "ttl_no_my_card" = "등록된 결제 수단이 없습니다.";
 "dsc_no_my_card" = "아래 버튼을 눌러, 자주 쓰는 카드를 등록해보세요.";
+"txt_basic_card" = "기본";
 
 // Settings
 "ttl_settings" = "설정";
@@ -410,6 +429,9 @@
 "txt_level_5_benefit" = "포인트 10% 추가적립";
 
 // Parking - CCTV / Non-CCTV
+"ttl_parking_status" = "주차 이용 현황";
+"ttl_parking_time_remaining" = "주차 시작시간이 30분 남았어요!";
+"dsc_parking_time_remaining" = "예약시간에 맞춰 주차장에 입차해주세요.";
 "ttl_reservation_cancel" = "예약을 취소할까요?";
 "txt_payment_price" = "• 결제 금액";
 "txt_cancellation_price" = "• 취소 수수료";
@@ -439,9 +461,14 @@
 // Popup
 "ttl_pop_logout" = "로그아웃";
 "dsc_pop_logut" = "로그아웃 하면 시작 페이지로 이동합니다. \n 로그아웃 하시겠습니까?";
+"ttl_credit_card_set_default" = "기본  사용 카드 등록";
+"dsc_credit_card_set_default" = "이 카드를 기본 사용 카드로 등록 하시겠습니까?";
+"ttl_credit_card_remove" = "카드 삭제";
+"dsc_credit_card_remove" = "이 카드를 등록 해제 하시겠습니까?";
 
 // Message
 "msg_login_mismatch" = "비밀번호가 일치하지 않습니다.";
+"msg_login_failed" = "입력 하신 휴대폰 번호 또는 비밀번호가 사용자 정보와 일치 하지 않습니다.";
 "msg_phone_number_mismatch" = "등록되지 않은 휴대폰 번호입니다.";
 "msg_email_format_invalid" = "올바르지 않은 이메일 형식입니다.";
 "msg_email_verify_sent" = "입력하신 메일로 확인 메일을 발송했습니다.\n메일을 확인해 변경을 완료해주세요.";
@@ -457,7 +484,7 @@
 "msg_car_number_invalid" = "올바르지 않은 차량 번호 형식입니다.";
 "msg_credit_card_invalid" = "유효하지 않은 카드 정보입니다.\n소지하신 카드 확인 후 다시 입력해주세요.";
 "msg_credit_card_field_invalid" = "올바르지 않은 내용입니다.";
-"msg_payment_registered" = "새 결제 수단이 정상적으로 등록되었습니다.";
+"msg_payment_method_registered" = "새 결제 수단이 정상적으로 등록되었습니다.";
 "msg_nickname_invalid" = "사용할수 없는 문자가 들어가있습니다.";
 "msg_nickname_disaprove" = "이미 사용중인 닉네임입니다.";
 "msg_point_charged" = "포인트가 정상적으로 충전되었습니다.\n현재 보유 포인트는 %@ P 입니다.";
