@@ -15,6 +15,8 @@ extension ParkingStatusViewController : AnalyticsType {
 }
 
 class ParkingStatusViewController: UIViewController {
+    @IBOutlet weak var parkingInfoView: ParkingTicketInfoView!
+    
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var infoButton: UIButton!
     
@@ -52,14 +54,10 @@ class ParkingStatusViewController: UIViewController {
     }
     
     private func setupParkingStatusBinding() {
-        viewModel.getCctvStatus()
+        viewModel.getParkingStatus()
             .asObservable()
-            .subscribe(onNext: { (supported:Bool, urls:[String], elapsedMinutes:Int) in
-                if supported {
-                    self.setupCCTVParkinglot(with: urls)
-                } else {
-                    self.setupNormalParkinglot(with: elapsedMinutes)
-                }
+            .subscribe(onNext: { [unowned self] itemInfo in
+                self.updateScreenInfo(with: itemInfo)
             })
             .disposed(by: disposeBag)
     }
@@ -96,6 +94,19 @@ class ParkingStatusViewController: UIViewController {
     }
     
     // MARK: - Local Methods
+    
+    private func updateScreenInfo(with usages:Usages) {
+        let urls = usages.camIds
+        let elapsedMinutes = usages.elapsedMinutes
+    
+        if urls.count > 0 {
+            self.setupCCTVParkinglot(with: urls)
+        } else {
+            self.setupNormalParkinglot(with: elapsedMinutes)
+        }
+        
+        parkingInfoView.setParkingInfo(with: usages)
+    }
     
     private func setEmbedView(_ target:UIViewController) {
         if let navigationController = embedNavigationController {

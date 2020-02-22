@@ -17,7 +17,7 @@ protocol ParkingStatusViewModelType {
     func getGuideText() -> Observable<String>
     
     func setOrderElement(_ element:OrderElement)
-    func getCctvStatus() -> Observable<(supported:Bool, urls:[String], elapsedMinutes:Int)>
+    func getParkingStatus() -> Observable<Usages> 
    // func loadUsages() -> Observable<Usages?>
 }
 
@@ -59,10 +59,11 @@ class ParkingStatusViewModel: ParkingStatusViewModelType {
         orderElement = element
     }
     
-    public func getCctvStatus() -> Observable<(supported:Bool, urls:[String], elapsedMinutes:Int)> {
+    public func getParkingStatus() -> Observable<Usages> { //Observable<(supported:Bool, urls:[String], elapsedMinutes:Int)> {
         return loadUsages()
             .filter { $0 != nil }
             .map { $0! }
+            /*
             .map {
                 if $0.camIds.count > 0 {
                     return (supported:true, urls: $0.camIds, elapsedMinutes: $0.elapsedMinutes)
@@ -70,6 +71,7 @@ class ParkingStatusViewModel: ParkingStatusViewModelType {
                     return (supported:false, urls: $0.camIds,elapsedMinutes: $0.elapsedMinutes)
                 }
             }
+ */
     }
     
     // MARK: - Local Methods
