@@ -208,6 +208,13 @@
 		625BD92523B8705C00C3D4E9 /* SortOrderDialogView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 625BD92423B8705C00C3D4E9 /* SortOrderDialogView.xib */; };
 		625BD92723B8762800C3D4E9 /* SortOrderDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625BD92623B8762800C3D4E9 /* SortOrderDialog.swift */; };
 		625BD92923B8767D00C3D4E9 /* SortOrderDialogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625BD92823B8767D00C3D4E9 /* SortOrderDialogView.swift */; };
+		625D5CFE23FFDBEB0041575F /* ParkingInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 625D5CFD23FFDBEA0041575F /* ParkingInfoView.xib */; };
+		625D5D0023FFDBFE0041575F /* ParkingInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625D5CFF23FFDBFE0041575F /* ParkingInfoView.swift */; };
+		625D5D0223FFDC200041575F /* ParkingInfoDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625D5D0123FFDC200041575F /* ParkingInfoDialog.swift */; };
+		625D5D0423FFDFC30041575F /* ParkingInfoItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625D5D0323FFDFC30041575F /* ParkingInfoItemView.swift */; };
+		625D5D06240008030041575F /* ParkingTicketInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625D5D05240008030041575F /* ParkingTicketInfoView.swift */; };
+		625D5D092400D6710041575F /* PaymentReceiptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625D5D082400D6710041575F /* PaymentReceiptViewController.swift */; };
+		625D5D0B2400DDE40041575F /* PaymentReceiptViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625D5D0A2400DDE40041575F /* PaymentReceiptViewModel.swift */; };
 		625ED5B3238298330088860C /* ChangePhoneNumberViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625ED5B2238298330088860C /* ChangePhoneNumberViewModel.swift */; };
 		625ED5B5238298A50088860C /* FindPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625ED5B4238298A50088860C /* FindPasswordViewModel.swift */; };
 		62601D6A238FA54B00B78033 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62601D69238FA54B00B78033 /* CoreLocation.framework */; };
@@ -620,6 +627,13 @@
 		625BD92423B8705C00C3D4E9 /* SortOrderDialogView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SortOrderDialogView.xib; sourceTree = "<group>"; };
 		625BD92623B8762800C3D4E9 /* SortOrderDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortOrderDialog.swift; sourceTree = "<group>"; };
 		625BD92823B8767D00C3D4E9 /* SortOrderDialogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortOrderDialogView.swift; sourceTree = "<group>"; };
+		625D5CFD23FFDBEA0041575F /* ParkingInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ParkingInfoView.xib; sourceTree = "<group>"; };
+		625D5CFF23FFDBFE0041575F /* ParkingInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingInfoView.swift; sourceTree = "<group>"; };
+		625D5D0123FFDC200041575F /* ParkingInfoDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingInfoDialog.swift; sourceTree = "<group>"; };
+		625D5D0323FFDFC30041575F /* ParkingInfoItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingInfoItemView.swift; sourceTree = "<group>"; };
+		625D5D05240008030041575F /* ParkingTicketInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingTicketInfoView.swift; sourceTree = "<group>"; };
+		625D5D082400D6710041575F /* PaymentReceiptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentReceiptViewController.swift; sourceTree = "<group>"; };
+		625D5D0A2400DDE40041575F /* PaymentReceiptViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentReceiptViewModel.swift; sourceTree = "<group>"; };
 		625ED5B2238298330088860C /* ChangePhoneNumberViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePhoneNumberViewModel.swift; sourceTree = "<group>"; };
 		625ED5B4238298A50088860C /* FindPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPasswordViewModel.swift; sourceTree = "<group>"; };
 		62601D69238FA54B00B78033 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -1269,6 +1283,7 @@
 				62AE724D237B939100BE6FA3 /* ColorDialog */,
 				62AE72352379540E00BE6FA3 /* MessageDialog */,
 				6257DE1623C71A9C001091B0 /* NavigationAppDialog */,
+				625D5CFB23FFDB5C0041575F /* ParkingInfoDialog */,
 			);
 			path = Dialog;
 			sourceTree = "<group>";
@@ -1352,6 +1367,7 @@
 			children = (
 				62705E4523FE216F00B1E894 /* ParkingStatusNavigationController.swift */,
 				6258337723F93F850078F4CE /* ParkingStatusViewController.swift */,
+				625D5D05240008030041575F /* ParkingTicketInfoView.swift */,
 				6260E35123F7E1670066086F /* CCTV */,
 				6260E35323F7E1750066086F /* Normal */,
 				6260E35423F7E1820066086F /* Popup */,
@@ -1759,6 +1775,33 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		625D5CFB23FFDB5C0041575F /* ParkingInfoDialog */ = {
+			isa = PBXGroup;
+			children = (
+				625D5D0123FFDC200041575F /* ParkingInfoDialog.swift */,
+				625D5CFC23FFDBCA0041575F /* View */,
+			);
+			path = ParkingInfoDialog;
+			sourceTree = "<group>";
+		};
+		625D5CFC23FFDBCA0041575F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				625D5CFD23FFDBEA0041575F /* ParkingInfoView.xib */,
+				625D5CFF23FFDBFE0041575F /* ParkingInfoView.swift */,
+				625D5D0323FFDFC30041575F /* ParkingInfoItemView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		625D5D072400D6150041575F /* Receipt */ = {
+			isa = PBXGroup;
+			children = (
+				625D5D082400D6710041575F /* PaymentReceiptViewController.swift */,
+			);
+			path = Receipt;
+			sourceTree = "<group>";
+		};
 		62601D722390FCF900B78033 /* TimeSettingView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1818,6 +1861,7 @@
 				6259519E23E2A0A70015A868 /* PaymentParkingInfoViewModel.swift */,
 				6260E35823F7EB720066086F /* PaymentHistoryViewModel.swift */,
 				6258336D23F91C040078F4CE /* PaymentHistoryEmptyViewModel.swift */,
+				625D5D0A2400DDE40041575F /* PaymentReceiptViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1828,6 +1872,7 @@
 				625951A023E2A92D0015A868 /* Guide */,
 				625951A123E2A9520015A868 /* Payment */,
 				6260E35523F7EA020066086F /* PaymentHistory */,
+				625D5D072400D6150041575F /* Receipt */,
 				62576C4B23BC9C8A007BA1F7 /* PaymentCompleteViewController.swift */,
 			);
 			path = ViewController;
@@ -2710,6 +2755,7 @@
 			files = (
 				62AE723F237A769100BE6FA3 /* MessageDialogView.xib in Resources */,
 				629C285B236BED9900E0E5E1 /* Entry.storyboard in Resources */,
+				625D5CFE23FFDBEB0041575F /* ParkingInfoView.xib in Resources */,
 				62576C4123BC4655007BA1F7 /* ReserveNoticeView.xib in Resources */,
 				6257DE2223C726F9001091B0 /* Detail.storyboard in Resources */,
 				6255FDEB2372BE1B0072960C /* Terms.storyboard in Resources */,
@@ -2949,6 +2995,7 @@
 				6210BABB237901BF001C6065 /* PasswordModel.swift in Sources */,
 				629C286B236E957400E0E5E1 /* BasicInfoViewController.swift in Sources */,
 				62630B47238534FB0029724B /* CodeVerifyViewModel.swift in Sources */,
+				625D5D0023FFDBFE0041575F /* ParkingInfoView.swift in Sources */,
 				62254E8B238B992500AF82B9 /* Parkinglots.swift in Sources */,
 				625351ED23E69F15009FD27F /* SearchResultViewController.swift in Sources */,
 				62601D8A2393783A00B78033 /* CarBrandTableViewCell.swift in Sources */,
@@ -3011,6 +3058,7 @@
 				62AE72392379578400BE6FA3 /* Color.swift in Sources */,
 				629C2867236BF6F000E0E5E1 /* LoginViewModel.swift in Sources */,
 				62C26C1923668C0900695B6F /* Analytics.swift in Sources */,
+				625D5D092400D6710041575F /* PaymentReceiptViewController.swift in Sources */,
 				625ACE7E23A0DB18002D0653 /* ParkingPriceTableViewCell.swift in Sources */,
 				62269BE823B1A61C00BFACC1 /* ParkingCardViewModel.swift in Sources */,
 				A4BA4BDB235EFC7600D30DFE /* AppTokenAdapter.swift in Sources */,
@@ -3019,6 +3067,7 @@
 				629DB19323C1A1A500E68A94 /* MenuCarSectionView.swift in Sources */,
 				625ACE8423A2113F002D0653 /* NavigationDialogView.swift in Sources */,
 				624F53B023BB12D3005D7FD8 /* LevelGuideViewController.swift in Sources */,
+				625D5D0B2400DDE40041575F /* PaymentReceiptViewModel.swift in Sources */,
 				6258337823F93F850078F4CE /* ParkingStatusViewController.swift in Sources */,
 				62601D812392387500B78033 /* Common.swift in Sources */,
 				62630B5323865EBD0029724B /* RxTextFieldDelegateProxy.swift in Sources */,
@@ -3052,6 +3101,7 @@
 				62601DB02395FD1200B78033 /* Fee.swift in Sources */,
 				629C287E237109B500E0E5E1 /* RegiCreditCardViewController.swift in Sources */,
 				62C26BF32362834800695B6F /* Contents.swift in Sources */,
+				625D5D06240008030041575F /* ParkingTicketInfoView.swift in Sources */,
 				6259519623E141E30015A868 /* ParkinglotDetailTimeControlView.swift in Sources */,
 				625B273D23F411FA00134E2D /* PaymentMethodViewModel.swift in Sources */,
 				62576C3F23BC45B6007BA1F7 /* RserveNoticeDialog.swift in Sources */,
@@ -3071,6 +3121,7 @@
 				62601D952394DDD100B78033 /* Cars.swift in Sources */,
 				6239D5E923EABB2E004FD5FD /* SearchHistoryFooterView.swift in Sources */,
 				A4225E82235D30FB004F48C4 /* AppInfo.swift in Sources */,
+				625D5D0223FFDC200041575F /* ParkingInfoDialog.swift in Sources */,
 				62AE7264237E1F8C00BE6FA3 /* Font.swift in Sources */,
 				625951AD23E2B2650015A868 /* PaymentPointView.swift in Sources */,
 				62AE7266237E214400BE6FA3 /* ColorPickerViewAdapter.swift in Sources */,
@@ -3086,6 +3137,7 @@
 				62705E3423FBD4A800B1E894 /* MyCardAddingViewController.swift in Sources */,
 				625B272723F29A4800134E2D /* ProductSetting.swift in Sources */,
 				62539242237268830041EBF1 /* Import.swift in Sources */,
+				625D5D0423FFDFC30041575F /* ParkingInfoItemView.swift in Sources */,
 				62C26BD92360195000695B6F /* MembersAPI.swift in Sources */,
 				625ACE70239F97C3002D0653 /* FilterOption.swift in Sources */,
 				622BC0EE23691DC900A43F02 /* GuideContentViewModel.swift in Sources */,

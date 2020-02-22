@@ -42,9 +42,7 @@ class MemberInfo: NSObject, MemberInfoType {
     }
     
     public func load()  {
-        getMemberInfo()
-            .bind(to: memberInfo)
-            .disposed(by: disposeBag)
+        _ = getMemberInfo() 
     }
     
     // MARK: - Network

@@ -14,6 +14,11 @@ protocol MyCardViewModelType {
     
     func loadCreditCard()
     func getCardItems() -> Observable<[CardElement]>
+    func setDefaultCreditCard(with cardId:Int)
+    func deleteCreditCard(with cardId:Int)
+    
+    func getAlertRemoveMessage() -> AlertTextType
+    func getAlertDefaultMessage() -> AlertTextType
 }
 
 class MyCardViewModel: MyCardViewModelType {
@@ -42,6 +47,27 @@ class MyCardViewModel: MyCardViewModelType {
             .map { $0! }
     }
     
+    // MARK: - Alert Message
+    
+    func getAlertRemoveMessage() -> AlertTextType {
+        let title:String = localizer.localized("ttl_credit_card_remove")
+        let message:String = localizer.localized("dsc_credit_card_remove")
+        let done:String = localizer.localized("btn_remove")
+        let cancel:String = localizer.localized("btn_cancel")
+        
+        return (title:title, message:message, done:done, cancel)
+    }
+    
+    func getAlertDefaultMessage() -> AlertTextType {
+        let title:String = localizer.localized("ttl_credit_card_set_default")
+        let message:String = localizer.localized("dsc_credit_card_set_default")
+        let done:String = localizer.localized("btn_apply")
+        let cancel:String = localizer.localized("btn_cancel")
+        
+        return (title:title, message:message, done:done, cancel)
+    }
+    
+    
     // MARK: - Network
     
     public func loadCreditCard() {
@@ -55,5 +81,35 @@ class MyCardViewModel: MyCardViewModelType {
             }
             .bind(to: cardItems)
             .disposed(by: disposeBag)
+    }
+    
+    public func setDefaultCreditCard(with cardId:Int) {
+        Member.cards(id: cardId)
+            .asObservable()
+            .map {
+                return $0 == .success
+            }
+            .subscribe(onNext: { [unowned self] success in
+                if success {
+                    self.loadCreditCard()
+                }
+            })
+    }
+    
+    public func deleteCreditCard(with cardId:Int) {
+        Member.delete_cards(id: cardId)
+            .asObservable()
+            .map {
+                return $0 == .success
+            }
+            .subscribe(onNext: { [unowned self] success in
+                if success {
+                    self.loadCreditCard()
+                }
+            })
+    }
+    
+    public func addCreditCard(number:String, year:String, month:String, password:String, birthDate:String, name:String) {
+        Member.cards(cardNo: number, yearExpired: year, monthExpired: month, password: password, birthDate: birthDate, realName: name)
     }
 }

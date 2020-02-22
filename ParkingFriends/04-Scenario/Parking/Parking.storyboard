@@ -252,7 +252,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="85c-sn-zbb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1549.2753623188407" y="-648.21428571428567"/>
+            <point key="canvasLocation" x="-838" y="-648"/>
         </scene>
         <!--Departure Confirm View Controller-->
         <scene sceneID="eh7-Kh-uSu">
@@ -414,7 +414,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7iw-4Z-7eV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-741" y="-648"/>
+            <point key="canvasLocation" x="-30" y="-648"/>
         </scene>
         <!--Departure No Charge View Controller-->
         <scene sceneID="aZU-Rf-PVA">
@@ -519,7 +519,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qCn-R8-KRy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-54" y="-648"/>
+            <point key="canvasLocation" x="657" y="-648"/>
         </scene>
         <!--Parking Confirm View Controller-->
         <scene sceneID="dWn-nL-BPv">
@@ -624,32 +624,32 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hlg-7N-gGX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="707" y="-648"/>
+            <point key="canvasLocation" x="1417" y="-648"/>
         </scene>
         <!--Parking Status View Controller-->
         <scene sceneID="j2K-BL-Ti6">
             <objects>
                 <viewController storyboardIdentifier="ParkingStatusViewController" id="sc4-eJ-hJb" userLabel="Parking Status View Controller" customClass="ParkingStatusViewController" customModule="ParkingFriends" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="WzK-w9-lX8">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DM7-lz-jVN" userLabel="Container View - Top Menu">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="420"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="310"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="420" id="u3D-xu-SKu"/>
+                                    <constraint firstAttribute="height" constant="310" id="u3D-xu-SKu"/>
                                 </constraints>
                                 <connections>
                                     <segue destination="qfH-DX-Cqi" kind="embed" identifier="ParkingStatusNavigation" id="hlg-eA-aPX"/>
                                 </connections>
                             </containerView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c1q-7a-NNC">
-                                <rect key="frame" x="0.0" y="420" width="414" height="386"/>
+                                <rect key="frame" x="0.0" y="310" width="414" height="408"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d3G-2d-wbh" userLabel="View - Background">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="386"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="408"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="VFn-Ac-Aus">
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="VFn-Ac-Aus" customClass="ParkingTicketInfoView" customModule="ParkingFriends" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="352"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aFf-L4-jPW" userLabel="View - Contents">
@@ -867,7 +867,7 @@
                                                             <constraint firstAttribute="bottom" secondItem="GGv-hU-gfs" secondAttribute="bottom" constant="20" id="xfd-Mq-E1D"/>
                                                         </constraints>
                                                     </view>
-                                                    <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Xq-UK-hYV" userLabel="View - Change Car">
+                                                    <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Xq-UK-hYV" userLabel="View - Car Info">
                                                         <rect key="frame" x="0.0" y="312" width="414" height="40"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="차량정보" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Zu-e2-Zdw" userLabel="Label - Name(Car)">
@@ -923,7 +923,7 @@
                                 <viewLayoutGuide key="frameLayoutGuide" id="NQZ-qH-6hS"/>
                             </scrollView>
                             <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Td1-0r-jnU" userLabel="Stack View - Button Area">
-                                <rect key="frame" x="0.0" y="806" width="414" height="56"/>
+                                <rect key="frame" x="0.0" y="718" width="414" height="56"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zb2-3C-2W0" userLabel="Button - Main">
                                         <rect key="frame" x="0.0" y="0.0" width="207" height="56"/>
@@ -966,23 +966,27 @@
                         <viewLayoutGuide key="safeArea" id="cAd-eI-3Se"/>
                     </view>
                     <navigationItem key="navigationItem" title="결제완료" id="cu0-Jt-R5C" userLabel="Navigation Item">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="5Mm-pG-R1r">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="6Oo-0e-2fC" userLabel="Button - Close">
-                                <rect key="frame" x="20" y="0.0" width="78" height="44"/>
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="5Ba-Ig-JuS">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="IJq-i9-UCD" userLabel="Button - Back">
+                                <rect key="frame" x="20" y="0.0" width="48" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" image="icCloseBlack"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="icBackBlack"/>
                             </button>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="iPN-nI-ADb">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ck2-Qs-Gal" userLabel="Button - More">
-                                <rect key="frame" x="316" y="0.0" width="78" height="44"/>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="EuW-dJ-XBX">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="lsG-jh-wAY" userLabel="Button - Info">
+                                <rect key="frame" x="346" y="0.0" width="48" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="icWarningOutlineWhite"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="icHelpOutlineGrey"/>
                             </button>
                         </barButtonItem>
                     </navigationItem>
-                    <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="backButton" destination="IJq-i9-UCD" id="oU1-wA-ppq"/>
+                        <outlet property="infoButton" destination="lsG-jh-wAY" id="wea-Wb-Liu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RIQ-2v-5bi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -991,7 +995,7 @@
         <!--ParkingCCTV Status View Controller-->
         <scene sceneID="cUM-Bk-okD">
             <objects>
-                <viewController storyboardIdentifier="ParkingCCTVStatusViewController" id="gJg-tl-4V3" customClass="ParkingCCTVStatusViewController" customModule="ParkingFriends" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="gJg-tl-4V3" customClass="ParkingCCTVStatusViewController" customModule="ParkingFriends" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="eAu-ud-G7m">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1036,13 +1040,13 @@
                                 </subviews>
                             </stackView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dSN-sG-Sn5">
-                                <rect key="frame" x="0.0" y="446" width="414" height="372"/>
+                                <rect key="frame" x="0.0" y="446" width="414" height="394"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m78-7G-iql" userLabel="View - Background">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="372"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="394"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="e2V-oW-JG7">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="352"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="374"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uEl-8s-T62" userLabel="View - Contents">
                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="132"/>
@@ -1260,7 +1264,7 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0W9-0O-ghu" userLabel="View - Change Car">
-                                                        <rect key="frame" x="0.0" y="312" width="414" height="40"/>
+                                                        <rect key="frame" x="0.0" y="312" width="414" height="62"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="차량정보" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6tr-s7-5ce" userLabel="Label - Name(Car)">
                                                                 <rect key="frame" x="20" y="0.0" width="55.5" height="16"/>
@@ -1316,7 +1320,7 @@
                                 <viewLayoutGuide key="frameLayoutGuide" id="4MD-i0-cEZ"/>
                             </scrollView>
                             <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="t1X-Ay-gJ3" userLabel="Stack View - Button Area">
-                                <rect key="frame" x="0.0" y="818" width="414" height="56"/>
+                                <rect key="frame" x="0.0" y="840" width="414" height="56"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="alx-v7-ZuI" userLabel="Button - Main">
                                         <rect key="frame" x="0.0" y="0.0" width="207" height="56"/>
@@ -1400,12 +1404,10 @@
         <scene sceneID="Gwh-7K-nMT">
             <objects>
                 <navigationController navigationBarHidden="YES" id="qfH-DX-Cqi" sceneMemberID="viewController">
+                    <size key="freeformSize" width="414" height="310"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="uQJ-pE-apQ">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
-                    <connections>
-                        <segue destination="ZeY-9E-EOn" kind="relationship" relationship="rootViewController" id="FVT-D6-BcT"/>
-                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UEc-mW-8se" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1414,9 +1416,11 @@
         <!--Parking Status Navigation Controller-->
         <scene sceneID="gI5-RN-qyG">
             <objects>
-                <navigationController storyboardIdentifier="ParkingStatusNavigationController" navigationBarHidden="YES" id="dpJ-Lg-na2" customClass="ParkingStatusNavigationController" customModule="ParkingFriends" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="vNn-hi-0eG">
+                <navigationController storyboardIdentifier="ParkingStatusNavigationController" id="dpJ-Lg-na2" customClass="ParkingStatusNavigationController" customModule="ParkingFriends" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="vNn-hi-0eG">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>
                     <connections>
                         <segue destination="sc4-eJ-hJb" kind="relationship" relationship="rootViewController" id="ktP-B5-btU"/>
@@ -1431,23 +1435,23 @@
             <objects>
                 <viewController storyboardIdentifier="ParkingNormalViewController" id="ZeY-9E-EOn" customClass="ParkingNormalViewController" customModule="ParkingFriends" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="emh-he-RGI">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="420"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="310"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="주차 시작시간이 30분 남았어요!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w4h-Uy-lyv" userLabel="Label - TItle">
-                                <rect key="frame" x="20" y="195" width="374" height="26.5"/>
+                                <rect key="frame" x="20" y="148" width="374" height="26.5"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="22"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="예약시간에 맞춰 주차장에 입차해주세요." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nso-Qc-JhA" userLabel="Label - Description">
-                                <rect key="frame" x="20" y="233.5" width="374" height="17"/>
+                                <rect key="frame" x="20" y="186.5" width="374" height="17"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="14"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qC8-WP-lP0" userLabel="View - Icon">
-                                <rect key="frame" x="183" y="131" width="48" height="48"/>
+                                <rect key="frame" x="183" y="84" width="48" height="48"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icCarParkingStatus" translatesAutoresizingMaskIntoConstraints="NO" id="lUa-vx-GGt" userLabel="Image View - Icon">
                                         <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
@@ -1466,50 +1470,27 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <navigationBar contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" shadowImage="imgPixel" translatesAutoresizingMaskIntoConstraints="NO" id="LRW-s6-W5J">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                                <color key="backgroundColor" name="AlgaeGreen"/>
-                                <color key="barTintColor" name="AlgaeGreen"/>
-                                <items>
-                                    <navigationItem title="Title" id="3nj-gb-JeG">
-                                        <barButtonItem key="leftBarButtonItem" style="plain" id="lER-Lf-oG5">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gZl-pp-brw" userLabel="Button - Back">
-                                                <rect key="frame" x="20" y="0.0" width="48" height="44"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" image="icBackBlack"/>
-                                            </button>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" style="plain" id="wzE-cz-KlE">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="tYU-Gl-ByZ" userLabel="Button - Info">
-                                                <rect key="frame" x="346" y="0.0" width="48" height="44"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" image="icHelpOutlineGrey"/>
-                                            </button>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" name="AlgaeGreen"/>
                         <constraints>
                             <constraint firstItem="Nso-Qc-JhA" firstAttribute="top" secondItem="w4h-Uy-lyv" secondAttribute="bottom" constant="12" id="14S-dK-cMw"/>
-                            <constraint firstItem="aQM-x8-113" firstAttribute="trailing" secondItem="w4h-Uy-lyv" secondAttribute="trailing" constant="20" id="4cW-w5-pdD"/>
-                            <constraint firstItem="Nso-Qc-JhA" firstAttribute="leading" secondItem="aQM-x8-113" secondAttribute="leading" constant="20" id="4k3-ei-FVx"/>
-                            <constraint firstItem="qC8-WP-lP0" firstAttribute="top" secondItem="LRW-s6-W5J" secondAttribute="bottom" constant="43" id="8wa-9S-79v"/>
-                            <constraint firstItem="LRW-s6-W5J" firstAttribute="leading" secondItem="aQM-x8-113" secondAttribute="leading" id="PgO-cK-Gbw"/>
-                            <constraint firstItem="LRW-s6-W5J" firstAttribute="top" secondItem="aQM-x8-113" secondAttribute="top" id="RQQ-nb-TDj"/>
-                            <constraint firstItem="w4h-Uy-lyv" firstAttribute="leading" secondItem="aQM-x8-113" secondAttribute="leading" constant="20" id="XbI-4B-baA"/>
+                            <constraint firstItem="qC8-WP-lP0" firstAttribute="top" secondItem="emh-he-RGI" secondAttribute="top" constant="84" id="1ft-st-9ly"/>
+                            <constraint firstAttribute="trailing" secondItem="w4h-Uy-lyv" secondAttribute="trailing" constant="20" id="4cW-w5-pdD"/>
+                            <constraint firstItem="Nso-Qc-JhA" firstAttribute="leading" secondItem="emh-he-RGI" secondAttribute="leading" constant="20" id="4k3-ei-FVx"/>
+                            <constraint firstItem="w4h-Uy-lyv" firstAttribute="leading" secondItem="emh-he-RGI" secondAttribute="leading" constant="20" id="XbI-4B-baA"/>
                             <constraint firstItem="w4h-Uy-lyv" firstAttribute="top" secondItem="qC8-WP-lP0" secondAttribute="bottom" constant="16" id="ahI-TL-ttH"/>
-                            <constraint firstItem="LRW-s6-W5J" firstAttribute="trailing" secondItem="aQM-x8-113" secondAttribute="trailing" id="joe-45-0SB"/>
                             <constraint firstItem="qC8-WP-lP0" firstAttribute="centerX" secondItem="emh-he-RGI" secondAttribute="centerX" id="n3S-AV-xWU"/>
-                            <constraint firstItem="aQM-x8-113" firstAttribute="trailing" secondItem="Nso-Qc-JhA" secondAttribute="trailing" constant="20" id="uEg-OZ-Su8"/>
+                            <constraint firstAttribute="trailing" secondItem="Nso-Qc-JhA" secondAttribute="trailing" constant="20" id="uEg-OZ-Su8"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="aQM-x8-113"/>
+                        <viewLayoutGuide key="safeArea" id="zS6-QE-5Qa"/>
                     </view>
                     <navigationItem key="navigationItem" id="b5T-mp-cLm"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="414" height="310"/>
+                    <connections>
+                        <outlet property="descLabel" destination="Nso-Qc-JhA" id="WPG-wx-gsN"/>
+                        <outlet property="guideLabel" destination="w4h-Uy-lyv" id="CgN-hG-2p1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yAr-ui-rSc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1520,15 +1501,11 @@
             <objects>
                 <viewController storyboardIdentifier="ParkingCCTVPlayerViewController" id="0pJ-IP-mXg" customClass="ParkingCCTVPlayerViewController" customModule="ParkingFriends" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="n2t-jF-n1S">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="420"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="310"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dbP-rI-rUM" userLabel="View - Player Screen" customClass="ParkingCCTVMediaPlayerView" customModule="ParkingFriends" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="128" width="414" height="292"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                            </view>
                             <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Gx2-FG-fvw" customClass="ParkingCCTVPlayerNavigationView" customModule="ParkingFriends" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="88" width="414" height="40"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wfV-BE-ABz">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
@@ -1585,74 +1562,44 @@
                                     <outlet property="titleLabel" destination="JUw-k4-pau" id="zgX-pW-KRr"/>
                                 </connections>
                             </stackView>
-                            <navigationBar contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" shadowImage="imgPixel" translatesAutoresizingMaskIntoConstraints="NO" id="5cj-v0-mrz">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                                <color key="backgroundColor" name="AlgaeGreen"/>
-                                <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <items>
-                                    <navigationItem title="Title" id="oEp-4D-X4n">
-                                        <barButtonItem key="leftBarButtonItem" style="plain" id="wmp-iX-118">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Jal-1E-cIc" userLabel="Button - Back">
-                                                <rect key="frame" x="20" y="0.0" width="48" height="44"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" image="icBackBlack"/>
-                                            </button>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" style="plain" id="kua-UG-HYN">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="94M-gV-PbR" userLabel="Button - Info">
-                                                <rect key="frame" x="346" y="0.0" width="48" height="44"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" image="icHelpOutlineGrey"/>
-                                            </button>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
+                            <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dbP-rI-rUM" userLabel="View - Player Screen" customClass="ParkingCCTVMediaPlayerView" customModule="ParkingFriends" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="40" width="414" height="161"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="5cj-v0-mrz" secondAttribute="trailing" id="4OL-sn-gi5"/>
-                            <constraint firstItem="Nmz-tW-Tfp" firstAttribute="bottom" secondItem="dbP-rI-rUM" secondAttribute="bottom" id="Ato-qo-gnR"/>
-                            <constraint firstItem="5cj-v0-mrz" firstAttribute="leading" secondItem="n2t-jF-n1S" secondAttribute="leading" symbolic="YES" id="B9V-Dh-qGZ"/>
+                            <constraint firstItem="Gx2-FG-fvw" firstAttribute="top" secondItem="n2t-jF-n1S" secondAttribute="top" id="E2b-rQ-zXp"/>
                             <constraint firstAttribute="trailing" secondItem="Gx2-FG-fvw" secondAttribute="trailing" id="HZY-rI-InG"/>
                             <constraint firstItem="Gx2-FG-fvw" firstAttribute="leading" secondItem="n2t-jF-n1S" secondAttribute="leading" id="MBd-rJ-pJL"/>
-                            <constraint firstItem="Gx2-FG-fvw" firstAttribute="top" secondItem="5cj-v0-mrz" secondAttribute="bottom" id="VE5-Oc-prs"/>
-                            <constraint firstItem="Nmz-tW-Tfp" firstAttribute="trailing" secondItem="dbP-rI-rUM" secondAttribute="trailing" id="gCD-63-j5W"/>
-                            <constraint firstItem="5cj-v0-mrz" firstAttribute="top" secondItem="Nmz-tW-Tfp" secondAttribute="top" id="gNH-a7-6xZ"/>
-                            <constraint firstItem="dbP-rI-rUM" firstAttribute="top" secondItem="Gx2-FG-fvw" secondAttribute="bottom" id="j4B-Mb-fwk"/>
-                            <constraint firstItem="dbP-rI-rUM" firstAttribute="leading" secondItem="Nmz-tW-Tfp" secondAttribute="leading" id="ujL-yV-ilf"/>
+                            <constraint firstItem="dbP-rI-rUM" firstAttribute="top" secondItem="Gx2-FG-fvw" secondAttribute="bottom" id="ZJE-qz-JHt"/>
+                            <constraint firstAttribute="trailing" secondItem="dbP-rI-rUM" secondAttribute="trailing" id="gCD-63-j5W"/>
+                            <constraint firstItem="dbP-rI-rUM" firstAttribute="leading" secondItem="n2t-jF-n1S" secondAttribute="leading" id="ujL-yV-ilf"/>
+                            <constraint firstAttribute="bottom" secondItem="dbP-rI-rUM" secondAttribute="bottom" constant="109" id="wg9-PY-2l3"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Nmz-tW-Tfp"/>
                     </view>
                     <value key="contentSizeForViewInPopover" type="size" width="414" height="420"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="414" height="420"/>
+                    <size key="freeformSize" width="414" height="310"/>
                     <connections>
-                        <outlet property="backButton" destination="Jal-1E-cIc" id="ZKp-6G-o4O"/>
                         <outlet property="cctvNavigationView" destination="Gx2-FG-fvw" id="42v-rW-12f"/>
-                        <outlet property="infoButton" destination="94M-gV-PbR" id="cVC-Xq-i4y"/>
-                        <outlet property="navigationBar" destination="5cj-v0-mrz" id="6bQ-3o-CF5"/>
                         <outlet property="playerView" destination="dbP-rI-rUM" id="hl3-u4-MA3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VlS-id-vFx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4084.057971014493" y="-518.30357142857144"/>
+            <point key="canvasLocation" x="-4084.057971014493" y="-518.97321428571422"/>
         </scene>
     </scenes>
     <resources>
         <image name="icBackBlack" width="24" height="24"/>
         <image name="icCarDeparture" width="28" height="28"/>
         <image name="icCarParkingStatus" width="24" height="24"/>
-        <image name="icCloseBlack" width="24" height="25"/>
         <image name="icHelpOutlineGrey" width="24" height="24"/>
         <image name="icNextGrey" width="16" height="16"/>
         <image name="icPreviousGrey" width="16" height="16"/>
         <image name="icWarningFillTriBlack" width="28" height="28"/>
-        <image name="icWarningOutlineWhite" width="24" height="24"/>
-        <image name="imgPixel" width="1" height="1"/>
         <namedColor name="AlgaeGreen">
             <color red="0.14499999582767487" green="0.83899998664855957" blue="0.3880000114440918" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

@@ -149,7 +149,7 @@ class MapViewController: UIViewController {
             .drive(onNext: { [unowned self] element in
                 self.navigateToDetail(with: element)
             })
-        
+            .disposed(by: disposeBag)
     }
     
     // MARK: - Bottom Menu

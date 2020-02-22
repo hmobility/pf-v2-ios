@@ -17,6 +17,9 @@ class MyCardListViewController: UIViewController {
        }
     
     private var cardItems:BehaviorRelay<[CardElement]> = BehaviorRelay(value:[])
+
+    var selectAsDefaultAction: ((_ id:Int) -> Void)?
+    var removeAction: ((_ id:Int) -> Void)?
     
     private let disposeBag = DisposeBag()
 
@@ -28,19 +31,44 @@ class MyCardListViewController: UIViewController {
                 if indexPath.row == 1 {
                     item.defaultFlag = false
                 }
+            
                 if item.defaultFlag {
                     let cell = self.tableView.dequeueReusableCell(withIdentifier:
                                        "MyCardDefaultTableViewCell", for: indexPath) as! MyCardDefaultTableViewCell
                     cell.configure(title: item.cardName, cardNumber: item.cardNo)
+                    cell.removeAction = { [unowned self] flag in
+                        self.removeCard(with: item.id)
+                    }
+                    
                     return cell
                 } else {
                     let cell = self.tableView.dequeueReusableCell(withIdentifier:
                                             "MyCardNormalTableViewCell", for: indexPath) as! MyCardNormalTableViewCell
                     cell.configure(title: item.cardName, cardNumber: item.cardNo)
+                    cell.removeAction = { [unowned self] flag in
+                        self.removeCard(with: item.id)
+                    }
+                    cell.selectAsDefaultAction = { [unowned self] flag in
+                        self.setDefaultCard(with: item.id)
+                    }
                     return cell
                 }
             }
             .disposed(by: disposeBag)
+    }
+    
+    // MARK: - Local Methods
+    
+    private func removeCard(with cardId:Int) {
+        if let action = removeAction {
+            action(cardId)
+        }
+    }
+    
+    private func setDefaultCard(with cardId:Int) {
+        if let action = selectAsDefaultAction {
+            action(cardId)
+        }
     }
     
     // MARK: - Public Methods
@@ -49,7 +77,7 @@ class MyCardListViewController: UIViewController {
         var array = Array<CardElement>()
         array.append(elements[0])
         array.append(elements[0])
-        cardItems.accept(array as! [CardElement])
+        cardItems.accept(array)
     }
        
     // MARK: - Initialize

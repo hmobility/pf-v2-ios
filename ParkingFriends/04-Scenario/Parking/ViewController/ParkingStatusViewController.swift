@@ -15,6 +15,9 @@ extension ParkingStatusViewController : AnalyticsType {
 }
 
 class ParkingStatusViewController: UIViewController {
+    @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var infoButton: UIButton!
+    
     private var embedNavigationController: UINavigationController?
     private var cctvViewController: ParkingCCTVPlayerViewController?
     private var normalViewController: ParkingNormalViewController?
@@ -32,12 +35,26 @@ class ParkingStatusViewController: UIViewController {
             .disposed(by: disposeBag)
     }
     
-    private func setupParkingStatusBinding() {
-        viewModel.loadUsages()
+    private func setupButtonBinding() {
+        backButton.rx.tap
+            .asDriver()
+            .drive(onNext: { [unowned self] _ in
+                self.dismissRoot()
+            })
+            .disposed(by: disposeBag)
         
+        infoButton.rx.tap
+            .asDriver()
+            .drive(onNext: { [unowned self] _ in
+                self.dismissRoot()
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func setupParkingStatusBinding() {
         viewModel.getCctvStatus()
             .asObservable()
-            .subscribe(onNext: { [unowned self] (supported:Bool, urls:[String], elapsedMinutes:Int) in
+            .subscribe(onNext: { (supported:Bool, urls:[String], elapsedMinutes:Int) in
                 if supported {
                     self.setupCCTVParkinglot(with: urls)
                 } else {
@@ -56,6 +73,8 @@ class ParkingStatusViewController: UIViewController {
     // MARK: - Initialize
     
     private func initialize() {
+        setupNavigationBinding()
+        setupButtonBinding()
         setupParkingStatusBinding()
     }
     
@@ -63,7 +82,7 @@ class ParkingStatusViewController: UIViewController {
     
     override func loadView() {
         super.loadView()
-        setNavigationBar(hidden: true)
+     //   setNavigationBar(hidden: true)
     }
 
     override func viewDidLoad() {
@@ -73,7 +92,7 @@ class ParkingStatusViewController: UIViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        setNavigationBar(hidden: false)
+     //   setNavigationBar(hidden: false)
     }
     
     // MARK: - Local Methods
@@ -86,31 +105,53 @@ class ParkingStatusViewController: UIViewController {
         }
     }
     
-    // MARK: - Navigation
+    // MARK: - Setup CCTV
+    
+    private func setCCTVNavigationStyle() {
+        if let navigationBar =  self.navigationController?.navigationBar {
+            backButton.tintColor = Color.darkGrey
+            backButton.backgroundColor = UIColor.white
+            infoButton.backgroundColor = UIColor.white
+            backButton.tintColor = Color.darkGrey
+            navigationBar.backgroundColor = UIColor.white
+        }
+    }
     
     private func setupCCTVParkinglot(with urls:[String]) {
         let target = Storyboard.parking.instantiateViewController(withIdentifier: "ParkingCCTVPlayerViewController") as! ParkingCCTVPlayerViewController
         target.setViewModel(viewModel)
         target.setVideoUrls(with: urls)
-        setEmbedView(target)
         
-        target.backButtonAction = { flag in
-            self.dismissRoot()
+        setCCTVNavigationStyle()
+        
+        setEmbedView(target)
+    }
+    
+    // MARK: - Setup Normal
+    
+    private func setNormalNavigationStyle() {
+        if let navigationBar = self.navigationController?.navigationBar, let navigationController = self.navigationController {
+            backButton.tintColor = UIColor.white
+            infoButton.tintColor = UIColor.white
+            navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+            navigationBar.barTintColor = Color.algaeGreen
+            navigationBar.shadowImage = UIImage(named: "imgPixel")
+            (navigationController as! ParkingStatusNavigationController).statusBarStyle = .lightContent
         }
     }
        
     private func setupNormalParkinglot(with elapsedMinutes:Int) {
         let target = Storyboard.parking.instantiateViewController(withIdentifier: "ParkingNormalViewController") as! ParkingNormalViewController
+    
         target.setViewModel(viewModel)
         target.setElapsedTime(with: elapsedMinutes)
-        setEmbedView(target)
         
-        target.backButtonAction = { flag in
-            self.dismissRoot()
-        }
+        setNormalNavigationStyle()
+        
+        setEmbedView(target)
     }
-       
-    // MARK: Prepare
+
+    // MARK: - Prepare
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {

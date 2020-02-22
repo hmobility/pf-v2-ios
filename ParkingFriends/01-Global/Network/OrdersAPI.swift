@@ -90,7 +90,7 @@ class OrdersAPI: BaseAPI {
     
     // 주차이용 현황 조회
     static func mypage_usages(id:Int, httpMethod:HttpMethod = .get, auth:APIAuthType = .OAuth2) -> RestURL  {
-        let url = build(host:host, endpoint:"/mypage/usages/\(id)", query: nil)
+        let url = build(host:host, endpoint:"/orders/mypage/usages/\(id)", query: nil)
         return (httpMethod, url, auth, nil)
     }
     
@@ -101,20 +101,20 @@ class OrdersAPI: BaseAPI {
     }
     
     // 선물하기
-    static func gift(id:Int, phoneNumber:String, carNumber:String, httpMethod:HttpMethod = .put, auth:APIAuthType = .OAuth2) -> RestURL  {
+    static func gift(id:Int, phoneNumber:String, carNumber:String, httpMethod:HttpMethod = .post, auth:APIAuthType = .OAuth2) -> RestURL  {
         let params:Params = ["phoneNumber": phoneNumber, "carNumber": carNumber]
         let url = build(host:host, endpoint:"/orders/\(id)/gift", query: nil)
         return (httpMethod, url, auth, params)
     }
     
     // 영수증 조회
-    static func receipt(id:Int, httpMethod:HttpMethod = .put, auth:APIAuthType = .OAuth2) -> RestURL  {
+    static func receipt(id:Int, httpMethod:HttpMethod = .get, auth:APIAuthType = .OAuth2) -> RestURL  {
         let url = build(host:host, endpoint:"/orders/\(id)/receipt", query: nil)
         return (httpMethod, url, auth, nil)
     }
     
-    // 영수증 조회
-    static func receipt_send(id:Int, sendType:ReceiptSendType, phoneNumber:String, email:String, httpMethod:HttpMethod = .put, auth:APIAuthType = .OAuth2) -> RestURL  {
+    // 영수증 공유
+    static func receipt_send(id:Int, sendType:ReceiptSendType, phoneNumber:String, email:String, httpMethod:HttpMethod = .post, auth:APIAuthType = .OAuth2) -> RestURL  {
         let params:Params = ["sendType": sendType.rawValue, "phoneNumber": phoneNumber, email: email]
         let url = build(host:host, endpoint:"/orders/\(id)/receipt/send", query: nil)
         return (httpMethod, url, auth, params)

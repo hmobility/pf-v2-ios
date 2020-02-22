@@ -1069,6 +1069,72 @@
             </objects>
             <point key="canvasLocation" x="2771.0144927536235" y="-596.65178571428567"/>
         </scene>
+        <!--Payment Receipt View Controller-->
+        <scene sceneID="pox-3s-Ilu">
+            <objects>
+                <viewController storyboardIdentifier="PaymentReceiptViewController" id="HIl-79-pqQ" customClass="PaymentReceiptViewController" customModule="ParkingFriends" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vEJ-de-N0d">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qRr-xC-fjr" userLabel="Web View - Web View">
+                                <rect key="frame" x="0.0" y="44" width="414" height="762"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                            <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="CwC-TU-U6E" userLabel="Stack View - Button Area">
+                                <rect key="frame" x="0.0" y="806" width="414" height="56"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WDV-8O-giI" userLabel="Button - Close">
+                                        <rect key="frame" x="0.0" y="0.0" width="207" height="56"/>
+                                        <color key="backgroundColor" name="CharcoalGrey"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="56" id="3v6-GJ-eQT"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="16"/>
+                                        <state key="normal" title="닫기">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EfF-1M-CWG" userLabel="Button - Sharing">
+                                        <rect key="frame" x="207" y="0.0" width="207" height="56"/>
+                                        <color key="backgroundColor" name="AlgaeGreen"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="56" id="kvB-YX-b4d"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="16"/>
+                                        <state key="normal" title="공유 하기">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="JrY-Me-zmv" firstAttribute="bottom" secondItem="CwC-TU-U6E" secondAttribute="bottom" id="Fah-IU-gY5"/>
+                            <constraint firstItem="CwC-TU-U6E" firstAttribute="top" secondItem="qRr-xC-fjr" secondAttribute="bottom" id="JxM-GX-AIL"/>
+                            <constraint firstItem="qRr-xC-fjr" firstAttribute="top" secondItem="JrY-Me-zmv" secondAttribute="top" id="NGi-I4-RxQ"/>
+                            <constraint firstItem="JrY-Me-zmv" firstAttribute="trailing" secondItem="CwC-TU-U6E" secondAttribute="trailing" id="OAq-QD-7Zz"/>
+                            <constraint firstItem="CwC-TU-U6E" firstAttribute="leading" secondItem="vEJ-de-N0d" secondAttribute="leading" id="Zow-7D-cZE"/>
+                            <constraint firstItem="qRr-xC-fjr" firstAttribute="leading" secondItem="JrY-Me-zmv" secondAttribute="leading" id="bAE-6J-yDe"/>
+                            <constraint firstItem="JrY-Me-zmv" firstAttribute="trailing" secondItem="qRr-xC-fjr" secondAttribute="trailing" id="kgN-cJ-MNP"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="JrY-Me-zmv"/>
+                    </view>
+                    <connections>
+                        <outlet property="closeButton" destination="WDV-8O-giI" id="K6G-3l-3Oi"/>
+                        <outlet property="sharingButton" destination="EfF-1M-CWG" id="tiS-mr-gCx"/>
+                        <outlet property="webView" destination="qRr-xC-fjr" id="X8f-eg-kUY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t3a-jY-jX6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2771" y="180"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="3wy-N8-bhD">
             <objects>
@@ -1673,7 +1739,7 @@
         <!--Payment History Empty Paid Ticket View Controller-->
         <scene sceneID="n7f-33-Yam">
             <objects>
-                <viewController storyboardIdentifier="PaymentHistoryEmptyReservationViewController" id="vTp-Jx-BFO" customClass="PaymentHistoryEmptyPaidTicketViewController" customModule="ParkingFriends" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PaymentHistoryEmptyPaidTicketViewController" id="vTp-Jx-BFO" customClass="PaymentHistoryEmptyPaidTicketViewController" customModule="ParkingFriends" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GrH-02-soa">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

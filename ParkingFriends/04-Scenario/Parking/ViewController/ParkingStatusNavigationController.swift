@@ -12,6 +12,14 @@ class ParkingStatusNavigationController: UINavigationController {
 
     private var orderElement: OrderElement?
     
+    var statusBarStyle:UIStatusBarStyle = .default {
+        didSet {
+            if statusBarStyle != oldValue {
+                setNeedsStatusBarAppearanceUpdate()
+            }
+        }
+    }
+    
     // MARK: - Public Methods
     
     public func setOrderElement(with element:OrderElement?) {
@@ -27,6 +35,10 @@ class ParkingStatusNavigationController: UINavigationController {
     }
     
     // MARK: - Life Cycle
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return statusBarStyle
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

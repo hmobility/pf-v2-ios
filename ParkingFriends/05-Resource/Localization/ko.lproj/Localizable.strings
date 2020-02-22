@@ -9,8 +9,10 @@
 "btn_select" = "선택";
 "btn_skip" = "건너뛰기";
 "btn_save" = "저장";
+"btn_apply" = "적용";
 "btn_to_save" = "저장하기";
 "btn_to_apply" = "적용하기";
+"btn_to_share" = "공유하기";
 "btn_remove" = "삭제";
 "btn_resend" = "재전송";
 "btn_to_next" = "다음으로";
@@ -439,9 +441,14 @@
 // Popup
 "ttl_pop_logout" = "로그아웃";
 "dsc_pop_logut" = "로그아웃 하면 시작 페이지로 이동합니다.\n로그아웃 하시겠습니까?";
+"ttl_credit_card_set_default" = "기본  사용 카드 등록";
+"dsc_credit_card_set_default" = "이 카드를 기본 사용 카드로 등록 하시겠습니까?";
+"ttl_credit_card_remove" = "카드 삭제";
+"dsc_credit_card_remove" = "이 카드를 등록 해제 하시겠습니까?";
 
 // Message
 "msg_login_mismatch" = "비밀번호가 일치하지 않습니다.";
+"msg_login_failed" = "입력 하신 휴대폰 번호 또는 비밀번호가 사용자 정보와 일치 하지 않습니다.";
 "msg_phone_number_mismatch" = "등록되지 않은 휴대폰 번호입니다.";
 "msg_email_format_invalid" = "올바르지 않은 이메일 형식입니다.";
 "msg_email_verify_sent" = "입력하신 메일로 확인 메일을 발송했습니다.\n메일을 확인해 변경을 완료해주세요.";

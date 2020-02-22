@@ -582,7 +582,7 @@
                                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                                     <subviews>
                                                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" image="icParkingLotInfoType11Public" translatesAutoresizingMaskIntoConstraints="NO" id="nOy-sb-b8C" userLabel="Image View - Icon">
-                                                                                            <rect key="frame" x="2" y="-23.5" width="72" height="72"/>
+                                                                                            <rect key="frame" x="20" y="12.5" width="36" height="36"/>
                                                                                         </imageView>
                                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="민간주차장" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vNU-FH-ieH" userLabel="Label - Title">
                                                                                             <rect key="frame" x="5" y="58.5" width="66" height="14.5"/>
@@ -897,7 +897,7 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aka-fi-aNn" userLabel="Button - Info">
-                                                                        <rect key="frame" x="125.5" y="18" width="48" height="48"/>
+                                                                        <rect key="frame" x="125.5" y="30" width="24" height="24"/>
                                                                         <state key="normal" image="icHelpOutlineGrey"/>
                                                                     </button>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="2대 주차 가능" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RyL-re-XIL" userLabel="Label - Available Lots">
@@ -1776,7 +1776,7 @@
                                                                                                             <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PBv-tB-Rya" customClass="Cus">
                                                                                                                 <rect key="frame" x="0.0" y="0.0" width="196" height="52"/>
                                                                                                                 <subviews>
-                                                                                                                    <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PUW-ct-tW1" userLabel="Button - Decrease">
+                                                                                                                    <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PUW-ct-tW1" userLabel="Button - Decrement">
                                                                                                                         <rect key="frame" x="0.0" y="0.0" width="52" height="52"/>
                                                                                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                                                         <constraints>
@@ -1815,7 +1815,7 @@
                                                                                                                             <constraint firstAttribute="width" constant="0.59999999999999998" id="gBv-3p-YsA"/>
                                                                                                                         </constraints>
                                                                                                                     </view>
-                                                                                                                    <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CmD-cE-w1a" userLabel="Button - Increase">
+                                                                                                                    <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CmD-cE-w1a" userLabel="Button - Increment">
                                                                                                                         <rect key="frame" x="144" y="0.0" width="52" height="52"/>
                                                                                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                                                         <constraints>
@@ -1848,8 +1848,8 @@
                                                                                                         </userDefinedRuntimeAttributes>
                                                                                                         <connections>
                                                                                                             <outlet property="dateLabel" destination="3Bj-BC-ll3" id="JZA-E5-ITw"/>
-                                                                                                            <outlet property="decreaseButton" destination="PUW-ct-tW1" id="L1D-H1-BiU"/>
-                                                                                                            <outlet property="increaseButton" destination="CmD-cE-w1a" id="UOe-Ry-ZPh"/>
+                                                                                                            <outlet property="decreaseButton" destination="PUW-ct-tW1" id="xte-J1-xYT"/>
+                                                                                                            <outlet property="increaseButton" destination="CmD-cE-w1a" id="GAf-4U-rjW"/>
                                                                                                         </connections>
                                                                                                     </view>
                                                                                                 </subviews>
@@ -1994,22 +1994,22 @@
                                                                                                     <constraint firstAttribute="height" constant="52" id="o7h-5g-RTz"/>
                                                                                                 </constraints>
                                                                                             </view>
-                                                                                            <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lEN-sA-TyV" userLabel="View - Start Date">
+                                                                                            <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lEN-sA-TyV" userLabel="View - End Date">
                                                                                                 <rect key="frame" x="0.0" y="140" width="374" height="52"/>
                                                                                                 <subviews>
-                                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="종료날짜" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ot1-NM-2lc" userLabel="Label - Start Time">
+                                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="종료날짜" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ot1-NM-2lc" userLabel="Label - End Date">
                                                                                                         <rect key="frame" x="28" y="16.5" width="55.5" height="19.5"/>
                                                                                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="16"/>
                                                                                                         <color key="textColor" name="Steel"/>
                                                                                                         <nil key="highlightedColor"/>
                                                                                                     </label>
-                                                                                                    <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1G7-hQ-efc" userLabel="View - Set Date">
+                                                                                                    <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1G7-hQ-efc" userLabel="View - Set Date" customClass="CustomDateStepperView" customModule="ParkingFriends" customModuleProvider="target">
                                                                                                         <rect key="frame" x="158" y="0.0" width="196" height="52"/>
                                                                                                         <subviews>
                                                                                                             <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tlV-rH-fkA">
                                                                                                                 <rect key="frame" x="0.0" y="0.0" width="196" height="52"/>
                                                                                                                 <subviews>
-                                                                                                                    <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cxa-p1-dhk" userLabel="Button - Previous">
+                                                                                                                    <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cxa-p1-dhk" userLabel="Button - Decrease">
                                                                                                                         <rect key="frame" x="0.0" y="0.0" width="52" height="52"/>
                                                                                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                                                         <constraints>
@@ -2048,7 +2048,7 @@
                                                                                                                             <constraint firstAttribute="width" constant="0.59999999999999998" id="oQn-av-efE"/>
                                                                                                                         </constraints>
                                                                                                                     </view>
-                                                                                                                    <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HjX-Sf-Adh" userLabel="Button - Next">
+                                                                                                                    <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HjX-Sf-Adh" userLabel="Button - Increase">
                                                                                                                         <rect key="frame" x="144" y="0.0" width="52" height="52"/>
                                                                                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                                                         <constraints>
@@ -2083,6 +2083,11 @@
                                                                                                                 <color key="value" name="LightBlueGrey"/>
                                                                                                             </userDefinedRuntimeAttribute>
                                                                                                         </userDefinedRuntimeAttributes>
+                                                                                                        <connections>
+                                                                                                            <outlet property="dateLabel" destination="tDP-MD-6qz" id="asd-gV-dTk"/>
+                                                                                                            <outlet property="decreaseButton" destination="cxa-p1-dhk" id="bDW-hi-Its"/>
+                                                                                                            <outlet property="increaseButton" destination="HjX-Sf-Adh" id="EWk-qv-RO9"/>
+                                                                                                        </connections>
                                                                                                     </view>
                                                                                                 </subviews>
                                                                                                 <color key="backgroundColor" name="IceBlue"/>
@@ -2098,19 +2103,19 @@
                                                                                             <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N6X-K9-4kw" userLabel="View - End Time">
                                                                                                 <rect key="frame" x="0.0" y="210" width="374" height="52"/>
                                                                                                 <subviews>
-                                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="종료시간" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SrE-DP-idd" userLabel="Label - Start Date">
+                                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="종료시간" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SrE-DP-idd" userLabel="Label - End Time">
                                                                                                         <rect key="frame" x="28" y="16.5" width="55.5" height="19.5"/>
                                                                                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="16"/>
                                                                                                         <color key="textColor" name="Steel"/>
                                                                                                         <nil key="highlightedColor"/>
                                                                                                     </label>
-                                                                                                    <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w5c-4a-xBG" userLabel="View - Set Time">
+                                                                                                    <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w5c-4a-xBG" userLabel="View - Set Time" customClass="CustomTimeStepperView" customModule="ParkingFriends" customModuleProvider="target">
                                                                                                         <rect key="frame" x="158" y="0.0" width="196" height="52"/>
                                                                                                         <subviews>
                                                                                                             <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hjv-px-YdK">
                                                                                                                 <rect key="frame" x="0.0" y="0.0" width="196" height="52"/>
                                                                                                                 <subviews>
-                                                                                                                    <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d0g-Oc-mOY" userLabel="Button - Previous">
+                                                                                                                    <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d0g-Oc-mOY" userLabel="Button - Decrease">
                                                                                                                         <rect key="frame" x="0.0" y="0.0" width="52" height="52"/>
                                                                                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                                                         <constraints>
@@ -2128,7 +2133,7 @@
                                                                                                                     <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tjv-0w-CxI" userLabel="View - HH">
                                                                                                                         <rect key="frame" x="52.5" y="0.0" width="50" height="52"/>
                                                                                                                         <subviews>
-                                                                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="11" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ky3-yH-hn7" userLabel="Label - Hour">
+                                                                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="11" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ky3-yH-hn7" userLabel="Label - Hours">
                                                                                                                                 <rect key="frame" x="0.0" y="15.5" width="50" height="21.5"/>
                                                                                                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                                                                                                                 <nil key="textColor"/>
@@ -2152,7 +2157,7 @@
                                                                                                                     <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qR4-gd-IgL" userLabel="View - MM">
                                                                                                                         <rect key="frame" x="103" y="0.0" width="40.5" height="52"/>
                                                                                                                         <subviews>
-                                                                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xA4-Lq-IlL" userLabel="Label - Minute">
+                                                                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xA4-Lq-IlL" userLabel="Label - Minutes">
                                                                                                                                 <rect key="frame" x="0.0" y="15.5" width="40.5" height="21.5"/>
                                                                                                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                                                                                                                 <nil key="textColor"/>
@@ -2166,14 +2171,14 @@
                                                                                                                             <constraint firstAttribute="trailing" secondItem="xA4-Lq-IlL" secondAttribute="trailing" id="xeu-qG-cTw"/>
                                                                                                                         </constraints>
                                                                                                                     </view>
-                                                                                                                    <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RLG-gF-PaW" userLabel="View -Right Separator">
+                                                                                                                    <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RLG-gF-PaW" userLabel="View - Right Separator">
                                                                                                                         <rect key="frame" x="143.5" y="0.0" width="0.5" height="52"/>
                                                                                                                         <color key="backgroundColor" name="LightBlueGrey"/>
                                                                                                                         <constraints>
                                                                                                                             <constraint firstAttribute="width" constant="0.59999999999999998" id="ta8-iR-n7u"/>
                                                                                                                         </constraints>
                                                                                                                     </view>
-                                                                                                                    <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jdt-xg-5yz" userLabel="Button - Next">
+                                                                                                                    <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jdt-xg-5yz" userLabel="Button - Increase">
                                                                                                                         <rect key="frame" x="144" y="0.0" width="52" height="52"/>
                                                                                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                                                         <constraints>
@@ -2208,6 +2213,12 @@
                                                                                                                 <color key="value" name="LightBlueGrey"/>
                                                                                                             </userDefinedRuntimeAttribute>
                                                                                                         </userDefinedRuntimeAttributes>
+                                                                                                        <connections>
+                                                                                                            <outlet property="decreaseButton" destination="d0g-Oc-mOY" id="r4J-rD-f42"/>
+                                                                                                            <outlet property="hoursLabel" destination="ky3-yH-hn7" id="Z2n-ix-8p5"/>
+                                                                                                            <outlet property="increaseButton" destination="jdt-xg-5yz" id="xrI-6V-P1Q"/>
+                                                                                                            <outlet property="minutesLabel" destination="xA4-Lq-IlL" id="fWH-a6-TX4"/>
+                                                                                                        </connections>
                                                                                                     </view>
                                                                                                 </subviews>
                                                                                                 <color key="backgroundColor" name="IceBlue"/>
@@ -2284,6 +2295,19 @@
                                                                             </view>
                                                                         </subviews>
                                                                         <color key="backgroundColor" name="IceBlue"/>
+                                                                        <connections>
+                                                                            <outlet property="applyButton" destination="L5g-PR-6CY" id="fxG-bR-hOC"/>
+                                                                            <outlet property="closeButton" destination="A66-li-hLd" id="LXc-3D-IXh"/>
+                                                                            <outlet property="endDateFieldLabel" destination="Ot1-NM-2lc" id="TtT-dn-oPf"/>
+                                                                            <outlet property="endDateInputStepper" destination="1G7-hQ-efc" id="9Gv-Oc-jQg"/>
+                                                                            <outlet property="endTimeFieldLabel" destination="SrE-DP-idd" id="1lX-Gv-k4h"/>
+                                                                            <outlet property="endTimeInputStepper" destination="w5c-4a-xBG" id="wLm-jI-DrQ"/>
+                                                                            <outlet property="startDateFieldLabel" destination="bDt-1b-Re7" id="pN9-10-7et"/>
+                                                                            <outlet property="startDateInputStepper" destination="Ve6-GY-3P9" id="IpR-RE-hCN"/>
+                                                                            <outlet property="startTimeFieldLabel" destination="Msm-hZ-zeI" id="MY2-qq-sjW"/>
+                                                                            <outlet property="startTimeInputStepper" destination="dtM-XE-CHB" id="SXO-8c-UqN"/>
+                                                                            <outlet property="titleLabel" destination="HFl-fu-El5" id="YbX-6T-Ugs"/>
+                                                                        </connections>
                                                                     </stackView>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Dqe-NM-fKi" userLabel="Stack View - Fixed" customClass="ParkinglotDetailFixedControlView" customModule="ParkingFriends" customModuleProvider="target">
                                                                         <rect key="frame" x="0.0" y="460" width="414" height="248"/>
@@ -2676,9 +2700,7 @@
                                                             <constraint firstItem="nXG-WL-RIE" firstAttribute="leading" secondItem="BkW-t5-4d3" secondAttribute="leading" id="j9g-Ey-urX"/>
                                                         </constraints>
                                                         <connections>
-                                                            <outlet property="applyButton" destination="L5g-PR-6CY" id="dNf-ku-ggF"/>
                                                             <outlet property="changeScheduleView" destination="jYt-3x-OiV" id="4up-um-gN2"/>
-                                                            <outlet property="closeButton" destination="A66-li-hLd" id="XLg-EI-1ty"/>
                                                             <outlet property="editControlPanelView" destination="nXG-WL-RIE" id="7LO-4y-8Xd"/>
                                                             <outlet property="fixedEditPanelView" destination="Dqe-NM-fKi" id="mWq-rE-L4i"/>
                                                             <outlet property="monthlyEditPanelView" destination="KST-AE-Qev" id="ecf-hW-mFG"/>

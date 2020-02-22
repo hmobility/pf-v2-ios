@@ -135,8 +135,8 @@ class Order : HttpSession {
             })
     }
     
-    static public func receipt(id:Int, phoneNumber:String, carNumber:String) -> Observable<(Receipt?, ResponseCodeType)>  {
-        let data = OrdersAPI.gift(id: id, phoneNumber: phoneNumber, carNumber: carNumber)
+    static public func receipt(id:Int) -> Observable<(Receipt?, ResponseCodeType)>  {
+        let data = OrdersAPI.receipt(id: id)
         
         return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params)
             .map ({  result in

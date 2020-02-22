@@ -15,15 +15,8 @@ extension ParkingCCTVPlayerViewController : AnalyticsType {
 }
 
 class ParkingCCTVPlayerViewController: UIViewController {
-    @IBOutlet weak var navigationBar: UINavigationBar!
-    @IBOutlet weak var backButton: UIButton!
-    @IBOutlet weak var infoButton: UIButton!
-    
     @IBOutlet weak var cctvNavigationView: UIStackView!
     @IBOutlet weak var playerView: ParkingCCTVMediaPlayerView!
-    
-    var backButtonAction: ((_ flag:Bool) -> Void)?
-    var infoButtonAction: ((_ flag:Bool) -> Void)?
     
     private var viewModel: ParkingStatusViewModelType?
     private var videoUrls:[String]?
@@ -31,34 +24,6 @@ class ParkingCCTVPlayerViewController: UIViewController {
     private let disposeBag = DisposeBag()
     
     // MARK: - Binding
-    
-    private func setupNavigationBinding() {
-        if let viewModel = viewModel {
-            viewModel.viewTitleText
-                .drive(self.navigationItem.rx.title)
-                .disposed(by: disposeBag)
-        }
-    }
-    
-    private func setupButtonBinding() {
-        backButton.rx.tap
-            .asDriver()
-            .drive(onNext: { [unowned self] _ in
-                if let action = self.backButtonAction {
-                    action(true)
-                }
-            })
-            .disposed(by: disposeBag)
-        
-        infoButton.rx.tap
-            .asDriver()
-            .drive(onNext: { [unowned self] _ in
-                if let action = self.infoButtonAction {
-                    action(true)
-                 }
-            })
-            .disposed(by: disposeBag)
-    }
     
     private func setupPlayer() {
      //   if let urls = viedeoUrls
@@ -77,8 +42,7 @@ class ParkingCCTVPlayerViewController: UIViewController {
     // MARK: - Initialize
     
     private func initialize() {
-        setupNavigationBinding()
-        setupButtonBinding()
+    
     }
     
     // MARK: - Life Cycle

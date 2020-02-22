@@ -15,8 +15,13 @@ typealias CoordType = (latitude:Double, longitude:Double)
 typealias CardInfoType = (cardNo:String, yearExpired:String, monthExpired:String, password:String, birthDate:String)
 
 typealias DateDuration = (start:Date, end:Date)
+typealias MonthlyDuration = (from:Date, count:Int)
+
+typealias ProductAllSet = (time:DateDuration, monthly:MonthlyDuration)
 
 typealias ProductItemType = (type:ProductType, title:String)
+
+typealias AlertTextType = (title:String, message:String, done:String, cancel:String)
 
 
 enum Language:String {
@@ -128,6 +133,7 @@ public enum ResponseCodeType: String {
 enum OrderStatusType: String {
     case paid = "PAID"
     case parking = "PARKING"
+    case request_discount = "REQUEST_DISCOUNT"
     case refunded = "REFUNDED"
     case cancel_request = "CANCEL_REQUEST"
     case finished = "FINISHED"
