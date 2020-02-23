@@ -25,8 +25,11 @@ class CustomTimeStepperView: UIView, CustomTimeStepperViewType {
     @IBOutlet var hoursLabel:UILabel!
     @IBOutlet var minutesLabel:UILabel!
     
+    var changeTimeAction: ((_ hour:Int, _ minute:Int) -> Void)?
+    
+    private var orginDate:Date?
     private var startDate:Date?
-    private var adjustDate:Date?
+    private var changedDate:Date?
  
     private let offsetMinutes = 30
     
@@ -35,16 +38,17 @@ class CustomTimeStepperView: UIView, CustomTimeStepperViewType {
     // MARK: - Public Methods
     
     public func setStartTime(_ date:Date) {
+        orginDate = date
         startDate = date
         updateTime(date)
     }
     
     func getTime() -> Date {
-        guard adjustDate != nil else {
+        guard changedDate != nil else {
             return startDate!
         }
         
-        return adjustDate!
+        return changedDate!
     }
     
     // MARK: - Local Methods
@@ -59,8 +63,12 @@ class CustomTimeStepperView: UIView, CustomTimeStepperViewType {
     
     func changeTime(offset:Int){
         if let date = startDate, date.compare(.isLater(than: startDate!)) == true {
-            adjustDate = date.adjust(.hour, offset: offset)
-            updateTime(adjustDate!)
+            changedDate = date.adjust(.hour, offset: offset)
+            updateTime(changedDate!)
+            
+            if let action = changeTimeAction, let date = changedDate {
+                action(date.component(.hour)!, date.component(.minute)!)
+            }
         }
     }
     

@@ -30,6 +30,7 @@ protocol MenuViewModelType {
     
     func getUserName() -> Observable<String>
     func getUserPoints() -> Observable<String>
+    func getUserCars() -> Observable<[MemberCarElement]>
 }
 
 class MenuViewModel: MenuViewModelType {
@@ -88,5 +89,13 @@ class MenuViewModel: MenuViewModelType {
             .map {
                 return $0.withComma
             }
+    }
+    
+    func getUserCars() -> Observable<[MemberCarElement]> {
+        return userData.memberInfo
+            .getUserCars()
+            .map {
+                return $0
+        }
     }
 }

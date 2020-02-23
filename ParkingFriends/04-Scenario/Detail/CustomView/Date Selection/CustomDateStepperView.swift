@@ -23,8 +23,11 @@ class CustomDateStepperView: UIView, CustomDateStepperViewType {
     @IBOutlet var increaseButton:UIButton!
     @IBOutlet var dateLabel:UILabel!
 
+    var changeDateAction: ((_ year:Int, _ month:Int, _ day:Int) -> Void)?
+    
+    private var originDate:Date?
     private var startDate:Date?
-    private var adjustDate:Date?
+    private var changedDate:Date?
     
     private let offsetDay = 1
     
@@ -33,20 +36,22 @@ class CustomDateStepperView: UIView, CustomDateStepperViewType {
     // MARK: - Public Methods
     
     public func setStartDate(_ date:Date) {
+        originDate = date
         startDate = date.adjust(hour: 0, minute: 0, second: 0)
-        updateDate(date)
+        debugPrint("[DATE][START]", startDate?.toString())
+        updateDate(startDate!)
     }
     
     func getDate() -> Date {
-        guard adjustDate != nil else {
+        guard changedDate != nil else {
             return startDate!
         }
         
-        return adjustDate!
+        return changedDate!
     }
     
     // MARK: - Local Methods
-    
+
     func updateDate(_ date:Date) {
         let date:String = date.toString(format:(.custom("M/d")))
         dateLabel.text = date
@@ -54,8 +59,13 @@ class CustomDateStepperView: UIView, CustomDateStepperViewType {
     
     func changeDate(offset:Int){
         if let date = startDate, date.compare(.isLater(than: startDate!)) == true {
-            adjustDate = date.adjust(.day, offset: offset)
-            updateDate(adjustDate!)
+            changedDate = date.adjust(.day, offset: offset)
+            debugPrint("[DATE][ADJUST]", changedDate?.toString())
+            updateDate(changedDate!)
+            
+            if let action = changeDateAction, let date = changedDate {
+                action(date.component(.year)!, date.component(.month)!, date.component(.day)!)
+            }
         }
     }
     
@@ -70,10 +80,6 @@ class CustomDateStepperView: UIView, CustomDateStepperViewType {
     }
     
     // MARK: - Binding
-    
-    func setupTimeBinding() {
-        
-    }
     
     func setupButtonBinding() {
         decreaseButton.rx.tap

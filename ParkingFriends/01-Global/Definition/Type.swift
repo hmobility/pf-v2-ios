@@ -74,6 +74,13 @@ enum ProductType:String {
     case monthly = "MONTHLY"
 }
 
+// 연장 유형 - Order Preview API
+
+enum OrderExtensionType:String {
+    case extend = "EXTEND"
+    case over_fee = "OVERFEE"
+}
+
 enum SortType:String {
     case distance = "DISTANCE"
     case price = "PRICE"

@@ -51,7 +51,21 @@ class ParkinglotDetailTimeControlView: UIStackView {
     // MARK: - Binding
     
     func setupDateBinding() {
+        startDateInputStepper.changeDateAction = { (year, month, day) in
+            
+        }
         
+        startTimeInputStepper.changeTimeAction = { (hour, minute) in
+            
+        }
+        
+        endDateInputStepper.changeDateAction = { (year, month, day)  in
+            
+        }
+        
+        endTimeInputStepper.changeTimeAction = { (hour, minute) in
+            
+        }
     }
     
     // MARK: - Initializer

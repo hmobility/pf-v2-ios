@@ -232,11 +232,14 @@ class ParkinglotDetailViewController: UIViewController {
         self.modal(target, transparent:true, animated: false)
     }
     
-    private func navigateToPayment() {
+    private func navigateToPayment(giftMode flag:Bool = false) {
         let target = Storyboard.payment.instantiateViewController(withIdentifier: "PaymentViewController") as! PaymentViewController
         
         if let data = viewModel.getParkinglotInfo() {
             target.setData(parkinglot: data)
+            let item = data.products[0]
+            target.setProductElement(item)
+            target.setGiftMode(flag)
         }
         
         self.push(target)

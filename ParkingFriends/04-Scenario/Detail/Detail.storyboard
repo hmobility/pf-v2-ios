@@ -543,7 +543,7 @@
             <objects>
                 <viewController storyboardIdentifier="ParkinglotDetailViewController" id="oD5-jI-trf" customClass="ParkinglotDetailViewController" customModule="ParkingFriends" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="VQy-tx-fJt">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="2200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gzY-Ut-W8R" userLabel="Scroll View - Contents" customClass="MXScrollView" customModule="ParkingFriends" customModuleProvider="target">
@@ -1666,7 +1666,7 @@
                                                             <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jYt-3x-OiV" userLabel="View - Change Schedule Button Area">
                                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                                                                 <subviews>
-                                                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QCI-VV-D1t" userLabel="View - Button" customClass="ParkinglotDetailScheduleButtonView" customModule="ParkingFriends" customModuleProvider="target">
+                                                                    <view contentMode="scaleToFill" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QCI-VV-D1t" userLabel="View - Button" customClass="ParkinglotDetailScheduleButtonView" customModule="ParkingFriends" customModuleProvider="target">
                                                                         <rect key="frame" x="20" y="0.0" width="374" height="68"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="예약시간 변경 하기" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zvs-d9-nGb" userLabel="Label - Title">
@@ -1726,6 +1726,7 @@
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="100" id="38g-kF-JaW"/>
+                                                                    <constraint firstItem="QCI-VV-D1t" firstAttribute="top" secondItem="jYt-3x-OiV" secondAttribute="top" id="8ZY-Xx-hBC"/>
                                                                     <constraint firstAttribute="trailing" secondItem="NGB-gr-XnF" secondAttribute="trailing" id="et2-Ds-Zee"/>
                                                                     <constraint firstItem="QCI-VV-D1t" firstAttribute="leading" secondItem="jYt-3x-OiV" secondAttribute="leading" constant="20" id="gxs-WW-aWY"/>
                                                                     <constraint firstAttribute="trailing" secondItem="QCI-VV-D1t" secondAttribute="trailing" constant="20" id="zcJ-ba-5hJ"/>
