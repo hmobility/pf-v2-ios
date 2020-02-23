@@ -19,6 +19,7 @@ protocol ParkinglotDetailViewModelType {
     func loadInfo()
     func changeBookmark(_ state:Bool) 
     func getSelectedProductType() -> Observable<ProductType?>
+    func getExpectedProductInfo() -> ProductAllSet?
     
     func getParkinglotInfo() -> Parkinglot?
     
@@ -135,6 +136,16 @@ class ParkinglotDetailViewModel: ParkinglotDetailViewModelType {
     func changeBookmark(_ state:Bool) {
         if let id = parkinglotId {
             self.bookmark(id: id, favorite: state)
+        }
+    }
+    
+    // MARK: - Public Methods
+    
+    func getExpectedProductInfo() -> ProductAllSet? {
+        if let settings = productSetting {
+            return settings.getProductAllSet()
+        } else {
+            return nil
         }
     }
     

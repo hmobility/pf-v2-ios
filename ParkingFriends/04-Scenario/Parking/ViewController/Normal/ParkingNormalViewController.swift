@@ -15,24 +15,24 @@ extension ParkingNormalViewController : AnalyticsType {
 }
 
 class ParkingNormalViewController: UIViewController {
-    @IBOutlet weak var navigationBar: UINavigationBar!
-    @IBOutlet weak var backButton: UIButton!
-    @IBOutlet weak var infoButton: UIButton!
-    
-    var backButtonAction: ((_ flag:Bool) -> Void)?
-    var infoButtonAction: ((_ flag:Bool) -> Void)?
-    
+    @IBOutlet weak var guideLabel: UILabel!
+    @IBOutlet weak var descLabel: UILabel!
+  
     private var viewModel: ParkingStatusViewModelType?
-    private var elapsedMinutes:Int = 0
+    private var elapsedMinutes:BehaviorRelay<Int> = BehaviorRelay(value: 0)
     
     private let disposeBag = DisposeBag()
     
     // MARK: - Binding
-    
-    private func setupNavigationBinding() {
+        
+    private func setupParkingGuideBinding() {
         if let viewModel = viewModel {
-            viewModel.viewTitleText
-                .drive(self.navigationItem.rx.title)
+            viewModel.getGuideText()
+                .bind(to: self.guideLabel.rx.text)
+                .disposed(by: disposeBag)
+            
+            viewModel.parkingStatusDescText
+                .drive(self.descLabel.rx.text)
                 .disposed(by: disposeBag)
         }
     }
@@ -44,13 +44,13 @@ class ParkingNormalViewController: UIViewController {
     }
     
     public func setElapsedTime(with minutes:Int) {
-          elapsedMinutes = minutes
-      }
+        elapsedMinutes.accept(minutes)
+    }
     
     // MARK: - Initialize
     
     private func initialize() {
-        setupNavigationBinding()
+        setupParkingGuideBinding()
     }
     
     // MARK: - Life Cycle

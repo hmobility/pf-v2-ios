@@ -120,7 +120,7 @@ class SettingsViewModel: SettingsViewModelType {
     
     //
 
-    func logoutMessage() -> (title:String, message:String, done:String, cancel:String) {
+    func logoutMessage() -> AlertTextType {
         let title:String = localizer.localized("ttl_pop_logout")
         let message:String = localizer.localized("dsc_pop_logut")
         let done:String = localizer.localized("btn_logout")

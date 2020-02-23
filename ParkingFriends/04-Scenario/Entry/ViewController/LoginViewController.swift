@@ -104,23 +104,27 @@ class LoginViewController: UIViewController {
     }
     
     private func setupLoginBinding() {
-        loginButton.rx.tap.do(onNext: { [unowned self] in
-            self.phoneNumberTextField.resignFirstResponder()
-            self.passwordTextField.resignFirstResponder()
-        }).subscribe(onNext: { [unowned self] in
-            self.viewModel.validateCredentials()
-        }).disposed(by: disposeBag)
+        loginButton.rx.tap
+            .do(onNext: { [unowned self] in
+                self.phoneNumberTextField.resignFirstResponder()
+                self.passwordTextField.resignFirstResponder()
+            }).subscribe(onNext: { [unowned self] in
+                self.viewModel.validateCredentials()
+            }).disposed(by: disposeBag)
         
-        viewModel.loginStatus.asDriver().asDriver(onErrorJustReturn: .none).drive(onNext: { [unowned self] status in
-            switch status {
-            case .none:
-                break
-            case .error(_):
-                self.showWarning("TTT")
-            case .verified:
-                self.navigateToMain()
-            }
-        }).disposed(by: disposeBag)
+        viewModel.loginStatus
+            .asDriver(onErrorJustReturn: .none)
+            .drive(onNext: { [unowned self] status in
+                switch status {
+                case .none:
+                    break
+                case .error(_):
+                    let message = self.viewModel.message(status)
+                    self.showWarning(message)
+                case .verified:
+                    self.navigateToMain()
+                }
+            }).disposed(by: disposeBag)
     }
     
     // MARK: - Warnings

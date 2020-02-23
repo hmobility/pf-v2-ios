@@ -39,8 +39,8 @@ class Usages: BaseModelType {
 
 class UsageOrderInfo: BaseModelType {
     var id:Int = 0
-    var status:String = ""
-    var type:String = ""
+    var status:OrderStatusType?
+    var type:ProductType?
     var dateCanceled:String = ""
     var quantity:Int = 0
     var paymentMethod:PaymentMethodType?
@@ -71,7 +71,7 @@ class UsageOrderInfo: BaseModelType {
         usePoint <- map["usePoint"]
         refundAmount <- map["refundAmount"]
         refundPoint <- map["refundPoint"]
-        productName <- map["productName"]
+        productName <- map["product"]
         parkingLot <- map["parkingLot"]
         car <- map["car"]
     }

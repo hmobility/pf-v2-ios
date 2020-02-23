@@ -24,16 +24,12 @@ class PaymentGuideViewController: UIViewController {
     @IBOutlet weak var agreementButton: UIButton!
     @IBOutlet weak var noDisplayButton: UIButton!
     
+    var dismissAction: ((_ flag:Bool) -> Void)?
+    
     private var checkMode:Bool = false
     
     private var viewModel: PaymentGuideViewModelType
     private let disposeBag = DisposeBag()
-    
-    // MARK: - Button Action
-    
-    @IBAction func closeButtonAction(_ sender: Any) {
-        self.dismissModal(animated: false)
-    }
     
     // MARK: - Initialize
     
@@ -96,30 +92,34 @@ class PaymentGuideViewController: UIViewController {
     
     private func buttonBinding() {
         noDisplayButton.rx.tap
-                .asObservable()
-                .map { (_) -> Bool in
-                    return !self.noDisplayButton.isSelected
-                }
-                .do(onNext: { (display) in
-                    self.noDisplayButton.isSelected = display ? false : true
-                })
-                .bind(to: self.viewModel.displayState)
-                .disposed(by: disposeBag)
+            .asObservable()
+            .map { (_) -> Bool in
+                return !self.noDisplayButton.isSelected
+            }
+            .map { selected in
+                self.noDisplayButton.isSelected = selected
+                return selected
+            }
+            .bind(to: self.viewModel.displayState)
+            .disposed(by: disposeBag)
         
         closeButton.rx.tap
             .asDriver()
-            .drive(onNext: { _ in
-                
+            .drive(onNext: { [unowned self] _ in
+                self.dismissModal(animated: false) {
+                    if let action = self.dismissAction {
+                        action(true)
+                    }
+                }
             })
             .disposed(by: disposeBag)
         
-        agreementButton.rx.tap.do(onNext: { [unowned self] in
-                     
-                })
-                .subscribe(onNext: { [unowned self] status in
-
-                })
-                .disposed(by: disposeBag)
+        agreementButton.rx.tap
+            .asDriver()
+            .drive(onNext: { [unowned self] _ in
+                 self.dismissModal(animated: false)
+            })
+            .disposed(by: disposeBag)
     }
     // MARK: - Life Cycle
     
@@ -128,7 +128,6 @@ class PaymentGuideViewController: UIViewController {
         initialize()
         // Do any additional setup after loading the view.
     }
-    
 
     /*
     // MARK: - Navigation

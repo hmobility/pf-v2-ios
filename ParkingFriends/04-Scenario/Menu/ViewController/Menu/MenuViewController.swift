@@ -76,6 +76,15 @@ class MenuViewController: UIViewController {
             .drive(carSectionView.addCarButton.rx.title())
             .disposed(by: disposeBag)
         
+        viewModel.getUserCars()
+            .map { return $0.first }
+            .subscribe(onNext: { [unowned self] memberCar in
+                if let carNumber = memberCar?.number {
+                    self.carSectionView.setMyCarInfo(carNumber)
+                }
+            })
+            .disposed(by: disposeBag)
+        
         carSectionView.addNewCarButton.rx.tap
             .asDriver()
             .drive(onNext: { _ in

@@ -14,13 +14,16 @@ class MyCardNormalTableViewCell: UITableViewCell {
     @IBOutlet weak var removeButton: UIButton!
     @IBOutlet weak var switchButton: UIButton!
     
+    var selectAsDefaultAction: ((_ flag:Bool) -> Void)?
+    var removeAction: ((_ flag:Bool) -> Void)?
+    
     private var localizer:LocalizerType = Localizer.shared
     
     private let disposeBag = DisposeBag()
-     
-    // MARK: - Initiailize
-     
-    func initialize(localizer: LocalizerType = Localizer.shared) {
+    
+    // MARK: - Binding
+    
+    private func setupButtonBinding() {
         localizer.localized("btn_default_card_change")
             .drive(switchButton.rx.title())
             .disposed(by: disposeBag)
@@ -28,6 +31,31 @@ class MyCardNormalTableViewCell: UITableViewCell {
         localizer.localized("btn_remove")
             .drive(removeButton.rx.title())
             .disposed(by: disposeBag)
+        
+        removeButton.rx.tap
+            .asDriver()
+            .drive(onNext: { [unowned self] _ in
+                if let action = self.removeAction {
+                    action(true)
+                }
+            })
+            .disposed(by: disposeBag)
+        
+        switchButton.rx.tap
+            .asDriver()
+            .drive(onNext: { [unowned self] _ in
+                if let action = self.selectAsDefaultAction {
+                    action(true)
+                }
+            })
+            .disposed(by: disposeBag)
+    }
+     
+    // MARK: - Initiailize
+    
+     
+    func initialize() {
+        setupButtonBinding()
     }
     
     // MARK: - Public Methods

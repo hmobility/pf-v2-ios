@@ -73,11 +73,6 @@ class PaymentHistoryViewController: UIViewController {
             .disposed(by: disposeBag)
     }
     
-    /*
-    private func setupOrderItemBinding() {
-        viewModel.loadOrderItems()
-    }
-    */
     private func setupPaidTicketHistoryView() {
         viewModel.getPaidItems()
             .asObservable()
@@ -110,8 +105,6 @@ class PaymentHistoryViewController: UIViewController {
         setupNavigationBinding()
         setupTapMenu()
         setupTapSwitchBinding()
-        
-     //   setupOrderItemBinding()
     }
     
     // MARK: - Life Cycle
@@ -191,9 +184,15 @@ class PaymentHistoryViewController: UIViewController {
             target.setOrderElement(elements)
             
             target.selectAction = { [unowned self] element in
-                self.navigateToParkingStatus(with: element)
+                self.navigateToReceipt(with: element)
             }
         }
+    }
+    
+    private func navigateToReceipt(with element:OrderElement) {
+        let target = Storyboard.payment.instantiateViewController(withIdentifier: "PaymentReceiptViewController") as! PaymentReceiptViewController
+        target.setOrderElement(with: element)
+        self.modal(target)
     }
     
     // MARK: Prepare

@@ -22,11 +22,11 @@ class SortOrderDialogView: MessageView {
     
     // MARK: - Button Action
      
-     @IBAction func closeAction() {
+    @IBAction func closeAction() {
         if let action = completeAction {
             action(self.sortType)
         }
-     }
+    }
     
     // MARK: - Initialize
     

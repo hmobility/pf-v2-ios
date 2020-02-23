@@ -772,13 +772,13 @@
                                                 </userDefinedRuntimeAttributes>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="789,000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pTb-L9-DJT" userLabel="Label - Point">
-                                                <rect key="frame" x="22" y="106.5" width="135" height="33.5"/>
+                                                <rect key="frame" x="22" y="106.5" width="112" height="33.5"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="28"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="P" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h35-h5-rWO" userLabel="Label - Point Unit">
-                                                <rect key="frame" x="157" y="104" width="17" height="34"/>
+                                                <rect key="frame" x="139" y="106.5" width="17" height="33.5"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="28"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -887,7 +887,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I4O-GE-cm8" userLabel="View - Coupon">
                                                         <rect key="frame" x="200" y="0.0" width="100" height="107"/>
                                                         <subviews>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5dO-bJ-eJc" userLabel="View - Coupon">
+                                                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5dO-bJ-eJc" userLabel="View - Coupon">
                                                                 <rect key="frame" x="25" y="23" width="50" height="50"/>
                                                                 <subviews>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icCouponBlack" translatesAutoresizingMaskIntoConstraints="NO" id="oWo-gq-Z61" userLabel="Image View - Icon">
@@ -907,7 +907,7 @@
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="내 쿠폰" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H7Z-eg-jpi" userLabel="Label - Coupon">
+                                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="내 쿠폰" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H7Z-eg-jpi" userLabel="Label - Coupon">
                                                                 <rect key="frame" x="2" y="78" width="96" height="14.5"/>
                                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="12"/>
                                                                 <color key="textColor" name="DarkGrey"/>
@@ -1294,7 +1294,6 @@
                         <outlet property="addCardButton" destination="4jo-zk-cZP" id="O48-eU-otB"/>
                         <outlet property="backButton" destination="hVp-mB-Qhr" id="n1i-gv-RUd"/>
                         <outlet property="containerView" destination="TRM-mA-jiV" id="edf-Od-zB6"/>
-                        <outlet property="noCardView" destination="TRM-mA-jiV" id="haT-Cs-szX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yho-0k-DVO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2001,7 +2000,7 @@
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="**** **** ****" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="giz-OU-HSU" userLabel="Label - Asterisk">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="**** **** ****" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="giz-OU-HSU" userLabel="Label - Asterisk">
                                                             <rect key="frame" x="20" y="65" width="136.5" height="24"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="24" id="5Lm-T3-4Cb"/>
@@ -2257,6 +2256,7 @@
                             <constraint firstItem="HOF-vk-L6I" firstAttribute="top" secondItem="lkI-3h-Flf" secondAttribute="top" id="mvc-Xd-sX7"/>
                             <constraint firstAttribute="trailing" secondItem="HOF-vk-L6I" secondAttribute="trailing" id="rQf-IG-4vB"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="5tz-PY-3IX"/>
                     </view>
                     <navigationItem key="navigationItem" id="cym-mc-Hxr"/>
                     <size key="freeformSize" width="414" height="774"/>
@@ -2476,10 +2476,10 @@
             </objects>
             <point key="canvasLocation" x="2139.130434782609" y="1572.9910714285713"/>
         </scene>
-        <!--Regi Credit Card View Controller-->
+        <!--My Card Adding ViewController-->
         <scene sceneID="Gn3-Tj-b6o">
             <objects>
-                <viewController storyboardIdentifier="MyCardAddingViewController" id="c6d-uM-s53" userLabel="Regi Credit Card View Controller" customClass="MyCardAddingViewController" customModule="ParkingFriends" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MyCardAddingViewController" id="c6d-uM-s53" userLabel="My Card Adding ViewController" customClass="MyCardAddingViewController" customModule="ParkingFriends" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2fb-xk-DDp">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2488,10 +2488,29 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="718"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="COl-dI-Xxq" userLabel="View - Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="488"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="560"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="yor-NF-Fzj" userLabel="Stack View - Card Number" customClass="CustomInputSection" customModule="ParkingFriends" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="24" width="374" height="101"/>
+                                            <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4RA-gE-azB" userLabel="View - Guide">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="92"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="주차장 예약·결제를 위해 결제수단을 등록합니다.예약취소 수수료 및 초과요금 발생 시 자동 결제됩니다." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BPZ-tX-6zc" userLabel="Label - Guide">
+                                                        <rect key="frame" x="42" y="28" width="330" height="52"/>
+                                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="14"/>
+                                                        <color key="textColor" name="DarkGrey"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <constraints>
+                                                    <constraint firstItem="BPZ-tX-6zc" firstAttribute="top" secondItem="4RA-gE-azB" secondAttribute="top" constant="28" id="1fX-0h-68p"/>
+                                                    <constraint firstAttribute="trailing" secondItem="BPZ-tX-6zc" secondAttribute="trailing" constant="42" id="BYI-jG-NJ7"/>
+                                                    <constraint firstAttribute="bottom" secondItem="BPZ-tX-6zc" secondAttribute="bottom" constant="12" id="E0G-bg-PH0"/>
+                                                    <constraint firstItem="BPZ-tX-6zc" firstAttribute="leading" secondItem="4RA-gE-azB" secondAttribute="leading" constant="42" id="lcf-wH-lcI"/>
+                                                    <constraint firstAttribute="height" constant="92" id="r7E-lv-6ak"/>
+                                                </constraints>
+                                            </view>
+                                            <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="yor-NF-Fzj" userLabel="Stack View - Card Number" customClass="CustomInputSection" customModule="ParkingFriends" customModuleProvider="target">
+                                                <rect key="frame" x="20" y="96" width="374" height="101"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yhb-ZY-AZh" userLabel="View - Input Area">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="85"/>
@@ -2565,7 +2584,7 @@
                                                 </connections>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="WKz-Vq-x4G" userLabel="Stack View - Expiration / Resident">
-                                                <rect key="frame" x="20" y="133" width="374" height="101"/>
+                                                <rect key="frame" x="20" y="205" width="374" height="101"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="1Ke-WO-R7d" userLabel="Stack View - Expiration" customClass="CustomInputSection" customModule="ParkingFriends" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="185" height="101"/>
@@ -2723,7 +2742,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="2jZ-tA-aQS" userLabel="Stack View - Resident Number" customClass="CustomInputSection" customModule="ParkingFriends" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="242" width="374" height="109"/>
+                                                <rect key="frame" x="20" y="314" width="374" height="109"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qOy-6L-yI9" userLabel="View - Input Area">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="93"/>
@@ -2802,7 +2821,7 @@
                                                 </connections>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="vfx-oP-Hsx" userLabel="Stack View - Name" customClass="CustomInputSection" customModule="ParkingFriends" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="359" width="374" height="109"/>
+                                                <rect key="frame" x="20" y="431" width="374" height="109"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3zh-8J-KtS" userLabel="View - Input Area">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="93"/>
@@ -2888,14 +2907,17 @@
                                             <constraint firstAttribute="bottom" secondItem="vfx-oP-Hsx" secondAttribute="bottom" constant="20" id="9af-6T-kHQ"/>
                                             <constraint firstItem="vfx-oP-Hsx" firstAttribute="leading" secondItem="COl-dI-Xxq" secondAttribute="leading" constant="20" id="LLl-5V-cAL"/>
                                             <constraint firstItem="vfx-oP-Hsx" firstAttribute="top" secondItem="2jZ-tA-aQS" secondAttribute="bottom" constant="8" id="Lc3-Pc-CGB"/>
-                                            <constraint firstItem="yor-NF-Fzj" firstAttribute="top" secondItem="COl-dI-Xxq" secondAttribute="top" constant="24" id="Pnh-sB-qxD"/>
+                                            <constraint firstItem="4RA-gE-azB" firstAttribute="leading" secondItem="COl-dI-Xxq" secondAttribute="leading" id="OkR-BK-yqI"/>
+                                            <constraint firstItem="yor-NF-Fzj" firstAttribute="top" secondItem="4RA-gE-azB" secondAttribute="bottom" constant="4" id="Pnh-sB-qxD"/>
                                             <constraint firstItem="WKz-Vq-x4G" firstAttribute="leading" secondItem="COl-dI-Xxq" secondAttribute="leading" constant="20" id="Rj3-6n-POI"/>
+                                            <constraint firstAttribute="trailing" secondItem="4RA-gE-azB" secondAttribute="trailing" id="Wxq-ll-Ax9"/>
                                             <constraint firstAttribute="trailing" secondItem="yor-NF-Fzj" secondAttribute="trailing" constant="20" id="acV-IF-gtj"/>
                                             <constraint firstItem="WKz-Vq-x4G" firstAttribute="top" secondItem="yor-NF-Fzj" secondAttribute="bottom" constant="8" id="kEe-9Z-PqV"/>
                                             <constraint firstItem="2jZ-tA-aQS" firstAttribute="leading" secondItem="COl-dI-Xxq" secondAttribute="leading" constant="20" id="leE-xA-5QR"/>
                                             <constraint firstItem="yor-NF-Fzj" firstAttribute="leading" secondItem="COl-dI-Xxq" secondAttribute="leading" constant="20" id="llu-Fd-Dpf"/>
                                             <constraint firstAttribute="trailing" secondItem="2jZ-tA-aQS" secondAttribute="trailing" constant="20" id="qEv-ae-CSn"/>
                                             <constraint firstAttribute="trailing" secondItem="WKz-Vq-x4G" secondAttribute="trailing" constant="20" id="utQ-Gg-HmL"/>
+                                            <constraint firstItem="4RA-gE-azB" firstAttribute="top" secondItem="COl-dI-Xxq" secondAttribute="top" id="xha-ZE-XIa"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -2940,7 +2962,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="mWe-F2-vtL"/>
                     </view>
-                    <navigationItem key="navigationItem" title="결제 정보 입력" id="Te8-u7-ih8" userLabel="Navigation Bar">
+                    <navigationItem key="navigationItem" title="결제 수단 등록" id="Te8-u7-ih8" userLabel="Navigation Bar">
                         <barButtonItem key="leftBarButtonItem" title="Item" image="icBackBlack" style="plain" id="Um0-4Y-H7c" userLabel="Item - Back">
                             <color key="tintColor" red="0.1019607843" green="0.1019607843" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
@@ -2960,7 +2982,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Oe-nC-BAc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5367" y="-269"/>
+            <point key="canvasLocation" x="5366.666666666667" y="-269.19642857142856"/>
         </scene>
     </scenes>
     <resources>

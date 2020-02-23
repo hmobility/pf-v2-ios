@@ -10,23 +10,14 @@ import UIKit
 
 extension MyCardViewController: AnalyticsType {
     var screenName: String {
-        return "[SCREEN] My Card List"
+        return "[SCREEN] My Card Main"
     }
 }
 
 class MyCardViewController: UIViewController {
-    @IBOutlet weak var noCardView: UIView!
-    @IBOutlet weak var addCardButton: UIButton!
-    
     @IBOutlet weak var containerView: UIView!
-    
+    @IBOutlet weak var addCardButton: UIButton!
     @IBOutlet weak var backButton: UIButton!
-    
-    @IBOutlet weak var tableView: UITableView! {
-           didSet {
-               tableView.tableFooterView = UIView(frame: .zero)
-           }
-       }
     
     private var embedNavigationController: UINavigationController?
     private var myCardListViewController: MyCardListViewController?
@@ -45,11 +36,19 @@ class MyCardViewController: UIViewController {
     }
     
     private func setupButtonBinding() {
-        backButton.rx.tap.asDriver()
-            .drive(onNext: { _ in
+        backButton.rx.tap
+            .asDriver()
+            .drive(onNext: { [unowned self] _ in
                 self.dismissModal()
             })
-         .disposed(by: disposeBag)
+            .disposed(by: disposeBag)
+        
+        backButton.rx.tap
+            .asDriver()
+            .drive(onNext: {  [unowned self] _ in
+                self.navigateToAddingCard()
+            })
+            .disposed(by: disposeBag)
     }
     
     private func setupCardListBinding() {
@@ -119,8 +118,48 @@ class MyCardViewController: UIViewController {
         if let target = myCardListViewController {
             setEmbedView(target)
             target.setCardItems(elements)
+            target.removeAction = { [unowned self] cardId in
+                self.removeCard(with: cardId)
+            }
+            target.selectAsDefaultAction = { [unowned self] cardId in
+                self.setDefaultCard(with: cardId)
+            }
         }
     }
+    
+    private func navigateToAddingCard() {
+        let target = Storyboard.menu.instantiateViewController(withIdentifier: "MyCardAddingViewController") as! MyCardAddingViewController
+     
+        self.modal(target)
+    }
+    
+    
+    // MARK: Card Handling Processs
+    
+    private func removeCard(with cardId:Int) {
+        let text = viewModel.getAlertRemoveMessage()
+        self.alert(title: text.message, actions: [AlertAction(title: text.done, type: 0, style: .default), AlertAction(title: text.cancel, type: 1, style: .cancel)])
+            .asObservable()
+            .subscribe(onNext: { [unowned self] index in
+                if index == 0 {
+                    self.viewModel.deleteCreditCard(with: cardId)
+                }
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func setDefaultCard(with cardId:Int) {
+        let text = viewModel.getAlertDefaultMessage()
+        self.alert(title: text.message, actions: [AlertAction(title: text.done, type: 0, style: .default), AlertAction(title: text.cancel, type: 1, style: .cancel)])
+            .asObservable()
+            .subscribe(onNext: { [unowned self] index in
+                if index == 0 {
+                    self.viewModel.setDefaultCreditCard(with: cardId)
+                }
+            })
+            .disposed(by: disposeBag)
+    }
+    
     
     // MARK: Prepare
      

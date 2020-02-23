@@ -35,12 +35,19 @@ class MyCardAddingViewController: UIViewController {
     
     private lazy var viewModel: RegiCreditCardViewModelType = RegiCreditCardViewModel(registration:registrationModel)
     
+    //private var viewModel: MyCardViewModelType?
+    
     // MARK: - Button Action
     
     @IBAction func backButtonAction(_ sender: Any) {
         self.backToPrevious()
     }
     
+    // MARK: - Public Methods
+    
+    public func setViewModel(_ viewModel:MyCardViewModelType) {
+        
+    }
     
     // MARK: - Initialize
     

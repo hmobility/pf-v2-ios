@@ -18,15 +18,18 @@ class ParkinglotDetailEditScheduleView: UIStackView {
     @IBOutlet weak var monthlyEditPanelView: ParkinglotDetailMonthlyControlView!
     
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var closeButton: UIButton!
-    @IBOutlet weak var applyButton: UIButton!
+  //  @IBOutlet weak var closeButton: UIButton!
+  //  @IBOutlet weak var applyButton: UIButton!
     
-    private let disposeBag = DisposeBag()
-    
+    private var expectedMonthlyDuration:BehaviorRelay<MonthlyDuration?> = BehaviorRelay(value: nil)
+    private var expectedTimeDuration:BehaviorRelay<DateDuration?> = BehaviorRelay(value: nil)
+        
     private var localizer:LocalizerType = Localizer.shared
     
     private var viewModel: ParkinglotDetailEditTimeViewModelType = ParkinglotDetailEditTimeViewModel()
     private var detailViewModel: ParkinglotDetailViewModelType?
+    
+    private let disposeBag = DisposeBag()
     
     // MARK: - Binding
     
@@ -60,7 +63,7 @@ class ParkinglotDetailEditScheduleView: UIStackView {
                 self.setEditingMode(true)
             }
             .disposed(by: disposeBag)
-    
+    /*
         closeButton.rx.tap
             .asDriver()
             .drive(onNext: { _ in
@@ -72,6 +75,18 @@ class ParkinglotDetailEditScheduleView: UIStackView {
             .asDriver()
             .drive(onNext: { _ in
                 self.setEditingMode(false)
+            })
+            .disposed(by: disposeBag)
+ */
+    }
+    
+    private func setupTimeEditBidning() {
+        expectedTimeDuration
+            .asDriver()
+            .filter { $0 != nil }
+            .map { $0! }
+            .drive(onNext: { [unowned self] duration in
+                self.timeEditPanelView.setOriginTime(start: duration.start, end: duration.end)
             })
             .disposed(by: disposeBag)
     }
@@ -133,6 +148,11 @@ class ParkinglotDetailEditScheduleView: UIStackView {
     
     public func setDetailViewModel(_ viewModel:ParkinglotDetailViewModelType) {
         detailViewModel = viewModel
+        
+        if let product = viewModel.getExpectedProductInfo() {
+            expectedTimeDuration.accept(product.time)
+            expectedMonthlyDuration.accept(product.monthly)
+        }
     }
     
     // MARK: - Initializer
@@ -151,6 +171,7 @@ class ParkinglotDetailEditScheduleView: UIStackView {
         setupButtonBinding()
         setEditingMode(false, animated: false)
         setupFixedProductItems()
+        setupTimeEditBidning()
     }
     
     // MARK: - Life Cycle
@@ -159,8 +180,6 @@ class ParkinglotDetailEditScheduleView: UIStackView {
         super.layoutSubviews()
     }
 
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
         initialize()
     }

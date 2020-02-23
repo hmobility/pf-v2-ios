@@ -14,7 +14,7 @@ let kBookingTimeFormat = "yyyyMMddHHmm"
 class UserData: NSObject, NSCoding {
     var login: Login? {
         didSet {
-            if login != nil {       // // Add by Rao ( 2020.02.21 )
+            if login != nil {
                 memberInfo.load()
             }
         }
@@ -28,18 +28,7 @@ class UserData: NSObject, NSCoding {
     var memberInfo:MemberInfo = MemberInfo.shared
 
     // MARK: - Public Methods
-    /*
-    // MARK: - Product
-    // Deprecated
-    public func getProductType() -> ProductType {
-        return productSettings.selectedProductType
-    }
-    // Deprecated
-    public func setProduct(type:ProductType) -> ProductSetting {
-         productSettings.selectedProductType = type
-         return productSettings
-    }
-    */
+
     // MARK: - Order Type
     
     public func getSortType() -> SortType {

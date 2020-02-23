@@ -12,6 +12,7 @@ protocol MemberInfoType {
     func load()
     func getUsername() -> Observable<String>
     func getUserPoints() -> Observable<Int>
+    func getUserCars() -> Observable<[MemberCarElement]>
 }
 
 class MemberInfo: NSObject, MemberInfoType {
@@ -41,12 +42,16 @@ class MemberInfo: NSObject, MemberInfoType {
             }
     }
     
+    func getUserCars() -> Observable<[MemberCarElement]> {
+        return getMemberInfo()
+            .filter { $0.car != nil }
+            .map {
+                return $0.car!.elements
+            }
+    }
+    
     public func load()  {
-        /*
-        getMemberInfo()
-            .bind(to: memberInfo)   // Check by Rao ( 2020.02.21 )
-            .disposed(by: disposeBag)
- */
+        _ = getMemberInfo() 
     }
     
     // MARK: - Network
@@ -55,13 +60,8 @@ class MemberInfo: NSObject, MemberInfoType {
         if memberInfo.value != nil {
             return self.memberInfo
                 .asObservable()
-//                .filter { $0 != nil }
-//                .map { $0! }
-                .filter { (element: Members?) -> Bool in
-                        return element != nil
-                }.map { (element: Members?) -> Members in
-                    return element!
-                }
+                .filter { $0 != nil }
+                .map { $0! }
         } else {
             return self.requestMembers()
                 .asObservable()
@@ -70,31 +70,6 @@ class MemberInfo: NSObject, MemberInfoType {
                     return item
                 }
                 .map { $0! }
-        }
-    }
-    
-    // Test by Rao ( 2020.02.21 )
-    private func getMemberInfoRao() -> Observable<Members> {
-        if memberInfo.value != nil {
-            return self.memberInfo
-                .asObservable()
-//                .takeWhile { $0 != self.memberInfo.value}
-                .takeWhile({ (element) -> Bool in
-                    return (self.memberInfo.value != element)
-                })
-                .filter { (element: Members?) -> Bool in
-                    return element != nil
-            }.map { (element: Members?) -> Members in
-                return element!
-            }
-        } else {
-            return self.requestMembers()
-                .asObservable()
-                .map { item in
-                    self.updateMembers(item)
-                    return item
-            }
-            .map { $0! }
         }
     }
     

@@ -9,8 +9,8 @@
 import UIKit
 
 class Order : HttpSession {
-    static public func preview(productId:String, from:String, to:String, quantity:Int) -> Observable<(OrderPreview?, ResponseCodeType)>  {
-        let data = OrdersAPI.preview(productId: productId, from: from, to: to, quantity: quantity)
+    static public func preview(type:ProductType, parkingLotId:Int, productId:Int, from:String, to:String, quantity:Int, ext:(extensionType:OrderExtensionType, originOrderId:Int, extensionMinutes:Int)? = nil) -> Observable<(OrderPreview?, ResponseCodeType)>  {
+        let data = OrdersAPI.preview(type:type, parkingLotId:parkingLotId, productId:productId, from:from, to:to, quantity:quantity, ext:ext)
  
         return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params)
             .map ({  result in
@@ -135,8 +135,8 @@ class Order : HttpSession {
             })
     }
     
-    static public func receipt(id:Int, phoneNumber:String, carNumber:String) -> Observable<(Receipt?, ResponseCodeType)>  {
-        let data = OrdersAPI.gift(id: id, phoneNumber: phoneNumber, carNumber: carNumber)
+    static public func receipt(id:Int) -> Observable<(Receipt?, ResponseCodeType)>  {
+        let data = OrdersAPI.receipt(id: id)
         
         return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params)
             .map ({  result in

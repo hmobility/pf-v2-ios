@@ -44,9 +44,6 @@
                                                 <state key="normal" title="닫기">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
-                                                <connections>
-                                                    <action selector="closeButtonAction:" destination="tXC-2U-DiN" eventType="touchUpInside" id="8VO-N0-mJ4"/>
-                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H5k-5U-v4j" userLabel="Button - Agreement">
                                                 <rect key="frame" x="179" y="0.0" width="179" height="55"/>
@@ -114,16 +111,20 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Ley-D5-WDb">
-                                <rect key="frame" x="127" y="802" width="160" height="40"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Ley-D5-WDb">
+                                <rect key="frame" x="132" y="812" width="150" height="30"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FiU-Ll-eCx" userLabel="Button - Check Box">
-                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
-                                        <state key="normal" image="icCheckOffSmall"/>
+                                    <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FiU-Ll-eCx" userLabel="Button - Check Box">
+                                        <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="erc-Ey-tBL"/>
+                                            <constraint firstAttribute="width" constant="30" id="wJr-Oo-1Y0"/>
+                                        </constraints>
+                                        <state key="normal" image="icCheckOff"/>
                                         <state key="selected" image="icCheckOnSmall"/>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="다음부터 보지 않기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oAv-Da-pLK" userLabel="Label - Guide Message">
-                                        <rect key="frame" x="48" y="0.0" width="112" height="40"/>
+                                        <rect key="frame" x="38" y="0.0" width="112" height="30"/>
                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -158,9 +159,8 @@
         <!--Payment Navigation Controller-->
         <scene sceneID="Zkl-V0-ljD">
             <objects>
-                <navigationController storyboardIdentifier="PaymentNavigationController" id="8Zs-6G-vSb" customClass="PaymentNavigationController" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="PaymentNavigationController" navigationBarHidden="YES" id="8Zs-6G-vSb" customClass="PaymentNavigationController" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="oGN-9R-Ue8">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <textAttributes key="titleTextAttributes">
@@ -188,19 +188,19 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="1822"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NSz-6S-nGJ" userLabel="View - Background">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1299"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="418" height="1299"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="p8R-S4-AB7">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="1299"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="418" height="1299"/>
                                                 <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="hxS-6I-we1" userLabel="Stack View - Parking Info" customClass="PaymentProductInfoView" customModule="ParkingFriends" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="536"/>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="hxS-6I-we1" userLabel="Stack View - Parking Info">
+                                                        <rect key="frame" x="0.0" y="0.0" width="418" height="536"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bgY-hx-5LB" userLabel="View - Header">
-                                                                <rect key="frame" x="0.0" y="0.0" width="414" height="48"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="418" height="48"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="주차 정보" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6r3-dm-mcL" userLabel="Label - TItle">
-                                                                        <rect key="frame" x="18" y="22.5" width="378" height="19.5"/>
+                                                                        <rect key="frame" x="18" y="22.5" width="382" height="19.5"/>
                                                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="16"/>
                                                                         <color key="textColor" name="DarkGrey"/>
                                                                         <nil key="highlightedColor"/>
@@ -214,321 +214,290 @@
                                                                     <constraint firstAttribute="bottom" secondItem="6r3-dm-mcL" secondAttribute="bottom" constant="6" id="vWf-2U-hwC"/>
                                                                 </constraints>
                                                             </view>
-                                                            <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UYH-UR-IzA" userLabel="View -  Basic Info" customClass="PaymentProductBasicInfoView" customModule="ParkingFriends" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="48" width="414" height="132"/>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="KuG-fZ-HIb" userLabel="Stack View - Parking Ticket" customClass="ParkingTicketInfoView" customModule="ParkingFriends">
+                                                                <rect key="frame" x="0.0" y="48" width="418" height="488"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="주차장명" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Caq-7R-fIj" userLabel="Label - Parkinglot Title">
-                                                                        <rect key="frame" x="20" y="24" width="55.5" height="16"/>
-                                                                        <constraints>
-                                                                            <constraint firstAttribute="height" constant="16" id="orS-U6-qMt"/>
-                                                                        </constraints>
-                                                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="16"/>
-                                                                        <color key="textColor" name="Steel"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="명달로주차장" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a4a-32-rqJ" userLabel="Label - Parkinglot Field">
-                                                                        <rect key="frame" x="305.5" y="24" width="88.5" height="16"/>
-                                                                        <constraints>
-                                                                            <constraint firstAttribute="height" constant="16" id="d8y-eE-qZL"/>
-                                                                        </constraints>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                        <nil key="textColor"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="구매상품" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CMW-da-U6R" userLabel="Label - ProductType Title">
-                                                                        <rect key="frame" x="20" y="60" width="55.5" height="16"/>
-                                                                        <constraints>
-                                                                            <constraint firstAttribute="height" constant="16" id="b5q-w4-rJb"/>
-                                                                        </constraints>
-                                                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="16"/>
-                                                                        <color key="textColor" name="Steel"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="예약권" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="inf-cT-ryg" userLabel="Label - ProductType Field">
-                                                                        <rect key="frame" x="352" y="60" width="42" height="16"/>
-                                                                        <constraints>
-                                                                            <constraint firstAttribute="height" constant="16" id="9lb-ut-tZ4"/>
-                                                                        </constraints>
-                                                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="16"/>
-                                                                        <nil key="textColor"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="결제일자" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GhC-5V-JgU" userLabel="Label - Date Title">
-                                                                        <rect key="frame" x="20" y="96" width="55.5" height="16"/>
-                                                                        <constraints>
-                                                                            <constraint firstAttribute="height" constant="16" id="FDD-A2-HKH"/>
-                                                                        </constraints>
-                                                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="16"/>
-                                                                        <color key="textColor" name="Steel"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="2019. 3. 22. 월요일" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PAr-Yx-xo5" userLabel="Label - Date Field">
-                                                                        <rect key="frame" x="270" y="96" width="124" height="16"/>
-                                                                        <constraints>
-                                                                            <constraint firstAttribute="height" constant="16" id="c7y-fZ-JvD"/>
-                                                                        </constraints>
-                                                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="16"/>
-                                                                        <color key="textColor" name="DarkGrey"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                </subviews>
-                                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                                                <constraints>
-                                                                    <constraint firstItem="PAr-Yx-xo5" firstAttribute="top" secondItem="inf-cT-ryg" secondAttribute="bottom" constant="20" id="7Eh-gK-Hd6"/>
-                                                                    <constraint firstAttribute="height" constant="132" id="7Js-JO-rYJ"/>
-                                                                    <constraint firstItem="GhC-5V-JgU" firstAttribute="leading" secondItem="UYH-UR-IzA" secondAttribute="leading" constant="20" id="9vr-cq-Ape"/>
-                                                                    <constraint firstItem="CMW-da-U6R" firstAttribute="top" secondItem="Caq-7R-fIj" secondAttribute="bottom" constant="20" id="AVh-nC-FRM"/>
-                                                                    <constraint firstAttribute="bottom" secondItem="GhC-5V-JgU" secondAttribute="bottom" constant="20" id="DEJ-1j-Uzv"/>
-                                                                    <constraint firstItem="inf-cT-ryg" firstAttribute="top" secondItem="a4a-32-rqJ" secondAttribute="bottom" constant="20" id="FK2-8g-Odq"/>
-                                                                    <constraint firstItem="Caq-7R-fIj" firstAttribute="top" secondItem="UYH-UR-IzA" secondAttribute="top" constant="24" id="KwP-Om-2lE"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="a4a-32-rqJ" secondAttribute="trailing" constant="20" id="PSg-9H-Avl"/>
-                                                                    <constraint firstItem="Caq-7R-fIj" firstAttribute="leading" secondItem="UYH-UR-IzA" secondAttribute="leading" constant="20" id="PUA-fg-TcY"/>
-                                                                    <constraint firstItem="CMW-da-U6R" firstAttribute="leading" secondItem="UYH-UR-IzA" secondAttribute="leading" constant="20" id="U8j-62-fwy"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="PAr-Yx-xo5" secondAttribute="trailing" constant="20" id="VuO-dn-1qe"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="inf-cT-ryg" secondAttribute="trailing" constant="20" id="ZZy-64-Lrg"/>
-                                                                    <constraint firstItem="GhC-5V-JgU" firstAttribute="top" secondItem="CMW-da-U6R" secondAttribute="bottom" constant="20" id="ih8-x3-KE4"/>
-                                                                    <constraint firstItem="a4a-32-rqJ" firstAttribute="top" secondItem="UYH-UR-IzA" secondAttribute="top" constant="24" id="txw-tU-vQc"/>
-                                                                </constraints>
-                                                                <connections>
-                                                                    <outlet property="parkinglotFieldLabel" destination="a4a-32-rqJ" id="3T8-la-e5X"/>
-                                                                    <outlet property="parkinglotTitleLabel" destination="Caq-7R-fIj" id="bvC-NN-wps"/>
-                                                                    <outlet property="paymentDateFieldLabel" destination="PAr-Yx-xo5" id="EKC-nz-5ul"/>
-                                                                    <outlet property="paymentDateTitleLabel" destination="GhC-5V-JgU" id="MKN-pi-wkJ"/>
-                                                                    <outlet property="productTypeFieldLabel" destination="inf-cT-ryg" id="ImN-l9-rqf"/>
-                                                                    <outlet property="productTypeTitleLabel" destination="CMW-da-U6R" id="Q9G-Ws-e3G"/>
-                                                                </connections>
-                                                            </view>
-                                                            <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EEl-Lc-RRf" userLabel="View - Time" customClass="PaymentProductInfoTimeView" customModule="ParkingFriends" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="180" width="414" height="72"/>
-                                                                <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="예약일자" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b5y-im-agD" userLabel="Label - Name(Date)">
-                                                                        <rect key="frame" x="20" y="0.0" width="55.5" height="16"/>
-                                                                        <constraints>
-                                                                            <constraint firstAttribute="height" constant="16" id="xop-2H-yoe"/>
-                                                                        </constraints>
-                                                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="16"/>
-                                                                        <color key="textColor" name="Steel"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="2019. 3. 23. 화요일" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vZh-3Z-uES" userLabel="Label - Contents(Date)">
-                                                                        <rect key="frame" x="270" y="0.0" width="124" height="16"/>
-                                                                        <constraints>
-                                                                            <constraint firstAttribute="height" constant="16" id="r04-jf-KKg"/>
-                                                                        </constraints>
-                                                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="16"/>
-                                                                        <color key="textColor" name="DarkGrey"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="10:00 ~ 15:00 (5시간)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rIb-sc-rgR" userLabel="Label - Contents(Time)">
-                                                                        <rect key="frame" x="248" y="36" width="146" height="16"/>
-                                                                        <constraints>
-                                                                            <constraint firstAttribute="height" constant="16" id="wKC-ur-AOj"/>
-                                                                        </constraints>
-                                                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="16"/>
-                                                                        <color key="textColor" name="DarkGrey"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="예약시간" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HZZ-8h-rLB" userLabel="Label - Name(Time)">
-                                                                        <rect key="frame" x="20" y="36" width="55.5" height="16"/>
-                                                                        <constraints>
-                                                                            <constraint firstAttribute="height" constant="16" id="mFf-dN-KXD"/>
-                                                                        </constraints>
-                                                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="16"/>
-                                                                        <color key="textColor" name="Steel"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                </subviews>
-                                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                                                <constraints>
-                                                                    <constraint firstItem="HZZ-8h-rLB" firstAttribute="leading" secondItem="EEl-Lc-RRf" secondAttribute="leading" constant="20" id="8Jn-fh-TpC"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="rIb-sc-rgR" secondAttribute="trailing" constant="20" id="8ou-Bo-EJj"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="vZh-3Z-uES" secondAttribute="trailing" constant="20" id="IHf-3a-PDy"/>
-                                                                    <constraint firstItem="rIb-sc-rgR" firstAttribute="top" secondItem="vZh-3Z-uES" secondAttribute="bottom" constant="20" id="J4O-L3-xUj"/>
-                                                                    <constraint firstAttribute="bottom" secondItem="rIb-sc-rgR" secondAttribute="bottom" constant="20" id="RSh-NA-mBU"/>
-                                                                    <constraint firstItem="HZZ-8h-rLB" firstAttribute="top" secondItem="b5y-im-agD" secondAttribute="bottom" constant="20" id="XbB-8b-2iS"/>
-                                                                    <constraint firstAttribute="bottom" secondItem="HZZ-8h-rLB" secondAttribute="bottom" constant="20" id="huN-N8-COf"/>
-                                                                    <constraint firstItem="b5y-im-agD" firstAttribute="leading" secondItem="EEl-Lc-RRf" secondAttribute="leading" constant="20" id="mag-z7-hQm"/>
-                                                                    <constraint firstItem="vZh-3Z-uES" firstAttribute="top" secondItem="EEl-Lc-RRf" secondAttribute="top" id="oNL-4P-hVD"/>
-                                                                    <constraint firstItem="b5y-im-agD" firstAttribute="top" secondItem="EEl-Lc-RRf" secondAttribute="top" id="tG0-fY-ewu"/>
-                                                                </constraints>
-                                                                <connections>
-                                                                    <outlet property="reserveDatFieldLabel" destination="vZh-3Z-uES" id="lNY-Qz-KyA"/>
-                                                                    <outlet property="reserveDateTitleLabel" destination="b5y-im-agD" id="AZt-MT-csO"/>
-                                                                    <outlet property="reserveTimeFieldLabel" destination="rIb-sc-rgR" id="c3n-sc-QOX"/>
-                                                                    <outlet property="reserveTimeTitleLabel" destination="HZZ-8h-rLB" id="TH3-kc-xGz"/>
-                                                                </connections>
-                                                            </view>
-                                                            <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hei-Ja-Z2H" userLabel="View - Monthly" customClass="PaymentProductInfoMonthlyView" customModule="ParkingFriends" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="252" width="414" height="72"/>
-                                                                <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="시작일자" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QW6-le-6oC" userLabel="Label - Name(Date)">
-                                                                        <rect key="frame" x="20" y="0.0" width="55.5" height="16"/>
-                                                                        <constraints>
-                                                                            <constraint firstAttribute="height" constant="16" id="4u4-2H-pMw"/>
-                                                                        </constraints>
-                                                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="16"/>
-                                                                        <color key="textColor" name="Steel"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="2019. 4. 1. 수요일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ng3-lQ-wQy" userLabel="Label - Contents(Date)">
-                                                                        <rect key="frame" x="281" y="0.0" width="113" height="16"/>
-                                                                        <constraints>
-                                                                            <constraint firstAttribute="height" constant="16" id="V53-kv-pnX"/>
-                                                                        </constraints>
-                                                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="16"/>
-                                                                        <color key="textColor" name="DarkGrey"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="2019. 5. 1. 금요일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ia-W6-zcF" userLabel="Label - Contents(Time)">
-                                                                        <rect key="frame" x="282" y="36" width="112" height="16"/>
-                                                                        <constraints>
-                                                                            <constraint firstAttribute="height" constant="16" id="vUp-2o-ow1"/>
-                                                                        </constraints>
-                                                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="16"/>
-                                                                        <color key="textColor" name="DarkGrey"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="종료일자" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ny-BV-j7a" userLabel="Label - Name(Time)">
-                                                                        <rect key="frame" x="20" y="36" width="55.5" height="16"/>
-                                                                        <constraints>
-                                                                            <constraint firstAttribute="height" constant="16" id="I8p-A6-LXe"/>
-                                                                        </constraints>
-                                                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="16"/>
-                                                                        <color key="textColor" name="Steel"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                </subviews>
-                                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                                                <constraints>
-                                                                    <constraint firstItem="9Ny-BV-j7a" firstAttribute="top" secondItem="QW6-le-6oC" secondAttribute="bottom" constant="20" id="0f1-4A-Ga4"/>
-                                                                    <constraint firstItem="QW6-le-6oC" firstAttribute="leading" secondItem="Hei-Ja-Z2H" secondAttribute="leading" constant="20" id="7AQ-8M-WXR"/>
-                                                                    <constraint firstItem="Ng3-lQ-wQy" firstAttribute="top" secondItem="Hei-Ja-Z2H" secondAttribute="top" id="DDZ-iC-fPv"/>
-                                                                    <constraint firstItem="9Ny-BV-j7a" firstAttribute="leading" secondItem="Hei-Ja-Z2H" secondAttribute="leading" constant="20" id="HZk-lS-Ops"/>
-                                                                    <constraint firstAttribute="bottom" secondItem="7ia-W6-zcF" secondAttribute="bottom" constant="20" id="L5c-Nq-HFc"/>
-                                                                    <constraint firstAttribute="bottom" secondItem="9Ny-BV-j7a" secondAttribute="bottom" constant="20" id="TNe-VY-8TP"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="7ia-W6-zcF" secondAttribute="trailing" constant="20" id="jME-kn-ZKA"/>
-                                                                    <constraint firstItem="QW6-le-6oC" firstAttribute="top" secondItem="Hei-Ja-Z2H" secondAttribute="top" id="rjg-Ww-1sZ"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="Ng3-lQ-wQy" secondAttribute="trailing" constant="20" id="sRp-x8-GIR"/>
-                                                                    <constraint firstItem="7ia-W6-zcF" firstAttribute="top" secondItem="Ng3-lQ-wQy" secondAttribute="bottom" constant="20" id="usQ-zq-cNh"/>
-                                                                </constraints>
-                                                                <connections>
-                                                                    <outlet property="endDateFieldLabel" destination="7ia-W6-zcF" id="k9z-5g-3yE"/>
-                                                                    <outlet property="endDateTitleLabel" destination="9Ny-BV-j7a" id="JtX-mL-Rb9"/>
-                                                                    <outlet property="startDatFieldLabel" destination="Ng3-lQ-wQy" id="mze-g9-qLb"/>
-                                                                    <outlet property="startDateTitleLabel" destination="QW6-le-6oC" id="2k6-rV-bxp"/>
-                                                                </connections>
-                                                            </view>
-                                                            <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ycD-8j-0wE" userLabel="View - Fixed">
-                                                                <rect key="frame" x="0.0" y="324" width="414" height="36"/>
-                                                                <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="예약시간" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a33-kq-v6F" userLabel="Label - Name(Date)">
-                                                                        <rect key="frame" x="20" y="0.0" width="55.5" height="16"/>
-                                                                        <constraints>
-                                                                            <constraint firstAttribute="height" constant="16" id="CZH-Ia-yTa"/>
-                                                                        </constraints>
-                                                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="16"/>
-                                                                        <color key="textColor" name="Steel"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="10:00 ~ 13:00 (3시간)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9AW-BU-eVw" userLabel="Label - Contents(Date)">
-                                                                        <rect key="frame" x="246.5" y="0.0" width="147.5" height="16"/>
-                                                                        <constraints>
-                                                                            <constraint firstAttribute="height" constant="16" id="JnF-zF-Ihr"/>
-                                                                        </constraints>
-                                                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="16"/>
-                                                                        <color key="textColor" name="DarkGrey"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                </subviews>
-                                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                                                <constraints>
-                                                                    <constraint firstItem="9AW-BU-eVw" firstAttribute="top" secondItem="ycD-8j-0wE" secondAttribute="top" id="Auw-bn-27o"/>
-                                                                    <constraint firstAttribute="bottom" secondItem="9AW-BU-eVw" secondAttribute="bottom" constant="20" id="DMQ-hH-233"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="9AW-BU-eVw" secondAttribute="trailing" constant="20" id="F29-ZS-WcQ"/>
-                                                                    <constraint firstItem="a33-kq-v6F" firstAttribute="leading" secondItem="ycD-8j-0wE" secondAttribute="leading" constant="20" id="Lpm-qg-oVo"/>
-                                                                    <constraint firstItem="a33-kq-v6F" firstAttribute="top" secondItem="ycD-8j-0wE" secondAttribute="top" id="apj-XT-wqX"/>
-                                                                    <constraint firstAttribute="bottom" secondItem="a33-kq-v6F" secondAttribute="bottom" constant="20" id="jzS-7y-fJt"/>
-                                                                </constraints>
-                                                            </view>
-                                                            <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vy6-ZU-0oP" userLabel="View - No Registered Car" customClass="PaymentProductInfoCarView" customModule="ParkingFriends" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="360" width="414" height="94"/>
-                                                                <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="차량정보" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YTT-uQ-qDL" userLabel="Label - Name(Car)">
-                                                                        <rect key="frame" x="20" y="0.0" width="55.5" height="16"/>
-                                                                        <constraints>
-                                                                            <constraint firstAttribute="height" constant="16" id="uV7-vk-pea"/>
-                                                                        </constraints>
-                                                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="16"/>
-                                                                        <color key="textColor" name="Steel"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="등록된 차량 없음" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="anQ-7R-f7F" userLabel="Label - Contents(Car)">
-                                                                        <rect key="frame" x="279.5" y="0.0" width="105.5" height="16"/>
-                                                                        <constraints>
-                                                                            <constraint firstAttribute="height" constant="16" id="gMp-rD-o6M"/>
-                                                                        </constraints>
-                                                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="16"/>
-                                                                        <color key="textColor" name="Steel"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                    <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ERX-Vw-wYF" userLabel="Button - Registration">
-                                                                        <rect key="frame" x="306" y="36" width="96" height="36"/>
-                                                                        <color key="backgroundColor" name="AlgaeGreen"/>
-                                                                        <constraints>
-                                                                            <constraint firstAttribute="height" constant="36" id="wKL-kt-RfM"/>
-                                                                        </constraints>
-                                                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="15"/>
-                                                                        <inset key="contentEdgeInsets" minX="22" minY="0.0" maxX="22" maxY="0.0"/>
-                                                                        <state key="normal" title="차량등록">
-                                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                        </state>
-                                                                        <userDefinedRuntimeAttributes>
-                                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                                <real key="value" value="16"/>
-                                                                            </userDefinedRuntimeAttribute>
-                                                                        </userDefinedRuntimeAttributes>
-                                                                    </button>
-                                                                </subviews>
-                                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="trailing" secondItem="ERX-Vw-wYF" secondAttribute="trailing" constant="12" id="FwO-Ot-bhX"/>
-                                                                    <constraint firstItem="YTT-uQ-qDL" firstAttribute="top" secondItem="vy6-ZU-0oP" secondAttribute="top" id="GGn-Yn-BdP"/>
-                                                                    <constraint firstAttribute="bottom" secondItem="ERX-Vw-wYF" secondAttribute="bottom" constant="22" id="GLz-jc-Tm9"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="anQ-7R-f7F" secondAttribute="trailing" constant="29" id="NEt-B6-g08"/>
-                                                                    <constraint firstItem="ERX-Vw-wYF" firstAttribute="top" secondItem="anQ-7R-f7F" secondAttribute="bottom" constant="20" id="PNW-Gw-ql0"/>
-                                                                    <constraint firstItem="YTT-uQ-qDL" firstAttribute="leading" secondItem="vy6-ZU-0oP" secondAttribute="leading" constant="20" id="TVW-Wb-huB"/>
-                                                                    <constraint firstItem="anQ-7R-f7F" firstAttribute="top" secondItem="vy6-ZU-0oP" secondAttribute="top" id="o8n-qG-B5M"/>
-                                                                </constraints>
-                                                                <connections>
-                                                                    <outlet property="carInfoFieldLabel" destination="anQ-7R-f7F" id="3Cu-g3-dK4"/>
-                                                                    <outlet property="carInfoTitleLabel" destination="YTT-uQ-qDL" id="VTw-LP-L43"/>
-                                                                    <outlet property="submitButton" destination="ERX-Vw-wYF" id="O9E-qV-uG3"/>
-                                                                </connections>
-                                                            </view>
-                                                            <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DBz-Qq-2bd" userLabel="View - Change Car" customClass="PaymentProductInfoCarView" customModule="ParkingFriends" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="454" width="414" height="82"/>
-                                                                <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="차량정보" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nUZ-Cd-jfE" userLabel="Label - Name(Car)">
-                                                                        <rect key="frame" x="20" y="0.0" width="55.5" height="16"/>
-                                                                        <constraints>
-                                                                            <constraint firstAttribute="height" constant="16" id="5lu-MW-DW6"/>
-                                                                        </constraints>
-                                                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="16"/>
-                                                                        <color key="textColor" name="Steel"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                    <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="H6A-7y-lg8">
-                                                                        <rect key="frame" x="306" y="24" width="96" height="36"/>
+                                                                    <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UYH-UR-IzA" userLabel="View -  Basic Info" customClass="ParkingTicketBasicInfoView" customModule="ParkingFriends" customModuleProvider="target">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="418" height="132"/>
                                                                         <subviews>
-                                                                            <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h5N-O4-bke" userLabel="Button - Registration">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="96" height="36"/>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="주차장명" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Caq-7R-fIj" userLabel="Label - Parkinglot Title">
+                                                                                <rect key="frame" x="20" y="24" width="55.5" height="16"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="height" constant="16" id="orS-U6-qMt"/>
+                                                                                </constraints>
+                                                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="16"/>
+                                                                                <color key="textColor" name="Steel"/>
+                                                                                <nil key="highlightedColor"/>
+                                                                            </label>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="명달로주차장" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a4a-32-rqJ" userLabel="Label - Parkinglot Field">
+                                                                                <rect key="frame" x="309.5" y="24" width="88.5" height="16"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="height" constant="16" id="d8y-eE-qZL"/>
+                                                                                </constraints>
+                                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                <nil key="textColor"/>
+                                                                                <nil key="highlightedColor"/>
+                                                                            </label>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="구매상품" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CMW-da-U6R" userLabel="Label - ProductType Title">
+                                                                                <rect key="frame" x="20" y="60" width="55.5" height="16"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="height" constant="16" id="b5q-w4-rJb"/>
+                                                                                </constraints>
+                                                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="16"/>
+                                                                                <color key="textColor" name="Steel"/>
+                                                                                <nil key="highlightedColor"/>
+                                                                            </label>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="예약권" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="inf-cT-ryg" userLabel="Label - ProductType Field">
+                                                                                <rect key="frame" x="356" y="60" width="42" height="16"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="height" constant="16" id="9lb-ut-tZ4"/>
+                                                                                </constraints>
+                                                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="16"/>
+                                                                                <nil key="textColor"/>
+                                                                                <nil key="highlightedColor"/>
+                                                                            </label>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="결제일자" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GhC-5V-JgU" userLabel="Label - Date Title">
+                                                                                <rect key="frame" x="20" y="96" width="55.5" height="16"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="height" constant="16" id="FDD-A2-HKH"/>
+                                                                                </constraints>
+                                                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="16"/>
+                                                                                <color key="textColor" name="Steel"/>
+                                                                                <nil key="highlightedColor"/>
+                                                                            </label>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="2019. 3. 22. 월요일" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PAr-Yx-xo5" userLabel="Label - Date Field">
+                                                                                <rect key="frame" x="274" y="96" width="124" height="16"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="height" constant="16" id="c7y-fZ-JvD"/>
+                                                                                </constraints>
+                                                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="16"/>
+                                                                                <color key="textColor" name="DarkGrey"/>
+                                                                                <nil key="highlightedColor"/>
+                                                                            </label>
+                                                                        </subviews>
+                                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                        <constraints>
+                                                                            <constraint firstItem="PAr-Yx-xo5" firstAttribute="top" secondItem="inf-cT-ryg" secondAttribute="bottom" constant="20" id="7Eh-gK-Hd6"/>
+                                                                            <constraint firstAttribute="height" constant="132" id="7Js-JO-rYJ"/>
+                                                                            <constraint firstItem="GhC-5V-JgU" firstAttribute="leading" secondItem="UYH-UR-IzA" secondAttribute="leading" constant="20" id="9vr-cq-Ape"/>
+                                                                            <constraint firstItem="a4a-32-rqJ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Caq-7R-fIj" secondAttribute="trailing" constant="20" id="AVJ-bL-ofu"/>
+                                                                            <constraint firstItem="CMW-da-U6R" firstAttribute="top" secondItem="Caq-7R-fIj" secondAttribute="bottom" constant="20" id="AVh-nC-FRM"/>
+                                                                            <constraint firstItem="PAr-Yx-xo5" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="GhC-5V-JgU" secondAttribute="trailing" constant="20" id="B3L-yA-Yob"/>
+                                                                            <constraint firstAttribute="bottom" secondItem="GhC-5V-JgU" secondAttribute="bottom" constant="20" id="DEJ-1j-Uzv"/>
+                                                                            <constraint firstItem="inf-cT-ryg" firstAttribute="top" secondItem="a4a-32-rqJ" secondAttribute="bottom" constant="20" id="FK2-8g-Odq"/>
+                                                                            <constraint firstItem="Caq-7R-fIj" firstAttribute="top" secondItem="UYH-UR-IzA" secondAttribute="top" constant="24" id="KwP-Om-2lE"/>
+                                                                            <constraint firstAttribute="trailing" secondItem="a4a-32-rqJ" secondAttribute="trailing" constant="20" id="PSg-9H-Avl"/>
+                                                                            <constraint firstItem="Caq-7R-fIj" firstAttribute="leading" secondItem="UYH-UR-IzA" secondAttribute="leading" constant="20" id="PUA-fg-TcY"/>
+                                                                            <constraint firstItem="CMW-da-U6R" firstAttribute="leading" secondItem="UYH-UR-IzA" secondAttribute="leading" constant="20" id="U8j-62-fwy"/>
+                                                                            <constraint firstAttribute="trailing" secondItem="PAr-Yx-xo5" secondAttribute="trailing" constant="20" id="VuO-dn-1qe"/>
+                                                                            <constraint firstAttribute="trailing" secondItem="inf-cT-ryg" secondAttribute="trailing" constant="20" id="ZZy-64-Lrg"/>
+                                                                            <constraint firstItem="inf-cT-ryg" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="CMW-da-U6R" secondAttribute="trailing" constant="20" id="cXy-WD-zek"/>
+                                                                            <constraint firstItem="GhC-5V-JgU" firstAttribute="top" secondItem="CMW-da-U6R" secondAttribute="bottom" constant="20" id="ih8-x3-KE4"/>
+                                                                            <constraint firstItem="a4a-32-rqJ" firstAttribute="top" secondItem="UYH-UR-IzA" secondAttribute="top" constant="24" id="txw-tU-vQc"/>
+                                                                        </constraints>
+                                                                        <connections>
+                                                                            <outlet property="parkinglotNameLabel" destination="a4a-32-rqJ" id="65g-zl-KMN"/>
+                                                                            <outlet property="parkinglotNameTitleLabel" destination="Caq-7R-fIj" id="TDf-0Y-cQ4"/>
+                                                                            <outlet property="paymentDateLabel" destination="PAr-Yx-xo5" id="ag5-xc-z6G"/>
+                                                                            <outlet property="paymentDateTitleLabel" destination="GhC-5V-JgU" id="EoY-db-MMt"/>
+                                                                            <outlet property="productNameLabel" destination="inf-cT-ryg" id="bZ6-Hj-YOm"/>
+                                                                            <outlet property="productNameTitleLabel" destination="CMW-da-U6R" id="j5T-7F-5mN"/>
+                                                                        </connections>
+                                                                    </view>
+                                                                    <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EEl-Lc-RRf" userLabel="View - Time" customClass="ParkingTicketTimeInfoView" customModule="ParkingFriends" customModuleProvider="target">
+                                                                        <rect key="frame" x="0.0" y="132" width="418" height="72"/>
+                                                                        <subviews>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="예약일자" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b5y-im-agD" userLabel="Label - Date Title">
+                                                                                <rect key="frame" x="20" y="0.0" width="55.5" height="16"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="height" constant="16" id="xop-2H-yoe"/>
+                                                                                </constraints>
+                                                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="16"/>
+                                                                                <color key="textColor" name="Steel"/>
+                                                                                <nil key="highlightedColor"/>
+                                                                            </label>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="2019. 3. 23. 화요일" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vZh-3Z-uES" userLabel="Label - Date Field">
+                                                                                <rect key="frame" x="274" y="0.0" width="124" height="16"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="height" constant="16" id="r04-jf-KKg"/>
+                                                                                </constraints>
+                                                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="16"/>
+                                                                                <color key="textColor" name="DarkGrey"/>
+                                                                                <nil key="highlightedColor"/>
+                                                                            </label>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="예약시간" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HZZ-8h-rLB" userLabel="Label - Time Title">
+                                                                                <rect key="frame" x="20" y="36" width="55.5" height="16"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="height" constant="16" id="mFf-dN-KXD"/>
+                                                                                </constraints>
+                                                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="16"/>
+                                                                                <color key="textColor" name="Steel"/>
+                                                                                <nil key="highlightedColor"/>
+                                                                            </label>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="10:00 ~ 15:00 (5시간)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rIb-sc-rgR" userLabel="Label - Time Field">
+                                                                                <rect key="frame" x="252" y="36" width="146" height="16"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="height" constant="16" id="wKC-ur-AOj"/>
+                                                                                </constraints>
+                                                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="16"/>
+                                                                                <color key="textColor" name="DarkGrey"/>
+                                                                                <nil key="highlightedColor"/>
+                                                                            </label>
+                                                                        </subviews>
+                                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                        <constraints>
+                                                                            <constraint firstItem="HZZ-8h-rLB" firstAttribute="leading" secondItem="EEl-Lc-RRf" secondAttribute="leading" constant="20" id="8Jn-fh-TpC"/>
+                                                                            <constraint firstAttribute="trailing" secondItem="rIb-sc-rgR" secondAttribute="trailing" constant="20" id="8ou-Bo-EJj"/>
+                                                                            <constraint firstAttribute="trailing" secondItem="vZh-3Z-uES" secondAttribute="trailing" constant="20" id="IHf-3a-PDy"/>
+                                                                            <constraint firstItem="rIb-sc-rgR" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="HZZ-8h-rLB" secondAttribute="trailing" constant="20" id="Ik6-Bi-7dW"/>
+                                                                            <constraint firstItem="rIb-sc-rgR" firstAttribute="top" secondItem="vZh-3Z-uES" secondAttribute="bottom" constant="20" id="J4O-L3-xUj"/>
+                                                                            <constraint firstAttribute="bottom" secondItem="rIb-sc-rgR" secondAttribute="bottom" constant="20" id="RSh-NA-mBU"/>
+                                                                            <constraint firstAttribute="height" constant="72" id="Rd0-zz-La1"/>
+                                                                            <constraint firstItem="HZZ-8h-rLB" firstAttribute="top" secondItem="b5y-im-agD" secondAttribute="bottom" constant="20" id="XbB-8b-2iS"/>
+                                                                            <constraint firstItem="vZh-3Z-uES" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="b5y-im-agD" secondAttribute="trailing" constant="20" id="bGt-j7-Uc4"/>
+                                                                            <constraint firstAttribute="bottom" secondItem="HZZ-8h-rLB" secondAttribute="bottom" constant="20" id="huN-N8-COf"/>
+                                                                            <constraint firstItem="b5y-im-agD" firstAttribute="leading" secondItem="EEl-Lc-RRf" secondAttribute="leading" constant="20" id="mag-z7-hQm"/>
+                                                                            <constraint firstItem="vZh-3Z-uES" firstAttribute="top" secondItem="EEl-Lc-RRf" secondAttribute="top" id="oNL-4P-hVD"/>
+                                                                            <constraint firstItem="b5y-im-agD" firstAttribute="top" secondItem="EEl-Lc-RRf" secondAttribute="top" id="tG0-fY-ewu"/>
+                                                                        </constraints>
+                                                                        <connections>
+                                                                            <outlet property="reservationDateLabel" destination="vZh-3Z-uES" id="I8v-ky-R2W"/>
+                                                                            <outlet property="reservationDateTitleLabel" destination="b5y-im-agD" id="3mG-4c-eB4"/>
+                                                                            <outlet property="reservationTimeLabel" destination="rIb-sc-rgR" id="NyL-b6-lb6"/>
+                                                                            <outlet property="reservationTimeTitleLabel" destination="HZZ-8h-rLB" id="Xqb-As-JGQ"/>
+                                                                        </connections>
+                                                                    </view>
+                                                                    <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hei-Ja-Z2H" userLabel="View - Monthly" customClass="ParkingTicketMonthlyInfoView" customModule="ParkingFriends" customModuleProvider="target">
+                                                                        <rect key="frame" x="0.0" y="204" width="418" height="72"/>
+                                                                        <subviews>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="시작일자" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QW6-le-6oC" userLabel="Label - Start Title">
+                                                                                <rect key="frame" x="20" y="0.0" width="55.5" height="16"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="height" constant="16" id="4u4-2H-pMw"/>
+                                                                                </constraints>
+                                                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="16"/>
+                                                                                <color key="textColor" name="Steel"/>
+                                                                                <nil key="highlightedColor"/>
+                                                                            </label>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="2019. 4. 1. 수요일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ng3-lQ-wQy" userLabel="Label - Start Field">
+                                                                                <rect key="frame" x="285" y="0.0" width="113" height="16"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="height" constant="16" id="V53-kv-pnX"/>
+                                                                                </constraints>
+                                                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="16"/>
+                                                                                <color key="textColor" name="DarkGrey"/>
+                                                                                <nil key="highlightedColor"/>
+                                                                            </label>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="2019. 5. 1. 금요일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ia-W6-zcF" userLabel="Label - End Title">
+                                                                                <rect key="frame" x="286" y="36" width="112" height="16"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="height" constant="16" id="vUp-2o-ow1"/>
+                                                                                </constraints>
+                                                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="16"/>
+                                                                                <color key="textColor" name="DarkGrey"/>
+                                                                                <nil key="highlightedColor"/>
+                                                                            </label>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="종료일자" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ny-BV-j7a" userLabel="Label - End Field">
+                                                                                <rect key="frame" x="20" y="36" width="55.5" height="16"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="height" constant="16" id="I8p-A6-LXe"/>
+                                                                                </constraints>
+                                                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="16"/>
+                                                                                <color key="textColor" name="Steel"/>
+                                                                                <nil key="highlightedColor"/>
+                                                                            </label>
+                                                                        </subviews>
+                                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                        <constraints>
+                                                                            <constraint firstItem="9Ny-BV-j7a" firstAttribute="top" secondItem="QW6-le-6oC" secondAttribute="bottom" constant="20" id="0f1-4A-Ga4"/>
+                                                                            <constraint firstItem="QW6-le-6oC" firstAttribute="leading" secondItem="Hei-Ja-Z2H" secondAttribute="leading" constant="20" id="7AQ-8M-WXR"/>
+                                                                            <constraint firstAttribute="height" constant="72" id="8dC-a1-YUk"/>
+                                                                            <constraint firstItem="Ng3-lQ-wQy" firstAttribute="top" secondItem="Hei-Ja-Z2H" secondAttribute="top" id="DDZ-iC-fPv"/>
+                                                                            <constraint firstItem="9Ny-BV-j7a" firstAttribute="leading" secondItem="Hei-Ja-Z2H" secondAttribute="leading" constant="20" id="HZk-lS-Ops"/>
+                                                                            <constraint firstAttribute="bottom" secondItem="7ia-W6-zcF" secondAttribute="bottom" constant="20" id="L5c-Nq-HFc"/>
+                                                                            <constraint firstAttribute="bottom" secondItem="9Ny-BV-j7a" secondAttribute="bottom" constant="20" id="TNe-VY-8TP"/>
+                                                                            <constraint firstAttribute="trailing" secondItem="7ia-W6-zcF" secondAttribute="trailing" constant="20" id="jME-kn-ZKA"/>
+                                                                            <constraint firstItem="Ng3-lQ-wQy" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="QW6-le-6oC" secondAttribute="trailing" constant="20" id="po9-f7-ZoI"/>
+                                                                            <constraint firstItem="QW6-le-6oC" firstAttribute="top" secondItem="Hei-Ja-Z2H" secondAttribute="top" id="rjg-Ww-1sZ"/>
+                                                                            <constraint firstAttribute="trailing" secondItem="Ng3-lQ-wQy" secondAttribute="trailing" constant="20" id="sRp-x8-GIR"/>
+                                                                            <constraint firstItem="7ia-W6-zcF" firstAttribute="top" secondItem="Ng3-lQ-wQy" secondAttribute="bottom" constant="20" id="usQ-zq-cNh"/>
+                                                                            <constraint firstItem="7ia-W6-zcF" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="9Ny-BV-j7a" secondAttribute="trailing" constant="20" id="vXJ-G7-hiy"/>
+                                                                        </constraints>
+                                                                        <connections>
+                                                                            <outlet property="reservationDateEndLabel" destination="9Ny-BV-j7a" id="aQp-w6-8Ra"/>
+                                                                            <outlet property="reservationDateEndTitleLabel" destination="7ia-W6-zcF" id="qqh-eF-P6l"/>
+                                                                            <outlet property="reservationDateStartLabel" destination="Ng3-lQ-wQy" id="8ZW-tt-cL0"/>
+                                                                            <outlet property="reservationDateStartTitleLabel" destination="QW6-le-6oC" id="bT1-Rx-RPQ"/>
+                                                                        </connections>
+                                                                    </view>
+                                                                    <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ycD-8j-0wE" userLabel="View - Fixed" customClass="ParkingTicketFixedInfoView" customModule="ParkingFriends" customModuleProvider="target">
+                                                                        <rect key="frame" x="0.0" y="276" width="418" height="36"/>
+                                                                        <subviews>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="예약시간" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a33-kq-v6F" userLabel="Label - Date TiItle">
+                                                                                <rect key="frame" x="20" y="0.0" width="55.5" height="16"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="height" constant="16" id="CZH-Ia-yTa"/>
+                                                                                </constraints>
+                                                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="16"/>
+                                                                                <color key="textColor" name="Steel"/>
+                                                                                <nil key="highlightedColor"/>
+                                                                            </label>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="10:00 ~ 13:00 (3시간)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9AW-BU-eVw" userLabel="Label - Date Field">
+                                                                                <rect key="frame" x="250.5" y="0.0" width="147.5" height="16"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="height" constant="16" id="JnF-zF-Ihr"/>
+                                                                                </constraints>
+                                                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="16"/>
+                                                                                <color key="textColor" name="DarkGrey"/>
+                                                                                <nil key="highlightedColor"/>
+                                                                            </label>
+                                                                        </subviews>
+                                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                        <constraints>
+                                                                            <constraint firstItem="9AW-BU-eVw" firstAttribute="top" secondItem="ycD-8j-0wE" secondAttribute="top" id="Auw-bn-27o"/>
+                                                                            <constraint firstAttribute="bottom" secondItem="9AW-BU-eVw" secondAttribute="bottom" constant="20" id="DMQ-hH-233"/>
+                                                                            <constraint firstAttribute="trailing" secondItem="9AW-BU-eVw" secondAttribute="trailing" constant="20" id="F29-ZS-WcQ"/>
+                                                                            <constraint firstItem="a33-kq-v6F" firstAttribute="leading" secondItem="ycD-8j-0wE" secondAttribute="leading" constant="20" id="Lpm-qg-oVo"/>
+                                                                            <constraint firstAttribute="height" constant="36" id="XdA-ub-o7r"/>
+                                                                            <constraint firstItem="a33-kq-v6F" firstAttribute="top" secondItem="ycD-8j-0wE" secondAttribute="top" id="apj-XT-wqX"/>
+                                                                            <constraint firstAttribute="bottom" secondItem="a33-kq-v6F" secondAttribute="bottom" constant="20" id="jzS-7y-fJt"/>
+                                                                            <constraint firstItem="9AW-BU-eVw" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="a33-kq-v6F" secondAttribute="trailing" constant="20" id="tbt-kx-86v"/>
+                                                                        </constraints>
+                                                                        <connections>
+                                                                            <outlet property="reservationTimeLabel" destination="9AW-BU-eVw" id="JqZ-hG-5sk"/>
+                                                                            <outlet property="reservationTimeTitleLabel" destination="a33-kq-v6F" id="x7L-Hk-R5F"/>
+                                                                        </connections>
+                                                                    </view>
+                                                                    <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vy6-ZU-0oP" userLabel="View - No Registered Car" customClass="PaymentProductInfoCarView" customModule="ParkingFriends" customModuleProvider="target">
+                                                                        <rect key="frame" x="0.0" y="312" width="418" height="94"/>
+                                                                        <subviews>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="차량정보" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YTT-uQ-qDL" userLabel="Label - Name(Car)">
+                                                                                <rect key="frame" x="20" y="0.0" width="55.5" height="16"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="height" constant="16" id="uV7-vk-pea"/>
+                                                                                </constraints>
+                                                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="16"/>
+                                                                                <color key="textColor" name="Steel"/>
+                                                                                <nil key="highlightedColor"/>
+                                                                            </label>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="등록된 차량 없음" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="anQ-7R-f7F" userLabel="Label - Contents(Car)">
+                                                                                <rect key="frame" x="283.5" y="0.0" width="105.5" height="16"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="height" constant="16" id="gMp-rD-o6M"/>
+                                                                                </constraints>
+                                                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="16"/>
+                                                                                <color key="textColor" name="Steel"/>
+                                                                                <nil key="highlightedColor"/>
+                                                                            </label>
+                                                                            <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ERX-Vw-wYF" userLabel="Button - Registration">
+                                                                                <rect key="frame" x="310" y="36" width="96" height="36"/>
                                                                                 <color key="backgroundColor" name="AlgaeGreen"/>
                                                                                 <constraints>
-                                                                                    <constraint firstAttribute="height" constant="36" id="eQJ-qz-Fxz"/>
+                                                                                    <constraint firstAttribute="height" constant="36" id="wKL-kt-RfM"/>
                                                                                 </constraints>
                                                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="15"/>
                                                                                 <inset key="contentEdgeInsets" minX="22" minY="0.0" maxX="22" maxY="0.0"/>
-                                                                                <state key="normal" title="차량변경">
+                                                                                <state key="normal" title="차량등록">
                                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                 </state>
                                                                                 <userDefinedRuntimeAttributes>
@@ -538,45 +507,105 @@
                                                                                 </userDefinedRuntimeAttributes>
                                                                             </button>
                                                                         </subviews>
-                                                                    </stackView>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="경기7그3783" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SQi-qB-fUE" userLabel="Label - Contents(Car)">
-                                                                        <rect key="frame" x="244" y="0.0" width="150" height="16"/>
+                                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                                         <constraints>
-                                                                            <constraint firstAttribute="height" constant="16" id="N2f-Az-eKN"/>
-                                                                            <constraint firstAttribute="width" constant="150" id="aPg-Gl-7eh"/>
+                                                                            <constraint firstAttribute="trailing" secondItem="ERX-Vw-wYF" secondAttribute="trailing" constant="12" id="FwO-Ot-bhX"/>
+                                                                            <constraint firstItem="YTT-uQ-qDL" firstAttribute="top" secondItem="vy6-ZU-0oP" secondAttribute="top" id="GGn-Yn-BdP"/>
+                                                                            <constraint firstAttribute="bottom" secondItem="ERX-Vw-wYF" secondAttribute="bottom" constant="22" id="GLz-jc-Tm9"/>
+                                                                            <constraint firstAttribute="trailing" secondItem="anQ-7R-f7F" secondAttribute="trailing" constant="29" id="NEt-B6-g08"/>
+                                                                            <constraint firstItem="ERX-Vw-wYF" firstAttribute="top" secondItem="anQ-7R-f7F" secondAttribute="bottom" constant="20" id="PNW-Gw-ql0"/>
+                                                                            <constraint firstItem="YTT-uQ-qDL" firstAttribute="leading" secondItem="vy6-ZU-0oP" secondAttribute="leading" constant="20" id="TVW-Wb-huB"/>
+                                                                            <constraint firstItem="anQ-7R-f7F" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="YTT-uQ-qDL" secondAttribute="trailing" constant="20" id="bp5-AP-q85"/>
+                                                                            <constraint firstAttribute="height" constant="94" id="hCI-FW-rN5"/>
+                                                                            <constraint firstItem="anQ-7R-f7F" firstAttribute="top" secondItem="vy6-ZU-0oP" secondAttribute="top" id="o8n-qG-B5M"/>
                                                                         </constraints>
-                                                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="16"/>
-                                                                        <color key="textColor" name="DarkGrey"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
+                                                                        <connections>
+                                                                            <outlet property="carInfoFieldLabel" destination="anQ-7R-f7F" id="3Cu-g3-dK4"/>
+                                                                            <outlet property="carInfoTitleLabel" destination="YTT-uQ-qDL" id="VTw-LP-L43"/>
+                                                                            <outlet property="submitButton" destination="ERX-Vw-wYF" id="O9E-qV-uG3"/>
+                                                                        </connections>
+                                                                    </view>
+                                                                    <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DBz-Qq-2bd" userLabel="View - Change Car" customClass="ParkingCarInfoView" customModule="ParkingFriends" customModuleProvider="target">
+                                                                        <rect key="frame" x="0.0" y="406" width="418" height="82"/>
+                                                                        <subviews>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="차량정보" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nUZ-Cd-jfE" userLabel="Label - CarNumber TItle">
+                                                                                <rect key="frame" x="20" y="0.0" width="55.5" height="16"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="height" constant="16" id="5lu-MW-DW6"/>
+                                                                                </constraints>
+                                                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="16"/>
+                                                                                <color key="textColor" name="Steel"/>
+                                                                                <nil key="highlightedColor"/>
+                                                                            </label>
+                                                                            <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="H6A-7y-lg8">
+                                                                                <rect key="frame" x="310" y="24" width="96" height="36"/>
+                                                                                <subviews>
+                                                                                    <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h5N-O4-bke" userLabel="Button - Registration">
+                                                                                        <rect key="frame" x="0.0" y="0.0" width="96" height="36"/>
+                                                                                        <color key="backgroundColor" name="AlgaeGreen"/>
+                                                                                        <constraints>
+                                                                                            <constraint firstAttribute="height" constant="36" id="eQJ-qz-Fxz"/>
+                                                                                        </constraints>
+                                                                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="15"/>
+                                                                                        <inset key="contentEdgeInsets" minX="22" minY="0.0" maxX="22" maxY="0.0"/>
+                                                                                        <state key="normal" title="차량변경">
+                                                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                        </state>
+                                                                                        <userDefinedRuntimeAttributes>
+                                                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                                                <real key="value" value="16"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                        </userDefinedRuntimeAttributes>
+                                                                                    </button>
+                                                                                </subviews>
+                                                                            </stackView>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="경기7그3783" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SQi-qB-fUE" userLabel="Label -CarNumber Field">
+                                                                                <rect key="frame" x="314" y="0.0" width="84" height="16"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="height" constant="16" id="N2f-Az-eKN"/>
+                                                                                </constraints>
+                                                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="16"/>
+                                                                                <color key="textColor" name="DarkGrey"/>
+                                                                                <nil key="highlightedColor"/>
+                                                                            </label>
+                                                                        </subviews>
+                                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                        <constraints>
+                                                                            <constraint firstItem="H6A-7y-lg8" firstAttribute="top" secondItem="SQi-qB-fUE" secondAttribute="bottom" constant="8" id="6CC-qu-I0W"/>
+                                                                            <constraint firstAttribute="height" constant="82" id="768-Bg-fbG"/>
+                                                                            <constraint firstItem="SQi-qB-fUE" firstAttribute="top" secondItem="DBz-Qq-2bd" secondAttribute="top" id="Akr-Ie-b34"/>
+                                                                            <constraint firstItem="nUZ-Cd-jfE" firstAttribute="leading" secondItem="DBz-Qq-2bd" secondAttribute="leading" constant="20" id="CeK-AZ-Odf"/>
+                                                                            <constraint firstAttribute="bottom" secondItem="H6A-7y-lg8" secondAttribute="bottom" constant="22" id="OuN-nw-k1a"/>
+                                                                            <constraint firstAttribute="trailing" secondItem="H6A-7y-lg8" secondAttribute="trailing" constant="12" id="UQX-SL-L0m"/>
+                                                                            <constraint firstAttribute="trailing" secondItem="SQi-qB-fUE" secondAttribute="trailing" constant="20" id="XJh-vs-Jmj"/>
+                                                                            <constraint firstAttribute="trailing" secondItem="H6A-7y-lg8" secondAttribute="trailing" constant="12" id="XKv-uj-f7q"/>
+                                                                            <constraint firstItem="nUZ-Cd-jfE" firstAttribute="top" secondItem="DBz-Qq-2bd" secondAttribute="top" id="XmR-zx-fP4"/>
+                                                                            <constraint firstItem="SQi-qB-fUE" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="nUZ-Cd-jfE" secondAttribute="trailing" constant="20" id="fD5-nj-a5o"/>
+                                                                        </constraints>
+                                                                        <connections>
+                                                                            <outlet property="carInfoTitleLabel" destination="nUZ-Cd-jfE" id="0Jg-4G-skG"/>
+                                                                            <outlet property="carNumberLabel" destination="SQi-qB-fUE" id="Qar-Ad-alm"/>
+                                                                        </connections>
+                                                                    </view>
                                                                 </subviews>
-                                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                                                <constraints>
-                                                                    <constraint firstItem="H6A-7y-lg8" firstAttribute="top" secondItem="SQi-qB-fUE" secondAttribute="bottom" constant="8" id="6CC-qu-I0W"/>
-                                                                    <constraint firstItem="SQi-qB-fUE" firstAttribute="top" secondItem="DBz-Qq-2bd" secondAttribute="top" id="Akr-Ie-b34"/>
-                                                                    <constraint firstItem="nUZ-Cd-jfE" firstAttribute="leading" secondItem="DBz-Qq-2bd" secondAttribute="leading" constant="20" id="CeK-AZ-Odf"/>
-                                                                    <constraint firstAttribute="bottom" secondItem="H6A-7y-lg8" secondAttribute="bottom" constant="22" id="OuN-nw-k1a"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="H6A-7y-lg8" secondAttribute="trailing" constant="12" id="UQX-SL-L0m"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="SQi-qB-fUE" secondAttribute="trailing" constant="20" id="XJh-vs-Jmj"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="H6A-7y-lg8" secondAttribute="trailing" constant="12" id="XKv-uj-f7q"/>
-                                                                    <constraint firstItem="nUZ-Cd-jfE" firstAttribute="top" secondItem="DBz-Qq-2bd" secondAttribute="top" id="XmR-zx-fP4"/>
-                                                                </constraints>
                                                                 <connections>
-                                                                    <outlet property="carInfoFieldLabel" destination="SQi-qB-fUE" id="hlB-nB-OKh"/>
-                                                                    <outlet property="carInfoTitleLabel" destination="nUZ-Cd-jfE" id="AUn-VV-hoC"/>
-                                                                    <outlet property="submitButton" destination="h5N-O4-bke" id="zk7-su-FnM"/>
+                                                                    <outlet property="carInfoView" destination="DBz-Qq-2bd" id="cMh-YK-nI2"/>
+                                                                    <outlet property="fixedTicketInfoView" destination="ycD-8j-0wE" id="ySO-fN-Ppg"/>
+                                                                    <outlet property="monthlyTicketInfoView" destination="Hei-Ja-Z2H" id="nOd-qO-qU2"/>
+                                                                    <outlet property="parkingBasicInfoView" destination="UYH-UR-IzA" id="5GO-Ry-MKi"/>
+                                                                    <outlet property="timeTicketInfoView" destination="EEl-Lc-RRf" id="0Hm-fR-X54"/>
                                                                 </connections>
-                                                            </view>
+                                                            </stackView>
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="6si-ro-GWX" userLabel="Stack View - Payment Methods" customClass="PaymentMethodView" customModule="ParkingFriends" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="536" width="414" height="284"/>
+                                                        <rect key="frame" x="0.0" y="536" width="418" height="284"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dnu-P3-U4P" userLabel="View - Header">
-                                                                <rect key="frame" x="0.0" y="0.0" width="414" height="48"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="418" height="48"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="결제 수단" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g0q-r3-eLb" userLabel="Label - TItle">
-                                                                        <rect key="frame" x="18" y="22.5" width="378" height="19.5"/>
+                                                                        <rect key="frame" x="18" y="22.5" width="382" height="19.5"/>
                                                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="16"/>
                                                                         <color key="textColor" name="DarkGrey"/>
                                                                         <nil key="highlightedColor"/>
@@ -591,10 +620,10 @@
                                                                 </constraints>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NF2-ef-tO8" userLabel="View - Payment Methods">
-                                                                <rect key="frame" x="0.0" y="48" width="414" height="236"/>
+                                                                <rect key="frame" x="0.0" y="48" width="418" height="236"/>
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9zU-QP-dUx" userLabel="Button - Simple Card">
-                                                                        <rect key="frame" x="12" y="24" width="390" height="56"/>
+                                                                        <rect key="frame" x="12" y="24" width="394" height="56"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="56" id="bgb-zw-n7f"/>
                                                                         </constraints>
@@ -615,7 +644,7 @@
                                                                         </userDefinedRuntimeAttributes>
                                                                     </button>
                                                                     <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UKv-UG-kRU" userLabel="Button - Kakao">
-                                                                        <rect key="frame" x="12" y="90" width="390" height="56"/>
+                                                                        <rect key="frame" x="12" y="90" width="394" height="56"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="56" id="cix-dj-Ocn"/>
                                                                         </constraints>
@@ -636,7 +665,7 @@
                                                                         </userDefinedRuntimeAttributes>
                                                                     </button>
                                                                     <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hQF-GU-0QJ" userLabel="Button - Normal Card, Bank, Cellular">
-                                                                        <rect key="frame" x="12" y="156" width="390" height="56"/>
+                                                                        <rect key="frame" x="12" y="156" width="394" height="56"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="56" id="dpu-5b-Yi2"/>
                                                                         </constraints>
@@ -680,13 +709,13 @@
                                                         </connections>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Sne-W8-qaf" userLabel="Stack View - Point" customClass="PaymentPointView" customModule="ParkingFriends" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="820" width="414" height="113"/>
+                                                        <rect key="frame" x="0.0" y="820" width="418" height="113"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cDI-b5-GbF" userLabel="View - Header">
-                                                                <rect key="frame" x="0.0" y="0.0" width="414" height="48"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="418" height="48"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="포인트" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7T5-3t-NIS" userLabel="Label - TItle">
-                                                                        <rect key="frame" x="18" y="22.5" width="378" height="19.5"/>
+                                                                        <rect key="frame" x="18" y="22.5" width="382" height="19.5"/>
                                                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="16"/>
                                                                         <color key="textColor" name="DarkGrey"/>
                                                                         <nil key="highlightedColor"/>
@@ -701,7 +730,7 @@
                                                                 </constraints>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hhr-eI-s4n" userLabel="View - Point">
-                                                                <rect key="frame" x="0.0" y="48" width="414" height="65"/>
+                                                                <rect key="frame" x="0.0" y="48" width="418" height="65"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="포인트" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hj1-s2-mPg" userLabel="Label - Tile">
                                                                         <rect key="frame" x="20" y="25" width="42" height="19.5"/>
@@ -710,7 +739,7 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="보유 포인트 없음" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DVP-79-Ac7" userLabel="Label - Point">
-                                                                        <rect key="frame" x="288.5" y="24" width="105.5" height="19.5"/>
+                                                                        <rect key="frame" x="292.5" y="24" width="105.5" height="19.5"/>
                                                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="16"/>
                                                                         <color key="textColor" name="Steel"/>
                                                                         <nil key="highlightedColor"/>
@@ -728,13 +757,13 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="hyv-Co-zyF" userLabel="Stack View - GIft" customClass="PaymentGiftView" customModule="ParkingFriends" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="933" width="414" height="218"/>
+                                                        <rect key="frame" x="0.0" y="933" width="418" height="218"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CNp-WU-Fwf" userLabel="View - Header">
-                                                                <rect key="frame" x="0.0" y="0.0" width="414" height="48"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="418" height="48"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="받는 분 정보" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tme-zY-9Dr" userLabel="Label - TItle">
-                                                                        <rect key="frame" x="18" y="22.5" width="378" height="19.5"/>
+                                                                        <rect key="frame" x="18" y="22.5" width="382" height="19.5"/>
                                                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="16"/>
                                                                         <color key="textColor" name="DarkGrey"/>
                                                                         <nil key="highlightedColor"/>
@@ -749,7 +778,7 @@
                                                                 </constraints>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6De-Nt-ehF" userLabel="View - Gift">
-                                                                <rect key="frame" x="0.0" y="48" width="414" height="170"/>
+                                                                <rect key="frame" x="0.0" y="48" width="418" height="170"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="포인트" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yZ1-bq-lA7" userLabel="Label - Car Number">
                                                                         <rect key="frame" x="20" y="45.5" width="42" height="16"/>
@@ -761,7 +790,7 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <textField opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="차량번호 입력" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dl8-u9-lGv" userLabel="Text Field - Car Number">
-                                                                        <rect key="frame" x="116" y="24" width="282" height="59"/>
+                                                                        <rect key="frame" x="116" y="24" width="286" height="59"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="59" id="2IH-zS-h0b"/>
                                                                         </constraints>
@@ -786,7 +815,7 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <textField opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="-를 빼고 입력" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HgS-7c-36B" userLabel="Text Field - Phone Number">
-                                                                        <rect key="frame" x="119" y="93" width="279" height="56"/>
+                                                                        <rect key="frame" x="119" y="93" width="283" height="56"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="56" id="XxQ-xt-H4f"/>
                                                                         </constraints>
@@ -820,20 +849,20 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="JGo-co-v8U" userLabel="Stack View - Usage">
-                                                        <rect key="frame" x="0.0" y="1151" width="414" height="148"/>
+                                                        <rect key="frame" x="0.0" y="1151" width="418" height="148"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jqj-ri-Pxo" userLabel="View - Header">
-                                                                <rect key="frame" x="0.0" y="0.0" width="414" height="20"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="418" height="20"/>
                                                                 <color key="backgroundColor" name="IceBlue"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="20" id="YD2-HD-qD3"/>
                                                                 </constraints>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wwn-tn-tyU" userLabel="View - Point">
-                                                                <rect key="frame" x="0.0" y="20" width="414" height="128"/>
+                                                                <rect key="frame" x="0.0" y="20" width="418" height="128"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="유의사항을 확인했으며, 개인정보 제3자 제공에 동의합니다." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0jM-Q9-csH" userLabel="Label - Guide">
-                                                                        <rect key="frame" x="16" y="21" width="309" height="41"/>
+                                                                        <rect key="frame" x="16" y="21" width="313" height="41"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -845,13 +874,13 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="2,8000원" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cuL-o6-GWz" userLabel="Label - Price Title">
-                                                                        <rect key="frame" x="168" y="86" width="211" height="24"/>
+                                                                        <rect key="frame" x="168" y="86" width="215" height="24"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                                         <color key="textColor" name="DarkGrey"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fhf-Mw-awI">
-                                                                        <rect key="frame" x="368" y="25" width="30" height="30"/>
+                                                                        <rect key="frame" x="372" y="25" width="30" height="30"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="30" id="kHx-S4-Nqm"/>
                                                                             <constraint firstAttribute="height" constant="30" id="l8s-2D-VPX"/>
@@ -978,13 +1007,13 @@
                         <outlet property="paymentButton" destination="RhE-zX-wK1" id="hla-Cq-Zsq"/>
                         <outlet property="paymentGiftView" destination="hyv-Co-zyF" id="Qpo-sG-j64"/>
                         <outlet property="paymentMehodView" destination="6si-ro-GWX" id="BKd-tc-xCE"/>
+                        <outlet property="paymentParkingInfoView" destination="KuG-fZ-HIb" id="TCC-AI-EEU"/>
                         <outlet property="paymentPointView" destination="Sne-W8-qaf" id="kSE-MC-KuZ"/>
-                        <outlet property="productInfoView" destination="hxS-6I-we1" id="Pe4-NJ-nTg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q9x-3S-YPd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="767" y="-682"/>
+            <point key="canvasLocation" x="766.66666666666674" y="-682.36607142857144"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gDx-3B-WXn">
@@ -1068,6 +1097,72 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oNq-s6-eel" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2771.0144927536235" y="-596.65178571428567"/>
+        </scene>
+        <!--Payment Receipt View Controller-->
+        <scene sceneID="pox-3s-Ilu">
+            <objects>
+                <viewController storyboardIdentifier="PaymentReceiptViewController" id="HIl-79-pqQ" customClass="PaymentReceiptViewController" customModule="ParkingFriends" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vEJ-de-N0d">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qRr-xC-fjr" userLabel="Web View - Web View">
+                                <rect key="frame" x="0.0" y="44" width="414" height="762"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                            <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="CwC-TU-U6E" userLabel="Stack View - Button Area">
+                                <rect key="frame" x="0.0" y="806" width="414" height="56"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WDV-8O-giI" userLabel="Button - Close">
+                                        <rect key="frame" x="0.0" y="0.0" width="207" height="56"/>
+                                        <color key="backgroundColor" name="CharcoalGrey"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="56" id="3v6-GJ-eQT"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="16"/>
+                                        <state key="normal" title="닫기">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EfF-1M-CWG" userLabel="Button - Sharing">
+                                        <rect key="frame" x="207" y="0.0" width="207" height="56"/>
+                                        <color key="backgroundColor" name="AlgaeGreen"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="56" id="kvB-YX-b4d"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="16"/>
+                                        <state key="normal" title="공유 하기">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="JrY-Me-zmv" firstAttribute="bottom" secondItem="CwC-TU-U6E" secondAttribute="bottom" id="Fah-IU-gY5"/>
+                            <constraint firstItem="CwC-TU-U6E" firstAttribute="top" secondItem="qRr-xC-fjr" secondAttribute="bottom" id="JxM-GX-AIL"/>
+                            <constraint firstItem="qRr-xC-fjr" firstAttribute="top" secondItem="JrY-Me-zmv" secondAttribute="top" id="NGi-I4-RxQ"/>
+                            <constraint firstItem="JrY-Me-zmv" firstAttribute="trailing" secondItem="CwC-TU-U6E" secondAttribute="trailing" id="OAq-QD-7Zz"/>
+                            <constraint firstItem="CwC-TU-U6E" firstAttribute="leading" secondItem="vEJ-de-N0d" secondAttribute="leading" id="Zow-7D-cZE"/>
+                            <constraint firstItem="qRr-xC-fjr" firstAttribute="leading" secondItem="JrY-Me-zmv" secondAttribute="leading" id="bAE-6J-yDe"/>
+                            <constraint firstItem="JrY-Me-zmv" firstAttribute="trailing" secondItem="qRr-xC-fjr" secondAttribute="trailing" id="kgN-cJ-MNP"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="JrY-Me-zmv"/>
+                    </view>
+                    <connections>
+                        <outlet property="closeButton" destination="WDV-8O-giI" id="K6G-3l-3Oi"/>
+                        <outlet property="sharingButton" destination="EfF-1M-CWG" id="tiS-mr-gCx"/>
+                        <outlet property="webView" destination="qRr-xC-fjr" id="X8f-eg-kUY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t3a-jY-jX6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2771" y="180"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="3wy-N8-bhD">
@@ -2091,7 +2186,6 @@
         <image name="icBackBlack" width="24" height="24"/>
         <image name="icCheckGreen" width="22" height="22"/>
         <image name="icCheckOff" width="30" height="30"/>
-        <image name="icCheckOffSmall" width="20" height="20"/>
         <image name="icCheckOn" width="30" height="30"/>
         <image name="icCheckOnSmall" width="20" height="20"/>
         <image name="icCloseBlack" width="24" height="25"/>

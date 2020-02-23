@@ -38,6 +38,7 @@ protocol LoginViewModelType {
     var loginStatus:BehaviorRelay<VerificationStatus> { get set }
     
     func validateCredentials()
+    func message(_ status:VerificationStatus) -> String
 }
 
 class LoginViewModel: LoginViewModelType {
@@ -53,9 +54,13 @@ class LoginViewModel: LoginViewModelType {
     
     var loginStatus:BehaviorRelay<VerificationStatus> = BehaviorRelay(value:.none)
     
+    var localizer:LocalizerType
+    
     private let disposeBag = DisposeBag()
     
     init(localizer: LocalizerType = Localizer.shared) {
+        self.localizer = localizer
+        
         phoneNumberPlaceholder = localizer.localized("ph_input_phone_number")
         passwordPlaceholder = localizer.localized("ph_input_password")
         loginText = localizer.localized("btn_login")
@@ -65,12 +70,21 @@ class LoginViewModel: LoginViewModelType {
     
     // MARK: - Local Methods
     
-    private func updateStatus(_ status:VerificationStatus) {
+    func updateStatus(_ status:VerificationStatus) {
         self.loginStatus.accept(status)
     }
     
     // MARK: - Public Methods
     
+    func message(_ status:VerificationStatus) -> String {
+        switch status {
+        case .error:
+            return localizer.localized("msg_login_failed")
+        default :
+            return ""
+        }
+    }
+
     func validateCredentials() {
         if phoneNumberModel.validatePattern() == false {
             updateStatus(.error(.phoneNumber))
