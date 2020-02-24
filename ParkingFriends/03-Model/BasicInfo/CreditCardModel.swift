@@ -112,12 +112,11 @@ final class CreditCardModel: CreditCardModelType {
             let date = text.split(separator: "/")
             
             if date.count  == 2 {
-                // Edit by Rao
-                expirationYear.accept(String(date[1]))
                 expirationMonth.accept(String(date[0]))
+                expirationYear.accept(String(date[1]))
             } else {
-                expirationYear.accept("")
                 expirationMonth.accept("")
+                expirationYear.accept("")
             }
         case .password:
             password.accept(text)

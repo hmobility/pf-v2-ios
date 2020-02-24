@@ -43,7 +43,7 @@ class MyCardViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        backButton.rx.tap
+        addCardButton.rx.tap
             .asDriver()
             .drive(onNext: {  [unowned self] _ in
                 self.navigateToAddingCard()
@@ -128,8 +128,12 @@ class MyCardViewController: UIViewController {
     }
     
     private func navigateToAddingCard() {
-        let target = Storyboard.menu.instantiateViewController(withIdentifier: "MyCardAddingViewController") as! MyCardAddingViewController
-     
+        let target = Storyboard.menu.instantiateViewController(withIdentifier: "MyCardAddingNavigationController") as! MyCardAddingNavigationController
+        
+        target.dismissAction = { [unowned self] flag in
+            self.loadCreditCadInfo()
+        }
+        
         self.modal(target)
     }
     
