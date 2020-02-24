@@ -60,7 +60,7 @@ class MarkerView: UIView {
     public func setSelected(_ flag:Bool) {
         if var value = markerValue {
             setMarkerType(value.selected(flag))
-            debugPrint("[MARKER][SEL]", value, ", [M] ", flag, " , CONVERTED :", value.selected(flag))
+//            debugPrint("[MARKER][SEL]", value, ", [M] ", flag, " , CONVERTED :", value.selected(flag))
         }
     }
     
@@ -68,7 +68,7 @@ class MarkerView: UIView {
     
     private func setMarkerType(_ type:MarkerType) {
         if let value = self.markerValue, value == type {
-            return
+//            return        // Test by Rao
         }
         
         self.markerValue = type
@@ -85,6 +85,14 @@ class MarkerView: UIView {
         }
 
         backgroundImageView.setNeedsDisplay()
+        
+        /*
+        self.setNeedsLayout()   // Test by Rao
+        self.layer.setNeedsLayout()
+        self.layer.displayIfNeeded()
+ */
+        
+ 
     }
     
     // MARK: - Life Cycle
@@ -93,5 +101,21 @@ class MarkerView: UIView {
     // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
         // Drawing code
+        
+        // Test by Rao
+        print("Draw MarkerView ~ #####################")
+        
+        
+        
+        switch self.markerValue {
+        case .normal(let selected):
+            self.backgroundImageView.image = selected ? UIImage(named:"imgMarkerGreen")! : UIImage(named:"imgMarkerNormal")!
+        case .disabled(let selected):
+            self.backgroundImageView.image = selected ? UIImage(named:"imgMarkerGreySelected")! : UIImage(named:"imgMarkerDisabled")!
+        case .partner(let selected):
+            self.backgroundImageView.image = selected ? UIImage(named:"imgMarkerGreySelected")! : UIImage(named:"imgMarkerPartner")!
+        case .none:
+            self.backgroundImageView.image = selected ? UIImage(named:"imgMarkerGreySelected")! : UIImage(named:"imgMarkerPartner")!
+        }
     }
 }

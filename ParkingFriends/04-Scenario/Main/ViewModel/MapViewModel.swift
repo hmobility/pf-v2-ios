@@ -329,12 +329,25 @@ class MapViewModel: NSObject, MapViewModelType {
     func updateMarkerStatus(focused flag:Bool, parkinglotId:Int) {
         if parkinglotList.count > 0 {
             
+            // Test by RAo
+            
             if let item = parkinglotList.filter({ $0.selected }).first {
-                item.selected = false
+//                item.selected = false
             }
             
+            /*
             if let item = parkinglotList.filter({ $0.parkinglotId == parkinglotId }).first {
                 item.selected = true
+                // Test by Rao
+                item.invalidate()
+            }
+ */
+            
+            for item in parkinglotList {
+                if item.parkinglotId == parkinglotId {
+                    item.selected = true
+                    item.invalidate()
+                }
             }
             
             parkinglotList.forEach { item in
