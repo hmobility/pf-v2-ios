@@ -367,6 +367,8 @@
 "ttl_no_my_card" = "등록된 결제 수단이 없습니다.";
 "dsc_no_my_card" = "아래 버튼을 눌러, 자주 쓰는 카드를 등록해보세요.";
 "txt_basic_card" = "기본";
+"ttl_my_card_add" = "결제수단 등록";
+"dsc_my_card_add" = "주차장 예약·결제를 위해 결제수단을 등록합니다.예약취소 수수료 및 초과요금 발생 시 자동 결제됩니다.";
 
 // Settings
 "ttl_settings" = "설정";

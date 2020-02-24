@@ -94,6 +94,7 @@ class MyCardViewModel: MyCardViewModelType {
                     self.loadCreditCard()
                 }
             })
+            .disposed(by: disposeBag)
     }
     
     public func deleteCreditCard(with cardId:Int) {
@@ -107,9 +108,6 @@ class MyCardViewModel: MyCardViewModelType {
                     self.loadCreditCard()
                 }
             })
-    }
-    
-    public func addCreditCard(number:String, year:String, month:String, password:String, birthDate:String, name:String) {
-        Member.cards(cardNo: number, yearExpired: year, monthExpired: month, password: password, birthDate: birthDate, realName: name)
+            .disposed(by: disposeBag)
     }
 }
