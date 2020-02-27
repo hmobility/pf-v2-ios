@@ -343,12 +343,27 @@ class MapViewModel: NSObject, MapViewModelType {
             }
  */
             
+            // Test by Rao
+            /*
             for item in parkinglotList {
                 if item.parkinglotId == parkinglotId {
                     item.selected = true
                     item.invalidate()
                 }
             }
+            */
+            
+            for (index, item) in parkinglotList.enumerated() {
+                if item.parkinglotId == parkinglotId {
+                    parkinglotList[index].selected = true
+                    parkinglotList[index].invalidate()
+                }
+            }
+            //
+            
+            
+            
+            
             
             parkinglotList.forEach { item in
                 print("[\(item.parkinglotId) = \(item.selected)")

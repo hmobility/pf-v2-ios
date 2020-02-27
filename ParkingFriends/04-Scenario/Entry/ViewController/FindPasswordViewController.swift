@@ -87,7 +87,8 @@ class FindPasswordViewController: UIViewController {
             .subscribe(onNext: { [unowned self] status in
                 if status == .valid {
                     if let text = self.inputTextField.text {
-                        self.viewModel.sendVerification(email: text, type: .phone)
+//                        self.viewModel.sendVerification(email: text, type: .phone)
+                        self.viewModel.sendVerification(email: text, type: .password)  // Edit by Rao
                     }
                 } 
             })

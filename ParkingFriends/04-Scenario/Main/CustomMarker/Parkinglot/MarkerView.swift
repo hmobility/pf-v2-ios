@@ -52,7 +52,12 @@ class MarkerView: UIView {
     // MARK - Public Methods
     
     public func info(price: Int, type: MarkerType, selected:Bool = false) {
-        priceLabel.text = price.withComma
+        // Edit by Rao
+        if price == 0 {
+            priceLabel.text = "@_@"
+        } else {
+            priceLabel.text = price.withComma
+        }
         self.selected = selected
         setMarkerType(type)
     }
@@ -60,6 +65,7 @@ class MarkerView: UIView {
     public func setSelected(_ flag:Bool) {
         if var value = markerValue {
             setMarkerType(value.selected(flag))
+            self.selected = flag    // Add by Rao
 //            debugPrint("[MARKER][SEL]", value, ", [M] ", flag, " , CONVERTED :", value.selected(flag))
         }
     }
@@ -95,6 +101,8 @@ class MarkerView: UIView {
  
     }
     
+    
+    
     // MARK: - Life Cycle
     
     // Only override draw() if you perform custom drawing.
@@ -106,10 +114,23 @@ class MarkerView: UIView {
         print("Draw MarkerView ~ #####################")
         
         
-        
+        /*
         switch self.markerValue {
         case .normal(let selected):
             self.backgroundImageView.image = selected ? UIImage(named:"imgMarkerGreen")! : UIImage(named:"imgMarkerNormal")!
+        case .disabled(let selected):
+            self.backgroundImageView.image = selected ? UIImage(named:"imgMarkerGreySelected")! : UIImage(named:"imgMarkerDisabled")!
+        case .partner(let selected):
+            self.backgroundImageView.image = selected ? UIImage(named:"imgMarkerGreySelected")! : UIImage(named:"imgMarkerPartner")!
+        case .none:
+            self.backgroundImageView.image = selected ? UIImage(named:"imgMarkerGreySelected")! : UIImage(named:"imgMarkerPartner")!
+        }
+ */
+        
+        
+        switch self.markerValue {
+        case .normal(let selected):
+            self.backgroundImageView.image = self.selected ? UIImage(named:"imgMarkerGreen")! : UIImage(named:"imgMarkerNormal")!
         case .disabled(let selected):
             self.backgroundImageView.image = selected ? UIImage(named:"imgMarkerGreySelected")! : UIImage(named:"imgMarkerDisabled")!
         case .partner(let selected):

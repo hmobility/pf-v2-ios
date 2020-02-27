@@ -36,6 +36,7 @@ class MarkerWindow:NMFInfoWindow {
         set {
             if let source = self.markerSource {
                 source.setSelected(newValue)
+//                self.invalidate()       // Add by Rao
             }
         }
     }
@@ -99,6 +100,7 @@ class MarkerDataSource: NSObject {
     
     func setSelected(_ flag:Bool) {
         rootView.setSelected(flag)
+        rootView.setNeedsDisplay()      // Add by Rao
     }
     
     func getSelectedStatus() -> Bool {
