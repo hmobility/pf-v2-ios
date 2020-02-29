@@ -18,59 +18,84 @@ class ParkingTicketInfoView: UIStackView, ParkingTicketInfoViewType {
     @IBOutlet weak var fixedTicketInfoView: ParkingTicketFixedInfoView!
     @IBOutlet weak var monthlyTicketInfoView: ParkingTicketMonthlyInfoView!
     @IBOutlet weak var carInfoView: ParkingCarInfoView!
+    @IBOutlet weak var carInfoDisplayView: ParkingCarInfoDisplayView!
     
-    private var infoItem:BehaviorRelay<Usages?> = BehaviorRelay(value: nil)
+    var viewModel:ParkingTicketInfoViewModelType = ParkingTicketInfoViewModel.shared
     
     let disposeBag = DisposeBag()
     
     // MARK: - Public Methods
     
     public func setParkingInfo(with usages:Usages) {
-        infoItem.accept(usages)
+        viewModel.setUsageInfo(usages)
+    }
+    
+    public func setParkingInfo(with preview:OrderPreview) {
+        viewModel.setOrderPreview(preview)
     }
     
     // MARK: - Binding
     
     func setupBinding() {
-        infoItem.asObservable()
-            .filter { $0 != nil }
-            .map { $0! }
+        viewModel.getUsageInfo()
             .subscribe(onNext: { [unowned self] usages in
                 self.updateParkingInfo(with: usages)
             })
             .disposed(by: disposeBag)
         
+        viewModel.getOrderPreview()
+            .subscribe(onNext: { [unowned self] preview in
+                self.updateParkingInfo(with: preview)
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    // MARK: Usage
+    
+    func updateParkingInfo(with item:Usages) {
+        if let orderItem = item.orderInfo, let parkinglot = orderItem.parkingLot, let productType = orderItem.type, let carInfo = orderItem.car {
+            updateBasicInfo(name: parkinglot.name, productName:orderItem.productName, date: item.payDay)
+            updateTicketInfo(with: productType, info:(desc1: item.desc1, desc2: item.desc2))
+            updateCarInfo(with: carInfo.number)
+        }
+    }
+    
+    // MARK: Preview
+    
+    func updateParkingInfo(with item:OrderPreview) {
+        if let productType = item.parkingItemType, let carInfo = item.cars.first  {
+            let todayString = DisplayDateTimeHandler().displayDateYYmD(with: Date())
+            updateBasicInfo(name: item.parkingLotName, productName: item.parkingLotName, date: todayString)
+            updateTicketInfo(with: productType, info:(desc1: item.desc1, desc2: item.desc2))
+            updateCarInfo(with: carInfo.carNo)
+        }
     }
     
     // MARK: - Local Methods
     
-    func updateParkingInfo(with item:Usages) {
-        if let orderItem = item.orderInfo, let productType = orderItem.type, let carInfo = orderItem.car {
-            updateBasicInfo(with: orderItem, date: item.payDay)
-            updateTicketInfo(with: productType, data:item)
-            updateCarInfo(with: carInfo)
+    func updateBasicInfo(name:String, productName:String, date:String) {
+        self.parkingBasicInfoView.setInfo(name: name, product: productName, date: date)
+    }
+    
+    func updateCarInfo(with carNumber:String) {
+        if carInfoDisplayView != nil {
+            self.carInfoDisplayView.setInfo(number: carNumber)
+        }
+        
+        if carInfoView != nil {
+            self.carInfoView.setInfo(number: carNumber)
         }
     }
     
-    func updateBasicInfo(with orderInfo:UsageOrderInfo, date:String) {
-        if let info = orderInfo.parkingLot {
-            self.parkingBasicInfoView.setInfo(name: info.name, product: orderInfo.productName, date: date)
-        }
-    }
-    
-    func updateCarInfo(with carInfo:UsageCar) {
-        self.carInfoView.setInfo(number: carInfo.number)
-    }
-    
-    func updateTicketInfo(with type:ProductType, data:Usages) {
+    func updateTicketInfo(with type:ProductType, info:(desc1:String, desc2:String)) {
         setTicketInfoViewState(with: type)
         
-        if type == .time {
-            timeTicketInfoView.setInfo(date: data.desc1, time: data.desc2)
+        if type == .time{
+            timeTicketInfoView.setInfo(date: info.desc1, time: info.desc2)
         } else if type == .fixed {
-            fixedTicketInfoView.setInfo(time: data.desc1)
+            fixedTicketInfoView.setInfo(time: info.desc1)
         } else if type == .monthly {
-            monthlyTicketInfoView.setInfo(start: data.desc1, end: data.desc2)
+            monthlyTicketInfoView.setInfo(start: info.desc1, end: info.desc2)
         }
     }
     

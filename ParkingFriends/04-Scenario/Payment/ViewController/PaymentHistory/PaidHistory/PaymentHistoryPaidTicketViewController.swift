@@ -103,13 +103,6 @@ class PaymentHistoryPaidTicketViewController: UIViewController {
     }
 
     // MARK: - Navigation
-    
-    private func navigateToParkingStatus(with element:OrderElement) {
-        let target = Storyboard.parking.instantiateViewController(withIdentifier: "ParkingStatusViewController") as! ParkingStatusViewController
-        target.setOrderElement(with: element)
-        self.push(target)
-    }
-    
     /*
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

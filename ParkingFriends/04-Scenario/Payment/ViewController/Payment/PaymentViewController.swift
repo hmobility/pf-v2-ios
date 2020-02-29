@@ -14,14 +14,13 @@ class PaymentViewController: UIViewController {
     @IBOutlet weak var backButton:UIButton!
     @IBOutlet weak var paymentButton:UIButton!
     
-    @IBOutlet weak var productInfoView:PaymentProductInfoView!
+    @IBOutlet weak var paymentParkingInfoView: ParkingTicketInfoView!
     @IBOutlet weak var paymentMehodView: PaymentMethodView!
     @IBOutlet weak var paymentPointView: PaymentPointView!
     
     @IBOutlet weak var paymentGiftView: PaymentGiftView!
     
     private var viewModel:PaymentViewModelType = PaymentViewModel()
-    private var parkinglot:Parkinglot?
     
     private let disposeBag = DisposeBag()
     
@@ -34,34 +33,70 @@ class PaymentViewController: UIViewController {
         
         backButton.rx.tap
             .asDriver()
-            .drive(onNext: { _ in
-                self.pop()
+            .drive(onNext: { [unowned self] _ in
+                self.dismissProcess()
             })
             .disposed(by: disposeBag)
     }
     
     private func setupPaymentBinding() {
+        viewModel.getOrderPreview()
+            .filter { $0 != nil }
+            .map { $0! }
+            .subscribe(onNext: { [unowned self] preview in
+                self.paymentParkingInfoView.setParkingInfo(with: preview)
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func setupGiftBinding() {
+        /*
+        giftButton.rx.tap
+            .asObservable()
+            .map { return !self.giftButton.isSelected }
+            .map { selected in
+                self.giftButton.isSelected = selected
+                return selected
+            }
+            .bind(to:viewModel.giftMode)
+            .disposed(by: disposeBag)
+        */
+        viewModel.giftMode
+            .asDriver()
+            .drive(giftButton.rx.isSelected)
+            .disposed(by: disposeBag)
+        
+        viewModel.giftMode
+            .asDriver()
+            .drive(onNext: { [unowned self] flag in
+                self.showGiftView(flag)
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func setupButtonBinding() {
         viewModel.paymentText
             .asDriver()
             .drive(paymentButton.rx.title())
             .disposed(by: disposeBag)
     }
     
-    private func setupGiftBinding() {
-        giftButton.rx.tap
-            .asObservable()
-            .map { return !self.giftButton.isSelected }
-            .subscribe(onNext: { [unowned self] selected in
-                self.giftButton.isSelected = selected
-                self.showGiftView(selected ? true : false)
-             })
-            .disposed(by: disposeBag)
+    // MARK: - Public Methods
+    
+    public func setOrderForm(_ form:TicketOrderFormType) {
+        viewModel.setOrderForm(form)
     }
     
-    // MARK: - Publid Methods
+    public func setData(parkinglot data:Parkinglot) {
+        viewModel.setParkinglotInfo(data)
+    }
     
-    public func setData(parkinglot:Parkinglot) {
-        self.parkinglot = parkinglot
+    public func setProductElement(_ element:ProductElement) {
+        viewModel.setProductElement(element)
+    }
+    
+    public func setGiftMode(_ flag:Bool) {
+        viewModel.setGiftMode(flag)
     }
     
     // MARK: - Local Methods
@@ -74,6 +109,18 @@ class PaymentViewController: UIViewController {
     
     private func showGiftView(_ flag:Bool) {
         paymentGiftView.isHidden = flag ? false : true
+    }
+    
+    private func dismissProcess() {
+        if let navigation = navigationController {
+            if navigation.viewControllers.count > 1 {
+                self.pop()
+            } else {
+                self.dismissRoot()
+            }
+        } else {
+            self.dismissModal()
+        }
     }
     
     // MARK: - Initialize
@@ -90,6 +137,7 @@ class PaymentViewController: UIViewController {
         setupNavigationBinding()
         setupGiftBinding()
         setupPaymentBinding()
+        setupButtonBinding()
     }
     
     // MARK: - Life Cycle
@@ -101,6 +149,10 @@ class PaymentViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initialize()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         showPaymentGuideView()
     }
     
@@ -108,8 +160,13 @@ class PaymentViewController: UIViewController {
     
     private func navigateToPaymentGuide() {
         let target = Storyboard.payment.instantiateViewController(withIdentifier: "PaymentGuideViewController") as! PaymentGuideViewController
+        target.showCheckMdode(true)
         
-        self.modal(target, transparent: true, animated: false)
+        target.dismissAction = { flag in
+            self.dismissRoot()
+        }
+
+        self.modal(target, transparent: true, animated: true)
     }
     
     /*

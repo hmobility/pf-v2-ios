@@ -43,7 +43,7 @@ class ReserveCancelViewModel: ReserveCancelViewModelType {
     var cancelText: Driver<String>
     var confirmText: Driver<String>
     
-    private var localizer:LocalizerType
+    var localizer:LocalizerType
     
     // MARK: - Initialize
     

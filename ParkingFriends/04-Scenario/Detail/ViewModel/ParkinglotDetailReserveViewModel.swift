@@ -20,8 +20,9 @@ protocol ParkinglotDetailReserveViewModelType {
     func setProducts(supported products:[ProductType], elements:[ProductElement], onReserve time:DateDuration)
     func getAvailableParkinglotNumber() -> Observable<String>
     
-    func updateSelectedProductType(_ productType:ProductType)
+    func setSelectedProductType(_ item:ProductType)
     func getSelectedProductType() -> Observable<ProductType?>
+    //func getSelectedProduct() -> ProductElement?
 }
 
 class ParkinglotDetailReserveViewModel: ParkinglotDetailReserveViewModelType {
@@ -34,9 +35,9 @@ class ParkinglotDetailReserveViewModel: ParkinglotDetailReserveViewModelType {
     
     var selectedProductType: BehaviorRelay<ProductType?> = BehaviorRelay(value:nil)
     
-    private var localizer:LocalizerType
+    var localizer:LocalizerType
 
-    private let disposeBag = DisposeBag()
+    let disposeBag = DisposeBag()
 
     // MARK: - Initialize
     
@@ -59,16 +60,16 @@ class ParkinglotDetailReserveViewModel: ParkinglotDetailReserveViewModelType {
         }
     }
     
-    // MARK: - Public Methdos
+    // MARK: - Public Methods
     
-    public func updateSelectedProductType(_ productType:ProductType) {
-         selectedProductType.accept(productType)
+    public func setSelectedProductType(_ productType:ProductType) {
+        selectedProductType.accept(productType)
     }
     
     public func getSelectedProductType() -> Observable<ProductType?> {
         return selectedProductType.asObservable()
     }
-    
+   
     public func getSupportedProducts() -> Observable<[(type:ProductType, title:String)]> {
         return supportedItems
             .map { items in

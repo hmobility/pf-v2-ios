@@ -17,8 +17,7 @@ class Usages: BaseModelType {
     var desc1:String = ""
     var desc2:String = ""
     var elapsedMinutes:Int = 0
-    var cctv:String = ""
-    var camIds:[String] = []
+    var cctvGroupName:String?
     
     required init?(map: Map) {
         super.init(map: map)
@@ -32,8 +31,7 @@ class Usages: BaseModelType {
         desc1 <- map["desc1"]
         desc2 <- map["desc2"]
         elapsedMinutes <- map["elapsedMinutes"]
-        cctv <- map["cctv"]
-        camIds <- map["camIds"]
+        cctvGroupName <- map["cctvGroupName"]
     }
 }
 

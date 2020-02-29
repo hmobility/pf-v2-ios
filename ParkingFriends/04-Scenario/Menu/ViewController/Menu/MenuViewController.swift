@@ -76,6 +76,15 @@ class MenuViewController: UIViewController {
             .drive(carSectionView.addCarButton.rx.title())
             .disposed(by: disposeBag)
         
+        viewModel.getUserCars()
+            .map { return $0.first }
+            .subscribe(onNext: { [unowned self] memberCar in
+                if let carNumber = memberCar?.number {
+                    self.carSectionView.setMyCarInfo(carNumber)
+                }
+            })
+            .disposed(by: disposeBag)
+        
         carSectionView.addNewCarButton.rx.tap
             .asDriver()
             .drive(onNext: { _ in
@@ -122,8 +131,8 @@ class MenuViewController: UIViewController {
         pointChargeView.rx
             .tapGesture()
             .when(.recognized)
-            .subscribe { _ in
-                
+            .subscribe { [unowned self] _ in
+                self.navigateToPointCharge()
             }
             .disposed(by: disposeBag)
         
@@ -235,6 +244,11 @@ class MenuViewController: UIViewController {
         let target = Storyboard.menu.instantiateViewController(withIdentifier: "MyCardNavigationController") as! UINavigationController
         self.modal(target)
     }
+    
+    func navigateToPointCharge() {
+          let target = Storyboard.point.instantiateViewController(withIdentifier: "PointNavigationController") as! UINavigationController
+          self.modal(target)
+      }
     
     func navigateToMyInfo() {
         let target = Storyboard.menu.instantiateViewController(withIdentifier: "MyInfoNavigationController") as! UINavigationController

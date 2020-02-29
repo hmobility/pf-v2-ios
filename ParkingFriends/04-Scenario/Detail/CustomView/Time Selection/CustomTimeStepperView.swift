@@ -15,8 +15,9 @@ protocol CustomTimeStepperViewType {
     var hoursLabel:UILabel! { get set }
     var minutesLabel: UILabel! { get set }
     
-    func setStartTime(_ date:Date)
-    func getTime() -> Date 
+    var displayTime:BehaviorRelay<Date?> { get }
+       
+    func setDisplayTime(_ time:Date)
 }
 
 class CustomTimeStepperView: UIView, CustomTimeStepperViewType {
@@ -25,85 +26,49 @@ class CustomTimeStepperView: UIView, CustomTimeStepperViewType {
     @IBOutlet var hoursLabel:UILabel!
     @IBOutlet var minutesLabel:UILabel!
     
-    private var startDate:Date?
-    private var adjustDate:Date?
- 
-    private let offsetMinutes = 30
+    var displayTime:BehaviorRelay<Date?> = BehaviorRelay(value: nil)
     
     private var disposeBag = DisposeBag()
     
     // MARK: - Public Methods
     
-    public func setStartTime(_ date:Date) {
-        startDate = date
-        updateTime(date)
+    public func setDisplayTime(_ time:Date) {
+        updateTime(time)
     }
-    
-    func getTime() -> Date {
-        guard adjustDate != nil else {
-            return startDate!
-        }
-        
-        return adjustDate!
-    }
-    
+
     // MARK: - Local Methods
     
     func updateTime(_ date:Date) {
-        let hours:String = date.toString(format:(.custom("h")))
-        let minutes:String = date.toString(format:(.custom("m")))
+        let hours:String = date.toString(format:(.custom("HH")))
+        let minutes:String = date.toString(format:(.custom("MM")))
         
         hoursLabel.text = hours
         minutesLabel.text = minutes
     }
-    
-    func changeTime(offset:Int){
-        if let date = startDate, date.compare(.isLater(than: startDate!)) == true {
-            adjustDate = date.adjust(.hour, offset: offset)
-            updateTime(adjustDate!)
-        }
-    }
-    
-    func incrementTime() {
-        let offset = offsetMinutes
-        changeTime(offset: offset)
-    }
-    
-    func decrementTime() {
-        let offset = -offsetMinutes
-        changeTime(offset: offset)
-    }
-    
+
     // MARK: - Binding
-    
-    func setupTimeBinding() {
-        
-    }
-    
-    func setupButtonBinding() {
-        decreaseButton.rx.tap
-            .subscribe(onNext: { [unowned self] _ in
-                self.decrementTime()
-            })
-            .disposed(by: disposeBag)
-        
-        increaseButton.rx.tap
-            .subscribe(onNext: { [unowned self] _ in
-                self.incrementTime()
-            })
-            .disposed(by: disposeBag)
-    }
-    
+
+     func setupDateBinding() {
+         displayTime.asObservable()
+                .distinctUntilChanged()
+                .filter { $0 != nil }
+                .map { $0! }
+                .subscribe(onNext: { [unowned self] time in
+                    self.updateTime(time)
+                })
+                .disposed(by: disposeBag)
+     }
+     
     // MARK: - Initializer
     
     func initialize() {
-        setupButtonBinding()
+        setupDateBinding()
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -111,12 +76,12 @@ class CustomTimeStepperView: UIView, CustomTimeStepperViewType {
     // MARK: - Life Cycle
     
     override func layoutSubviews() {
-         super.layoutSubviews()
+        super.layoutSubviews()
     }
-
+    
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
-            initialize()
+        initialize()
     }
 }

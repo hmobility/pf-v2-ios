@@ -40,6 +40,8 @@ class OrderElement: BaseModelType {
     var refundAmount:Int = 0
     var refundPoint:Int = 0
     var car:OrderCarElement?
+    var receiptUrl:String = ""
+    var cctvFlag:Bool = false
     var gift:Bool = false
     
     required init?(map: Map) {
@@ -63,6 +65,8 @@ class OrderElement: BaseModelType {
         refundAmount <- map["refundAmount"]
         refundPoint <- map["refundPoint"]
         car <- map["car"]
+        receiptUrl <- map["receiptUrl"]
+        cctvFlag <- (map["cctvFlag"], BoolTransform())
         gift <- (map["gift"], BoolTransform())
     }
 }

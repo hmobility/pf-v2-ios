@@ -14,6 +14,7 @@ class ParkinglotDetailReserveView: UIStackView {
     @IBOutlet weak var infoButton: UIButton!
     @IBOutlet weak var availableParkinglotLabel: UILabel!
     @IBOutlet weak var supportedProductView: ParkinglotDetailSupportedProductView!
+    @IBOutlet weak var timeRangeView: UIView!
     
     @IBOutlet var chartView: UIView!
     
@@ -95,8 +96,10 @@ class ParkinglotDetailReserveView: UIStackView {
         }
     }
     
-    func updateEditPanel(with productType:ProductType) {
-        self.viewModel.updateSelectedProductType(productType)
+    func updateEditPanel(with panelType:ProductType) {
+        self.viewModel.setSelectedProductType(panelType)
+        
+        timeRangeView.isHidden = (panelType == .time) ? false : true
     }
 
     // MARK: - Chart Update

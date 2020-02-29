@@ -9,7 +9,10 @@
 import UIKit
 
 class PaymentPointView: UIStackView {
-
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var noPointsView: PaymentNoPointsSectionView!
+    @IBOutlet weak var pointsInputView: PaymentPointsInputSectionView!
+    
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.

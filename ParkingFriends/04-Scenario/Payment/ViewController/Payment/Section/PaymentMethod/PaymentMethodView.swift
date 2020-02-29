@@ -9,7 +9,7 @@
 import UIKit
 
 enum PaymentMethodButtonType {
-    case simple_card, kakopay, etc_payment
+    case simple_card, kakopay
 }
 
 class PaymentMethodView: UIStackView {
@@ -17,7 +17,6 @@ class PaymentMethodView: UIStackView {
     
     @IBOutlet weak var simpleCardButton: UIButton!
     @IBOutlet weak var kakaoPayButton: UIButton!
-    @IBOutlet weak var etcPaymentButton: UIButton!
     
      private var viewModel: PaymentMethodViewModelType = PaymentMethodViewModel()
     
@@ -26,7 +25,7 @@ class PaymentMethodView: UIStackView {
     // MARK: - Binding
     
     private func setupButtonBinding() {
-        let buttons = [simpleCardButton, kakaoPayButton, etcPaymentButton].map { $0! }
+        let buttons = [simpleCardButton, kakaoPayButton].map { $0! }
         
         let selectedButton = Observable.from(buttons.map { button in
                                 button.rx.tap.map { button }

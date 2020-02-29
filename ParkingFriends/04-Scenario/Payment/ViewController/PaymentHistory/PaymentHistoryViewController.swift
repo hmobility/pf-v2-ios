@@ -191,7 +191,8 @@ class PaymentHistoryViewController: UIViewController {
     
     private func navigateToReceipt(with element:OrderElement) {
         let target = Storyboard.payment.instantiateViewController(withIdentifier: "PaymentReceiptViewController") as! PaymentReceiptViewController
-        target.setOrderElement(with: element)
+        //target.setOrderElement(with: element)
+        target.setUrl(with: element.receiptUrl)             // Changed into assigng url directly, instead of assigning OrderElement
         self.modal(target)
     }
     

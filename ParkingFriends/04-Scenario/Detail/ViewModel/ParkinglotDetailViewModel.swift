@@ -17,9 +17,10 @@ protocol ParkinglotDetailViewModelType {
     var parkinglotInfo: BehaviorRelay<Parkinglot?> { get }
     
     func loadInfo()
-    func changeBookmark(_ state:Bool) 
+    func changeBookmark(_ state:Bool)
+    
     func getSelectedProductType() -> Observable<ProductType?>
-    func getExpectedProductInfo() -> ProductAllSet?
+    func getExpectedProductInfo() -> ExpectedProductInfo?
     
     func getParkinglotInfo() -> Parkinglot?
     
@@ -31,6 +32,11 @@ protocol ParkinglotDetailViewModelType {
     func setOperationTimeViewModel(_ viewModel:ParkinglotDetailOperationTimeViewModel)
     func setNoticeViewModel(_ viewModel:ParkinglotDetailNoticeViewModel)
     func setButtonViewModel(_ viewModel:ParkinglotDetailButtonViewModel)
+
+    func getReadyStateForOrder() -> Observable<Bool>
+    func getValidOrderForm() -> TicketOrderFormType?
+    
+    func setExpectedProduct(type:ProductType, parkinglotId:Int, productId:Int?, time:DateDuration?, monthly:MonthlyDuration?, quantity:Int, updateSetting:Bool)
 }
 
 class ParkinglotDetailViewModel: ParkinglotDetailViewModelType {
@@ -39,7 +45,7 @@ class ParkinglotDetailViewModel: ParkinglotDetailViewModelType {
     
     var parkinglotInfo: BehaviorRelay<Parkinglot?> = BehaviorRelay(value: nil)
     
-    let productSetting:ProductSetting?
+    var productSetting:ProductSetting?
     
     var headerViewModel:ParkinglotDetailHeaderViewModelType?
     var symbolViewModel:ParkinglotDetailSymbolViewModelType?
@@ -49,6 +55,8 @@ class ParkinglotDetailViewModel: ParkinglotDetailViewModelType {
     var editScheduleViewModel: ParkinglotDetailEditTimeViewModelType?
     var noticeViewModel:ParkinglotDetailNoticeViewModelType?
     var buttonViewModel:ParkinglotDetailButtonViewModelType?
+    
+    var orderForm:BehaviorRelay<TicketOrderFormType?> =  BehaviorRelay(value:nil)
     
     var localizer:LocalizerType
 
@@ -79,58 +87,14 @@ class ParkinglotDetailViewModel: ParkinglotDetailViewModelType {
     
     func initialize() {
         parkinglotInfo.asDriver()
-            .drive(onNext: { element in
+            .drive(onNext: { [unowned self] element in
                 if let data = element {
                     self.updateDetailInfo(data)
                 }
             })
             .disposed(by: disposeBag)
     }
-    
-    // MARK: - View Model Setter
-    
-    public func setHeaderViewModel(_ viewModel:ParkinglotDetailHeaderViewModel) {
-        headerViewModel = viewModel
-        
-        if let viewModel = headerViewModel {
-            viewModel.setDetailModelView(self)
-        }
-    }
-    
-    public func setSymbolViewModel(_ viewModel:ParkinglotDetailSymbolViewModel) {
-        symbolViewModel = viewModel
-    }
-    
-    public func setPriceViewModel(_ viewModel:ParkinglotDetailPriceViewModel) {
-        priceViewModel = viewModel
-    }
-    
-    public func setOperationTimeViewModel(_ viewModel:ParkinglotDetailOperationTimeViewModel) {
-        operationTimeViewModel = viewModel
-    }
-    
-    public func setReserveViewModel(_ viewModel:ParkinglotDetailReserveViewModel) {
-        reserveViewModel = viewModel
-    }
-    
-    public func setEditScheduleViewModel(_ viewModel:ParkinglotDetailEditTimeViewModel) {
-        editScheduleViewModel = viewModel
-    }
-    
-    public func setNoticeViewModel(_ viewModel:ParkinglotDetailNoticeViewModel) {
-        noticeViewModel = viewModel
-    }
-    
-    public func setButtonViewModel(_ viewModel:ParkinglotDetailButtonViewModel) {
-        buttonViewModel = viewModel
-    }
-    
-    // MARK: - Model Getter
-    
-    public func getParkinglotInfo() -> Parkinglot? {
-        return self.parkinglotInfo.value
-    }
-    
+
     // MARK: - Bookmark
     
     func changeBookmark(_ state:Bool) {
@@ -141,7 +105,8 @@ class ParkinglotDetailViewModel: ParkinglotDetailViewModelType {
     
     // MARK: - Public Methods
     
-    func getExpectedProductInfo() -> ProductAllSet? {
+    // The booking data for user's selected
+    public func getExpectedProductInfo() -> ExpectedProductInfo? {
         if let settings = productSetting {
             return settings.getProductAllSet()
         } else {
@@ -149,7 +114,79 @@ class ParkinglotDetailViewModel: ParkinglotDetailViewModelType {
         }
     }
     
+    public func setExpectedProduct(type:ProductType, parkinglotId:Int, productId:Int?, time:DateDuration? = nil, monthly:MonthlyDuration? = nil, quantity:Int, updateSetting:Bool = false) {
+      
+        if updateSetting, let form = updateProductSetting(type:type, parkinglotId: parkinglotId, productId: productId, from: time?.start, to: time?.end, count: monthly?.count ?? 1, quantity: quantity) {
+            self.setOrderForm(form)
+        } else {
+            let form = TicketOrderFormType(type:type, parkingLotId:parkinglotId, productId:productId, from: time?.start, to: time?.end, count: monthly?.count ?? 1, quantity: quantity)
+            self.setOrderForm(form)
+        }
+    }
+    
+    // MARK: Handle Order Form
+    
+    public func getReadyStateForOrder() -> Observable<Bool> {
+        return orderForm
+            .asObservable()
+            .map { return self.checkOrderForm($0) }
+            .map { return ($0 !=  nil) ? true : false}
+    }
+    
+    public func getValidOrderForm() -> TicketOrderFormType? {
+        return checkOrderForm(self.orderForm.value)
+    }
+    
+    func setOrderForm(_ form:TicketOrderFormType) {
+          orderForm.accept(form)
+    }
+    
+    func checkOrderForm(_ orderForm:TicketOrderFormType?) -> TicketOrderFormType? {
+        if let form = orderForm {
+            if form.productId != nil, (form.type == .fixed || form.type == .monthly) {
+                return form
+            } else if form.type == .time {
+                return form
+            } else {
+                return nil
+            }
+        }
+        
+        return nil
+    }
+    
     // MARK: - Local Methods
+    
+    func updateProductSetting(type:ProductType, parkinglotId:Int, productId:Int?, from:Date?, to:Date?, count:Int, quantity:Int) -> TicketOrderFormType? {
+        if let settings = productSetting {
+            if type == .time, let dateFrom = from, let dateTo = to {
+                settings.setProduct(type: .time).save()
+                settings.setBookingTime(start: dateFrom, end: dateTo)
+            } else if type == .monthly, let dateFrom = from {
+                settings.setProduct(type: .monthly).save()
+                settings.setBookingMonthly(from: dateFrom, count: count)
+            } else if type == .fixed, let dateFrom = from, let dateTo = to {
+                settings.setProduct(type: .fixed).save()
+                settings.setBookingTime(start: dateFrom, end: dateTo)
+            }
+            
+            return TicketOrderFormType(type:type, parkingLotId:parkinglotId, productId:productId, from: from, to: to, count: count, quantity: quantity)
+        } else {
+            return nil
+        }
+    }
+    
+    func setupInitOrderForm(with products:[ProductElement]) {
+        if let setting = productSetting {
+            let type = setting.getProductType()
+            
+            if let parkingId = self.parkinglotId, let item = products.first(where: { $0.type == type }) {
+                let bookingDate = setting.getBookingDate()
+             
+                setExpectedProduct(type: type, parkinglotId: parkingId, productId: item.id, time: bookingDate, monthly: setting.bookingMonthly, quantity: 1, updateSetting: false)
+            }
+        }
+    }
 
     func updateDetailInfo(_ element:Parkinglot) {
         updateFavorite(check: element.favoriteFlag)
@@ -178,81 +215,7 @@ class ParkinglotDetailViewModel: ParkinglotDetailViewModelType {
             let bookable:Bool = element.products.count > 0
             updateBookingTime(supported: element.supportItems, items: element.products, onReserve: data.getBookingDate())
             updateBookableState(bookable)
-        }
-    }
-    
-    // MARK: - Header
-    
-    func updateHeaderImage(_ images:[ImageElement]) {
-        if let viewModel = headerViewModel {
-            viewModel.setHeaderImages(images)
-        }
-    }
-    
-    func updateFavorite(check flag:Bool) {
-        if let viewModel = headerViewModel {
-            viewModel.setFavorite(flag)
-        }
-    }
-
-    // MARK: - Operation Time
-    
-    func updateOperationTime(_ items:[ParkinglotOperationTime]) {
-        if let viewModel = operationTimeViewModel {
-            viewModel.setOperationTimes(items)
-        }
-    }
-    
-    // MARK: - Price Table
-    
-    func updatePriceTable(_ items:[ProductType], baseFee fee:Fee?) {
-        if let viewModel = priceViewModel {
-            viewModel.setSupported(items, fee: fee)
-        }
-    }
-    
-    // MARK: - Symbol
-    
-    func updateParkingSymbol(_ item:FlagElement) {
-        if let viewModel = symbolViewModel {
-            viewModel.setParkingSymbols(item)
-        }
-    }
-    
-    // MARK: - Reserve
-    
-    func updateBookingTime(supported products:[ProductType], items:[ProductElement], onReserve duration:DateDuration) {
-        if let viewModel = reserveViewModel {
-            viewModel.setProducts(supported: products, elements: items, onReserve: duration)
-        }
-        
-        if let viewModel = editScheduleViewModel {
-            viewModel.setProducts(supported: products, items: items)
-        }
-    }
-    
-    func getSelectedProductType() -> Observable<ProductType?> {
-        debugPrint("[SELECTED][PRODUCT] ->>>>> ")
-        if let viewModel = reserveViewModel {
-            return viewModel.getSelectedProductType()
-        }
-        debugPrint("[SELECTED][PRODUCT] ->>>>> NIL")
-        return Observable.just(nil)
-    }
-    
-    // MARK: - Notice
-      
-    func updateNoticeItems(_ items:[String]) {
-        if let viewModel = noticeViewModel {
-            viewModel.setContents(items)
-        }
-    }
-    
-    // MARK: - Button
-    
-    func updateBookableState(_ enabled:Bool) {
-        if let viewModel = buttonViewModel {
-            viewModel.setBookableState(enabled)
+            setupInitOrderForm(with: element.products)
         }
     }
     
@@ -297,5 +260,128 @@ class ParkinglotDetailViewModel: ParkinglotDetailViewModelType {
                 })
                 .disposed(by: disposeBag)
         }
+    }
+}
+
+// MARK: - Update Sub View Model
+
+extension ParkinglotDetailViewModel {
+    
+    // MARK: - Header
+    
+    func updateHeaderImage(_ images:[ImageElement]) {
+        if let viewModel = headerViewModel {
+            viewModel.setHeaderImages(images)
+        }
+    }
+    
+    func updateFavorite(check flag:Bool) {
+        if let viewModel = headerViewModel {
+            viewModel.setFavorite(flag)
+        }
+    }
+    
+    // MARK: - Operation Time
+    
+    func updateOperationTime(_ items:[ParkinglotOperationTime]) {
+        if let viewModel = operationTimeViewModel {
+            viewModel.setOperationTimes(items)
+        }
+    }
+    
+    // MARK: - Price Table
+    
+    func updatePriceTable(_ items:[ProductType], baseFee fee:Fee?) {
+        if let viewModel = priceViewModel {
+            viewModel.setSupported(items, fee: fee)
+        }
+    }
+    
+    // MARK: - Symbol
+    
+    func updateParkingSymbol(_ item:FlagElement) {
+        if let viewModel = symbolViewModel {
+            viewModel.setParkingSymbols(item)
+        }
+    }
+    
+    // MARK: - Reserve
+    
+    func updateBookingTime(supported products:[ProductType], items:[ProductElement], onReserve duration:DateDuration) {
+        if let viewModel = reserveViewModel {
+            viewModel.setProducts(supported: products, elements: items, onReserve: duration)
+        }
+        
+        if let viewModel = editScheduleViewModel {
+            viewModel.setProducts(supported: products, items: items)
+        }
+    }
+    
+    func getSelectedProductType() -> Observable<ProductType?> {
+        if let viewModel = reserveViewModel {
+            return viewModel.getSelectedProductType()
+        }
+        
+        return Observable.just(nil)
+    }
+    
+    // MARK: - Notice
+    
+    func updateNoticeItems(_ items:[String]) {
+        if let viewModel = noticeViewModel {
+            viewModel.setContents(items)
+        }
+    }
+    
+    // MARK: - Bookable State
+    
+    func updateBookableState(_ enabled:Bool) {
+        if let viewModel = buttonViewModel {
+            viewModel.setBookableState(enabled)
+        }
+    }
+}
+
+// MARK: - View Model Setter/Getter
+
+extension ParkinglotDetailViewModel {
+    public func setHeaderViewModel(_ viewModel:ParkinglotDetailHeaderViewModel) {
+        headerViewModel = viewModel
+        
+        if let viewModel = headerViewModel {
+            viewModel.setDetailModelView(self)
+        }
+    }
+    
+    public func setSymbolViewModel(_ viewModel:ParkinglotDetailSymbolViewModel) {
+        symbolViewModel = viewModel
+    }
+    
+    public func setPriceViewModel(_ viewModel:ParkinglotDetailPriceViewModel) {
+        priceViewModel = viewModel
+    }
+    
+    public func setOperationTimeViewModel(_ viewModel:ParkinglotDetailOperationTimeViewModel) {
+        operationTimeViewModel = viewModel
+    }
+    
+    public func setReserveViewModel(_ viewModel:ParkinglotDetailReserveViewModel) {
+        reserveViewModel = viewModel
+    }
+    
+    public func setEditScheduleViewModel(_ viewModel:ParkinglotDetailEditTimeViewModel) {
+        editScheduleViewModel = viewModel
+    }
+    
+    public func setNoticeViewModel(_ viewModel:ParkinglotDetailNoticeViewModel) {
+        noticeViewModel = viewModel
+    }
+    
+    public func setButtonViewModel(_ viewModel:ParkinglotDetailButtonViewModel) {
+        buttonViewModel = viewModel
+    }
+    
+    public func getParkinglotInfo() -> Parkinglot? {
+        return self.parkinglotInfo.value
     }
 }

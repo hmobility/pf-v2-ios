@@ -12,7 +12,11 @@ enum MenuCarSection {
     case add_new_car, change_my_car
 }
 
-class MenuCarSectionView: UIStackView {
+protocol MenuCarSectionViewType {
+    func setMyCarInfo(_ carInfo:String)
+}
+
+class MenuCarSectionView: UIStackView, MenuCarSectionViewType {
     @IBOutlet var addNewCarView: UIView!
     @IBOutlet var addNewCarLabel: UILabel!
     @IBOutlet var addNewCarButton: UIButton!
@@ -23,21 +27,25 @@ class MenuCarSectionView: UIStackView {
     @IBOutlet var addCarButton: UIButton!
     
     private var sectionType:MenuCarSection = .add_new_car
+    private var sectionTypeItem:BehaviorRelay<MenuCarSection> = BehaviorRelay(value:.add_new_car)
+    
+    private let disposeBag = DisposeBag()
     
     // MARK: - Public Methods
     
-    public func setSectionType(_ type:MenuCarSection) {
-        sectionType = type
-    }
-    
     public func setMyCarInfo(_ carInfo:String) {
         myCarLabel.text = carInfo
+        sectionTypeItem.accept(.change_my_car)
     }
     
     // MARK: - Local Methods
     
-    private func udpateLayout() {
-        if sectionType == .add_new_car {
+    func setSectionType(_ type:MenuCarSection) {
+        sectionTypeItem.accept(type)
+    }
+    
+    func udpateLayout(_ section:MenuCarSection) {
+        if section == .add_new_car {
             addNewCarView.isHidden = false
             changeMyCarView.isHidden = true
         } else {
@@ -46,7 +54,22 @@ class MenuCarSectionView: UIStackView {
         }
     }
     
+    // MARK: - Binding
+    
+    func setupSectionBinding() {
+        sectionTypeItem
+            .asDriver()
+            .drive(onNext: { [unowned self] section in
+                self.udpateLayout(section)
+            })
+            .disposed(by: disposeBag)
+    }
+    
     // MARK: - Initialize
+    
+    func initialize() {
+        setupSectionBinding()
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -59,8 +82,8 @@ class MenuCarSectionView: UIStackView {
     // MARK: - Layout
     
     override func layoutSubviews() {
-         super.layoutSubviews()
-         udpateLayout()
+        super.layoutSubviews()
+        initialize()
     }
     /*
     // Only override draw() if you perform custom drawing.

@@ -11,8 +11,15 @@ import Alamofire
 
 class OrdersAPI: BaseAPI {
     // 주문요약
-    static func preview(productId:String, from:String, to:String, quantity:Int, httpMethod:HttpMethod = .post, auth:APIAuthType = .OAuth2) -> RestURL  {
-        let params:Params = ["productId": productId, "from": from, "to":to, "quantity":quantity]
+    static func preview(type:ProductType, parkingLotId:Int, productId:Int, from:String, to:String, quantity:Int, ext:(extensionType:OrderExtensionType, originOrderId:Int, extensionMinutes:Int)? = nil,httpMethod:HttpMethod = .post, auth:APIAuthType = .OAuth2) -> RestURL  {
+        var params:Params = ["type": type.rawValue, "parkingLotId": parkingLotId, "productId": productId, "from": from, "to": to, "quantity": quantity]
+        
+        if let extParams = ext {
+            let addedParams = ["extension":["extensionType" : extParams.extensionType.rawValue, "orfiginOrderId":extParams.originOrderId, "extensionMinutes": extParams.extensionMinutes]]
+            
+            params = params.merging(addedParams) { $1 }
+        }
+        
         let url = build(host:host, endpoint:"/orders/preview", query: nil)
         return (httpMethod, url, auth, params)
     }

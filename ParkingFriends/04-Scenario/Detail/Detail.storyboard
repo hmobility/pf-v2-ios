@@ -543,7 +543,7 @@
             <objects>
                 <viewController storyboardIdentifier="ParkinglotDetailViewController" id="oD5-jI-trf" customClass="ParkinglotDetailViewController" customModule="ParkingFriends" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="VQy-tx-fJt">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="2200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gzY-Ut-W8R" userLabel="Scroll View - Contents" customClass="MXScrollView" customModule="ParkingFriends" customModuleProvider="target">
@@ -1657,6 +1657,7 @@
                                                             <outlet property="chartView" destination="dxa-lr-jcS" id="OhP-gx-tN1"/>
                                                             <outlet property="infoButton" destination="Aka-fi-aNn" id="LDR-rK-biD"/>
                                                             <outlet property="supportedProductView" destination="vHR-xH-ZNJ" id="ODE-qq-sTl"/>
+                                                            <outlet property="timeRangeView" destination="Cy9-en-6uf" id="n9G-sc-2ZC"/>
                                                             <outlet property="titleLabel" destination="nmY-gJ-E98" id="MLP-re-KgA"/>
                                                         </connections>
                                                     </stackView>
@@ -1666,7 +1667,7 @@
                                                             <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jYt-3x-OiV" userLabel="View - Change Schedule Button Area">
                                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                                                                 <subviews>
-                                                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QCI-VV-D1t" userLabel="View - Button" customClass="ParkinglotDetailScheduleButtonView" customModule="ParkingFriends" customModuleProvider="target">
+                                                                    <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QCI-VV-D1t" userLabel="View - Button" customClass="ParkinglotDetailScheduleButtonView" customModule="ParkingFriends" customModuleProvider="target">
                                                                         <rect key="frame" x="20" y="0.0" width="374" height="68"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="예약시간 변경 하기" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zvs-d9-nGb" userLabel="Label - Title">
@@ -1726,6 +1727,7 @@
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="100" id="38g-kF-JaW"/>
+                                                                    <constraint firstItem="QCI-VV-D1t" firstAttribute="top" secondItem="jYt-3x-OiV" secondAttribute="top" id="8ZY-Xx-hBC"/>
                                                                     <constraint firstAttribute="trailing" secondItem="NGB-gr-XnF" secondAttribute="trailing" id="et2-Ds-Zee"/>
                                                                     <constraint firstItem="QCI-VV-D1t" firstAttribute="leading" secondItem="jYt-3x-OiV" secondAttribute="leading" constant="20" id="gxs-WW-aWY"/>
                                                                     <constraint firstAttribute="trailing" secondItem="QCI-VV-D1t" secondAttribute="trailing" constant="20" id="zcJ-ba-5hJ"/>
@@ -1773,7 +1775,7 @@
                                                                                                     <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ve6-GY-3P9" userLabel="View - Set Date" customClass="CustomDateStepperView" customModule="ParkingFriends" customModuleProvider="target">
                                                                                                         <rect key="frame" x="158" y="0.0" width="196" height="52"/>
                                                                                                         <subviews>
-                                                                                                            <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PBv-tB-Rya" customClass="Cus">
+                                                                                                            <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PBv-tB-Rya">
                                                                                                                 <rect key="frame" x="0.0" y="0.0" width="196" height="52"/>
                                                                                                                 <subviews>
                                                                                                                     <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PUW-ct-tW1" userLabel="Button - Decrement">
@@ -2388,6 +2390,8 @@
                                                                             <constraint firstAttribute="bottom" secondItem="40J-Wj-AoQ" secondAttribute="bottom" id="9Mk-x6-Got"/>
                                                                         </constraints>
                                                                         <connections>
+                                                                            <outlet property="applyButton" destination="nZz-Wv-IFn" id="ACT-Mb-jnQ"/>
+                                                                            <outlet property="closeButton" destination="Ks6-IT-OjS" id="C2v-K6-kXs"/>
                                                                             <outlet property="contentsView" destination="1uM-HW-LXv" id="pEy-Rd-gAM"/>
                                                                             <outlet property="titleLabel" destination="mi4-Hq-gR0" id="zbC-yU-w3b"/>
                                                                         </connections>
@@ -2530,13 +2534,13 @@
                                                                                                         <color key="textColor" name="Steel"/>
                                                                                                         <nil key="highlightedColor"/>
                                                                                                     </label>
-                                                                                                    <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tgx-dj-HEz" userLabel="View - Set Date">
+                                                                                                    <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tgx-dj-HEz" userLabel="View - Set Date" customClass="CustomDateStepperView" customModule="ParkingFriends" customModuleProvider="target">
                                                                                                         <rect key="frame" x="198" y="0.0" width="196" height="52"/>
                                                                                                         <subviews>
                                                                                                             <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yid-41-T1Z">
                                                                                                                 <rect key="frame" x="0.0" y="0.0" width="196" height="52"/>
                                                                                                                 <subviews>
-                                                                                                                    <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4BZ-SB-WKc" userLabel="Button - Previous">
+                                                                                                                    <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4BZ-SB-WKc" userLabel="Button - Decrease">
                                                                                                                         <rect key="frame" x="0.0" y="0.0" width="52" height="52"/>
                                                                                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                                                         <constraints>
@@ -2554,7 +2558,7 @@
                                                                                                                     <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m75-Np-BvA" userLabel="View - Contents">
                                                                                                                         <rect key="frame" x="52.5" y="0.0" width="91" height="52"/>
                                                                                                                         <subviews>
-                                                                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7/18" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qBZ-9j-LZm" userLabel="Label - Date">
+                                                                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1개월" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qBZ-9j-LZm" userLabel="Label - Date">
                                                                                                                                 <rect key="frame" x="0.0" y="15.5" width="91" height="21.5"/>
                                                                                                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                                                                                                                 <nil key="textColor"/>
@@ -2568,14 +2572,14 @@
                                                                                                                             <constraint firstItem="qBZ-9j-LZm" firstAttribute="centerY" secondItem="m75-Np-BvA" secondAttribute="centerY" id="qid-di-J1m"/>
                                                                                                                         </constraints>
                                                                                                                     </view>
-                                                                                                                    <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NOG-iS-w3l" userLabel="View -Right Separator">
+                                                                                                                    <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NOG-iS-w3l" userLabel="View - Right Separator">
                                                                                                                         <rect key="frame" x="143.5" y="0.0" width="0.5" height="52"/>
                                                                                                                         <color key="backgroundColor" name="LightBlueGrey"/>
                                                                                                                         <constraints>
                                                                                                                             <constraint firstAttribute="width" constant="0.59999999999999998" id="BS4-74-52y"/>
                                                                                                                         </constraints>
                                                                                                                     </view>
-                                                                                                                    <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pNk-GR-vhh" userLabel="Button - Next">
+                                                                                                                    <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pNk-GR-vhh" userLabel="Button - Increase">
                                                                                                                         <rect key="frame" x="144" y="0.0" width="52" height="52"/>
                                                                                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                                                         <constraints>
@@ -2610,6 +2614,11 @@
                                                                                                                 <color key="value" name="LightBlueGrey"/>
                                                                                                             </userDefinedRuntimeAttribute>
                                                                                                         </userDefinedRuntimeAttributes>
+                                                                                                        <connections>
+                                                                                                            <outlet property="dateLabel" destination="qBZ-9j-LZm" id="1Wo-kA-VG5"/>
+                                                                                                            <outlet property="decreaseButton" destination="4BZ-SB-WKc" id="VyH-AA-0Dg"/>
+                                                                                                            <outlet property="increaseButton" destination="pNk-GR-vhh" id="bgb-wz-utB"/>
+                                                                                                        </connections>
                                                                                                     </view>
                                                                                                 </subviews>
                                                                                                 <color key="backgroundColor" name="IceBlue"/>
@@ -2684,17 +2693,24 @@
                                                                                 </constraints>
                                                                             </view>
                                                                         </subviews>
+                                                                        <connections>
+                                                                            <outlet property="applyButton" destination="pmL-QT-T7v" id="azZ-aX-ocu"/>
+                                                                            <outlet property="closeButton" destination="gsY-pD-xKZ" id="9cM-7y-xek"/>
+                                                                            <outlet property="periodOfMonthFieldLabel" destination="dpc-P0-ULy" id="x6a-hp-gWG"/>
+                                                                            <outlet property="periodOfMonthInputStepper" destination="Tgx-dj-HEz" id="uFh-GS-hwg"/>
+                                                                            <outlet property="startDateFieldLabel" destination="kcf-Tk-1Vw" id="78r-GQ-8Bl"/>
+                                                                            <outlet property="startDateInputStepper" destination="Bum-S0-hUe" id="wj3-aI-Oai"/>
+                                                                            <outlet property="titleLabel" destination="uoP-E5-23Y" id="zco-zQ-i1V"/>
+                                                                        </connections>
                                                                     </stackView>
                                                                 </subviews>
                                                                 <constraints>
                                                                     <constraint firstItem="KST-AE-Qev" firstAttribute="top" secondItem="Dqe-NM-fKi" secondAttribute="bottom" constant="8" symbolic="YES" id="N6w-RB-jVO"/>
                                                                     <constraint firstItem="Nyw-km-kvS" firstAttribute="top" secondItem="nXG-WL-RIE" secondAttribute="top" id="SgG-6k-DVf"/>
-                                                                    <constraint firstItem="Dqe-NM-fKi" firstAttribute="top" secondItem="Nyw-km-kvS" secondAttribute="bottom" constant="8" symbolic="YES" id="go9-29-onu"/>
                                                                 </constraints>
                                                             </stackView>
                                                         </subviews>
                                                         <constraints>
-                                                            <constraint firstItem="nXG-WL-RIE" firstAttribute="top" secondItem="jYt-3x-OiV" secondAttribute="bottom" constant="8" symbolic="YES" id="2OW-pa-g84"/>
                                                             <constraint firstAttribute="trailing" secondItem="nXG-WL-RIE" secondAttribute="trailing" id="V6Y-Sm-F3F"/>
                                                             <constraint firstAttribute="bottom" secondItem="nXG-WL-RIE" secondAttribute="bottom" id="dul-oo-gD9"/>
                                                             <constraint firstItem="nXG-WL-RIE" firstAttribute="leading" secondItem="BkW-t5-4d3" secondAttribute="leading" id="j9g-Ey-urX"/>

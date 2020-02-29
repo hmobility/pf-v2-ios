@@ -30,6 +30,7 @@ protocol MenuViewModelType {
     
     func getUserName() -> Observable<String>
     func getUserPoints() -> Observable<String>
+    func getUserCars() -> Observable<[MemberCarElement]>
 }
 
 class MenuViewModel: MenuViewModelType {
@@ -59,12 +60,12 @@ class MenuViewModel: MenuViewModelType {
         self.localizer = localizer
         self.userData = userData
         
-        addNewCarText = localizer.localized("ttl_my_car_add")
+        addNewCarText = localizer.localized("ttl_menu_my_car_add")
         addCarText = localizer.localized("btn_add")
         
-        cardManagementText = localizer.localized("ttl_card_management")
-        pointChargeText = localizer.localized("ttl_point_charge")
-        myCouponText = localizer.localized("ttl_my_coupon")
+        cardManagementText = localizer.localized("ttl_menu_card_management")
+        pointChargeText = localizer.localized("ttl_menu_point_charge")
+        myCouponText = localizer.localized("ttl_menu_my_coupon")
         
         paymentHistoryText = localizer.localized("ttl_menu_payment_history")
         myInfoText = localizer.localized("ttl_menu_my_info")
@@ -88,5 +89,13 @@ class MenuViewModel: MenuViewModelType {
             .map {
                 return $0.withComma
             }
+    }
+    
+    func getUserCars() -> Observable<[MemberCarElement]> {
+        return userData.memberInfo
+            .getUserCars()
+            .map {
+                return $0
+        }
     }
 }

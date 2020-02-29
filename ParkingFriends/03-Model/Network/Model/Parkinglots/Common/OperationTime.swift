@@ -14,6 +14,18 @@ class OperationTime: BaseModelType {
     var from:String = ""
     var to:String = ""
     
+    var fromDate:Date? {
+        get {
+            return from.toDate
+        }
+    }
+    
+    var toDate:Date? {
+        get {
+            return to.toDate
+        }
+    }
+    
     required init?(map: Map) {
         super.init(map: map)
     }

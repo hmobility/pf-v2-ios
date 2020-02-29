@@ -12,6 +12,7 @@ protocol MemberInfoType {
     func load()
     func getUsername() -> Observable<String>
     func getUserPoints() -> Observable<Int>
+    func getUserCars() -> Observable<[MemberCarElement]>
 }
 
 class MemberInfo: NSObject, MemberInfoType {
@@ -38,6 +39,14 @@ class MemberInfo: NSObject, MemberInfoType {
         return getMemberInfo()
             .map {
                 return $0.point
+            }
+    }
+    
+    func getUserCars() -> Observable<[MemberCarElement]> {
+        return getMemberInfo()
+            .filter { $0.car != nil }
+            .map {
+                return $0.car!.elements
             }
     }
     

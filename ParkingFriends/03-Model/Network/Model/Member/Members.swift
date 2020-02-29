@@ -18,7 +18,7 @@ class Members: BaseModelType {
     var email:String = ""
     var nickname:String = ""
     var point:Int = 0
-    var car:[MemberCar] = [MemberCar]()
+    var car:MemberCar?
 
     required init?(map: Map) {
         super.init(map: map)
@@ -50,7 +50,7 @@ class MemberCar: BaseModelType {
 
 class MemberCarElement: BaseModelType {
     var modelId:Int = 0
-    var number:Int = 0
+    var number:String = ""
     
     required init?(map: Map) {
         super.init(map: map)

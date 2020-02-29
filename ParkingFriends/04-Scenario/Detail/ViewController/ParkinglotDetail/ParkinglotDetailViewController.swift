@@ -90,65 +90,14 @@ class ParkinglotDetailViewController: UIViewController {
                  self.navigateToPayment()
             })
             .disposed(by: disposeBag)
-    }
-    
-    // MARK: - Setup View Model
-    
-    private func setupHeaderViewModel() {
-        if let viewModel = headerView.getViewModel() {
-            self.viewModel.setHeaderViewModel(viewModel)
-            
-            headerView.navigationAction = { flag in
-            }
-        }
-    }
-    
-    private func setupParkingSymbolViewModel() {
-        if let viewModel = symbolView.getViewModel() {
-            self.viewModel.setSymbolViewModel(viewModel)
-        }
-    }
-    
-    private func setupPriceViewModel() {
-        if let viewModel = priceView.getViewModel() {
-            self.viewModel.setPriceViewModel(viewModel)
-        }
-    }
-    
-    private func setupOperationTimeViewModel() {
-        if let viewModel = operationTimeView.getViewModel() {
-            self.viewModel.setOperationTimeViewModel(viewModel)
-        }
-    }
-    
-    private func setupReserveStatusViewModel() {
-        if let viewModel = reserveStatusView.getViewModel() {
-            self.viewModel.setReserveViewModel(viewModel)
-            
-            reserveStatusView.infoGuideAction = {
-                self.navigateToInfoGuide()
-            }
-        }
-    }
-    
-    private func setupEditScheduleViewModel() {
-        if let viewModel = editScheduleView.getViewModel() {
-            self.viewModel.setEditScheduleViewModel(viewModel)
-        }
         
-        editScheduleView.setDetailViewModel(viewModel)
-    }
-    
-    private func setupNoticeViewModel() {
-        if let viewModel = noticeView.getViewModel() {
-            self.viewModel.setNoticeViewModel(viewModel)
-        }
-    }
-    
-    private func setupButtonViewModel() {
-        if let viewModel = buttonView.getViewModel() {
-            self.viewModel.setButtonViewModel(viewModel)
-        }
+        viewModel.getReadyStateForOrder()
+            .asObservable()
+            .subscribe(onNext: { enabled in
+                self.giftButton.isEnabled = enabled
+                self.reserveButton.isEnabled = enabled
+            })
+            .disposed(by: disposeBag)
     }
     
     // MARK: - Initialize
@@ -232,14 +181,15 @@ class ParkinglotDetailViewController: UIViewController {
         self.modal(target, transparent:true, animated: false)
     }
     
-    private func navigateToPayment() {
+    private func navigateToPayment(giftMode flag:Bool = false) {
         let target = Storyboard.payment.instantiateViewController(withIdentifier: "PaymentViewController") as! PaymentViewController
         
-        if let data = viewModel.getParkinglotInfo() {
-            target.setData(parkinglot: data)
+        if let orderData = viewModel.getValidOrderForm() {
+            target.setOrderForm(orderData)
+            target.setGiftMode(flag)
+            self.push(target)
         }
-        
-        self.push(target)
+    
     }
        
     /*
@@ -249,4 +199,65 @@ class ParkinglotDetailViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+}
+
+// MARK: - View Model Setup
+
+extension ParkinglotDetailViewController {
+    private func setupHeaderViewModel() {
+        if let viewModel = headerView.getViewModel() {
+            self.viewModel.setHeaderViewModel(viewModel)
+            
+            headerView.navigationAction = { flag in
+            }
+        }
+    }
+    
+    private func setupParkingSymbolViewModel() {
+        if let viewModel = symbolView.getViewModel() {
+            self.viewModel.setSymbolViewModel(viewModel)
+        }
+    }
+    
+    private func setupPriceViewModel() {
+        if let viewModel = priceView.getViewModel() {
+            self.viewModel.setPriceViewModel(viewModel)
+        }
+    }
+    
+    private func setupOperationTimeViewModel() {
+        if let viewModel = operationTimeView.getViewModel() {
+            self.viewModel.setOperationTimeViewModel(viewModel)
+        }
+    }
+    
+    private func setupReserveStatusViewModel() {
+        if let viewModel = reserveStatusView.getViewModel() {
+            self.viewModel.setReserveViewModel(viewModel)
+            
+            reserveStatusView.infoGuideAction = {
+                self.navigateToInfoGuide()
+            }
+        }
+    }
+    
+    private func setupEditScheduleViewModel() {
+        if let viewModel = editScheduleView.getViewModel() {
+            self.viewModel.setEditScheduleViewModel(viewModel)
+        }
+        
+        editScheduleView.setDetailViewModel(viewModel)
+    }
+    
+    private func setupNoticeViewModel() {
+        if let viewModel = noticeView.getViewModel() {
+            self.viewModel.setNoticeViewModel(viewModel)
+        }
+    }
+    
+    private func setupButtonViewModel() {
+        if let viewModel = buttonView.getViewModel() {
+            self.viewModel.setButtonViewModel(viewModel)
+        }
+    }
 }

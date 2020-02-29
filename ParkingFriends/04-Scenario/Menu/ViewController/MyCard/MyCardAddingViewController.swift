@@ -19,6 +19,7 @@ class MyCardAddingViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var contentView: UIView!
     
+    @IBOutlet weak var guideLabel: UILabel!
     @IBOutlet weak var cardNumberField: CustomInputSection!
     @IBOutlet weak var expirationDateField: CustomInputSection!
     @IBOutlet weak var passwordTwoDigitsNumberField: CustomInputSection!
@@ -27,26 +28,23 @@ class MyCardAddingViewController: UIViewController {
     
     @IBOutlet weak var nextButtonBottomConstraint: NSLayoutConstraint!
     
-    @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var confirmButton: UIButton!
+    @IBOutlet weak var backButton: UIButton!
+    
+    var dismissAction: ((_ flag:Bool) -> Void)?
     
     private let disposeBag = DisposeBag()
     
-    private var registrationModel: RegistrationModel = RegistrationModel.shared
+    private lazy var viewModel: MyCardAddingViewModelType = MyCardAddingViewModel()
+
+    // MARK: - Local Methods
     
-    private lazy var viewModel: RegiCreditCardViewModelType = RegiCreditCardViewModel(registration:registrationModel)
-    
-    //private var viewModel: MyCardViewModelType?
-    
-    // MARK: - Button Action
-    
-    @IBAction func backButtonAction(_ sender: Any) {
-        self.backToPrevious()
-    }
-    
-    // MARK: - Public Methods
-    
-    public func setViewModel(_ viewModel:MyCardViewModelType) {
+    private func finishProcess() {
+        self.dismissRoot()
         
+        if let action = self.dismissAction {
+            action(true)
+        }
     }
     
     // MARK: - Initialize
@@ -75,6 +73,10 @@ class MyCardAddingViewController: UIViewController {
     private func setupNavigationBinding() {
         viewModel.viewTitle
             .drive(self.navigationItem.rx.title)
+            .disposed(by: disposeBag)
+        
+        viewModel.cardAddingDescText
+            .drive(guideLabel.rx.text)
             .disposed(by: disposeBag)
     }
     
@@ -273,9 +275,15 @@ class MyCardAddingViewController: UIViewController {
     }
     
     private func setupButtonBinding() {
-        nextButton.rx.tap
-            .subscribe(onNext: { _ in
+        confirmButton.rx.tap
+            .subscribe(onNext: { [unowned self] _ in
                 self.viewModel.requestRegisterCard()
+            })
+            .disposed(by: disposeBag)
+        
+        backButton.rx.tap
+            .subscribe(onNext: { [unowned self] _ in
+                self.dismissRoot()
             })
             .disposed(by: disposeBag)
         
@@ -283,12 +291,11 @@ class MyCardAddingViewController: UIViewController {
             .drive(onNext: { [unowned self] (type, message) in
                 switch type {
                 case .none, .disabled:
-                     self.nextButton.isEnabled = false
+                     self.confirmButton.isEnabled = false
                 case .enabled:
-                     self.nextButton.isEnabled = true
+                     self.confirmButton.isEnabled = true
                 case .success:
-                    break
-                 //   self.navigateToTutorial()
+                    self.finishProcess()
                 case .failure:
                     MessageDialog.show(message)
                     break

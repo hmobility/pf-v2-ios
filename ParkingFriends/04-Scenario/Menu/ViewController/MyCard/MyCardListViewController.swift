@@ -74,10 +74,12 @@ class MyCardListViewController: UIViewController {
     // MARK: - Public Methods
     
     public func setCardItems(_ elements:[CardElement]) {
+        /*
         var array = Array<CardElement>()
         array.append(elements[0])
         array.append(elements[0])
-        cardItems.accept(array)
+ */
+        cardItems.accept(elements)
     }
        
     // MARK: - Initialize
