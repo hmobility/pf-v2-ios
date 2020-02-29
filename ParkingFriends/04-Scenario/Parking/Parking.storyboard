@@ -695,11 +695,52 @@
                                             </view>
                                             <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vU1-9M-K5F" userLabel="View - Player Screen" customClass="CameraPlayerView" customModule="ParkingFriends" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="40" width="414" height="240"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xZd-x6-7DF" userLabel="View - Loading View" customClass="CamLoadingView" customModule="ParkingFriends" customModuleProvider="target">
+                                                        <rect key="frame" x="107" y="70" width="200" height="100"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EW4-e2-OlC" userLabel="Label - Text">
+                                                                <rect key="frame" x="20" y="70.5" width="160" height="19.5"/>
+                                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="16"/>
+                                                                <color key="textColor" name="CoolGrey"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" insetsLayoutMarginsFromSafeArea="NO" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="9Vq-FN-uJS">
+                                                                <rect key="frame" x="81.5" y="20" width="37" height="37"/>
+                                                                <color key="color" name="IceBlue"/>
+                                                            </activityIndicatorView>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="0.33333333333333331" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstItem="9Vq-FN-uJS" firstAttribute="centerX" secondItem="xZd-x6-7DF" secondAttribute="centerX" id="YVf-Mo-dgu"/>
+                                                            <constraint firstAttribute="bottom" secondItem="EW4-e2-OlC" secondAttribute="bottom" constant="10" id="crD-4s-Axm"/>
+                                                            <constraint firstItem="9Vq-FN-uJS" firstAttribute="top" secondItem="xZd-x6-7DF" secondAttribute="top" constant="20" id="lEb-Bb-2oF"/>
+                                                            <constraint firstAttribute="width" constant="200" id="nvw-8v-AGU"/>
+                                                            <constraint firstAttribute="trailing" secondItem="EW4-e2-OlC" secondAttribute="trailing" constant="20" id="oqf-je-UyY"/>
+                                                            <constraint firstAttribute="height" constant="100" id="qca-wq-UPQ"/>
+                                                            <constraint firstItem="EW4-e2-OlC" firstAttribute="leading" secondItem="xZd-x6-7DF" secondAttribute="leading" constant="20" id="vfQ-ww-cDA"/>
+                                                        </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="7"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <outlet property="activityIndicator" destination="9Vq-FN-uJS" id="Y03-9T-4yZ"/>
+                                                            <outlet property="loadingTextLabel" destination="EW4-e2-OlC" id="6TH-dj-fvp"/>
+                                                        </connections>
+                                                    </view>
+                                                </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="vU1-9M-K5F" secondAttribute="height" multiplier="16:9" id="F8x-bt-dE4"/>
                                                     <constraint firstAttribute="height" constant="240" id="d7E-rd-AuZ"/>
+                                                    <constraint firstItem="xZd-x6-7DF" firstAttribute="centerX" secondItem="vU1-9M-K5F" secondAttribute="centerX" id="gzJ-Ao-b4A"/>
+                                                    <constraint firstItem="xZd-x6-7DF" firstAttribute="centerY" secondItem="vU1-9M-K5F" secondAttribute="centerY" id="vlt-5m-afe"/>
                                                 </constraints>
+                                                <connections>
+                                                    <outlet property="loadingView" destination="xZd-x6-7DF" id="RHx-39-HeE"/>
+                                                </connections>
                                             </view>
                                         </subviews>
                                         <connections>
@@ -1194,7 +1235,7 @@
                                         <rect key="frame" x="183" y="96" width="48" height="48"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" image="icCarParkingStatus" translatesAutoresizingMaskIntoConstraints="NO" id="fda-e1-ChI" userLabel="Image View - Icon">
-                                                <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
+                                                <rect key="frame" x="12" y="12" width="24" height="24"/>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -1888,6 +1929,9 @@
         </namedColor>
         <namedColor name="CharcoalGrey">
             <color red="0.20800000429153442" green="0.23499999940395355" blue="0.2669999897480011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="CoolGrey">
+            <color red="0.6589999794960022" green="0.67500001192092896" blue="0.68599998950958252" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="DarkGrey">
             <color red="0.10199999809265137" green="0.10199999809265137" blue="0.10599999874830246" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

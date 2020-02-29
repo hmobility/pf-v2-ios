@@ -33,14 +33,19 @@ class MediaPlayer: Ti2RPlayer {
 }
 
 class CameraPlayerView: UIView, CameraPlayerViewType {
+    @IBOutlet weak var loadingView: CamLoadingView!
     
     var screenLayer: CALayer?
     var cameraList:[CamElement]?
+    var currentPlayUrl:String?
+    
+    var localizer:LocalizerType = Localizer.shared
     
     // MARK: - Public Methods
     
     func setLiveUrl(_ playUrl:String?, autoPlay:Bool = false) {
         if let url = playUrl {
+            currentPlayUrl = url
             MediaPlayer.shared.player_setDataSource(MediaPlayer.shared.handlerPointer, url: url)
             MediaPlayer.shared.player_prepareAsync(MediaPlayer.shared.handlerPointer)
         }
@@ -51,10 +56,12 @@ class CameraPlayerView: UIView, CameraPlayerViewType {
     }
     
     func changeLiveUrl(_ playUrl:String?, autoPlay:Bool = false) {
-        if let url = playUrl {
-            MediaPlayer.shared.player_setDataSource(MediaPlayer.shared.handlerPointer, url: url)
-        }
-           
+        stop()
+       // destroyPlayer()
+       // prepareMediaPlayer()
+       // updateScreenSize()
+        setLiveUrl(playUrl)
+                   
         if autoPlay {
             self.play()
         }
@@ -66,6 +73,11 @@ class CameraPlayerView: UIView, CameraPlayerViewType {
         if MediaPlayer.shared.handlerPointer == nil {
             debugPrint("[CCTV][PREPARE] - Reinitialized")
             prepareMediaPlayer()
+            
+            if let url = currentPlayUrl {
+                setLiveUrl(url)
+            }
+            
             play()
         }
         else {
@@ -103,14 +115,26 @@ class CameraPlayerView: UIView, CameraPlayerViewType {
        
     // MARK: - Lcoal Methods
     
+    func updateScreenSize() {
+        if screenLayer != nil {
+            screenLayer!.frame = self.bounds
+            debugPrint("[CCTV][RESIZE] - SCREEN",  layer.frame)
+        }
+    }
+    
     func prepareMediaPlayer() {
+        if screenLayer != nil {
+            screenLayer?.removeFromSuperlayer()
+        }
+
         MediaPlayer.shared.handlerPointer = MediaPlayer.shared.player_create()
         MediaPlayer.shared.player_setListener(MediaPlayer.shared.handlerPointer, listener: bridge(obj: self), user: bridge(obj: self))
+        
         screenLayer = MediaPlayer.shared.player_getDisplayLayer(with: MediaPlayer.shared.handlerPointer)
         
-        if let layer = screenLayer {
-            layer.frame = self.bounds
-            self.layer.addSublayer(layer)
+        if screenLayer != nil {
+            screenLayer!.frame = self.bounds
+            self.layer.addSublayer(screenLayer!)
             
             debugPrint("[CCTV][PREPARE] - Finished, Size : ", layer.frame)
         }
@@ -158,11 +182,10 @@ class CameraPlayerView: UIView, CameraPlayerViewType {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        prepareMediaPlayer()
     }
     
     override func draw(_ rect: CGRect) {
-    
+        prepareMediaPlayer()
     }
 }
 
@@ -172,10 +195,12 @@ extension CameraPlayerView: PlayerListener {
         print("OnPrepared------------------")
         let ret = MediaPlayer.shared.player_start(MediaPlayer.shared.handlerPointer)
         print("ret: \(ret)")
+        loadingView.setLoadingStatus(.prepare)
     }
     
     func onCompletion(_: UnsafeMutableRawPointer, user: UnsafeMutableRawPointer) {
         print("OnCompletion------------------")
+        loadingView.setLoadingStatus(.finished)
     }
     
     func onSeekComplete(_: UnsafeMutableRawPointer, user: UnsafeMutableRawPointer) {
@@ -184,14 +209,20 @@ extension CameraPlayerView: PlayerListener {
     
     func onBufferingUpdate(_: UnsafeMutableRawPointer, user: UnsafeMutableRawPointer ,percent: Int32) {
         print("OnBufferingUpdate----------------percent: \(percent)")
+        
+        loadingView.setLoadingStatus(.loading)
     }
     
     func onVideoSizeChanged(_: UnsafeMutableRawPointer, user: UnsafeMutableRawPointer , width: Int32, height: Int32) {
         print("OnVideoSizeChanged---------------width: \(width), height: \(height)");
+        loadingView.setLoadingStatus(.loading)
     }
     
     func onError(_: UnsafeMutableRawPointer, user: UnsafeMutableRawPointer, arg1: Int32, arg2: Int32) -> Int32 {
         print("OnError[\(arg1), \(arg2)]---------------");
+        
+        loadingView.setLoadingStatus(.finished)
+        
         /*
         showAlert(title: "Error", message: "영상을 불러올 수 없습니다. code: " + String(arg2)) { () -> Void in
             self.mediaDestroy()

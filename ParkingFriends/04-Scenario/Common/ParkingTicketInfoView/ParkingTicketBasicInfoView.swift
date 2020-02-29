@@ -23,6 +23,8 @@ class ParkingTicketBasicInfoView: UIView, ParkingTicketBasicInfoViewType {
     var parkinglotNameText:BehaviorRelay<String> = BehaviorRelay(value:"")
     var productNameText:BehaviorRelay<String> = BehaviorRelay(value:"")
     var paymentDateText:BehaviorRelay<String> = BehaviorRelay(value:"")
+
+    var viewModel:ParkingTicketInfoViewModelType = ParkingTicketInfoViewModel.shared
     
     var localizer:LocalizerType = Localizer.shared
     
@@ -37,6 +39,20 @@ class ParkingTicketBasicInfoView: UIView, ParkingTicketBasicInfoViewType {
     }
     
     // MARK: - Local Methods
+    
+    private func setupBinding() {
+        viewModel.parkinglotNameText
+            .drive(parkinglotNameTitleLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        viewModel.productNameText
+            .drive(parkinglotNameTitleLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        viewModel.paymentDateText
+            .drive(paymentDateTitleLabel.rx.text)
+            .disposed(by: disposeBag)
+    }
     
     private func setupTicketInfoBinding() {
         parkinglotNameText.asDriver()
@@ -54,13 +70,8 @@ class ParkingTicketBasicInfoView: UIView, ParkingTicketBasicInfoViewType {
      
     // MARK: - Initialize
     
-    private func initialize(localizer: LocalizerType = Localizer.shared) {
-        self.localizer = localizer
-        
-        parkinglotNameTitleLabel.text = localizer.localized("ttl_parkinglot_name")
-        productNameTitleLabel.text = localizer.localized("ttl_product_purchased")
-        paymentDateTitleLabel.text = localizer.localized("ttl_payment_date")
-        
+    private func initialize() {
+        setupBinding()
         setupTicketInfoBinding()
     }
     

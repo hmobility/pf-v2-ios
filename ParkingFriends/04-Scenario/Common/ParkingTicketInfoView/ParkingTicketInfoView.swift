@@ -17,41 +17,37 @@ class ParkingTicketInfoView: UIStackView, ParkingTicketInfoViewType {
     @IBOutlet weak var timeTicketInfoView: ParkingTicketTimeInfoView!
     @IBOutlet weak var fixedTicketInfoView: ParkingTicketFixedInfoView!
     @IBOutlet weak var monthlyTicketInfoView: ParkingTicketMonthlyInfoView!
+    @IBOutlet weak var carInfoView: ParkingCarInfoView!
     @IBOutlet weak var carInfoDisplayView: ParkingCarInfoDisplayView!
     
-    private var infoUsage:BehaviorRelay<Usages?> = BehaviorRelay(value: nil) //  Order-Usage
-    private var infoPreview:BehaviorRelay<OrderPreview?> = BehaviorRelay(value: nil) //  Order-Preview
+    var viewModel:ParkingTicketInfoViewModelType = ParkingTicketInfoViewModel.shared
     
     let disposeBag = DisposeBag()
     
     // MARK: - Public Methods
     
     public func setParkingInfo(with usages:Usages) {
-        infoUsage.accept(usages)
+        viewModel.setUsageInfo(usages)
     }
     
     public func setParkingInfo(with preview:OrderPreview) {
-          infoPreview.accept(preview)
-      }
+        viewModel.setOrderPreview(preview)
+    }
     
     // MARK: - Binding
     
     func setupBinding() {
-        infoUsage.asObservable()
-            .filter { $0 != nil }
-            .map { $0! }
+        viewModel.getUsageInfo()
             .subscribe(onNext: { [unowned self] usages in
                 self.updateParkingInfo(with: usages)
             })
             .disposed(by: disposeBag)
         
-        infoPreview.asObservable()
-                .filter { $0 != nil }
-                .map { $0! }
-                .subscribe(onNext: { [unowned self] preview in
-                    self.updateParkingInfo(with: preview)
-                })
-                .disposed(by: disposeBag)
+        viewModel.getOrderPreview()
+            .subscribe(onNext: { [unowned self] preview in
+                self.updateParkingInfo(with: preview)
+            })
+            .disposed(by: disposeBag)
     }
     
     // MARK: Usage
@@ -84,6 +80,10 @@ class ParkingTicketInfoView: UIStackView, ParkingTicketInfoViewType {
     func updateCarInfo(with carNumber:String) {
         if carInfoDisplayView != nil {
             self.carInfoDisplayView.setInfo(number: carNumber)
+        }
+        
+        if carInfoView != nil {
+            self.carInfoView.setInfo(number: carNumber)
         }
     }
     

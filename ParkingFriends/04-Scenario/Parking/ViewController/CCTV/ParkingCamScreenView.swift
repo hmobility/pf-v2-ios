@@ -56,10 +56,15 @@ class ParkingCamScreenView: UIStackView, ParkingCamScreenViewType {
         playerView.setLiveUrl(url, autoPlay:true)
     }
     
+    func changeUrl(with url:String, title:String) {
+         navigationView.setTitle(title)
+         playerView.changeLiveUrl(url, autoPlay:true)
+    }
+    
     func updateScreen(videoIndex:Int) {
         if let list = cameraList, videoIndex < list.count {
             let element = list[videoIndex]
-            setupPlayer(with: element.liveUri, title: element.camName)
+            changeUrl(with: element.liveUri, title: element.camName)
             navigationView.previousButton.isEnabled = (videoIndex == 0) ? false : true
             navigationView.nextButton.isEnabled = (videoIndex == (list.count - 1)) ? false : true
         }

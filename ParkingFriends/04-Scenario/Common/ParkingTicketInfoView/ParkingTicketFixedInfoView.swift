@@ -18,6 +18,8 @@ class ParkingTicketFixedInfoView: UIView, ParkingTicketFixedInfoViewType {
     
     var reservationTimeText:BehaviorRelay<String> = BehaviorRelay(value:"")
     
+    var viewModel:ParkingTicketInfoViewModelType = ParkingTicketInfoViewModel.shared
+    
     var localizer:LocalizerType = Localizer.shared
     
     let disposeBag = DisposeBag()
@@ -30,19 +32,22 @@ class ParkingTicketFixedInfoView: UIView, ParkingTicketFixedInfoViewType {
     
     // MARK: - Local Methods
     
+    private func setupBinding() {
+        viewModel.reservationTimeText
+            .drive(reservationTimeTitleLabel.rx.text)
+            .disposed(by: disposeBag)
+    }
+    
     private func setupTicketInfoBinding() {
         reservationTimeText.asDriver()
-                   .drive(reservationTimeLabel.rx.text)
-                   .disposed(by: disposeBag)
+            .drive(reservationTimeLabel.rx.text)
+            .disposed(by: disposeBag)
     }
     
     // MARK: - Initialize
     
-    private func initialize(localizer: LocalizerType = Localizer.shared) {
-        self.localizer = localizer
-        
-        reservationTimeTitleLabel.text = localizer.localized("ttl_reservation_time")
-        
+    private func initialize() {
+        setupBinding()
         setupTicketInfoBinding()
     }
     

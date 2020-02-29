@@ -19,7 +19,7 @@ class ParkingCamViewController: UIViewController {
     @IBOutlet weak var cctvScreenView: ParkingCamScreenView!
     
     @IBOutlet weak var parkingInfoView: ParkingTicketInfoView!
-    
+   
     @IBOutlet weak var guideLabel: UILabel!
     
     @IBOutlet weak var backButton: UIButton!
@@ -33,7 +33,7 @@ class ParkingCamViewController: UIViewController {
     private var orderElement: OrderElement?
     
     private let disposeBag = DisposeBag()
-    
+
     // MARK: - Binding
     
     private func setupNavigationBinding() {
@@ -108,48 +108,10 @@ class ParkingCamViewController: UIViewController {
     }
     
     private func updateScreenInfo(with usages:Usages) {
-
         usages.cctvGroupName = "AT59459"
-        setCCTVGroupName(with: usages.cctvGroupName!)
-        
         parkingInfoView.setParkingInfo(with: usages)
     }
-    
-    public func setCCTVGroupName(with groupName:String) {
-        cctvGroupName = groupName
-        /*
-        CctvHttpSession.login().asObservable()
-            .subscribe(onNext: { result in
-                if let item = result {
-                    CctvHttpSession.getCamList(projectId: item.projectId, projectAuth: item.projectAuth, deviceId:  CamInfo.deviceId, userId: groupName)
-                        .asObservable()
-                        .subscribe(onNext: { cam in
-                            if let item1 = cam {
-                                CctvHttpSession.getCamLiveURL(projectId: item.projectId, projectAuth: item.projectAuth, deviceId: CamInfo.deviceId, camId: item1.cameraList[0].camId!)
-                                    .asObservable()
-                                    .subscribe(onNext: { item in
-                                        
-                                    })
-                                    .disposed(by: self.disposeBag)
-                            }
-                        })
-                        .disposed(by: self.disposeBag)
-                }
-            })
-            .disposed(by: disposeBag)
-        */
-        /*
-         if let item = result {
-         CctvHttpSession.getCamLiveURL(projectId: item.projectId, projectAuth: item.projectAuth, deviceId: CamInfo.deviceId, camId: groupName)
-         .asObservable()
-         .subscribe(onNext: { item in
-         
-         })
-         .disposed(by: self.disposeBag)
-         }
-         */
-    }
-    
+
     // MARK: - Initialize
     
     private func initialize() {

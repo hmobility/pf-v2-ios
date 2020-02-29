@@ -28,37 +28,69 @@ class ParkingCarInfoView: UIStackView, ParkingCarInfoViewType {
     @IBOutlet weak var noCarInfoView: CarInfoSectionView!
     @IBOutlet weak var userCarInfoView: CarInfoSectionView!
     
-    private var localizer:LocalizerType = Localizer.shared
+    var carNumberText:BehaviorRelay<String?> = BehaviorRelay(value:nil)
     
-    private var carNumberText:BehaviorRelay<String> = BehaviorRelay(value:"")
+    var viewModel:ParkingTicketInfoViewModelType = ParkingTicketInfoViewModel.shared
+          
+    var localizer:LocalizerType = Localizer.shared
     
     let disposeBag = DisposeBag()
      
+    // MARK: - Binding
+    
+    private func setupNoCarInfoBinding() {
+        viewModel.carInfoText
+            .drive(noCarInfoView.titleLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        viewModel.noCarInfoText
+            .drive(noCarInfoView.carNumberLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        viewModel.addCarText
+            .drive(noCarInfoView.addButton.rx.title())
+            .disposed(by: disposeBag)
+    }
+    
+    private func setupCarInfoBinding() {
+        viewModel.carInfoText
+            .drive(userCarInfoView.titleLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        viewModel.changeCarText
+            .drive(userCarInfoView.changeButton.rx.title())
+            .disposed(by: disposeBag)
+    }
+    
+    private func setupInfoBinding() {
+        viewModel.getCarNumber()
+            .subscribe(onNext: { [unowned self] carNumber in
+                 self.setCarInfoSection(number: carNumber)
+            })
+            .disposed(by: disposeBag)
+    }
+    
     // MARK: - Public Methods
     
     public func setInfo(number:String) {
-        carNumberText.accept(number)
+        viewModel.setCarNumber(number)
     }
     
     // MARK: - Local Methods
     
-    private func setupInfoBinding() {
-        carNumberText.asDriver()
-            .drive(noCarInfoView.carNumberLabel.rx.text)
-            .disposed(by: disposeBag)
+    func setCarInfoSection(number:String) {
+        let noCarNumber = number.isEmpty ? true : false
         
-        carNumberText.asDriver()
-            .drive(userCarInfoView.carNumberLabel.rx.text)
-            .disposed(by: disposeBag)
+        noCarInfoView.isHidden = noCarNumber ? false : true
+        userCarInfoView.isHidden = noCarNumber ? true : false
+        userCarInfoView.carNumberLabel.text = number
     }
     
     // MARK: - Initialize
     
-    private func initialize(localizer: LocalizerType = Localizer.shared) {
-        self.localizer = localizer
-        
-      //  carInfoTitleLabel.text = localizer.localized("ttl_car_info")
-
+    private func initialize() {
+        setupNoCarInfoBinding()
+        setupCarInfoBinding()
         setupInfoBinding()
     }
     

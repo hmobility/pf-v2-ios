@@ -112,6 +112,7 @@
 "ph_car_color" = "흰색";
 "ttl_color_picker" = " 차량색상 선택";
 "ttl_selected_car" = "선택한 차량";
+"txt_car_info_no_registerd" = "등록된 차량 없음";
 
 // Color Index
 "itm_white" = "흰색";
@@ -454,6 +455,8 @@
 "btn_direction_guide" = "길안내 받기";
 "btn_reservation_extension" = "예약 연장";
 "btn_to_leave" = " 출차하기";
+"txt_live_video_preparing" = "CCTV와 연결 중입니다.";
+"txt_live_video_loading" = "라이브 영상을 로딩 중입니다.";
 
 // Dialog
 "dlg_ttl_time_ticket_duration" = "몇시간동안 주차하세요?";
