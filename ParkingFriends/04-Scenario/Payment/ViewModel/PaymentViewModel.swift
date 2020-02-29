@@ -10,6 +10,7 @@ import Foundation
 
 protocol PaymentViewModelType {
     var viewTitleText: Driver<String> { get }
+    var giftText: Driver<String> { get }
     var paymentText: BehaviorRelay<String> { get }
     
     var giftMode:BehaviorRelay<Bool> { get }
@@ -25,6 +26,7 @@ protocol PaymentViewModelType {
 
 class PaymentViewModel: PaymentViewModelType {
     var viewTitleText: Driver<String>
+    var giftText: Driver<String>
     var paymentText: BehaviorRelay<String>
     
     var orderPreviewItem:BehaviorRelay<OrderPreview?> = BehaviorRelay(value: nil)
@@ -43,6 +45,7 @@ class PaymentViewModel: PaymentViewModelType {
         self.localizer = localizer
      
         viewTitleText = localizer.localized("ttl_payment_for_parking")
+        giftText = localizer.localized("btn_gift")
         paymentText = BehaviorRelay(value: localizer.localized("btn_to_pay"))
     }
     
@@ -62,13 +65,6 @@ class PaymentViewModel: PaymentViewModelType {
     
     public func setGiftMode(_ flag:Bool) {
         giftMode.accept(flag)
-        /*
-        if flag {
-            paymentText.accept(localizer.localized("btn_to_pay"))
-        } else {
-            paymentText.accept(localizer.localized("btn_to_pay"))
-        }
-         */
     }
     
     func getOrderPreview() -> Observable<OrderPreview?> {
@@ -82,20 +78,6 @@ class PaymentViewModel: PaymentViewModelType {
         } else {
             return Observable.just(nil)
         }
-        /*
-        if let item = parkingLotInfo, let element = item.products.first, let productType = element.type, let time = element.availableTimes.first {
-            
-            
-            if let form = orderForm {
-                let from = time.from.toDate?.toString(format: .custom("yyyyMMddHHmmss"))
-                let to = time.to.toDate?.toString(format: .custom("yyyyMMddHHmmss"))
-            
-            return requestOrderPreview(type: productType, parkingLotId: item.id, productId: element.id
-                , form: from!, to: to!, quantity: 1)
-        } else {
-            return Observable.just(nil)
-        }
- */
     }
 
     // MARK: - Local Methods

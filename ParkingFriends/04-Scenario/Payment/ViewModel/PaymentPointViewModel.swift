@@ -15,7 +15,8 @@ protocol PaymentPointViewModelType {
     var useAllPointsText: Driver<String> { get }
     var placeholderInputPointsText: Driver<String> { get }
     
-    var userPoints:BehaviorRelay<Int> { get }
+    func setUserPoints(_ points:Int)
+    func getUserPoints() -> Observable<Int>
 }
 
 class PaymentPointViewModel: PaymentPointViewModelType {
@@ -25,7 +26,7 @@ class PaymentPointViewModel: PaymentPointViewModelType {
     var useAllPointsText: Driver<String>
     var placeholderInputPointsText: Driver<String>
     
-    var userPoints:BehaviorRelay<Int> = BehaviorRelay(value: 0)
+    var userPoints:BehaviorRelay<Int?> = BehaviorRelay(value: nil)
     
     var localizer:LocalizerType
     
@@ -40,5 +41,18 @@ class PaymentPointViewModel: PaymentPointViewModelType {
         useAllPointsText = localizer.localized("btn_use_all_points")
         
         placeholderInputPointsText = localizer.localized("ph_input_payment_points")
+    }
+    
+    // MARK: - Public Methods
+    
+    public func setUserPoints(_ points:Int) {
+        userPoints.accept(points)
+    }
+      
+    public func getUserPoints() -> Observable<Int> {
+        return userPoints
+            .asObservable()
+            .filter { $0 != nil }
+            .map { $0! }
     }
 }

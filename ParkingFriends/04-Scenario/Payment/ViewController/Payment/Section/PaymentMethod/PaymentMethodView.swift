@@ -8,17 +8,21 @@
 
 import UIKit
 
+protocol PaymentMethodViewType {
+    
+}
+
 enum PaymentMethodButtonType {
     case simple_card, kakopay
 }
 
-class PaymentMethodView: UIStackView {
+class PaymentMethodView: UIStackView, PaymentMethodViewType {
     @IBOutlet weak var titleLabel: UILabel!
     
     @IBOutlet weak var simpleCardButton: UIButton!
     @IBOutlet weak var kakaoPayButton: UIButton!
     
-     private var viewModel: PaymentMethodViewModelType = PaymentMethodViewModel()
+    var viewModel: PaymentMethodViewModelType = PaymentMethodViewModel()
     
     let disposeBag = DisposeBag()
     

@@ -8,7 +8,11 @@
 
 import UIKit
 
-class PaymentPointsInputSectionView: UIView {
+protocol PaymentPointsInputSectionViewType {
+    
+}
+
+class PaymentPointsInputSectionView: UIView, PaymentPointsInputSectionViewType {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var pointsInputField: UITextField!
     @IBOutlet weak var userPointsTitleLabel: UILabel!

@@ -44,7 +44,7 @@ class PaymentViewController: UIViewController {
             .filter { $0 != nil }
             .map { $0! }
             .subscribe(onNext: { [unowned self] preview in
-                self.paymentParkingInfoView.setParkingInfo(with: preview)
+                self.updateOrderPreview(preview)
             })
             .disposed(by: disposeBag)
     }
@@ -83,23 +83,17 @@ class PaymentViewController: UIViewController {
     
     // MARK: - Public Methods
     
-    public func setOrderForm(_ form:TicketOrderFormType) {
-        viewModel.setOrderForm(form)
-    }
-    
-    public func setData(parkinglot data:Parkinglot) {
-        viewModel.setParkinglotInfo(data)
-    }
-    
-    public func setProductElement(_ element:ProductElement) {
-        viewModel.setProductElement(element)
-    }
-    
-    public func setGiftMode(_ flag:Bool) {
-        viewModel.setGiftMode(flag)
-    }
-    
     // MARK: - Local Methods
+    
+    private func updateOrderPreview(_ preview:OrderPreview) {
+        if self.paymentParkingInfoView != nil {
+            self.paymentParkingInfoView.setParkingInfo(with: preview)
+        }
+        
+        if self.paymentPointView != nil {
+            self.paymentPointView.setUserPoints(preview.point)
+        }
+    }
     
     private func showPaymentGuideView() {
         if UserData.shared.displayPaymentGuide == true {
@@ -178,4 +172,24 @@ class PaymentViewController: UIViewController {
     }
     */
 
+}
+
+// MARK: - Data Setter / Getter
+
+extension PaymentViewController {
+    public func setOrderForm(_ form:TicketOrderFormType) {
+        viewModel.setOrderForm(form)
+    }
+    
+    public func setData(parkinglot data:Parkinglot) {
+        viewModel.setParkinglotInfo(data)
+    }
+    
+    public func setProductElement(_ element:ProductElement) {
+        viewModel.setProductElement(element)
+    }
+    
+    public func setGiftMode(_ flag:Bool) {
+        viewModel.setGiftMode(flag)
+    }
 }

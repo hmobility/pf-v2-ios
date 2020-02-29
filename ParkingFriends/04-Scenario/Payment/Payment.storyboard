@@ -774,10 +774,16 @@
                                                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                                                                 <color key="value" name="LightBlueGrey"/>
                                                                             </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                                <real key="value" value="0.80000000000000004"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="color" keyPath="cursorColor">
+                                                                                <color key="value" name="AlgaeGreen"/>
+                                                                            </userDefinedRuntimeAttribute>
                                                                         </userDefinedRuntimeAttributes>
                                                                     </textField>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xjn-KI-8bL" userLabel="Button - Use All">
-                                                                        <rect key="frame" x="305" y="90" width="93" height="13"/>
+                                                                        <rect key="frame" x="249" y="90" width="149" height="13"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="13" id="qwy-0p-cZo"/>
                                                                         </constraints>
