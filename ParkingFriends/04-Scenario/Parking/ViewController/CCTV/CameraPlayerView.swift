@@ -11,23 +11,96 @@ import CloudCCTVSDK
 //import Alamofire
 //import SwiftyJSON
 
-protocol ParkingCCTVMediaPlayerViewType {
+protocol CameraPlayerViewType {
+    func setLiveUrl(_ playUrl:String?, autoPlay:Bool)
+    func changeLiveUrl(_ playUrl:String?, autoPlay:Bool)
     
+    func prepareMediaPlayer()
+    
+    func play()
+    func pause()
+    func stop()
+    func destroy()
 }
 
 class MediaPlayer: Ti2RPlayer {
     static let shared: MediaPlayer = {
-        let temp = MediaPlayer()
-        return temp
+        let player = MediaPlayer()
+        return player
     }()
     
     var handlerPointer: UnsafeMutableRawPointer?
 }
 
-class ParkingCCTVMediaPlayerView: UIView, ParkingCCTVMediaPlayerViewType {
+class CameraPlayerView: UIView, CameraPlayerViewType {
     
-    private var screenLayer: CALayer?
+    var screenLayer: CALayer?
+    var cameraList:[CamElement]?
     
+    // MARK: - Public Methods
+    
+    func setLiveUrl(_ playUrl:String?, autoPlay:Bool = false) {
+        if let url = playUrl {
+            MediaPlayer.shared.player_setDataSource(MediaPlayer.shared.handlerPointer, url: url)
+            MediaPlayer.shared.player_prepareAsync(MediaPlayer.shared.handlerPointer)
+        }
+        
+        if autoPlay {
+            self.play()
+        }
+    }
+    
+    func changeLiveUrl(_ playUrl:String?, autoPlay:Bool = false) {
+        if let url = playUrl {
+            MediaPlayer.shared.player_setDataSource(MediaPlayer.shared.handlerPointer, url: url)
+        }
+           
+        if autoPlay {
+            self.play()
+        }
+    }
+    
+    // MARK: - Stream Control
+    
+    func play() {
+        if MediaPlayer.shared.handlerPointer == nil {
+            debugPrint("[CCTV][PREPARE] - Reinitialized")
+            prepareMediaPlayer()
+            play()
+        }
+        else {
+            /* Refer to Ti2RPlayer state */
+            let state = MediaPlayer.shared.player_getState(MediaPlayer.shared.handlerPointer)
+            
+            if state == MEDIA_PLAYER_STOPPED {
+                /* in case of STOPPED, plays media from start-position(0) after prepare() */
+                MediaPlayer.shared.player_prepare(MediaPlayer.shared.handlerPointer)
+                MediaPlayer.shared.player_start(MediaPlayer.shared.handlerPointer)
+                
+                debugPrint("[CCTV][PREPARE] - MEDIA_PLAYER_STOPPED")
+            } else if state == MEDIA_PLAYER_PAUSED {
+                /* in case of PAUSED , plays media from already paused-positon */
+                MediaPlayer.shared.player_start(MediaPlayer.shared.handlerPointer)
+                
+                debugPrint("[CCTV][PREPARE] - MEDIA_PLAYER_PAUSED")
+            }
+        }
+    }
+    
+    func pause() {
+        MediaPlayer.shared.player_pause(MediaPlayer.shared.handlerPointer)
+    }
+    
+    func stop() {
+        MediaPlayer.shared.player_stop(MediaPlayer.shared.handlerPointer)
+    }
+    
+    func destroy() {
+        if MediaPlayer.shared.handlerPointer != nil {
+            MediaPlayer.shared.player_release(MediaPlayer.shared.handlerPointer);
+        }
+    }
+       
     // MARK: - Lcoal Methods
     
     func prepareMediaPlayer() {
@@ -35,17 +108,11 @@ class ParkingCCTVMediaPlayerView: UIView, ParkingCCTVMediaPlayerViewType {
         MediaPlayer.shared.player_setListener(MediaPlayer.shared.handlerPointer, listener: bridge(obj: self), user: bridge(obj: self))
         screenLayer = MediaPlayer.shared.player_getDisplayLayer(with: MediaPlayer.shared.handlerPointer)
         
-        screenLayer!.frame = self.frame
-        
         if let layer = screenLayer {
+            layer.frame = self.bounds
             self.layer.addSublayer(layer)
-        }
-    }
-    
-    func setupScreen(_ playUrl:String?) {
-        if let url = playUrl {
-            MediaPlayer.shared.player_setDataSource(MediaPlayer.shared.handlerPointer, url: url)
-            MediaPlayer.shared.player_prepareAsync(MediaPlayer.shared.handlerPointer)
+            
+            debugPrint("[CCTV][PREPARE] - Finished, Size : ", layer.frame)
         }
     }
     
@@ -100,7 +167,7 @@ class ParkingCCTVMediaPlayerView: UIView, ParkingCCTVMediaPlayerViewType {
 }
 
 //MARK: - MyPlayerDelegate
-extension ParkingCCTVMediaPlayerView: PlayerListener {
+extension CameraPlayerView: PlayerListener {
     func onPrepared(_: UnsafeMutableRawPointer, user: UnsafeMutableRawPointer) {
         print("OnPrepared------------------")
         let ret = MediaPlayer.shared.player_start(MediaPlayer.shared.handlerPointer)

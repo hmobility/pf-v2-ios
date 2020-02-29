@@ -251,6 +251,7 @@
 "ttl_detail_start_time" = "시작시간";
 "ttl_detail_end_date" = "종료날짜";
 "ttl_detail_end_time" = "시작시간";
+"ttl_detail_period_use" = "이용기간";
 
 // Search
 "ph_search_parkinglot" = "지역명, 번지, 도로명 주소 검색";
@@ -289,6 +290,9 @@
 "ttl_payment_point" = "포인트";
 "ttl_payment_point_owned" = "포인트";
 "txt_payment_no_point" = "보유 포인트 없음";
+"btn_use_all_points" = "전액 사용하기";
+"txt_payment_user_points" = "보유 포인트 :";
+"ph_input_payment_points" = "1,000P 부터 사용하실 수 있어요";
 "btn_reminder" = "유의사항";
 "ttl_total_payment_price" = "을 확인했으며, 개인정보 제3자제공에동의합니다.";
 
@@ -328,10 +332,10 @@
 "txt_ble_usage_guide" = "반드시 차단기 바로 앞에서 누르세요!";
 
 // Menu
-"ttl_my_car_add" = "내 차량 등록";
-"ttl_card_management" = "카드관리";
-"ttl_point_charge" = "포인트 충전";
-"ttl_my_coupon" = "내 쿠폰";
+"ttl_menu_my_car_add" = "내 차량 등록";
+"ttl_menu_card_management" = "카드관리";
+"ttl_menu_point_charge" = "포인트 충전";
+"ttl_menu_my_coupon" = "내 쿠폰";
 "ttl_menu_payment_history" = "결제 내역";
 "ttl_menu_my_info" = "내 정보";
 "ttl_menu_event" = "이벤트";
@@ -393,6 +397,15 @@
 "ttl_settings_withdraw" = "회원 탈퇴";
 "txt_credit" = "㈜한컴모빌리티\n사업자 등록번호 : 119-86-70032  |  대표자 : 최천우, 현재영\n주소 : 서울특별시 금천구 서부샛길 606, B동 1703-1(가산동, 대성디폴리스)  |  대표전화 : 02-522-6161";
 
+// Point
+"ttl_point_charge" = "포인트 충전";
+"btn_point_usage" = "이용내역";
+"ttl_point_present" = "현재 포인트";
+"ttl_point_after_charge" = "충전 후 포인트";
+"txt_point_bonus" = "%@P 보너스!";
+"btn_point_charge" = "%@P 충전하기";
+"ttl_point_usage" = "포인트 이용내역";
+
 // Parkinglot Label Guide
 "ttl_reserve_label" = "예약권 라벨";
 "txt_guide_existing_time" = "기존 설정 예약시간";
@@ -438,6 +451,9 @@
 "ttl_charge_extra" = "현재 추가 요금 : ";
 "ttl_parking_entrance_confirm" = "본인 주차 여부 확인";
 "dsc_parking_entrance_confirm" = "예약하신 주차면에 입차 정보가 감지되었습니다.\n혹시 직접 주차하셨나요?";
+"btn_direction_guide" = "길안내 받기";
+"btn_reservation_extension" = "예약 연장";
+"btn_to_leave" = " 출차하기";
 
 // Dialog
 "dlg_ttl_time_ticket_duration" = "몇시간동안 주차하세요?";
@@ -456,11 +472,20 @@
 
 // Popup
 "ttl_pop_logout" = "로그아웃";
-"dsc_pop_logut" = "로그아웃 하면 시작 페이지로 이동합니다.\n로그아웃 하시겠습니까?";
-"ttl_credit_card_set_default" = "기본  사용 카드 등록";
-"dsc_credit_card_set_default" = "이 카드를 기본 사용 카드로 등록 하시겠습니까?";
-"ttl_credit_card_remove" = "카드 삭제";
-"dsc_credit_card_remove" = "이 카드를 등록 해제 하시겠습니까?";
+"dsc_pop_logut" = "로그아웃 하면 시작 페이지로 이동합니다.\n 로그아웃 하시겠습니까?";
+"ttl_pop_credit_card_set_default" = "기본  사용 카드 등록";
+"dsc_pop_credit_card_set_default" = "이 카드를 기본 사용 카드로 등록 하시겠습니까?";
+"ttl_pop_credit_card_remove" = "카드 삭제";
+"dsc_pop_credit_card_remove" = "이 카드를 등록 해제 하시겠습니까?";
+"ttl_pop_data_usage_warning" = "데이터 사용 경고";
+"dsc_pop_data_usage_warning" = "3G/LTE 등으로 실시간 CCTV 재생 시\n데이터 사용료가 발생할 수 있습니다.";
+"ttl_pop_reservation_cancel" = "예약을 취소할까요?";
+"ttl_pop_payment" = "• 결제 금액";
+"ttl_pop_fee_cancel" = "• 취소 수수료";
+"ttl_pop_refundable_price" = "• 환불 예정 금액";
+"btn_reservation_cancel" = "예약 취소";
+"btn_preview_ok" = "네";
+"btn_preview_cancel" = "안볼래요";
 
 // Message
 "msg_login_mismatch" = "비밀번호가 일치하지 않습니다.";

@@ -415,8 +415,8 @@ class MapViewModel: NSObject, MapViewModelType {
                     return CLLocationCoordinate2DMake(defaultCoordinate.latitude, defaultCoordinate.longitude)
                 }
                
-           // return CLLocationCoordinate2DMake(defaultCoordinate.latitude, defaultCoordinate.longitude)
-            return location?.coordinate ?? CLLocationCoordinate2DMake(defaultCoordinate.latitude, defaultCoordinate.longitude)
+            return CLLocationCoordinate2DMake(defaultCoordinate.latitude, defaultCoordinate.longitude)
+           // return location?.coordinate ?? CLLocationCoordinate2DMake(defaultCoordinate.latitude, defaultCoordinate.longitude)
         }
     }
     

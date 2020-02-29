@@ -19,6 +19,8 @@ protocol PaymentViewModelType {
     func setParkinglotInfo(_ item:Parkinglot)
     
     func getOrderPreview() -> Observable<OrderPreview?>
+    
+    func setOrderForm(_ form:TicketOrderFormType)
 }
 
 class PaymentViewModel: PaymentViewModelType {
@@ -30,6 +32,8 @@ class PaymentViewModel: PaymentViewModelType {
     
     var productElement:ProductElement?
     var parkingLotInfo:Parkinglot?
+    
+    var orderForm:TicketOrderFormType?
     
     var localizer:LocalizerType
     
@@ -43,6 +47,10 @@ class PaymentViewModel: PaymentViewModelType {
     }
     
     // MARK: - Public Methods
+    
+    public func setOrderForm(_ form:TicketOrderFormType) {
+        orderForm = form
+    }
     
     public func setProductElement(_ element:ProductElement) {
         productElement = element
@@ -64,16 +72,30 @@ class PaymentViewModel: PaymentViewModelType {
     }
     
     func getOrderPreview() -> Observable<OrderPreview?> {
+        if let form = orderForm {
+            let productId = form.productId ?? 0
+            let from = form.from?.toString(format:.custom("yyyyMMddHHmmss")) ?? ""
+            let to = form.to?.toString(format:.custom("yyyyMMddHHmmss")) ?? ""
+           
+            return requestOrderPreview(type: form.type, parkingLotId: form.parkingLotId, productId: productId
+                , form: from, to: to, quantity: form.quantity)
+        } else {
+            return Observable.just(nil)
+        }
+        /*
         if let item = parkingLotInfo, let element = item.products.first, let productType = element.type, let time = element.availableTimes.first {
             
-            let from = time.from.toDate?.toString(format: .custom("yyyyMMddHHmmss"))
-            let to = time.to.toDate?.toString(format: .custom("yyyyMMddHHmmss"))
+            
+            if let form = orderForm {
+                let from = time.from.toDate?.toString(format: .custom("yyyyMMddHHmmss"))
+                let to = time.to.toDate?.toString(format: .custom("yyyyMMddHHmmss"))
             
             return requestOrderPreview(type: productType, parkingLotId: item.id, productId: element.id
                 , form: from!, to: to!, quantity: 1)
         } else {
             return Observable.just(nil)
         }
+ */
     }
 
     // MARK: - Local Methods

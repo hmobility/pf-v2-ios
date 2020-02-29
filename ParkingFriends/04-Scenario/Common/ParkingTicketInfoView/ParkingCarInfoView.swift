@@ -12,9 +12,21 @@ protocol ParkingCarInfoViewType {
     func setInfo(number:String)
 }
 
-class ParkingCarInfoView: UIView, ParkingCarInfoViewType {
-    @IBOutlet weak var carInfoTitleLabel: UILabel!
+class CarInfoSectionView: UIView {
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var carNumberLabel: UILabel!
+    @IBOutlet weak var changeButton: UIButton!
+    @IBOutlet weak var addButton: UIButton!
+}
+
+class CarInfoDisplayView: UIView {
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var carNumberLabel: UILabel!
+}
+
+class ParkingCarInfoView: UIStackView, ParkingCarInfoViewType {
+    @IBOutlet weak var noCarInfoView: CarInfoSectionView!
+    @IBOutlet weak var userCarInfoView: CarInfoSectionView!
     
     private var localizer:LocalizerType = Localizer.shared
     
@@ -32,7 +44,11 @@ class ParkingCarInfoView: UIView, ParkingCarInfoViewType {
     
     private func setupInfoBinding() {
         carNumberText.asDriver()
-            .drive(carNumberLabel.rx.text)
+            .drive(noCarInfoView.carNumberLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        carNumberText.asDriver()
+            .drive(userCarInfoView.carNumberLabel.rx.text)
             .disposed(by: disposeBag)
     }
     
@@ -41,7 +57,7 @@ class ParkingCarInfoView: UIView, ParkingCarInfoViewType {
     private func initialize(localizer: LocalizerType = Localizer.shared) {
         self.localizer = localizer
         
-        carInfoTitleLabel.text = localizer.localized("ttl_car_info")
+      //  carInfoTitleLabel.text = localizer.localized("ttl_car_info")
 
         setupInfoBinding()
     }
@@ -50,7 +66,7 @@ class ParkingCarInfoView: UIView, ParkingCarInfoViewType {
         super.init(frame: frame)
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     

@@ -21,6 +21,7 @@ struct Storyboard {
     static let menu = UIStoryboard(name: "Menu", bundle: nil)
     static let parking = UIStoryboard(name: "Parking", bundle: nil)
     static let search = UIStoryboard(name: "Search", bundle: nil)
+    static let point = UIStoryboard(name: "Point", bundle: nil)
 }
 
 struct Dialog {

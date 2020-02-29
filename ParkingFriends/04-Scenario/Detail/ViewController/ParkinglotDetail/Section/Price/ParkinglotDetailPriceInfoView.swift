@@ -70,9 +70,9 @@ class ParkinglotDetailPriceInfoView: UIStackView {
     
     private func setupTimeBinding() {
         viewModel.getTimeTicketList()
-            .subscribe(onNext: { [unowned self] (title, result) in
+            .subscribe(onNext: { [unowned self] (title, price) in
                 let itemView = ParkinglotDetailPriceItemView.loadFromXib() as! ParkinglotDetailPriceItemView
-                itemView.setTimeTicket(title: title, price: result)
+                itemView.setTimeTicket(title: title, price: price)
                 self.priceTableView.addArrangedSubview(itemView)
             })
             .disposed(by: disposeBag)

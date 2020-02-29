@@ -17,7 +17,7 @@ class ParkingTicketInfoView: UIStackView, ParkingTicketInfoViewType {
     @IBOutlet weak var timeTicketInfoView: ParkingTicketTimeInfoView!
     @IBOutlet weak var fixedTicketInfoView: ParkingTicketFixedInfoView!
     @IBOutlet weak var monthlyTicketInfoView: ParkingTicketMonthlyInfoView!
-    @IBOutlet weak var carInfoView: ParkingCarInfoView!
+    @IBOutlet weak var carInfoDisplayView: ParkingCarInfoDisplayView!
     
     private var infoUsage:BehaviorRelay<Usages?> = BehaviorRelay(value: nil) //  Order-Usage
     private var infoPreview:BehaviorRelay<OrderPreview?> = BehaviorRelay(value: nil) //  Order-Preview
@@ -70,7 +70,7 @@ class ParkingTicketInfoView: UIStackView, ParkingTicketInfoViewType {
         if let productType = item.parkingItemType, let carInfo = item.cars.first  {
             let todayString = DisplayDateTimeHandler().displayDateYYmD(with: Date())
             updateBasicInfo(name: item.parkingLotName, productName: item.parkingLotName, date: todayString)
-            updateTicketInfo(with: productType, info:(desc1: item.from, desc2: item.to))
+            updateTicketInfo(with: productType, info:(desc1: item.desc1, desc2: item.desc2))
             updateCarInfo(with: carInfo.carNo)
         }
     }
@@ -82,7 +82,9 @@ class ParkingTicketInfoView: UIStackView, ParkingTicketInfoViewType {
     }
     
     func updateCarInfo(with carNumber:String) {
-        self.carInfoView.setInfo(number: carNumber)
+        if carInfoDisplayView != nil {
+            self.carInfoDisplayView.setInfo(number: carNumber)
+        }
     }
     
     func updateTicketInfo(with type:ProductType, info:(desc1:String, desc2:String)) {

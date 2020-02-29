@@ -22,7 +22,9 @@ class PaymentGuideViewController: UIViewController {
     
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var agreementButton: UIButton!
-    @IBOutlet weak var noDisplayButton: UIButton!
+    @IBOutlet weak var displayCheckButton: UIButton!
+    
+    @IBOutlet weak var displayCheckGuideView: UIStackView!
     
     var dismissAction: ((_ flag:Bool) -> Void)?
     
@@ -45,9 +47,9 @@ class PaymentGuideViewController: UIViewController {
     
     private func initialize() {
         setupBinding()
-        buttonBinding()
+        setupButtonBinding()
         
-        noDisplayButton.isHidden = checkMode ? false : true
+        displayCheckGuideView.isHidden = checkMode ? false : true
     }
     
     // MARK: - Public Methods
@@ -90,14 +92,14 @@ class PaymentGuideViewController: UIViewController {
                  .disposed(by: disposeBag)
     }
     
-    private func buttonBinding() {
-        noDisplayButton.rx.tap
+    private func setupButtonBinding() {
+        displayCheckButton.rx.tap
             .asObservable()
             .map { (_) -> Bool in
-                return !self.noDisplayButton.isSelected
+                return !self.displayCheckButton.isSelected
             }
             .map { selected in
-                self.noDisplayButton.isSelected = selected
+                self.displayCheckButton.isSelected = selected
                 return selected
             }
             .bind(to: self.viewModel.displayState)

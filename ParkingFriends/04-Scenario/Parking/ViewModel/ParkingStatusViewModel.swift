@@ -11,22 +11,31 @@ import Foundation
 
 protocol ParkingStatusViewModelType {
     var viewTitleText: Driver<String> { get }
-    
     var parkingStatusDescText: Driver<String> { get }
+    var directionGuideText: Driver<String> { get }
+    var departueText: Driver<String> { get }
+    var reserveExtensionText: Driver<String> { get }
     
     func getGuideText() -> Observable<String>
     
     func setOrderElement(_ element:OrderElement)
-    func getParkingStatus() -> Observable<Usages> 
-   // func loadUsages() -> Observable<Usages?>
+    func getUsagesItem() -> Observable<Usages>
+    func getCameraList() -> Observable<[CamElement]>
 }
 
 class ParkingStatusViewModel: ParkingStatusViewModelType {
     var viewTitleText: Driver<String>
     var parkingStatusDescText: Driver<String>
+    var directionGuideText: Driver<String>
+    var departueText: Driver<String>
+    var reserveExtensionText: Driver<String>
+    
     var confirmText: Driver<String>
     var usageItem: BehaviorRelay<Usages?> = BehaviorRelay(value: nil)
     var orderElement: OrderElement?
+    
+    var camLogin: BehaviorRelay<CamLogin?> = BehaviorRelay(value: nil)
+    var cameraItems: BehaviorRelay<[CamElement]?> = BehaviorRelay(value: nil)
     
     var localizer:LocalizerType
     
@@ -39,6 +48,9 @@ class ParkingStatusViewModel: ParkingStatusViewModelType {
 
         viewTitleText = localizer.localized("ttl_parking_status")
         parkingStatusDescText = localizer.localized("dsc_parking_time_remaining")
+        directionGuideText = localizer.localized("btn_direction_guide")
+        departueText = localizer.localized("btn_to_leave")
+        reserveExtensionText = localizer.localized("btn_reservation_extension")
         
         confirmText = localizer.localized("btn_yes")
     }
@@ -59,7 +71,7 @@ class ParkingStatusViewModel: ParkingStatusViewModelType {
         orderElement = element
     }
     
-    public func getParkingStatus() -> Observable<Usages> { //Observable<(supported:Bool, urls:[String], elapsedMinutes:Int)> {
+    public func getUsagesItem() -> Observable<Usages> { //Observable<(supported:Bool, urls:[String], elapsedMinutes:Int)> {
         return loadUsages()
             .filter { $0 != nil }
             .map { $0! }
@@ -72,6 +84,39 @@ class ParkingStatusViewModel: ParkingStatusViewModelType {
                 }
             }
  */
+    }
+    
+    public func getElapsedTime() -> Observable<Int> {
+        return loadUsages()
+            .filter { $0 != nil }
+            .map { $0! }
+            .map {
+                return $0.elapsedMinutes
+            }
+    }
+    
+    public func getCameraList() -> Observable<[CamElement]> {
+        /*
+        return loadUsages()
+            .filter { $0 != nil }
+            .map { $0! }
+            .filter { $0.cctvGroupName != nil }
+            .map { return $0.cctvGroupName! }
+            .flatMap { [unowned self] groupName in
+                return self.loadCameraList(with: groupName)
+                    .filter { $0 != nil }
+                    .map{ $0! }
+            }
+        */
+        
+        let groupName = "AT59459"
+            
+        return self.loadCameraList(with: groupName)
+                           .filter {
+                            $0 != nil
+                            }
+                           .map{ $0! }
+
     }
     
     // MARK: - Local Methods
@@ -100,6 +145,33 @@ class ParkingStatusViewModel: ParkingStatusViewModelType {
             }
         } else {
             return Observable.just(nil)
+        }
+    }
+    
+    func loginCam() -> Observable<CamLogin?> {
+        if camLogin.value != nil {
+            return camLogin.asObservable()
+        } else {
+            return CctvHttpSession.login()
+                .asObservable()
+                .filter { $0 != nil }
+                .map { $0 }
+        }
+    }
+    
+    func loadCameraList(with groupName:String) -> Observable<[CamElement]?> {
+        if cameraItems.value != nil {
+            return cameraItems.asObservable()
+        } else {
+            return loginCam()
+                .filter { $0 != nil }
+                .map { $0! }
+                .flatMap { camLogin in
+                    return CctvHttpSession.getCamList(projectId: camLogin.projectId, projectAuth: camLogin.projectAuth, deviceId: CamInfo.deviceId, userId: groupName)
+                        .filter { $0 != nil }
+                        .map { $0! }
+                        .map { $0.cameraList }
+                }
         }
     }
 }

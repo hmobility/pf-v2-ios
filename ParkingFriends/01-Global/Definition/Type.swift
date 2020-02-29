@@ -17,12 +17,13 @@ typealias CardInfoType = (cardNo:String, yearExpired:String, monthExpired:String
 typealias DateDuration = (start:Date, end:Date)
 typealias MonthlyDuration = (from:Date, count:Int)
 
-typealias ProductAllSet = (time:DateDuration, monthly:MonthlyDuration)
+typealias ExpectedProductInfo = (time:DateDuration, monthly:MonthlyDuration)
 
 typealias ProductItemType = (type:ProductType, title:String)
 
 typealias AlertTextType = (title:String, message:String, done:String, cancel:String)
 
+typealias TicketOrderFormType = (type:ProductType, parkingLotId:Int, productId:Int?, from:Date?, to:Date?, count:Int, quantity:Int)
 
 enum Language:String {
     case korean = "ko"

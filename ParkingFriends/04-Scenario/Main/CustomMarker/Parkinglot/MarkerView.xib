@@ -10,11 +10,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MarkerView" customModule="ParkingFriends" customModuleProvider="target">
+        <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iN0-l3-epB" customClass="MarkerView" customModule="ParkingFriends" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="51" height="26"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="imgMarkerGreen" translatesAutoresizingMaskIntoConstraints="NO" id="AaK-Zy-hRi" userLabel="Image View - Marker">
+                <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" image="imgMarkerGreen" translatesAutoresizingMaskIntoConstraints="NO" id="AaK-Zy-hRi" userLabel="Image View - Marker">
                     <rect key="frame" x="0.0" y="0.0" width="51" height="26"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -25,8 +25,8 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </imageView>
-                <label contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2,500" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NHa-yo-Jho" userLabel="Label - Price">
-                    <rect key="frame" x="7" y="3" width="37" height="17"/>
+                <label contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="2,5000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="NHa-yo-Jho" userLabel="Label - Price">
+                    <rect key="frame" x="7" y="3" width="35" height="17"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -38,7 +38,7 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="NHa-yo-Jho" secondAttribute="trailing" constant="7" id="5vQ-Sk-a7i"/>
+                <constraint firstAttribute="trailing" secondItem="NHa-yo-Jho" secondAttribute="trailing" constant="9" id="5vQ-Sk-a7i"/>
                 <constraint firstItem="NHa-yo-Jho" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="3" id="XDQ-i4-RyE"/>
                 <constraint firstItem="NHa-yo-Jho" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="7" id="gux-fM-ouU"/>
             </constraints>

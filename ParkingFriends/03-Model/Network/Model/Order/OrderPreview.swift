@@ -16,6 +16,8 @@ class OrderPreview: BaseModelType {
     var parkingItemType:ProductType?
     var from:String = ""
     var to:String = ""
+    var desc1:String = ""
+    var desc2:String = ""
     var cars:[OrderPreviewCar] = []
     var point:Int = 0
     var creditCardId:Int = 0
@@ -31,6 +33,8 @@ class OrderPreview: BaseModelType {
         parkingItemType <- map["parkingItemType"]
         from <- map["from"]
         to <- map["to"]
+        desc1 <- map["desc1"]
+        desc2 <- map["desc2"]
         cars <- map["cars"]
         point <- map["point"]
         creditCardId <- map["creditCardId"]

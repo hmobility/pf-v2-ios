@@ -33,8 +33,8 @@ class PaymentViewController: UIViewController {
         
         backButton.rx.tap
             .asDriver()
-            .drive(onNext: { _ in
-                self.pop()
+            .drive(onNext: { [unowned self] _ in
+                self.dismissProcess()
             })
             .disposed(by: disposeBag)
     }
@@ -81,7 +81,11 @@ class PaymentViewController: UIViewController {
             .disposed(by: disposeBag)
     }
     
-    // MARK: - Publid Methods
+    // MARK: - Public Methods
+    
+    public func setOrderForm(_ form:TicketOrderFormType) {
+        viewModel.setOrderForm(form)
+    }
     
     public func setData(parkinglot data:Parkinglot) {
         viewModel.setParkinglotInfo(data)
@@ -105,6 +109,18 @@ class PaymentViewController: UIViewController {
     
     private func showGiftView(_ flag:Bool) {
         paymentGiftView.isHidden = flag ? false : true
+    }
+    
+    private func dismissProcess() {
+        if let navigation = navigationController {
+            if navigation.viewControllers.count > 1 {
+                self.pop()
+            } else {
+                self.dismissRoot()
+            }
+        } else {
+            self.dismissModal()
+        }
     }
     
     // MARK: - Initialize
@@ -144,6 +160,7 @@ class PaymentViewController: UIViewController {
     
     private func navigateToPaymentGuide() {
         let target = Storyboard.payment.instantiateViewController(withIdentifier: "PaymentGuideViewController") as! PaymentGuideViewController
+        target.showCheckMdode(true)
         
         target.dismissAction = { flag in
             self.dismissRoot()

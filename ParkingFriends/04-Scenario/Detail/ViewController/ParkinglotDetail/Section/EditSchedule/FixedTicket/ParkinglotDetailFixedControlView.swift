@@ -8,16 +8,23 @@
 
 import UIKit
 
-class ParkinglotDetailFixedControlView: UIStackView {
+protocol ParkinglotDetailFixedControlViewType {
+    func updateProductItemView(with title:String, index:Int)
+    func getSelectedItem() -> Observable<Int>
+}
+
+class ParkinglotDetailFixedControlView: UIStackView, ParkinglotDetailFixedControlViewType {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var applyButton: UIButton!
     
     @IBOutlet weak var contentsView: UIStackView!
-    
-    private let disposeBag = DisposeBag()
-    private var localizer:LocalizerType = Localizer.shared
-    private var checkButtonArray:[UIButton] = []
+
+    var selectedItemIndex:BehaviorRelay<Int> = BehaviorRelay(value: 0)
+    var checkButtonArray:[UIButton] = []
+    var localizer:LocalizerType = Localizer.shared
+
+    let disposeBag = DisposeBag()
     
     // MARK: - Binding
 
@@ -34,14 +41,15 @@ class ParkinglotDetailFixedControlView: UIStackView {
                 }
                 .disposed(by: disposeBag)
         
-        selectedButton.asObservable().map { button in
-            debugPrint("[FIXED] SELECTED - ", button.tag)
-        }
+        selectedButton.asObservable()
+            .map { return $0.tag }
+            .bind(to: selectedItemIndex)
+            .disposed(by: disposeBag)
     }
     
     // MARK: - Public Methods
 
-    public func updateTimeCheckItemView(with title:String, index:Int)  {
+    public func updateProductItemView(with title:String, index:Int)  {
         let itemView = ParkinglotDetailFixedTimeCheckView.loadFromXib() as ParkinglotDetailFixedTimeCheckView
         itemView.setTitle(title)
         contentsView.addArrangedSubview(itemView)
@@ -50,6 +58,11 @@ class ParkinglotDetailFixedControlView: UIStackView {
         if !checkButtonArray.contains(itemView.checkButton) {
             checkButtonArray.append(itemView.checkButton)
         }
+    }
+    
+    public func getSelectedItem() -> Observable<Int> {
+        return selectedItemIndex
+            .asObservable()
     }
 
     // MARK: - Local Methods
@@ -73,11 +86,11 @@ class ParkinglotDetailFixedControlView: UIStackView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        initialize()
     }
 
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
+        initialize()
     }
 }
