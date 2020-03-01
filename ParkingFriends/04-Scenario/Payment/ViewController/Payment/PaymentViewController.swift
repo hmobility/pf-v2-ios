@@ -12,14 +12,20 @@ class PaymentViewController: UIViewController {
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var giftButton:UIButton!
     @IBOutlet weak var backButton:UIButton!
+    
+    @IBOutlet weak var totalPriceTitleLabel:UILabel!
+    @IBOutlet weak var totalPriceLabel:UILabel!
+    
     @IBOutlet weak var paymentButton:UIButton!
     
     @IBOutlet weak var paymentParkingInfoView: ParkingTicketInfoView!
     @IBOutlet weak var paymentMehodView: PaymentMethodView!
     @IBOutlet weak var paymentPointView: PaymentPointView!
-    
     @IBOutlet weak var paymentGiftView: PaymentGiftView!
+    @IBOutlet weak var paymentAgreementView: PaymentAgreementView!
     
+    @IBOutlet weak var buttonBottomConstraint: NSLayoutConstraint!
+      
     private var viewModel:PaymentViewModelType = PaymentViewModel()
     
     private let disposeBag = DisposeBag()
@@ -74,12 +80,50 @@ class PaymentViewController: UIViewController {
             .disposed(by: disposeBag)
     }
     
+    private func setupPriceBinding() {
+        viewModel.totalPriceTitleText
+            .drive(totalPriceTitleLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        viewModel.getPaymentPrice()
+            .bind(to: totalPriceLabel.rx.text)
+            .disposed(by: disposeBag)
+    }
+    
+    private func setupAgreementBinding() {
+        paymentAgreementView.getAgreementState()
+            .subscribe(onNext: { checked in
+            
+            })
+            .disposed(by: disposeBag)
+    }
+    
     private func setupButtonBinding() {
         viewModel.paymentText
             .asDriver()
             .drive(paymentButton.rx.title())
             .disposed(by: disposeBag)
     }
+    
+    private func setupKeyboard() {
+        RxKeyboard.instance.willShowVisibleHeight
+            .drive(onNext: { height in
+                self.buttonBottomConstraint.constant = height - self.view.safeAreaInsets.bottom
+                self.view.layoutIfNeeded()
+            })
+            .disposed(by: disposeBag)
+        
+        RxKeyboard.instance.isHidden
+            .distinctUntilChanged()
+            .drive(onNext: { hidden in
+                if hidden {
+                    self.buttonBottomConstraint.constant = 0
+                    self.view.layoutIfNeeded()
+                }
+            })
+            .disposed(by: disposeBag)
+    }
+    
     
     // MARK: - Public Methods
     
@@ -93,6 +137,12 @@ class PaymentViewController: UIViewController {
         if self.paymentPointView != nil {
             self.paymentPointView.setUserPoints(preview.point)
         }
+        
+        setPaymentPrice(with: preview.totalAmount)
+    }
+    
+    private func setPaymentPrice(with price:Int) {
+        viewModel.setPaymentPrice(price)
     }
     
     private func showPaymentGuideView() {
@@ -131,7 +181,10 @@ class PaymentViewController: UIViewController {
         setupNavigationBinding()
         setupGiftBinding()
         setupPaymentBinding()
+        setupPriceBinding()
         setupButtonBinding()
+        setupKeyboard()
+        setupAgreementBinding()
     }
     
     // MARK: - Life Cycle

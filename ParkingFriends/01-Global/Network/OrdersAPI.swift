@@ -11,7 +11,7 @@ import Alamofire
 
 class OrdersAPI: BaseAPI {
     // 주문요약
-    static func preview(type:ProductType, parkingLotId:Int, productId:Int, from:String, to:String, quantity:Int, ext:(extensionType:OrderExtensionType, originOrderId:Int, extensionMinutes:Int)? = nil,httpMethod:HttpMethod = .post, auth:APIAuthType = .OAuth2) -> RestURL  {
+    static func preview(type:ProductType, parkingLotId:Int, productId:Int, from:String, to:String, quantity:Int, ext:(extensionType:OrderExtensionType, originOrderId:Int, extensionMinutes:Int)? = nil, httpMethod:HttpMethod = .post, auth:APIAuthType = .OAuth2) -> RestURL  {
         var params:Params = ["type": type.rawValue, "parkingLotId": parkingLotId, "productId": productId, "from": from, "to": to, "quantity": quantity]
         
         if let extParams = ext {
@@ -25,8 +25,15 @@ class OrdersAPI: BaseAPI {
     }
     
     // 주문(트랜잭션) 생성
-    static func orders(productId:String, from:String, to:String, quantity:Int, paymentMethod:String, usePoint:Int, totalAmount:Int, paymentAmount:Int, couponId:Int, car:(number:String, phoneNumber:String), httpMethod:HttpMethod = .post, auth:APIAuthType = .OAuth2) -> RestURL  {
-        let params:Params = ["productId": productId, "from": from, "to":to, "quantity":quantity, "paymentMethod":paymentMethod, "usePoint":usePoint, "totalAmount":totalAmount, "paymentAmount":paymentAmount, "couponId":couponId, "car":["number":car.number, "phoneNumber":car.phoneNumber]]
+    static func orders(itemId:Int, parkingItemType:ProductType, parkingLotId:Int ,from:String, to:String, quantity:Int, paymentMethod:String, usePoint:Int, totalAmount:Int, paymentAmount:Int, couponId:Int, giftFlag:Bool = false, car:(number:String, phoneNumber:String), ext:(extensionType:OrderExtensionType, originOrderId:Int, extensionMinutes:Int)? = nil, httpMethod:HttpMethod = .post, auth:APIAuthType = .OAuth2) -> RestURL  {
+        var params:Params = ["itemId": itemId, "parkingItemType":parkingItemType.rawValue, "from": from, "to":to, "quantity":quantity, "paymentMethod":paymentMethod, "usePoint":usePoint, "totalAmount":totalAmount, "paymentAmount":paymentAmount, "couponId":couponId, "giftFlag":giftFlag, "car":["number":car.number, "phoneNumber":car.phoneNumber]]
+        
+        if let extParams = ext {
+            let addedParams = ["extension":["extensionType" : extParams.extensionType.rawValue, "orfiginOrderId":extParams.originOrderId, "extensionMinutes": extParams.extensionMinutes]]
+            
+            params = params.merging(addedParams) { $1 }
+        }
+        
         let url = build(host:host, endpoint:"/orders/preview", query: nil)
         return (httpMethod, url, auth, params)
     }

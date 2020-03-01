@@ -11,6 +11,7 @@ import Foundation
 protocol PaymentViewModelType {
     var viewTitleText: Driver<String> { get }
     var giftText: Driver<String> { get }
+    var totalPriceTitleText: Driver<String> { get }
     var paymentText: BehaviorRelay<String> { get }
     
     var giftMode:BehaviorRelay<Bool> { get }
@@ -22,15 +23,20 @@ protocol PaymentViewModelType {
     func getOrderPreview() -> Observable<OrderPreview?>
     
     func setOrderForm(_ form:TicketOrderFormType)
+    
+    func setPaymentPrice(_ price:Int)
+    func getPaymentPrice() -> Observable<String>
 }
 
 class PaymentViewModel: PaymentViewModelType {
     var viewTitleText: Driver<String>
     var giftText: Driver<String>
+    var totalPriceTitleText: Driver<String>
     var paymentText: BehaviorRelay<String>
     
     var orderPreviewItem:BehaviorRelay<OrderPreview?> = BehaviorRelay(value: nil)
     var giftMode:BehaviorRelay<Bool> = BehaviorRelay(value: false)
+    var productPrice:BehaviorRelay<Int?> = BehaviorRelay(value: nil)
     
     var productElement:ProductElement?
     var parkingLotInfo:Parkinglot?
@@ -46,6 +52,7 @@ class PaymentViewModel: PaymentViewModelType {
      
         viewTitleText = localizer.localized("ttl_payment_for_parking")
         giftText = localizer.localized("btn_gift")
+        totalPriceTitleText = localizer.localized("ttl_payment_total_price")
         paymentText = BehaviorRelay(value: localizer.localized("btn_to_pay"))
     }
     
@@ -65,6 +72,18 @@ class PaymentViewModel: PaymentViewModelType {
     
     public func setGiftMode(_ flag:Bool) {
         giftMode.accept(flag)
+    }
+    
+    public func setPaymentPrice(_ price:Int) {
+        productPrice.accept(price)
+    }
+    
+    public func getPaymentPrice() -> Observable<String> {
+        return productPrice
+             .asObservable()
+             .filter { $0 != nil }
+             .map { $0! }
+            .map { self.localizer.localized("dsc_payment_total_price", arguments: $0.withComma) }
     }
     
     func getOrderPreview() -> Observable<OrderPreview?> {
@@ -104,5 +123,10 @@ class PaymentViewModel: PaymentViewModelType {
                     return item
                 }
         }
+    }
+    
+    func requestOrder(productId:Int, from:String, to:String, quantity:Int = 1, method:PaymentMethodType, points:Int, total:Int, car:(number:String, phoneNumber:String)) {
+        let paymentAmount = total - points
+       // Order.orders(productId: productId, from: from, to: to, quantity: quantity, paymentMethod: method, usePoint: points, totalAmount: total, paymentAmount: paymentAmount , couponId: 0, car: car)
     }
 }

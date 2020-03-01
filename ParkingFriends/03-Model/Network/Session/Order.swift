@@ -18,8 +18,8 @@ class Order : HttpSession {
             })
     }
 
-    static public func orders(productId: String, from: String, to: String, quantity: Int, paymentMethod: PaymentMethodType, usePoint: Int, totalAmount: Int, paymentAmount: Int, couponId: Int, car:(number: String, phoneNumber: String)) -> Observable<(Transaction?, ResponseCodeType)>  {
-        let data = OrdersAPI.orders(productId: productId, from: from, to: to, quantity: quantity, paymentMethod: paymentMethod.rawValue, usePoint: usePoint, totalAmount: totalAmount, paymentAmount: paymentAmount, couponId: couponId, car:(car.number, car.phoneNumber))
+    static public func orders(itemId: Int, parkingItemType:ProductType, parkingLotId:Int, from: String, to: String, quantity: Int, paymentMethod: PaymentMethodType, usePoint: Int, totalAmount: Int, paymentAmount: Int, couponId: Int, giftFlag:Bool = false, car:(number: String, phoneNumber: String), ext:(extensionType:OrderExtensionType, originOrderId:Int, extensionMinutes:Int)?) -> Observable<(Transaction?, ResponseCodeType)>  {
+        let data = OrdersAPI.orders(itemId: itemId, parkingItemType:parkingItemType, parkingLotId:parkingLotId, from: from, to: to, quantity: quantity, paymentMethod: paymentMethod.rawValue, usePoint: usePoint, totalAmount: totalAmount, paymentAmount: paymentAmount, couponId: couponId, giftFlag: giftFlag, car:(car.number, car.phoneNumber), ext:ext)
         
         return self.shared.dataTask(httpMethod: data.method, auth:data.auth, path: data.url, parameters: data.params)
             .map ({  result in

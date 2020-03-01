@@ -82,6 +82,7 @@
 		624F53B023BB12D3005D7FD8 /* LevelGuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624F53AF23BB12D3005D7FD8 /* LevelGuideViewController.swift */; };
 		624F53B323BB2F6E005D7FD8 /* LevelGuideTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624F53B223BB2F6E005D7FD8 /* LevelGuideTableViewCell.swift */; };
 		624F53B523BB313C005D7FD8 /* LevelGuideViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624F53B423BB313C005D7FD8 /* LevelGuideViewModel.swift */; };
+		62526DAB240BA8B900A0E332 /* PaymentAgreementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62526DAA240BA8B900A0E332 /* PaymentAgreementViewModel.swift */; };
 		625351E123E673EB009FD27F /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625351E023E673EB009FD27F /* SearchViewModel.swift */; };
 		625351E323E67411009FD27F /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 625351E223E67411009FD27F /* Search.storyboard */; };
 		625351E723E694FD009FD27F /* SearchHistoryItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625351E623E694FD009FD27F /* SearchHistoryItemTableViewCell.swift */; };
@@ -168,7 +169,7 @@
 		625951AB23E2B1B10015A868 /* PaymentMethodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625951AA23E2B1B10015A868 /* PaymentMethodView.swift */; };
 		625951AD23E2B2650015A868 /* PaymentPointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625951AC23E2B2650015A868 /* PaymentPointView.swift */; };
 		625951AF23E2B2800015A868 /* PaymentGiftView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625951AE23E2B2800015A868 /* PaymentGiftView.swift */; };
-		625951B123E2B2A20015A868 /* PaymentTotalPriceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625951B023E2B2A20015A868 /* PaymentTotalPriceView.swift */; };
+		625951B123E2B2A20015A868 /* PaymentAgreementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625951B023E2B2A20015A868 /* PaymentAgreementView.swift */; };
 		625990B42403EDBB007D6E9D /* PaymentPointViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625990B32403EDBB007D6E9D /* PaymentPointViewModel.swift */; };
 		625990B724049A12007D6E9D /* PaymentPointsInputSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625990B624049A12007D6E9D /* PaymentPointsInputSectionView.swift */; };
 		625990B924049A25007D6E9D /* PaymentNoPointsSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625990B824049A25007D6E9D /* PaymentNoPointsSectionView.swift */; };
@@ -520,6 +521,7 @@
 		624F53AF23BB12D3005D7FD8 /* LevelGuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelGuideViewController.swift; sourceTree = "<group>"; };
 		624F53B223BB2F6E005D7FD8 /* LevelGuideTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelGuideTableViewCell.swift; sourceTree = "<group>"; };
 		624F53B423BB313C005D7FD8 /* LevelGuideViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelGuideViewModel.swift; sourceTree = "<group>"; };
+		62526DAA240BA8B900A0E332 /* PaymentAgreementViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentAgreementViewModel.swift; sourceTree = "<group>"; };
 		625351E023E673EB009FD27F /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		625351E223E67411009FD27F /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
 		625351E623E694FD009FD27F /* SearchHistoryItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryItemTableViewCell.swift; sourceTree = "<group>"; };
@@ -606,7 +608,7 @@
 		625951AA23E2B1B10015A868 /* PaymentMethodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethodView.swift; sourceTree = "<group>"; };
 		625951AC23E2B2650015A868 /* PaymentPointView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentPointView.swift; sourceTree = "<group>"; };
 		625951AE23E2B2800015A868 /* PaymentGiftView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentGiftView.swift; sourceTree = "<group>"; };
-		625951B023E2B2A20015A868 /* PaymentTotalPriceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentTotalPriceView.swift; sourceTree = "<group>"; };
+		625951B023E2B2A20015A868 /* PaymentAgreementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentAgreementView.swift; sourceTree = "<group>"; };
 		625990B32403EDBB007D6E9D /* PaymentPointViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentPointViewModel.swift; sourceTree = "<group>"; };
 		625990B624049A12007D6E9D /* PaymentPointsInputSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentPointsInputSectionView.swift; sourceTree = "<group>"; };
 		625990B824049A25007D6E9D /* PaymentNoPointsSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentNoPointsSectionView.swift; sourceTree = "<group>"; };
@@ -1622,7 +1624,7 @@
 				625951A623E2AB030015A868 /* PaymentMethod */,
 				625951A723E2AB140015A868 /* Point */,
 				625951A823E2AB1D0015A868 /* Gift */,
-				625951A923E2AB280015A868 /* TotalPrice */,
+				625951A923E2AB280015A868 /* Agremment */,
 			);
 			path = Section;
 			sourceTree = "<group>";
@@ -1653,12 +1655,12 @@
 			path = Gift;
 			sourceTree = "<group>";
 		};
-		625951A923E2AB280015A868 /* TotalPrice */ = {
+		625951A923E2AB280015A868 /* Agremment */ = {
 			isa = PBXGroup;
 			children = (
-				625951B023E2B2A20015A868 /* PaymentTotalPriceView.swift */,
+				625951B023E2B2A20015A868 /* PaymentAgreementView.swift */,
 			);
-			path = TotalPrice;
+			path = Agremment;
 			sourceTree = "<group>";
 		};
 		625990B52403F4CC007D6E9D /* Common */ = {
@@ -1995,6 +1997,7 @@
 				625B273C23F411FA00134E2D /* PaymentMethodViewModel.swift */,
 				6259519E23E2A0A70015A868 /* PaymentParkingInfoViewModel.swift */,
 				625990B32403EDBB007D6E9D /* PaymentPointViewModel.swift */,
+				62526DAA240BA8B900A0E332 /* PaymentAgreementViewModel.swift */,
 				6260E35823F7EB720066086F /* PaymentHistoryViewModel.swift */,
 				6258336D23F91C040078F4CE /* PaymentHistoryEmptyViewModel.swift */,
 				625D5D0A2400DDE40041575F /* PaymentReceiptViewModel.swift */,
@@ -3178,6 +3181,7 @@
 				621BCC7923D2B703009FE1EC /* ParkinglotDetailSymbolView.swift in Sources */,
 				629DB1A023C1C20D00E68A94 /* EmptyParkingTicketViewModel.swift in Sources */,
 				62C26BF62362961100695B6F /* Reviews.swift in Sources */,
+				62526DAB240BA8B900A0E332 /* PaymentAgreementViewModel.swift in Sources */,
 				62C26BE02361632600695B6F /* ServiceKeyAdapter.swift in Sources */,
 				625951AB23E2B1B10015A868 /* PaymentMethodView.swift in Sources */,
 				A40ACD3123543F8D000E4967 /* AppDelegate.swift in Sources */,
@@ -3235,7 +3239,7 @@
 				62C26C0D2362F29100695B6F /* Coupons.swift in Sources */,
 				625ACE9523A3826D002D0653 /* NaverMap.swift in Sources */,
 				625990B924049A25007D6E9D /* PaymentNoPointsSectionView.swift in Sources */,
-				625951B123E2B2A20015A868 /* PaymentTotalPriceView.swift in Sources */,
+				625951B123E2B2A20015A868 /* PaymentAgreementView.swift in Sources */,
 				6259519023DFF6BB0015A868 /* ParkinglotDetailNoticeViewModel.swift in Sources */,
 				6258336A23F9193B0078F4CE /* PaymentHistoryEmptyPaidTicketViewController.swift in Sources */,
 				62601D8523923D8500B78033 /* CarModels.swift in Sources */,

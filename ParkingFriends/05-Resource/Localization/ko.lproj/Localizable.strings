@@ -295,7 +295,11 @@
 "txt_payment_user_points" = "보유 포인트 :";
 "ph_input_payment_points" = "1,000P 부터 사용하실 수 있어요";
 "btn_reminder" = "유의사항";
-"ttl_total_payment_price" = "을 확인했으며, 개인정보 제3자제공에동의합니다.";
+"ttl_payment_total_price" = "총 결제 금액";
+"dsc_payment_total_price" = "%@원";
+"msg_payment_point_limit" = "포인트 한도내에서 사용 가능 합니다.";
+"txt_payment_reminder_guide" = "유의사항을 확인했으며, 개인정보 제3자 제공에 동의합니다.";
+"ttl_payment_reminder" = "유의사항 보기";
 
 // Payment History
 "ttl_payment_history" = "결제 내역";
@@ -455,8 +459,9 @@
 "btn_direction_guide" = "길안내 받기";
 "btn_reservation_extension" = "예약 연장";
 "btn_to_leave" = " 출차하기";
-"txt_live_video_preparing" = "CCTV와 연결 중입니다.";
-"txt_live_video_loading" = "라이브 영상을 로딩 중입니다.";
+"txt_live_video_preparing" = "CCTV에 연결하고 있습니다.";
+"txt_live_video_buffering" = "버퍼링중입니다.";
+"txt_live_video_loading" = "라이브 영상을 로딩중입니다.";
 
 // Dialog
 "dlg_ttl_time_ticket_duration" = "몇시간동안 주차하세요?";

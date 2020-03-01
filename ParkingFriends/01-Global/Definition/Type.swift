@@ -120,8 +120,10 @@ public enum ResponseCodeType: String {
     case unauthorized = "1401"
     case bad_request = "1400"
     case already_exist = "1403"
+    case time_out = "2403"
     case not_found = "1404"
     case error_message = "1500"
+    case no_vehicles = "4404"
     case unknown = ""
     
     public init(rawValue: String) {
@@ -130,8 +132,10 @@ public enum ResponseCodeType: String {
         case "1400": self = .bad_request
         case "1401": self = .unauthorized
         case "1403": self = .already_exist
+        case "2403": self = .time_out
         case "1404": self = .not_found
         case "1500": self = .error_message
+        case "4404": self = .no_vehicles
         default: self = .unknown
         }
     }
