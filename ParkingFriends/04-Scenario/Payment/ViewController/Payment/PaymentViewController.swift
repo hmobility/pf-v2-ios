@@ -67,6 +67,11 @@ class PaymentViewController: UIViewController {
             .bind(to:viewModel.giftMode)
             .disposed(by: disposeBag)
         */
+        viewModel.giftText
+            .asDriver()
+            .drive(giftButton.rx.title())
+            .disposed(by: disposeBag)
+        
         viewModel.giftMode
             .asDriver()
             .drive(giftButton.rx.isSelected)
@@ -96,6 +101,20 @@ class PaymentViewController: UIViewController {
             
             })
             .disposed(by: disposeBag)
+        /*
+        paymentAgreementView.checkButton.rx.tap
+                 .map {
+                    return !self.paymentAgreementView.checkButton.isSelected
+                 }
+                .bind(to: self.paymentAgreementView.checkButton.rx.isSelected)
+                 .disposed(by: disposeBag)
+        */
+        paymentAgreementView
+            .tapReminderButton()
+            .drive(onNext: { [unowned self] _ in
+                self.navigateToPaymentGuide(false)
+            })
+         .disposed(by: disposeBag)
     }
     
     private func setupButtonBinding() {
@@ -205,12 +224,14 @@ class PaymentViewController: UIViewController {
     
     // MARK: - Navigation
     
-    private func navigateToPaymentGuide() {
+    private func navigateToPaymentGuide(_ showChecking:Bool = true) {
         let target = Storyboard.payment.instantiateViewController(withIdentifier: "PaymentGuideViewController") as! PaymentGuideViewController
-        target.showCheckMdode(true)
+        target.showCheckMdode(showChecking)
         
-        target.dismissAction = { flag in
-            self.dismissRoot()
+        target.dismissAction = { [unowned self] flag in
+            if showChecking {
+                self.dismissRoot()
+            }
         }
 
         self.modal(target, transparent: true, animated: true)

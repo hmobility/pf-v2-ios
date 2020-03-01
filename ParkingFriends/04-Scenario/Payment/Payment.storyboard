@@ -929,7 +929,7 @@
                                                                         </userDefinedRuntimeAttributes>
                                                                     </textField>
                                                                 </subviews>
-                                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstItem="dl8-u9-lGv" firstAttribute="leading" secondItem="6De-Nt-ehF" secondAttribute="leading" constant="116" id="FJY-jQ-XBS"/>
                                                                     <constraint firstItem="yZ1-bq-lA7" firstAttribute="centerY" secondItem="dl8-u9-lGv" secondAttribute="centerY" id="IAl-0D-Ofx"/>
@@ -985,7 +985,7 @@
                                                                         </state>
                                                                     </button>
                                                                 </subviews>
-                                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstItem="0jM-Q9-csH" firstAttribute="leading" secondItem="Wwn-tn-tyU" secondAttribute="leading" constant="16" id="Bd3-hw-epr"/>
                                                                     <constraint firstItem="0jM-Q9-csH" firstAttribute="top" secondItem="Wwn-tn-tyU" secondAttribute="top" constant="21" id="HHt-II-TqI"/>
@@ -1000,7 +1000,7 @@
                                                             </view>
                                                         </subviews>
                                                         <connections>
-                                                            <outlet property="checkButton" destination="fhf-Mw-awI" id="HcO-tO-Zgj"/>
+                                                            <outlet property="checkButton" destination="fhf-Mw-awI" id="3Uf-Bd-fGJ"/>
                                                             <outlet property="guideLabel" destination="0jM-Q9-csH" id="6WA-Cy-Ru3"/>
                                                             <outlet property="reminderButton" destination="IcY-N3-6Rg" id="Y0Y-21-Qkd"/>
                                                         </connections>

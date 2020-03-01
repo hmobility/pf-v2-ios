@@ -10,21 +10,27 @@ import UIKit
 
 protocol PaymentAgreementViewType {
     func getAgreementState() -> Observable<Bool>
+    
+    func tapReminderButton() -> Driver<()> 
 }
 
 class PaymentAgreementView: UIStackView, PaymentAgreementViewType {
     @IBOutlet weak var guideLabel: UILabel!
     @IBOutlet weak var reminderButton: UIButton!
     @IBOutlet weak var checkButton: UIButton!
-    
+
     var viewModel: PaymentAgreementViewModelType = PaymentAgreementViewModel()
     
-    let disposeBag = DisposeBag()
+    var disposeBag = DisposeBag()
 
     // MARK: - Public Methods
     
     public func getAgreementState() -> Observable<Bool> {
         return viewModel.agreementCheckState.asObservable()
+    }
+    
+    public func tapReminderButton() -> Driver<()> {
+        return reminderButton.rx.tap.asDriver()
     }
     
     // MARK: - Binding
@@ -42,14 +48,11 @@ class PaymentAgreementView: UIStackView, PaymentAgreementViewType {
     }
     
     func setupButtonBinding() {
-        checkButton.rx.tap
-            .asObservable()
-            .map { return !self.checkButton.isSelected }
-            .map { selected in
-                self.checkButton.isSelected = selected
-                return selected
+        checkButton.rx.tap.asDriver()
+            .map {
+               return !self.checkButton.isSelected
             }
-            .bind(to: viewModel.agreementCheckState)
+            .drive(self.checkButton.rx.isSelected)
             .disposed(by: disposeBag)
     }
     
@@ -67,9 +70,21 @@ class PaymentAgreementView: UIStackView, PaymentAgreementViewType {
         setupButtonBinding()
     }
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+    
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        initialize()
+    }
+    
     // MARK: - Life Cycle
     
     override func draw(_ rect: CGRect) {
-        initialize()
     }
 }
