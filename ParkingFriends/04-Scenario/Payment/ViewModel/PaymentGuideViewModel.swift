@@ -26,19 +26,34 @@ class PaymentGuideViewModel: PaymentGuideViewModelType {
     var noDisplayText: Driver<String>
     
     var displayState: BehaviorRelay<Bool> = BehaviorRelay(value: true)
+
+    var localizer:LocalizerType
+    var userData:UserData
     
-    private let disposeBag = DisposeBag()
-    private var localizer:LocalizerType
+    let disposeBag = DisposeBag()
     
     // MARK: - Initialize
     
-    init(localizer: LocalizerType = Localizer.shared) {
+    init(localizer: LocalizerType = Localizer.shared, userData: UserData = UserData.shared) {
         self.localizer = localizer
+        self.userData = userData
         
         viewTitleText = localizer.localized("ttl_payment_guide")
         contentsText = localizer.localized("txt_payment_contents")
         closeText = localizer.localized("btn_close")
         agreementText = localizer.localized("btn_to_agree")
         noDisplayText = localizer.localized("txt_payment_guide_no_display")
+        
+        setupBinding()
+    }
+    
+    // MARK: - Binding
+    
+    func setupBinding() {
+        displayState.asObservable()
+            .subscribe(onNext: { checked in
+                self.userData.displayPaymentGuide = checked
+            })
+            .disposed(by: disposeBag)
     }
 }

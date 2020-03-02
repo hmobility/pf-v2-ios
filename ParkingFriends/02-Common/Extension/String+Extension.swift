@@ -44,6 +44,13 @@ extension String {
         
         return dateFormatter.date(from: self) ?? nil
     }
+    
+    func toDate(format: String = "yyyyMMddHHmm") -> Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format
+                
+        return dateFormatter.date(from: self) ?? nil
+     }
 }
 
 // MARK: - Pattern Matching

@@ -70,10 +70,10 @@ class ProductSetting: NSObject, NSCoding, ProductSettingType {
     }
     
     public func getBookingDate() -> DateDuration  {
-        return (self.bookingStartTime, self.bookingEndTime)
+        return DateDuration(self.bookingStartTime, self.bookingEndTime)
     }
     
-    public func getProductAllSet() -> ProductAllSet {
+    public func getProductAllSet() -> ExpectedProductInfo {
         let bookingTime = getBookingDate()
         return (time:bookingTime, monthly:bookingMonthly)
     }

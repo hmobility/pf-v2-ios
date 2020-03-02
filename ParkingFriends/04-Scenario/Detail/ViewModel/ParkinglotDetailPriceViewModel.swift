@@ -18,7 +18,7 @@ protocol ParkinglotDetailPriceViewModelType {
     
     func isAvailable() -> Observable<Bool>
     
-    func getTimeTicketList() -> Observable<(title:String, result:String)>
+    func getTimeTicketList() -> Observable<(title:String, price:String)>
     func getExtraFee() -> Observable<String>
     
     func getFixedTicketList() -> Observable<(title:String, price:String)>
@@ -60,8 +60,9 @@ class ParkinglotDetailPriceViewModel: ParkinglotDetailPriceViewModelType {
             }
     }
     
-    func getTimeTicketList() -> Observable<(title:String, result:String)> {
+    func getTimeTicketList() -> Observable<(title:String, price:String)> {
         return baseFee.asObservable()
+            .distinctUntilChanged()
             .filter ({
                 return ($0 != nil)
             })
@@ -74,7 +75,7 @@ class ParkinglotDetailPriceViewModel: ParkinglotDetailPriceViewModelType {
                 let priceUnit = self.localizer.localized("txt_money_unit") as String
                 let timeUnit:String = (minutes >= 60) ? self.localizer.localized("txt_hours") : self.localizer.localized("txt_minutes")
                 
-                return (title:title, result:"\(price.withComma)\(priceUnit) / \(timeUnit)")
+                return (title:title, price:"\(price.withComma)\(priceUnit) / \(timeUnit)")
             })
     }
     
@@ -95,6 +96,7 @@ class ParkinglotDetailPriceViewModel: ParkinglotDetailPriceViewModelType {
     
     func getFixedTicketList() -> Observable<(title:String, price:String)> {
         return products.asObservable()
+            .distinctUntilChanged()
             .flatMap {
                 Observable.from($0)
             }
@@ -108,6 +110,7 @@ class ParkinglotDetailPriceViewModel: ParkinglotDetailPriceViewModelType {
     
     func getMonthlyTicketList() -> Observable<(index:Int, title:String, price:String)> {
         return products.asObservable()
+            .distinctUntilChanged()
             .flatMap {
                 Observable.from($0)
             }

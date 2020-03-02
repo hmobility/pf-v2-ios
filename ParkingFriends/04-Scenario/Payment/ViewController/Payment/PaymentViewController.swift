@@ -12,14 +12,20 @@ class PaymentViewController: UIViewController {
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var giftButton:UIButton!
     @IBOutlet weak var backButton:UIButton!
+    
+    @IBOutlet weak var totalPriceTitleLabel:UILabel!
+    @IBOutlet weak var totalPriceLabel:UILabel!
+    
     @IBOutlet weak var paymentButton:UIButton!
     
     @IBOutlet weak var paymentParkingInfoView: ParkingTicketInfoView!
     @IBOutlet weak var paymentMehodView: PaymentMethodView!
     @IBOutlet weak var paymentPointView: PaymentPointView!
-    
     @IBOutlet weak var paymentGiftView: PaymentGiftView!
+    @IBOutlet weak var paymentAgreementView: PaymentAgreementView!
     
+    @IBOutlet weak var buttonBottomConstraint: NSLayoutConstraint!
+      
     private var viewModel:PaymentViewModelType = PaymentViewModel()
     
     private let disposeBag = DisposeBag()
@@ -33,8 +39,8 @@ class PaymentViewController: UIViewController {
         
         backButton.rx.tap
             .asDriver()
-            .drive(onNext: { _ in
-                self.pop()
+            .drive(onNext: { [unowned self] _ in
+                self.dismissProcess()
             })
             .disposed(by: disposeBag)
     }
@@ -44,7 +50,7 @@ class PaymentViewController: UIViewController {
             .filter { $0 != nil }
             .map { $0! }
             .subscribe(onNext: { [unowned self] preview in
-                self.paymentParkingInfoView.setParkingInfo(with: preview)
+                self.updateOrderPreview(preview)
             })
             .disposed(by: disposeBag)
     }
@@ -61,6 +67,11 @@ class PaymentViewController: UIViewController {
             .bind(to:viewModel.giftMode)
             .disposed(by: disposeBag)
         */
+        viewModel.giftText
+            .asDriver()
+            .drive(giftButton.rx.title())
+            .disposed(by: disposeBag)
+        
         viewModel.giftMode
             .asDriver()
             .drive(giftButton.rx.isSelected)
@@ -74,6 +85,38 @@ class PaymentViewController: UIViewController {
             .disposed(by: disposeBag)
     }
     
+    private func setupPriceBinding() {
+        viewModel.totalPriceTitleText
+            .drive(totalPriceTitleLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        viewModel.getPaymentPrice()
+            .bind(to: totalPriceLabel.rx.text)
+            .disposed(by: disposeBag)
+    }
+    
+    private func setupAgreementBinding() {
+        paymentAgreementView.getAgreementState()
+            .subscribe(onNext: { checked in
+            
+            })
+            .disposed(by: disposeBag)
+        /*
+        paymentAgreementView.checkButton.rx.tap
+                 .map {
+                    return !self.paymentAgreementView.checkButton.isSelected
+                 }
+                .bind(to: self.paymentAgreementView.checkButton.rx.isSelected)
+                 .disposed(by: disposeBag)
+        */
+        paymentAgreementView
+            .tapReminderButton()
+            .drive(onNext: { [unowned self] _ in
+                self.navigateToPaymentGuide(false)
+            })
+         .disposed(by: disposeBag)
+    }
+    
     private func setupButtonBinding() {
         viewModel.paymentText
             .asDriver()
@@ -81,21 +124,45 @@ class PaymentViewController: UIViewController {
             .disposed(by: disposeBag)
     }
     
-    // MARK: - Publid Methods
-    
-    public func setData(parkinglot data:Parkinglot) {
-        viewModel.setParkinglotInfo(data)
+    private func setupKeyboard() {
+        RxKeyboard.instance.willShowVisibleHeight
+            .drive(onNext: { height in
+                self.buttonBottomConstraint.constant = height - self.view.safeAreaInsets.bottom
+                self.view.layoutIfNeeded()
+            })
+            .disposed(by: disposeBag)
+        
+        RxKeyboard.instance.isHidden
+            .distinctUntilChanged()
+            .drive(onNext: { hidden in
+                if hidden {
+                    self.buttonBottomConstraint.constant = 0
+                    self.view.layoutIfNeeded()
+                }
+            })
+            .disposed(by: disposeBag)
     }
     
-    public func setProductElement(_ element:ProductElement) {
-        viewModel.setProductElement(element)
-    }
     
-    public func setGiftMode(_ flag:Bool) {
-        viewModel.setGiftMode(flag)
-    }
+    // MARK: - Public Methods
     
     // MARK: - Local Methods
+    
+    private func updateOrderPreview(_ preview:OrderPreview) {
+        if self.paymentParkingInfoView != nil {
+            self.paymentParkingInfoView.setParkingInfo(with: preview)
+        }
+        
+        if self.paymentPointView != nil {
+            self.paymentPointView.setUserPoints(preview.point)
+        }
+        
+        setPaymentPrice(with: preview.totalAmount)
+    }
+    
+    private func setPaymentPrice(with price:Int) {
+        viewModel.setPaymentPrice(price)
+    }
     
     private func showPaymentGuideView() {
         if UserData.shared.displayPaymentGuide == true {
@@ -105,6 +172,18 @@ class PaymentViewController: UIViewController {
     
     private func showGiftView(_ flag:Bool) {
         paymentGiftView.isHidden = flag ? false : true
+    }
+    
+    private func dismissProcess() {
+        if let navigation = navigationController {
+            if navigation.viewControllers.count > 1 {
+                self.pop()
+            } else {
+                self.dismissRoot()
+            }
+        } else {
+            self.dismissModal()
+        }
     }
     
     // MARK: - Initialize
@@ -121,7 +200,10 @@ class PaymentViewController: UIViewController {
         setupNavigationBinding()
         setupGiftBinding()
         setupPaymentBinding()
+        setupPriceBinding()
         setupButtonBinding()
+        setupKeyboard()
+        setupAgreementBinding()
     }
     
     // MARK: - Life Cycle
@@ -142,11 +224,14 @@ class PaymentViewController: UIViewController {
     
     // MARK: - Navigation
     
-    private func navigateToPaymentGuide() {
+    private func navigateToPaymentGuide(_ showChecking:Bool = true) {
         let target = Storyboard.payment.instantiateViewController(withIdentifier: "PaymentGuideViewController") as! PaymentGuideViewController
+        target.showCheckMdode(showChecking)
         
-        target.dismissAction = { flag in
-            self.dismissRoot()
+        target.dismissAction = { [unowned self] flag in
+            if showChecking {
+                self.dismissRoot()
+            }
         }
 
         self.modal(target, transparent: true, animated: true)
@@ -161,4 +246,24 @@ class PaymentViewController: UIViewController {
     }
     */
 
+}
+
+// MARK: - Data Setter / Getter
+
+extension PaymentViewController {
+    public func setOrderForm(_ form:TicketOrderFormType) {
+        viewModel.setOrderForm(form)
+    }
+    
+    public func setData(parkinglot data:Parkinglot) {
+        viewModel.setParkinglotInfo(data)
+    }
+    
+    public func setProductElement(_ element:ProductElement) {
+        viewModel.setProductElement(element)
+    }
+    
+    public func setGiftMode(_ flag:Bool) {
+        viewModel.setGiftMode(flag)
+    }
 }

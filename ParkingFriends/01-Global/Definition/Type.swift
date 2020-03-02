@@ -17,12 +17,13 @@ typealias CardInfoType = (cardNo:String, yearExpired:String, monthExpired:String
 typealias DateDuration = (start:Date, end:Date)
 typealias MonthlyDuration = (from:Date, count:Int)
 
-typealias ProductAllSet = (time:DateDuration, monthly:MonthlyDuration)
+typealias ExpectedProductInfo = (time:DateDuration, monthly:MonthlyDuration)
 
 typealias ProductItemType = (type:ProductType, title:String)
 
 typealias AlertTextType = (title:String, message:String, done:String, cancel:String)
 
+typealias TicketOrderFormType = (type:ProductType, parkingLotId:Int, productId:Int?, from:Date?, to:Date?, count:Int, quantity:Int)
 
 enum Language:String {
     case korean = "ko"
@@ -119,8 +120,10 @@ public enum ResponseCodeType: String {
     case unauthorized = "1401"
     case bad_request = "1400"
     case already_exist = "1403"
+    case time_out = "2403"
     case not_found = "1404"
     case error_message = "1500"
+    case no_vehicles = "4404"
     case unknown = ""
     
     public init(rawValue: String) {
@@ -129,8 +132,10 @@ public enum ResponseCodeType: String {
         case "1400": self = .bad_request
         case "1401": self = .unauthorized
         case "1403": self = .already_exist
+        case "2403": self = .time_out
         case "1404": self = .not_found
         case "1500": self = .error_message
+        case "4404": self = .no_vehicles
         default: self = .unknown
         }
     }

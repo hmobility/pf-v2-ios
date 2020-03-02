@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iN0-l3-epB" customClass="ParkinglotDetailPriceItemView" customModule="ParkingFriends" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="31"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="예약권" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3NM-iZ-Dtm" userLabel="Label - Time">
+                    <rect key="frame" x="24" y="0.0" width="42" height="16"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="16" id="gZE-Lb-eDa"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="16"/>
+                    <color key="textColor" name="Steel"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="2,500원 / 1시간" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ta1-Oa-2eb" userLabel="Label - Price">
+                    <rect key="frame" x="288.5" y="0.0" width="101.5" height="16"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="16" id="eIH-yt-WhN"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="16"/>
+                    <color key="textColor" name="DarkGrey"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="height" constant="31" id="YY1-O7-6f3"/>
+                <constraint firstItem="3NM-iZ-Dtm" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="csn-Q5-MCK"/>
+                <constraint firstItem="3NM-iZ-Dtm" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="24" id="cy2-Rf-nSJ"/>
+                <constraint firstAttribute="trailing" secondItem="ta1-Oa-2eb" secondAttribute="trailing" constant="24" id="s9R-Gv-JLJ"/>
+                <constraint firstItem="ta1-Oa-2eb" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="u3I-Ae-nO6"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="priceLabel" destination="ta1-Oa-2eb" id="YdI-w2-8Rd"/>
+                <outlet property="titleLabel" destination="3NM-iZ-Dtm" id="VS6-nx-akO"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="153.34821428571428"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="DarkGrey">
+            <color red="0.10199999809265137" green="0.10199999809265137" blue="0.10599999874830246" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Steel">
+            <color red="0.44699999690055847" green="0.50199997425079346" blue="0.55699998140335083" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

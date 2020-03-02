@@ -131,8 +131,8 @@ class MenuViewController: UIViewController {
         pointChargeView.rx
             .tapGesture()
             .when(.recognized)
-            .subscribe { _ in
-                
+            .subscribe { [unowned self] _ in
+                self.navigateToPointCharge()
             }
             .disposed(by: disposeBag)
         
@@ -244,6 +244,11 @@ class MenuViewController: UIViewController {
         let target = Storyboard.menu.instantiateViewController(withIdentifier: "MyCardNavigationController") as! UINavigationController
         self.modal(target)
     }
+    
+    func navigateToPointCharge() {
+          let target = Storyboard.point.instantiateViewController(withIdentifier: "PointNavigationController") as! UINavigationController
+          self.modal(target)
+      }
     
     func navigateToMyInfo() {
         let target = Storyboard.menu.instantiateViewController(withIdentifier: "MyInfoNavigationController") as! UINavigationController

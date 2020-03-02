@@ -50,8 +50,8 @@ class MyCardViewModel: MyCardViewModelType {
     // MARK: - Alert Message
     
     func getAlertRemoveMessage() -> AlertTextType {
-        let title:String = localizer.localized("ttl_credit_card_remove")
-        let message:String = localizer.localized("dsc_credit_card_remove")
+        let title:String = localizer.localized("ttl_pop_credit_card_remove")
+        let message:String = localizer.localized("dsc_pop_credit_card_remove")
         let done:String = localizer.localized("btn_remove")
         let cancel:String = localizer.localized("btn_cancel")
         
@@ -59,8 +59,8 @@ class MyCardViewModel: MyCardViewModelType {
     }
     
     func getAlertDefaultMessage() -> AlertTextType {
-        let title:String = localizer.localized("ttl_credit_card_set_default")
-        let message:String = localizer.localized("dsc_credit_card_set_default")
+        let title:String = localizer.localized("ttl_pop_credit_card_set_default")
+        let message:String = localizer.localized("dsc_pop_credit_card_set_default")
         let done:String = localizer.localized("btn_apply")
         let cancel:String = localizer.localized("btn_cancel")
         

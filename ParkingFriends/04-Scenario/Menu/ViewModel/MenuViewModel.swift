@@ -60,12 +60,12 @@ class MenuViewModel: MenuViewModelType {
         self.localizer = localizer
         self.userData = userData
         
-        addNewCarText = localizer.localized("ttl_my_car_add")
+        addNewCarText = localizer.localized("ttl_menu_my_car_add")
         addCarText = localizer.localized("btn_add")
         
-        cardManagementText = localizer.localized("ttl_card_management")
-        pointChargeText = localizer.localized("ttl_point_charge")
-        myCouponText = localizer.localized("ttl_my_coupon")
+        cardManagementText = localizer.localized("ttl_menu_card_management")
+        pointChargeText = localizer.localized("ttl_menu_point_charge")
+        myCouponText = localizer.localized("ttl_menu_my_coupon")
         
         paymentHistoryText = localizer.localized("ttl_menu_payment_history")
         myInfoText = localizer.localized("ttl_menu_my_info")

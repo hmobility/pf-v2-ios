@@ -1943,7 +1943,7 @@
                                                                 <color key="textColor" red="0.1019607843" green="0.1019607843" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="-를 제외하고 입력" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="2LO-ww-2Y5" userLabel="TextField - Verification">
+                                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="-를 제외하고 입력" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="2LO-ww-2Y5" userLabel="TextField - Verification">
                                                                 <rect key="frame" x="16" y="49" width="342" height="20"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="20" id="aKu-Ad-1s4"/>

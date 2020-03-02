@@ -45,6 +45,14 @@ extension UIViewController {
         self.navigationController?.popViewController(animated: animated)
     }
     
+    public func close(animated:Bool = true) {
+        if let navigation = self.navigationController {
+            navigation.popViewController(animated: animated)
+        } else {
+             presentingViewController?.dismiss(animated: animated, completion: nil)
+        }
+    }
+    
     public func backToPrevious(animated: Bool = true) {
         if let presentingViewController = presentedViewController {
             presentingViewController.view.endEditing(true)

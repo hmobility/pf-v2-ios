@@ -15,42 +15,67 @@ extension ParkingNormalViewController : AnalyticsType {
 }
 
 class ParkingNormalViewController: UIViewController {
+    @IBOutlet weak var navigationBar: UINavigationBar!
+    @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var infoButton: UIButton!
+    
+    @IBOutlet weak var navigtationButton: UIButton!
+    @IBOutlet weak var reserveExtensionButton: UIButton!
+    
     @IBOutlet weak var guideLabel: UILabel!
     @IBOutlet weak var descLabel: UILabel!
+    
+    @IBOutlet weak var parkingInfoView: ParkingTicketInfoView!
   
-    private var viewModel: ParkingStatusViewModelType?
-    private var elapsedMinutes:BehaviorRelay<Int> = BehaviorRelay(value: 0)
+    private var viewModel: ParkingStatusViewModelType = ParkingStatusViewModel()
     
     private let disposeBag = DisposeBag()
     
-    // MARK: - Binding
-        
-    private func setupParkingGuideBinding() {
-        if let viewModel = viewModel {
-            viewModel.getGuideText()
-                .bind(to: self.guideLabel.rx.text)
-                .disposed(by: disposeBag)
-            
-            viewModel.parkingStatusDescText
-                .drive(self.descLabel.rx.text)
-                .disposed(by: disposeBag)
-        }
+      // MARK: - Binding
+      
+    private func setupNavigationBinding() {
+          viewModel.viewTitleText
+            .drive(self.navigationBar.topItem!.rx.title)
+            .disposed(by: disposeBag)
     }
+    
+    private func setupParkingGuideBinding() {
+        viewModel.getGuideText()
+            .bind(to: self.guideLabel.rx.text)
+            .disposed(by: disposeBag)
+            
+        viewModel.parkingStatusDescText
+            .drive(self.descLabel.rx.text)
+            .disposed(by: disposeBag)
+    }
+    
+    private func setupParkingStatusBinding() {
+         viewModel.getUsagesItem()
+             .asObservable()
+             .subscribe(onNext: { [unowned self] usage in
+                 self.updateScreenInfo(with: usage)
+             })
+             .disposed(by: disposeBag)
+     }
     
     // MARK: - Public Methods
     
-    public func setViewModel(_ viewModel:ParkingStatusViewModelType) {
-        self.viewModel = viewModel as? ParkingStatusViewModel
-    }
+    public func setOrderElement(with element:OrderElement) {
+         viewModel.setOrderElement(element)
+     }
+
+    // MARK: - Local Methods
     
-    public func setElapsedTime(with minutes:Int) {
-        elapsedMinutes.accept(minutes)
+    private func updateScreenInfo(with usages:Usages) {
+        parkingInfoView.setParkingInfo(with: usages)
     }
     
     // MARK: - Initialize
     
     private func initialize() {
+        setupNavigationBinding()
         setupParkingGuideBinding()
+        setupParkingStatusBinding()
     }
     
     // MARK: - Life Cycle
